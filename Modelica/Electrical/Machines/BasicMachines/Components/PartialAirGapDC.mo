@@ -1,11 +1,11 @@
 ﻿within Modelica.Electrical.Machines.BasicMachines.Components;
 partial model PartialAirGapDC "Partial airgap model of a DC machine"
-  parameter Boolean quasiStatic(start=false) 
+  parameter Boolean quasiStatic(start=false)
     "No electrical transients if true" annotation (Evaluate=true);
-  parameter Real turnsRatio 
+  parameter Real turnsRatio
     "Ratio of armature turns over number of turns of the excitation winding";
   output SI.AngularVelocity w "Angular velocity";
-  SI.Voltage vei 
+  SI.Voltage vei
     "Voltage drop across field excitation inductance";
   SI.Current ie "Excitation current";
   SI.MagneticFlux psi_e "Excitation flux";
@@ -14,7 +14,7 @@ partial model PartialAirGapDC "Partial airgap model of a DC machine"
   output SI.Torque tauElectrical;
   Modelica.Mechanics.Rotational.Interfaces.Flange_a flange annotation (
       Placement(transformation(extent={{-10,110},{10,90}})));
-  Modelica.Mechanics.Rotational.Interfaces.Flange_a support 
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a support
     "Support at which the reaction torque is acting" annotation (
       Placement(transformation(extent={{-10,-110},{10,-90}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin pin_ap annotation (
@@ -44,30 +44,30 @@ equation
   tauElectrical = turnsRatio*psi_e*ia;
   flange.tau = -tauElectrical;
   support.tau = tauElectrical;
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{100,100}}), graphics={Ellipse(
-                extent={{-90,90},{90,-92}}, 
-                lineColor={0,0,255}, 
-                fillColor={255,255,255}, 
+                extent={{-90,90},{90,-92}},
+                lineColor={0,0,255},
+                fillColor={255,255,255},
                 fillPattern=FillPattern.Solid),Ellipse(
-                extent={{-80,80},{80,-80}}, 
-                lineColor={0,0,255}, 
-                fillColor={255,255,255}, 
+                extent={{-80,80},{80,-80}},
+                lineColor={0,0,255},
+                fillColor={255,255,255},
                 fillPattern=FillPattern.Solid),Rectangle(
-                extent={{-10,90},{10,-80}}, 
-                fillPattern=FillPattern.VerticalCylinder, 
+                extent={{-10,90},{10,-80}},
+                fillPattern=FillPattern.VerticalCylinder,
                 fillColor={128,128,128}),Text(
-                extent={{0,40},{80,-40}}, 
+                extent={{0,40},{80,-40}},
                 textString="E"),Text(
-                extent={{-150,-160},{150,-120}}, 
-                textColor={0,0,255}, 
+                extent={{-150,-160},{150,-120}},
+                textColor={0,0,255},
                 textString="%name"),Text(
-                extent={{-80,40},{0,-40}}, 
+                extent={{-80,40},{0,-40}},
                 textString="A"),Rectangle(
-                visible=quasiStatic, 
-                extent={{-10,90},{10,-80}}, 
-                lineColor={170,213,255}, 
-                fillPattern=FillPattern.VerticalCylinder, 
+                visible=quasiStatic,
+                extent={{-10,90},{10,-80}},
+                lineColor={170,213,255},
+                fillPattern=FillPattern.VerticalCylinder,
                 fillColor={170,213,255})}), Documentation(info="<html>
 Linear model of the airgap (without saturation effects) of a DC machine, using only equations.<br>
 Induced excitation voltage is calculated from der(flux), where flux is defined by excitation inductance times excitation current.

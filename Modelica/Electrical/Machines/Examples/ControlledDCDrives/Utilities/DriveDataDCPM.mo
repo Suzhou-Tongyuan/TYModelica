@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
-record DriveDataDCPM 
+record DriveDataDCPM
   "Parameters of a controlled DC permanent magnet drive"
   extends Modelica.Icons.Record;
   import Modelica.Electrical.Machines.Thermal.convertResistance;
@@ -8,23 +8,23 @@ record DriveDataDCPM
     Modelica.Electrical.Machines.Utilities.ParameterRecords.DcPermanentMagnetData 
     motorData "Motor data" annotation (Dialog(group="Motor"), Placement(
         transformation(extent={{-10,-10},{10,10}})));
-  parameter SI.Resistance Ra=convertResistance(motorData.Ra, 
-      motorData.TaRef,motorData.alpha20a,motorData.TaNominal) 
+  parameter SI.Resistance Ra=convertResistance(motorData.Ra,
+      motorData.TaRef,motorData.alpha20a,motorData.TaNominal)
     "Armature resistance at nominal temperature" 
     annotation(Dialog(group="Motor", enable=false));
   parameter SI.Time Ta=motorData.La/Ra "Armature time constant" 
     annotation(Dialog(group="Motor", enable=false));
-  parameter SI.Power PNominal=motorData.ViNominal*motorData.IaNominal 
-    -motorData.frictionParameters.PRef -motorData.coreParameters.PRef -motorData.strayLoadParameters.PRef 
+  parameter SI.Power PNominal=motorData.ViNominal*motorData.IaNominal
+    -motorData.frictionParameters.PRef -motorData.coreParameters.PRef -motorData.strayLoadParameters.PRef
     "Nominal mechanical output" 
     annotation(Dialog(group="Motor", enable=false));
-  parameter SI.Torque tauNominal=PNominal/motorData.wNominal 
+  parameter SI.Torque tauNominal=PNominal/motorData.wNominal
     "Nominal torque" 
     annotation(Dialog(group="Motor", enable=false));
-  parameter SI.ElectricalTorqueConstant kPhi=tauNominal/motorData.IaNominal 
+  parameter SI.ElectricalTorqueConstant kPhi=tauNominal/motorData.IaNominal
     "Torque constant" 
     annotation(Dialog(group="Motor", enable=false));
-  parameter SI.AngularVelocity w0=motorData.wNominal*motorData.VaNominal/motorData.ViNominal 
+  parameter SI.AngularVelocity w0=motorData.wNominal*motorData.VaNominal/motorData.ViNominal
     "No-load speed" 
   annotation(Dialog(group="Motor", enable=false));
 //Inverter
@@ -48,17 +48,17 @@ record DriveDataDCPM
     annotation(Dialog(tab="Controller", group="Limits"));
   parameter SI.Torque tauMax=kPhi*IaMax "Maximum torque" 
     annotation(Dialog(tab="Controller", group="Limits", enable=false));
-  parameter SI.AngularVelocity wMax=motorData.wNominal*motorData.VaNominal/motorData.ViNominal 
+  parameter SI.AngularVelocity wMax=motorData.wNominal*motorData.VaNominal/motorData.ViNominal
     "Maximum speed" 
     annotation(Dialog(tab="Controller", group="Limits"));
-  parameter SI.AngularAcceleration aMax=tauMax/(JL +motorData.Jr) 
+  parameter SI.AngularAcceleration aMax=tauMax/(JL +motorData.Jr)
     "Maximum acceleration" 
     annotation(Dialog(tab="Controller", group="Limits", enable=false));
 //Current controller: absolute optimum
   parameter Real kpI=motorData.La/(2*Tsigma) "Proportional gain" annotation (
       Dialog(
-      tab="Controller", 
-      group="Current controller", 
+      tab="Controller",
+      group="Current controller",
       enable=false));
   parameter SI.Time TiI=Ta "Integral time constant" 
     annotation(Dialog(tab="Controller", group="Current controller", enable=false));
@@ -67,8 +67,8 @@ record DriveDataDCPM
 //Speed controller: symmetrical optimum
   parameter Real kpw=(JL + motorData.Jr)/(2*Tsub) "Proportional gain" 
     annotation (Dialog(
-      tab="Controller", 
-      group="Speed controller", 
+      tab="Controller",
+      group="Speed controller",
       enable=false));
   parameter SI.Time Tiw=4*Tsub "Integral time constant" 
     annotation(Dialog(tab="Controller", group="Speed controller", enable=false));
@@ -78,8 +78,8 @@ record DriveDataDCPM
   parameter Real kpP=1/(16*Tsub) "Proportional gain" 
     annotation(Dialog(tab="Controller", group="Position controller", enable=false));
   annotation (
-    defaultComponentName="dcpmDriveData", 
-    defaultComponentPrefixes="parameter", 
+    defaultComponentName="dcpmDriveData",
+    defaultComponentPrefixes="parameter",
     Documentation(info="<html>
 <p>
 Calculates controller parameters of a DC permanent magnet drive:

@@ -8,15 +8,15 @@ model WaterPump "Water pumping station"
   output SI.Torque tau=multiSensor.tau "Pump torque";
   output SI.Power power=multiSensor.power "Pump power";
   Modelica.Blocks.Sources.Trapezoid trapezoid(
-    period=2, 
-    nperiod=1, 
-    offset=0, 
-    rising=0.6, 
-    width=0.6, 
-    falling=0.6, 
-    startTime=0.1, 
+    period=2,
+    nperiod=1,
+    offset=0,
+    rising=0.6,
+    width=0.6,
+    falling=0.6,
+    startTime=0.1,
     amplitude=1.2) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={-70,-50})));
   Modelica.Blocks.Math.Gain gain(k=idealPump.wNominal) 
     annotation (Placement(transformation(extent={{-50,-60},{-30,-40}})));
@@ -25,62 +25,62 @@ model WaterPump "Water pumping station"
   Modelica.Mechanics.Rotational.Sensors.MultiSensor multiSensor(w(displayUnit="1/min")) 
     annotation (Placement(transformation(extent={{10,-60},{30,-40}})));
   FluidHeatFlow.Sources.Ambient ambient1(
-    medium=FluidHeatFlow.Media.Water(), 
-    constantAmbientPressure=100000, 
+    medium=FluidHeatFlow.Media.Water(),
+    constantAmbientPressure=100000,
     constantAmbientTemperature=293.15) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=270, 
+        extent={{-10,10},{10,-10}},
+        rotation=270,
         origin={50,-80})));
   FluidHeatFlow.Sources.IdealPump idealPump(
-    medium=FluidHeatFlow.Media.Water(), 
-    m=0, 
-    V_flow0=0.18, 
-    T0=293.15, 
-    wNominal=104.71975511966, 
+    medium=FluidHeatFlow.Media.Water(),
+    m=0,
+    V_flow0=0.18,
+    T0=293.15,
+    wNominal=104.71975511966,
     dp0=500000) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=90, 
+        extent={{-10,10},{10,-10}},
+        rotation=90,
         origin={50,-50})));
-  FluidHeatFlow.Sensors.VolumeFlowSensor volumeFlowSensor(medium= 
+  FluidHeatFlow.Sensors.VolumeFlowSensor volumeFlowSensor(medium=
         FluidHeatFlow.Media.Water()) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}}, 
-        rotation=270, 
+        extent={{10,-10},{-10,10}},
+        rotation=270,
         origin={50,-20})));
-  FluidHeatFlow.Sensors.PressureSensor pressureSensor(medium= 
+  FluidHeatFlow.Sensors.PressureSensor pressureSensor(medium=
         FluidHeatFlow.Media.Water()) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=180, 
+        extent={{-10,-10},{10,10}},
+        rotation=180,
         origin={20,0})));
   FluidHeatFlow.Components.OneWayValve oneWayValve(
-    medium=FluidHeatFlow.Media.Water(), 
-    m=0, 
-    frictionLoss=0, 
-    T0=293.15, 
-    V_flowNominal=0.18, 
-    dpForward=10000, 
-    dpNominal=500000, 
+    medium=FluidHeatFlow.Media.Water(),
+    m=0,
+    frictionLoss=0,
+    T0=293.15,
+    V_flowNominal=0.18,
+    dpForward=10000,
+    dpNominal=500000,
     V_flowBackward=1e-6) annotation (Placement(transformation(
-        extent={{10,10},{-10,-10}}, 
-        rotation=270, 
+        extent={{10,10},{-10,-10}},
+        rotation=270,
         origin={50,20})));
   FluidHeatFlow.Components.Pipe pipe(
-    m=0, 
-    V_flowLaminar=0.09, 
-    V_flowNominal=0.18, 
-    h_g=25, 
-    medium=FluidHeatFlow.Media.Water(), 
-    T0=293.15, 
-    dpLaminar=10000, 
+    m=0,
+    V_flowLaminar=0.09,
+    V_flowNominal=0.18,
+    h_g=25,
+    medium=FluidHeatFlow.Media.Water(),
+    T0=293.15,
+    dpLaminar=10000,
     dpNominal=30000) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=90, 
+        extent={{-10,-10},{10,10}},
+        rotation=90,
         origin={50,50})));
   FluidHeatFlow.Sources.Ambient ambient2(
-    medium=FluidHeatFlow.Media.Water(), 
-    constantAmbientPressure=100000, 
+    medium=FluidHeatFlow.Media.Water(),
+    constantAmbientPressure=100000,
     constantAmbientTemperature=293.15) annotation (Placement(transformation(
-        extent={{10,10},{-10,-10}}, 
-        rotation=270, 
+        extent={{10,10},{-10,-10}},
+        rotation=270,
         origin={50,82})));
 equation
   connect(idealPump.flowPort_a, ambient1.flowPort) 
@@ -104,8 +104,8 @@ equation
   connect(trapezoid.y, gain.u) 
     annotation (Line(points={{-59,-50},{-52,-50}}, color={0,0,127}));
   annotation (experiment(
-      StopTime=2, 
-      Interval=0.001, 
+      StopTime=2,
+      Interval=0.001,
       Tolerance=1e-06), Documentation(
         info="<html>
 <p>

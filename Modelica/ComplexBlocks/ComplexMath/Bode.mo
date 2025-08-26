@@ -5,35 +5,35 @@ block Bode "Calculate quantities to plot Bode diagram"
   constant Modelica.Units.SI.AmplitudeLevelDifference dB = 20 "Amplitude level difference";
   Interfaces.ComplexInput u "Dividend if useDivisor == true" annotation (Placement(transformation(extent={{-140,40},{-100,80}}),   iconTransformation(extent={{-140,40},{-100,80}})));
   Interfaces.ComplexInput divisor if useDivisor "Divisor" annotation (Placement(transformation(extent={{-140,-80},{-100,-40}}), iconTransformation(extent={{-140,-80},{-100,-40}})));
-  Blocks.Interfaces.RealOutput abs_y "Absolute value of ratio u / divisor" annotation (Placement(transformation(extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+  Blocks.Interfaces.RealOutput abs_y "Absolute value of ratio u / divisor" annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-60,-110}), iconTransformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-60,-110})));
-  Blocks.Interfaces.RealOutput arg_y(unit="rad") "Angle of ratio u / divisor" annotation (Placement(transformation(extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+  Blocks.Interfaces.RealOutput arg_y(unit="rad") "Angle of ratio u / divisor" annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={60,-110}), iconTransformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={60,-110})));
   Interfaces.ComplexOutput y "Quotient y = u / divisor" annotation (Placement(transformation(extent={{100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
   Sources.ComplexConstant complexOne(final k=Complex(1, 0)) if not useDivisor "Complex(1,0)" annotation (Placement(transformation(extent={{-100,-50},{-80,-30}})));
   Division division(final useConjugateInput1=false, final useConjugateInput2=false) 
                     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   ComplexToPolar complexToPolar(final useConjugateInput=false) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=270, 
+        extent={{-10,10},{10,-10}},
+        rotation=270,
         origin={0,-20})));
   Blocks.Interfaces.RealOutput dB_y(unit="dB") "Log10 of absolute value of ratio u / divisor in dB" annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={0,-110}), iconTransformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={0,-110})));
   Blocks.Math.Log10 log10_y annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={-10,-70})));
   Blocks.Math.Gain gain(final k=dB) annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
   Blocks.Nonlinear.Limiter limiter(final uMax=Modelica.Constants.inf, final uMin=Modelica.Constants.eps) annotation (Placement(transformation(extent={{-50,-80},{-30,-60}})));
@@ -51,58 +51,58 @@ equation
   connect(limiter.y, log10_y.u) annotation (Line(points={{-29,-70},{-22,-70}}, color={0,0,127}));
   connect(complexToPolar.len, limiter.u) annotation (Line(points={{-6,-32},{-6,-40},{-60,-40},{-60,-70},{-52,-70}}, color={0,0,127}));
   annotation (Icon(graphics={
-        Line(points={{-78,44},{80,44}}, color={192,192,192}), 
-        Line(points={{-78,34},{80,34}}, color={192,192,192}), 
-        Line(points={{-78,20},{80,20}}, color={192,192,192}), 
-        Line(points={{-78,-2},{80,-2}}, color={192,192,192}), 
-        Line(points={{-78,-48},{80,-48}}, color={192,192,192}), 
-        Line(points={{-50,-48},{-50,44}}, color={192,192,192}), 
-        Line(points={{50,-48},{50,44}}, color={192,192,192}), 
-        Line(points={{-78,40},{80,40}}, color={192,192,192}), 
+        Line(points={{-78,44},{80,44}}, color={192,192,192}),
+        Line(points={{-78,34},{80,34}}, color={192,192,192}),
+        Line(points={{-78,20},{80,20}}, color={192,192,192}),
+        Line(points={{-78,-2},{80,-2}}, color={192,192,192}),
+        Line(points={{-78,-48},{80,-48}}, color={192,192,192}),
+        Line(points={{-50,-48},{-50,44}}, color={192,192,192}),
+        Line(points={{50,-48},{50,44}}, color={192,192,192}),
+        Line(points={{-78,40},{80,40}}, color={192,192,192}),
                                Polygon(
-              points={{90,-48},{68,-40},{68,-56},{90,-48}}, 
-              lineColor={192,192,192}, 
-              fillColor={192,192,192}, 
-              fillPattern=FillPattern.Solid), 
+              points={{90,-48},{68,-40},{68,-56},{90,-48}},
+              lineColor={192,192,192},
+              fillColor={192,192,192},
+              fillPattern=FillPattern.Solid),
                         Polygon(
-              points={{-70,90},{-78,68},{-62,68},{-70,90}}, 
-              lineColor={192,192,192}, 
-              fillColor={192,192,192}, 
-              fillPattern=FillPattern.Solid), 
-        Line(points={{-70,-56},{-70,68}}, color={135,135,135}), 
+              points={{-70,90},{-78,68},{-62,68},{-70,90}},
+              lineColor={192,192,192},
+              fillColor={192,192,192},
+              fillPattern=FillPattern.Solid),
+        Line(points={{-70,-56},{-70,68}}, color={135,135,135}),
         Line(
-          points={{-78,44},{-50,44},{70,-66}}, 
-          color={85,170,255}, 
+          points={{-78,44},{-50,44},{70,-66}},
+          color={85,170,255},
           thickness=0.5),               Text(
-        extent={{-150,150},{150,110}}, 
-        textString="%name", 
-        textColor={0,0,255}), 
+        extent={{-150,150},{150,110}},
+        textString="%name",
+        textColor={0,0,255}),
         Text(
-          extent={{-80,-90},{-40,-70}}, 
-          lineThickness=0.5, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          textString="|y|", 
-          textColor={128,128,128}), 
+          extent={{-80,-90},{-40,-70}},
+          lineThickness=0.5,
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          textString="|y|",
+          textColor={128,128,128}),
         Text(
-          extent={{-20,-90},{20,-70}}, 
-          lineThickness=0.5, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          textString="dB", 
-          textColor={128,128,128}), 
+          extent={{-20,-90},{20,-70}},
+          lineThickness=0.5,
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          textString="dB",
+          textColor={128,128,128}),
         Text(
-          extent={{40,-90},{80,-70}}, 
-          lineThickness=0.5, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          textString="∠", 
-          textColor={128,128,128}), 
+          extent={{40,-90},{80,-70}},
+          lineThickness=0.5,
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          textString="∠",
+          textColor={128,128,128}),
         Text(
-          visible = useDivisor, 
-          extent={{-56,94},{94,54}}, 
-          textColor={128,128,128}, 
-          textString="u / divisor")}), 
+          visible = useDivisor,
+          extent={{-56,94},{94,54}},
+          textColor={128,128,128},
+          textString="u / divisor")}),
     Documentation(info="<html>
 <p>This complex block is used to determine variables of a Bode diagram for the output <code>y</code>.
 The output <code>y</code> is calculated by <code>u / divisor</code> if <code>useDivisor == true</code>.

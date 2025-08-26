@@ -1,11 +1,11 @@
 ﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
-model EighthOfSphere 
+model EighthOfSphere
 "Leakage flux through one edge and the opposite plane of an eighth of a sphere"
 
   extends BaseClasses.Leakage;
 
   parameter SI.Radius r=0.01 "Radius of eighth of sphere" 
-    annotation (Dialog(group="Parameters", groupImage= 
+    annotation (Dialog(group="Parameters", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/Leakage/EighthOfSphere.png"));
 
 equation

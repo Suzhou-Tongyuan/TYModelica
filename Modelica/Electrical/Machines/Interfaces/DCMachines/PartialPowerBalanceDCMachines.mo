@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical.Machines.Interfaces.DCMachines;
-record PartialPowerBalanceDCMachines 
+record PartialPowerBalanceDCMachines
   "Partial power balance of DC machines"
   extends Modelica.Icons.Record;
   SI.Power powerArmature=0 "Electrical armature power";

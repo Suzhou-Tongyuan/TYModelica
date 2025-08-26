@@ -1,59 +1,59 @@
 ﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
 model RotorSaliencyAirGap "Air gap model with rotor saliency"
   import Modelica.Constants.pi;
-  Interfaces.PositiveMagneticPort port_sp 
+  Interfaces.PositiveMagneticPort port_sp
     "Positive complex magnetic stator port" annotation (Placement(
         transformation(extent={{-110,-110},{-90,-90}})));
-  Interfaces.NegativeMagneticPort port_sn 
+  Interfaces.NegativeMagneticPort port_sn
     "Negative complex magnetic stator port" annotation (Placement(
         transformation(extent={{-110,90},{-90,110}})));
-  Interfaces.PositiveMagneticPort port_rp 
+  Interfaces.PositiveMagneticPort port_rp
     "Positive complex magnetic rotor port" annotation (Placement(
         transformation(extent={{90,90},{110,110}})));
-  Interfaces.NegativeMagneticPort port_rn 
+  Interfaces.NegativeMagneticPort port_rn
     "Negative complex magnetic rotor port" annotation (Placement(
         transformation(extent={{90,-110},{110,-90}})));
-  Modelica.Mechanics.Rotational.Interfaces.Flange_a flange_a 
-    "Flange of the rotor" annotation (Placement(transformation(extent={{-10, 
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a flange_a
+    "Flange of the rotor" annotation (Placement(transformation(extent={{-10,
             110},{10,90}})));
-  Modelica.Mechanics.Rotational.Interfaces.Flange_a support 
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a support
     "Support at which the reaction torque is acting" annotation (
       Placement(transformation(extent={{-10,-110},{10,-90}})));
   parameter Integer p "Number of pole pairs";
   parameter Magnetic.FundamentalWave.Types.SalientInductance L0(d(start=1), q(
-        start=1)) 
+        start=1))
     "Salient inductance of a single unchorded coil w.r.t. the fundamental wave";
-  final parameter Magnetic.FundamentalWave.Types.SalientReluctance R_m(d=1/L0.d, 
+  final parameter Magnetic.FundamentalWave.Types.SalientReluctance R_m(d=1/L0.d,
       q=1/L0.q) "Reluctance of the air gap model";
   // Complex phasors of magnetic potential differences
-  SI.ComplexMagneticPotentialDifference V_ms 
+  SI.ComplexMagneticPotentialDifference V_ms
     "Complex magnetic potential difference of stator w.r.t. stator fixed frame";
-  SI.ComplexMagneticPotentialDifference V_msr=V_ms* 
-      Modelica.ComplexMath.fromPolar(1, gammar) 
+  SI.ComplexMagneticPotentialDifference V_msr=V_ms*
+      Modelica.ComplexMath.fromPolar(1, gammar)
     "Complex magnetic potential difference of stator w.r.t. rotor fixed frame";
-  SI.ComplexMagneticPotentialDifference V_mr 
+  SI.ComplexMagneticPotentialDifference V_mr
     "Complex magnetic potential difference of rotor w.r.t. rotor fixed frame";
-  SI.ComplexMagneticPotentialDifference V_mrr=V_mr* 
-      Modelica.ComplexMath.fromPolar(1, gammar) 
+  SI.ComplexMagneticPotentialDifference V_mrr=V_mr*
+      Modelica.ComplexMath.fromPolar(1, gammar)
     "Complex magnetic potential difference of rotor w.r.t. rotor fixed frame";
   // Complex phasors of magnetic fluxes
-  SI.ComplexMagneticFlux Phi_s 
+  SI.ComplexMagneticFlux Phi_s
     "Complex magnetic flux of stator w.r.t. stator fixed frame";
-  SI.ComplexMagneticFlux Phi_sr=Phi_s* 
-      Modelica.ComplexMath.fromPolar(1, gammar) 
+  SI.ComplexMagneticFlux Phi_sr=Phi_s*
+      Modelica.ComplexMath.fromPolar(1, gammar)
     "Complex magnetic flux of stator w.r.t. rotor fixed frame";
-  SI.ComplexMagneticFlux Phi_r 
+  SI.ComplexMagneticFlux Phi_r
     "Complex magnetic flux of rotor w.r.t. rotor fixed frame";
-  SI.ComplexMagneticFlux Phi_rr=Phi_r* 
-      Modelica.ComplexMath.fromPolar(1, gammar) 
+  SI.ComplexMagneticFlux Phi_rr=Phi_r*
+      Modelica.ComplexMath.fromPolar(1, gammar)
     "Complex magnetic flux of rotor w.r.t. rotor fixed frame";
   // Electrical torque and mechanical angle
   SI.Torque tauElectrical "Electrical torque";
-  SI.Angle gamma=p*(flange_a.phi - support.phi) 
+  SI.Angle gamma=p*(flange_a.phi - support.phi)
     "Electrical angle between rotor and stator";
-  SI.Angle gammas=port_sp.reference.gamma 
+  SI.Angle gammas=port_sp.reference.gamma
     "Angle electrical quantities in stator fixed frame";
-  SI.Angle gammar=port_rp.reference.gamma 
+  SI.Angle gammar=port_rp.reference.gamma
     "Angle electrical quantities in rotor fixed frame";
 equation
   port_sp.Phi = Phi_s "Stator flux into positive stator port";
@@ -89,22 +89,22 @@ equation
   if Connections.isRoot(port_sp.reference) then
     gammar = 0;
   end if;
-  annotation (defaultComponentName="airGap", 
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+  annotation (defaultComponentName="airGap",
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics={
         Ellipse(
-          extent={{-100,100},{100,-100}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-100,90},{-100,60},{-80,60}}, color={255,170,85}), 
-        Line(points={{-100,-90},{-100,-60},{-80,-60}}, color={255,170,85}), 
-        Line(points={{40,60},{100,60},{100,90}}, color={255,170,85}), 
-        Line(points={{40,-60},{100,-60},{100,-90}}, color={255,170,85}), 
+          extent={{-100,100},{100,-100}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-100,90},{-100,60},{-80,60}}, color={255,170,85}),
+        Line(points={{-100,-90},{-100,-60},{-80,-60}}, color={255,170,85}),
+        Line(points={{40,60},{100,60},{100,90}}, color={255,170,85}),
+        Line(points={{40,-60},{100,-60},{100,-90}}, color={255,170,85}),
         Ellipse(
-          extent={{-60,80},{60,-80}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{0,80},{0,90}})}), 
+          extent={{-60,80},{60,-80}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(points={{0,80},{0,90}})}),
     Documentation(info="<html>
 <p>
 This salient air gap model can be used for machines with uniform air gaps and for machines with rotor saliency. The air gap model is not symmetrical towards stator and rotor since it is assumed the saliency always refers to the rotor. The saliency of the air gap is represented by a main field inductance in the d- and q-axis.

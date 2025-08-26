@@ -2,11 +2,11 @@
 partial model PartialLineForce "Base model for massless line force elements"
   extends LineForceBase;
 
-  SI.Position r_rel_a[3] 
+  SI.Position r_rel_a[3]
     "Position vector from origin of frame_a to origin of frame_b, resolved in frame_a";
-  Real e_a[3](each final unit="1") 
+  Real e_a[3](each final unit="1")
     "Unit vector on the line connecting the origin of frame_a with the origin of frame_b resolved in frame_a (directed from frame_a to frame_b)";
-  SI.Force f 
+  SI.Force f
     "Line force acting on frame_a and on frame_b (positive, if acting on frame_b and directed from frame_a to frame_b)";
 equation
   // Determine relative position vector between the two frames
@@ -37,17 +37,17 @@ has to be defined. Example:
    f = c*(s-s_unstretched);
 <strong>end</strong> Spring;
 </pre></blockquote>
-</html>"), 
-         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
-        Ellipse(visible=fixedRotationAtFrame_a, extent={{-70,30},{-130,-30}}, lineColor={255,0,0}), 
-        Text(visible=fixedRotationAtFrame_a, 
-          extent={{-62,50},{-140,30}}, 
-          textColor={255,0,0}, 
-          textString="R=0"), 
-        Ellipse(visible=fixedRotationAtFrame_b, extent={{70,30},{130,-30}}, lineColor={255,0,0}), 
-        Text(visible=fixedRotationAtFrame_b, 
-          extent={{62,50},{140,30}}, 
-          textColor={255,0,0}, 
+        Ellipse(visible=fixedRotationAtFrame_a, extent={{-70,30},{-130,-30}}, lineColor={255,0,0}),
+        Text(visible=fixedRotationAtFrame_a,
+          extent={{-62,50},{-140,30}},
+          textColor={255,0,0},
+          textString="R=0"),
+        Ellipse(visible=fixedRotationAtFrame_b, extent={{70,30},{130,-30}}, lineColor={255,0,0}),
+        Text(visible=fixedRotationAtFrame_b,
+          extent={{62,50},{140,30}},
+          textColor={255,0,0},
           textString="R=0")}));
 end PartialLineForce;

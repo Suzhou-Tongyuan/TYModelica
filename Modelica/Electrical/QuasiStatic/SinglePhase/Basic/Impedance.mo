@@ -18,7 +18,7 @@ model Impedance "Single-phase linear impedance"
   final parameter SI.Resistance R_ref=real(Z_ref) "Resistive component of impedance, resistance";
   final parameter SI.Reactance X_ref=imag(Z_ref) "Reactive component of impedance, reactance";
 equation
-  assert((1 + alpha_ref*(T_heatPort - T_ref)) >= Modelica.Constants.eps, 
+  assert((1 + alpha_ref*(T_heatPort - T_ref)) >= Modelica.Constants.eps,
     "Temperature outside scope of model!");
   R_actual = R_ref*(1 + alpha_ref*(T_heatPort - T_ref));
   X_actual = X_ref * (if not frequencyDependent then 1 else 
@@ -27,22 +27,22 @@ equation
   LossPower = real(v*conj(i));
 
   annotation (Icon(graphics={
-        Line(points={{60,0},{90,0}}, color={85,170,255}), 
-        Line(points={{-90,0},{-60,0}}, color={85,170,255}), 
+        Line(points={{60,0},{90,0}}, color={85,170,255}),
+        Line(points={{-90,0},{-60,0}}, color={85,170,255}),
         Rectangle(
-          extent={{-70,30},{70,-30}}, 
-          lineColor={85,170,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-70,30},{70,-30}},
+          lineColor={85,170,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{-70,-30},{70,30},{70,-30},{-70,-30}}, 
-          lineColor={85,170,255}, 
-          fillColor={85,170,255}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-70,-30},{70,30},{70,-30},{-70,-30}},
+          lineColor={85,170,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
+          extent={{-150,90},{150,50}},
+          textString="%name",
+          textColor={0,0,255})}),
       Documentation(info="<html>
 
 <p>The impedance model represents a <strong>series</strong> connection of a resistor and either an inductor or capacitor.<br>

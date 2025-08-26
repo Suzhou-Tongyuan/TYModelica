@@ -1,44 +1,44 @@
 ﻿within Modelica.Clocked.RealSignals.Sampler;
-block SampleVectorizedAndClocked 
+block SampleVectorizedAndClocked
   "Sample the continuous-time, Real input signal vector and provide it as clocked output signal vector. The clock is provided as input signal"
   extends Clocked.RealSignals.Interfaces.SamplerIcon;
-  parameter Integer n(min=1)=1 
+  parameter Integer n(min=1)=1
     "Size of input signal vector u (= size of output signal vector y)";
-  Modelica.Blocks.Interfaces.RealInput u[n] 
+  Modelica.Blocks.Interfaces.RealInput u[n]
     "Connector of continuous-time, Real input signal vector" 
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}}), iconTransformation(extent={{-140,-20},{-100,20}})));
-  Modelica.Blocks.Interfaces.RealOutput y[n] 
+  Modelica.Blocks.Interfaces.RealOutput y[n]
     "Connector of clocked, Real output signal vector" 
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-   Clocked.ClockSignals.Interfaces.ClockInput clock 
+   Clocked.ClockSignals.Interfaces.ClockInput clock
     "Output signal vector y is associated with this clock input" 
     annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}}, 
-        rotation=90, 
+        extent={{-20,-20},{20,20}},
+        rotation=90,
         origin={0,-120})));
 equation
   y = sample(u,clock);
 
   annotation (
-   defaultComponentName="sample1", 
+   defaultComponentName="sample1",
    Icon(coordinateSystem(
-        preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}, 
-        initialScale=0.06), 
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}},
+        initialScale=0.06),
                      graphics={
         Line(
-          points={{0,-100},{0,18}}, 
-          color={175,175,175}, 
-          pattern=LinePattern.Dot, 
-          thickness=0.5), 
+          points={{0,-100},{0,18}},
+          color={175,175,175},
+          pattern=LinePattern.Dot,
+          thickness=0.5),
         Text(
-          extent={{-150,-40},{20,-90}}, 
-          textColor={0,0,0}, 
-          textString="n=%n"), 
+          extent={{-150,-40},{20,-90}},
+          textColor={0,0,0},
+          textString="n=%n"),
     Text(
-        extent={{-150,90},{150,50}}, 
-        textString="%name", 
-        textColor={0,0,255})}), 
+        extent={{-150,90},{150,50}},
+        textString="%name",
+        textColor={0,0,255})}),
     Documentation(info="<html>
 <p>
 This block is similar to the

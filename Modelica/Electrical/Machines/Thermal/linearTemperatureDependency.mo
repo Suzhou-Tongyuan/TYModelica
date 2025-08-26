@@ -1,10 +1,10 @@
 ﻿within Modelica.Electrical.Machines.Thermal;
-function linearTemperatureDependency 
+function linearTemperatureDependency
   "Converts a value (e.g. resistance) from reference temperature to an actual temperature"
   extends Modelica.Icons.Function;
   input Real RRef "Value at TRef";
   input SI.Temperature TRef "Reference temperature";
-  input SI.LinearTemperatureCoefficient alpha20 
+  input SI.LinearTemperatureCoefficient alpha20
     "Temperature coefficient at 20 degC";
   input SI.Temperature T "Actual temperature";
   output Real R "Actual value at T";

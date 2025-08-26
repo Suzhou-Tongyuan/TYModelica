@@ -1,45 +1,45 @@
 ﻿within Modelica.Mechanics.MultiBody.Joints;
-model Revolute 
+model Revolute
   "Revolute joint (1 rotational degree-of-freedom, 2 potential states, optional axis flange)"
 
-  Modelica.Mechanics.Rotational.Interfaces.Flange_a axis if useAxisFlange 
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a axis if useAxisFlange
     "1-dim. rotational flange that drives the joint" 
     annotation (Placement(transformation(extent={{10,90},{-10,110}})));
-  Modelica.Mechanics.Rotational.Interfaces.Flange_b support if useAxisFlange 
+  Modelica.Mechanics.Rotational.Interfaces.Flange_b support if useAxisFlange
     "1-dim. rotational flange of the drive support (assumed to be fixed in the world frame, NOT in the joint)" 
     annotation (Placement(transformation(extent={{-70,90},{-50,110}})));
 
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a 
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a
     "Coordinate system fixed to the joint with one cut-force and cut-torque" 
     annotation (Placement(transformation(extent={{-116,-16},{-84,16}})));
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_b 
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_b
     "Coordinate system fixed to the joint with one cut-force and cut-torque" 
     annotation (Placement(transformation(extent={{84,-16},{116,16}})));
 
   parameter Boolean useAxisFlange=false "= true, if axis flange is enabled" 
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean animation=true 
+  parameter Boolean animation=true
     "= true, if animation shall be enabled (show axis as cylinder)";
-  parameter Modelica.Mechanics.MultiBody.Types.Axis n={0,0,1} 
+  parameter Modelica.Mechanics.MultiBody.Types.Axis n={0,0,1}
     "Axis of rotation resolved in frame_a (= same as in frame_b)" 
     annotation (Evaluate=true);
-  parameter SI.Distance cylinderLength=world.defaultJointLength 
+  parameter SI.Distance cylinderLength=world.defaultJointLength
     "Length of cylinder representing the joint axis" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  parameter SI.Distance cylinderDiameter=world.defaultJointWidth 
+  parameter SI.Distance cylinderDiameter=world.defaultJointWidth
     "Diameter of cylinder representing the joint axis" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  input Modelica.Mechanics.MultiBody.Types.Color cylinderColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor 
+  input Modelica.Mechanics.MultiBody.Types.Color cylinderColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor
     "Color of cylinder representing the joint axis" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
   input Modelica.Mechanics.MultiBody.Types.SpecularCoefficient 
-    specularCoefficient = world.defaultSpecularCoefficient 
+    specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  parameter StateSelect stateSelect=StateSelect.prefer 
+  parameter StateSelect stateSelect=StateSelect.prefer
     "Priority to use joint angle phi and w=der(phi) as states" annotation(Dialog(tab="Advanced"));
 
-  SI.Angle phi(start=0, final stateSelect=stateSelect) 
+  SI.Angle phi(start=0, final stateSelect=stateSelect)
     "Relative rotation angle from frame_a to frame_b" 
      annotation (unassignedMessage="
 The rotation angle phi of a revolute joint cannot be determined.
@@ -50,34 +50,34 @@ Possible reasons:
   has less degrees of freedom as specified with this setting
   (remove all StateSelect.always settings).
 ");
-  SI.AngularVelocity w(start=0, stateSelect=stateSelect) 
+  SI.AngularVelocity w(start=0, stateSelect=stateSelect)
     "First derivative of angle phi (relative angular velocity)";
-  SI.AngularAcceleration a(start=0) 
+  SI.AngularAcceleration a(start=0)
     "Second derivative of angle phi (relative angular acceleration)";
   SI.Torque tau "Driving torque in direction of axis of rotation";
   SI.Angle angle "= phi";
 
 protected
   outer Modelica.Mechanics.MultiBody.World world;
-  parameter Real e[3](each final unit="1")=Modelica.Math.Vectors.normalizeWithAssert(n) 
+  parameter Real e[3](each final unit="1")=Modelica.Math.Vectors.normalizeWithAssert(n)
     "Unit vector in direction of rotation axis, resolved in frame_a (= same as in frame_b)";
-  Frames.Orientation R_rel 
+  Frames.Orientation R_rel
     "Relative orientation object from frame_a to frame_b or from frame_b to frame_a";
   Visualizers.Advanced.Shape cylinder(
-    shapeType="cylinder", 
-    color=cylinderColor, 
-    specularCoefficient=specularCoefficient, 
-    length=cylinderLength, 
-    width=cylinderDiameter, 
-    height=cylinderDiameter, 
-    lengthDirection=e, 
-    widthDirection={0,1,0}, 
-    r_shape=-e*(cylinderLength/2), 
-    r=frame_a.r_0, 
+    shapeType="cylinder",
+    color=cylinderColor,
+    specularCoefficient=specularCoefficient,
+    length=cylinderLength,
+    width=cylinderDiameter,
+    height=cylinderDiameter,
+    lengthDirection=e,
+    widthDirection={0,1,0},
+    r_shape=-e*(cylinderLength/2),
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
 
 protected
-  Modelica.Mechanics.Rotational.Components.Fixed fixed 
+  Modelica.Mechanics.Rotational.Components.Fixed fixed
     "support flange is fixed to ground" 
     annotation (Placement(transformation(extent={{-70,70},{-50,90}})));
   Rotational.Interfaces.InternalSupport internalAxis(tau=tau) 
@@ -87,9 +87,9 @@ protected
 equation
   Connections.branch(frame_a.R, frame_b.R);
 
-  assert(cardinality(frame_a) > 0, 
+  assert(cardinality(frame_a) > 0,
     "Connector frame_a of revolute joint is not connected");
-  assert(cardinality(frame_b) > 0, 
+  assert(cardinality(frame_b) > 0,
     "Connector frame_b of revolute joint is not connected");
 
   angle = phi;
@@ -125,89 +125,89 @@ equation
       points={{20,80},{0,80}}));
   annotation (
     Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
-          extent={{-100,-60},{-30,60}}, 
-          lineColor={64,64,64}, 
-          fillPattern=FillPattern.HorizontalCylinder, 
-          fillColor={255,255,255}, 
-          radius=10), 
+          extent={{-100,-60},{-30,60}},
+          lineColor={64,64,64},
+          fillPattern=FillPattern.HorizontalCylinder,
+          fillColor={255,255,255},
+          radius=10),
         Rectangle(
-          extent={{30,-60},{100,60}}, 
-          lineColor={64,64,64}, 
-          fillPattern=FillPattern.HorizontalCylinder, 
-          fillColor={255,255,255}, 
-          radius=10), 
-        Rectangle(extent={{-100,60},{-30,-60}}, lineColor={64,64,64}, radius=10), 
-        Rectangle(extent={{30,60},{100,-60}}, lineColor={64,64,64}, radius=10), 
+          extent={{30,-60},{100,60}},
+          lineColor={64,64,64},
+          fillPattern=FillPattern.HorizontalCylinder,
+          fillColor={255,255,255},
+          radius=10),
+        Rectangle(extent={{-100,60},{-30,-60}}, lineColor={64,64,64}, radius=10),
+        Rectangle(extent={{30,60},{100,-60}}, lineColor={64,64,64}, radius=10),
         Text(
-          extent={{-90,14},{-54,-11}}, 
-          textColor={128,128,128}, 
-          textString="a"), 
+          extent={{-90,14},{-54,-11}},
+          textColor={128,128,128},
+          textString="a"),
         Text(
-          extent={{51,11},{87,-14}}, 
-          textColor={128,128,128}, 
-          textString="b"), 
+          extent={{51,11},{87,-14}},
+          textColor={128,128,128},
+          textString="b"),
         Line(
-          visible=useAxisFlange, 
-          points={{-20,80},{-20,60}}), 
+          visible=useAxisFlange,
+          points={{-20,80},{-20,60}}),
         Line(
-          visible=useAxisFlange, 
-          points={{20,80},{20,60}}), 
+          visible=useAxisFlange,
+          points={{20,80},{20,60}}),
         Rectangle(
-          visible=useAxisFlange, 
-          extent={{-10,100},{10,50}}, 
-          fillPattern=FillPattern.VerticalCylinder, 
-          fillColor={192,192,192}), 
+          visible=useAxisFlange,
+          extent={{-10,100},{10,50}},
+          fillPattern=FillPattern.VerticalCylinder,
+          fillColor={192,192,192}),
         Polygon(
-          visible=useAxisFlange, 
-          points={{-10,30},{10,30},{30,50},{-30,50},{-10,30}}, 
-          lineColor={64,64,64}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
+          visible=useAxisFlange,
+          points={{-10,30},{10,30},{30,50},{-30,50},{-10,30}},
+          lineColor={64,64,64},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-30,11},{30,-10}}, 
-          lineColor={64,64,64}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-30,11},{30,-10}},
+          lineColor={64,64,64},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          visible=useAxisFlange, 
-          points={{10,30},{30,50},{30,-50},{10,-30},{10,30}}, 
-          lineColor={64,64,64}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
+          visible=useAxisFlange,
+          points={{10,30},{30,50},{30,-50},{10,-30},{10,30}},
+          lineColor={64,64,64},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,-110},{150,-80}}, 
-          textString="n=%n"), 
+          extent={{-150,-110},{150,-80}},
+          textString="n=%n"),
         Text(
-          visible=useAxisFlange, 
-          extent={{-150,-155},{150,-115}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          visible=useAxisFlange,
+          extent={{-150,-155},{150,-115}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
-          visible=useAxisFlange, 
-          points={{-20,70},{-60,70},{-60,60}}), 
+          visible=useAxisFlange,
+          points={{-20,70},{-60,70},{-60,60}}),
         Line(
-          visible=useAxisFlange, 
-          points={{20,70},{50,70},{50,60}}), 
+          visible=useAxisFlange,
+          points={{20,70},{50,70},{50,60}}),
         Line(
-          visible=useAxisFlange, 
-          points={{-90,100},{-30,100}}), 
+          visible=useAxisFlange,
+          points={{-90,100},{-30,100}}),
         Line(
-          visible=useAxisFlange, 
-          points={{-30,100},{-50,80}}), 
+          visible=useAxisFlange,
+          points={{-30,100},{-50,80}}),
         Line(
-          visible=useAxisFlange, 
-          points={{-49,100},{-70,80}}), 
+          visible=useAxisFlange,
+          points={{-49,100},{-70,80}}),
         Line(
-          visible=useAxisFlange, 
-          points={{-70,100},{-90,80}}), 
+          visible=useAxisFlange,
+          points={{-70,100},{-90,80}}),
         Text(
-          visible=not useAxisFlange, 
-          extent={{-150,70},{150,110}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
+          visible=not useAxisFlange,
+          extent={{-150,70},{150,110}},
+          textString="%name",
+          textColor={0,0,255})}),
     Documentation(info="<html>
 
 <p>

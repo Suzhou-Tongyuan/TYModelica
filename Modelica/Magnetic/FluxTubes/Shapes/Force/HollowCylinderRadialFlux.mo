@@ -1,20 +1,20 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.Force;
-model HollowCylinderRadialFlux 
+model HollowCylinderRadialFlux
   "Hollow cylinder with radial flux; constant permeability"
 
   extends BaseClasses.Force;
 
   SI.Length l=s "Axial length (orthogonal to direction of flux)" 
-    annotation (Dialog(group="Variable geometry", groupImage= 
+    annotation (Dialog(group="Variable geometry", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/HollowCylinderRadialFlux.png"));
   parameter SI.Radius r_i=0.01 "Inner radius of hollow cylinder";
   parameter SI.Radius r_o=0.015 "Outer radius of hollow cylinder";
 
-  SI.MagneticFluxDensity B_avg 
+  SI.MagneticFluxDensity B_avg
     "Average flux density (at arithmetic mean radius)";
 
 protected
-  SI.Area A_avg 
+  SI.Area A_avg
     "Average cross-sectional area orthogonal to direction of flux (at arithmetic mean radius)";
 
 equation

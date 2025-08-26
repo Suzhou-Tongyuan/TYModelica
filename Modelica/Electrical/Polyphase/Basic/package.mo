@@ -7,7 +7,7 @@ package Basic "Basic components for electrical polyphase models"
 This package contains basic analog electrical polyphase components.
 </p>
 
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>
@@ -24,18 +24,18 @@ This package contains basic analog electrical polyphase components.
   </ul>
   </dd>
 </dl>
-</html>"), 
-         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
         Rectangle(
-          origin={11.626,40}, 
-          lineColor={0,0,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          extent={{-80,-70},{60,-10}}), 
+          origin={11.626,40},
+          lineColor={0,0,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          extent={{-80,-70},{60,-10}}),
         Line(
-          origin={11.626,40}, 
-          points={{60,-40},{80,-40}}, 
-          color={0,0,255}), 
+          origin={11.626,40},
+          points={{60,-40},{80,-40}},
+          color={0,0,255}),
         Line(points={{-88.374,0},{-68.374,0}}, color={0,0,255})}));
 end Basic;

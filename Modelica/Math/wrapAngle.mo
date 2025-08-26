@@ -13,13 +13,13 @@ algorithm
   end if;
 
   annotation (Icon(graphics={
-        Line(points={{-90,0},{68,0}}, color={192,192,192}), 
+        Line(points={{-90,0},{68,0}}, color={192,192,192}),
         Polygon(
-          points={{90,0},{68,8},{68,-8},{90,0}}, 
-          lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-80,54},{-80,54},{-60,80},{-60,-80},{60,80},{60,-80},{80,-52}})}), 
+          points={{90,0},{68,8},{68,-8},{90,0}},
+          lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-80,54},{-80,54},{-60,80},{-60,-80},{60,80},{60,-80},{80,-52}})}),
     Documentation(info="<html>
 <p>
 This function wraps the input angle <code>u</code> to the interval ]-pi,pi], if <code>positiveRange == false</code>.

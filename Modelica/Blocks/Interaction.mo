@@ -1,22 +1,22 @@
 ﻿within Modelica.Blocks;
-package Interaction 
+package Interaction
   "Library of user interaction blocks to input and to show variables in a diagram animation"
   extends Modelica.Icons.Package;
 
   package Show "Library of blocks to show variables in a diagram animation"
     extends Modelica.Icons.Package;
 
-    block RealValue 
+    block RealValue
       "Show Real value from numberPort or from number input field in diagram layer dynamically"
       parameter Boolean use_numberPort = true "= true, if numberPort enabled" 
         annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-      input Real number = 0.0 
+      input Real number = 0.0
         "Number to visualize if use_numberPort=false (time varying)" 
         annotation(Dialog(enable=not use_numberPort), HideResult=true);
-      parameter Integer significantDigits(min=1) = 2 
+      parameter Integer significantDigits(min=1) = 2
         "Number of significant digits to be shown";
 
-      Modelica.Blocks.Interfaces.RealInput numberPort if use_numberPort 
+      Modelica.Blocks.Interfaces.RealInput numberPort if use_numberPort
         "Number to be shown in diagram layer if use_numberPort = true" 
         annotation (HideResult=true,Placement(transformation(extent={{-130,-15},{-100,15}})));
        Modelica.Blocks.Interfaces.RealOutput showNumber;
@@ -28,19 +28,19 @@ package Interaction
       end if;
 
       annotation (Icon(
-          coordinateSystem(preserveAspectRatio=false, 
-            extent={{-100.0,-100.0},{100.0,100.0}}), 
+          coordinateSystem(preserveAspectRatio=false,
+            extent={{-100.0,-100.0},{100.0,100.0}}),
             graphics={
-          Rectangle(lineColor={0,0,127}, 
-            fillColor={236,233,216}, 
-            fillPattern=FillPattern.Solid, 
-            lineThickness=5.0, 
-            borderPattern=BorderPattern.Raised, 
-            extent={{-100.0,-40.0},{100.0,40.0}}), 
-          Text(extent={{-94.0,-34.0},{96.0,34.0}}, 
-            textString=DynamicSelect("0.0", String(showNumber, significantDigits=significantDigits))), 
-          Text(visible=not use_numberPort, 
-            extent={{-150.0,-70.0},{150.0,-50.0}}, 
+          Rectangle(lineColor={0,0,127},
+            fillColor={236,233,216},
+            fillPattern=FillPattern.Solid,
+            lineThickness=5.0,
+            borderPattern=BorderPattern.Raised,
+            extent={{-100.0,-40.0},{100.0,40.0}}),
+          Text(extent={{-94.0,-34.0},{96.0,34.0}},
+            textString=DynamicSelect("0.0", String(showNumber, significantDigits=significantDigits))),
+          Text(visible=not use_numberPort,
+            extent={{-150.0,-70.0},{150.0,-50.0}},
             textString="%number")}), Documentation(info="<html>
 <p>
 This block visualizes a Real number in a diagram animation.
@@ -73,14 +73,14 @@ The usage is demonstrated, e.g., in example
 </html>"));
     end RealValue;
 
-    block IntegerValue 
+    block IntegerValue
       "Show Integer value from numberPort or from number input field in diagram layer dynamically"
       parameter Boolean use_numberPort = true "= true, if numberPort enabled" 
         annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-      input Integer number=0 
+      input Integer number=0
         "Number to visualize if use_numberPort=false (time varying)" 
         annotation(Dialog(enable=not use_numberPort), HideResult=true);
-      Modelica.Blocks.Interfaces.IntegerInput numberPort if use_numberPort 
+      Modelica.Blocks.Interfaces.IntegerInput numberPort if use_numberPort
         "Number to be shown in diagram layer if use_numberPort = true" 
         annotation (HideResult=true,Placement(transformation(extent={{-130,-15},{-100,15}})));
        Modelica.Blocks.Interfaces.IntegerOutput showNumber;
@@ -92,19 +92,19 @@ The usage is demonstrated, e.g., in example
       end if;
 
       annotation (Icon(
-          coordinateSystem(preserveAspectRatio=false, 
-            extent={{-100.0,-100.0},{100.0,100.0}}), 
+          coordinateSystem(preserveAspectRatio=false,
+            extent={{-100.0,-100.0},{100.0,100.0}}),
             graphics={
-          Rectangle(lineColor={0,0,127}, 
-            fillColor={236,233,216}, 
-            fillPattern=FillPattern.Solid, 
-            lineThickness=5.0, 
-            borderPattern=BorderPattern.Raised, 
-            extent={{-100.0,-40.0},{100.0,40.0}}), 
-          Text(extent={{-94.0,-34.0},{96.0,34.0}}, 
-            textString=DynamicSelect("0", String(showNumber))), 
-          Text(visible=not use_numberPort, 
-            extent={{-150.0,-70.0},{150.0,-50.0}}, 
+          Rectangle(lineColor={0,0,127},
+            fillColor={236,233,216},
+            fillPattern=FillPattern.Solid,
+            lineThickness=5.0,
+            borderPattern=BorderPattern.Raised,
+            extent={{-100.0,-40.0},{100.0,40.0}}),
+          Text(extent={{-94.0,-34.0},{96.0,34.0}},
+            textString=DynamicSelect("0", String(showNumber))),
+          Text(visible=not use_numberPort,
+            extent={{-150.0,-70.0},{150.0,-50.0}},
             textString="%number")}), Documentation(info="<html>
 <p>
 This block visualizes an Integer number in a diagram animation.
@@ -137,14 +137,14 @@ The usage is demonstrated, e.g., in example
 </html>"));
     end IntegerValue;
 
-    block BooleanValue 
+    block BooleanValue
       "Show Boolean value from numberPort or from number input field in diagram layer dynamically"
       parameter Boolean use_activePort = true "= true, if activePort enabled" 
         annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-      input Boolean active=false 
+      input Boolean active=false
         "Boolean variable to visualize if use_activePort=false (time varying)" 
         annotation(Dialog(enable=not use_activePort),HideResult=true);
-      Modelica.Blocks.Interfaces.BooleanInput activePort if use_activePort 
+      Modelica.Blocks.Interfaces.BooleanInput activePort if use_activePort
         "Boolean variable to be shown in diagram layer if use_activePort = true" 
         annotation (HideResult=true,Placement(transformation(extent={{-130,-15},{-100,15}})));
 
@@ -157,16 +157,16 @@ The usage is demonstrated, e.g., in example
       end if;
 
       annotation (Icon(
-          coordinateSystem(preserveAspectRatio=false, 
-            extent={{-100.0,-100.0},{100.0,100.0}}), 
+          coordinateSystem(preserveAspectRatio=false,
+            extent={{-100.0,-100.0},{100.0,100.0}}),
             graphics={
-          Text(visible=not use_activePort, 
-            extent={{-188.0,-80.0},{62.0,-60.0}}, 
-            textString="%active"), 
-          Ellipse(lineColor={64,64,64}, 
-            fillColor=DynamicSelect({192,192,192}, if showActive then {0,255,0} else {235,235,235}), 
-            pattern=LinePattern.None, 
-            fillPattern=FillPattern.Sphere, 
+          Text(visible=not use_activePort,
+            extent={{-188.0,-80.0},{62.0,-60.0}},
+            textString="%active"),
+          Ellipse(lineColor={64,64,64},
+            fillColor=DynamicSelect({192,192,192}, if showActive then {0,255,0} else {235,235,235}),
+            pattern=LinePattern.None,
+            fillPattern=FillPattern.Sphere,
             extent={{-100.0,-40.0},{-20.0,40.0}})}), Documentation(info="<html>
 <p>
 This block visualizes a Boolean variable in a diagram animation.
@@ -201,6 +201,6 @@ The usage is demonstrated, e.g., in example
     end BooleanValue;
   end Show;
   annotation (Icon(graphics={Text(
-          extent={{-98,-30},{96,34}}, 
+          extent={{-98,-30},{96,34}},
           textString="0")}));
 end Interaction;

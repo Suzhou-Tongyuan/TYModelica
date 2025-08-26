@@ -1,8 +1,8 @@
 ﻿within Modelica.Mechanics.MultiBody.Types;
 type GravityTypes = enumeration(
-    NoGravity "No gravity field", 
-    UniformGravity "Uniform gravity field", 
-    PointGravity "Point gravity field") 
+    NoGravity "No gravity field",
+    UniformGravity "Uniform gravity field",
+    PointGravity "Point gravity field")
   "Enumeration defining the type of the gravity field" 
     annotation (Documentation(info="<html>
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">

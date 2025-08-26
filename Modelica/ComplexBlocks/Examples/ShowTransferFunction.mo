@@ -10,12 +10,12 @@ model ShowTransferFunction "Test Complex Transfer Function Block"
   Real dB=20*log10(complexToPolar.len) "Magnitude of the transfer function in decibel";
   Modelica.Units.SI.Angle phi(displayUnit="deg")=complexToPolar.phi "Argument of the transfer function";
   Modelica.Blocks.Sources.LogFrequencySweep logFrequencySweep(
-    duration=1, 
-    wMin=wMin, 
+    duration=1,
+    wMin=wMin,
     wMax=wMax) annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
   Modelica.ComplexBlocks.Sources.ComplexConstant const(k(re=1, im=0)) 
     annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
-  Modelica.ComplexBlocks.ComplexMath.TransferFunction transferFunction(b=b, 
+  Modelica.ComplexBlocks.ComplexMath.TransferFunction transferFunction(b=b,
       a=a) 
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   Modelica.ComplexBlocks.ComplexMath.ComplexToPolar complexToPolar 
@@ -28,7 +28,7 @@ equation
   connect(transferFunction.y, complexToPolar.u) 
     annotation (Line(points={{-19,0},{-2,0}}, color={85,170,255}));
   annotation (
-    experiment(StopTime=1, Interval=0.001), Documentation(info= 
+    experiment(StopTime=1, Interval=0.001), Documentation(info=
                "<html>
 <p>This example shows the response of a PT2 defined by its transfer function</p>
 <blockquote><pre>

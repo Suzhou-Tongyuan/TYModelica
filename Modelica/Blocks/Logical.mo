@@ -7,11 +7,11 @@ package Logical "Library of components with Boolean input and output signals"
   equation
     y = u1 and u2;
     annotation (
-      defaultComponentName="and1", 
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+      defaultComponentName="and1",
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={Text(
-            extent={{-90,40},{90,-40}}, 
-            textString="and")}), 
+            extent={{-90,40},{90,-40}},
+            textString="and")}),
       Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if all inputs are <strong>true</strong>, otherwise
@@ -25,11 +25,11 @@ the output is <strong>false</strong>.
   equation
     y = u1 or u2;
     annotation (
-      defaultComponentName="or1", 
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+      defaultComponentName="or1",
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={Text(
-            extent={{-90,40},{90,-40}}, 
-            textString="or")}), 
+            extent={{-90,40},{90,-40}},
+            textString="or")}),
       Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if at least one input is <strong>true</strong>, otherwise
@@ -42,9 +42,9 @@ the output is <strong>false</strong>.
     extends Blocks.Interfaces.partialBooleanSI2SO;
   equation
     y = not ((u1 and u2) or (not u1 and not u2));
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={Text(
-            extent={{-90,40},{90,-40}}, 
+            extent={{-90,40},{90,-40}},
             textString="xor")}), Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if exactly one input is <strong>true</strong>, otherwise
@@ -57,9 +57,9 @@ the output is <strong>false</strong>.
     extends Blocks.Interfaces.partialBooleanSI2SO;
   equation
     y = not (u1 or u2);
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={Text(
-            extent={{-90,40},{90,-40}}, 
+            extent={{-90,40},{90,-40}},
             textString="nor")}), Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if none of the inputs is <strong>true</strong>, otherwise
@@ -72,9 +72,9 @@ the output is <strong>false</strong>.
     extends Blocks.Interfaces.partialBooleanSI2SO;
   equation
     y = not (u1 and u2);
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={Text(
-            extent={{-90,40},{90,-40}}, 
+            extent={{-90,40},{90,-40}},
             textString="nand")}), Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if at least one input is <strong>false</strong>, otherwise
@@ -89,11 +89,11 @@ the output is <strong>false</strong>.
   equation
     y = not u;
     annotation (
-      defaultComponentName="not1", 
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+      defaultComponentName="not1",
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={Text(
-            extent={{-90,40},{90,-40}}, 
-            textString="not")}), 
+            extent={{-90,40},{90,-40}},
+            textString="not")}),
       Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if the input is <strong>false</strong>, otherwise
@@ -102,7 +102,7 @@ the output is <strong>false</strong>.
 </html>"));
   end Not;
 
-  block Pre 
+  block Pre
     "Breaks algebraic loops by an infinitesimal small time delay (y = pre(u): event iteration continues until u = pre(u))"
 
     parameter Boolean pre_u_start=false "Start value of pre(u) at initial time";
@@ -113,11 +113,11 @@ the output is <strong>false</strong>.
   equation
     y = pre(u);
     annotation (
-      defaultComponentName="pre1", 
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+      defaultComponentName="pre1",
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={Text(
-            extent={{-90,40},{90,-40}}, 
-            textString="pre")}), 
+            extent={{-90,40},{90,-40}},
+            textString="pre")}),
       Documentation(info="<html>
 <p>
 This block delays the Boolean input by an infinitesimal small time delay and
@@ -144,11 +144,11 @@ values are identical (u = pre(u)).
   equation
     y = edge(u);
     annotation (
-      defaultComponentName="edge1", 
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+      defaultComponentName="edge1",
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={Text(
-            extent={{-90,40},{90,-40}}, 
-            textString="edge")}), 
+            extent={{-90,40},{90,-40}},
+            textString="edge")}),
       Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if the Boolean input has a rising edge
@@ -158,7 +158,7 @@ the output is <strong>false</strong>.
 </html>"));
   end Edge;
 
-  block FallingEdge 
+  block FallingEdge
     "Output y is true, if the input u has a falling edge (y = edge(not u))"
 
     parameter Boolean pre_u_start=false "Start value of pre(u) at initial time";
@@ -170,9 +170,9 @@ the output is <strong>false</strong>.
     pre(not_u) = not pre_u_start;
   equation
     y = edge(not_u);
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={Text(
-            extent={{-90,40},{90,-40}}, 
+            extent={{-90,40},{90,-40}},
             textString="falling")}), Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if the Boolean input has a falling edge
@@ -182,7 +182,7 @@ the output is <strong>false</strong>.
 </html>"));
   end FallingEdge;
 
-  block Change 
+  block Change
     "Output y is true, if the input u has a rising or falling edge (y = change(u))"
 
     parameter Boolean pre_u_start=false "Start value of pre(u) at initial time";
@@ -193,11 +193,11 @@ the output is <strong>false</strong>.
   equation
     y = change(u);
     annotation (
-      defaultComponentName="change1", 
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+      defaultComponentName="change1",
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={Text(
-            extent={{-90,40},{90,-40}}, 
-            textString="change")}), 
+            extent={{-90,40},{90,-40}},
+            textString="change")}),
       Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if the Boolean input has either a rising edge
@@ -208,15 +208,15 @@ the output is <strong>false</strong>.
 </html>"));
   end Change;
 
-  block GreaterThreshold 
+  block GreaterThreshold
     "Output y is true, if input u is greater than threshold"
     extends Blocks.Interfaces.partialBooleanThresholdComparison;
   equation
     y = u > threshold;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={
           Line(
-            points={{-54,20},{-8,0},{-54,-20}}, 
+            points={{-54,20},{-8,0},{-54,-20}},
             thickness=0.5)}), Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if the Real input is greater than
@@ -226,18 +226,18 @@ the output is <strong>false</strong>.
 </html>"));
   end GreaterThreshold;
 
-  block GreaterEqualThreshold 
+  block GreaterEqualThreshold
     "Output y is true, if input u is greater or equal than threshold"
 
     extends Blocks.Interfaces.partialBooleanThresholdComparison;
   equation
     y = u >= threshold;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={
           Line(
-            points={{-54,20},{-8,0},{-54,-20}}, 
-            thickness=0.5), 
-          Line(points={{-54,-30},{-8,-30}}, thickness=0.5)}), 
+            points={{-54,20},{-8,0},{-54,-20}},
+            thickness=0.5),
+          Line(points={{-54,-30},{-8,-30}}, thickness=0.5)}),
       Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if the Real input is greater than or equal to
@@ -252,7 +252,7 @@ the output is <strong>false</strong>.
     extends Blocks.Interfaces.partialBooleanThresholdComparison;
   equation
     y = u < threshold;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={
           Line(points={{-8,20},{-54,0},{-8,-20}}, thickness=0.5)}), Documentation(info="<html>
 <p>
@@ -263,15 +263,15 @@ the output is <strong>false</strong>.
 </html>"));
   end LessThreshold;
 
-  block LessEqualThreshold 
+  block LessEqualThreshold
     "Output y is true, if input u is less or equal than threshold"
     extends Blocks.Interfaces.partialBooleanThresholdComparison;
   equation
     y = u <= threshold;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={
-          Line(points={{-8,20},{-54,0},{-8,-20}}, thickness=0.5), 
-          Line(points={{-54,-30},{-8,-30}}, thickness=0.5)}), 
+          Line(points={{-8,20},{-54,0},{-8,-20}}, thickness=0.5),
+          Line(points={{-54,-30},{-8,-30}}, thickness=0.5)}),
       Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if the Real input is less than or equal to
@@ -286,12 +286,12 @@ the output is <strong>false</strong>.
 
   equation
     y = u1 > u2;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100,
               -100},{100,100}}), graphics={
-          Ellipse(extent={{32,10},{52,-10}}, lineColor={0,0,127}), 
-          Line(points={{-100,-80},{42,-80},{42,0}}, color={0,0,127}), 
+          Ellipse(extent={{32,10},{52,-10}}, lineColor={0,0,127}),
+          Line(points={{-100,-80},{42,-80},{42,0}}, color={0,0,127}),
           Line(
-            points={{-54,20},{-8,0},{-54,-20}}, 
+            points={{-54,20},{-8,0},{-54,-20}},
             thickness=0.5)}), Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if Real input u1 is greater than
@@ -304,33 +304,33 @@ Real input u2, otherwise the output is <strong>false</strong>.
 
   equation
     y = u1 > u2;
-    annotation (Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-grid={2,2}),graphics = {Ellipse(origin={42,0}, 
-lineColor={255,127,0}, 
-extent={{-10,10},{10,-10}}), Line(origin={-29,-40}, 
-points={{-71,-40},{71,-40},{71,40}}, 
-color={255,127,0}), Line(origin={-31,0}, 
-points={{-23,20},{23,0},{-23,-20}}, 
+    annotation (Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+grid={2,2}),graphics = {Ellipse(origin={42,0},
+lineColor={255,127,0},
+extent={{-10,10},{10,-10}}), Line(origin={-29,-40},
+points={{-71,-40},{71,-40},{71,40}},
+color={255,127,0}), Line(origin={-31,0},
+points={{-23,20},{23,0},{-23,-20}},
 thickness=0.5)}), Documentation(info="<html><p>
 The output is <strong>true</strong> if Integer input u1 is greater than Integer input u2, otherwise the output is <strong>false</strong>.
 </p>
 </html>"      ));
   end IntegerGreater;
 
-  block GreaterEqual 
+  block GreaterEqual
     "Output y is true, if input u1 is greater or equal than input u2"
     extends Blocks.Interfaces.partialBooleanComparison;
 
   equation
     y = u1 >= u2;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100,
               -100},{100,100}}), graphics={
-          Ellipse(extent={{32,10},{52,-10}}, lineColor={0,0,127}), 
-          Line(points={{-100,-80},{42,-80},{42,0}}, color={0,0,127}), 
+          Ellipse(extent={{32,10},{52,-10}}, lineColor={0,0,127}),
+          Line(points={{-100,-80},{42,-80},{42,0}}, color={0,0,127}),
           Line(
-            points={{-54,20},{-8,0},{-54,-20}}, 
-            thickness=0.5), 
-          Line(points={{-54,-30},{-8,-30}}, thickness=0.5)}), 
+            points={{-54,20},{-8,0},{-54,-20}},
+            thickness=0.5),
+          Line(points={{-54,-30},{-8,-30}}, thickness=0.5)}),
       Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if Real input u1 is greater than or equal to
@@ -344,10 +344,10 @@ Real input u2, otherwise the output is <strong>false</strong>.
 
   equation
     y = u1 < u2;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100,
               -100},{100,100}}), graphics={
-          Ellipse(extent={{32,10},{52,-10}}, lineColor={0,0,127}), 
-          Line(points={{-100,-80},{42,-80},{42,0}}, color={0,0,127}), 
+          Ellipse(extent={{32,10},{52,-10}}, lineColor={0,0,127}),
+          Line(points={{-100,-80},{42,-80},{42,0}}, color={0,0,127}),
           Line(points={{-8,20},{-54,0},{-8,-20}}, thickness=0.5)}), Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if Real input u1 is less than
@@ -361,12 +361,12 @@ Real input u2, otherwise the output is <strong>false</strong>.
 
   equation
     y = u1 <= u2;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100,
               -100},{100,100}}), graphics={
-          Ellipse(extent={{32,10},{52,-10}}, lineColor={0,0,127}), 
-          Line(points={{-100,-80},{42,-80},{42,0}}, color={0,0,127}), 
-          Line(points={{-8,20},{-54,0},{-8,-20}}, thickness=0.5), 
-          Line(points={{-54,-30},{-8,-30}}, thickness=0.5)}), 
+          Ellipse(extent={{32,10},{52,-10}}, lineColor={0,0,127}),
+          Line(points={{-100,-80},{42,-80},{42,0}}, color={0,0,127}),
+          Line(points={{-8,20},{-54,0},{-8,-20}}, thickness=0.5),
+          Line(points={{-54,-30},{-8,-30}}, thickness=0.5)}),
       Documentation(info="<html>
 <p>
 The output is <strong>true</strong> if Real input u1 is less than or equal to
@@ -384,27 +384,27 @@ Real input u2, otherwise the output is <strong>false</strong>.
 
   equation
     y = u1 == u2;
-    annotation (Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-grid={2,2}),graphics = {Rectangle(origin={0,0}, 
-fillColor={210,210,210}, 
-fillPattern=FillPattern.Solid, 
-borderPattern=BorderPattern.Raised, 
-extent={{-100,100},{100,-100}}), Ellipse(origin={42,0}, 
-lineColor={0,0,127}, 
-extent={{-10,10},{10,-10}}), Line(origin={-29,-40}, 
-points={{-71,-40},{71,-40},{71,40}}, 
-color={0,0,127}), Line(origin={-30,16}, 
-points={{-24,0},{24,0}}, 
-thickness=0.5), Line(origin={-30,-14}, 
-points={{-24,0},{24,0}}, 
-thickness=0.5), Text(origin={0,130}, 
-lineColor={0,0,255}, 
-extent={{-150,20},{150,-20}}, 
-textString="%name", 
-textColor={0,0,255}), Ellipse(origin={76,0}, 
-lineColor=DynamicSelect({235,235,235}, if y then {0,255,0} else {235,235,235}), 
-fillColor=DynamicSelect({235,235,235}, if y then {0,255,0} else {235,235,235}), 
-fillPattern=FillPattern.Solid, 
+    annotation (Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+grid={2,2}),graphics = {Rectangle(origin={0,0},
+fillColor={210,210,210},
+fillPattern=FillPattern.Solid,
+borderPattern=BorderPattern.Raised,
+extent={{-100,100},{100,-100}}), Ellipse(origin={42,0},
+lineColor={0,0,127},
+extent={{-10,10},{10,-10}}), Line(origin={-29,-40},
+points={{-71,-40},{71,-40},{71,40}},
+color={0,0,127}), Line(origin={-30,16},
+points={{-24,0},{24,0}},
+thickness=0.5), Line(origin={-30,-14},
+points={{-24,0},{24,0}},
+thickness=0.5), Text(origin={0,130},
+lineColor={0,0,255},
+extent={{-150,20},{150,-20}},
+textString="%name",
+textColor={0,0,255}), Ellipse(origin={76,0},
+lineColor=DynamicSelect({235,235,235}, if y then {0,255,0} else {235,235,235}),
+fillColor=DynamicSelect({235,235,235}, if y then {0,255,0} else {235,235,235}),
+fillPattern=FillPattern.Solid,
 extent={{-7,7},{7,-7}})}), Documentation(info="<html><p>
 The output is <strong>true</strong> if Real input u1 is equal to Real input u2, otherwise the output is <strong>false</strong>.
 </p>
@@ -420,27 +420,27 @@ The output is <strong>true</strong> if Real input u1 is equal to Real input u2, 
 
   equation
     y = u1 == u2;
-    annotation (Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-grid={2,2}),graphics = {Rectangle(origin={0,0}, 
-fillColor={210,210,210}, 
-fillPattern=FillPattern.Solid, 
-borderPattern=BorderPattern.Raised, 
-extent={{-100,100},{100,-100}}), Ellipse(origin={42,0}, 
-lineColor={255,127,0}, 
-extent={{-10,10},{10,-10}}), Line(origin={-29,-40}, 
-points={{-71,-40},{71,-40},{71,40}}, 
-color={255,127,0}), Line(origin={-30,16}, 
-points={{-24,0},{24,0}}, 
-thickness=0.5), Line(origin={-30,-14}, 
-points={{-24,0},{24,0}}, 
-thickness=0.5), Text(origin={0,130}, 
-lineColor={0,0,255}, 
-extent={{-150,20},{150,-20}}, 
-textString="%name", 
-textColor={0,0,255}), Ellipse(origin={76,0}, 
-lineColor=DynamicSelect({235,235,235}, if y then {0,255,0} else {235,235,235}), 
-fillColor=DynamicSelect({235,235,235}, if y then {0,255,0} else {235,235,235}), 
-fillPattern=FillPattern.Solid, 
+    annotation (Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+grid={2,2}),graphics = {Rectangle(origin={0,0},
+fillColor={210,210,210},
+fillPattern=FillPattern.Solid,
+borderPattern=BorderPattern.Raised,
+extent={{-100,100},{100,-100}}), Ellipse(origin={42,0},
+lineColor={255,127,0},
+extent={{-10,10},{10,-10}}), Line(origin={-29,-40},
+points={{-71,-40},{71,-40},{71,40}},
+color={255,127,0}), Line(origin={-30,16},
+points={{-24,0},{24,0}},
+thickness=0.5), Line(origin={-30,-14},
+points={{-24,0},{24,0}},
+thickness=0.5), Text(origin={0,130},
+lineColor={0,0,255},
+extent={{-150,20},{150,-20}},
+textString="%name",
+textColor={0,0,255}), Ellipse(origin={76,0},
+lineColor=DynamicSelect({235,235,235}, if y then {0,255,0} else {235,235,235}),
+fillColor=DynamicSelect({235,235,235}, if y then {0,255,0} else {235,235,235}),
+fillPattern=FillPattern.Solid,
 extent={{-7,7},{7,-7}})}), Documentation(info="<html><p>
 The output is <strong>true</strong> if Integer input u1 is equal to Integer input u2, otherwise the output is <strong>false</strong>.
 </p>
@@ -451,11 +451,11 @@ The output is <strong>true</strong> if Integer input u1 is equal to Integer inpu
     extends Blocks.Interfaces.partialBooleanSO;
     Blocks.Interfaces.RealInput u annotation (Placement(transformation(extent={
               {-140,-20},{-100,20}})));
-    Blocks.Interfaces.BooleanInput enable 
+    Blocks.Interfaces.BooleanInput enable
       "Zero input crossing is triggered if the enable input signal is true" 
       annotation (Placement(transformation(
-          origin={0,-120}, 
-          extent={{-20,-20},{20,20}}, 
+          origin={0,-120},
+          extent={{-20,-20},{20,20}},
           rotation=90)));
 
   protected
@@ -485,30 +485,30 @@ continuous integration. In order to check that this component is
 actually working as expected, one should connect its output to, e.g.,
 component <em><a href=\"modelica://Modelica.Blocks.Discrete.TriggeredSampler\">Modelica.Blocks.Discrete.TriggeredSampler</a></em>.
 </p>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={
-          Line(points={{-78,68},{-78,-80}}, color={192,192,192}), 
+          Line(points={{-78,68},{-78,-80}}, color={192,192,192}),
           Polygon(
-            points={{-78,90},{-86,68},{-70,68},{-78,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-88,0},{70,0}}, color={192,192,192}), 
-          Line(points={{-78,0},{-73.2,32.3},{-70,50.3},{-66.7,64.5},{-63.5,74.2}, 
-                {-60.3,79.3},{-57.1,79.6},{-53.9,75.3},{-50.7,67.1},{-46.6,52.2}, 
-                {-41,25.8},{-33,-13.9},{-28.2,-33.7},{-24.1,-45.9},{-20.1,-53.2}, 
-                {-16.1,-55.3},{-12.1,-52.5},{-8.1,-45.3},{-3.23,-32.1},{10.44, 
-                13.7},{15.3,26.4},{20.1,34.8},{24.1,38},{28.9,37.2},{33.8,31.8}, 
-                {40.2,19.4},{53.1,-10.5},{59.5,-21.2},{65.1,-25.9},{70.7,-25.9}, 
-                {77.2,-20.5},{82,-13.8}}, color={192,192,192}, smooth = Smooth.Bezier), 
+            points={{-78,90},{-86,68},{-70,68},{-78,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-88,0},{70,0}}, color={192,192,192}),
+          Line(points={{-78,0},{-73.2,32.3},{-70,50.3},{-66.7,64.5},{-63.5,74.2},
+                {-60.3,79.3},{-57.1,79.6},{-53.9,75.3},{-50.7,67.1},{-46.6,52.2},
+                {-41,25.8},{-33,-13.9},{-28.2,-33.7},{-24.1,-45.9},{-20.1,-53.2},
+                {-16.1,-55.3},{-12.1,-52.5},{-8.1,-45.3},{-3.23,-32.1},{10.44,
+                13.7},{15.3,26.4},{20.1,34.8},{24.1,38},{28.9,37.2},{33.8,31.8},
+                {40.2,19.4},{53.1,-10.5},{59.5,-21.2},{65.1,-25.9},{70.7,-25.9},
+                {77.2,-20.5},{82,-13.8}}, color={192,192,192}, smooth = Smooth.Bezier),
           Polygon(
-            points={{92,0},{70,8},{70,-8},{92,0}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-36,-59},{-36,81}}, color={255,0,255}), 
-          Line(points={{6,-59},{6,81}}, color={255,0,255}), 
-          Line(points={{49,-59},{49,81}}, color={255,0,255}), 
+            points={{92,0},{70,8},{70,-8},{92,0}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-36,-59},{-36,81}}, color={255,0,255}),
+          Line(points={{6,-59},{6,81}}, color={255,0,255}),
+          Line(points={{49,-59},{49,81}}, color={255,0,255}),
           Line(points={{-78,0},{70,0}}, color={255,0,255})}));
   end ZeroCrossing;
 
@@ -524,25 +524,25 @@ between the two possible input signals
 u1 (upper connector) and u3 (lower connector).</p>
 <p>If u2 is true, connector y is set equal to
 u1, else it is set equal to u3.</p>
-</html>"), Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-preserveAspectRatio=true, 
-grid={2,2}),graphics = {Line(origin={56,0}, 
-points={{-44,0},{44,0}}, 
-color={255,0,255}), Line(origin={-70,0}, 
-points={{-30,0},{30,0}}, 
-color={255,0,255}), Line(origin={-70,-80}, 
-points={{-30,0},{30,0},{30,0}}, 
-color={255,0,255}), Line(origin={-40,1}, 
-points={{0,11},{0,-11}}, 
-color={255,0,255}), Line(origin={-70,80}, 
-points={{-30,0},{30,0}}, 
-color={255,0,255}), Line(origin={-0.272727,0}, 
-points=DynamicSelect({{-38,80},{6,2}}, if u2 then {{-38,80},{6,2}} else {{-38,-80},{6,2}}), 
-color={255,0,255}, 
-thickness=1), Ellipse(origin={10,1}, 
-lineColor={0,0,127}, 
-pattern=LinePattern.None, 
-fillPattern=FillPattern.Solid, 
+</html>"), Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+preserveAspectRatio=true,
+grid={2,2}),graphics = {Line(origin={56,0},
+points={{-44,0},{44,0}},
+color={255,0,255}), Line(origin={-70,0},
+points={{-30,0},{30,0}},
+color={255,0,255}), Line(origin={-70,-80},
+points={{-30,0},{30,0},{30,0}},
+color={255,0,255}), Line(origin={-40,1},
+points={{0,11},{0,-11}},
+color={255,0,255}), Line(origin={-70,80},
+points={{-30,0},{30,0}},
+color={255,0,255}), Line(origin={-0.272727,0},
+points=DynamicSelect({{-38,80},{6,2}}, if u2 then {{-38,80},{6,2}} else {{-38,-80},{6,2}}),
+color={255,0,255},
+thickness=1), Ellipse(origin={10,1},
+lineColor={0,0,127},
+pattern=LinePattern.None,
+fillPattern=FillPattern.Solid,
 extent={{-8,-7},{8,7}})}));
   end LogicalSwitch;
 
@@ -560,7 +560,7 @@ extent={{-8,-7},{8,7}})}));
   equation
     y = if u2 then u1 else u3;
     annotation (
-      defaultComponentName="switch1", 
+      defaultComponentName="switch1",
       Documentation(info="<html>
 <p>The Logical.Switch switches, depending on the
 logical connector u2 (the middle connector)
@@ -568,26 +568,26 @@ between the two possible input signals
 u1 (upper connector) and u3 (lower connector).</p>
 <p>If u2 is <strong>true</strong>, the output signal y is set equal to
 u1, else it is set equal to u3.</p>
-</html>"), 
-      Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-preserveAspectRatio=true, 
-grid={2,2}),graphics = {Line(origin={56,0}, 
-points={{-44,0},{44,0}}, 
-color={0,0,127}), Line(origin={-70,0}, 
-points={{-30,0},{30,0}}, 
-color={255,0,255}), Line(origin={-70,-80}, 
-points={{-30,0},{30,0},{30,0}}, 
-color={0,0,127}), Line(origin={-40,0}, 
-points={{0,12},{0,-12}}, 
-color={255,0,255}), Line(origin={-69,80}, 
-points={{-31,0},{31,0}}, 
-color={0,0,127}), Line(origin={0,0}, 
-points=DynamicSelect({{-38,80},{6,2}}, if u2 then {{-38,80},{6,2}} else {{-38,-80},{6,2}}), 
-color={0,0,127}, 
-thickness=1), Ellipse(origin={10,0}, 
-lineColor={0,0,255}, 
-pattern=LinePattern.None, 
-fillPattern=FillPattern.Solid, 
+</html>"),
+      Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+preserveAspectRatio=true,
+grid={2,2}),graphics = {Line(origin={56,0},
+points={{-44,0},{44,0}},
+color={0,0,127}), Line(origin={-70,0},
+points={{-30,0},{30,0}},
+color={255,0,255}), Line(origin={-70,-80},
+points={{-30,0},{30,0},{30,0}},
+color={0,0,127}), Line(origin={-40,0},
+points={{0,12},{0,-12}},
+color={255,0,255}), Line(origin={-69,80},
+points={{-31,0},{31,0}},
+color={0,0,127}), Line(origin={0,0},
+points=DynamicSelect({{-38,80},{6,2}}, if u2 then {{-38,80},{6,2}} else {{-38,-80},{6,2}}),
+color={0,0,127},
+thickness=1), Ellipse(origin={10,0},
+lineColor={0,0,255},
+pattern=LinePattern.None,
+fillPattern=FillPattern.Solid,
 extent={{-8,-8},{8,8}})}));
   end Switch;
   block IntegerSwitch "Switch between two Integer signals"
@@ -605,7 +605,7 @@ extent={{-8,-8},{8,8}})}));
   equation
     y = if u2 then u1 else u3;
     annotation (
-      defaultComponentName="integerswitch1", 
+      defaultComponentName="integerswitch1",
       Documentation(info="<html>
 <p>The Logical.Switch switches, depending on the
 logical connector u2 (the middle connector)
@@ -613,26 +613,26 @@ between the two possible input signals
 u1 (upper connector) and u3 (lower connector).</p>
 <p>If u2 is <strong>true</strong>, the output signal y is set equal to
 u1, else it is set equal to u3.</p>
-</html>"        ), 
-      Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-preserveAspectRatio=true, 
-grid={2,2}),graphics = {Line(origin={56,0}, 
-points={{-44,0},{44,0}}, 
-color={255,127,0}), Line(origin={-70,0}, 
-points={{-30,0},{30,0}}, 
-color={255,0,255}), Line(origin={-70,-80}, 
-points={{-30,0},{30,0},{30,0}}, 
-color={255,127,0}), Line(origin={-40,0}, 
-points={{0,12},{0,-12}}, 
-color={255,0,255}), Line(origin={-69,80}, 
-points={{-31,0},{31,0}}, 
-color={255,127,0}), Line(origin={0,0}, 
-points=DynamicSelect({{-38,80},{6,2}}, if u2 then {{-38,80},{6,2}} else {{-38,-80},{6,2}}), 
-color={255,127,0}, 
-thickness=1), Ellipse(origin={10,0}, 
-lineColor={0,0,255}, 
-pattern=LinePattern.None, 
-fillPattern=FillPattern.Solid, 
+</html>"        ),
+      Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+preserveAspectRatio=true,
+grid={2,2}),graphics = {Line(origin={56,0},
+points={{-44,0},{44,0}},
+color={255,127,0}), Line(origin={-70,0},
+points={{-30,0},{30,0}},
+color={255,0,255}), Line(origin={-70,-80},
+points={{-30,0},{30,0},{30,0}},
+color={255,127,0}), Line(origin={-40,0},
+points={{0,12},{0,-12}},
+color={255,0,255}), Line(origin={-69,80},
+points={{-31,0},{31,0}},
+color={255,127,0}), Line(origin={0,0},
+points=DynamicSelect({{-38,80},{6,2}}, if u2 then {{-38,80},{6,2}} else {{-38,-80},{6,2}}),
+color={255,127,0},
+thickness=1), Ellipse(origin={10,0},
+lineColor={0,0,255},
+pattern=LinePattern.None,
+fillPattern=FillPattern.Solid,
 extent={{-8,-8},{8,8}})}));
   end IntegerSwitch;
   block Hysteresis "Transform Real to Boolean signal with Hysteresis"
@@ -655,83 +655,83 @@ extent={{-8,-8},{8,8}})}));
     annotation (
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}}), graphics={Polygon(
-              points={{-65,89},{-73,67},{-57,67},{-65,89}}, 
-              lineColor={192,192,192}, 
-              fillColor={192,192,192}, 
-              fillPattern=FillPattern.Solid),Line(points={{-65,67},{-65,-81}}, 
-            color={192,192,192}),Line(points={{-90,-70},{82,-70}}, color={192,192,192}), 
+              points={{-65,89},{-73,67},{-57,67},{-65,89}},
+              lineColor={192,192,192},
+              fillColor={192,192,192},
+              fillPattern=FillPattern.Solid),Line(points={{-65,67},{-65,-81}},
+            color={192,192,192}),Line(points={{-90,-70},{82,-70}}, color={192,192,192}),
             Polygon(
-              points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-              lineColor={192,192,192}, 
-              fillColor={192,192,192}, 
+              points={{90,-70},{68,-62},{68,-78},{90,-70}},
+              lineColor={192,192,192},
+              fillColor={192,192,192},
               fillPattern=FillPattern.Solid),Text(
-              extent={{70,-80},{94,-100}}, 
-              textColor={160,160,164}, 
+              extent={{70,-80},{94,-100}},
+              textColor={160,160,164},
               textString="u"),Text(
-              extent={{-65,93},{-12,75}}, 
-              textColor={160,160,164}, 
+              extent={{-65,93},{-12,75}},
+              textColor={160,160,164},
               textString="y"),Line(
-              points={{-80,-70},{30,-70}}, 
+              points={{-80,-70},{30,-70}},
               thickness=0.5),Line(
-              points={{-50,10},{80,10}}, 
+              points={{-50,10},{80,10}},
               thickness=0.5),Line(
-              points={{-50,10},{-50,-70}}, 
+              points={{-50,10},{-50,-70}},
               thickness=0.5),Line(
-              points={{30,10},{30,-70}}, 
+              points={{30,10},{30,-70}},
               thickness=0.5),Line(
-              points={{-10,-65},{0,-70},{-10,-75}}, 
+              points={{-10,-65},{0,-70},{-10,-75}},
               thickness=0.5),Line(
-              points={{-10,15},{-20,10},{-10,5}}, 
+              points={{-10,15},{-20,10},{-10,5}},
               thickness=0.5),Line(
-              points={{-55,-20},{-50,-30},{-44,-20}}, 
+              points={{-55,-20},{-50,-30},{-44,-20}},
               thickness=0.5),Line(
-              points={{25,-30},{30,-19},{35,-30}}, 
+              points={{25,-30},{30,-19},{35,-30}},
               thickness=0.5),Text(
-              extent={{-99,2},{-70,18}}, 
-              textColor={160,160,164}, 
+              extent={{-99,2},{-70,18}},
+              textColor={160,160,164},
               textString="true"),Text(
-              extent={{-98,-87},{-66,-73}}, 
-              textColor={160,160,164}, 
+              extent={{-98,-87},{-66,-73}},
+              textColor={160,160,164},
               textString="false"),Text(
-              extent={{19,-87},{44,-70}}, 
+              extent={{19,-87},{44,-70}},
               textString="uHigh"),Text(
-              extent={{-63,-88},{-38,-71}}, 
-              textString="uLow"),Line(points={{-69,10},{-60,10}}, color={160, 
-            160,164})}), 
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+              extent={{-63,-88},{-38,-71}},
+              textString="uLow"),Line(points={{-69,10},{-60,10}}, color={160,
+            160,164})}),
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,68},{-80,-29}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,68},{-80,-29}}, color={192,192,192}),
           Polygon(
-            points={{92,-29},{70,-21},{70,-37},{92,-29}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-79,-29},{84,-29}}, color={192,192,192}), 
-          Line(points={{-79,-29},{41,-29}}), 
-          Line(points={{-15,-21},{1,-29},{-15,-36}}), 
-          Line(points={{41,51},{41,-29}}), 
-          Line(points={{33,3},{41,22},{50,3}}), 
-          Line(points={{-49,51},{81,51}}), 
-          Line(points={{-4,59},{-19,51},{-4,43}}), 
-          Line(points={{-59,29},{-49,11},{-39,29}}), 
-          Line(points={{-49,51},{-49,-29}}), 
+            points={{92,-29},{70,-21},{70,-37},{92,-29}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-79,-29},{84,-29}}, color={192,192,192}),
+          Line(points={{-79,-29},{41,-29}}),
+          Line(points={{-15,-21},{1,-29},{-15,-36}}),
+          Line(points={{41,51},{41,-29}}),
+          Line(points={{33,3},{41,22},{50,3}}),
+          Line(points={{-49,51},{81,51}}),
+          Line(points={{-4,59},{-19,51},{-4,43}}),
+          Line(points={{-59,29},{-49,11},{-39,29}}),
+          Line(points={{-49,51},{-49,-29}}),
           Text(
-            extent={{-92,-49},{-9,-92}}, 
-            textColor={192,192,192}, 
-            textString="%uLow"), 
+            extent={{-92,-49},{-9,-92}},
+            textColor={192,192,192},
+            textString="%uLow"),
           Text(
-            extent={{2,-49},{91,-92}}, 
-            textColor={192,192,192}, 
-            textString="%uHigh"), 
-          Rectangle(extent={{-91,-49},{-8,-92}}, lineColor={192,192,192}), 
-          Line(points={{-49,-29},{-49,-49}}, color={192,192,192}), 
-          Rectangle(extent={{2,-49},{91,-92}}, lineColor={192,192,192}), 
-          Line(points={{41,-29},{41,-49}}, color={192,192,192})}), 
+            extent={{2,-49},{91,-92}},
+            textColor={192,192,192},
+            textString="%uHigh"),
+          Rectangle(extent={{-91,-49},{-8,-92}}, lineColor={192,192,192}),
+          Line(points={{-49,-29},{-49,-49}}, color={192,192,192}),
+          Rectangle(extent={{2,-49},{91,-92}}, lineColor={192,192,192}),
+          Line(points={{41,-29},{41,-49}}, color={192,192,192})}),
       Documentation(info="<html>
 <p>
 This block transforms a <strong>Real</strong> input signal <strong>u</strong> into a <strong>Boolean</strong>
@@ -761,13 +761,13 @@ The default value of this parameter is <strong>false</strong>.
 
   block OnOffController "On-off controller"
     extends Modelica.Blocks.Icons.PartialBooleanBlock;
-    Blocks.Interfaces.RealInput reference 
+    Blocks.Interfaces.RealInput reference
       "Connector of Real input signal used as reference signal" annotation (
         Placement(transformation(extent={{-140,80},{-100,40}})));
-    Blocks.Interfaces.RealInput u 
+    Blocks.Interfaces.RealInput u
       "Connector of Real input signal used as measurement signal" annotation (
         Placement(transformation(extent={{-140,-40},{-100,-80}})));
-    Blocks.Interfaces.BooleanOutput y 
+    Blocks.Interfaces.BooleanOutput y
       "Connector of Real output signal used as actuator signal" annotation (
         Placement(transformation(extent={{100,-10},{120,10}})));
 
@@ -777,23 +777,23 @@ The default value of this parameter is <strong>false</strong>.
   initial equation
     pre(y) = pre_y_start;
   equation
-    y = pre(y) and (u < reference + bandwidth/2) or (u < reference - bandwidth/ 
+    y = pre(y) and (u < reference + bandwidth/2) or (u < reference - bandwidth/
       2);
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
               -100},{100,100}}), graphics={
           Text(
-            extent={{-92,74},{44,44}}, 
-            textString="reference"), 
+            extent={{-92,74},{44,44}},
+            textString="reference"),
           Text(
-            extent={{-94,-52},{-34,-74}}, 
-            textString="u"), 
-          Line(points={{-76,-32},{-68,-6},{-50,26},{-24,40},{-2,42},{16,36},{32,28},{48,12},{58,-6},{68,-28}}, 
-            color={0,0,127}), 
-          Line(points={{-78,-2},{-6,18},{82,-12}}, 
-            color={255,0,0}), 
-          Line(points={{-78,12},{-6,30},{82,0}}), 
-          Line(points={{-78,-16},{-6,4},{82,-26}}), 
-          Line(points={{-82,-18},{-56,-18},{-56,-40},{64,-40},{64,-20},{90,-20}}, 
+            extent={{-94,-52},{-34,-74}},
+            textString="u"),
+          Line(points={{-76,-32},{-68,-6},{-50,26},{-24,40},{-2,42},{16,36},{32,28},{48,12},{58,-6},{68,-28}},
+            color={0,0,127}),
+          Line(points={{-78,-2},{-6,18},{82,-12}},
+            color={255,0,0}),
+          Line(points={{-78,12},{-6,30},{82,0}}),
+          Line(points={{-78,-16},{-6,4},{82,-26}}),
+          Line(points={{-82,-18},{-56,-18},{-56,-40},{64,-40},{64,-20},{90,-20}},
             color={255,0,255})}), Documentation(info="<html>
 <p>The block OnOffController sets the output signal <strong>y</strong> to <strong>true</strong> when
 the input signal <strong>u</strong> falls below the <strong>reference</strong> signal minus half of
@@ -806,9 +806,9 @@ signal <strong>u</strong> exceeds the <strong>reference</strong> signal plus hal
     extends Modelica.Blocks.Icons.PartialBooleanBlock;
 
     parameter Real amplitude=1 "Amplitude of trapezoid";
-    parameter SI.Time rising(final min=0) = 0 
+    parameter SI.Time rising(final min=0) = 0
       "Rising duration of trapezoid";
-    parameter SI.Time falling(final min=0) = rising 
+    parameter SI.Time falling(final min=0) = rising
       "Falling duration of trapezoid";
     parameter Real offset=0 "Offset of output signal";
 
@@ -820,7 +820,7 @@ signal <strong>u</strong> exceeds the <strong>reference</strong> signal plus hal
   protected
     discrete Real endValue "Value of y at time of recent edge";
     discrete Real rate "Current rising/falling rate";
-    discrete SI.Time T 
+    discrete SI.Time T
       "Predicted time of output reaching endValue";
   equation
     y = if time < T then endValue - (T - time)*rate else endValue;
@@ -830,30 +830,30 @@ signal <strong>u</strong> exceeds the <strong>reference</strong> signal plus hal
       rate = if u and (rising > 0) then amplitude/rising else if not u and (
         falling > 0) then -amplitude/falling else 0;
       T = if u and not (rising > 0) or not u and not (falling > 0) or not abs(
-        amplitude) > 0 or initial() then time else time + (endValue - pre(y))/ 
+        amplitude) > 0 or initial() then time else time + (endValue - pre(y))/
         rate;
     end when;
     annotation (
       Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-100,-100},{100,100}}),
           graphics={
-        Line(points={{-60,-70},{-60,-70},{-30,40},{8,40},{40,-70},{40,-70}}, 
-          color={0,0,127}), 
-        Line(points={{-90,-70},{82,-70}}, 
-          color={192,192,192}), 
-        Line(points={{-80,68},{-80,-80}}, 
-          color={192,192,192}), 
-        Polygon(lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          points={{90,-70},{68,-62},{68,-78},{90,-70}}), 
-        Polygon(lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          points={{-80,90},{-88,68},{-72,68},{-80,90}}), 
-        Line(points={{-80,-70},{-60,-70},{-60,24},{8,24},{8,-70},{60,-70}}, 
-          color={255,0,255})}), 
+        Line(points={{-60,-70},{-60,-70},{-30,40},{8,40},{40,-70},{40,-70}},
+          color={0,0,127}),
+        Line(points={{-90,-70},{82,-70}},
+          color={192,192,192}),
+        Line(points={{-80,68},{-80,-80}},
+          color={192,192,192}),
+        Polygon(lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          points={{90,-70},{68,-62},{68,-78},{90,-70}}),
+        Polygon(lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          points={{-80,90},{-88,68},{-72,68},{-80,90}}),
+        Line(points={{-80,-70},{-60,-70},{-60,24},{8,24},{8,-70},{60,-70}},
+          color={255,0,255})}),
       Documentation(info="<html>
 <p>The block TriggeredTrapezoid has a Boolean input and a real
 output signal and requires the parameters <em>amplitude</em>,
@@ -879,7 +879,7 @@ handled properly.</p>
 </html>"));
   end TriggeredTrapezoid;
 
-  block Timer 
+  block Timer
     "Timer measuring the time from the time instant where the Boolean input became true"
 
     extends Modelica.Blocks.Icons.PartialBooleanBlock;
@@ -899,25 +899,25 @@ handled properly.</p>
     y = if u then time - entryTime else 0.0;
     annotation (
       Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-100,-100},{100,100}}),
           graphics={
-        Line(points={{-90,-70},{82,-70}}, 
-          color={192,192,192}), 
-        Line(points={{-80,68},{-80,-80}}, 
-          color={192,192,192}), 
-        Polygon(lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          points={{90,-70},{68,-62},{68,-78},{90,-70}}), 
-        Polygon(lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          points={{-80,90},{-88,68},{-72,68},{-80,90}}), 
-        Line(points={{-80,-70},{-60,-70},{-60,-26},{38,-26},{38,-70},{66,-70}}, 
-          color={255,0,255}), 
-        Line(points={{-80,0},{-62,0},{40,90},{40,0},{68,0}}, 
-          color={0,0,127})}), 
+        Line(points={{-90,-70},{82,-70}},
+          color={192,192,192}),
+        Line(points={{-80,68},{-80,-80}},
+          color={192,192,192}),
+        Polygon(lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          points={{90,-70},{68,-62},{68,-78},{90,-70}}),
+        Polygon(lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          points={{-80,90},{-88,68},{-72,68},{-80,90}}),
+        Line(points={{-80,-70},{-60,-70},{-60,-26},{38,-26},{38,-70},{66,-70}},
+          color={255,0,255}),
+        Line(points={{-80,0},{-62,0},{40,90},{40,0},{68,0}},
+          color={0,0,127})}),
       Documentation(info="<html>
 <p>When the Boolean input <strong>u</strong> becomes <strong>true</strong>, the timer starts
 and the output <strong>y</strong> is the time that has elapsed since <strong>u</strong> became <strong>true</strong>.
@@ -959,31 +959,31 @@ When input <code>u</code> gets true, output <code>y1</code> gets immediately tru
 When input <code>u</code> gets false, output <code>y1</code> gets false after <code>delayTime</code>, whereas output <code>y2</code> gets immediately false.
 </p>
 </html>"), Icon(graphics={
-        Polygon(lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          points={{-80,90},{-88,68},{-72,68},{-80,90}}), 
-        Line(points={{-80,68},{-80,-80}}, 
-          color={192,192,192}), 
-        Line(points={{-90,-70},{82,-70}}, 
-          color={192,192,192}), 
-        Polygon(lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          points={{90,-70},{68,-62},{68,-78},{90,-70}}), 
-          Line(points={{-80,-10},{-60,-10},{-60,10},{40,10},{40,-10},{80,-10}}, 
-              color={255,0,255}), 
-          Line(points={{-80,50},{-60,50},{-60,70},{50,70},{50,50},{80,50}}, 
-              color={255,0,255}), 
-          Line(points={{-80,-70},{-50,-70},{-50,-50},{40,-50},{40,-70},{80,-70}}, 
-              color={255,0,255}), 
+        Polygon(lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          points={{-80,90},{-88,68},{-72,68},{-80,90}}),
+        Line(points={{-80,68},{-80,-80}},
+          color={192,192,192}),
+        Line(points={{-90,-70},{82,-70}},
+          color={192,192,192}),
+        Polygon(lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          points={{90,-70},{68,-62},{68,-78},{90,-70}}),
+          Line(points={{-80,-10},{-60,-10},{-60,10},{40,10},{40,-10},{80,-10}},
+              color={255,0,255}),
+          Line(points={{-80,50},{-60,50},{-60,70},{50,70},{50,50},{80,50}},
+              color={255,0,255}),
+          Line(points={{-80,-70},{-50,-70},{-50,-50},{40,-50},{40,-70},{80,-70}},
+              color={255,0,255}),
           Line(
-            points={{-60,70},{-60,-70}}, 
-            color={192,192,192}, 
-            pattern=LinePattern.Dot), 
+            points={{-60,70},{-60,-70}},
+            color={192,192,192},
+            pattern=LinePattern.Dot),
           Line(
-            points={{40,70},{40,-70}}, 
-            color={192,192,192}, 
+            points={{40,70},{40,-70}},
+            color={192,192,192},
             pattern=LinePattern.Dot)}));
   end LogicalDelay;
 
@@ -994,7 +994,7 @@ When input <code>u</code> gets false, output <code>y1</code> gets false after <c
           transformation(extent={{100,50},{120,70}})));
     Modelica.Blocks.Interfaces.BooleanOutput QI annotation (Placement(
           transformation(extent={{100,-70},{120,-50}})));
-    Modelica.Blocks.Logical.Nor nor annotation (Placement(transformation(extent= 
+    Modelica.Blocks.Logical.Nor nor annotation (Placement(transformation(extent=
              {{-20,20},{0,40}})));
     Modelica.Blocks.Logical.Nor nor1 annotation (Placement(transformation(
             extent={{-20,-20},{0,0}})));
@@ -1005,13 +1005,13 @@ When input <code>u</code> gets false, output <code>y1</code> gets false after <c
     Modelica.Blocks.Interfaces.BooleanInput R 
       annotation (Placement(transformation(extent={{-140,-80},{-100,-40}})));
   equation
-    connect(nor1.y, nor.u2) annotation (Line(points={{1,-10},{40,-10},{40,-40}, 
+    connect(nor1.y, nor.u2) annotation (Line(points={{1,-10},{40,-10},{40,-40},
             {-60,-40},{-60,22},{-22,22}}, color={255,0,255}));
-    connect(nor1.y, Q) annotation (Line(points={{1,-10},{60,-10},{60,60},{110, 
+    connect(nor1.y, Q) annotation (Line(points={{1,-10},{60,-10},{60,60},{110,
             60}}, color={255,0,255}));
     connect(nor.y, pre.u) 
       annotation (Line(points={{1,30},{8,30}}, color={255,0,255}));
-    connect(pre.y, nor1.u1) annotation (Line(points={{31,30},{40,30},{40,10},{-40, 
+    connect(pre.y, nor1.u1) annotation (Line(points={{31,30},{40,30},{40,10},{-40,
             10},{-40,-10},{-22,-10}}, color={255,0,255}));
     connect(pre.y, QI) annotation (Line(points={{31,30},{80,30},{80,-60},{110,-60}}, color={255,0,255}));
     connect(S, nor.u1) annotation (Line(
@@ -1021,37 +1021,37 @@ When input <code>u</code> gets false, output <code>y1</code> gets false after <c
   annotation (
     Icon(graphics={
         Text(
-          extent={{-60,-30},{-20,-90}}, 
-          textString="R"), 
+          extent={{-60,-30},{-20,-90}},
+          textString="R"),
         Text(
-          extent={{-62,90},{-22,30}}, 
-          textString="S"), 
+          extent={{-62,90},{-22,30}},
+          textString="S"),
         Text(
-          extent={{20,90},{60,30}}, 
-          textString="Q"), 
+          extent={{20,90},{60,30}},
+          textString="Q"),
         Text(
-          extent={{6,-30},{66,-90}}, 
-          textString="Q!"), 
+          extent={{6,-30},{66,-90}},
+          textString="Q!"),
         Ellipse(
-          extent={{-73,54},{-87,68}}, 
-          lineColor=DynamicSelect({235,235,235}, if S then {0,255,0} else {235,235,235}), 
-          fillColor=DynamicSelect({235,235,235}, if S then {0,255,0} else {235,235,235}), 
-          fillPattern=FillPattern.Solid), 
+          extent={{-73,54},{-87,68}},
+          lineColor=DynamicSelect({235,235,235}, if S then {0,255,0} else {235,235,235}),
+          fillColor=DynamicSelect({235,235,235}, if S then {0,255,0} else {235,235,235}),
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{83,-53},{69,-67}}, 
-          lineColor=DynamicSelect({235,235,235}, if QI then {0,255,0} else {235,235,235}), 
-          fillColor=DynamicSelect({235,235,235}, if QI then {0,255,0} else {235,235,235}), 
-          fillPattern=FillPattern.Solid), 
+          extent={{83,-53},{69,-67}},
+          lineColor=DynamicSelect({235,235,235}, if QI then {0,255,0} else {235,235,235}),
+          fillColor=DynamicSelect({235,235,235}, if QI then {0,255,0} else {235,235,235}),
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-71,-52},{-85,-66}}, 
-          lineColor=DynamicSelect({235,235,235}, if R then {0,255,0} else {235,235,235}), 
-          fillColor=DynamicSelect({235,235,235}, if R then {0,255,0} else {235,235,235}), 
-          fillPattern=FillPattern.Solid), 
+          extent={{-71,-52},{-85,-66}},
+          lineColor=DynamicSelect({235,235,235}, if R then {0,255,0} else {235,235,235}),
+          fillColor=DynamicSelect({235,235,235}, if R then {0,255,0} else {235,235,235}),
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{71,67},{85,53}}, 
-          lineColor=DynamicSelect({235,235,235}, if Q then {0,255,0} else {235,235,235}), 
-          fillColor=DynamicSelect({235,235,235}, if Q then {0,255,0} else {235,235,235}), 
-          fillPattern=FillPattern.Solid)}), 
+          extent={{71,67},{85,53}},
+          lineColor=DynamicSelect({235,235,235}, if Q then {0,255,0} else {235,235,235}),
+          fillColor=DynamicSelect({235,235,235}, if Q then {0,255,0} else {235,235,235}),
+          fillPattern=FillPattern.Solid)}),
       Documentation(info="<html>
 <p>
 The output <code>Q</code> is set by the input <code>S</code>, is reset by the input <code>R</code>, and keeps its value in between. <code>QI</code> is the inverse of <code>Q</code>.
@@ -1061,10 +1061,10 @@ The output <code>Q</code> is set by the input <code>S</code>, is reset by the in
 
   block TerminateSimulation "Terminate simulation if condition is fulfilled"
 
-    Modelica.Blocks.Interfaces.BooleanOutput condition=false 
-      "Terminate simulation when condition becomes true" annotation (Dialog, 
+    Modelica.Blocks.Interfaces.BooleanOutput condition=false
+      "Terminate simulation when condition becomes true" annotation (Dialog,
         Placement(transformation(extent={{200,-10},{220,10}})));
-    parameter String terminationText="... End condition reached" 
+    parameter String terminationText="... End condition reached"
       "Text that will be displayed when simulation is terminated";
 
   equation
@@ -1072,23 +1072,23 @@ The output <code>Q</code> is set by the input <code>S</code>, is reset by the in
       terminate(terminationText);
     end when;
     annotation (Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-200,-20},{200,20}}, 
-          initialScale=0.2), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-200,-20},{200,20}},
+          initialScale=0.2),
           graphics={
-        Rectangle(fillColor={235,235,235}, 
-          fillPattern=FillPattern.Solid, 
-          lineThickness=5, 
-          borderPattern=BorderPattern.Raised, 
-          extent={{-200,-20},{200,20}}), 
-        Text(extent={{-166,-15},{194,15}}, 
-          textString="%condition"), 
-        Rectangle(fillColor={161,35,41}, 
-          fillPattern=FillPattern.Solid, 
-          borderPattern=BorderPattern.Raised, 
-          extent={{-194,-14},{-168,14}}), 
-        Text(textColor={0,0,255}, 
-          extent={{-200,22},{200,46}}, 
+        Rectangle(fillColor={235,235,235},
+          fillPattern=FillPattern.Solid,
+          lineThickness=5,
+          borderPattern=BorderPattern.Raised,
+          extent={{-200,-20},{200,20}}),
+        Text(extent={{-166,-15},{194,15}},
+          textString="%condition"),
+        Rectangle(fillColor={161,35,41},
+          fillPattern=FillPattern.Solid,
+          borderPattern=BorderPattern.Raised,
+          extent={{-194,-14},{-168,14}}),
+        Text(textColor={0,0,255},
+          extent={{-200,22},{200,46}},
           textString="%name")}), Documentation(info="<html>
 <p>
 In the parameter menu, a <strong>time varying</strong> expression can be defined
@@ -1122,6 +1122,6 @@ value <strong>false</strong> and \"green\" color means value <strong>true</stron
 values are visualized in a diagram animation.
 </p>
 </html>"), Icon(graphics={Line(
-          points={{-86,-22},{-50,-22},{-50,22},{48,22},{48,-22},{88,-24}}, 
+          points={{-86,-22},{-50,-22},{-50,22},{48,22},{48,-22},{88,-24}},
           color={255,0,255})}));
 end Logical;

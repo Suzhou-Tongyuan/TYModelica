@@ -1,12 +1,12 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.Force;
-model LeakageAroundPoles 
+model LeakageAroundPoles
   "Leakage flux tube around cylindrical or prismatic poles"
 
   extends BaseClasses.Force;
   SI.Length l=s "Axial length (in direction of flux)" annotation (Dialog(
-        group="Variable geometry", groupImage= 
+        group="Variable geometry", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/LeakageAroundPoles.png"));
-  parameter SI.Length w=0.1 
+  parameter SI.Length w=0.1
     "Width orthogonal to flux; mean circumference of flux tube in case of cylindrical poles";
   parameter SI.Radius r=0.01 "Radius of leakage field";
 

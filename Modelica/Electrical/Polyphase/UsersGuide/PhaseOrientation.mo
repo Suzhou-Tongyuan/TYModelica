@@ -1,8 +1,8 @@
 ﻿within Modelica.Electrical.Polyphase.UsersGuide;
 class PhaseOrientation "Orientation of phases"
   extends Modelica.Icons.Information;
-  annotation (preferredView="info", 
-    DocumentationClass=true, 
+  annotation (preferredView="info",
+    DocumentationClass=true,
     Documentation(info="<html>
 <p>
 <strong>In polyphase systems, the angular displacement of voltages and currents of the phases as well as the spatial displacement of machine windings have to follow the same rules, i.e., they are based on the same

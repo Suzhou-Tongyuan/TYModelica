@@ -1,11 +1,11 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.Leakage;
-model EighthOfHollowSphere 
+model EighthOfHollowSphere
   "Leakage flux through one edge and the opposite plane of an eighth of a hollow sphere"
 
   extends BaseClasses.Leakage;
 
   parameter SI.Length t(start=0.01) "Thickness of spherical shell" 
-    annotation (Dialog(group="Parameters", groupImage= 
+    annotation (Dialog(group="Parameters", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/Leakage/EighthOfHollowSphere.png"));
 
 equation

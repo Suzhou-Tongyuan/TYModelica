@@ -1,5 +1,5 @@
 ﻿within Modelica.Fluid;
-package Fittings 
+package Fittings
   "Adaptors for connections of fluid components and the regulation of fluid flow"
   package Bends "Flow models for bends"
     extends Modelica.Icons.VariantsPackage;
@@ -7,18 +7,18 @@ package Fittings
       extends Modelica.Fluid.Dissipation.Utilities.Icons.PressureLoss.Bend_i;
       extends Modelica.Fluid.Interfaces.PartialPressureLoss;
 
-      parameter Modelica.Fluid.Fittings.BaseClasses.Bends.CurvedBend.Geometry geometry 
+      parameter Modelica.Fluid.Fittings.BaseClasses.Bends.CurvedBend.Geometry geometry
         "Geometry of curved bend" 
           annotation (Placement(transformation(extent={{-20,0},{0,20}})));
 
     protected
-      parameter Medium.AbsolutePressure dp_small(min=0)= 
+      parameter Medium.AbsolutePressure dp_small(min=0)=
                  Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_DP(
-                    geometry, 
+                    geometry,
                     Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_IN_var(
-                      rho=Medium.density(state_dp_small), 
-                      eta=Medium.dynamicViscosity(state_dp_small)), 
-                    m_flow_small) 
+                      rho=Medium.density(state_dp_small),
+                      eta=Medium.dynamicViscosity(state_dp_small)),
+                    m_flow_small)
         "Default small pressure drop for regularization of laminar and zero flow (calculated from m_flow_small)";
 
     equation
@@ -27,7 +27,7 @@ package Fittings
                     dp, geometry, d_a, d_b, eta_a, eta_b, dp_small, m_flow_small);
       else
          m_flow = Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_MFLOW(
-                    geometry, 
+                    geometry,
                     Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_IN_var(rho=d_a, eta=eta_a), dp);
       end if;
 
@@ -50,21 +50,21 @@ The details of the model are described in the
       extends Modelica.Fluid.Dissipation.Utilities.Icons.PressureLoss.Bend_i;
       extends Modelica.Fluid.Interfaces.PartialPressureLoss;
 
-      parameter Modelica.Fluid.Fittings.BaseClasses.Bends.EdgedBend.Geometry geometry 
+      parameter Modelica.Fluid.Fittings.BaseClasses.Bends.EdgedBend.Geometry geometry
         "Geometry of curved bend" 
           annotation (Placement(transformation(extent={{-20,0},{0,20}})));
 
     protected
-      parameter Medium.AbsolutePressure dp_small(min=0)= 
+      parameter Medium.AbsolutePressure dp_small(min=0)=
                  Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_DP(
                    Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_con(
-                       d_hyd=geometry.d_hyd, 
-                       delta=geometry.delta, 
-                       K=geometry.K), 
+                       d_hyd=geometry.d_hyd,
+                       delta=geometry.delta,
+                       K=geometry.K),
                     Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_var(
-                      rho=Medium.density(state_dp_small), 
-                      eta=Medium.dynamicViscosity(state_dp_small)), 
-                    m_flow_small) 
+                      rho=Medium.density(state_dp_small),
+                      eta=Medium.dynamicViscosity(state_dp_small)),
+                    m_flow_small)
         "Default small pressure drop for regularization of laminar and zero flow (calculated from m_flow_small)";
 
     equation
@@ -74,9 +74,9 @@ The details of the model are described in the
       else
          m_flow = Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_MFLOW(
                    Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_con(
-                       d_hyd=geometry.d_hyd, 
-                       delta=geometry.delta, 
-                       K=geometry.K), 
+                       d_hyd=geometry.d_hyd,
+                       delta=geometry.delta,
+                       K=geometry.K),
                     Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_var(rho=d_a, eta=eta_a), dp);
       end if;
 
@@ -105,28 +105,28 @@ The details of the model are described in the
       extends Modelica.Fluid.Interfaces.PartialPressureLoss;
 
       parameter
-        Modelica.Fluid.Fittings.BaseClasses.Orifices.ThickEdgedOrifice.Geometry geometry 
+        Modelica.Fluid.Fittings.BaseClasses.Orifices.ThickEdgedOrifice.Geometry geometry
         "Geometry of thick edged orifice" 
-          annotation (Placement(transformation(extent={{-20,0},{0,20}})), 
+          annotation (Placement(transformation(extent={{-20,0},{0,20}})),
           choices(
-          choice=Modelica.Fluid.Fittings.BaseClasses.Orifices.ThickEdgedOrifice.Choices.circular(), 
-          choice=Modelica.Fluid.Fittings.BaseClasses.Orifices.ThickEdgedOrifice.Choices.rectangular(), 
+          choice=Modelica.Fluid.Fittings.BaseClasses.Orifices.ThickEdgedOrifice.Choices.circular(),
+          choice=Modelica.Fluid.Fittings.BaseClasses.Orifices.ThickEdgedOrifice.Choices.rectangular(),
           choice=Modelica.Fluid.Fittings.BaseClasses.Orifices.ThickEdgedOrifice.Choices.general()));
 
     protected
-      parameter Medium.AbsolutePressure dp_small(min=0)= 
+      parameter Medium.AbsolutePressure dp_small(min=0)=
                  Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_DP(
                  Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_con(
-                       A_0=geometry.venaCrossArea, 
-                       A_1=geometry.crossArea, 
-                       C_0=geometry.venaPerimeter, 
-                       C_1=geometry.perimeter, 
-                       L=geometry.venaLength, 
-                       dp_smooth=1e-10), 
+                       A_0=geometry.venaCrossArea,
+                       A_1=geometry.crossArea,
+                       C_0=geometry.venaPerimeter,
+                       C_1=geometry.perimeter,
+                       L=geometry.venaLength,
+                       dp_smooth=1e-10),
                     Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_var(
-                      rho=Medium.density(state_dp_small), 
-                      eta=Medium.dynamicViscosity(state_dp_small)), 
-                    m_flow_small) 
+                      rho=Medium.density(state_dp_small),
+                      eta=Medium.dynamicViscosity(state_dp_small)),
+                    m_flow_small)
         "Default small pressure drop for regularization of laminar and zero flow (calculated from m_flow_small)";
     equation
       if allowFlowReversal then
@@ -135,12 +135,12 @@ The details of the model are described in the
       else
          m_flow = Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_MFLOW(
                      Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_con(
-                       A_0=geometry.venaCrossArea, 
-                       A_1=geometry.crossArea, 
-                       C_0=geometry.venaPerimeter, 
-                       C_1=geometry.perimeter, 
-                       L=geometry.venaLength, 
-                       dp_smooth=dp_small), 
+                       A_0=geometry.venaCrossArea,
+                       A_1=geometry.crossArea,
+                       C_0=geometry.venaPerimeter,
+                       C_1=geometry.perimeter,
+                       L=geometry.venaLength,
+                       dp_smooth=dp_small),
                     Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_var(rho=d_a, eta=eta_a), dp);
       end if;
 
@@ -165,7 +165,7 @@ The details of the model are described in the
   package GenericResistances "Flow models for generic resistances"
   extends Modelica.Icons.VariantsPackage;
 
-    model VolumeFlowRate 
+    model VolumeFlowRate
       "Flow model for generic resistance parameterized with the volume flow rate"
 
       extends Modelica.Fluid.Dissipation.Utilities.Icons.PressureLoss.General_i;
@@ -178,23 +178,23 @@ The details of the model are described in the
 
     protected
       parameter Medium.ThermodynamicState state_dp_small=Medium.setState_pTX(
-                           Medium.reference_p, 
-                           Medium.reference_T, 
-                           Medium.reference_X) 
+                           Medium.reference_p,
+                           Medium.reference_T,
+                           Medium.reference_X)
         "Medium state to compute dp_small";
-      parameter Medium.AbsolutePressure dp_small(min=0)= 
+      parameter Medium.AbsolutePressure dp_small(min=0)=
                  Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_DP(
                    Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_IN_con(
-                       a=a, 
-                       b=b, 
-                       dp_min=1e-10), 
+                       a=a,
+                       b=b,
+                       dp_min=1e-10),
                     Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_IN_var(
-                      rho=Medium.density(state_dp_small)), 
-                    m_flow_small) 
+                      rho=Medium.density(state_dp_small)),
+                    m_flow_small)
         "Default small pressure drop for regularization of laminar and zero flow (calculated from m_flow_small)";
-      Medium.Density d_a 
+      Medium.Density d_a
         "Density at port_a when fluid is flowing from port_a to port_b";
-      Medium.Density d_b 
+      Medium.Density d_b
         "If allowFlowReversal=true then density at port_b when fluid is flowing from port_b to port_a else d_a";
 
     equation
@@ -216,9 +216,9 @@ The details of the model are described in the
       else
          m_flow = Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_MFLOW(
                    Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_IN_con(
-                       a=a, 
-                       b=b, 
-                       dp_min=dp_small), 
+                       a=a,
+                       b=b,
+                       dp_min=dp_small),
                     Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_IN_var(rho=d_a), dp);
       end if;
 
@@ -273,44 +273,44 @@ such approximations.
 
      extends Modelica.Icons.VariantsPackage;
 
-model SimpleGenericOrifice 
+model SimpleGenericOrifice
     "Simple generic orifice defined by pressure loss coefficient and diameter (only for flow from port_a to port_b)"
 
   extends Modelica.Fluid.Interfaces.PartialTwoPortTransport(
-    dp_start = dp_nominal, 
-    m_flow_small = if system.use_eps_Re then system.eps_m_flow*m_flow_nominal else system.m_flow_small, 
+    dp_start = dp_nominal,
+    m_flow_small = if system.use_eps_Re then system.eps_m_flow*m_flow_nominal else system.m_flow_small,
     m_flow(stateSelect = if momentumDynamics == Types.Dynamics.SteadyState then StateSelect.default 
                          else StateSelect.prefer));
 
   extends Modelica.Fluid.Interfaces.PartialLumpedFlow(
-    final pathLength = 0, 
+    final pathLength = 0,
     final momentumDynamics = Types.Dynamics.SteadyState);
 
   parameter SI.Diameter diameter "Diameter of orifice";
   parameter Real zeta "Loss factor for flow of port_a -> port_b" 
     annotation(Dialog(enable=use_zeta));
-  parameter Boolean use_zeta = true 
+  parameter Boolean use_zeta = true
       "= false to obtain zeta from dp_nominal and m_flow_nominal";
 
   // Operational conditions
-  parameter SI.MassFlowRate m_flow_nominal = if system.use_eps_Re then system.m_flow_nominal else 1e2*system.m_flow_small 
+  parameter SI.MassFlowRate m_flow_nominal = if system.use_eps_Re then system.m_flow_nominal else 1e2*system.m_flow_small
       "Mass flow rate for dp_nominal" 
     annotation(Dialog(group="Nominal operating point"));
   parameter SI.Pressure dp_nominal = if not system.use_eps_Re then 1e3 else 
-   BaseClasses.lossConstant_D_zeta(diameter, zeta)/Medium.density_pTX(Medium.p_default, Medium.T_default, Medium.X_default)*m_flow_nominal^2 
+   BaseClasses.lossConstant_D_zeta(diameter, zeta)/Medium.density_pTX(Medium.p_default, Medium.T_default, Medium.X_default)*m_flow_nominal^2
       "Nominal pressure drop" 
     annotation(Dialog(group="Nominal operating point"));
 
-  parameter Boolean use_Re = system.use_eps_Re 
+  parameter Boolean use_Re = system.use_eps_Re
       "= true, if turbulent region is defined by Re, otherwise by m_flow_small" 
     annotation(Dialog(tab="Advanced"), Evaluate=true);
 
-  parameter Boolean from_dp = true 
+  parameter Boolean from_dp = true
       "= true, use m_flow = f(dp) else dp = f(m_flow)" 
     annotation (Evaluate=true, Dialog(tab="Advanced"));
 
   protected
-  parameter Medium.AbsolutePressure dp_small(min=0) = if system.use_eps_Re then dp_nominal/m_flow_nominal*m_flow_small else system.dp_small 
+  parameter Medium.AbsolutePressure dp_small(min=0) = if system.use_eps_Re then dp_nominal/m_flow_nominal*m_flow_small else system.dp_small
       "Regularization of zero flow if |dp| < dp_small" 
     annotation(Dialog(tab="Advanced", enable=not use_Re and from_dp));
 
@@ -318,14 +318,14 @@ model SimpleGenericOrifice
   public
   Real zeta_nominal;
   Medium.Density d = 0.5*(Medium.density(state_a) + Medium.density(state_b));
-  SI.Pressure dp_fg(start=dp_start) 
+  SI.Pressure dp_fg(start=dp_start)
       "Pressure loss due to friction and gravity";
-  SI.Area A_mean = Modelica.Constants.pi/4*diameter^2 
+  SI.Area A_mean = Modelica.Constants.pi/4*diameter^2
       "Mean cross flow area";
 
   constant SI.ReynoldsNumber Re_turbulent = 10000 "cf. sharpEdgedOrifice";
   SI.MassFlowRate m_flow_turbulent=if not use_Re then m_flow_small else 
-    max(m_flow_small, 
+    max(m_flow_small,
         (Modelica.Constants.pi/8)*diameter*(Medium.dynamicViscosity(state_a) + Medium.dynamicViscosity(state_b))*Re_turbulent);
   SI.AbsolutePressure dp_turbulent=if not use_Re then dp_small else 
     max(dp_small, BaseClasses.lossConstant_D_zeta(diameter, zeta_nominal)/d*m_flow_turbulent^2);
@@ -351,17 +351,17 @@ equation
   */
   if from_dp then
     m_flow = homotopy(Utilities.regRoot2(
-                         dp_fg, 
-                         dp_turbulent, 
-                         Medium.density(state_a)/BaseClasses.lossConstant_D_zeta(diameter, zeta_nominal), 
-                         Medium.density(state_b)/BaseClasses.lossConstant_D_zeta(diameter, zeta_nominal)), 
+                         dp_fg,
+                         dp_turbulent,
+                         Medium.density(state_a)/BaseClasses.lossConstant_D_zeta(diameter, zeta_nominal),
+                         Medium.density(state_b)/BaseClasses.lossConstant_D_zeta(diameter, zeta_nominal)),
                        m_flow_nominal*dp_fg/dp_nominal);
   else
     dp_fg = homotopy(Utilities.regSquare2(
-                         m_flow, 
-                         m_flow_turbulent, 
-                         BaseClasses.lossConstant_D_zeta(diameter, zeta_nominal)/Medium.density(state_a), 
-                         BaseClasses.lossConstant_D_zeta(diameter, zeta_nominal)/Medium.density(state_b)), 
+                         m_flow,
+                         m_flow_turbulent,
+                         BaseClasses.lossConstant_D_zeta(diameter, zeta_nominal)/Medium.density(state_a),
+                         BaseClasses.lossConstant_D_zeta(diameter, zeta_nominal)/Medium.density(state_b)),
                      dp_nominal*m_flow/m_flow_nominal);
   end if;
 
@@ -369,18 +369,18 @@ equation
   port_a.h_outflow = inStream(port_b.h_outflow);
   port_b.h_outflow = inStream(port_a.h_outflow);
 
-  annotation (defaultComponentName="orifice", 
+  annotation (defaultComponentName="orifice",
     Icon(coordinateSystem(
-          preserveAspectRatio=false, 
+          preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
           Line(
-            points={{-60,-50},{-60,50},{60,-50},{60,50}}, 
-            thickness=0.5), 
-          Line(points={{-60,0},{-100,0}}, color={0,127,255}), 
-          Line(points={{60,0},{100,0}}, color={0,127,255}), 
+            points={{-60,-50},{-60,50},{60,-50},{60,50}},
+            thickness=0.5),
+          Line(points={{-60,0},{-100,0}}, color={0,127,255}),
+          Line(points={{60,0},{100,0}}, color={0,127,255}),
           Text(
-            extent={{-173,104},{175,62}}, 
-            textString="zeta=%zeta")}), 
+            extent={{-173,104},{175,62}},
+            textString="zeta=%zeta")}),
     Documentation(info="<html>
 <p>
 This pressure drop component defines a
@@ -422,89 +422,89 @@ can appear, this component should not be used.
 </html>"));
 end SimpleGenericOrifice;
 
-model SharpEdgedOrifice 
+model SharpEdgedOrifice
     "Pressure drop due to sharp edged orifice (for both flow directions)"
     import Modelica.Units.NonSI;
-  extends BaseClasses.QuadraticTurbulent.BaseModel(final data= 
+  extends BaseClasses.QuadraticTurbulent.BaseModel(final data=
           BaseClasses.QuadraticTurbulent.LossFactorData.sharpEdgedOrifice(
-          diameter, 
-          leastDiameter, 
-          length, 
+          diameter,
+          leastDiameter,
+          length,
           alpha));
   parameter SI.Length length "Length of orifice";
-  parameter SI.Diameter diameter 
+  parameter SI.Diameter diameter
       "Inner diameter of pipe (= same at port_a and port_b)";
   parameter SI.Diameter leastDiameter "Smallest diameter of orifice";
   parameter NonSI.Angle_deg alpha "Angle of orifice";
-  annotation (defaultComponentName="orifice", 
+  annotation (defaultComponentName="orifice",
     Documentation(info="<html>
-</html>"), 
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100, 
+</html>"),
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
               100}}), graphics={
           Rectangle(
-            extent={{-100,44},{100,-44}}, 
-            fillPattern=FillPattern.HorizontalCylinder, 
-            fillColor={0,127,255}), 
+            extent={{-100,44},{100,-44}},
+            fillPattern=FillPattern.HorizontalCylinder,
+            fillColor={0,127,255}),
           Polygon(
-            points={{-25,44},{-25,7},{35,37},{35,44},{-25,44}}, 
-            fillPattern=FillPattern.Backward, 
-            fillColor={175,175,175}), 
+            points={{-25,44},{-25,7},{35,37},{35,44},{-25,44}},
+            fillPattern=FillPattern.Backward,
+            fillColor={175,175,175}),
           Polygon(
-            points={{-25,-7},{-25,-44},{35,-44},{35,-36},{-25,-7}}, 
-            fillColor={175,175,175}, 
-            fillPattern=FillPattern.Backward)}), 
+            points={{-25,-7},{-25,-44},{35,-44},{35,-36},{-25,-7}},
+            fillColor={175,175,175},
+            fillPattern=FillPattern.Backward)}),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
               100,100}}), graphics={
           Rectangle(
-            extent={{-100,60},{100,-60}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-100,60},{100,-60}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-30,60},{-30,12},{30,50},{30,60},{-30,60}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Backward), 
+            points={{-30,60},{-30,12},{30,50},{30,60},{-30,60}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Backward),
           Polygon(
-            points={{-30,-10},{-30,-60},{30,-60},{30,-50},{-30,-10}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Backward), 
+            points={{-30,-10},{-30,-60},{30,-60},{30,-50},{-30,-10}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Backward),
           Line(
-            points={{-82,-60},{-82,60}}, 
-            color={0,0,255}, 
-            arrow={Arrow.Filled,Arrow.Filled}), 
+            points={{-82,-60},{-82,60}},
+            color={0,0,255},
+            arrow={Arrow.Filled,Arrow.Filled}),
           Text(
-            extent={{-78,16},{-44,-8}}, 
-            textColor={0,0,255}, 
-            textString="diameter"), 
+            extent={{-78,16},{-44,-8}},
+            textColor={0,0,255},
+            textString="diameter"),
           Line(
-            points={{-30,-10},{-30,12}}, 
-            color={0,0,255}, 
-            arrow={Arrow.Filled,Arrow.Filled}), 
+            points={{-30,-10},{-30,12}},
+            color={0,0,255},
+            arrow={Arrow.Filled,Arrow.Filled}),
           Text(
-            extent={{-24,14},{8,-10}}, 
-            textColor={0,0,255}, 
-            textString="leastDiameter"), 
+            extent={{-24,14},{8,-10}},
+            textColor={0,0,255},
+            textString="leastDiameter"),
           Text(
-            extent={{-20,84},{18,70}}, 
-            textColor={0,0,255}, 
-            textString="length"), 
+            extent={{-20,84},{18,70}},
+            textColor={0,0,255},
+            textString="length"),
           Line(
-            points={{30,68},{-30,68}}, 
-            color={0,0,255}, 
-            arrow={Arrow.Filled,Arrow.Filled}), 
+            points={{30,68},{-30,68}},
+            color={0,0,255},
+            arrow={Arrow.Filled,Arrow.Filled}),
           Line(
-            points={{16,40},{32,18},{36,-2},{34,-20},{20,-42}}, 
-            color={0,0,255}, 
-            arrow={Arrow.Filled,Arrow.Filled}), 
+            points={{16,40},{32,18},{36,-2},{34,-20},{20,-42}},
+            color={0,0,255},
+            arrow={Arrow.Filled,Arrow.Filled}),
           Text(
-            extent={{38,8},{92,-6}}, 
-            textColor={0,0,255}, 
+            extent={{38,8},{92,-6}},
+            textColor={0,0,255},
             textString="alpha")}));
 
 end SharpEdgedOrifice;
 
-model AbruptAdaptor 
+model AbruptAdaptor
     "Pressure drop in pipe due to suddenly expanding or reducing area (for both flow directions)"
-  extends BaseClasses.QuadraticTurbulent.BaseModelNonconstantCrossSectionArea(final data= 
+  extends BaseClasses.QuadraticTurbulent.BaseModelNonconstantCrossSectionArea(final data=
           BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(
           diameter_a, diameter_b));
   parameter SI.Diameter diameter_a "Inner diameter of pipe at port_a";
@@ -513,54 +513,54 @@ model AbruptAdaptor
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
               100,100}}), graphics={
-          Line(points={{0,40},{-100,40},{-100,-40},{0,-40},{0,-100},{100,-100}, 
-                {100,100},{0,100},{0,40}}), 
+          Line(points={{0,40},{-100,40},{-100,-40},{0,-40},{0,-100},{100,-100},
+                {100,100},{0,100},{0,40}}),
           Rectangle(
-            extent={{-100,40},{0,-40}}, 
-            lineColor={255,255,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-100,40},{0,-40}},
+            lineColor={255,255,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{0,100},{100,-100}}, 
-            lineColor={255,255,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{0,40},{-100,40},{-100,-40},{0,-40},{0,-100},{100,-100}, 
-                {100,100},{0,100},{0,40}}), 
+            extent={{0,100},{100,-100}},
+            lineColor={255,255,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Line(points={{0,40},{-100,40},{-100,-40},{0,-40},{0,-100},{100,-100},
+                {100,100},{0,100},{0,40}}),
           Line(
-            points={{-60,-40},{-60,40}}, 
-            color={0,0,255}, 
-            arrow={Arrow.Filled,Arrow.Filled}), 
+            points={{-60,-40},{-60,40}},
+            color={0,0,255},
+            arrow={Arrow.Filled,Arrow.Filled}),
           Text(
-            extent={{-50,16},{-26,-10}}, 
-            textColor={0,0,255}, 
-            textString="diameter_a"), 
+            extent={{-50,16},{-26,-10}},
+            textColor={0,0,255},
+            textString="diameter_a"),
           Line(
-            points={{34,-100},{34,100}}, 
-            color={0,0,255}, 
-            arrow={Arrow.Filled,Arrow.Filled}), 
+            points={{34,-100},{34,100}},
+            color={0,0,255},
+            arrow={Arrow.Filled,Arrow.Filled}),
           Text(
-            extent={{54,16},{78,-10}}, 
-            textColor={0,0,255}, 
-            textString="diameter_b")}), 
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100, 
+            extent={{54,16},{78,-10}},
+            textColor={0,0,255},
+            textString="diameter_b")}),
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
               100}}), graphics={Rectangle(
-            extent=DynamicSelect({{-100,22},{0,-22}}, {{-100,max(0.1, min(1, 
-                diameter_a/max(diameter_a, diameter_b)))*60},{0,-max(0.1, min(1, 
-                diameter_a/max(diameter_a, diameter_b)))*60}}), 
-            fillPattern=FillPattern.HorizontalCylinder, 
+            extent=DynamicSelect({{-100,22},{0,-22}}, {{-100,max(0.1, min(1,
+                diameter_a/max(diameter_a, diameter_b)))*60},{0,-max(0.1, min(1,
+                diameter_a/max(diameter_a, diameter_b)))*60}}),
+            fillPattern=FillPattern.HorizontalCylinder,
             fillColor={0,127,255}), Rectangle(
-            extent=DynamicSelect({{0,60},{100,-60}}, {{0,max(0.1, min(1, 
+            extent=DynamicSelect({{0,60},{100,-60}}, {{0,max(0.1, min(1,
                 diameter_b/max(diameter_a, diameter_b)))*60},{100,-max(0.1, min(
-                1, diameter_b/max(diameter_a, diameter_b)))*60}}), 
-            fillPattern=FillPattern.HorizontalCylinder, 
-            fillColor={0,127,255})}), 
+                1, diameter_b/max(diameter_a, diameter_b)))*60}}),
+            fillPattern=FillPattern.HorizontalCylinder,
+            fillColor={0,127,255})}),
       Documentation(info="<html>
 
 </html>"));
 end AbruptAdaptor;
 
-  model MultiPort 
+  model MultiPort
     "Multiply a port; useful if multiple connections shall be made to a port exposing a state"
 
     function positiveMax
@@ -576,7 +576,7 @@ end AbruptAdaptor;
     replaceable package Medium=Modelica.Media.Interfaces.PartialMedium annotation(choicesAllMatching);
 
     // Ports
-    parameter Integer nPorts_b=0 
+    parameter Integer nPorts_b=0
       "Number of outlet ports (mass is distributed evenly between the outlet ports" 
       annotation(Dialog(connectorSizing=true));
 
@@ -587,9 +587,9 @@ end AbruptAdaptor;
       redeclare each package Medium=Medium) 
       annotation (Placement(transformation(extent={{30,40},{50,-40}})));
 
-    Medium.MassFraction ports_b_Xi_inStream[nPorts_b,Medium.nXi] 
+    Medium.MassFraction ports_b_Xi_inStream[nPorts_b,Medium.nXi]
       "inStream mass fractions at ports_b";
-    Medium.ExtraProperty ports_b_C_inStream[nPorts_b,Medium.nC] 
+    Medium.ExtraProperty ports_b_C_inStream[nPorts_b,Medium.nC]
       "inStream extra properties at ports_b";
 
   equation
@@ -608,7 +608,7 @@ of the modeller. Increase nPorts_b to add an additional port.
     ports_b.p = fill(port_a.p, nPorts_b);
 
     // mixing at port_a
-    port_a.h_outflow = sum({positiveMax(ports_b[j].m_flow)*inStream(ports_b[j].h_outflow) for j in 1:nPorts_b}) 
+    port_a.h_outflow = sum({positiveMax(ports_b[j].m_flow)*inStream(ports_b[j].h_outflow) for j in 1:nPorts_b})
                          / sum({positiveMax(ports_b[j].m_flow) for j in 1:nPorts_b});
     for j in 1:nPorts_b loop
        // expose stream values from port_a to ports_b
@@ -620,31 +620,31 @@ of the modeller. Increase nPorts_b to add an additional port.
        ports_b_C_inStream[j,:] = inStream(ports_b[j].C_outflow);
     end for;
     for i in 1:Medium.nXi loop
-      port_a.Xi_outflow[i] = (positiveMax(ports_b.m_flow)*ports_b_Xi_inStream[:,i]) 
+      port_a.Xi_outflow[i] = (positiveMax(ports_b.m_flow)*ports_b_Xi_inStream[:,i])
                            / sum(positiveMax(ports_b.m_flow));
     end for;
     for i in 1:Medium.nC loop
-      port_a.C_outflow[i] = (positiveMax(ports_b.m_flow)*ports_b_C_inStream[:,i]) 
+      port_a.C_outflow[i] = (positiveMax(ports_b.m_flow)*ports_b_C_inStream[:,i])
                            / sum(positiveMax(ports_b.m_flow));
     end for;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-40, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-40,
               -100},{40,100}}), graphics={
           Line(
-            points={{-40,0},{40,0}}, 
-            color={0,128,255}, 
-            thickness=1), 
+            points={{-40,0},{40,0}},
+            color={0,128,255},
+            thickness=1),
           Line(
-            points={{-40,0},{40,26}}, 
-            color={0,128,255}, 
-            thickness=1), 
+            points={{-40,0},{40,26}},
+            color={0,128,255},
+            thickness=1),
           Line(
-            points={{-40,0},{40,-26}}, 
-            color={0,128,255}, 
-            thickness=1), 
+            points={{-40,0},{40,-26}},
+            color={0,128,255},
+            thickness=1),
           Text(
-            extent={{-150,100},{150,60}}, 
-            textColor={0,0,255}, 
-            textString="%name")}), 
+            extent={{-150,100},{150,60}},
+            textColor={0,0,255},
+            textString="%name")}),
                             Documentation(info="<html>
 <p>
 This model is useful if multiple connections shall be made to a port of a volume model exposing a state,
@@ -658,7 +658,7 @@ then ideal mixing would take place in the connection set, outside the volume. Th
 </html>"));
   end MultiPort;
 
-  model TeeJunctionIdeal 
+  model TeeJunctionIdeal
     "Splitting/joining component with static balances for an infinitesimal control volume"
     extends Modelica.Fluid.Fittings.BaseClasses.PartialTeeJunction;
 
@@ -679,7 +679,7 @@ then ideal mixing would take place in the connection set, outside the volume. Th
   might not be equal to the specific enthalpy at the port in the \"real world\".</html>"));
   end TeeJunctionIdeal;
 
-  model TeeJunctionVolume 
+  model TeeJunctionVolume
     "Splitting/joining component with static balances for a dynamic control volume"
     extends Modelica.Fluid.Fittings.BaseClasses.PartialTeeJunction;
     extends Modelica.Fluid.Interfaces.PartialLumpedVolume(
@@ -723,14 +723,14 @@ of the modeller.
 
     // Mass balances
     mb_flow = port_1.m_flow + port_2.m_flow + port_3.m_flow "Mass balance";
-    mbXi_flow = port_1.m_flow*actualStream(port_1.Xi_outflow) 
-                + port_2.m_flow*actualStream(port_2.Xi_outflow) 
-                + port_3.m_flow*actualStream(port_3.Xi_outflow) 
+    mbXi_flow = port_1.m_flow*actualStream(port_1.Xi_outflow)
+                + port_2.m_flow*actualStream(port_2.Xi_outflow)
+                + port_3.m_flow*actualStream(port_3.Xi_outflow)
       "Component mass balances";
 
-    mbC_flow  = port_1.m_flow*actualStream(port_1.C_outflow) 
-              + port_2.m_flow*actualStream(port_2.C_outflow) 
-              + port_3.m_flow*actualStream(port_3.C_outflow) 
+    mbC_flow  = port_1.m_flow*actualStream(port_1.C_outflow)
+              + port_2.m_flow*actualStream(port_2.C_outflow)
+              + port_3.m_flow*actualStream(port_3.C_outflow)
       "Trace substance mass balances";
 
     // Momentum balance (suitable for compressible media)
@@ -739,23 +739,23 @@ of the modeller.
     port_3.p = medium.p;
 
     // Energy balance
-    Hb_flow = port_1.m_flow*actualStream(port_1.h_outflow) 
-              + port_2.m_flow*actualStream(port_2.h_outflow) 
+    Hb_flow = port_1.m_flow*actualStream(port_1.h_outflow)
+              + port_2.m_flow*actualStream(port_2.h_outflow)
               + port_3.m_flow*actualStream(port_3.h_outflow);
     Qb_flow = 0;
     Wb_flow = 0;
 
     annotation (Documentation(info="<html>
   This model introduces a mixing volume into a junction.
-  This might be useful to examine the non-ideal mixing taking place in a real junction.</html>"), 
+  This might be useful to examine the non-ideal mixing taking place in a real junction.</html>"),
   Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={Ellipse(
-            extent={{-9,10},{11,-10}}, 
+            extent={{-9,10},{11,-10}},
             fillPattern=FillPattern.Solid)}));
   end TeeJunctionVolume;
 
-  package BaseClasses 
+  package BaseClasses
     "Base classes used in the Fittings package (only of interest to build new component models)"
     extends Modelica.Icons.BasesPackage;
 
@@ -763,7 +763,7 @@ of the modeller.
           extends Modelica.Icons.Function;
 
       input SI.Diameter D "Diameter at port_a or port_b";
-      input Real zeta 
+      input Real zeta
         "Constant pressure loss factor with respect to D (i.e., either port_a or port_b)";
       output Real k "Loss constant (= 8*zeta/(pi^2*D^4))";
 
@@ -774,10 +774,10 @@ of the modeller.
 </html>"));
     end lossConstant_D_zeta;
 
-    package QuadraticTurbulent 
+    package QuadraticTurbulent
       "Pressure loss components that are mainly defined by a quadratic turbulent regime with constant loss factor data"
       extends Modelica.Icons.Package;
-     record LossFactorData 
+     record LossFactorData
         "Data structure defining constant loss factor data for dp = zeta*rho*v*|v|/2 and functions providing the data for some loss types"
 
             extends Modelica.Icons.Record;
@@ -786,22 +786,22 @@ of the modeller.
       SI.Diameter diameter_b "Diameter at port_b" annotation(Dialog);
       Real zeta1 "Loss factor for flow port_a -> port_b" annotation(Dialog);
       Real zeta2 "Loss factor for flow port_b -> port_a" annotation(Dialog);
-      SI.ReynoldsNumber Re_turbulent 
+      SI.ReynoldsNumber Re_turbulent
           "Loss factors suited for Re >= Re_turbulent" annotation(Dialog);
       SI.Diameter D_Re "Diameter used to compute Re" annotation(Dialog);
-      Boolean zeta1_at_a = true 
+      Boolean zeta1_at_a = true
           "dp = zeta1*(if zeta1_at_a then rho_a*v_a^2/2 else rho_b*v_b^2/2)" 
           annotation(Dialog);
-      Boolean zeta2_at_a = false 
+      Boolean zeta2_at_a = false
           "dp = -zeta2*(if zeta2_at_a then rho_a*v_a^2/2 else rho_b*v_b^2/2)" 
           annotation(Dialog);
-      Boolean zetaLaminarKnown = false 
+      Boolean zetaLaminarKnown = false
           "= true, if zeta = c0/Re in laminar region" annotation(Dialog);
-      Real c0 = 1 
+      Real c0 = 1
           "zeta = c0/Re; dp = zeta*rho_Re*v_Re^2/2, Re=v_Re*D_Re*rho_Re/mu_Re)" 
           annotation(Dialog(enable=zetaLaminarKnown));
 
-       encapsulated function wallFriction 
+       encapsulated function wallFriction
           "Return pressure loss data due to friction in a straight pipe with walls of nonuniform roughness (not useful for smooth pipes, since zeta is no function of Re)"
           import Modelica.Units.SI;
           import Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData;
@@ -810,9 +810,9 @@ of the modeller.
 
          input SI.Length length "Length of pipe" annotation(Dialog);
          input SI.Diameter diameter "Inner diameter of pipe" annotation(Dialog);
-         input Roughness roughness(min=1e-10) 
+         input Roughness roughness(min=1e-10)
             "Absolute roughness of pipe (> 0 required, details see info layer)" annotation(Dialog);
-         output LossFactorData data 
+         output LossFactorData data
             "Pressure loss factors for both flow directions";
         protected
          Real Delta(min=0) = roughness/diameter "Relative roughness";
@@ -821,7 +821,7 @@ of the modeller.
          data.diameter_b          := diameter;
          data.zeta1        := (length/diameter)/(2*lg(3.7 /Delta))^2;
          data.zeta2        := data.zeta1;
-         data.Re_turbulent := 4000 
+         data.Re_turbulent := 4000
             ">= 560/Delta flow does not depend on Re, but interpolation is bad";
          data.D_Re         := diameter;
          data.zeta1_at_a   := true;
@@ -829,38 +829,38 @@ of the modeller.
          data.zetaLaminarKnown := true;
          data.c0               := 64*(length/diameter);
          annotation (Icon(coordinateSystem(
-                preserveAspectRatio=false, 
+                preserveAspectRatio=false,
                 extent={{-100,-100},{100,100}}), graphics={Rectangle(
-                  extent={{-100,50},{100,-50}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid)}), 
+                  extent={{-100,50},{100,-50}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid)}),
                                    Diagram(coordinateSystem(
-                preserveAspectRatio=false, 
+                preserveAspectRatio=false,
                 extent={{-100,-100},{100,100}}), graphics={
                 Rectangle(
-                  extent={{-100,64},{100,-64}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Backward), 
+                  extent={{-100,64},{100,-64}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Backward),
                 Rectangle(
-                  extent={{-100,50},{100,-49}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid), 
+                  extent={{-100,50},{100,-49}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid),
                 Line(
-                  points={{-60,-49},{-60,50}}, 
-                  color={0,0,255}, 
-                  arrow={Arrow.Filled,Arrow.Filled}), 
+                  points={{-60,-49},{-60,50}},
+                  color={0,0,255},
+                  arrow={Arrow.Filled,Arrow.Filled}),
                 Text(
-                  extent={{-50,16},{6,-10}}, 
-                  textColor={0,0,255}, 
-                  textString="diameter"), 
+                  extent={{-50,16},{6,-10}},
+                  textColor={0,0,255},
+                  textString="diameter"),
                 Line(
-                  points={{-100,74},{100,74}}, 
-                  color={0,0,255}, 
-                  arrow={Arrow.Filled,Arrow.Filled}), 
+                  points={{-100,74},{100,74}},
+                  color={0,0,255},
+                  arrow={Arrow.Filled,Arrow.Filled}),
                 Text(
-                  extent={{-34,92},{34,74}}, 
-                  textColor={0,0,255}, 
-                  textString="length")}), 
+                  extent={{-34,92},{34,74}},
+                  textColor={0,0,255},
+                  textString="length")}),
            Documentation(info="<html>
 <p>
 Friction in straight pipe with walls of nonuniform roughness
@@ -936,7 +936,7 @@ As a short summary:
 </html>"));
        end wallFriction;
 
-       encapsulated function suddenExpansion 
+       encapsulated function suddenExpansion
           "Return pressure loss data for sudden expansion or contraction in a pipe (for both flow directions)"
           import Modelica.Units.SI;
           import 
@@ -944,7 +944,7 @@ As a short summary:
 
          input SI.Diameter diameter_a "Inner diameter of pipe at port_a" annotation(Dialog);
          input SI.Diameter diameter_b "Inner diameter of pipe at port_b" annotation(Dialog);
-         output LossFactorData data 
+         output LossFactorData data
             "Pressure loss factors for both flow directions";
         protected
          Real A_rel;
@@ -970,53 +970,53 @@ As a short summary:
             data.zeta2_at_a :=false;
             data.D_Re := diameter_b;
          end if;
-         annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100, 
+         annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
                     -100},{100,100}}), graphics={
                 Rectangle(
-                  extent={{-100,40},{0,-40}}, 
-                  lineColor={255,255,255}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid), 
+                  extent={{-100,40},{0,-40}},
+                  lineColor={255,255,255},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid),
                 Rectangle(
-                  extent={{0,100},{100,-100}}, 
-                  lineColor={255,255,255}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid), 
-                Line(points={{0,40},{-100,40},{-100,-40},{0,-40},{0,-100},{100, 
-                      -100},{100,100},{0,100},{0,40}})}), 
+                  extent={{0,100},{100,-100}},
+                  lineColor={255,255,255},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid),
+                Line(points={{0,40},{-100,40},{-100,-40},{0,-40},{0,-100},{100,
+                      -100},{100,100},{0,100},{0,40}})}),
                                    Diagram(coordinateSystem(
-                  preserveAspectRatio=false, extent={{-100,-100},{100,100}}), 
+                  preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
                 graphics={
-                Line(points={{0,40},{-100,40},{-100,-40},{0,-40},{0,-100},{100, 
-                      -100},{100,100},{0,100},{0,40}}), 
+                Line(points={{0,40},{-100,40},{-100,-40},{0,-40},{0,-100},{100,
+                      -100},{100,100},{0,100},{0,40}}),
                 Rectangle(
-                  extent={{-100,40},{0,-40}}, 
-                  lineColor={255,255,255}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid), 
+                  extent={{-100,40},{0,-40}},
+                  lineColor={255,255,255},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid),
                 Rectangle(
-                  extent={{0,100},{100,-100}}, 
-                  lineColor={255,255,255}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid), 
-                Line(points={{0,40},{-100,40},{-100,-40},{0,-40},{0,-100},{100, 
-                      -100},{100,100},{0,100},{0,40}}), 
+                  extent={{0,100},{100,-100}},
+                  lineColor={255,255,255},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid),
+                Line(points={{0,40},{-100,40},{-100,-40},{0,-40},{0,-100},{100,
+                      -100},{100,100},{0,100},{0,40}}),
                 Line(
-                  points={{-60,-40},{-60,40}}, 
-                  color={0,0,255}, 
-                  arrow={Arrow.Filled,Arrow.Filled}), 
+                  points={{-60,-40},{-60,40}},
+                  color={0,0,255},
+                  arrow={Arrow.Filled,Arrow.Filled}),
                 Text(
-                  extent={{-50,16},{-26,-10}}, 
-                  textColor={0,0,255}, 
-                  textString="diameter_a"), 
+                  extent={{-50,16},{-26,-10}},
+                  textColor={0,0,255},
+                  textString="diameter_a"),
                 Line(
-                  points={{34,-100},{34,100}}, 
-                  color={0,0,255}, 
-                  arrow={Arrow.Filled,Arrow.Filled}), 
+                  points={{34,-100},{34,100}},
+                  color={0,0,255},
+                  arrow={Arrow.Filled,Arrow.Filled}),
                 Text(
-                  extent={{54,16},{78,-10}}, 
-                  textColor={0,0,255}, 
-                  textString="diameter_b")}), 
+                  extent={{54,16},{78,-10}},
+                  textColor={0,0,255},
+                  textString="diameter_b")}),
            Documentation(info="<html>
 <p>
 The loss factors are given for mass flow rates from
@@ -1036,18 +1036,18 @@ A_a &gt; A_b (Idelchik 1994, diagram 4-9, p. 216 and diagram 4-10, p. 217)
 </html>"));
        end suddenExpansion;
 
-       encapsulated function sharpEdgedOrifice 
+       encapsulated function sharpEdgedOrifice
           "Return pressure loss data for sharp edged orifice (for both flow directions)"
           import Modelica.Units.SI;
           import Modelica.Units.NonSI;
           import Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData;
 
-          input SI.Diameter diameter 
+          input SI.Diameter diameter
             "Inner diameter of pipe (= same at port_a and port_b)" annotation(Dialog);
           input SI.Diameter leastDiameter "Smallest diameter of orifice" annotation(Dialog);
           input SI.Diameter length "Length of orifice" annotation(Dialog);
           input NonSI.Angle_deg alpha "Angle of orifice" annotation(Dialog);
-          output LossFactorData data 
+          output LossFactorData data
             "Pressure loss factors for both flow directions";
         protected
           Real D_rel=leastDiameter/diameter;
@@ -1057,7 +1057,7 @@ A_a &gt; A_b (Idelchik 1994, diagram 4-9, p. 216 and diagram 4-10, p. 217)
           data.diameter_a := diameter;
           data.diameter_b := diameter;
           data.zeta1 := ((1 - D_rel) + 0.707*(1 - D_rel)^0.375)^2*(1/D_rel)^2;
-          data.zeta2 := k*(1 - D_rel)^0.75 + (1 - D_rel)^2 + 2*sqrt(k*(1 - 
+          data.zeta2 := k*(1 - D_rel)^0.75 + (1 - D_rel)^2 + 2*sqrt(k*(1 -
             D_rel)^0.375) + (1 - D_rel);
           data.Re_turbulent := 1e4;
           data.D_Re := leastDiameter;
@@ -1066,66 +1066,66 @@ A_a &gt; A_b (Idelchik 1994, diagram 4-9, p. 216 and diagram 4-10, p. 217)
           data.zetaLaminarKnown := false;
           data.c0 := 0;
           annotation (
-            Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+            Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
                     {100,100}}), graphics={
                 Rectangle(
-                  extent={{-100,60},{100,-60}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid), 
+                  extent={{-100,60},{100,-60}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid),
                 Polygon(
-                  points={{-30,60},{-30,12},{30,50},{30,60},{-30,60}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Backward), 
+                  points={{-30,60},{-30,12},{30,50},{30,60},{-30,60}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Backward),
                 Polygon(
-                  points={{-30,-10},{-30,-60},{30,-60},{30,-50},{-30,-10}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Backward)}), 
-            Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100, 
+                  points={{-30,-10},{-30,-60},{30,-60},{30,-50},{-30,-10}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Backward)}),
+            Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
                     -100},{100,100}}), graphics={
                 Rectangle(
-                  extent={{-100,60},{100,-60}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid), 
+                  extent={{-100,60},{100,-60}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid),
                 Polygon(
-                  points={{-30,60},{-30,12},{30,50},{30,60},{-30,60}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Backward), 
+                  points={{-30,60},{-30,12},{30,50},{30,60},{-30,60}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Backward),
                 Polygon(
-                  points={{-30,-10},{-30,-60},{30,-60},{30,-50},{-30,-10}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Backward), 
+                  points={{-30,-10},{-30,-60},{30,-60},{30,-50},{-30,-10}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Backward),
                 Line(
-                  points={{-82,-60},{-82,60}}, 
-                  color={0,0,255}, 
-                  arrow={Arrow.Filled,Arrow.Filled}), 
+                  points={{-82,-60},{-82,60}},
+                  color={0,0,255},
+                  arrow={Arrow.Filled,Arrow.Filled}),
                 Text(
-                  extent={{-78,16},{-44,-8}}, 
-                  textColor={0,0,255}, 
-                  textString="diameter"), 
+                  extent={{-78,16},{-44,-8}},
+                  textColor={0,0,255},
+                  textString="diameter"),
                 Line(
-                  points={{-30,-10},{-30,12}}, 
-                  color={0,0,255}, 
-                  arrow={Arrow.Filled,Arrow.Filled}), 
+                  points={{-30,-10},{-30,12}},
+                  color={0,0,255},
+                  arrow={Arrow.Filled,Arrow.Filled}),
                 Text(
-                  extent={{-24,14},{8,-10}}, 
-                  textColor={0,0,255}, 
-                  textString="leastDiameter"), 
+                  extent={{-24,14},{8,-10}},
+                  textColor={0,0,255},
+                  textString="leastDiameter"),
                 Text(
-                  extent={{-20,84},{18,70}}, 
-                  textColor={0,0,255}, 
-                  textString="length"), 
+                  extent={{-20,84},{18,70}},
+                  textColor={0,0,255},
+                  textString="length"),
                 Line(
-                  points={{30,68},{-30,68}}, 
-                  color={0,0,255}, 
-                  arrow={Arrow.Filled,Arrow.Filled}), 
+                  points={{30,68},{-30,68}},
+                  color={0,0,255},
+                  arrow={Arrow.Filled,Arrow.Filled}),
                 Line(
-                  points={{16,40},{32,18},{36,-2},{34,-20},{20,-42}}, 
-                  color={0,0,255}, 
-                  arrow={Arrow.Filled,Arrow.Filled}), 
+                  points={{16,40},{32,18},{36,-2},{34,-20},{20,-42}},
+                  color={0,0,255},
+                  arrow={Arrow.Filled,Arrow.Filled}),
                 Text(
-                  extent={{38,8},{92,-6}}, 
-                  textColor={0,0,255}, 
-                  textString="alpha")}), 
+                  extent={{38,8},{92,-6}},
+                  textColor={0,0,255},
+                  textString="alpha")}),
             Documentation(info="<html>
 <p>
 Loss factor for mass flow rate from port_a to port_b
@@ -1260,7 +1260,7 @@ The used sufficient criteria for monotonicity follows from:
 </html>"));
      end LossFactorData;
 
-      function massFlowRate_dp 
+      function massFlowRate_dp
         "Return mass flow rate from constant loss factor data and pressure drop (m_flow = f(dp))"
               //import Modelica.Fluid.PressureLosses.BaseClasses.lossConstant_D_zeta;
         extends Modelica.Icons.Function;
@@ -1268,13 +1268,13 @@ The used sufficient criteria for monotonicity follows from:
         input SI.Pressure dp "Pressure drop (dp = port_a.p - port_b.p)";
         input SI.Density rho_a "Density at port_a";
         input SI.Density rho_b "Density at port_b";
-        input LossFactorData data 
+        input LossFactorData data
           "Constant loss factors for both flow directions" annotation (
             choices(
-            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.wallFriction(), 
-            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(), 
+            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.wallFriction(),
+            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(),
             choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.sharpEdgedOrifice()));
-        input SI.AbsolutePressure dp_small = 1 
+        input SI.AbsolutePressure dp_small = 1
           "Turbulent flow if |dp| >= dp_small";
         output SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
 
@@ -1301,7 +1301,7 @@ a polynomial in order to have a finite derivative at zero mass flow rate.
 </html>"));
       end massFlowRate_dp;
 
-      function massFlowRate_dp_and_Re 
+      function massFlowRate_dp_and_Re
         "Return mass flow rate from constant loss factor data, pressure drop and Re (m_flow = f(dp))"
               extends Modelica.Icons.Function;
         import Modelica.Constants.pi;
@@ -1310,11 +1310,11 @@ a polynomial in order to have a finite derivative at zero mass flow rate.
         input SI.Density rho_b "Density at port_b";
         input SI.DynamicViscosity mu_a "Dynamic viscosity at port_a";
         input SI.DynamicViscosity mu_b "Dynamic viscosity at port_b";
-        input LossFactorData data 
+        input LossFactorData data
           "Constant loss factors for both flow directions" annotation (
             choices(
-            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.wallFriction(), 
-            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(), 
+            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.wallFriction(),
+            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(),
             choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.sharpEdgedOrifice()));
         output SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
 
@@ -1322,9 +1322,9 @@ a polynomial in order to have a finite derivative at zero mass flow rate.
         Real k0=2*data.c0/(pi*data.D_Re^3);
         Real k1 = lossConstant_D_zeta(if data.zeta1_at_a then data.diameter_a else data.diameter_b,data.zeta1);
         Real k2 = lossConstant_D_zeta(if data.zeta2_at_a then data.diameter_a else data.diameter_b,data.zeta2);
-        Real yd0 
+        Real yd0
           "Derivative of m_flow=m_flow(dp) at zero, if data.zetaLaminarKnown";
-        SI.AbsolutePressure dp_turbulent 
+        SI.AbsolutePressure dp_turbulent
           "The turbulent region is: |dp| >= dp_turbulent";
       algorithm
       /*
@@ -1360,11 +1360,11 @@ Laminar region:
    (because dummy values) and therefore the division is only performed
    if zetaLaminarKnown = true.
 */
-         dp_turbulent :=(k1 + k2)/(rho_a + rho_b)* 
+         dp_turbulent :=(k1 + k2)/(rho_a + rho_b)*
                         ((mu_a + mu_b)*data.D_Re*pi/8)^2*data.Re_turbulent^2;
          yd0 :=if data.zetaLaminarKnown then 
                   (rho_a + rho_b)/(k0*(mu_a + mu_b)) else 0;
-         m_flow := Utilities.regRoot2(dp, dp_turbulent, rho_a/k1, rho_b/k2, 
+         m_flow := Utilities.regRoot2(dp, dp_turbulent, rho_a/k1, rho_b/k2,
                                                      data.zetaLaminarKnown, yd0);
         annotation (smoothOrder=1, Documentation(info="<html>
 <p>
@@ -1401,20 +1401,20 @@ The used sufficient criteria for monotonicity follows from:
 </html>"));
       end massFlowRate_dp_and_Re;
 
-      function pressureLoss_m_flow 
+      function pressureLoss_m_flow
         "Return pressure drop from constant loss factor and mass flow rate (dp = f(m_flow))"
               extends Modelica.Icons.Function;
 
         input SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
         input SI.Density rho_a "Density at port_a";
         input SI.Density rho_b "Density at port_b";
-        input LossFactorData data 
+        input LossFactorData data
           "Constant loss factors for both flow directions" annotation (
             choices(
-            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.wallFriction(), 
-            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(), 
+            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.wallFriction(),
+            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(),
             choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.sharpEdgedOrifice()));
-        input SI.MassFlowRate m_flow_small = 0.01 
+        input SI.MassFlowRate m_flow_small = 0.01
           "Turbulent flow if |m_flow| >= m_flow_small";
         output SI.Pressure dp "Pressure drop (dp = port_a.p - port_b.p)";
 
@@ -1441,7 +1441,7 @@ a polynomial in order to have a finite derivative at zero mass flow rate.
 </html>"));
       end pressureLoss_m_flow;
 
-      function pressureLoss_m_flow_and_Re 
+      function pressureLoss_m_flow_and_Re
         "Return pressure drop from constant loss factor, mass flow rate and Re (dp = f(m_flow))"
               extends Modelica.Icons.Function;
         import Modelica.Constants.pi;
@@ -1450,11 +1450,11 @@ a polynomial in order to have a finite derivative at zero mass flow rate.
         input SI.Density rho_b "Density at port_b";
         input SI.DynamicViscosity mu_a "Dynamic viscosity at port_a";
         input SI.DynamicViscosity mu_b "Dynamic viscosity at port_b";
-        input LossFactorData data 
+        input LossFactorData data
           "Constant loss factors for both flow directions" annotation (
             choices(
-            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.wallFriction(), 
-            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(), 
+            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.wallFriction(),
+            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(),
             choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.sharpEdgedOrifice()));
         output SI.Pressure dp "Pressure drop (dp = port_a.p - port_b.p)";
 
@@ -1462,9 +1462,9 @@ a polynomial in order to have a finite derivative at zero mass flow rate.
         Real k0 = 2*data.c0/(pi*data.D_Re^3);
         Real k1 = lossConstant_D_zeta(if data.zeta1_at_a then data.diameter_a else data.diameter_b,data.zeta1);
         Real k2 = lossConstant_D_zeta(if data.zeta2_at_a then data.diameter_a else data.diameter_b,data.zeta2);
-        Real yd0 
+        Real yd0
           "Derivative of dp = f(m_flow) at zero, if data.zetaLaminarKnown";
-        SI.MassFlowRate m_flow_turbulent 
+        SI.MassFlowRate m_flow_turbulent
           "The turbulent region is: |m_flow| >= m_flow_turbulent";
       algorithm
       /*
@@ -1502,7 +1502,7 @@ Laminar region:
 */
         m_flow_turbulent :=(pi/8)*data.D_Re*(mu_a + mu_b)*data.Re_turbulent;
         yd0 :=if data.zetaLaminarKnown then k0*(mu_a + mu_b)/(rho_a + rho_b) else 0;
-        dp :=Utilities.regSquare2(m_flow, m_flow_turbulent, k1/rho_a, k2/rho_b, 
+        dp :=Utilities.regSquare2(m_flow, m_flow_turbulent, k1/rho_a, k2/rho_b,
                                                  data.zetaLaminarKnown, yd0);
         annotation (smoothOrder=1, Documentation(info="<html>
 <p>
@@ -1539,40 +1539,40 @@ The used sufficient criteria for monotonicity follows from:
 </html>"));
       end pressureLoss_m_flow_and_Re;
 
-      partial model BaseModel 
+      partial model BaseModel
         "Generic pressure drop component with constant turbulent loss factor data and without an icon"
 
         extends Modelica.Fluid.Interfaces.PartialTwoPortTransport(
-          dp_start = dp_nominal, 
-          m_flow_small = if system.use_eps_Re then system.eps_m_flow*m_flow_nominal else system.m_flow_small, 
+          dp_start = dp_nominal,
+          m_flow_small = if system.use_eps_Re then system.eps_m_flow*m_flow_nominal else system.m_flow_small,
           m_flow(stateSelect = if momentumDynamics == Types.Dynamics.SteadyState then StateSelect.default 
                                else StateSelect.prefer));
         extends Modelica.Fluid.Interfaces.PartialLumpedFlow(
-          final pathLength = 0, 
+          final pathLength = 0,
           final momentumDynamics = Types.Dynamics.SteadyState);
 
         parameter LossFactorData data "Loss factor data";
-        parameter SI.MassFlowRate m_flow_nominal=if system.use_eps_Re then system.m_flow_nominal else 1e2*system.m_flow_small 
+        parameter SI.MassFlowRate m_flow_nominal=if system.use_eps_Re then system.m_flow_nominal else 1e2*system.m_flow_small
           "Nominal mass flow rate" 
           annotation(Dialog(group="Nominal operating point"));
 
         // Advanced
-        parameter Boolean use_Re = system.use_eps_Re 
+        parameter Boolean use_Re = system.use_eps_Re
           "= true, if turbulent region is defined by Re, otherwise by m_flow_small" 
           annotation(Evaluate=true, Dialog(tab="Advanced"));
-        parameter Boolean from_dp = true 
+        parameter Boolean from_dp = true
           "= true, use m_flow = f(dp) else dp = f(m_flow)" 
           annotation (Evaluate=true, Dialog(tab="Advanced"));
       protected
         parameter Medium.ThermodynamicState state_nominal=Medium.setState_pTX(
-                             Medium.reference_p, 
-                             Medium.reference_T, 
-                             Medium.reference_X) 
+                             Medium.reference_p,
+                             Medium.reference_T,
+                             Medium.reference_X)
           "Medium state to compute nominal pressure drop";
-        parameter SI.Pressure dp_nominal= 
-          pressureLoss_m_flow(m_flow_nominal, Medium.density(state_nominal), Medium.density(state_nominal), data, m_flow_small) 
+        parameter SI.Pressure dp_nominal=
+          pressureLoss_m_flow(m_flow_nominal, Medium.density(state_nominal), Medium.density(state_nominal), data, m_flow_small)
           "Nominal pressure loss";
-        parameter Medium.AbsolutePressure dp_small(min=0) = if system.use_eps_Re then dp_nominal/m_flow_nominal*m_flow_small else system.dp_small 
+        parameter Medium.AbsolutePressure dp_small(min=0) = if system.use_eps_Re then dp_nominal/m_flow_nominal*m_flow_small else system.dp_small
           "Regularization of zero flow if |dp| < dp_small" 
           annotation(Dialog(tab="Advanced", enable=not use_Re and from_dp));
         //parameter Medium.MassFlowRate m_flow_small = system.m_flow_small
@@ -1581,18 +1581,18 @@ The used sufficient criteria for monotonicity follows from:
 
         // Diagnostics
       public
-        parameter Boolean show_Re = false 
+        parameter Boolean show_Re = false
           "= true, if Reynolds number is included for plotting" 
            annotation (Evaluate=true, Dialog(tab="Advanced", group="Diagnostics"));
         SI.ReynoldsNumber Re = Modelica.Fluid.Pipes.BaseClasses.CharacteristicNumbers.ReynoldsNumber_m_flow(
-              m_flow, 
-              noEvent(if m_flow>0 then Medium.dynamicViscosity(state_a) else Medium.dynamicViscosity(state_b)), 
+              m_flow,
+              noEvent(if m_flow>0 then Medium.dynamicViscosity(state_a) else Medium.dynamicViscosity(state_b)),
               data.D_Re) if show_Re "Reynolds number at diameter data.D_Re";
 
         // Variables
-        SI.Pressure dp_fg 
+        SI.Pressure dp_fg
           "Pressure loss due to friction and gravity";
-        SI.Area A_mean = Modelica.Constants.pi/4*(data.diameter_a^2+data.diameter_b^2)/2 
+        SI.Area A_mean = Modelica.Constants.pi/4*(data.diameter_a^2+data.diameter_b^2)/2
           "Mean cross flow area";
 
       equation
@@ -1602,20 +1602,20 @@ The used sufficient criteria for monotonicity follows from:
         if from_dp then
            m_flow = homotopy(if use_Re then 
                                massFlowRate_dp_and_Re(
-                                 dp_fg, Medium.density(state_a), Medium.density(state_b), 
-                                 Medium.dynamicViscosity(state_a), 
-                                 Medium.dynamicViscosity(state_b), 
+                                 dp_fg, Medium.density(state_a), Medium.density(state_b),
+                                 Medium.dynamicViscosity(state_a),
+                                 Medium.dynamicViscosity(state_b),
                                  data) else 
-                               massFlowRate_dp(dp_fg, Medium.density(state_a), Medium.density(state_b), data, dp_small), 
+                               massFlowRate_dp(dp_fg, Medium.density(state_a), Medium.density(state_b), data, dp_small),
                              m_flow_nominal*dp_fg/dp_nominal);
         else
            dp_fg = homotopy(if use_Re then 
                               pressureLoss_m_flow_and_Re(
-                                m_flow, Medium.density(state_a), Medium.density(state_b), 
-                                Medium.dynamicViscosity(state_a), 
-                                Medium.dynamicViscosity(state_b), 
+                                m_flow, Medium.density(state_a), Medium.density(state_b),
+                                Medium.dynamicViscosity(state_a),
+                                Medium.dynamicViscosity(state_b),
                               data) else 
-                              pressureLoss_m_flow(m_flow, Medium.density(state_a), Medium.density(state_b), data, m_flow_small), 
+                              pressureLoss_m_flow(m_flow, Medium.density(state_a), Medium.density(state_b), data, m_flow_small),
                             dp_nominal*m_flow/m_flow_nominal);
         end if;
 
@@ -1732,42 +1732,42 @@ The used sufficient criteria for monotonicity follows from:
 </html>"));
       end BaseModel;
 
-      partial model BaseModelNonconstantCrossSectionArea 
+      partial model BaseModelNonconstantCrossSectionArea
         "Generic pressure drop component with constant turbulent loss factor data and without an icon, for non-constant cross section area"
 
         extends Modelica.Fluid.Interfaces.PartialTwoPortTransport(
-          final dp_start = dp_nominal, 
-          m_flow_small = if system.use_eps_Re then system.eps_m_flow*m_flow_nominal else system.m_flow_small, 
+          final dp_start = dp_nominal,
+          m_flow_small = if system.use_eps_Re then system.eps_m_flow*m_flow_nominal else system.m_flow_small,
           m_flow(stateSelect = if momentumDynamics == Types.Dynamics.SteadyState then StateSelect.default 
                                else StateSelect.prefer));
         extends Modelica.Fluid.Interfaces.PartialLumpedFlow(
-          final pathLength = 0, 
+          final pathLength = 0,
           final momentumDynamics = Types.Dynamics.SteadyState);
 
         parameter LossFactorData data "Loss factor data";
-        parameter SI.MassFlowRate m_flow_nominal=if system.use_eps_Re then system.m_flow_nominal else 1e2*system.m_flow_small 
+        parameter SI.MassFlowRate m_flow_nominal=if system.use_eps_Re then system.m_flow_nominal else 1e2*system.m_flow_small
           "Nominal mass flow rate" 
           annotation(Dialog(group="Nominal operating point"));
 
         // Advanced
         /// Other settings than the final values are not yet implemented ///
-        final parameter Boolean use_Re = false 
+        final parameter Boolean use_Re = false
           "= true, if turbulent region is defined by Re, otherwise by m_flow_small" 
           annotation(Evaluate=true, Dialog(tab="Advanced"));
-        final parameter Boolean from_dp = false 
+        final parameter Boolean from_dp = false
           "= true, use m_flow = f(dp) else dp = f(m_flow)" 
           annotation (Evaluate=true, Dialog(tab="Advanced"));
         // End not yet implemented /////////////////////////////////////////
       protected
         parameter Medium.ThermodynamicState state_nominal=Medium.setState_pTX(
-                             Medium.reference_p, 
-                             Medium.reference_T, 
-                             Medium.reference_X) 
+                             Medium.reference_p,
+                             Medium.reference_T,
+                             Medium.reference_X)
           "Medium state to compute nominal pressure drop" annotation(HideResult=true);
-        parameter SI.Pressure dp_nominal= 
-          pressureLoss_m_flow(m_flow_nominal, Medium.density(state_nominal), Medium.density(state_nominal), data, m_flow_small) 
+        parameter SI.Pressure dp_nominal=
+          pressureLoss_m_flow(m_flow_nominal, Medium.density(state_nominal), Medium.density(state_nominal), data, m_flow_small)
           "Nominal pressure loss";
-        parameter Medium.AbsolutePressure dp_small(min=0) = if system.use_eps_Re then dp_nominal/m_flow_nominal*m_flow_small else system.dp_small 
+        parameter Medium.AbsolutePressure dp_small(min=0) = if system.use_eps_Re then dp_nominal/m_flow_nominal*m_flow_small else system.dp_small
           "Regularization of zero flow if |dp| < dp_small" 
           annotation(Dialog(tab="Advanced", enable=not use_Re and from_dp));
         //parameter Medium.MassFlowRate m_flow_small = system.m_flow_small
@@ -1776,21 +1776,21 @@ The used sufficient criteria for monotonicity follows from:
 
         // Diagnostics
       public
-        parameter Boolean show_Re = false 
+        parameter Boolean show_Re = false
           "= true, if Reynolds number is included for plotting" 
            annotation (Evaluate=true, Dialog(tab="Advanced", group="Diagnostics"));
         SI.ReynoldsNumber Re = Modelica.Fluid.Pipes.BaseClasses.CharacteristicNumbers.ReynoldsNumber_m_flow(
-              m_flow, 
-              noEvent(if m_flow>0 then Medium.dynamicViscosity(state_a) else Medium.dynamicViscosity(state_b)), 
+              m_flow,
+              noEvent(if m_flow>0 then Medium.dynamicViscosity(state_a) else Medium.dynamicViscosity(state_b)),
               data.D_Re) if show_Re "Reynolds number at diameter data.D_Re";
-        parameter Boolean show_totalPressures = false 
+        parameter Boolean show_totalPressures = false
           "= true, if total pressures are included for plotting" 
            annotation (Evaluate=true, Dialog(tab="Advanced", group="Diagnostics"));
         SI.AbsolutePressure p_total_a = port_a.p + 0.5 * m_flow^2 /((Modelica.Constants.pi/4 * data.diameter_a^2)^2 * noEvent(if port_a.m_flow > 0 then Medium.density(state_a) else Medium.density(state_b))) if 
           show_totalPressures "Total pressure at port_a";
         SI.AbsolutePressure p_total_b = port_b.p + 0.5 * m_flow^2 /((Modelica.Constants.pi/4 * data.diameter_b^2)^2 * noEvent(if port_b.m_flow > 0 then Medium.density(state_b) else Medium.density(state_a))) if 
           show_totalPressures "Total pressure at port_a";
-        parameter Boolean show_portVelocities = false 
+        parameter Boolean show_portVelocities = false
           "= true, if port velocities are included for plotting" 
            annotation (Evaluate=true, Dialog(tab="Advanced", group="Diagnostics"));
         SI.Velocity v_a = port_a.m_flow /(Modelica.Constants.pi/4 * data.diameter_a^2 * noEvent(if port_a.m_flow > 0 then Medium.density(state_a) else Medium.density(state_b))) if 
@@ -1799,14 +1799,14 @@ The used sufficient criteria for monotonicity follows from:
           show_portVelocities "Fluid velocity into port_b";
 
         // Variables
-        SI.Pressure dp_fg 
+        SI.Pressure dp_fg
           "Pressure loss due to friction and gravity";
-        SI.Area A_mean = Modelica.Constants.pi/4*(data.diameter_a^2+data.diameter_b^2)/2 
+        SI.Area A_mean = Modelica.Constants.pi/4*(data.diameter_a^2+data.diameter_b^2)/2
           "Mean cross flow area";
 
-        Medium.ThermodynamicState state_b_des 
+        Medium.ThermodynamicState state_b_des
           "Thermodynamic state at port b for flow a -> b";
-        Medium.ThermodynamicState state_a_nondes 
+        Medium.ThermodynamicState state_a_nondes
           "Thermodynamic state at port a for flow a <- b";
 
       equation
@@ -1816,23 +1816,23 @@ The used sufficient criteria for monotonicity follows from:
         if from_dp then
            m_flow = if use_Re then 
                        massFlowRate_dp_and_Re(
-                          dp_fg, Medium.density(state_a), Medium.density(state_b), 
-                          Medium.dynamicViscosity(state_a), 
-                          Medium.dynamicViscosity(state_b), 
+                          dp_fg, Medium.density(state_a), Medium.density(state_b),
+                          Medium.dynamicViscosity(state_a),
+                          Medium.dynamicViscosity(state_b),
                           data) else 
                        massFlowRate_dp(dp_fg, Medium.density(state_a), Medium.density(state_b), data, dp_small);
         else
            dp_fg = if use_Re then 
                    pressureLoss_m_flow_and_Re(
-                       m_flow, Medium.density(state_a), Medium.density(state_b), 
-                       Medium.dynamicViscosity(state_a), 
-                       Medium.dynamicViscosity(state_b), 
+                       m_flow, Medium.density(state_a), Medium.density(state_b),
+                       Medium.dynamicViscosity(state_a),
+                       Medium.dynamicViscosity(state_b),
                        data) else 
-                   pressureLoss_m_flow_totalPressure(m_flow, 
-                     Medium.density(state_a), 
-                     Medium.density(state_b_des), 
-                     Medium.density(state_b), 
-                     Medium.density(state_a_nondes), 
+                   pressureLoss_m_flow_totalPressure(m_flow,
+                     Medium.density(state_a),
+                     Medium.density(state_b_des),
+                     Medium.density(state_b),
+                     Medium.density(state_a_nondes),
                      data, m_flow_small);
         end if;
 
@@ -1955,33 +1955,33 @@ The used sufficient criteria for monotonicity follows from:
 </html>"));
       end BaseModelNonconstantCrossSectionArea;
 
-      function pressureLoss_m_flow_totalPressure 
+      function pressureLoss_m_flow_totalPressure
         "Return pressure drop from constant loss factor and mass flow rate (dp = f(m_flow))"
               extends Modelica.Icons.Function;
 
         input SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
-        input SI.Density rho_a_des 
+        input SI.Density rho_a_des
           "Density at port_a, mass flow in design direction a -> b";
-        input SI.Density rho_b_des 
+        input SI.Density rho_b_des
           "Density at port_b, mass flow in design direction a -> b";
-        input SI.Density rho_b_nondes 
+        input SI.Density rho_b_nondes
           "Density at port_b, mass flow against design direction a <- b";
-        input SI.Density rho_a_nondes 
+        input SI.Density rho_a_nondes
           "Density at port_a, mass flow against design direction a <- b";
-        input LossFactorData data 
+        input LossFactorData data
           "Constant loss factors for both flow directions" annotation (
             choices(
-            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.wallFriction(), 
-            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(), 
+            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.wallFriction(),
+            choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.suddenExpansion(),
             choice=Modelica.Fluid.Fittings.BaseClasses.QuadraticTurbulent.LossFactorData.sharpEdgedOrifice()));
-        input SI.MassFlowRate m_flow_small = 0.01 
+        input SI.MassFlowRate m_flow_small = 0.01
           "Turbulent flow if |m_flow| >= m_flow_small";
         output SI.Pressure dp "Pressure drop (dp = port_a.p - port_b.p)";
 
       protected
-        SI.Area A_a = Modelica.Constants.pi * data.diameter_a^2/4 
+        SI.Area A_a = Modelica.Constants.pi * data.diameter_a^2/4
           "Cross section area at port_a";
-        SI.Area A_b = Modelica.Constants.pi * data.diameter_b^2/4 
+        SI.Area A_b = Modelica.Constants.pi * data.diameter_b^2/4
           "Cross section area at port_b";
       algorithm
           dp := 1/2 * m_flow^2 *( if m_flow > 0 then 
@@ -2031,61 +2031,61 @@ where
 </html>"));
     end QuadraticTurbulent;
 
-    partial model PartialTeeJunction 
+    partial model PartialTeeJunction
       "Base class for a splitting/joining component with three ports"
       import Modelica.Fluid.Types;
       import Modelica.Fluid.Types.PortFlowDirection;
 
-      replaceable package Medium=Modelica.Media.Interfaces.PartialMedium 
+      replaceable package Medium=Modelica.Media.Interfaces.PartialMedium
         "Medium in the component" 
         annotation (choicesAllMatching=true);
 
-      Modelica.Fluid.Interfaces.FluidPort_a port_1(redeclare package Medium = 
+      Modelica.Fluid.Interfaces.FluidPort_a port_1(redeclare package Medium =
             Medium, m_flow(min=if (portFlowDirection_1 == PortFlowDirection.Entering) then 
-                    0.0 else -Modelica.Constants.inf, max=if (portFlowDirection_1 
+                    0.0 else -Modelica.Constants.inf, max=if (portFlowDirection_1
                == PortFlowDirection.Leaving) then 0.0 else Modelica.Constants.inf)) 
         annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
-      Modelica.Fluid.Interfaces.FluidPort_b port_2(redeclare package Medium = 
+      Modelica.Fluid.Interfaces.FluidPort_b port_2(redeclare package Medium =
             Medium, m_flow(min=if (portFlowDirection_2 == PortFlowDirection.Entering) then 
-                    0.0 else -Modelica.Constants.inf, max=if (portFlowDirection_2 
+                    0.0 else -Modelica.Constants.inf, max=if (portFlowDirection_2
                == PortFlowDirection.Leaving) then 0.0 else Modelica.Constants.inf)) 
         annotation (Placement(transformation(extent={{90,-10},{110,10}})));
       Modelica.Fluid.Interfaces.FluidPort_a port_3(
-        redeclare package Medium=Medium, 
-        m_flow(min=if (portFlowDirection_3==PortFlowDirection.Entering) then 0.0 else -Modelica.Constants.inf, 
+        redeclare package Medium=Medium,
+        m_flow(min=if (portFlowDirection_3==PortFlowDirection.Entering) then 0.0 else -Modelica.Constants.inf,
         max=if (portFlowDirection_3==PortFlowDirection.Leaving) then 0.0 else Modelica.Constants.inf)) 
         annotation (Placement(transformation(extent={{-10,90},{10,110}})));
 
     protected
-      parameter PortFlowDirection portFlowDirection_1=PortFlowDirection.Bidirectional 
+      parameter PortFlowDirection portFlowDirection_1=PortFlowDirection.Bidirectional
         "Flow direction for port_1" 
        annotation(Dialog(tab="Advanced"));
-      parameter PortFlowDirection portFlowDirection_2=PortFlowDirection.Bidirectional 
+      parameter PortFlowDirection portFlowDirection_2=PortFlowDirection.Bidirectional
         "Flow direction for port_2" 
        annotation(Dialog(tab="Advanced"));
-      parameter PortFlowDirection portFlowDirection_3=PortFlowDirection.Bidirectional 
+      parameter PortFlowDirection portFlowDirection_3=PortFlowDirection.Bidirectional
         "Flow direction for port_3" 
        annotation(Dialog(tab="Advanced"));
 
       annotation(Icon(coordinateSystem(
-            preserveAspectRatio=true, 
+            preserveAspectRatio=true,
             extent={{-100,-100},{100,100}}), graphics={
             Rectangle(
-              extent={{-100,44},{100,-44}}, 
-              fillPattern=FillPattern.HorizontalCylinder, 
-              fillColor={0,127,255}), 
+              extent={{-100,44},{100,-44}},
+              fillPattern=FillPattern.HorizontalCylinder,
+              fillColor={0,127,255}),
             Text(
-              extent={{-150,-89},{150,-129}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{-150,-89},{150,-129}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-44,100},{44,44}}, 
-              fillPattern=FillPattern.VerticalCylinder, 
-              fillColor={0,127,255}), 
+              extent={{-44,100},{44,44}},
+              fillPattern=FillPattern.VerticalCylinder,
+              fillColor={0,127,255}),
             Rectangle(
-              extent={{-22,82},{21,-4}}, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={0,128,255}, 
+              extent={{-22,82},{21,-4}},
+              fillPattern=FillPattern.Solid,
+              fillColor={0,128,255},
               pattern=LinePattern.None)}));
     end PartialTeeJunction;
 
@@ -2095,35 +2095,35 @@ where
       package CurvedBend "Pressure loss functions for curved bends"
           extends Modelica.Icons.Package;
 
-      function massFlowRate 
+      function massFlowRate
           "Return mass flow rate m_flow as function of pressure loss dp for a curved bend"
         extends Modelica.Icons.Function;
         input SI.Pressure dp "Pressure loss";
         input Geometry geometry "Geometry of bend";
-        input SI.Density d_a 
+        input SI.Density d_a
             "Density at port_a when fluid is flowing from port_a to port_b";
-        input SI.Density d_b 
+        input SI.Density d_b
             "Density at port_b when fluid is flowing from port_b to port_a";
-        input SI.DynamicViscosity eta_a 
+        input SI.DynamicViscosity eta_a
             "Dynamic viscosity at port_a when fluid is flowing from port_a to port_b";
-        input SI.DynamicViscosity eta_b 
+        input SI.DynamicViscosity eta_b
             "Dynamic viscosity at port_b when fluid is flowing from port_b to port_a";
-        input SI.AbsolutePressure dp_small 
+        input SI.AbsolutePressure dp_small
             "Small pressure drop used for regularization if m_flow=f(...,dp_small,..,dp)";
-        input SI.MassFlowRate m_flow_small 
+        input SI.MassFlowRate m_flow_small
             "Small mass flow rate used for regularization if dp=f_inv(...,m_flow_small,m_flow)";
         output SI.MassFlowRate m_flow "Mass flow rate (= port_a.m_flow)";
       algorithm
          m_flow := Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_MFLOW(
-                     geometry, 
+                     geometry,
                      Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_IN_var(
-                         rho=Modelica.Fluid.Utilities.regStep(dp, d_a, d_b, dp_small), 
-                         eta=Modelica.Fluid.Utilities.regStep(dp, eta_a, eta_b, dp_small)), 
+                         rho=Modelica.Fluid.Utilities.regStep(dp, d_a, d_b, dp_small),
+                         eta=Modelica.Fluid.Utilities.regStep(dp, eta_a, eta_b, dp_small)),
                      dp);
 
-         annotation(Inline=false, LateInline=true, 
+         annotation(Inline=false, LateInline=true,
                     inverse(dp=Modelica.Fluid.Fittings.BaseClasses.Bends.CurvedBend.pressureLoss(
-                                  m_flow, geometry, d_a, d_b, eta_a, eta_b, dp_small, m_flow_small)), 
+                                  m_flow, geometry, d_a, d_b, eta_a, eta_b, dp_small, m_flow_small)),
             Documentation(info="<html>
 <p>
 This function returns the mass flow rate m_flow as function of pressure loss dp for a curved bend.
@@ -2143,31 +2143,31 @@ fluid flows from port_a to port_b (d_a, eta_a) and if fluid flows from port_b to
 </html>"));
       end massFlowRate;
 
-      function pressureLoss 
+      function pressureLoss
           "Return pressure loss dp as function of mass flow rate m_flow for a curved bend"
         extends Modelica.Icons.Function;
 
         input SI.MassFlowRate m_flow "Mass flow rate (= port_a.m_flow)";
         input Geometry geometry "Geometry of bend";
-        input SI.Density d_a 
+        input SI.Density d_a
             "Density at port_a when fluid is flowing from port_a to port_b";
-        input SI.Density d_b 
+        input SI.Density d_b
             "Density at port_b when fluid is flowing from port_b to port_a";
-        input SI.DynamicViscosity eta_a 
+        input SI.DynamicViscosity eta_a
             "Dynamic viscosity at port_a when fluid is flowing from port_a to port_b";
-        input SI.DynamicViscosity eta_b 
+        input SI.DynamicViscosity eta_b
             "Dynamic viscosity at port_b when fluid is flowing from port_b to port_a";
-        input SI.AbsolutePressure dp_small 
+        input SI.AbsolutePressure dp_small
             "Small pressure drop used for regularization if m_flow=f(...,dp_small,..,dp)";
-        input SI.MassFlowRate m_flow_small 
+        input SI.MassFlowRate m_flow_small
             "Small mass flow rate used for regularization if dp=f_inv(...,m_flow_small,m_flow)";
         output SI.Pressure dp "Pressure loss";
       algorithm
          dp := Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_DP(
-                     geometry, 
+                     geometry,
                      Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_IN_var(
-                         rho=Modelica.Fluid.Utilities.regStep(m_flow, d_a, d_b, m_flow_small), 
-                         eta=Modelica.Fluid.Utilities.regStep(m_flow, eta_a, eta_b, m_flow_small)), 
+                         rho=Modelica.Fluid.Utilities.regStep(m_flow, d_a, d_b, m_flow_small),
+                         eta=Modelica.Fluid.Utilities.regStep(m_flow, eta_a, eta_b, m_flow_small)),
                      m_flow);
 
          annotation(Inline=true, Documentation(info="<html>
@@ -2195,7 +2195,7 @@ fluid flows from port_a to port_b (d_a, eta_a) and if fluid flows from port_b to
             annotation (Dialog);
           SI.Radius R_0 "Curvature radius" annotation (Dialog);
           SI.Angle delta=1.5707963267949 "Angle of turning" annotation (Dialog);
-          Modelica.Fluid.Types.Roughness K=2.5e-5 
+          Modelica.Fluid.Types.Roughness K=2.5e-5
             "Absolute roughness, with a default for a smooth steel pipe" 
             annotation (Dialog);
           annotation (Documentation(info="<html>
@@ -2218,39 +2218,39 @@ for the CurvedBend fitting component.
       package EdgedBend "Pressure loss functions for edged bends"
           extends Modelica.Icons.Package;
 
-      function massFlowRate 
+      function massFlowRate
           "Return mass flow rate m_flow as function of pressure loss dp for a curved bend"
         extends Modelica.Icons.Function;
 
         input SI.Pressure dp "Pressure loss";
         input Geometry geometry "Geometry of bend";
-        input SI.Density d_a 
+        input SI.Density d_a
             "Density at port_a when fluid is flowing from port_a to port_b";
-        input SI.Density d_b 
+        input SI.Density d_b
             "Density at port_b when fluid is flowing from port_b to port_a";
-        input SI.DynamicViscosity eta_a 
+        input SI.DynamicViscosity eta_a
             "Dynamic viscosity at port_a when fluid is flowing from port_a to port_b";
-        input SI.DynamicViscosity eta_b 
+        input SI.DynamicViscosity eta_b
             "Dynamic viscosity at port_b when fluid is flowing from port_b to port_a";
-        input SI.AbsolutePressure dp_small 
+        input SI.AbsolutePressure dp_small
             "Small pressure drop used for regularization if m_flow=f(...,dp_small,..,dp)";
-        input SI.MassFlowRate m_flow_small 
+        input SI.MassFlowRate m_flow_small
             "Small mass flow rate used for regularization if dp=f_inv(...,m_flow_small,m_flow)";
         output SI.MassFlowRate m_flow "Mass flow rate (= port_a.m_flow)";
       algorithm
          m_flow := Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_MFLOW(
                      Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_con(
-                         d_hyd=geometry.d_hyd, 
-                         delta=geometry.delta, 
-                         K=geometry.K), 
+                         d_hyd=geometry.d_hyd,
+                         delta=geometry.delta,
+                         K=geometry.K),
                      Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_var(
-                         rho=Modelica.Fluid.Utilities.regStep(dp, d_a, d_b, dp_small), 
-                         eta=Modelica.Fluid.Utilities.regStep(dp, eta_a, eta_b, dp_small)), 
+                         rho=Modelica.Fluid.Utilities.regStep(dp, d_a, d_b, dp_small),
+                         eta=Modelica.Fluid.Utilities.regStep(dp, eta_a, eta_b, dp_small)),
                      dp);
 
-         annotation(Inline=false, LateInline=true, 
+         annotation(Inline=false, LateInline=true,
                     inverse(dp=Modelica.Fluid.Fittings.BaseClasses.Bends.EdgedBend.pressureLoss(
-                                  m_flow, geometry, d_a, d_b, eta_a, eta_b, dp_small, m_flow_small)), 
+                                  m_flow, geometry, d_a, d_b, eta_a, eta_b, dp_small, m_flow_small)),
           Documentation(info="<html>
 <p>
 This function returns the mass flow rate m_flow as function of pressure loss dp for an edged bend.
@@ -2270,34 +2270,34 @@ fluid flows from port_a to port_b (d_a, eta_a) and if fluid flows from port_b to
 </html>"));
       end massFlowRate;
 
-      function pressureLoss 
+      function pressureLoss
           "Return pressure loss dp as function of mass flow rate m_flow for a curved bend"
         extends Modelica.Icons.Function;
 
         input SI.MassFlowRate m_flow "Mass flow rate (= port_a.m_flow)";
         input Geometry geometry "Geometry of bend";
-        input SI.Density d_a 
+        input SI.Density d_a
             "Density at port_a when fluid is flowing from port_a to port_b";
-        input SI.Density d_b 
+        input SI.Density d_b
             "Density at port_b when fluid is flowing from port_b to port_a";
-        input SI.DynamicViscosity eta_a 
+        input SI.DynamicViscosity eta_a
             "Dynamic viscosity at port_a when fluid is flowing from port_a to port_b";
-        input SI.DynamicViscosity eta_b 
+        input SI.DynamicViscosity eta_b
             "Dynamic viscosity at port_b when fluid is flowing from port_b to port_a";
-        input SI.AbsolutePressure dp_small 
+        input SI.AbsolutePressure dp_small
             "Small pressure drop used for regularization if m_flow=f(...,dp_small,..,dp)";
-        input SI.MassFlowRate m_flow_small 
+        input SI.MassFlowRate m_flow_small
             "Small mass flow rate used for regularization if dp=f_inv(...,m_flow_small,m_flow)";
         output SI.Pressure dp "Pressure loss";
       algorithm
          dp := Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_DP(
                      Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_con(
-                         d_hyd=geometry.d_hyd, 
-                         delta=geometry.delta, 
-                         K=geometry.K), 
+                         d_hyd=geometry.d_hyd,
+                         delta=geometry.delta,
+                         K=geometry.K),
                      Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_var(
-                         rho=Modelica.Fluid.Utilities.regStep(m_flow, d_a, d_b, m_flow_small), 
-                         eta=Modelica.Fluid.Utilities.regStep(m_flow, eta_a, eta_b, m_flow_small)), 
+                         rho=Modelica.Fluid.Utilities.regStep(m_flow, d_a, d_b, m_flow_small),
+                         eta=Modelica.Fluid.Utilities.regStep(m_flow, eta_a, eta_b, m_flow_small)),
                      m_flow);
 
          annotation(Inline=true, Documentation(info="<html>
@@ -2324,7 +2324,7 @@ fluid flows from port_a to port_b (d_a, eta_a) and if fluid flows from port_b to
           SI.Diameter d_hyd "Hydraulic diameter" 
             annotation (Dialog);
           SI.Angle delta "Angle of turning" annotation (Dialog);
-          Modelica.Fluid.Types.Roughness K=2.5e-5 
+          Modelica.Fluid.Types.Roughness K=2.5e-5
             "Absolute roughness, with a default for a smooth steel pipe" 
             annotation (Dialog);
           annotation (Documentation(info="<html>
@@ -2347,45 +2347,45 @@ for the EdgedBend fitting component.
 
     package Orifices "Pressure loss functions for orifices"
         extends Modelica.Icons.VariantsPackage;
-      package ThickEdgedOrifice 
+      package ThickEdgedOrifice
         "Pressure loss functions for thick edged orifices"
           extends Modelica.Icons.Package;
 
-      function massFlowRate 
+      function massFlowRate
           "Return mass flow rate m_flow as function of pressure loss dp for a thick edged orifice"
         extends Modelica.Icons.Function;
 
         input SI.Pressure dp "Pressure loss";
         input Geometry geometry "Geometry of bend";
-        input SI.Density d_a 
+        input SI.Density d_a
             "Density at port_a when fluid is flowing from port_a to port_b";
-        input SI.Density d_b 
+        input SI.Density d_b
             "Density at port_b when fluid is flowing from port_b to port_a";
-        input SI.DynamicViscosity eta_a 
+        input SI.DynamicViscosity eta_a
             "Dynamic viscosity at port_a when fluid is flowing from port_a to port_b";
-        input SI.DynamicViscosity eta_b 
+        input SI.DynamicViscosity eta_b
             "Dynamic viscosity at port_b when fluid is flowing from port_b to port_a";
-        input SI.AbsolutePressure dp_small 
+        input SI.AbsolutePressure dp_small
             "Small pressure drop used for regularization if m_flow=f(...,dp_small,..,dp)";
-        input SI.MassFlowRate m_flow_small 
+        input SI.MassFlowRate m_flow_small
             "Small mass flow rate used for regularization if dp=f_inv(...,m_flow_small,m_flow)";
         output SI.MassFlowRate m_flow "Mass flow rate (= port_a.m_flow)";
       algorithm
          m_flow := Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_MFLOW(
                      Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_con(
-                         A_0=geometry.venaCrossArea, 
-                         A_1=geometry.crossArea, 
-                         C_0=geometry.venaPerimeter, 
-                         C_1=geometry.perimeter, 
-                         L=geometry.venaLength, 
-                         dp_smooth=dp_small), 
+                         A_0=geometry.venaCrossArea,
+                         A_1=geometry.crossArea,
+                         C_0=geometry.venaPerimeter,
+                         C_1=geometry.perimeter,
+                         L=geometry.venaLength,
+                         dp_smooth=dp_small),
                      Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_var(
-                         rho=Modelica.Fluid.Utilities.regStep(dp, d_a, d_b, dp_small), 
-                         eta=Modelica.Fluid.Utilities.regStep(dp, eta_a, eta_b, dp_small)), 
+                         rho=Modelica.Fluid.Utilities.regStep(dp, d_a, d_b, dp_small),
+                         eta=Modelica.Fluid.Utilities.regStep(dp, eta_a, eta_b, dp_small)),
                      dp);
-         annotation(Inline=false, LateInline=true, 
+         annotation(Inline=false, LateInline=true,
                     inverse(dp=Modelica.Fluid.Fittings.BaseClasses.Orifices.ThickEdgedOrifice.pressureLoss(
-                                  m_flow, geometry, d_a, d_b, eta_a, eta_b, dp_small, m_flow_small)), 
+                                  m_flow, geometry, d_a, d_b, eta_a, eta_b, dp_small, m_flow_small)),
             Documentation(info="<html>
 <p>
 This function returns the mass flow rate m_flow as function of pressure loss dp for a thick edged orifice.
@@ -2405,37 +2405,37 @@ fluid flows from port_a to port_b (d_a, eta_a) and if fluid flows from port_b to
 </html>"));
       end massFlowRate;
 
-      function pressureLoss 
+      function pressureLoss
           "Return pressure loss dp as function of mass flow rate m_flow for a thick edged orifice"
         extends Modelica.Icons.Function;
 
         input SI.MassFlowRate m_flow "Mass flow rate (= port_a.m_flow)";
         input Geometry geometry "Geometry of bend";
-        input SI.Density d_a 
+        input SI.Density d_a
             "Density at port_a when fluid is flowing from port_a to port_b";
-        input SI.Density d_b 
+        input SI.Density d_b
             "Density at port_b when fluid is flowing from port_b to port_a";
-        input SI.DynamicViscosity eta_a 
+        input SI.DynamicViscosity eta_a
             "Dynamic viscosity at port_a when fluid is flowing from port_a to port_b";
-        input SI.DynamicViscosity eta_b 
+        input SI.DynamicViscosity eta_b
             "Dynamic viscosity at port_b when fluid is flowing from port_b to port_a";
-        input SI.AbsolutePressure dp_small 
+        input SI.AbsolutePressure dp_small
             "Small pressure drop used for regularization if m_flow=f(...,dp_small,..,dp)";
-        input SI.MassFlowRate m_flow_small 
+        input SI.MassFlowRate m_flow_small
             "Small mass flow rate used for regularization if dp=f_inv(...,m_flow_small,m_flow)";
         output SI.Pressure dp "Pressure loss";
       algorithm
          dp := Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_DP(
                  Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_con(
-                         A_0=geometry.venaCrossArea, 
-                         A_1=geometry.crossArea, 
-                         C_0=geometry.venaPerimeter, 
-                         C_1=geometry.perimeter, 
-                         L=geometry.venaLength, 
-                         dp_smooth=dp_small), 
+                         A_0=geometry.venaCrossArea,
+                         A_1=geometry.crossArea,
+                         C_0=geometry.venaPerimeter,
+                         C_1=geometry.perimeter,
+                         L=geometry.venaLength,
+                         dp_smooth=dp_small),
                      Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_var(
-                         rho=Modelica.Fluid.Utilities.regStep(m_flow, d_a, d_b, m_flow_small), 
-                         eta=Modelica.Fluid.Utilities.regStep(m_flow, eta_a, eta_b, m_flow_small)), 
+                         rho=Modelica.Fluid.Utilities.regStep(m_flow, d_a, d_b, m_flow_small),
+                         eta=Modelica.Fluid.Utilities.regStep(m_flow, eta_a, eta_b, m_flow_small)),
                      m_flow);
 
          annotation(Inline=true, Documentation(info="<html>
@@ -2493,7 +2493,7 @@ The details of the record are described
           input SI.Length venaLength "Length of vena contraction" 
             annotation (Dialog);
 
-           output ThickEdgedOrifice.Geometry geometry 
+           output ThickEdgedOrifice.Geometry geometry
               "Geometry of circular thick edged orifice";
         algorithm
            geometry.crossArea := diameter^2*pi/4;
@@ -2501,12 +2501,12 @@ The details of the record are described
            geometry.venaCrossArea := venaDiameter^2*pi/4;
            geometry.venaPerimeter := pi*venaDiameter;
            geometry.venaLength := venaLength;
-          annotation (Icon(coordinateSystem(preserveAspectRatio=false, 
+          annotation (Icon(coordinateSystem(preserveAspectRatio=false,
                            extent={{-100,-100},{100,100}}), graphics={Ellipse(
-                  extent={{-80,80},{80,-80}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid)}), 
-            Documentation(revisions="", 
+                  extent={{-80,80},{80,-80}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid)}),
+            Documentation(revisions="",
                 info="<html>
 <p>
 Function that returns the ThickEdgedOrifice.Geometry for a circular
@@ -2529,7 +2529,7 @@ cross section of the orifice.
           input SI.Length venaLength "Length of vena contraction" 
             annotation (Dialog);
 
-           output ThickEdgedOrifice.Geometry geometry 
+           output ThickEdgedOrifice.Geometry geometry
               "Geometry of circular thick edged orifice";
         algorithm
            geometry.crossArea := width*height;
@@ -2537,12 +2537,12 @@ cross section of the orifice.
            geometry.venaCrossArea := venaWidth*venaHeight;
            geometry.venaPerimeter := 2*venaWidth + 2*venaHeight;
            geometry.venaLength := venaLength;
-          annotation (Icon(coordinateSystem(preserveAspectRatio=true, 
+          annotation (Icon(coordinateSystem(preserveAspectRatio=true,
                            extent={{-100,-100},{100,100}}), graphics={Rectangle(
-                  extent={{-80,60},{80,-60}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid)}), 
-            Documentation(revisions="", 
+                  extent={{-80,60},{80,-60}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid)}),
+            Documentation(revisions="",
                 info="<html>
 <p>
 Function that returns the ThickEdgedOrifice.Geometry for a rectangular
@@ -2559,7 +2559,7 @@ cross section of the orifice.
           input SI.Length perimeter "Inner perimeter" 
             annotation(Dialog);
 
-          input SI.Area venaCrossArea 
+          input SI.Area venaCrossArea
               "Cross sectional area of vena contraction" 
             annotation(Dialog);
           input SI.Length venaPerimeter "Perimeter of vena contraction" 
@@ -2567,7 +2567,7 @@ cross section of the orifice.
           input SI.Length venaLength "Length of vena contraction" 
             annotation (Dialog);
 
-           output ThickEdgedOrifice.Geometry geometry 
+           output ThickEdgedOrifice.Geometry geometry
               "Geometry of circular thick edged orifice";
         algorithm
            geometry.crossArea := crossArea;
@@ -2575,13 +2575,13 @@ cross section of the orifice.
            geometry.venaCrossArea := venaCrossArea;
            geometry.venaPerimeter := venaPerimeter;
            geometry.venaLength := venaLength;
-          annotation (Icon(coordinateSystem(preserveAspectRatio=false, 
+          annotation (Icon(coordinateSystem(preserveAspectRatio=false,
                            extent={{-100,-100},{100,100}}), graphics={
                                                  Polygon(
-                  points={{-80,8},{0,80},{80,40},{20,-20},{40,-80},{-60,-80},{-80,8}}, 
-                  fillColor={255,255,255}, 
-                  fillPattern=FillPattern.Solid)}), 
-            Documentation(revisions="", 
+                  points={{-80,8},{0,80},{80,40},{20,-20},{40,-80},{-60,-80},{-80,8}},
+                  fillColor={255,255,255},
+                  fillPattern=FillPattern.Solid)}),
+            Documentation(revisions="",
                 info="<html>
 <p>
 Function that returns the ThickEdgedOrifice.Geometry for a general
@@ -2604,44 +2604,44 @@ for the ThickEdgedOrifice fitting component.
       end ThickEdgedOrifice;
     end Orifices;
 
-    package GenericResistances 
+    package GenericResistances
       "Pressure loss functions for generic, geometry independent flow resistances"
         extends Modelica.Icons.VariantsPackage;
-      package VolumeFlowRate 
+      package VolumeFlowRate
         "Pressure loss functions for generic resistances parameterized with the volume flow rate"
           extends Modelica.Icons.Package;
 
-      function massFlowRate 
+      function massFlowRate
           "Return mass flow rate m_flow as function of pressure loss dp for a curved bend"
         extends Modelica.Icons.Function;
 
         input SI.Pressure dp "Pressure loss";
-        input Real a(unit="(Pa.s2)/m6") 
+        input Real a(unit="(Pa.s2)/m6")
             "Coefficient for quadratic term (dp = a*V_flow^2 + b*V_flow)";
-        input Real b(unit="(Pa.s)/m3") 
+        input Real b(unit="(Pa.s)/m3")
             "Coefficient for linear term (dp = a*V_flow^2 + b*V_flow)";
-        input SI.Density d_a 
+        input SI.Density d_a
             "Density at port_a when fluid is flowing from port_a to port_b";
-        input SI.Density d_b 
+        input SI.Density d_b
             "Density at port_b when fluid is flowing from port_b to port_a";
-        input SI.AbsolutePressure dp_small 
+        input SI.AbsolutePressure dp_small
             "Small pressure drop used for regularization if m_flow=f(...,dp_small,..,dp)";
-        input SI.MassFlowRate m_flow_small 
+        input SI.MassFlowRate m_flow_small
             "Small mass flow rate used for regularization if dp=f_inv(...,m_flow_small,m_flow)";
         output SI.MassFlowRate m_flow "Mass flow rate (= port_a.m_flow)";
       algorithm
          m_flow := Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_MFLOW(
                      Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_IN_con(
-                         a=a, 
-                         b=b, 
-                         dp_min=dp_small), 
+                         a=a,
+                         b=b,
+                         dp_min=dp_small),
                      Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_IN_var(
-                         rho=Modelica.Fluid.Utilities.regStep(dp, d_a, d_b, dp_small)), 
+                         rho=Modelica.Fluid.Utilities.regStep(dp, d_a, d_b, dp_small)),
                      dp);
 
-         annotation(LateInline=true, 
+         annotation(LateInline=true,
                     inverse(dp=Modelica.Fluid.Fittings.BaseClasses.GenericResistances.VolumeFlowRate.pressureLoss(
-                                  m_flow, a, b, d_a, d_b, dp_small, m_flow_small)), 
+                                  m_flow, a, b, d_a, d_b, dp_small, m_flow_small)),
           Documentation(info="<html>
 <p>
 This function returns the mass flow rate m_flow as function of pressure loss dp for an edged bend.
@@ -2661,32 +2661,32 @@ fluid flows from port_a to port_b (d_a, eta_a) and if fluid flows from port_b to
 </html>"));
       end massFlowRate;
 
-      function pressureLoss 
+      function pressureLoss
           "Return pressure loss dp as function of mass flow rate m_flow for a curved bend"
         extends Modelica.Icons.Function;
 
         input SI.MassFlowRate m_flow "Mass flow rate (= port_a.m_flow)";
-        input Real a(unit="(Pa.s2)/m6") 
+        input Real a(unit="(Pa.s2)/m6")
             "Coefficient for quadratic term (dp = a*V_flow^2 + b*V_flow)";
-        input Real b(unit="(Pa.s)/m3") 
+        input Real b(unit="(Pa.s)/m3")
             "Coefficient for linear term (dp = a*V_flow^2 + b*V_flow)";
-        input SI.Density d_a 
+        input SI.Density d_a
             "Density at port_a when fluid is flowing from port_a to port_b";
-        input SI.Density d_b 
+        input SI.Density d_b
             "Density at port_b when fluid is flowing from port_b to port_a";
-        input SI.AbsolutePressure dp_small 
+        input SI.AbsolutePressure dp_small
             "Small pressure drop used for regularization if m_flow=f(...,dp_small,..,dp)";
-        input SI.MassFlowRate m_flow_small 
+        input SI.MassFlowRate m_flow_small
             "Small mass flow rate used for regularization if dp=f_inv(...,m_flow_small,m_flow)";
         output SI.Pressure dp "Pressure loss";
       algorithm
          dp := Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_DP(
                      Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_IN_con(
-                         a=a, 
-                         b=b, 
-                         dp_min=dp_small), 
+                         a=a,
+                         b=b,
+                         dp_min=dp_small),
                      Modelica.Fluid.Dissipation.PressureLoss.General.dp_volumeFlowRate_IN_var(
-                         rho=Modelica.Fluid.Utilities.regStep(m_flow, d_a, d_b, m_flow_small)), 
+                         rho=Modelica.Fluid.Utilities.regStep(m_flow, d_a, d_b, m_flow_small)),
                      m_flow);
 
          annotation(Inline=true, Documentation(info="<html>

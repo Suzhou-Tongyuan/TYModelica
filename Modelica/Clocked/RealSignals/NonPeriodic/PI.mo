@@ -1,9 +1,9 @@
 ﻿within Modelica.Clocked.RealSignals.NonPeriodic;
-block PI 
+block PI
   "Discrete-time PI controller with clocked input and output signals (for periodic and aperiodic systems using the parameterization of the continuous PI controller)"
   extends Clocked.RealSignals.Interfaces.PartialClockedSISO;
   parameter Real k "Gain of continuous PI controller";
-  parameter Real T(min=Modelica.Constants.small) 
+  parameter Real T(min=Modelica.Constants.small)
     "Time constant of continuous PI controller";
   output Real x(start=0) "Discrete PI state";
 protected
@@ -14,47 +14,47 @@ equation
      y = k*(x + u);
   end when;
 
-  annotation (defaultComponentName="PI1", 
+  annotation (defaultComponentName="PI1",
        Icon(graphics={
         Polygon(
-          points={{90,-82},{68,-74},{68,-90},{90,-82}}, 
-          lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-90,-82},{82,-82}}, color={192,192,192}), 
-        Line(points={{-80,76},{-80,-92}}, color={192,192,192}), 
+          points={{90,-82},{68,-74},{68,-90},{90,-82}},
+          lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-90,-82},{82,-82}}, color={192,192,192}),
+        Line(points={{-80,76},{-80,-92}}, color={192,192,192}),
         Polygon(
-          points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-          lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-80,90},{-88,68},{-72,68},{-80,90}},
+          lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
         Line(
-          points={{-80,-82},{-80,-10},{-32,-10},{-32,18},{54,18},{54,46},{84,46}, 
-              {84,78}}, 
-          color={0,0,127}, 
-          pattern=LinePattern.Dot), 
+          points={{-80,-82},{-80,-10},{-32,-10},{-32,18},{54,18},{54,46},{84,46},
+              {84,78}},
+          color={0,0,127},
+          pattern=LinePattern.Dot),
         Text(
-          extent={{-30,0},{80,-60}}, 
-          textColor={192,192,192}, 
-          textString="PI"), 
+          extent={{-30,0},{80,-60}},
+          textColor={192,192,192},
+          textString="PI"),
         Text(
-          extent={{-150,-150},{150,-110}}, 
-          textString="T=%T"), 
+          extent={{-150,-150},{150,-110}},
+          textString="T=%T"),
         Ellipse(
-          extent={{-87,-3},{-75,-15}}, 
-          lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-87,-3},{-75,-15}},
+          lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-38,24},{-26,12}}, 
-          lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-38,24},{-26,12}},
+          lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{48,52},{60,40}}, 
-          lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid)}), 
+          extent={{48,52},{60,40}},
+          lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
 Discrete-time PI controller that has been derived from the continuous-time

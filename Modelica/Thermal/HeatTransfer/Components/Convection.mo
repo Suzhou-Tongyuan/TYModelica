@@ -1,13 +1,13 @@
 ﻿within Modelica.Thermal.HeatTransfer.Components;
-model Convection 
+model Convection
   "Lumped thermal element for heat convection (Q_flow = Gc*dT)"
   SI.HeatFlowRate Q_flow "Heat flow rate from solid -> fluid";
   SI.TemperatureDifference dT "= solid.T - fluid.T";
-  Modelica.Blocks.Interfaces.RealInput Gc(unit="W/K") 
+  Modelica.Blocks.Interfaces.RealInput Gc(unit="W/K")
     "Signal representing the convective thermal conductance in [W/K]" 
     annotation (Placement(transformation(
-        origin={0,100}, 
-        extent={{-20,-20},{20,20}}, 
+        origin={0,100},
+        extent={{-20,-20},{20,20}},
         rotation=270)));
   Interfaces.HeatPort_a solid annotation (Placement(transformation(extent={{
             -110,-10},{-90,10}})));
@@ -22,40 +22,40 @@ equation
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={
         Rectangle(
-          extent={{-62,80},{98,-80}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-62,80},{98,-80}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-90,80},{-60,-80}}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Backward), 
+          extent={{-90,80},{-60,-80}},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Backward),
         Text(
-          extent={{-150,-90},{150,-130}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
-        Line(points={{100,0},{100,0}}, color={0,127,255}), 
-        Line(points={{-60,20},{76,20}}, color={191,0,0}), 
-        Line(points={{-60,-20},{76,-20}}, color={191,0,0}), 
-        Line(points={{-34,80},{-34,-80}}, color={0,127,255}), 
-        Line(points={{6,80},{6,-80}}, color={0,127,255}), 
-        Line(points={{40,80},{40,-80}}, color={0,127,255}), 
-        Line(points={{76,80},{76,-80}}, color={0,127,255}), 
-        Line(points={{-34,-80},{-44,-60}}, color={0,127,255}), 
-        Line(points={{-34,-80},{-24,-60}}, color={0,127,255}), 
-        Line(points={{6,-80},{-4,-60}}, color={0,127,255}), 
-        Line(points={{6,-80},{16,-60}}, color={0,127,255}), 
-        Line(points={{40,-80},{30,-60}}, color={0,127,255}), 
-        Line(points={{40,-80},{50,-60}}, color={0,127,255}), 
-        Line(points={{76,-80},{66,-60}}, color={0,127,255}), 
-        Line(points={{76,-80},{86,-60}}, color={0,127,255}), 
-        Line(points={{56,-30},{76,-20}}, color={191,0,0}), 
-        Line(points={{56,-10},{76,-20}}, color={191,0,0}), 
-        Line(points={{56,10},{76,20}}, color={191,0,0}), 
-        Line(points={{56,30},{76,20}}, color={191,0,0}), 
+          extent={{-150,-90},{150,-130}},
+          textString="%name",
+          textColor={0,0,255}),
+        Line(points={{100,0},{100,0}}, color={0,127,255}),
+        Line(points={{-60,20},{76,20}}, color={191,0,0}),
+        Line(points={{-60,-20},{76,-20}}, color={191,0,0}),
+        Line(points={{-34,80},{-34,-80}}, color={0,127,255}),
+        Line(points={{6,80},{6,-80}}, color={0,127,255}),
+        Line(points={{40,80},{40,-80}}, color={0,127,255}),
+        Line(points={{76,80},{76,-80}}, color={0,127,255}),
+        Line(points={{-34,-80},{-44,-60}}, color={0,127,255}),
+        Line(points={{-34,-80},{-24,-60}}, color={0,127,255}),
+        Line(points={{6,-80},{-4,-60}}, color={0,127,255}),
+        Line(points={{6,-80},{16,-60}}, color={0,127,255}),
+        Line(points={{40,-80},{30,-60}}, color={0,127,255}),
+        Line(points={{40,-80},{50,-60}}, color={0,127,255}),
+        Line(points={{76,-80},{66,-60}}, color={0,127,255}),
+        Line(points={{76,-80},{86,-60}}, color={0,127,255}),
+        Line(points={{56,-30},{76,-20}}, color={191,0,0}),
+        Line(points={{56,-10},{76,-20}}, color={191,0,0}),
+        Line(points={{56,10},{76,20}}, color={191,0,0}),
+        Line(points={{56,30},{76,20}}, color={191,0,0}),
         Text(
-          extent={{22,124},{92,98}}, 
-          textString="Gc")}), 
+          extent={{22,124},{92,98}},
+          textString="Gc")}),
     Documentation(info="<html>
 <p>
 This is a model of linear heat convection, e.g., the heat transfer between a plate and the surrounding air; see also:
@@ -115,10 +115,10 @@ where
 and the equation for h holds, provided
    Re &lt; 5e5 and 0.6 &lt; Pr &lt; 50
 </pre></blockquote>
-</html>"), 
-       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
-        Line(points={{100,0},{100,0}}, color={0,127,255}), 
-        Line(points={{100,0},{100,0}}, color={0,127,255}), 
+        Line(points={{100,0},{100,0}}, color={0,127,255}),
+        Line(points={{100,0},{100,0}}, color={0,127,255}),
         Line(points={{100,0},{100,0}}, color={0,127,255})}));
 end Convection;

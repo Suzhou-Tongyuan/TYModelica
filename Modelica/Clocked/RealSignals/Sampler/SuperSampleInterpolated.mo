@@ -1,16 +1,16 @@
 ﻿within Modelica.Clocked.RealSignals.Sampler;
-block SuperSampleInterpolated 
+block SuperSampleInterpolated
   "Super-sample the clocked Real input signal and provide it linearly interpolated as clocked output signal (this is also called an Interpolator)"
 
-  parameter Boolean inferFactor=true 
+  parameter Boolean inferFactor=true
     "= true, if super-sampling factor is inferred"  annotation(Evaluate=true, choices(checkBox=true));
-  parameter Integer factor(min=1)=1 
+  parameter Integer factor(min=1)=1
     "Super-sampling factor >= 1 (if inferFactor=false)" 
                                                 annotation(Evaluate=true, Dialog(enable=not inferFactor));
-  Modelica.Blocks.Interfaces.RealInput u 
+  Modelica.Blocks.Interfaces.RealInput u
     "Connector of clocked, Real input signal" 
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-  Modelica.Blocks.Interfaces.RealOutput y 
+  Modelica.Blocks.Interfaces.RealOutput y
     "Connector of clocked, Real output signal" 
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 protected
@@ -40,59 +40,59 @@ equation
   end when;
 
   annotation (
-   defaultComponentName="superSampleIpo1", 
+   defaultComponentName="superSampleIpo1",
    Icon(coordinateSystem(
-        preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}, 
-        initialScale=0.06), 
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}},
+        initialScale=0.06),
                      graphics={
         Line(
-          points={{-100,0},{-40,0},{-40,-60},{16,-60},{16,0},{74,0},{74,80},{110, 
-              80},{110,80},{110,80},{110,80},{120,80}}, 
-          color={0,0,127}, 
-          pattern=LinePattern.Dot), 
+          points={{-100,0},{-40,0},{-40,-60},{16,-60},{16,0},{74,0},{74,80},{110,
+              80},{110,80},{110,80},{110,80},{120,80}},
+          color={0,0,127},
+          pattern=LinePattern.Dot),
         Ellipse(
-          extent={{-55,-43},{-25,-73}}, 
-          lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-55,-43},{-25,-73}},
+          lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{59,94},{89,64}}, 
-          lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{59,94},{89,64}},
+          lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-2,16},{28,-14}}, 
-          lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-2,16},{28,-14}},
+          lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-89,-51},{-71,-69}}, 
-          lineColor={0,0,127}, 
-          fillColor={0,0,127}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-89,-51},{-71,-69}},
+          lineColor={0,0,127},
+          fillColor={0,0,127},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{7,88},{25,70}}, 
-          lineColor={0,0,127}, 
-          fillColor={0,0,127}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{7,88},{25,70}},
+          lineColor={0,0,127},
+          fillColor={0,0,127},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{25,0},{5,20},{5,10},{-25,10},{-25,-10},{5,-10},{5,-20}, 
-              {25,0}}, 
-          fillColor={95,95,95}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={95,95,95}, 
-          origin={-61,46}, 
-          rotation=90), 
+          points={{25,0},{5,20},{5,10},{-25,10},{-25,-10},{5,-10},{5,-20},
+              {25,0}},
+          fillColor={95,95,95},
+          fillPattern=FillPattern.Solid,
+          lineColor={95,95,95},
+          origin={-61,46},
+          rotation=90),
         Text(
-          visible=not inferFactor, 
-          extent={{-150,-100},{150,-140}}, 
-          textString="%factor", 
-          textColor={0,0,0}), 
+          visible=not inferFactor,
+          extent={{-150,-100},{150,-140}},
+          textString="%factor",
+          textColor={0,0,0}),
         Text(
-          extent={{-150,150},{150,110}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
+          extent={{-150,150},{150,110}},
+          textString="%name",
+          textColor={0,0,255})}),
     Documentation(info="<html>
 <p>
 This block super-samples the clocked Real input signal u and provides it

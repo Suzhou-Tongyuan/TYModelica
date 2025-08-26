@@ -1,12 +1,12 @@
 ﻿within Modelica.Mechanics.MultiBody.Visualizers;
-model FixedShape2 
+model FixedShape2
   "Visualizing an elementary shape with dynamically varying shape attributes (has two frame connectors)"
 
   import Modelica.Mechanics.MultiBody.Frames;
   import Modelica.Mechanics.MultiBody.Types;
   import Modelica.Units.Conversions.to_unit1;
 
-  Interfaces.Frame_a frame_a 
+  Interfaces.Frame_a frame_a
     "Coordinate system a (all shape definition vectors are resolved in this frame)" 
      annotation (Placement(transformation(extent={{-116,-16},{-84,16}})));
   Interfaces.Frame_b frame_b "Coordinate system b" 
@@ -15,15 +15,15 @@ model FixedShape2
   parameter Boolean animation=true "= true, if animation shall be enabled";
   parameter Types.ShapeType shapeType="box" "Type of shape" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input SI.Position r[3]={1,0,0} 
+  input SI.Position r[3]={1,0,0}
     "Vector from frame_a to frame_b resolved in frame_a";
-  input SI.Position r_shape[3]={0,0,0} 
+  input SI.Position r_shape[3]={0,0,0}
     "Vector from frame_a to shape origin, resolved in frame_a" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input Types.Axis lengthDirection = to_unit1(r - r_shape) 
+  input Types.Axis lengthDirection = to_unit1(r - r_shape)
     "Vector in length direction of shape, resolved in frame_a" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input Types.Axis widthDirection={0,1,0} 
+  input Types.Axis widthDirection={0,1,0}
     "Vector in width direction of shape, resolved in frame_a" 
     annotation (Dialog(group="if animation = true", enable=animation));
   input SI.Length length=Modelica.Math.Vectors.length(
@@ -33,29 +33,29 @@ model FixedShape2
     annotation (Dialog(group="if animation = true", enable=animation));
   input SI.Distance height=width "Height of shape" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input Types.ShapeExtra extra=0.0 
+  input Types.ShapeExtra extra=0.0
     "Additional data for cylinder, cone, pipe, gearwheel and spring" 
     annotation (Dialog(group="if animation = true", enable=animation));
   input Types.Color color={0,128,255} "Color of shape" 
     annotation (Dialog(colorSelector=true, group="if animation = true", enable=animation));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(group="if animation = true", enable=animation));
 
 protected
   outer MultiBody.World world;
   Advanced.Shape shape(
-    shapeType=shapeType, 
-    r_shape=r_shape, 
-    lengthDirection=lengthDirection, 
-    widthDirection=widthDirection, 
-    length=length, 
-    width=width, 
-    height=height, 
-    extra=extra, 
-    color=color, 
-    specularCoefficient = specularCoefficient, 
-    r=frame_a.r_0, 
+    shapeType=shapeType,
+    r_shape=r_shape,
+    lengthDirection=lengthDirection,
+    widthDirection=widthDirection,
+    length=length,
+    width=width,
+    height=height,
+    extra=extra,
+    color=color,
+    specularCoefficient = specularCoefficient,
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
 equation
   Connections.branch(frame_a.R, frame_b.R);
@@ -70,36 +70,36 @@ MultiBody.Visualizers.FixedShape2 object is connected");
   zeros(3) = frame_a.t + frame_b.t + cross(r, frame_b.f);
   annotation (
     Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Text(
-          extent={{-150,115},{150,75}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,115},{150,75}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
-          extent={{150,-90},{-150,-60}}, 
-          textString="r=%r"), 
+          extent={{150,-90},{-150,-60}},
+          textString="r=%r"),
         Polygon(
-          points={{-100,50},{-66,62},{0,46},{100,70},{80,50},{-10,28},{-100,50}}, 
-          lineColor={255,255,255}, 
-          fillColor={160,160,164}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-100,50},{-66,62},{0,46},{100,70},{80,50},{-10,28},{-100,50}},
+          lineColor={255,255,255},
+          fillColor={160,160,164},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{100,70},{80,50},{80,-44},{100,-16},{100,70}}, 
-          lineColor={255,255,255}, 
-          fillColor={160,160,164}, 
-          fillPattern=FillPattern.Solid), 
+          points={{100,70},{80,50},{80,-44},{100,-16},{100,70}},
+          lineColor={255,255,255},
+          fillColor={160,160,164},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{-100,50},{-100,-44},{-10,-24},{80,-44},{80,50},{-10,28},{-100,50}}, 
-          lineColor={215,215,215}, 
-          fillColor={0,127,255}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-100,50},{-100,-44},{-10,-24},{80,-44},{80,50},{-10,28},{-100,50}},
+          lineColor={215,215,215},
+          fillColor={0,127,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-86,15},{-50,-10}}, 
-          textString="a"), 
+          extent={{-86,15},{-50,-10}},
+          textString="a"),
         Text(
-          extent={{37,15},{73,-10}}, 
-          textString="b")}), 
+          extent={{37,15},{73,-10}},
+          textString="b")}),
     Documentation(info="<html>
 <p>
 Model <strong>FixedShape2</strong> defines a visual shape that is

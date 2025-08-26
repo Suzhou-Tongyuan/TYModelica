@@ -4,43 +4,43 @@ model GearConstraint "Ideal 3-dim. gearbox (arbitrary shaft directions)"
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;
   Interfaces.Frame_a bearing "Coordinate system fixed in the bearing" 
    annotation (Placement(transformation(
-        origin={0,-100}, 
-        extent={{-16,-16},{16,16}}, 
+        origin={0,-100},
+        extent={{-16,-16},{16,16}},
         rotation=90)));
 
   parameter Real ratio(start=2) "Gear speed ratio";
 
-  parameter Modelica.Mechanics.MultiBody.Types.Axis n_a={1,0,0} 
+  parameter Modelica.Mechanics.MultiBody.Types.Axis n_a={1,0,0}
     "Axis of rotation of shaft a (same coordinates in frame_a, frame_b, bearing)";
-  parameter Modelica.Mechanics.MultiBody.Types.Axis n_b={1,0,0} 
+  parameter Modelica.Mechanics.MultiBody.Types.Axis n_b={1,0,0}
     "Axis of rotation of shaft b (same coordinates in frame_a, frame_b, bearing)";
 
-  parameter SI.Position r_a[3]={0,0,0} 
+  parameter SI.Position r_a[3]={0,0,0}
     "Vector from frame bearing to frame_a resolved in bearing";
-  parameter SI.Position r_b[3]={0,0,0} 
+  parameter SI.Position r_b[3]={0,0,0}
     "Vector from frame bearing to frame_b resolved in bearing";
-  parameter StateSelect stateSelect=StateSelect.default 
+  parameter StateSelect stateSelect=StateSelect.default
     "Priority to use joint coordinates (phi_a, phi_b, w_a, w_b) as states" annotation(Dialog(tab="Advanced"));
-  parameter Boolean checkTotalPower=false 
+  parameter Boolean checkTotalPower=false
     "= true, if total power flowing into this component shall be determined (must be zero)" 
     annotation (Dialog(tab="Advanced"));
 
-  SI.Angle phi_b(start=0, stateSelect=stateSelect) 
+  SI.Angle phi_b(start=0, stateSelect=stateSelect)
     "Relative rotation angle of revolute joint at frame_b";
-  SI.AngularVelocity w_b(start=0, stateSelect=stateSelect) 
+  SI.AngularVelocity w_b(start=0, stateSelect=stateSelect)
     "First derivative of angle phi_b (relative angular velocity b)";
-  SI.AngularAcceleration a_b(start=0) 
+  SI.AngularAcceleration a_b(start=0)
     "Second derivative of angle phi_b (relative angular acceleration b)";
-  SI.Power totalPower 
+  SI.Power totalPower
     "Total power flowing into this element, if checkTotalPower=true (otherwise dummy)";
 
   Modelica.Mechanics.MultiBody.Joints.Revolute actuatedRevolute_a(
-    useAxisFlange=true, 
-    n=n_a, 
+    useAxisFlange=true,
+    n=n_a,
     animation=false) annotation (Placement(transformation(extent={{-40,-10},{-60,10}})));
   Modelica.Mechanics.MultiBody.Joints.Revolute actuatedRevolute_b(
-    useAxisFlange=true, 
-    n=n_b, 
+    useAxisFlange=true,
+    n=n_b,
     animation=false) annotation (Placement(transformation(extent={{40,-10},{60,10}})));
   Modelica.Mechanics.Rotational.Components.IdealGear idealGear(
                                                     ratio=ratio) 
@@ -49,8 +49,8 @@ model GearConstraint "Ideal 3-dim. gearbox (arbitrary shaft directions)"
     annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation2(animation=false, r=r_a) 
     annotation (Placement(transformation(
-        origin={-20,0}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-20,0},
+        extent={{-10,-10},{10,10}},
         rotation=180)));
 equation
   /* Implementation notes:
@@ -98,7 +98,7 @@ equation
      means that the two rotational flanges of the revolute joints just have to be
      connected by an IdealGear component (without mounting).
   */
-  assert(cardinality(bearing) > 0, 
+  assert(cardinality(bearing) > 0,
     "Connector bearing of component is not connected");
 
   phi_b = actuatedRevolute_b.phi;
@@ -107,12 +107,12 @@ equation
 
   // Measure power for test purposes
   if checkTotalPower then
-    totalPower = 
-      frame_a.f*Frames.resolve2(frame_a.R, der(frame_a.r_0)) + 
-      frame_b.f*Frames.resolve2(frame_b.R, der(frame_b.r_0)) + 
-      bearing.f*Frames.resolve2(bearing.R, der(bearing.r_0)) + 
-      frame_a.t*Frames.angularVelocity2(frame_a.R) + 
-      frame_b.t*Frames.angularVelocity2(frame_b.R) + 
+    totalPower =
+      frame_a.f*Frames.resolve2(frame_a.R, der(frame_a.r_0)) +
+      frame_b.f*Frames.resolve2(frame_b.R, der(frame_b.r_0)) +
+      bearing.f*Frames.resolve2(bearing.R, der(bearing.r_0)) +
+      frame_a.t*Frames.angularVelocity2(frame_a.R) +
+      frame_b.t*Frames.angularVelocity2(frame_b.R) +
       bearing.t*Frames.angularVelocity2(bearing.R);
   else
     totalPower = 0;
@@ -123,165 +123,165 @@ equation
   connect(idealGear.flange_b, actuatedRevolute_b.axis) 
     annotation (Line(points={{10,40},{50,40},{50,10}}));
   connect(actuatedRevolute_a.frame_a,fixedTranslation2. frame_b) annotation (Line(
-      points={{-40,0},{-35,0},{-30,0}}, 
-      color={95,95,95}, 
+      points={{-40,0},{-35,0},{-30,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(fixedTranslation2.frame_a, bearing) annotation (Line(
-      points={{-10,0},{-4,0},{0,0},{0,-100}}, 
-      color={95,95,95}, 
+      points={{-10,0},{-4,0},{0,0},{0,-100}},
+      color={95,95,95},
       thickness=0.5));
   connect(fixedTranslation1.frame_a, bearing) 
     annotation (Line(
-      points={{10,0},{0,0},{0,-100}}, 
-      color={95,95,95}, 
+      points={{10,0},{0,0},{0,-100}},
+      color={95,95,95},
       thickness=0.5));
   connect(fixedTranslation1.frame_b, actuatedRevolute_b.frame_a) 
     annotation (Line(
-      points={{30,0},{40,0}}, 
-      color={95,95,95}, 
+      points={{30,0},{40,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(frame_a, actuatedRevolute_a.frame_b) 
     annotation (Line(
-      points={{-100,0},{-80,0},{-80,0},{-60,0}}, 
-      color={95,95,95}, 
+      points={{-100,0},{-80,0},{-80,0},{-60,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(actuatedRevolute_b.frame_b, frame_b) 
     annotation (Line(
-      points={{60,0},{80,0},{80,0},{100,0}}, 
-      color={95,95,95}, 
+      points={{60,0},{80,0},{80,0},{100,0}},
+      color={95,95,95},
       thickness=0.5));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100,-100},{100,100}}), graphics={
-      Text(origin = {0,-20}, 
-        textColor = {0,0,255}, 
-        extent = {{-150,135},{150,175}}, 
-        textString = "%name"), 
-      Text(origin = {0,12}, 
-        extent = {{-150,-94},{150,-64}}, 
-        textString = "%ratio"), 
-      Rectangle(origin = {-35,60}, 
-        fillColor = {255,255,255}, 
-        fillPattern = FillPattern.HorizontalCylinder, 
-        extent = {{-15,-40},{15,40}}), 
-      Rectangle(origin = {-35,0}, 
-        fillColor = {255,255,255}, 
-        fillPattern = FillPattern.HorizontalCylinder, 
-        extent = {{-15,-21},{15,21}}), 
-      Line(points = {{-80,20},{-60,20}}), 
-      Line(points = {{-80,-20},{-60,-20}}), 
-      Line(points = {{-70,-20},{-70,-86}}), 
-      Line(points = {{0,40},{0,-100}}), 
-      Line(points = {{-10,40},{10,40}}), 
-      Line(points = {{-10,80},{10,80}}), 
-      Line(points = {{60,-20},{80,-20}}), 
-      Line(points = {{60,20},{80,20}}), 
-      Line(points = {{70,-20},{70,-86}}), 
-      Rectangle(origin = {-75,0}, 
-        lineColor = {64,64,64}, 
-        fillColor = {191,191,191}, 
-        fillPattern = FillPattern.HorizontalCylinder, 
-        extent = {{-25,-10},{25,10}}), 
-      Rectangle(origin = {75,0}, 
-        lineColor = {64,64,64}, 
-        fillColor = {191,191,191}, 
-        fillPattern = FillPattern.HorizontalCylinder, 
-        extent = {{-25,-10},{25,10}}), 
-      Rectangle(origin = {-35,-19}, 
-        fillColor = {153,153,153}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-2},{15,2}}), 
-      Rectangle(origin = {-35,-8}, 
-        fillColor = {204,204,204}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-3},{15,3}}), 
-      Rectangle(origin = {-35,19}, 
-        fillColor = {204,204,204}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-2},{15,2}}), 
-      Rectangle(origin = {-35,8}, 
-        fillColor = {255,255,255}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-3},{15,3}}), 
-      Rectangle(origin = {0,60}, 
-        lineColor = {64,64,64}, 
-        fillColor = {191,191,191}, 
-        fillPattern = FillPattern.HorizontalCylinder, 
-        extent = {{-20,-10},{20,10}}), 
-      Rectangle(origin = {-35,98}, 
-        fillColor = {153,153,153}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-2},{15,2}}), 
-      Rectangle(origin = {-35,87}, 
-        fillColor = {204,204,204}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-3},{15,3}}), 
-      Rectangle(origin = {-35,50}, 
-        fillColor = {204,204,204}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-4},{15,4}}), 
-      Rectangle(origin = {-35,22}, 
-        fillColor = {102,102,102}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-2},{15,2}}), 
-      Rectangle(origin = {-35,33}, 
-        fillColor = {153,153,153}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-3},{15,3}}), 
-      Rectangle(origin = {-35,70}, 
-        fillColor = {255,255,255}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-4},{15,4}}), 
-      Rectangle(origin = {35,60}, 
-        fillColor = {255,255,255}, 
-        fillPattern = FillPattern.HorizontalCylinder, 
-        extent = {{-15,-21},{15,21}}), 
-      Rectangle(origin = {35,41}, 
-        fillColor = {153,153,153}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-2},{15,2}}), 
-      Rectangle(origin = {35,52}, 
-        fillColor = {204,204,204}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-3},{15,3}}), 
-      Rectangle(origin = {35,79}, 
-        fillColor = {204,204,204}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-2},{15,2}}), 
-      Rectangle(origin = {35,68}, 
-        fillColor = {255,255,255}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-3},{15,3}}), 
-      Rectangle(origin = {35,0}, 
-        fillColor = {255,255,255}, 
-        fillPattern = FillPattern.HorizontalCylinder, 
-        extent = {{-15,-40},{15,40}}), 
-      Rectangle(origin = {35,38}, 
-        fillColor = {153,153,153}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-2},{15,2}}), 
-      Rectangle(origin = {35,27}, 
-        fillColor = {204,204,204}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-3},{15,3}}), 
-      Rectangle(origin = {35,-10}, 
-        fillColor = {204,204,204}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-4},{15,4}}), 
-      Rectangle(origin = {35,-27}, 
-        fillColor = {153,153,153}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-3},{15,3}}), 
-      Rectangle(origin = {35,10}, 
-        fillColor = {255,255,255}, 
-        fillPattern = FillPattern.Solid, 
-        extent = {{-15,-4},{15,4}}), 
-      Rectangle(origin = {-35,40}, 
-        fillColor = {255,255,255}, 
-        extent = {{-15,-61},{15,60}}), 
-      Rectangle(origin = {35,21}, 
-        fillColor = {255,255,255}, 
-        extent = {{-15,-61},{15,60}}), 
-      Line(points = {{70,-86},{-70,-86}})}), 
+      Text(origin = {0,-20},
+        textColor = {0,0,255},
+        extent = {{-150,135},{150,175}},
+        textString = "%name"),
+      Text(origin = {0,12},
+        extent = {{-150,-94},{150,-64}},
+        textString = "%ratio"),
+      Rectangle(origin = {-35,60},
+        fillColor = {255,255,255},
+        fillPattern = FillPattern.HorizontalCylinder,
+        extent = {{-15,-40},{15,40}}),
+      Rectangle(origin = {-35,0},
+        fillColor = {255,255,255},
+        fillPattern = FillPattern.HorizontalCylinder,
+        extent = {{-15,-21},{15,21}}),
+      Line(points = {{-80,20},{-60,20}}),
+      Line(points = {{-80,-20},{-60,-20}}),
+      Line(points = {{-70,-20},{-70,-86}}),
+      Line(points = {{0,40},{0,-100}}),
+      Line(points = {{-10,40},{10,40}}),
+      Line(points = {{-10,80},{10,80}}),
+      Line(points = {{60,-20},{80,-20}}),
+      Line(points = {{60,20},{80,20}}),
+      Line(points = {{70,-20},{70,-86}}),
+      Rectangle(origin = {-75,0},
+        lineColor = {64,64,64},
+        fillColor = {191,191,191},
+        fillPattern = FillPattern.HorizontalCylinder,
+        extent = {{-25,-10},{25,10}}),
+      Rectangle(origin = {75,0},
+        lineColor = {64,64,64},
+        fillColor = {191,191,191},
+        fillPattern = FillPattern.HorizontalCylinder,
+        extent = {{-25,-10},{25,10}}),
+      Rectangle(origin = {-35,-19},
+        fillColor = {153,153,153},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-2},{15,2}}),
+      Rectangle(origin = {-35,-8},
+        fillColor = {204,204,204},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-3},{15,3}}),
+      Rectangle(origin = {-35,19},
+        fillColor = {204,204,204},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-2},{15,2}}),
+      Rectangle(origin = {-35,8},
+        fillColor = {255,255,255},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-3},{15,3}}),
+      Rectangle(origin = {0,60},
+        lineColor = {64,64,64},
+        fillColor = {191,191,191},
+        fillPattern = FillPattern.HorizontalCylinder,
+        extent = {{-20,-10},{20,10}}),
+      Rectangle(origin = {-35,98},
+        fillColor = {153,153,153},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-2},{15,2}}),
+      Rectangle(origin = {-35,87},
+        fillColor = {204,204,204},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-3},{15,3}}),
+      Rectangle(origin = {-35,50},
+        fillColor = {204,204,204},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-4},{15,4}}),
+      Rectangle(origin = {-35,22},
+        fillColor = {102,102,102},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-2},{15,2}}),
+      Rectangle(origin = {-35,33},
+        fillColor = {153,153,153},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-3},{15,3}}),
+      Rectangle(origin = {-35,70},
+        fillColor = {255,255,255},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-4},{15,4}}),
+      Rectangle(origin = {35,60},
+        fillColor = {255,255,255},
+        fillPattern = FillPattern.HorizontalCylinder,
+        extent = {{-15,-21},{15,21}}),
+      Rectangle(origin = {35,41},
+        fillColor = {153,153,153},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-2},{15,2}}),
+      Rectangle(origin = {35,52},
+        fillColor = {204,204,204},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-3},{15,3}}),
+      Rectangle(origin = {35,79},
+        fillColor = {204,204,204},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-2},{15,2}}),
+      Rectangle(origin = {35,68},
+        fillColor = {255,255,255},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-3},{15,3}}),
+      Rectangle(origin = {35,0},
+        fillColor = {255,255,255},
+        fillPattern = FillPattern.HorizontalCylinder,
+        extent = {{-15,-40},{15,40}}),
+      Rectangle(origin = {35,38},
+        fillColor = {153,153,153},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-2},{15,2}}),
+      Rectangle(origin = {35,27},
+        fillColor = {204,204,204},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-3},{15,3}}),
+      Rectangle(origin = {35,-10},
+        fillColor = {204,204,204},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-4},{15,4}}),
+      Rectangle(origin = {35,-27},
+        fillColor = {153,153,153},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-3},{15,3}}),
+      Rectangle(origin = {35,10},
+        fillColor = {255,255,255},
+        fillPattern = FillPattern.Solid,
+        extent = {{-15,-4},{15,4}}),
+      Rectangle(origin = {-35,40},
+        fillColor = {255,255,255},
+        extent = {{-15,-61},{15,60}}),
+      Rectangle(origin = {35,21},
+        fillColor = {255,255,255},
+        extent = {{-15,-61},{15,60}}),
+      Line(points = {{70,-86},{-70,-86}})}),
     Documentation(info="<html>
 <p>This ideal massless joint provides a gear constraint between
 frames <code>frame_a</code> and <code>frame_b</code>. The axes of rotation

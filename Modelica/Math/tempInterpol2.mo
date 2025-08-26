@@ -1,11 +1,11 @@
-﻿function tempInterpol2 
+﻿function tempInterpol2
   "Temporary function for vectorized linear interpolation"
   extends Modelica.Icons.Function;
 
   input Real u "input value (first column of table)";
   input Real table[:, :] "table to be interpolated";
   input Integer icol[:] "column(s) of table to be interpolated";
-  output Real y[1, size(icol, 1)] 
+  output Real y[1, size(icol, 1)]
     "interpolated input value(s) (column(s) icol of table)";
 protected
   Integer i;
@@ -55,6 +55,6 @@ algorithm
 
   annotation (Documentation(info="<html>
 
-</html>"), 
+</html>"),
   obsolete = "Obsolete function");
 end tempInterpol2;

@@ -1,9 +1,9 @@
 ﻿within Modelica.Mechanics.MultiBody.Interfaces;
 partial function partialGravityAcceleration "Interface for the gravity function used in the World object"
   extends Modelica.Icons.Function;
-   input SI.Position r[3] 
+   input SI.Position r[3]
     "Position vector from world frame to actual point, resolved in world frame";
-   output SI.Acceleration gravity[3] 
+   output SI.Acceleration gravity[3]
     "Gravity acceleration at position r, resolved in world frame";
   annotation (Documentation(info="<html>
 <p>

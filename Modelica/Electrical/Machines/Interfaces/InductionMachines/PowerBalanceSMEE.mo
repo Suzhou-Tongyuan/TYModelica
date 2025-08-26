@@ -1,10 +1,10 @@
 ﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
-record PowerBalanceSMEE 
+record PowerBalanceSMEE
   "Power balance of synchronous machines with electrical excitation"
   extends 
     Machines.Interfaces.InductionMachines.PartialPowerBalanceInductionMachines(
-      final lossPowerTotal=lossPowerStatorWinding + lossPowerStatorCore + 
-        lossPowerRotorCore + lossPowerStrayLoad + lossPowerFriction + 
+      final lossPowerTotal=lossPowerStatorWinding + lossPowerStatorCore +
+        lossPowerRotorCore + lossPowerStrayLoad + lossPowerFriction +
         lossPowerRotorWinding + lossPowerExcitation + lossPowerBrush);
   SI.Power lossPowerRotorWinding "Rotor copper losses";
   SI.Power powerExcitation "Electrical excitation power";

@@ -1,13 +1,13 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.FixedShape;
-model HollowCylinderRadialFlux 
+model HollowCylinderRadialFlux
   "Hollow cylinder with radial flux; fixed shape; linear or non-linear material characteristics"
 
   extends BaseClasses.FixedShape;
   extends Modelica.Magnetic.FluxTubes.Icons.HollowCylinderRadialFlux;
 
   parameter SI.Length l=0.01 "Width (orthogonal to flux direction)" 
-                                           annotation (Dialog(group= 
-          "Fixed geometry", groupImage= 
+                                           annotation (Dialog(group=
+          "Fixed geometry", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/HollowCylinderRadialFlux.png"));
   parameter SI.Radius r_i=0.01 "Inner radius of hollow cylinder" 
     annotation (Dialog(group="Fixed geometry"));
@@ -31,10 +31,10 @@ For hollow cylindric flux tubes with a radial magnetic flux, the flux density is
 <p>
 For those flux tube sections of a magnetic device that have a nonlinear material characteristic mu_r(B) and a large aspect ratio of outer to inner radius r_o/r_i, the section can be split up in a series connection of several hollow cylindric flux tubes with radial flux. This allows for more realistic modelling of the dependence of flux density on the radius compared to modelling with just one flux tube element.
 </p>
-</html>"), 
+</html>"),
     Icon(graphics={
         Text(
-          extent={{-150,50},{150,90}}, 
-          textString="%name", 
+          extent={{-150,50},{150,90}},
+          textString="%name",
           textColor={0,0,255})}));
 end HollowCylinderRadialFlux;

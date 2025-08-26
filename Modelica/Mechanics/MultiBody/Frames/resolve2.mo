@@ -6,8 +6,8 @@ function resolve2 "Transform vector from frame 1 to frame 2"
   output Real v2[3] "Vector in frame 2";
 algorithm
   v2 := R.T*v1;
-  annotation (derivative(noDerivative=R) = Internal.resolve2_der, 
-      InlineAfterIndexReduction=true, 
+  annotation (derivative(noDerivative=R) = Internal.resolve2_der,
+      InlineAfterIndexReduction=true,
     Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>

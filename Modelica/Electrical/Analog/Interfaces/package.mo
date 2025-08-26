@@ -4,7 +4,7 @@ package Interfaces "Connectors and partial models for Analog electrical componen
 
   annotation (Documentation(info="<html>
 <p>This package contains connectors and interfaces (partial models) for analog electrical components. The partial models contain typical combinations of pins, and internal variables which are often used. Furthermore, the thermal heat port is in this package which can be included by inheritance.</p>
-</html>", 
+</html>",
    revisions="<html>
 <dl>
 <dt>

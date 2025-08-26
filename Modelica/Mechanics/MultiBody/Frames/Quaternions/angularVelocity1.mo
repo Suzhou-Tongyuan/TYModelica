@@ -1,12 +1,12 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
-function angularVelocity1 
+function angularVelocity1
   "Compute angular velocity resolved in frame 1 from quaternions orientation object and its derivative"
 
   extends Modelica.Icons.Function;
-  input Quaternions.Orientation Q 
+  input Quaternions.Orientation Q
     "Quaternions orientation object to rotate frame 1 into frame 2";
   input der_Orientation der_Q "Derivative of Q";
-  output SI.AngularVelocity w[3] 
+  output SI.AngularVelocity w[3]
     "Angular velocity of frame 2 with respect to frame 1 resolved in frame 1";
 algorithm
   w := 2*([Q[4], -Q[3], Q[2], -Q[1]; Q[3], Q[4], -Q[1], -Q[2]; -Q[2], Q[1],

@@ -1,7 +1,7 @@
 ﻿within Modelica.Math;
 package Nonlinear "Library of functions operating on nonlinear equations"
   extends Modelica.Icons.Package;
-  package Examples 
+  package Examples
     "Examples demonstrating the usage of the functions in package Nonlinear"
     extends Modelica.Icons.ExamplesPackage;
 
@@ -13,29 +13,29 @@ package Nonlinear "Library of functions operating on nonlinear equations"
     protected
       Real I_numerical[3] "Numerical integral values";
       Real I_analytical[size(I_numerical, 1)] "Analytical integral values";
-      Real I_err[size(I_numerical, 1)] 
+      Real I_err[size(I_numerical, 1)]
         "Absolute errors between numerical and analytical integral values";
 
     algorithm
       I_numerical[1] := Modelica.Math.Nonlinear.quadratureLobatto(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun4(), 
-          0, 
-          1, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun4(),
+          0,
+          1,
           tolerance);
       I_analytical[1] := -cos(1) + cos(0);
 
       I_numerical[2] := Modelica.Math.Nonlinear.quadratureLobatto(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun5(w=5), 
-          0, 
-          13, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun5(w=5),
+          0,
+          13,
           tolerance);
       I_analytical[2] := -cos(5*13)/5 + cos(5*0)/5;
 
       I_numerical[3] := Modelica.Math.Nonlinear.quadratureLobatto(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun6(k=1/ 
-          sqrt(2)), 
-          0, 
-          Modelica.Constants.pi/2, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun6(k=1/
+          sqrt(2)),
+          0,
+          Modelica.Constants.pi/2,
           tolerance);
       I_analytical[3] := 1.8540746773013719184338503;
 
@@ -43,25 +43,25 @@ package Nonlinear "Library of functions operating on nonlinear equations"
 
       print("\n... Results of Modelica.Math.Nonlinear.Examples.quadratureLobatto1:");
       print("Function 1 ( integral(sin(x)*dx) from x=0 to x=1): ");
-      print("Analytical integral value = " + String(I_analytical[1], format= 
+      print("Analytical integral value = " + String(I_analytical[1], format=
         "2.16f"));
-      print("Numerical integral value  = " + String(I_numerical[1], format= 
+      print("Numerical integral value  = " + String(I_numerical[1], format=
         "2.16f"));
       print("Absolute difference       = " + String(I_err[1], format="2.0e"));
 
       print("");
       print("Function 2 (integral(sin(5*x)*dx) from x=0 to x=13): ");
-      print("Analytical integral value = " + String(I_analytical[2], format= 
+      print("Analytical integral value = " + String(I_analytical[2], format=
         "2.16f"));
-      print("Numerical integral value  = " + String(I_numerical[2], format= 
+      print("Numerical integral value  = " + String(I_numerical[2], format=
         "2.16f"));
       print("Absolute difference       = " + String(I_err[2], format="2.0e"));
 
       print("");
       print("Function 3 (Elliptic integral from x=0 to pi/2): ");
-      print("Analytical integral value = " + String(I_analytical[3], format= 
+      print("Analytical integral value = " + String(I_analytical[3], format=
         "2.16f"));
-      print("Numerical integral value  = " + String(I_numerical[3], format= 
+      print("Numerical integral value  = " + String(I_numerical[3], format=
         "2.16f"));
       print("Absolute difference       = " + String(I_err[3], format="2.0e"));
 
@@ -109,21 +109,21 @@ The following integrals are computed:
 
     algorithm
       I[1] := Modelica.Math.Nonlinear.quadratureLobatto(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun4(), 
-          a1, 
-          b1, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun4(),
+          a1,
+          b1,
           Tolerance);
 
       I[2] := Modelica.Math.Nonlinear.quadratureLobatto(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun5(w=w), 
-          a2, 
-          b2, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun5(w=w),
+          a2,
+          b2,
           Tolerance);
 
       I[3] := Modelica.Math.Nonlinear.quadratureLobatto(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun6(k=k), 
-          a3, 
-          b3, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun6(k=k),
+          a3,
+          b3,
           Tolerance);
 
       print("\n... Results of Modelica.Math.Nonlinear.Examples.quadratureLobatto2:");
@@ -156,12 +156,12 @@ The following integrals are computed:
 </html>"));
     end quadratureLobatto2;
 
-    function solveNonlinearEquations1 
+    function solveNonlinearEquations1
       "Solve nonlinear equations with fixed inputs"
       extends Modelica.Icons.Function;
       import Modelica.Utilities.Streams.print;
 
-      input Real tolerance=100*Modelica.Constants.eps 
+      input Real tolerance=100*Modelica.Constants.eps
         "Relative tolerance of solution u";
 
     protected
@@ -171,24 +171,24 @@ The following integrals are computed:
 
     algorithm
       u_numerical[1] := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun1(), 
-          -0.5, 
-          10, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun1(),
+          -0.5,
+          10,
           tolerance);
       u_analytical[1] := 1.0;
 
       u_numerical[2] := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun2(w=3), 
-          0, 
-          5, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun2(w=3),
+          0,
+          5,
           tolerance);
       u_analytical[2] := 0.6448544035840080891877538;
 
       u_numerical[3] := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun3(p={5,1}, 
-          m=1), 
-          1, 
-          8, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun3(p={5,1},
+          m=1),
+          1,
+          8,
           tolerance);
       u_analytical[3] := 6.9368474072202187221643182;
 
@@ -232,12 +232,12 @@ The following nonlinear equations are solved:
 </html>"));
     end solveNonlinearEquations1;
 
-    function solveNonlinearEquations2 
+    function solveNonlinearEquations2
       "Solve nonlinear equations with user dependent inputs"
       extends Modelica.Icons.Function;
       import Modelica.Utilities.Streams.print;
 
-      input Real tolerance=100*Modelica.Constants.eps 
+      input Real tolerance=100*Modelica.Constants.eps
         "Relative tolerance of solution u" 
         annotation (Dialog(group="General"));
       input Real u_min1=-0.5 "Lower limit" annotation (Dialog(group="u^2-1"));
@@ -262,22 +262,22 @@ The following nonlinear equations are solved:
 
     algorithm
       u[1] := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun1(), 
-          u_min1, 
-          u_max1, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun1(),
+          u_min1,
+          u_max1,
           tolerance);
 
       u[2] := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun2(w=w), 
-          u_min2, 
-          u_max2, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun2(w=w),
+          u_min2,
+          u_max2,
           tolerance);
 
       u[3] := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
-          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun3(p=p, m= 
-          m), 
-          u_min3, 
-          u_max3, 
+          function Modelica.Math.Nonlinear.Examples.UtilityFunctions.fun3(p=p, m=
+          m),
+          u_min3,
+          u_max3,
           tolerance);
 
       print("\n... Results of Modelica.Math.Nonlinear.Examples.solveNonlinearEquations2:");
@@ -321,7 +321,7 @@ The following nonlinear equations are solved:
       Real qd(start=0, fixed=true) "Second-order state variable";
       Real x "Overall value as product of s and q";
       final parameter Real s = Modelica.Math.Nonlinear.quadratureLobatto(
-                                  function UtilityFunctions.fun7(A=A, w=ws), 
+                                  function UtilityFunctions.fun7(A=A, w=ws),
                                   0,1) "Time-invariant integral value";
     equation
       qd = der(q);
@@ -337,11 +337,11 @@ to a function in a model.
 From a modeling point of view, the example demonstrates in very simplified way the basic approach to model distributed systems with the Ritz method.
 The displacement field <code>u(c,t)</code> of a particle (where <code>c</code> is the undeformed position and <code>t</code> is time) is hereby approximated by space-dependent mode shapes <code>&Phi;(c)</code> and time-dependent modal amplitudes <code>q(t)</code>, that is <code>u</code> = <code>&Phi;(c)*q(t)</code>. When inserting this decomposition in the equations of motion and then integrating over all particles, terms such as <code>&int;(&Phi;(c) dc)*q(t)</code> appear, where the time-invariant integral term can be computed beforehand once with the <a href=\"modelica://Modelica.Math.Nonlinear.quadratureLobatto\">Lobatto method</a>. By this approach the partial differential equations are transformed to a system of ordinary differential equations.
 </p>
-</html>"), 
+</html>"),
         experiment(StopTime=5));
     end QuadratureLobatto3;
 
-    package UtilityFunctions 
+    package UtilityFunctions
       "Utility functions that are used as function arguments to the examples"
       extends Modelica.Icons.UtilitiesPackage;
 
@@ -405,7 +405,7 @@ arguments to the example functions.
 
   package Interfaces "Interfaces for functions"
     extends Modelica.Icons.InterfacesPackage;
-  encapsulated partial function partialScalarFunction 
+  encapsulated partial function partialScalarFunction
       "Interface for a function with one input and one output Real signal"
     import Modelica;
     extends Modelica.Icons.Function;
@@ -434,14 +434,14 @@ to a function, see, .e.g.,
 </html>"));
   end Interfaces;
 
-  function quadratureLobatto 
+  function quadratureLobatto
     "Return the integral of an integrand function using an adaptive Lobatto rule"
     extends Modelica.Icons.Function;
-    input Modelica.Math.Nonlinear.Interfaces.partialScalarFunction f 
+    input Modelica.Math.Nonlinear.Interfaces.partialScalarFunction f
       "Integrand function";
     input Real a "Lower limit of integration interval";
     input Real b "Upper limit of integration interval";
-    input Real tolerance = 100*Modelica.Constants.eps 
+    input Real tolerance = 100*Modelica.Constants.eps
       "Relative tolerance for integral value";
     output Real integral "Integral value";
 
@@ -512,18 +512,18 @@ to a function, see, .e.g.,
       fmr := y[4];
       fmrr := y[5];
       i2 := (h/6)*(fa + fb + 5*(fml + fmr));
-      i1 := (h/1470)*(77*(fa + fb) + 432*(fmll + fmrr) + 625*(fml + fmr) + 
+      i1 := (h/1470)*(77*(fa + fb) + 432*(fmll + fmrr) + 625*(fml + fmr) +
         672*fm);
 
       if (is + (i1 - i2) == is) or (mll <= a) or (b <= mrr) then
         I := i1;
 
       else
-        I := quadStep(f, a, mll, fa, fmll, is) + 
-             quadStep(f, mll, ml, fmll, fml, is) + 
-             quadStep(f, ml, m, fml, fm, is) + 
-             quadStep(f, m, mr, fm, fmr, is) + 
-             quadStep(f, mr, mrr, fmr, fmrr, is) + 
+        I := quadStep(f, a, mll, fa, fmll, is) +
+             quadStep(f, mll, ml, fmll, fml, is) +
+             quadStep(f, ml, m, fml, fm, is) +
+             quadStep(f, m, mr, fm, fmr, is) +
+             quadStep(f, mr, mrr, fmr, fmrr, is) +
              quadStep(f, mrr, b, fmrr, fb, is);
       end if;
     end quadStep;
@@ -543,18 +543,18 @@ to a function, see, .e.g.,
     h := (b - a)/2;
     alpha := sqrt(2/3);
     beta := 1/sqrt(5);
-    x := {a, 
-          m - x1*h, 
-          m - alpha*h, 
-          m - x2*h, 
-          m - beta*h, 
-          m - x3*h, 
-          m, 
-          m + x3*h, 
-          m + beta*h, 
-          m + x2*h, 
-          m + alpha*h, 
-          m + x1*h, 
+    x := {a,
+          m - x1*h,
+          m - alpha*h,
+          m - x2*h,
+          m - beta*h,
+          m - x3*h,
+          m,
+          m + x3*h,
+          m + beta*h,
+          m + x2*h,
+          m + alpha*h,
+          m + x1*h,
           b};
     for i in 1:size(x,1) loop
       y[i] := f(x[i]);
@@ -562,11 +562,11 @@ to a function, see, .e.g.,
     fa := y[1];
     fb := y[13];
     i2 := (h/6)*(y[1] + y[13] + 5*(y[5] + y[9]));
-    i1 := (h/1470)*(77*(y[1] + y[13]) + 432*(y[3] + y[11]) + 625*(y[5] + y[9]) 
+    i1 := (h/1470)*(77*(y[1] + y[13]) + 432*(y[3] + y[11]) + 625*(y[5] + y[9])
        + 672*y[7]);
     is := h*(0.0158271919734802*(y[1] + y[13]) +0.0942738402188500 *(y[2] + y[
-      12]) +0.155071987336585 *(y[3] + y[11]) +0.188821573960182 *(y[4] + y[10]) 
-       +0.199773405226859 *(y[5] + y[9]) +0.224926465333340 *(y[6] + y[8]) +0.242611071901408 
+      12]) +0.155071987336585 *(y[3] + y[11]) +0.188821573960182 *(y[4] + y[10])
+       +0.199773405226859 *(y[5] + y[9]) +0.224926465333340 *(y[6] + y[8]) +0.242611071901408
                       *y[7]);
     s := sign(is);
     if (s == 0) then
@@ -586,11 +586,11 @@ to a function, see, .e.g.,
       is := b - a;
     end if;
     integral := quadStep(
-          f, 
-          a, 
-          b, 
-          fa, 
-          fb, 
+          f,
+          a,
+          b,
+          fa,
+          fb,
           is);
 
     annotation (Documentation(info="<html>
@@ -625,16 +625,16 @@ See the examples in <a href=\"modelica://Modelica.Math.Nonlinear.Examples\">Mode
 </html>"));
   end quadratureLobatto;
 
-  function solveOneNonlinearEquation 
+  function solveOneNonlinearEquation
     "Solve f(u) = 0 in a very reliable and efficient way (f(u_min) and f(u_max) must have different signs)"
     extends Modelica.Icons.Function;
     import Modelica.Utilities.Streams.error;
 
-    input Modelica.Math.Nonlinear.Interfaces.partialScalarFunction f 
+    input Modelica.Math.Nonlinear.Interfaces.partialScalarFunction f
       "Function y = f(u); u is computed so that y=0";
     input Real u_min "Lower bound of search interval";
     input Real u_max "Upper bound of search interval";
-    input Real tolerance=100*Modelica.Constants.eps 
+    input Real tolerance=100*Modelica.Constants.eps
       "Relative tolerance of solution u";
     output Real u "Value of independent variable u so that f(u) = 0";
 
@@ -662,12 +662,12 @@ See the examples in <a href=\"modelica://Modelica.Math.Nonlinear.Examples\">Mode
     fc := fb;
     if fa > 0.0 and fb > 0.0 or fa < 0.0 and fb < 0.0 then
       error(
-        "The arguments u_min and u_max provided in the function call\n"+ 
-        "    solveOneNonlinearEquation(f,u_min,u_max)\n" + 
-        "do not bracket the root of the single non-linear equation 0=f(u):\n" + 
-        "  u_min  = " + String(u_min) + "\n" + "  u_max  = " + String(u_max) 
-         + "\n" + "  fa = f(u_min) = " + String(fa) + "\n" + 
-        "  fb = f(u_max) = " + String(fb) + "\n" + 
+        "The arguments u_min and u_max provided in the function call\n"+
+        "    solveOneNonlinearEquation(f,u_min,u_max)\n" +
+        "do not bracket the root of the single non-linear equation 0=f(u):\n" +
+        "  u_min  = " + String(u_min) + "\n" + "  u_max  = " + String(u_max)
+         + "\n" + "  fa = f(u_min) = " + String(fa) + "\n" +
+        "  fb = f(u_max) = " + String(fb) + "\n" +
         "fa and fb must have opposite sign which is not the case");
     end if;
 
@@ -830,10 +830,10 @@ or <a href=\"https://specification.modelica.org/v3.4/Ch12.html#functional-input-
 <li><em>June 2002 </em> by Gerhard Schillhuber (master thesis at DLR-RM):<br>
        Adaptive quadrature to compute the curve length of a Spline.</li>
 </ul>
-</html>"), Icon(graphics={Polygon(points={{-44,-52},{-44,-26},{-17.1, 
-              44.4},{-11.4,52.6},{-5.8,57.1},{-0.2,57.8},{5.4,54.6},{11.1,47.7}, 
-              {16.7,37.4},{23.1,22.1},{31.17,-0.8},{48,-52},{-44,-52}}, 
-          lineColor={135,135,135}, 
-          fillColor={215,215,215}, 
+</html>"), Icon(graphics={Polygon(points={{-44,-52},{-44,-26},{-17.1,
+              44.4},{-11.4,52.6},{-5.8,57.1},{-0.2,57.8},{5.4,54.6},{11.1,47.7},
+              {16.7,37.4},{23.1,22.1},{31.17,-0.8},{48,-52},{-44,-52}},
+          lineColor={135,135,135},
+          fillColor={215,215,215},
           fillPattern=FillPattern.Solid)}));
 end Nonlinear;

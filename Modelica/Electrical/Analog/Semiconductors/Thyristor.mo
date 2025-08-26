@@ -1,8 +1,8 @@
 ﻿within Modelica.Electrical.Analog.Semiconductors;
 model Thyristor "Simple Thyristor Model"
-  parameter SI.Voltage VDRM(final min=0) = 100 
+  parameter SI.Voltage VDRM(final min=0) = 100
     "Forward breakthrough voltage";
-  parameter SI.Voltage VRRM(final min=0) = 100 
+  parameter SI.Voltage VRRM(final min=0) = 100
     "Reverse breakthrough voltage";
   parameter SI.Current IDRM=0.1 "Saturation current";
   parameter SI.Voltage VTM= 1.7 "Conducting voltage";
@@ -14,7 +14,7 @@ model Thyristor "Simple Thyristor Model"
 
   parameter SI.Time TON = 1e-6 "Switch on time";
   parameter SI.Time TOFF = 15e-6 "Switch off time";
-  parameter SI.Voltage Vt=0.04 
+  parameter SI.Voltage Vt=0.04
     "Voltage equivalent of temperature (kT/qn)";
   parameter Real Nbv=0.74 "Reverse Breakthrough emission coefficient";
  extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort;
@@ -34,9 +34,9 @@ public
 protected
   parameter SI.Voltage Von=5;
   parameter SI.Voltage Voff= 1.5;
-  parameter SI.Resistance Ron=(VTM-0.7)/ITM 
+  parameter SI.Resistance Ron=(VTM-0.7)/ITM
     "Forward conducting mode resistance";
-  parameter SI.Resistance Roff=(VDRM^2)/VTM/IH 
+  parameter SI.Resistance Roff=(VDRM^2)/VTM/IH
     "Blocking mode resistance";
 
 equation
@@ -70,30 +70,30 @@ equation
      alt=\"Thyristor.png\">
 </div>
 <p>The dV/dt switch on is not taken into account in this model. The gate circuit is not influenced by the main circuit.</p>
-</html>", 
-  revisions= 
+</html>",
+  revisions=
     "<html>
 <ul>
 <li><em>May 12, 2009   </em>
        by Matthias Franke
        </li>
 </ul>
-</html>"), 
+</html>"),
    Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Polygon(
-          points={{30,0},{-30,40},{-30,-40},{30,0}}, 
-          lineColor={0,0,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-90,0},{40,0}}, color={0,0,255}), 
-        Line(points={{40,0},{90,0}}, color={0,0,255}), 
-        Line(points={{30,40},{30,-40}}, color={0,0,255}), 
-        Line(points={{30,20},{100,90},{100,100}}, 
-                                               color={0,0,255}), 
+          points={{30,0},{-30,40},{-30,-40},{30,0}},
+          lineColor={0,0,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-90,0},{40,0}}, color={0,0,255}),
+        Line(points={{40,0},{90,0}}, color={0,0,255}),
+        Line(points={{30,40},{30,-40}}, color={0,0,255}),
+        Line(points={{30,20},{100,90},{100,100}},
+                                               color={0,0,255}),
         Text(
-          extent={{-150,-40},{150,-80}}, 
-          textString="%name", 
+          extent={{-150,-40},{150,-80}},
+          textString="%name",
           textColor={0,0,255})}));
 end Thyristor;

@@ -1,34 +1,34 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
-function axesRotationsAngles 
+function axesRotationsAngles
   "Return the 3 angles to rotate in sequence around 3 axes to construct the given orientation object"
 
   extends Modelica.Icons.Function;
-  input TransformationMatrices.Orientation T 
+  input TransformationMatrices.Orientation T
     "Orientation object to rotate frame 1 into frame 2";
   input Integer sequence[3](
-    min={1,1,1}, 
-    max={3,3,3}) = {1,2,3} 
+    min={1,1,1},
+    max={3,3,3}) = {1,2,3}
     "Sequence of rotations from frame 1 to frame 2 along axis sequence[i]";
-  input SI.Angle guessAngle1=0 
+  input SI.Angle guessAngle1=0
     "Select angles[1] such that |angles[1] - guessAngle1| is a minimum";
-  output SI.Angle angles[3] 
+  output SI.Angle angles[3]
     "Rotation angles around the axes defined in 'sequence' such that T=TransformationMatrices.axesRotation(sequence,angles); -pi < angles[i] <= pi";
 protected
-  Real e1_1[3](each final unit="1") 
+  Real e1_1[3](each final unit="1")
     "First rotation axis, resolved in frame 1";
-  Real e2_1a[3](each final unit="1") 
+  Real e2_1a[3](each final unit="1")
     "Second rotation axis, resolved in frame 1a";
-  Real e3_1[3](each final unit="1") 
+  Real e3_1[3](each final unit="1")
     "Third rotation axis, resolved in frame 1";
-  Real e3_2[3](each final unit="1") 
+  Real e3_2[3](each final unit="1")
     "Third rotation axis, resolved in frame 2";
-  Real A 
+  Real A
     "Coefficient A in the equation A*cos(angles[1])+B*sin(angles[1]) = 0";
-  Real B 
+  Real B
     "Coefficient B in the equation A*cos(angles[1])+B*sin(angles[1]) = 0";
   SI.Angle angle_1a "Solution 1 for angles[1]";
   SI.Angle angle_1b "Solution 2 for angles[1]";
-  TransformationMatrices.Orientation T_1a 
+  TransformationMatrices.Orientation T_1a
     "Orientation object to rotate frame 1 into frame 1a";
 algorithm
   /* The rotation object T is constructed by:
@@ -74,14 +74,14 @@ algorithm
           e2_1b = e2_1a
           e2_2  = TransformationMatrices.resolve2( T, TransformationMatrices.resolve1(planarRotation(e1_1,angles[1]), e2_1a));
   */
-  assert(sequence[1] <> sequence[2] and sequence[2] <> sequence[3], 
+  assert(sequence[1] <> sequence[2] and sequence[2] <> sequence[3],
     "input argument 'sequence[1:3]' is not valid");
-  e1_1 := if sequence[1] == 1 then {1,0,0} else if sequence[1] == 2 then {0, 
+  e1_1 := if sequence[1] == 1 then {1,0,0} else if sequence[1] == 2 then {0,
     1,0} else {0,0,1};
   e2_1a := if sequence[2] == 1 then {1,0,0} else if sequence[2] == 2 then {
     0,1,0} else {0,0,1};
   e3_1 := T[sequence[3], :];
-  e3_2 := if sequence[3] == 1 then {1,0,0} else if sequence[3] == 2 then {0, 
+  e3_2 := if sequence[3] == 1 then {1,0,0} else if sequence[3] == 2 then {0,
     1,0} else {0,0,1};
 
   A := e2_1a*e3_1;
@@ -91,14 +91,14 @@ algorithm
   else
     angle_1a := Modelica.Math.atan2(A, -B);
     angle_1b := Modelica.Math.atan2(-A, B);
-    angles[1] := if abs(angle_1a - guessAngle1) <= abs(angle_1b - 
+    angles[1] := if abs(angle_1a - guessAngle1) <= abs(angle_1b -
       guessAngle1) then angle_1a else angle_1b;
   end if;
   T_1a := planarRotation(e1_1, angles[1]);
-  angles[2] := TransformationMatrices.planarRotationAngle(e2_1a, 
+  angles[2] := TransformationMatrices.planarRotationAngle(e2_1a,
     TransformationMatrices.resolve2(T_1a, e3_1), e3_2);
-  angles[3] := TransformationMatrices.planarRotationAngle(e3_2, e2_1a, 
-    TransformationMatrices.resolve2(T, TransformationMatrices.resolve1(T_1a, 
+  angles[3] := TransformationMatrices.planarRotationAngle(e3_2, e2_1a,
+    TransformationMatrices.resolve2(T, TransformationMatrices.resolve1(T_1a,
      e2_1a)));
 
   annotation (Documentation(info="<html>

@@ -1,15 +1,15 @@
 ﻿within Modelica.Mechanics.Rotational.Sources;
 model LinearSpeedDependentTorque "Linear dependency of torque versus speed"
   extends Modelica.Mechanics.Rotational.Interfaces.PartialTorque;
-  parameter SI.Torque tau_nominal 
+  parameter SI.Torque tau_nominal
     "Nominal torque (if negative, torque is acting as load in positive direction of rotation)";
-  parameter Boolean TorqueDirection=true 
+  parameter Boolean TorqueDirection=true
     "Same direction of torque in both directions of rotation";
-  parameter SI.AngularVelocity w_nominal(min=Modelica.Constants.eps) 
+  parameter SI.AngularVelocity w_nominal(min=Modelica.Constants.eps)
     "Nominal speed";
-  SI.AngularVelocity w 
+  SI.AngularVelocity w
     "Angular velocity of flange with respect to support (= der(phi))";
-  SI.Torque tau 
+  SI.Torque tau
     "Accelerating torque acting at flange (= -flange.tau)";
 equation
   w = der(phi);
@@ -22,9 +22,9 @@ equation
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={
-          Line(points={{0,60},{0,-50}}, color={192,192,192}), 
-          Line(points={{-75,0},{75,0}}, color={192,192,192}), 
-          Line(points={{-60,-45},{60,45}}, color={0,0,127})}), 
+          Line(points={{0,60},{0,-50}}, color={192,192,192}),
+          Line(points={{-75,0},{75,0}}, color={192,192,192}),
+          Line(points={{-60,-45},{60,45}}, color={0,0,127})}),
     Documentation(info="<html>
 <p>
 Model of torque, linearly dependent on angular velocity of flange.<br>

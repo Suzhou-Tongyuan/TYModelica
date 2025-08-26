@@ -8,34 +8,34 @@ package Pipes "Devices for conveying fluid"
     extends Modelica.Fluid.Pipes.BaseClasses.PartialStraightPipe;
 
     // Initialization
-    parameter Medium.AbsolutePressure p_a_start=system.p_start 
+    parameter Medium.AbsolutePressure p_a_start=system.p_start
       "Start value of pressure at port a" 
       annotation(Dialog(tab = "Initialization"));
-    parameter Medium.AbsolutePressure p_b_start=p_a_start 
+    parameter Medium.AbsolutePressure p_b_start=p_a_start
       "Start value of pressure at port b" 
       annotation(Dialog(tab = "Initialization"));
-    parameter Medium.MassFlowRate m_flow_start = system.m_flow_start 
+    parameter Medium.MassFlowRate m_flow_start = system.m_flow_start
       "Start value for mass flow rate" 
        annotation(Evaluate=true, Dialog(tab = "Initialization"));
 
     FlowModel flowModel(
-            redeclare final package Medium = Medium, 
-            final n=2, 
-            states={Medium.setState_phX(port_a.p, inStream(port_a.h_outflow), inStream(port_a.Xi_outflow)), 
-                   Medium.setState_phX(port_b.p, inStream(port_b.h_outflow), inStream(port_b.Xi_outflow))}, 
-            vs={port_a.m_flow/Medium.density(flowModel.states[1])/flowModel.crossAreas[1], 
-                -port_b.m_flow/Medium.density(flowModel.states[2])/flowModel.crossAreas[2]}/nParallel, 
-            final momentumDynamics=Types.Dynamics.SteadyState, 
-            final allowFlowReversal=allowFlowReversal, 
-            final p_a_start=p_a_start, 
-            final p_b_start=p_b_start, 
-            final m_flow_start=m_flow_start, 
-            final nParallel=nParallel, 
-            final pathLengths={length}, 
-            final crossAreas={crossArea, crossArea}, 
-            final dimensions={4*crossArea/perimeter, 4*crossArea/perimeter}, 
-            final roughnesses={roughness, roughness}, 
-            final dheights={height_ab}, 
+            redeclare final package Medium = Medium,
+            final n=2,
+            states={Medium.setState_phX(port_a.p, inStream(port_a.h_outflow), inStream(port_a.Xi_outflow)),
+                   Medium.setState_phX(port_b.p, inStream(port_b.h_outflow), inStream(port_b.Xi_outflow))},
+            vs={port_a.m_flow/Medium.density(flowModel.states[1])/flowModel.crossAreas[1],
+                -port_b.m_flow/Medium.density(flowModel.states[2])/flowModel.crossAreas[2]}/nParallel,
+            final momentumDynamics=Types.Dynamics.SteadyState,
+            final allowFlowReversal=allowFlowReversal,
+            final p_a_start=p_a_start,
+            final p_b_start=p_b_start,
+            final m_flow_start=m_flow_start,
+            final nParallel=nParallel,
+            final pathLengths={length},
+            final crossAreas={crossArea, crossArea},
+            final dimensions={4*crossArea/perimeter, 4*crossArea/perimeter},
+            final roughnesses={roughness, roughness},
+            final dheights={height_ab},
             final g=system.g) "Flow model" 
        annotation (Placement(transformation(extent={{-38,-18},{38,18}})));
   equation
@@ -55,7 +55,7 @@ package Pipes "Devices for conveying fluid"
     port_b.h_outflow = inStream(port_a.h_outflow) - system.g*height_ab;
     port_a.h_outflow = inStream(port_b.h_outflow) + system.g*height_ab;
 
-    annotation (defaultComponentName="pipe", 
+    annotation (defaultComponentName="pipe",
   Documentation(info="<html>
 <p>Model of a straight pipe with constant cross section and with steady-state mass, momentum and energy balances, i.e., the model does not store mass or energy.
 There exist two thermodynamic states, one at each fluid port. The momentum balance is formulated for the two states, taking into account
@@ -81,41 +81,41 @@ or other flow models without storage, are directly connected.
 
     // extending PartialStraightPipe
     extends Modelica.Fluid.Pipes.BaseClasses.PartialStraightPipe(
-      final port_a_exposesState = (modelStructure == ModelStructure.av_b) or (modelStructure == ModelStructure.av_vb), 
+      final port_a_exposesState = (modelStructure == ModelStructure.av_b) or (modelStructure == ModelStructure.av_vb),
       final port_b_exposesState = (modelStructure == ModelStructure.a_vb) or (modelStructure == ModelStructure.av_vb));
 
     // extending PartialTwoPortFlow
     extends BaseClasses.PartialTwoPortFlow(
-      final lengths=fill(length/n, n), 
-      final crossAreas=fill(crossArea, n), 
-      final dimensions=fill(4*crossArea/perimeter, n), 
-      final roughnesses=fill(roughness, n), 
+      final lengths=fill(length/n, n),
+      final crossAreas=fill(crossArea, n),
+      final dimensions=fill(4*crossArea/perimeter, n),
+      final roughnesses=fill(roughness, n),
       final dheights=height_ab*dxs);
 
     // Wall heat transfer
-    parameter Boolean use_HeatTransfer = false 
+    parameter Boolean use_HeatTransfer = false
       "= true to use the HeatTransfer model" 
         annotation (Dialog(tab="Assumptions", group="Heat transfer"));
-    replaceable model HeatTransfer = 
+    replaceable model HeatTransfer =
         Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer 
       constrainedby 
-      Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.PartialFlowHeatTransfer 
+      Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.PartialFlowHeatTransfer
       "Wall heat transfer" 
         annotation (Dialog(tab="Assumptions", group="Heat transfer",enable=use_HeatTransfer),choicesAllMatching=true);
     Interfaces.HeatPorts_a[nNodes] heatPorts if use_HeatTransfer 
-      annotation (Placement(transformation(extent={{-10,45},{10,65}}), iconTransformation(extent={{-30,36}, 
+      annotation (Placement(transformation(extent={{-10,45},{10,65}}), iconTransformation(extent={{-30,36},
               {32,52}})));
 
     HeatTransfer heatTransfer(
-      redeclare final package Medium = Medium, 
-      final n=n, 
-      final nParallel=nParallel, 
-      final surfaceAreas=perimeter*lengths, 
-      final lengths=lengths, 
-      final dimensions=dimensions, 
-      final roughnesses=roughnesses, 
-      final states=mediums.state, 
-      final vs = vs, 
+      redeclare final package Medium = Medium,
+      final n=n,
+      final nParallel=nParallel,
+      final surfaceAreas=perimeter*lengths,
+      final lengths=lengths,
+      final dimensions=dimensions,
+      final roughnesses=roughnesses,
+      final states=mediums.state,
+      final vs = vs,
       final use_k = use_HeatTransfer) "Heat transfer model" 
         annotation (Placement(transformation(extent={{-45,20},{-23,42}})));
     final parameter Real[n] dxs = lengths/sum(lengths) "Normalized lengths";
@@ -150,7 +150,7 @@ or other flow models without storage, are directly connected.
 
     connect(heatPorts, heatTransfer.heatPorts) 
       annotation (Line(points={{0,55},{0,54},{-34,54},{-34,38.7}}, color={191,0,0}));
-    annotation (defaultComponentName="pipe", 
+    annotation (defaultComponentName="pipe",
   Documentation(info="<html>
 <p>Model of a straight pipe with distributed mass, energy and momentum balances. It provides the complete balance equations for one-dimensional fluid flow as formulated in <a href=\"modelica://Modelica.Fluid.UsersGuide.ComponentDefinition.BalanceEquations\">UsersGuide.ComponentDefinition.BalanceEquations</a>.</p>
 <p>This generic model offers a large number of combinations of possible parameter settings. In order to reduce model complexity, consider defining and/or using a tailored model for the application at hand, such as
@@ -164,59 +164,59 @@ or other flow models without storage, are directly connected.
 <li><a href=\"modelica://Modelica.Fluid.Examples.BranchingDynamicPipes\">Examples.BranchingDynamicPipes</a>, or</li>
 <li><a href=\"modelica://Modelica.Fluid.Examples.IncompressibleFluidNetwork\">Examples.IncompressibleFluidNetwork</a>.</li>
 </ul>
-</html>"), 
+</html>"),
   Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
-            extent={{-100,44},{100,-44}}, 
-            fillPattern=FillPattern.HorizontalCylinder, 
-            fillColor={0,127,255}), 
+            extent={{-100,44},{100,-44}},
+            fillPattern=FillPattern.HorizontalCylinder,
+            fillColor={0,127,255}),
           Ellipse(
-            extent={{-72,10},{-52,-10}}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-72,10},{-52,-10}},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{50,10},{70,-10}}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{50,10},{70,-10}},
+            fillPattern=FillPattern.Solid),
           Text(
-            extent={{-48,15},{46,-20}}, 
-            textString="%nNodes")}), 
-  Diagram(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100, 
+            extent={{-48,15},{46,-20}},
+            textString="%nNodes")}),
+  Diagram(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,
               100}}), graphics={
           Rectangle(
-            extent={{-100,60},{100,50}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Backward), 
+            extent={{-100,60},{100,50}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Backward),
           Rectangle(
-            extent={{-100,-50},{100,-60}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Backward), 
+            extent={{-100,-50},{100,-60}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Backward),
           Line(
-            points={{100,45},{100,50}}, 
-            arrow={Arrow.None,Arrow.Filled}, 
-            pattern=LinePattern.Dot), 
+            points={{100,45},{100,50}},
+            arrow={Arrow.None,Arrow.Filled},
+            pattern=LinePattern.Dot),
           Line(
-            points={{0,45},{0,50}}, 
-            arrow={Arrow.None,Arrow.Filled}, 
-            pattern=LinePattern.Dot), 
+            points={{0,45},{0,50}},
+            arrow={Arrow.None,Arrow.Filled},
+            pattern=LinePattern.Dot),
           Line(
-            points={{100,-45},{100,-50}}, 
-            arrow={Arrow.None,Arrow.Filled}, 
-            pattern=LinePattern.Dot), 
+            points={{100,-45},{100,-50}},
+            arrow={Arrow.None,Arrow.Filled},
+            pattern=LinePattern.Dot),
           Line(
-            points={{0,-45},{0,-50}}, 
-            arrow={Arrow.None,Arrow.Filled}, 
-            pattern=LinePattern.Dot), 
+            points={{0,-45},{0,-50}},
+            arrow={Arrow.None,Arrow.Filled},
+            pattern=LinePattern.Dot),
           Line(
-            points={{-50,60},{-50,50}}, 
-            pattern=LinePattern.Dot), 
+            points={{-50,60},{-50,50}},
+            pattern=LinePattern.Dot),
           Line(
-            points={{50,60},{50,50}}, 
-            pattern=LinePattern.Dot), 
+            points={{50,60},{50,50}},
+            pattern=LinePattern.Dot),
           Line(
-            points={{0,-50},{0,-60}}, 
+            points={{0,-50},{0,-60}},
             pattern=LinePattern.Dot)}));
   end DynamicPipe;
 
-  package BaseClasses 
+  package BaseClasses
     "Base classes used in the Pipes package (only of interest to build new component models)"
     extends Modelica.Icons.BasesPackage;
 
@@ -230,18 +230,18 @@ or other flow models without storage, are directly connected.
         annotation(Dialog(group="Geometry"));
       parameter SI.Length length "Length" 
         annotation(Dialog(tab="General", group="Geometry"));
-      parameter Boolean isCircular=true 
+      parameter Boolean isCircular=true
         "= true, if cross sectional area is circular" 
         annotation (Evaluate, Dialog(tab="General", group="Geometry"));
       parameter SI.Diameter diameter "Diameter of circular pipe" 
         annotation(Dialog(group="Geometry", enable=isCircular));
-      parameter SI.Area crossArea=Modelica.Constants.pi*diameter*diameter/4 
+      parameter SI.Area crossArea=Modelica.Constants.pi*diameter*diameter/4
         "Inner cross section area" 
         annotation(Dialog(tab="General", group="Geometry", enable=not isCircular));
-      parameter SI.Length perimeter(min=0)=Modelica.Constants.pi*diameter 
+      parameter SI.Length perimeter(min=0)=Modelica.Constants.pi*diameter
         "Inner perimeter" 
         annotation(Dialog(tab="General", group="Geometry", enable=not isCircular));
-      parameter Modelica.Fluid.Types.Roughness roughness=2.5e-5 
+      parameter Modelica.Fluid.Types.Roughness roughness=2.5e-5
         "Average height of surface asperities (default: smooth steel pipe)" 
           annotation(Dialog(group="Geometry"));
       final parameter SI.Volume V=crossArea*length*nParallel "Volume size";
@@ -251,10 +251,10 @@ or other flow models without storage, are directly connected.
           annotation(Dialog(group="Static head"));
 
       // Pressure loss
-      replaceable model FlowModel = 
+      replaceable model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.DetailedPipeFlow 
         constrainedby 
-        Modelica.Fluid.Pipes.BaseClasses.FlowModels.PartialStaggeredFlowModel 
+        Modelica.Fluid.Pipes.BaseClasses.FlowModels.PartialStaggeredFlowModel
         "Wall friction, gravity, momentum flow" 
           annotation(Dialog(group="Pressure loss"), choicesAllMatching=true);
 
@@ -262,14 +262,14 @@ or other flow models without storage, are directly connected.
       assert(length >= height_ab, "Parameter length must be greater or equal height_ab.");
 
       annotation (defaultComponentName="pipe",Icon(coordinateSystem(
-            preserveAspectRatio=false, 
+            preserveAspectRatio=false,
             extent={{-100,-100},{100,100}}), graphics={Rectangle(
-              extent={{-100,40},{100,-40}}, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={95,95,95}, 
+              extent={{-100,40},{100,-40}},
+              fillPattern=FillPattern.Solid,
+              fillColor={95,95,95},
               pattern=LinePattern.None), Rectangle(
-              extent={{-100,44},{100,-44}}, 
-              fillPattern=FillPattern.HorizontalCylinder, 
+              extent={{-100,44},{100,-44}},
+              fillPattern=FillPattern.HorizontalCylinder,
               fillColor={0,127,255})}), Documentation(info="<html>
 <p>
 Base class for one dimensional flow models. It specializes a PartialTwoPort with a parameter interface and icon graphics.
@@ -283,16 +283,16 @@ Base class for one dimensional flow models. It specializes a PartialTwoPort with
 
       // extending PartialTwoPort
       extends Modelica.Fluid.Interfaces.PartialTwoPort(
-        final port_a_exposesState = (modelStructure == ModelStructure.av_b) or (modelStructure == ModelStructure.av_vb), 
+        final port_a_exposesState = (modelStructure == ModelStructure.av_b) or (modelStructure == ModelStructure.av_vb),
         final port_b_exposesState = (modelStructure == ModelStructure.a_vb) or (modelStructure == ModelStructure.av_vb));
 
       // distributed volume model
       extends Modelica.Fluid.Interfaces.PartialDistributedVolume(
-        final n = nNodes, 
+        final n = nNodes,
         final fluidVolumes = {crossAreas[i]*lengths[i] for i in 1:n}*nParallel);
 
       // Geometry parameters
-      parameter Real nParallel(min=1)=1 
+      parameter Real nParallel(min=1)=1
         "Number of identical parallel flow devices" 
         annotation(Dialog(group="Geometry"));
       parameter SI.Length[n] lengths "Lengths of flow segments" 
@@ -301,22 +301,22 @@ Base class for one dimensional flow models. It specializes a PartialTwoPort with
         annotation(Dialog(group="Geometry"));
       parameter SI.Length[n] dimensions "Hydraulic diameters of flow segments" 
         annotation(Dialog(group="Geometry"));
-      parameter Modelica.Fluid.Types.Roughness[n] roughnesses 
+      parameter Modelica.Fluid.Types.Roughness[n] roughnesses
         "Average heights of surface asperities" 
         annotation(Dialog(group="Geometry"));
 
       // Static head
-      parameter SI.Length[n] dheights=zeros(n) 
+      parameter SI.Length[n] dheights=zeros(n)
         "Differences in heights of flow segments" 
           annotation(Dialog(group="Static head"), Evaluate=true);
 
       // Assumptions
-      parameter Types.Dynamics momentumDynamics=system.momentumDynamics 
+      parameter Types.Dynamics momentumDynamics=system.momentumDynamics
         "Formulation of momentum balances" 
         annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
 
       // Initialization
-      parameter Medium.MassFlowRate m_flow_start = system.m_flow_start 
+      parameter Medium.MassFlowRate m_flow_start = system.m_flow_start
         "Start value for mass flow rate" 
          annotation(Evaluate=true, Dialog(tab = "Initialization"));
 
@@ -324,71 +324,71 @@ Base class for one dimensional flow models. It specializes a PartialTwoPort with
       parameter Integer nNodes(min=1)=2 "Number of discrete flow volumes" 
         annotation(Dialog(tab="Advanced"),Evaluate=true);
 
-      parameter Types.ModelStructure modelStructure=Types.ModelStructure.av_vb 
+      parameter Types.ModelStructure modelStructure=Types.ModelStructure.av_vb
         "Determines whether flow or volume models are present at the ports" 
         annotation(Dialog(tab="Advanced"), Evaluate=true);
 
-      parameter Boolean useLumpedPressure=false 
+      parameter Boolean useLumpedPressure=false
         "= true to lump pressure states together" 
         annotation(Dialog(tab="Advanced"),Evaluate=true);
-      final parameter Integer nFM=if useLumpedPressure then nFMLumped else nFMDistributed 
+      final parameter Integer nFM=if useLumpedPressure then nFMLumped else nFMDistributed
         "Number of flow models in flowModel";
       final parameter Integer nFMDistributed=if modelStructure==Types.ModelStructure.a_v_b then n+1 else if (modelStructure==Types.ModelStructure.a_vb or modelStructure==Types.ModelStructure.av_b) then n else n-1 "Number of distributed flow models";
       final parameter Integer nFMLumped=if modelStructure==Types.ModelStructure.a_v_b then 2 else 1 "Number of lumped flow models";
-      final parameter Integer iLumped=integer(n/2)+1 
+      final parameter Integer iLumped=integer(n/2)+1
         "Index of control volume with representative state if useLumpedPressure" 
         annotation(Evaluate=true);
 
       // Advanced model options
-      parameter Boolean useInnerPortProperties=false 
+      parameter Boolean useInnerPortProperties=false
         "= true to take port properties for flow models from internal control volumes" 
         annotation(Dialog(tab="Advanced"),Evaluate=true);
-      Medium.ThermodynamicState state_a 
+      Medium.ThermodynamicState state_a
         "State defined by volume outside port_a";
-      Medium.ThermodynamicState state_b 
+      Medium.ThermodynamicState state_b
         "State defined by volume outside port_b";
-      Medium.ThermodynamicState[nFM+1] statesFM 
+      Medium.ThermodynamicState[nFM+1] statesFM
         "State vector for flowModel model";
 
       // Pressure loss model
-      replaceable model FlowModel = 
+      replaceable model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.DetailedPipeFlow 
         constrainedby 
-        Modelica.Fluid.Pipes.BaseClasses.FlowModels.PartialStaggeredFlowModel 
+        Modelica.Fluid.Pipes.BaseClasses.FlowModels.PartialStaggeredFlowModel
         "Wall friction, gravity, momentum flow" 
           annotation(Dialog(group="Pressure loss"), choicesAllMatching=true);
       FlowModel flowModel(
-              redeclare final package Medium = Medium, 
-              final n=nFM+1, 
-              final states=statesFM, 
-              final vs=vsFM, 
-              final momentumDynamics=momentumDynamics, 
-              final allowFlowReversal=allowFlowReversal, 
-              final p_a_start=p_a_start, 
-              final p_b_start=p_b_start, 
-              final m_flow_start=m_flow_start, 
-              final nParallel=nParallel, 
-              final pathLengths=pathLengths, 
-              final crossAreas=crossAreasFM, 
-              final dimensions=dimensionsFM, 
-              final roughnesses=roughnessesFM, 
-              final dheights=dheightsFM, 
+              redeclare final package Medium = Medium,
+              final n=nFM+1,
+              final states=statesFM,
+              final vs=vsFM,
+              final momentumDynamics=momentumDynamics,
+              final allowFlowReversal=allowFlowReversal,
+              final p_a_start=p_a_start,
+              final p_b_start=p_b_start,
+              final m_flow_start=m_flow_start,
+              final nParallel=nParallel,
+              final pathLengths=pathLengths,
+              final crossAreas=crossAreasFM,
+              final dimensions=dimensionsFM,
+              final roughnesses=roughnessesFM,
+              final dheights=dheightsFM,
               final g=system.g) "Flow model" 
          annotation (Placement(transformation(extent={{-77,-37},{75,-19}})));
 
       // Flow quantities
       Medium.MassFlowRate[n+1] m_flows(
-         each min=if allowFlowReversal then -Modelica.Constants.inf else 0, 
-         each start=m_flow_start) 
+         each min=if allowFlowReversal then -Modelica.Constants.inf else 0,
+         each start=m_flow_start)
         "Mass flow rates of fluid across segment boundaries";
-      Medium.MassFlowRate[n+1, Medium.nXi] mXi_flows 
+      Medium.MassFlowRate[n+1, Medium.nXi] mXi_flows
         "Independent mass flow rates across segment boundaries";
-      Medium.MassFlowRate[n+1, Medium.nC] mC_flows 
+      Medium.MassFlowRate[n+1, Medium.nC] mC_flows
         "Trace substance mass flow rates across segment boundaries";
-      Medium.EnthalpyFlowRate[n+1] H_flows 
+      Medium.EnthalpyFlowRate[n+1] H_flows
         "Enthalpy flow rates of fluid across segment boundaries";
 
-      SI.Velocity[n] vs = {0.5*(m_flows[i] + m_flows[i+1])/mediums[i].d/crossAreas[i] for i in 1:n}/nParallel 
+      SI.Velocity[n] vs = {0.5*(m_flows[i] + m_flows[i+1])/mediums[i].d/crossAreas[i] for i in 1:n}/nParallel
         "Mean velocities in flow segments";
 
       // Model structure dependent flow geometry
@@ -401,7 +401,7 @@ Base class for one dimensional flow models. It specializes a PartialTwoPort with
       Modelica.Fluid.Types.Roughness[nFM+1] roughnessesFM "Average heights of surface asperities";
 
     equation
-      assert(nNodes > 1 or modelStructure <> ModelStructure.av_vb, 
+      assert(nNodes > 1 or modelStructure <> ModelStructure.av_vb,
          "nNodes needs to be at least 2 for modelStructure av_vb, as flow model disappears otherwise!");
       // staggered grid discretization of geometry for flowModel, depending on modelStructure
       if useLumpedPressure then
@@ -596,7 +596,7 @@ Base class for one dimensional flow models. It specializes a PartialTwoPort with
         end if;
       end if;
 
-      annotation (defaultComponentName="pipe", 
+      annotation (defaultComponentName="pipe",
     Documentation(info="<html>
 <p>Base class for distributed flow models. The total volume is split into nNodes segments along the flow path.
 The default value is nNodes=2.
@@ -659,7 +659,7 @@ Consider using a fitting for any significant change in diameter or fluid density
 such as change in kinetic energy, cannot be neglected.
 This also allows for taking into account friction losses with respect to the actual geometry of the connection point.
 </p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>5 Dec 2008</em>
@@ -679,236 +679,236 @@ This also allows for taking into account friction losses with respect to the act
     by Katrin Pr&ouml;l&szlig;:<br>
        Model added to the Fluid library</li>
 </ul>
-</html>"), 
-    Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100, 
+</html>"),
+    Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,
                 100}}), graphics={Ellipse(
-              extent={{-72,10},{-52,-10}}, 
+              extent={{-72,10},{-52,-10}},
               fillPattern=FillPattern.Solid), Ellipse(
-              extent={{50,10},{70,-10}}, 
-              fillPattern=FillPattern.Solid)}), 
+              extent={{50,10},{70,-10}},
+              fillPattern=FillPattern.Solid)}),
     Diagram(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{
                 100,100}}), graphics={
             Polygon(
-              points={{-100,-50},{-100,50},{100,60},{100,-60},{-100,-50}}, 
-              fillColor={215,215,215}, 
-              fillPattern=FillPattern.Solid, 
-              pattern=LinePattern.None), 
+              points={{-100,-50},{-100,50},{100,60},{100,-60},{-100,-50}},
+              fillColor={215,215,215},
+              fillPattern=FillPattern.Solid,
+              pattern=LinePattern.None),
             Polygon(
-              points={{-34,-53},{-34,53},{34,57},{34,-57},{-34,-53}}, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid, 
-              pattern=LinePattern.None), 
+              points={{-34,-53},{-34,53},{34,57},{34,-57},{-34,-53}},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid,
+              pattern=LinePattern.None),
             Line(
-              points={{-100,-50},{-100,50}}, 
-              arrow={Arrow.Filled,Arrow.Filled}, 
-              pattern=LinePattern.Dot), 
+              points={{-100,-50},{-100,50}},
+              arrow={Arrow.Filled,Arrow.Filled},
+              pattern=LinePattern.Dot),
             Text(
-              extent={{-99,36},{-69,30}}, 
-              textColor={0,0,255}, 
-              textString="crossAreas[1]"), 
+              extent={{-99,36},{-69,30}},
+              textColor={0,0,255},
+              textString="crossAreas[1]"),
             Line(
-              points={{-100,70},{-34,70}}, 
-              arrow={Arrow.Filled,Arrow.Filled}, 
-              pattern=LinePattern.Dot), 
+              points={{-100,70},{-34,70}},
+              arrow={Arrow.Filled,Arrow.Filled},
+              pattern=LinePattern.Dot),
             Text(
-              extent={{0,36},{40,30}}, 
-              textColor={0,0,255}, 
-              textString="crossAreas[2:n-1]"), 
+              extent={{0,36},{40,30}},
+              textColor={0,0,255},
+              textString="crossAreas[2:n-1]"),
             Line(
-              points={{100,-60},{100,60}}, 
-              arrow={Arrow.Filled,Arrow.Filled}, 
-              pattern=LinePattern.Dot), 
+              points={{100,-60},{100,60}},
+              arrow={Arrow.Filled,Arrow.Filled},
+              pattern=LinePattern.Dot),
             Text(
-              extent={{100.5,36},{130.5,30}}, 
-              textColor={0,0,255}, 
-              textString="crossAreas[n]"), 
+              extent={{100.5,36},{130.5,30}},
+              textColor={0,0,255},
+              textString="crossAreas[n]"),
             Line(
-              points={{-34,52},{-34,-53}}, 
-              pattern=LinePattern.Dash), 
+              points={{-34,52},{-34,-53}},
+              pattern=LinePattern.Dash),
             Line(
-              points={{34,57},{34,-57}}, 
-              pattern=LinePattern.Dash), 
+              points={{34,57},{34,-57}},
+              pattern=LinePattern.Dash),
             Line(
-              points={{34,70},{100,70}}, 
-              arrow={Arrow.Filled,Arrow.Filled}, 
-              pattern=LinePattern.Dot), 
+              points={{34,70},{100,70}},
+              arrow={Arrow.Filled,Arrow.Filled},
+              pattern=LinePattern.Dot),
             Line(
-              points={{-34,70},{34,70}}, 
-              arrow={Arrow.Filled,Arrow.Filled}, 
-              pattern=LinePattern.Dot), 
+              points={{-34,70},{34,70}},
+              arrow={Arrow.Filled,Arrow.Filled},
+              pattern=LinePattern.Dot),
             Text(
-              extent={{-30,77},{30,71}}, 
-              textColor={0,0,255}, 
-              textString="lengths[2:n-1]"), 
+              extent={{-30,77},{30,71}},
+              textColor={0,0,255},
+              textString="lengths[2:n-1]"),
             Line(
-              points={{-100,-70},{0,-70}}, 
-              arrow={Arrow.None,Arrow.Filled}), 
+              points={{-100,-70},{0,-70}},
+              arrow={Arrow.None,Arrow.Filled}),
             Text(
-              extent={{-80,-63},{-20,-69}}, 
-              textColor={0,0,255}, 
-              textString="flowModel.dps_fg[1]"), 
+              extent={{-80,-63},{-20,-69}},
+              textColor={0,0,255},
+              textString="flowModel.dps_fg[1]"),
             Line(
-              points={{0,-70},{100,-70}}, 
-              arrow={Arrow.None,Arrow.Filled}), 
+              points={{0,-70},{100,-70}},
+              arrow={Arrow.None,Arrow.Filled}),
             Text(
-              extent={{20.5,-63},{80,-69}}, 
-              textColor={0,0,255}, 
-              textString="flowModel.dps_fg[2:n-1]"), 
+              extent={{20.5,-63},{80,-69}},
+              textColor={0,0,255},
+              textString="flowModel.dps_fg[2:n-1]"),
             Line(
-              points={{-95,0},{-5,0}}, 
-              arrow={Arrow.None,Arrow.Filled}), 
+              points={{-95,0},{-5,0}},
+              arrow={Arrow.None,Arrow.Filled}),
             Text(
-              extent={{-62,7},{-32,1}}, 
-              textColor={0,0,255}, 
-              textString="m_flows[2]"), 
+              extent={{-62,7},{-32,1}},
+              textColor={0,0,255},
+              textString="m_flows[2]"),
             Line(
-              points={{5,0},{95,0}}, 
-              arrow={Arrow.None,Arrow.Filled}), 
+              points={{5,0},{95,0}},
+              arrow={Arrow.None,Arrow.Filled}),
             Text(
-              extent={{34,7},{64,1}}, 
-              textColor={0,0,255}, 
-              textString="m_flows[3:n]"), 
+              extent={{34,7},{64,1}},
+              textColor={0,0,255},
+              textString="m_flows[3:n]"),
             Line(
-              points={{-150,0},{-105,0}}, 
-              arrow={Arrow.None,Arrow.Filled}), 
+              points={{-150,0},{-105,0}},
+              arrow={Arrow.None,Arrow.Filled}),
             Line(
-              points={{105,0},{150,0}}, 
-              arrow={Arrow.None,Arrow.Filled}), 
+              points={{105,0},{150,0}},
+              arrow={Arrow.None,Arrow.Filled}),
             Text(
-              extent={{-140,7},{-110,1}}, 
-              textColor={0,0,255}, 
-              textString="m_flows[1]"), 
+              extent={{-140,7},{-110,1}},
+              textColor={0,0,255},
+              textString="m_flows[1]"),
             Text(
-              extent={{111,7},{141,1}}, 
-              textColor={0,0,255}, 
-              textString="m_flows[n+1]"), 
+              extent={{111,7},{141,1}},
+              textColor={0,0,255},
+              textString="m_flows[n+1]"),
             Text(
-              extent={{35,-92},{100,-98}}, 
-              textColor={0,0,255}, 
-              textString="(ModelStructure av_vb, n=3)"), 
+              extent={{35,-92},{100,-98}},
+              textColor={0,0,255},
+              textString="(ModelStructure av_vb, n=3)"),
             Line(
-              points={{-100,-50},{-100,-86}}, 
-              pattern=LinePattern.Dot), 
+              points={{-100,-50},{-100,-86}},
+              pattern=LinePattern.Dot),
             Line(
-              points={{0,-55},{0,-86}}, 
-              pattern=LinePattern.Dot), 
+              points={{0,-55},{0,-86}},
+              pattern=LinePattern.Dot),
             Line(
-              points={{100,-60},{100,-86}}, 
-              pattern=LinePattern.Dot), 
+              points={{100,-60},{100,-86}},
+              pattern=LinePattern.Dot),
             Ellipse(
-              extent={{-5,5},{5,-5}}, 
-              pattern=LinePattern.None, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-5,5},{5,-5}},
+              pattern=LinePattern.None,
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{3,-4},{33,-10}}, 
-              textColor={0,0,255}, 
-              textString="states[2:n-1]"), 
+              extent={{3,-4},{33,-10}},
+              textColor={0,0,255},
+              textString="states[2:n-1]"),
             Ellipse(
-              extent={{95,5},{105,-5}}, 
-              pattern=LinePattern.None, 
-              fillPattern=FillPattern.Solid), 
+              extent={{95,5},{105,-5}},
+              pattern=LinePattern.None,
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{104,-4},{124,-10}}, 
-              textColor={0,0,255}, 
-              textString="states[n]"), 
+              extent={{104,-4},{124,-10}},
+              textColor={0,0,255},
+              textString="states[n]"),
             Ellipse(
-              extent={{-105,5},{-95,-5}}, 
-              pattern=LinePattern.None, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-105,5},{-95,-5}},
+              pattern=LinePattern.None,
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-96,-4},{-76,-10}}, 
-              textColor={0,0,255}, 
-              textString="states[1]"), 
+              extent={{-96,-4},{-76,-10}},
+              textColor={0,0,255},
+              textString="states[1]"),
             Text(
-              extent={{-99.5,30},{-69.5,24}}, 
-              textColor={0,0,255}, 
-              textString="dimensions[1]"), 
+              extent={{-99.5,30},{-69.5,24}},
+              textColor={0,0,255},
+              textString="dimensions[1]"),
             Text(
-              extent={{-0.5,30},{40,24}}, 
-              textColor={0,0,255}, 
-              textString="dimensions[2:n-1]"), 
+              extent={{-0.5,30},{40,24}},
+              textColor={0,0,255},
+              textString="dimensions[2:n-1]"),
             Text(
-              extent={{100.5,30},{130.5,24}}, 
-              textColor={0,0,255}, 
-              textString="dimensions[n]"), 
+              extent={{100.5,30},{130.5,24}},
+              textColor={0,0,255},
+              textString="dimensions[n]"),
             Line(
-              points={{-34,73},{-34,52}}, 
-              pattern=LinePattern.Dot), 
+              points={{-34,73},{-34,52}},
+              pattern=LinePattern.Dot),
             Line(
-              points={{34,73},{34,57}}, 
-              pattern=LinePattern.Dot), 
+              points={{34,73},{34,57}},
+              pattern=LinePattern.Dot),
             Line(
-              points={{-100,50},{100,60}}, 
-              thickness=0.5), 
+              points={{-100,50},{100,60}},
+              thickness=0.5),
             Line(
-              points={{-100,-50},{100,-60}}, 
-              thickness=0.5), 
+              points={{-100,-50},{100,-60}},
+              thickness=0.5),
             Line(
-              points={{-100,73},{-100,50}}, 
-              pattern=LinePattern.Dot), 
+              points={{-100,73},{-100,50}},
+              pattern=LinePattern.Dot),
             Line(
-              points={{100,73},{100,60}}, 
-              pattern=LinePattern.Dot), 
+              points={{100,73},{100,60}},
+              pattern=LinePattern.Dot),
             Line(
-              points={{0,-55},{0,55}}, 
-              arrow={Arrow.Filled,Arrow.Filled}, 
-              pattern=LinePattern.Dot), 
+              points={{0,-55},{0,55}},
+              arrow={Arrow.Filled,Arrow.Filled},
+              pattern=LinePattern.Dot),
             Line(
-              points={{-34,11},{34,11}}, 
-              arrow={Arrow.None,Arrow.Filled}), 
+              points={{-34,11},{34,11}},
+              arrow={Arrow.None,Arrow.Filled}),
             Text(
-              extent={{5,18},{25,12}}, 
-              textColor={0,0,255}, 
-              textString="vs[2:n-1]"), 
+              extent={{5,18},{25,12}},
+              textColor={0,0,255},
+              textString="vs[2:n-1]"),
             Text(
-              extent={{-72,18},{-62,12}}, 
-              textColor={0,0,255}, 
-              textString="vs[1]"), 
+              extent={{-72,18},{-62,12}},
+              textColor={0,0,255},
+              textString="vs[1]"),
             Line(
-              points={{-100,11},{-34,11}}, 
-              arrow={Arrow.None,Arrow.Filled}), 
+              points={{-100,11},{-34,11}},
+              arrow={Arrow.None,Arrow.Filled}),
             Text(
-              extent={{63,18},{73,12}}, 
-              textColor={0,0,255}, 
-              textString="vs[n]"), 
+              extent={{63,18},{73,12}},
+              textColor={0,0,255},
+              textString="vs[n]"),
             Line(
-              points={{34,11},{100,11}}, 
-              arrow={Arrow.None,Arrow.Filled}), 
+              points={{34,11},{100,11}},
+              arrow={Arrow.None,Arrow.Filled}),
             Text(
-              extent={{-80,-75},{-20,-81}}, 
-              textColor={0,0,255}, 
-              textString="flowModel.pathLengths[1]"), 
+              extent={{-80,-75},{-20,-81}},
+              textColor={0,0,255},
+              textString="flowModel.pathLengths[1]"),
             Line(
-              points={{-100,-82},{0,-82}}, 
-              arrow={Arrow.Filled,Arrow.Filled}), 
+              points={{-100,-82},{0,-82}},
+              arrow={Arrow.Filled,Arrow.Filled}),
             Line(
-              points={{0,-82},{100,-82}}, 
-              arrow={Arrow.Filled,Arrow.Filled}), 
+              points={{0,-82},{100,-82}},
+              arrow={Arrow.Filled,Arrow.Filled}),
             Text(
-              extent={{15,-75},{85,-81}}, 
-              textColor={0,0,255}, 
-              textString="flowModel.pathLengths[2:n-1]"), 
+              extent={{15,-75},{85,-81}},
+              textColor={0,0,255},
+              textString="flowModel.pathLengths[2:n-1]"),
             Text(
-              extent={{-100,77},{-37,71}}, 
-              textColor={0,0,255}, 
-              textString="lengths[1]"), 
+              extent={{-100,77},{-37,71}},
+              textColor={0,0,255},
+              textString="lengths[1]"),
             Text(
-              extent={{34,77},{100,71}}, 
-              textColor={0,0,255}, 
+              extent={{34,77},{100,71}},
+              textColor={0,0,255},
               textString="lengths[n]")}));
     end PartialTwoPortFlow;
 
-    package FlowModels 
+    package FlowModels
       "Flow models for pipes, including wall friction, static head and momentum flow"
       extends Modelica.Icons.Package;
-          partial model PartialStaggeredFlowModel 
+          partial model PartialStaggeredFlowModel
         "Base class for momentum balances in flow models"
 
             //
             // Internal interface
             // (not exposed to GUI; needs to be hard coded when using this model
             //
-            replaceable package Medium = 
+            replaceable package Medium =
               Modelica.Media.Interfaces.PartialMedium "Medium in the component" 
                 annotation(Dialog(tab="Internal interface",enable=false));
 
@@ -916,47 +916,47 @@ This also allows for taking into account friction losses with respect to the act
               annotation(Dialog(tab="Internal interface",enable=false));
 
             // Inputs
-            input Medium.ThermodynamicState[n] states 
+            input Medium.ThermodynamicState[n] states
           "Thermodynamic states along design flow";
-            input SI.Velocity[n] vs 
+            input SI.Velocity[n] vs
           "Mean velocities of fluid flow";
 
             // Geometry parameters and inputs
-            parameter Real nParallel 
+            parameter Real nParallel
           "Number of identical parallel flow devices" 
                annotation(Dialog(tab="Internal interface",enable=false,group="Geometry"));
 
-            input SI.Area[n] crossAreas 
+            input SI.Area[n] crossAreas
           "Cross flow areas at segment boundaries";
-            input SI.Length[n] dimensions 
+            input SI.Length[n] dimensions
           "Characteristic dimensions for fluid flow (diameters for pipe flow)";
-            input Modelica.Fluid.Types.Roughness[n] roughnesses 
+            input Modelica.Fluid.Types.Roughness[n] roughnesses
           "Average height of surface asperities";
 
             // Static head
-            input SI.Length[n-1] dheights 
+            input SI.Length[n-1] dheights
           "Height(states[2:n]) - Height(states[1:n-1])";
 
-            parameter SI.Acceleration g=system.g 
+            parameter SI.Acceleration g=system.g
           "Constant gravity acceleration" 
               annotation(Dialog(tab="Internal interface",enable=false,group="Static head"));
 
             // Assumptions
-            parameter Boolean allowFlowReversal=system.allowFlowReversal 
+            parameter Boolean allowFlowReversal=system.allowFlowReversal
                   "= true, if flow reversal is enabled, otherwise restrict flow to design direction (states[1] -> states[n+1])" 
               annotation(Dialog(tab="Internal interface",enable=false,group="Assumptions"), Evaluate=true);
-            parameter Modelica.Fluid.Types.Dynamics momentumDynamics=system.momentumDynamics 
+            parameter Modelica.Fluid.Types.Dynamics momentumDynamics=system.momentumDynamics
           "Formulation of momentum balance" 
               annotation(Dialog(tab="Internal interface",enable=false,group = "Assumptions"), Evaluate=true);
 
             // Initialization
-            parameter Medium.MassFlowRate m_flow_start=system.m_flow_start 
+            parameter Medium.MassFlowRate m_flow_start=system.m_flow_start
           "Start value of mass flow rates" 
               annotation(Dialog(tab="Internal interface",enable=false,group = "Initialization"));
-            parameter Medium.AbsolutePressure p_a_start 
+            parameter Medium.AbsolutePressure p_a_start
           "Start value for p[1] at design inflow" 
               annotation(Dialog(tab="Internal interface",enable=false,group = "Initialization"));
-            parameter Medium.AbsolutePressure p_b_start 
+            parameter Medium.AbsolutePressure p_b_start
           "Start value for p[n+1] at design outflow" 
               annotation(Dialog(tab="Internal interface",enable=false,group = "Initialization"));
 
@@ -967,11 +967,11 @@ This also allows for taking into account friction losses with respect to the act
                        final m = n-1);
 
             // Advanced parameters
-            parameter Boolean useUpstreamScheme = true 
+            parameter Boolean useUpstreamScheme = true
           "= false to average upstream and downstream properties across flow segments" 
                annotation(Dialog(group="Advanced"), Evaluate=true);
 
-            parameter Boolean use_Ib_flows = momentumDynamics <> Types.Dynamics.SteadyState 
+            parameter Boolean use_Ib_flows = momentumDynamics <> Types.Dynamics.SteadyState
           "= true to consider differences in flow of momentum through boundaries" 
                annotation(Dialog(group="Advanced"), Evaluate=true);
 
@@ -983,37 +983,37 @@ This also allows for taking into account friction losses with respect to the act
             Medium.DynamicViscosity[n-1] mus_act "Actual viscosity per segment";
 
             // Variables
-            SI.Pressure[n-1] dps_fg(each start = (p_a_start - p_b_start)/(n-1)) 
+            SI.Pressure[n-1] dps_fg(each start = (p_a_start - p_b_start)/(n-1))
           "Pressure drop between states";
 
             // Reynolds Number
-            parameter SI.ReynoldsNumber Re_turbulent = 4000 
+            parameter SI.ReynoldsNumber Re_turbulent = 4000
           "Start of turbulent regime, depending on type of flow device";
-            parameter Boolean show_Res = false 
+            parameter Boolean show_Res = false
           "= true, if Reynolds numbers are included for plotting" 
                annotation (Evaluate=true, Dialog(group="Diagnostics"));
             SI.ReynoldsNumber[n] Res=Modelica.Fluid.Pipes.BaseClasses.CharacteristicNumbers.ReynoldsNumber(
-                vs, 
-                rhos, 
-                mus, 
+                vs,
+                rhos,
+                mus,
                 dimensions) if show_Res "Reynolds numbers";
-            Medium.MassFlowRate[n-1] m_flows_turbulent= 
+            Medium.MassFlowRate[n-1] m_flows_turbulent=
                 {nParallel*(crossAreas[i] + crossAreas[i+1])/(dimensions[i] + dimensions[i+1])*mus_act[i]*Re_turbulent for i in 1:n-1} if 
                    show_Res "Start of turbulent flow";
       protected
-            parameter Boolean use_rho_nominal = false 
+            parameter Boolean use_rho_nominal = false
           "= true, if rho_nominal is used, otherwise computed from medium" 
                annotation(Dialog(group="Advanced"), Evaluate=true);
-            parameter SI.Density rho_nominal = Medium.density_pTX(Medium.p_default, Medium.T_default, Medium.X_default) 
+            parameter SI.Density rho_nominal = Medium.density_pTX(Medium.p_default, Medium.T_default, Medium.X_default)
           "Nominal density (e.g., rho_liquidWater = 995, rho_air = 1.2)" 
               annotation(Dialog(group="Advanced", enable=use_rho_nominal));
 
-            parameter Boolean use_mu_nominal = false 
+            parameter Boolean use_mu_nominal = false
           "= true, if mu_nominal is used, otherwise computed from medium" 
                annotation(Dialog(group="Advanced"), Evaluate=true);
             parameter SI.DynamicViscosity mu_nominal = Medium.dynamicViscosity(
                                                            Medium.setState_pTX(
-                                                               Medium.p_default, Medium.T_default, Medium.X_default)) 
+                                                               Medium.p_default, Medium.T_default, Medium.X_default))
           "Nominal dynamic viscosity (e.g., mu_liquidWater = 1e-3, mu_air = 1.8e-5)" 
               annotation(Dialog(group="Advanced", enable=use_mu_nominal));
 
@@ -1072,16 +1072,16 @@ of the segments as well as the actual densities rhos_act[n-1] and the actual vis
 in this base model. Note that no events are raised on flow reversal. This needs to be treated by an extending model,
 e.g., with numerical smoothing or by raising events as appropriate.
 </p>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
                   -100},{100,100}}), graphics={Line(
-                points={{-80,-50},{-80,50},{80,-50},{80,50}}, 
-                color={0,0,255}, 
+                points={{-80,-50},{-80,50},{80,-50},{80,50}},
+                color={0,0,255},
                 thickness=1), Text(
-                extent={{-40,-50},{40,-90}}, 
+                extent={{-40,-50},{40,-90}},
                 textString="%name")}));
           end PartialStaggeredFlowModel;
 
-      model NominalLaminarFlow 
+      model NominalLaminarFlow
         "NominalLaminarFlow: Linear laminar flow for given nominal values"
         extends 
           Modelica.Fluid.Pipes.BaseClasses.FlowModels.PartialStaggeredFlowModel(
@@ -1089,15 +1089,15 @@ e.g., with numerical smoothing or by raising events as appropriate.
 
         // Operational conditions
         parameter SI.AbsolutePressure dp_nominal "Nominal pressure loss";
-        parameter SI.MassFlowRate m_flow_nominal 
+        parameter SI.MassFlowRate m_flow_nominal
           "Mass flow rate for dp_nominal";
 
         // Inverse parameterization assuming pipe flow and WallFriction.Laminar
         // Laminar.massFlowRate_dp:
         //   m_flow = dp*pi*diameter^4*d/(128*length*mu);
-        SI.Length[n-1] pathLengths_nominal= 
-          {(dp_nominal/(n-1)-g*dheights[i])*Modelica.Constants.pi*((dimensions[i]+dimensions[i+1])/2)^4*rhos_act[i]/(128*mus_act[i])/ 
-           (m_flow_nominal/nParallel) for i in 1:n-1} if show_Res 
+        SI.Length[n-1] pathLengths_nominal=
+          {(dp_nominal/(n-1)-g*dheights[i])*Modelica.Constants.pi*((dimensions[i]+dimensions[i+1])/2)^4*rhos_act[i]/(128*mus_act[i])/
+           (m_flow_nominal/nParallel) for i in 1:n-1} if show_Res
           "Lengths resulting from given nominal values for circular tubes";
 
       equation
@@ -1120,10 +1120,10 @@ specified nominal values for given geometry parameters <code>crossAreas</code>, 
 </html>"));
       end NominalLaminarFlow;
 
-          partial model PartialGenericPipeFlow 
+          partial model PartialGenericPipeFlow
         "GenericPipeFlow: Pipe flow pressure loss and gravity with replaceable WallFriction package"
 
-            parameter Boolean from_dp = momentumDynamics >= Types.Dynamics.SteadyStateInitial 
+            parameter Boolean from_dp = momentumDynamics >= Types.Dynamics.SteadyStateInitial
           "= true, use m_flow = f(dp), otherwise dp = f(m_flow)" 
               annotation (Dialog(group="Advanced"), Evaluate=true);
 
@@ -1131,56 +1131,56 @@ specified nominal values for given geometry parameters <code>crossAreas</code>, 
           Modelica.Fluid.Pipes.BaseClasses.FlowModels.PartialStaggeredFlowModel(
            final Re_turbulent=4000);
 
-            replaceable package WallFriction = 
+            replaceable package WallFriction =
               Modelica.Fluid.Pipes.BaseClasses.WallFriction.Detailed 
                 constrainedby 
-          Modelica.Fluid.Pipes.BaseClasses.WallFriction.PartialWallFriction 
+          Modelica.Fluid.Pipes.BaseClasses.WallFriction.PartialWallFriction
           "Wall friction model" 
                 annotation(Dialog(group="Wall friction"), choicesAllMatching=true);
 
-            input SI.Length[n-1] pathLengths_internal 
+            input SI.Length[n-1] pathLengths_internal
           "pathLengths used internally; to be defined by extending class";
-            input SI.ReynoldsNumber[n-1] Res_turbulent_internal = Re_turbulent*ones(n-1) 
+            input SI.ReynoldsNumber[n-1] Res_turbulent_internal = Re_turbulent*ones(n-1)
           "Re_turbulent used internally; to be defined by extending class";
 
             // Parameters
-            parameter SI.AbsolutePressure dp_nominal 
+            parameter SI.AbsolutePressure dp_nominal
           "Nominal pressure loss (only for nominal models)";
             parameter SI.MassFlowRate m_flow_nominal "Nominal mass flow rate";
-            parameter SI.MassFlowRate m_flow_small = if system.use_eps_Re then system.eps_m_flow*m_flow_nominal else system.m_flow_small 
+            parameter SI.MassFlowRate m_flow_small = if system.use_eps_Re then system.eps_m_flow*m_flow_nominal else system.m_flow_small
           "Within regularization if |m_flows| < m_flow_small (may be wider for large discontinuities in static head)" 
               annotation(Dialog(enable=not from_dp and WallFriction.use_m_flow_small));
 
       protected
-            parameter SI.AbsolutePressure dp_small(start = 1, fixed = false) 
+            parameter SI.AbsolutePressure dp_small(start = 1, fixed = false)
           "Within regularization if |dp| < dp_small (may be wider for large discontinuities in static head)" 
               annotation(Dialog(enable=from_dp and WallFriction.use_dp_small));
-            final parameter Boolean constantPressureLossCoefficient= 
-               use_rho_nominal and (use_mu_nominal or not WallFriction.use_mu) 
+            final parameter Boolean constantPressureLossCoefficient=
+               use_rho_nominal and (use_mu_nominal or not WallFriction.use_mu)
           "= true, if the pressure loss does not depend on fluid states" 
                annotation(Evaluate=true);
-            final parameter Boolean continuousFlowReversal= 
+            final parameter Boolean continuousFlowReversal=
                (not useUpstreamScheme) 
                or constantPressureLossCoefficient 
-               or not allowFlowReversal 
+               or not allowFlowReversal
           "= true, if the pressure loss is continuous around zero flow" 
                annotation(Evaluate=true);
 
-            SI.Length[n-1] diameters = 0.5*(dimensions[1:n-1] + dimensions[2:n]) 
+            SI.Length[n-1] diameters = 0.5*(dimensions[1:n-1] + dimensions[2:n])
           "Mean diameters between segments";
-            SI.AbsolutePressure dp_fric_nominal= 
+            SI.AbsolutePressure dp_fric_nominal=
               sum(WallFriction.pressureLoss_m_flow(
-                             m_flow_nominal/nParallel, 
-                             rho_nominal, 
-                             rho_nominal, 
-                             mu_nominal, 
-                             mu_nominal, 
-                             pathLengths_internal, 
-                             diameters, 
-                             (crossAreas[1:n-1]+crossAreas[2:n])/2, 
-                             (roughnesses[1:n-1]+roughnesses[2:n])/2, 
-                             m_flow_small/nParallel, 
-                             Res_turbulent_internal)) 
+                             m_flow_nominal/nParallel,
+                             rho_nominal,
+                             rho_nominal,
+                             mu_nominal,
+                             mu_nominal,
+                             pathLengths_internal,
+                             diameters,
+                             (crossAreas[1:n-1]+crossAreas[2:n])/2,
+                             (roughnesses[1:n-1]+roughnesses[2:n])/2,
+                             m_flow_small/nParallel,
+                             Res_turbulent_internal))
           "Pressure loss for nominal conditions";
 
           initial equation
@@ -1201,32 +1201,32 @@ specified nominal values for given geometry parameters <code>crossAreas</code>, 
               if from_dp and not WallFriction.dp_is_zero then
                 m_flows = homotopy(
                   actual=  WallFriction.massFlowRate_dp(
-                             dps_fg - {g*dheights[i]*rhos_act[i] for i in 1:n-1}, 
-                             rhos_act, 
-                             rhos_act, 
-                             mus_act, 
-                             mus_act, 
-                             pathLengths_internal, 
-                             diameters, 
-                             (crossAreas[1:n-1]+crossAreas[2:n])/2, 
-                             (roughnesses[1:n-1]+roughnesses[2:n])/2, 
-                             dp_small/(n-1), 
-                             Res_turbulent_internal)*nParallel, 
+                             dps_fg - {g*dheights[i]*rhos_act[i] for i in 1:n-1},
+                             rhos_act,
+                             rhos_act,
+                             mus_act,
+                             mus_act,
+                             pathLengths_internal,
+                             diameters,
+                             (crossAreas[1:n-1]+crossAreas[2:n])/2,
+                             (roughnesses[1:n-1]+roughnesses[2:n])/2,
+                             dp_small/(n-1),
+                             Res_turbulent_internal)*nParallel,
                   simplified=  m_flow_nominal/dp_nominal*(dps_fg - g*dheights*rho_nominal));
               else
                 dps_fg = homotopy(
                   actual=  WallFriction.pressureLoss_m_flow(
-                             m_flows/nParallel, 
-                             rhos_act, 
-                             rhos_act, 
-                             mus_act, 
-                             mus_act, 
-                             pathLengths_internal, 
-                             diameters, 
-                             (crossAreas[1:n-1]+crossAreas[2:n])/2, 
-                             (roughnesses[1:n-1]+roughnesses[2:n])/2, 
-                             m_flow_small/nParallel, 
-                             Res_turbulent_internal) + {g*dheights[i]*rhos_act[i] for i in 1:n-1}, 
+                             m_flows/nParallel,
+                             rhos_act,
+                             rhos_act,
+                             mus_act,
+                             mus_act,
+                             pathLengths_internal,
+                             diameters,
+                             (crossAreas[1:n-1]+crossAreas[2:n])/2,
+                             (roughnesses[1:n-1]+roughnesses[2:n])/2,
+                             m_flow_small/nParallel,
+                             Res_turbulent_internal) + {g*dheights[i]*rhos_act[i] for i in 1:n-1},
                   simplified=  dp_nominal/m_flow_nominal*m_flows + g*dheights*rho_nominal);
               end if;
             else
@@ -1234,34 +1234,34 @@ specified nominal values for given geometry parameters <code>crossAreas</code>, 
               if from_dp and not WallFriction.dp_is_zero then
                 m_flows = homotopy(
                   actual=  WallFriction.massFlowRate_dp_staticHead(
-                             dps_fg, 
-                             rhos[1:n-1], 
-                             rhos[2:n], 
-                             mus[1:n-1], 
-                             mus[2:n], 
-                             pathLengths_internal, 
-                             diameters, 
-                             g*dheights, 
-                             (crossAreas[1:n-1]+crossAreas[2:n])/2, 
-                             (roughnesses[1:n-1]+roughnesses[2:n])/2, 
-                             dp_small/(n-1), 
-                             Res_turbulent_internal)*nParallel, 
+                             dps_fg,
+                             rhos[1:n-1],
+                             rhos[2:n],
+                             mus[1:n-1],
+                             mus[2:n],
+                             pathLengths_internal,
+                             diameters,
+                             g*dheights,
+                             (crossAreas[1:n-1]+crossAreas[2:n])/2,
+                             (roughnesses[1:n-1]+roughnesses[2:n])/2,
+                             dp_small/(n-1),
+                             Res_turbulent_internal)*nParallel,
                   simplified=  m_flow_nominal/dp_nominal*(dps_fg - g*dheights*rho_nominal));
               else
                 dps_fg = homotopy(
                   actual=  WallFriction.pressureLoss_m_flow_staticHead(
-                             m_flows/nParallel, 
-                             rhos[1:n-1], 
-                             rhos[2:n], 
-                             mus[1:n-1], 
-                             mus[2:n], 
-                             pathLengths_internal, 
-                             diameters, 
-                             g*dheights, 
-                             (crossAreas[1:n-1]+crossAreas[2:n])/2, 
-                             (roughnesses[1:n-1]+roughnesses[2:n])/2, 
-                             m_flow_small/nParallel, 
-                             Res_turbulent_internal), 
+                             m_flows/nParallel,
+                             rhos[1:n-1],
+                             rhos[2:n],
+                             mus[1:n-1],
+                             mus[2:n],
+                             pathLengths_internal,
+                             diameters,
+                             g*dheights,
+                             (crossAreas[1:n-1]+crossAreas[2:n])/2,
+                             (roughnesses[1:n-1]+roughnesses[2:n])/2,
+                             m_flow_small/nParallel,
+                             Res_turbulent_internal),
                   simplified=  dp_nominal/m_flow_nominal*m_flows + g*dheights*rho_nominal);
               end if;
             end if;
@@ -1291,67 +1291,67 @@ at the desired operating point. This might speed-up the
 simulation and/or might give a more robust simulation.
 </p>
 </html>"), Diagram(coordinateSystem(
-                  preserveAspectRatio=false, 
+                  preserveAspectRatio=false,
                   extent={{-100,-100},{100,100}}), graphics={
               Rectangle(
-                extent={{-100,64},{100,-64}}, 
-                fillColor={255,255,255}, 
-                fillPattern=FillPattern.Backward), 
+                extent={{-100,64},{100,-64}},
+                fillColor={255,255,255},
+                fillPattern=FillPattern.Backward),
               Rectangle(
-                extent={{-100,50},{100,-49}}, 
-                fillColor={255,255,255}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-100,50},{100,-49}},
+                fillColor={255,255,255},
+                fillPattern=FillPattern.Solid),
               Line(
-                points={{-60,-49},{-60,50}}, 
-                color={0,0,255}, 
-                arrow={Arrow.Filled,Arrow.Filled}), 
+                points={{-60,-49},{-60,50}},
+                color={0,0,255},
+                arrow={Arrow.Filled,Arrow.Filled}),
               Text(
-                extent={{-50,16},{6,-10}}, 
-                textColor={0,0,255}, 
-                textString="diameters"), 
+                extent={{-50,16},{6,-10}},
+                textColor={0,0,255},
+                textString="diameters"),
               Line(
-                points={{-100,74},{100,74}}, 
-                color={0,0,255}, 
-                arrow={Arrow.Filled,Arrow.Filled}), 
+                points={{-100,74},{100,74}},
+                color={0,0,255},
+                arrow={Arrow.Filled,Arrow.Filled}),
               Text(
-                extent={{-32,93},{32,74}}, 
-                textColor={0,0,255}, 
+                extent={{-32,93},{32,74}},
+                textColor={0,0,255},
                 textString="pathLengths")}));
           end PartialGenericPipeFlow;
 
-          model NominalTurbulentPipeFlow 
+          model NominalTurbulentPipeFlow
         "NominalTurbulentPipeFlow: Quadratic turbulent flow in circular tubes for given nominal values"
             extends 
           Modelica.Fluid.Pipes.BaseClasses.FlowModels.PartialGenericPipeFlow(
-          redeclare package WallFriction = 
-              Modelica.Fluid.Pipes.BaseClasses.WallFriction.LaminarAndQuadraticTurbulent, 
-          use_mu_nominal=not show_Res, 
-          pathLengths_internal=pathLengths_nominal, 
-          useUpstreamScheme=false, 
+          redeclare package WallFriction =
+              Modelica.Fluid.Pipes.BaseClasses.WallFriction.LaminarAndQuadraticTurbulent,
+          use_mu_nominal=not show_Res,
+          pathLengths_internal=pathLengths_nominal,
+          useUpstreamScheme=false,
           Res_turbulent_internal=Res_turbulent_nominal);
 
             import Modelica.Constants.pi;
 
-            parameter SI.MassFlowRate m_flow_turbulent(min=0) = if system.use_eps_Re then 0.1*m_flow_nominal else system.m_flow_small 
+            parameter SI.MassFlowRate m_flow_turbulent(min=0) = if system.use_eps_Re then 0.1*m_flow_nominal else system.m_flow_small
           "Turbulent flow starting from |m_flows| > m_flow_turbulent (may be wider for large discontinuities in static head)" 
               annotation(Dialog(enable=not from_dp and WallFriction.use_m_flow_small));
 
             // variables for nominal pressure loss
-            SI.Length[n-1] pathLengths_nominal 
+            SI.Length[n-1] pathLengths_nominal
           "pathLengths resulting from nominal pressure loss and geometry";
-            SI.ReynoldsNumber[n-1] Res_turbulent_nominal 
+            SI.ReynoldsNumber[n-1] Res_turbulent_nominal
           "Re_turbulent resulting from nominal turbulent flow and geometry";
             Real[n-1] ks_inv "Coefficient for quadratic flow";
             Real[n-1] zetas "Coefficient for quadratic flow";
 
             // Reynolds Number
-            Medium.AbsolutePressure[n-1] dps_fg_turbulent(each min=0)= 
+            Medium.AbsolutePressure[n-1] dps_fg_turbulent(each min=0)=
                 {(mus_act[i]*diameters[i]*pi/4)^2*Re_turbulent^2/(ks_inv[i]*rhos_act[i]) for i in 1:n-1} if 
                    show_Res "Start of turbulent flow in circular tubes";
 
           initial equation
             for i in 1:n loop
-              assert(abs(crossAreas[i] - pi/4*dimensions[i]^2) < 1e-10*crossAreas[i], 
+              assert(abs(crossAreas[i] - pi/4*dimensions[i]^2) < 1e-10*crossAreas[i],
                      "NominalTurbulentPipeFlow model requires circular tubes");
             end for;
 
@@ -1366,7 +1366,7 @@ simulation and/or might give a more robust simulation.
             for i in 1:n-1 loop
               ks_inv[i] = (m_flow_nominal/nParallel)^2/((dp_nominal/(n-1)-g*dheights[i]*rhos_act[i]))/rhos_act[i];
               zetas[i] = (pi*diameters[i]*diameters[i])^2/(8*ks_inv[i]);
-              pathLengths_nominal[i] = 
+              pathLengths_nominal[i] =
                 zetas[i]*diameters[i]*(2*Modelica.Math.log10(3.7 /((roughnesses[i]+roughnesses[i+1])/2/diameters[i])))^2;
               Res_turbulent_nominal[i] = m_flow_turbulent/nParallel / (pi/4*diameters[i]*mus_act[i]);
             end for;
@@ -1411,27 +1411,27 @@ and can be related to <code>m_flow_small</code> and <code>dp_small</code>.
 </html>"));
           end NominalTurbulentPipeFlow;
 
-          model TurbulentPipeFlow 
+          model TurbulentPipeFlow
         "TurbulentPipeFlow: Quadratic turbulent flow in circular tubes (using mu to regularize laminar region)"
             extends 
           Modelica.Fluid.Pipes.BaseClasses.FlowModels.PartialGenericPipeFlow(
-          redeclare package WallFriction = 
-              Modelica.Fluid.Pipes.BaseClasses.WallFriction.LaminarAndQuadraticTurbulent, 
-          use_mu_nominal=not show_Res, 
-          pathLengths_internal=pathLengths, 
-          dp_nominal(start=if system.use_eps_Re then 1 else 1e3*dp_small, fixed=not system.use_eps_Re), 
-          m_flow_nominal=if system.use_eps_Re then system.m_flow_nominal else 1e2*m_flow_small, 
+          redeclare package WallFriction =
+              Modelica.Fluid.Pipes.BaseClasses.WallFriction.LaminarAndQuadraticTurbulent,
+          use_mu_nominal=not show_Res,
+          pathLengths_internal=pathLengths,
+          dp_nominal(start=if system.use_eps_Re then 1 else 1e3*dp_small, fixed=not system.use_eps_Re),
+          m_flow_nominal=if system.use_eps_Re then system.m_flow_nominal else 1e2*m_flow_small,
           Res_turbulent_internal = if use_Re then Re_turbulent*ones(n-1) else zeros(n-1));
 
             import Modelica.Constants.pi;
 
-            parameter Boolean use_Re = system.use_eps_Re 
+            parameter Boolean use_Re = system.use_eps_Re
           "= true, if turbulent region is defined by Re, otherwise by m_flow_small" 
               annotation(Evaluate=true);
 
           initial equation
             for i in 1:n loop
-              assert(abs(crossAreas[i] - pi/4*dimensions[i]^2) < 1e-10*crossAreas[i], 
+              assert(abs(crossAreas[i] - pi/4*dimensions[i]^2) < 1e-10*crossAreas[i],
                      "NominalTurbulentPipeFlow model requires circular tubes");
             end for;
             // initialize dp_nominal from flow model
@@ -1451,15 +1451,15 @@ The turbulent pressure loss correlation might be useful to optimize models that 
 </html>"));
           end TurbulentPipeFlow;
 
-          model DetailedPipeFlow 
+          model DetailedPipeFlow
         "DetailedPipeFlow: Detailed characteristic for laminar and turbulent flow"
             extends 
           Modelica.Fluid.Pipes.BaseClasses.FlowModels.PartialGenericPipeFlow(
-          redeclare package WallFriction = 
-              Modelica.Fluid.Pipes.BaseClasses.WallFriction.Detailed, 
-          pathLengths_internal=pathLengths, 
-          dp_nominal(start=1, fixed=false), 
-          m_flow_nominal=if system.use_eps_Re then system.m_flow_nominal else 1e2*m_flow_small, 
+          redeclare package WallFriction =
+              Modelica.Fluid.Pipes.BaseClasses.WallFriction.Detailed,
+          pathLengths_internal=pathLengths,
+          dp_nominal(start=1, fixed=false),
+          m_flow_nominal=if system.use_eps_Re then system.m_flow_nominal else 1e2*m_flow_small,
           Res_turbulent_internal = Re_turbulent*ones(n-1));
 
           initial equation
@@ -1509,27 +1509,27 @@ b has the same sign of the change of density.</p>
      alt=\"PipeFrictionStaticHead_case-b.png\">
 </div>
 </html>"), Diagram(coordinateSystem(
-                  preserveAspectRatio=false, 
+                  preserveAspectRatio=false,
                   extent={{-100,-100},{100,100}}), graphics={
               Rectangle(
-                extent={{-100,64},{100,-64}}, 
-                fillColor={255,255,255}, 
-                fillPattern=FillPattern.Backward), 
+                extent={{-100,64},{100,-64}},
+                fillColor={255,255,255},
+                fillPattern=FillPattern.Backward),
               Rectangle(
-                extent={{-100,50},{100,-49}}, 
-                fillColor={255,255,255}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-100,50},{100,-49}},
+                fillColor={255,255,255},
+                fillPattern=FillPattern.Solid),
               Line(
-                points={{-60,-49},{-60,50}}, 
-                color={0,0,255}, 
-                arrow={Arrow.Filled,Arrow.Filled}), 
+                points={{-60,-49},{-60,50}},
+                color={0,0,255},
+                arrow={Arrow.Filled,Arrow.Filled}),
               Text(
-                extent={{-50,16},{6,-10}}, 
-                textColor={0,0,255}, 
-                textString="diameters"), 
+                extent={{-50,16},{6,-10}},
+                textColor={0,0,255},
+                textString="diameters"),
               Line(
-                points={{-100,74},{100,74}}, 
-                color={0,0,255}, 
+                points={{-100,74},{100,74}},
+                color={0,0,255},
                 arrow={Arrow.Filled,Arrow.Filled})}));
           end DetailedPipeFlow;
 
@@ -1537,7 +1537,7 @@ b has the same sign of the change of density.</p>
 
   package HeatTransfer "Heat transfer for flow models"
     extends Modelica.Icons.Package;
-    partial model PartialFlowHeatTransfer 
+    partial model PartialFlowHeatTransfer
         "Base class for any pipe heat transfer correlation"
       extends Modelica.Fluid.Interfaces.PartialHeatTransfer;
 
@@ -1548,7 +1548,7 @@ b has the same sign of the change of density.</p>
       parameter Real nParallel "Number of identical parallel flow devices" 
          annotation(Dialog(tab="Internal interface",enable=false,group="Geometry"));
       input SI.Length[n] lengths "Lengths along flow path";
-      input SI.Length[n] dimensions 
+      input SI.Length[n] dimensions
           "Characteristic dimensions for fluid flow (diameter for pipe flow)";
       input Modelica.Fluid.Types.Roughness[n] roughnesses "Average heights of surface asperities";
 
@@ -1562,17 +1562,17 @@ and the average velocities <code>vs[n+1]</code> of fluid flow.
 See <a href=\"modelica://Modelica.Fluid.Pipes.BaseClasses.CharacteristicNumbers.ReynoldsNumber\">Pipes.BaseClasses.CharacteristicNumbers.ReynoldsNumber</a>
 for example definitions.
 </p>
-</html>"),Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100}, 
+</html>"),Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},
                   {100,100}}), graphics={Rectangle(
-                extent={{-80,60},{80,-60}}, 
-                pattern=LinePattern.None, 
-                fillColor={255,0,0}, 
+                extent={{-80,60},{80,-60}},
+                pattern=LinePattern.None,
+                fillColor={255,0,0},
                 fillPattern=FillPattern.HorizontalCylinder), Text(
-                extent={{-40,22},{38,-18}}, 
+                extent={{-40,22},{38,-18}},
                 textString="%name")}));
     end PartialFlowHeatTransfer;
 
-    model IdealFlowHeatTransfer 
+    model IdealFlowHeatTransfer
         "IdealHeatTransfer: Ideal heat transfer without thermal resistance"
       extends PartialFlowHeatTransfer;
     equation
@@ -1582,7 +1582,7 @@ Ideal heat transfer without thermal resistance.
 </html>"));
     end IdealFlowHeatTransfer;
 
-    model ConstantFlowHeatTransfer 
+    model ConstantFlowHeatTransfer
         "ConstantHeatTransfer: Constant heat transfer coefficient"
       extends PartialFlowHeatTransfer;
       parameter SI.CoefficientOfHeatTransfer alpha0 "Heat transfer coefficient";
@@ -1595,12 +1595,12 @@ Simple heat transfer correlation with constant heat transfer coefficient, used a
 </html>"));
     end ConstantFlowHeatTransfer;
 
-    partial model PartialPipeFlowHeatTransfer 
+    partial model PartialPipeFlowHeatTransfer
         "Base class for pipe heat transfer correlation in terms of Nusselt number heat transfer in a circular pipe for laminar and turbulent one-phase flow"
       extends PartialFlowHeatTransfer;
-      parameter SI.CoefficientOfHeatTransfer alpha0=100 
+      parameter SI.CoefficientOfHeatTransfer alpha0=100
           "Guess value for heat transfer coefficients";
-      SI.CoefficientOfHeatTransfer[n] alphas(each start=alpha0) 
+      SI.CoefficientOfHeatTransfer[n] alphas(each start=alpha0)
           "Heat transfer coefficient";
       Real[n] Res "Reynolds numbers";
       Real[n] Prs "Prandtl numbers";
@@ -1624,7 +1624,7 @@ Base class for heat transfer models that are expressed in terms of the Nusselt n
 </html>"));
     end PartialPipeFlowHeatTransfer;
 
-    model LocalPipeFlowHeatTransfer 
+    model LocalPipeFlowHeatTransfer
         "LocalPipeFlowHeatTransfer: Laminar and turbulent forced convection in pipes, local coefficients"
       extends PartialPipeFlowHeatTransfer;
       protected
@@ -1679,7 +1679,7 @@ Heat transfer correlations for pipe models
         input SI.Velocity v "Mean velocity of fluid flow";
         input SI.Density rho "Fluid density";
         input SI.DynamicViscosity mu "Dynamic (absolute) viscosity";
-        input SI.Length D 
+        input SI.Length D
           "Characteristic dimension (hydraulic diameter of pipes)";
         output SI.ReynoldsNumber Re "Reynolds number";
       algorithm
@@ -1713,15 +1713,15 @@ The following table gives examples for the characteristic dimension D and the ve
 </html>"));
       end ReynoldsNumber;
 
-      function ReynoldsNumber_m_flow 
+      function ReynoldsNumber_m_flow
         "Return Reynolds number from m_flow, mu, D, A"
         extends Modelica.Icons.Function;
 
         input SI.MassFlowRate m_flow "Mass flow rate";
         input SI.DynamicViscosity mu "Dynamic viscosity";
-        input SI.Length D 
+        input SI.Length D
           "Characteristic dimension (hydraulic diameter of pipes or orifices)";
-        input SI.Area A = Modelica.Constants.pi/4*D*D 
+        input SI.Area A = Modelica.Constants.pi/4*D*D
           "Cross sectional area of fluid flow";
         output SI.ReynoldsNumber Re "Reynolds number";
       algorithm
@@ -1751,48 +1751,48 @@ See also <a href=\"modelica://Modelica.Fluid.Pipes.BaseClasses.CharacteristicNum
       end NusseltNumber;
     end CharacteristicNumbers;
 
-    package WallFriction 
+    package WallFriction
       "Different variants for pressure drops due to pipe wall friction"
       extends Modelica.Icons.Package;
-      partial package PartialWallFriction 
+      partial package PartialWallFriction
         "Partial wall friction characteristic (base package of all wall friction characteristics)"
         extends Modelica.Icons.Package;
         import Modelica.Constants.pi;
 
       // Constants to be set in subpackages
-        constant Boolean use_mu = true 
+        constant Boolean use_mu = true
           "= true, if mu_a/mu_b are used in function, otherwise value is not used";
-        constant Boolean use_roughness = true 
+        constant Boolean use_roughness = true
           "= true, if roughness is used in function, otherwise value is not used";
-        constant Boolean use_dp_small = true 
+        constant Boolean use_dp_small = true
           "= true, if dp_small is used in function, otherwise value is not used";
-        constant Boolean use_m_flow_small = true 
+        constant Boolean use_m_flow_small = true
           "= true, if m_flow_small is used in function, otherwise value is not used";
-        constant Boolean dp_is_zero = false 
+        constant Boolean dp_is_zero = false
           "= true, if no wall friction is present, i.e., dp = 0 (function massFlowRate_dp() cannot be used)";
-        constant Boolean use_Re_turbulent = true 
+        constant Boolean use_Re_turbulent = true
           "= true, if Re_turbulent input is used in function, otherwise value is not used";
 
       // pressure loss characteristic functions
-        replaceable partial function massFlowRate_dp 
+        replaceable partial function massFlowRate_dp
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction"
           extends Modelica.Icons.Function;
 
           input SI.Pressure dp "Pressure loss (dp = port_a.p - port_b.p)";
           input SI.Density rho_a "Density at port_a";
           input SI.Density rho_b "Density at port_b";
-          input SI.DynamicViscosity mu_a 
+          input SI.DynamicViscosity mu_a
             "Dynamic viscosity at port_a (dummy if use_mu = false)";
-          input SI.DynamicViscosity mu_b 
+          input SI.DynamicViscosity mu_b
             "Dynamic viscosity at port_b (dummy if use_mu = false)";
           input SI.Length length "Length of pipe";
           input SI.Diameter diameter "Inner (hydraulic) diameter of pipe";
           input SI.Area crossArea = pi*diameter^2/4 "Inner cross section area";
-          input Modelica.Fluid.Types.Roughness roughness = 2.5e-5 
+          input Modelica.Fluid.Types.Roughness roughness = 2.5e-5
             "Absolute roughness of pipe, with a default for a smooth steel pipe (dummy if use_roughness = false)";
-          input SI.AbsolutePressure dp_small = 1 
+          input SI.AbsolutePressure dp_small = 1
             "Regularization of zero flow if |dp| < dp_small (dummy if use_dp_small = false)";
-          input SI.ReynoldsNumber Re_turbulent = 4000 
+          input SI.ReynoldsNumber Re_turbulent = 4000
             "Turbulent flow if Re >= Re_turbulent (dummy if use_Re_turbulent = false)";
 
           output SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
@@ -1801,27 +1801,27 @@ See also <a href=\"modelica://Modelica.Fluid.Pipes.BaseClasses.CharacteristicNum
 </html>"));
         end massFlowRate_dp;
 
-        replaceable partial function massFlowRate_dp_staticHead 
+        replaceable partial function massFlowRate_dp_staticHead
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction and static head"
           extends Modelica.Icons.Function;
 
           input SI.Pressure dp "Pressure loss (dp = port_a.p - port_b.p)";
           input SI.Density rho_a "Density at port_a";
           input SI.Density rho_b "Density at port_b";
-          input SI.DynamicViscosity mu_a 
+          input SI.DynamicViscosity mu_a
             "Dynamic viscosity at port_a (dummy if use_mu = false)";
-          input SI.DynamicViscosity mu_b 
+          input SI.DynamicViscosity mu_b
             "Dynamic viscosity at port_b (dummy if use_mu = false)";
           input SI.Length length "Length of pipe";
           input SI.Diameter diameter "Inner (hydraulic) diameter of pipe";
-          input Real g_times_height_ab(unit="m2/s2") 
+          input Real g_times_height_ab(unit="m2/s2")
             "Gravity times (Height(port_b) - Height(port_a))";
           input SI.Area crossArea = pi*diameter^2/4 "Inner cross section area";
-          input Modelica.Fluid.Types.Roughness roughness = 2.5e-5 
+          input Modelica.Fluid.Types.Roughness roughness = 2.5e-5
             "Absolute roughness of pipe, with a default for a smooth steel pipe (dummy if use_roughness = false)";
-          input SI.AbsolutePressure dp_small=1 
+          input SI.AbsolutePressure dp_small=1
             "Regularization of zero flow if |dp| < dp_small (dummy if use_dp_small = false)";
-          input SI.ReynoldsNumber Re_turbulent = 4000 
+          input SI.ReynoldsNumber Re_turbulent = 4000
             "Turbulent flow if Re >= Re_turbulent (dummy if use_Re_turbulent = false)";
 
           output SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
@@ -1830,25 +1830,25 @@ See also <a href=\"modelica://Modelica.Fluid.Pipes.BaseClasses.CharacteristicNum
 </html>"));
         end massFlowRate_dp_staticHead;
 
-        replaceable partial function pressureLoss_m_flow 
+        replaceable partial function pressureLoss_m_flow
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction"
           extends Modelica.Icons.Function;
 
           input SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
           input SI.Density rho_a "Density at port_a";
           input SI.Density rho_b "Density at port_b";
-          input SI.DynamicViscosity mu_a 
+          input SI.DynamicViscosity mu_a
             "Dynamic viscosity at port_a (dummy if use_mu = false)";
-          input SI.DynamicViscosity mu_b 
+          input SI.DynamicViscosity mu_b
             "Dynamic viscosity at port_b (dummy if use_mu = false)";
           input SI.Length length "Length of pipe";
           input SI.Diameter diameter "Inner (hydraulic) diameter of pipe";
           input SI.Area crossArea = pi*diameter^2/4 "Inner cross section area";
-          input Modelica.Fluid.Types.Roughness roughness = 2.5e-5 
+          input Modelica.Fluid.Types.Roughness roughness = 2.5e-5
             "Absolute roughness of pipe, with a default for a smooth steel pipe (dummy if use_roughness = false)";
-          input SI.MassFlowRate m_flow_small = 0.01 
+          input SI.MassFlowRate m_flow_small = 0.01
             "Regularization of zero flow if |m_flow| < m_flow_small (dummy if use_m_flow_small = false)";
-          input SI.ReynoldsNumber Re_turbulent = 4000 
+          input SI.ReynoldsNumber Re_turbulent = 4000
             "Turbulent flow if Re >= Re_turbulent (dummy if use_Re_turbulent = false)";
 
           output SI.Pressure dp "Pressure loss (dp = port_a.p - port_b.p)";
@@ -1858,27 +1858,27 @@ See also <a href=\"modelica://Modelica.Fluid.Pipes.BaseClasses.CharacteristicNum
 </html>"));
         end pressureLoss_m_flow;
 
-        replaceable partial function pressureLoss_m_flow_staticHead 
+        replaceable partial function pressureLoss_m_flow_staticHead
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction and static head"
                   extends Modelica.Icons.Function;
 
           input SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
           input SI.Density rho_a "Density at port_a";
           input SI.Density rho_b "Density at port_b";
-          input SI.DynamicViscosity mu_a 
+          input SI.DynamicViscosity mu_a
             "Dynamic viscosity at port_a (dummy if use_mu = false)";
-          input SI.DynamicViscosity mu_b 
+          input SI.DynamicViscosity mu_b
             "Dynamic viscosity at port_b (dummy if use_mu = false)";
           input SI.Length length "Length of pipe";
           input SI.Diameter diameter "Inner (hydraulic) diameter of pipe";
-          input Real g_times_height_ab(unit="m2/s2") 
+          input Real g_times_height_ab(unit="m2/s2")
             "Gravity times (Height(port_b) - Height(port_a))";
           input SI.Area crossArea = pi*diameter^2/4 "Inner cross section area";
-          input Modelica.Fluid.Types.Roughness roughness = 2.5e-5 
+          input Modelica.Fluid.Types.Roughness roughness = 2.5e-5
             "Absolute roughness of pipe, with a default for a smooth steel pipe (dummy if use_roughness = false)";
-          input SI.MassFlowRate m_flow_small = 0.01 
+          input SI.MassFlowRate m_flow_small = 0.01
             "Regularization of zero flow if |m_flow| < m_flow_small (dummy if use_m_flow_small = false)";
-          input SI.ReynoldsNumber Re_turbulent = 4000 
+          input SI.ReynoldsNumber Re_turbulent = 4000
             "Turbulent flow if Re >= Re_turbulent (dummy if use_Re_turbulent = false)";
 
           output SI.Pressure dp "Pressure loss (dp = port_a.p - port_b.p)";
@@ -1896,14 +1896,14 @@ See also <a href=\"modelica://Modelica.Fluid.Pipes.BaseClasses.CharacteristicNum
         extends Modelica.Icons.Package;
 
         extends PartialWallFriction(
-                  final use_mu = false, 
-                  final use_roughness = false, 
-                  final use_dp_small = false, 
-                  final use_m_flow_small = false, 
-                  final dp_is_zero = true, 
+                  final use_mu = false,
+                  final use_roughness = false,
+                  final use_dp_small = false,
+                  final use_m_flow_small = false,
+                  final dp_is_zero = true,
                   final use_Re_turbulent = false);
 
-        redeclare function extends massFlowRate_dp 
+        redeclare function extends massFlowRate_dp
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction"
 
         algorithm
@@ -1915,7 +1915,7 @@ function pressureLoss_m_flow (option: from_dp=false)");
 </html>"));
         end massFlowRate_dp;
 
-        redeclare function extends pressureLoss_m_flow 
+        redeclare function extends pressureLoss_m_flow
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction"
 
         algorithm
@@ -1925,7 +1925,7 @@ function pressureLoss_m_flow (option: from_dp=false)");
 </html>"));
         end pressureLoss_m_flow;
 
-        redeclare function extends massFlowRate_dp_staticHead 
+        redeclare function extends massFlowRate_dp_staticHead
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction and static head"
 
         algorithm
@@ -1937,7 +1937,7 @@ function pressureLoss_m_flow (option: from_dp=false)");
 </html>"));
         end massFlowRate_dp_staticHead;
 
-        redeclare function extends pressureLoss_m_flow_staticHead 
+        redeclare function extends pressureLoss_m_flow_staticHead
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction and static head"
 
         /* To include only static head:
@@ -1950,7 +1950,7 @@ protected
         algorithm
         //  dp := Utilities.regStep(m_flow, dp_grav_a, dp_grav_a, m_flow_small);
           dp := 0;
-          assert(abs(g_times_height_ab) < Modelica.Constants.small, 
+          assert(abs(g_times_height_ab) < Modelica.Constants.small,
            "WallFriction.NoFriction does not consider static head and cannot be used with height_ab<>0!");
           annotation (Documentation(info="<html>
 
@@ -1964,17 +1964,17 @@ to zero, i.e., it allows to switch off pipe wall friction.
 </html>"));
       end NoFriction;
 
-      package Laminar 
+      package Laminar
         "Pipe wall friction for laminar flow in circular tubes (linear correlation)"
 
         extends PartialWallFriction(
-                  final use_mu = true, 
-                  final use_roughness = false, 
-                  final use_dp_small = false, 
-                  final use_m_flow_small = false, 
+                  final use_mu = true,
+                  final use_roughness = false,
+                  final use_dp_small = false,
+                  final use_m_flow_small = false,
                   final use_Re_turbulent = false);
 
-        redeclare function extends massFlowRate_dp 
+        redeclare function extends massFlowRate_dp
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction"
 
         algorithm
@@ -1985,7 +1985,7 @@ to zero, i.e., it allows to switch off pipe wall friction.
 </html>"));
         end massFlowRate_dp;
 
-        redeclare function extends pressureLoss_m_flow 
+        redeclare function extends pressureLoss_m_flow
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction"
 
         algorithm
@@ -1996,32 +1996,32 @@ to zero, i.e., it allows to switch off pipe wall friction.
 </html>"));
         end pressureLoss_m_flow;
 
-        redeclare function extends massFlowRate_dp_staticHead 
+        redeclare function extends massFlowRate_dp_staticHead
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction and static head"
 
           // WARNING: The following equation is only correct for circular tubes!
         protected
-          Real k0inv = Modelica.Constants.pi*diameter^4/(128*length) 
+          Real k0inv = Modelica.Constants.pi*diameter^4/(128*length)
             "Constant factor";
 
-          SI.Pressure dp_grav_a = g_times_height_ab*rho_a 
+          SI.Pressure dp_grav_a = g_times_height_ab*rho_a
             "Static head if mass flows in design direction (a to b)";
-          SI.Pressure dp_grav_b = g_times_height_ab*rho_b 
+          SI.Pressure dp_grav_b = g_times_height_ab*rho_b
             "Static head if mass flows against design direction (b to a)";
 
-          Real dm_flow_ddp_fric_a = k0inv*rho_a/mu_a 
+          Real dm_flow_ddp_fric_a = k0inv*rho_a/mu_a
             "Slope of mass flow rate over dp if flow in design direction (a to b)";
-          Real dm_flow_ddp_fric_b = k0inv*rho_b/mu_b 
+          Real dm_flow_ddp_fric_b = k0inv*rho_b/mu_b
             "Slope of mass flow rate over dp if flow against design direction (b to a)";
 
-          Real dp_a=max(dp_grav_a,dp_grav_b)+dp_small 
+          Real dp_a=max(dp_grav_a,dp_grav_b)+dp_small
             "Upper end of regularization domain of the m_flow(dp) relation";
-          Real dp_b=min(dp_grav_a,dp_grav_b)-dp_small 
+          Real dp_b=min(dp_grav_a,dp_grav_b)-dp_small
             "Lower end of regularization domain of the m_flow(dp) relation";
 
-          SI.MassFlowRate m_flow_a 
+          SI.MassFlowRate m_flow_a
             "Value at upper end of regularization domain";
-          SI.MassFlowRate m_flow_b 
+          SI.MassFlowRate m_flow_b
             "Value at lower end of regularization domain";
 
           // Properly define zero mass flow conditions
@@ -2068,27 +2068,27 @@ to zero, i.e., it allows to switch off pipe wall friction.
 </html>"));
         end massFlowRate_dp_staticHead;
 
-        redeclare function extends pressureLoss_m_flow_staticHead 
+        redeclare function extends pressureLoss_m_flow_staticHead
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction and static head"
 
           // WARNING: The following equation is only correct for circular tubes!
         protected
-          Real k0 = 128*length/(Modelica.Constants.pi*diameter^4) 
+          Real k0 = 128*length/(Modelica.Constants.pi*diameter^4)
             "Constant factor";
 
-          SI.Pressure dp_grav_a = g_times_height_ab*rho_a 
+          SI.Pressure dp_grav_a = g_times_height_ab*rho_a
             "Static head if mass flows in design direction (a to b)";
-          SI.Pressure dp_grav_b = g_times_height_ab*rho_b 
+          SI.Pressure dp_grav_b = g_times_height_ab*rho_b
             "Static head if mass flows against design direction (b to a)";
 
-          Real ddp_dm_flow_a = k0*mu_a/rho_a 
+          Real ddp_dm_flow_a = k0*mu_a/rho_a
             "Slope of dp over mass flow rate if flow in design direction (a to b)";
-          Real ddp_dm_flow_b = k0*mu_b/rho_b 
+          Real ddp_dm_flow_b = k0*mu_b/rho_b
             "Slope of dp over mass flow rate if flow against design direction (b to a)";
 
-          SI.MassFlowRate m_flow_a=if dp_grav_a >= dp_grav_b then m_flow_small else m_flow_small + (dp_grav_b-dp_grav_a)/ddp_dm_flow_a 
+          SI.MassFlowRate m_flow_a=if dp_grav_a >= dp_grav_b then m_flow_small else m_flow_small + (dp_grav_b-dp_grav_a)/ddp_dm_flow_a
             "Upper end of regularization domain of the dp(m_flow) relation";
-          SI.MassFlowRate m_flow_b=if dp_grav_a >= dp_grav_b then -m_flow_small else -m_flow_small - (dp_grav_b - dp_grav_a)/ddp_dm_flow_b 
+          SI.MassFlowRate m_flow_b=if dp_grav_a >= dp_grav_b then -m_flow_small else -m_flow_small - (dp_grav_b - dp_grav_a)/ddp_dm_flow_b
             "Lower end of regularization domain of the dp(m_flow) relation";
 
           SI.Pressure dp_a "Value at upper end of regularization domain";
@@ -2153,18 +2153,18 @@ This component describes only the <strong>Hagen-Poiseuille</strong> equation.
 </html>"));
       end Laminar;
 
-      package QuadraticTurbulent 
+      package QuadraticTurbulent
         "Pipe wall friction for turbulent flow in circular tubes (simple characteristic, mu not used)"
         import Modelica.Constants.pi;
 
         extends PartialWallFriction(
-                  final use_mu = false, 
-                  final use_roughness = true, 
-                  final use_dp_small = true, 
-                  final use_m_flow_small = true, 
+                  final use_mu = false,
+                  final use_roughness = true,
+                  final use_dp_small = true,
+                  final use_m_flow_small = true,
                   final use_Re_turbulent = false);
 
-        redeclare function extends massFlowRate_dp 
+        redeclare function extends massFlowRate_dp
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction"
           import Modelica.Math;
         protected
@@ -2180,7 +2180,7 @@ This component describes only the <strong>Hagen-Poiseuille</strong> equation.
       = 0.5*zeta/(pi*(D/2)^2)^2
       = 8*zeta/(pi*D^2)^2
   */
-          assert(roughness > 1e-10, 
+          assert(roughness > 1e-10,
                  "roughness > 0 required for quadratic turbulent wall friction characteristic");
           zeta  := (length/diameter)/(2*Math.log10(3.7 /(roughness/diameter)))^2;
           // WARNING: The following equation is only correct for circular tubes!
@@ -2191,7 +2191,7 @@ This component describes only the <strong>Hagen-Poiseuille</strong> equation.
 </html>"));
         end massFlowRate_dp;
 
-        redeclare function extends pressureLoss_m_flow 
+        redeclare function extends pressureLoss_m_flow
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction"
           import Modelica.Constants.pi;
           import Modelica.Math;
@@ -2209,7 +2209,7 @@ This component describes only the <strong>Hagen-Poiseuille</strong> equation.
       = 0.5*zeta/(pi*(D/2)^2)^2
       = 8*zeta/(pi*D^2)^2
   */
-          assert(roughness > 1e-10, 
+          assert(roughness > 1e-10,
                  "roughness > 0 required for quadratic turbulent wall friction characteristic");
           zeta := (length/diameter)/(2*Math.log10(3.7 /(roughness/diameter)))^2;
           // WARNING: The following equation is only correct for circular tubes!
@@ -2220,7 +2220,7 @@ This component describes only the <strong>Hagen-Poiseuille</strong> equation.
 </html>"));
         end pressureLoss_m_flow;
 
-        redeclare function extends massFlowRate_dp_staticHead 
+        redeclare function extends massFlowRate_dp_staticHead
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction and static head"
           import Modelica.Math;
           import Modelica.Constants.pi;
@@ -2229,27 +2229,27 @@ This component describes only the <strong>Hagen-Poiseuille</strong> equation.
           // WARNING: The following equation is only correct for circular tubes!
           Real k_inv = (pi*diameter*diameter)^2/(8*zeta);
 
-          SI.Pressure dp_grav_a = g_times_height_ab*rho_a 
+          SI.Pressure dp_grav_a = g_times_height_ab*rho_a
             "Static head if mass flows in design direction (a to b)";
-          SI.Pressure dp_grav_b = g_times_height_ab*rho_b 
+          SI.Pressure dp_grav_b = g_times_height_ab*rho_b
             "Static head if mass flows against design direction (b to a)";
 
           Real k1 = rho_a*k_inv "Factor in m_flow =  sqrt(k1*(dp-dp_grav_a))";
           Real k2 = rho_b*k_inv "Factor in m_flow = -sqrt(k2*|dp-dp_grav_b|)";
 
-          Real dp_a=max(dp_grav_a,dp_grav_b)+dp_small 
+          Real dp_a=max(dp_grav_a,dp_grav_b)+dp_small
             "Upper end of regularization domain of the m_flow(dp) relation";
-          Real dp_b=min(dp_grav_a,dp_grav_b)-dp_small 
+          Real dp_b=min(dp_grav_a,dp_grav_b)-dp_small
             "Lower end of regularization domain of the m_flow(dp) relation";
 
-          SI.MassFlowRate m_flow_a 
+          SI.MassFlowRate m_flow_a
             "Value at upper end of regularization domain";
-          SI.MassFlowRate m_flow_b 
+          SI.MassFlowRate m_flow_b
             "Value at lower end of regularization domain";
 
-          SI.MassFlowRate dm_flow_ddp_fric_a 
+          SI.MassFlowRate dm_flow_ddp_fric_a
             "Derivative at upper end of regularization domain";
-          SI.MassFlowRate dm_flow_ddp_fric_b 
+          SI.MassFlowRate dm_flow_ddp_fric_b
             "Derivative at lower end of regularization domain";
 
           // Properly define zero mass flow conditions
@@ -2266,7 +2266,7 @@ This component describes only the <strong>Hagen-Poiseuille</strong> equation.
       = 0.5*zeta/(pi*(D/2)^2)^2
       = 8*zeta/(pi*D^2)^2
   */
-          assert(roughness > 1e-10, 
+          assert(roughness > 1e-10,
                  "roughness > 0 required for quadratic turbulent wall friction characteristic");
 
           if dp>=dp_a then
@@ -2299,7 +2299,7 @@ This component describes only the <strong>Hagen-Poiseuille</strong> equation.
 </html>"));
         end massFlowRate_dp_staticHead;
 
-        redeclare function extends pressureLoss_m_flow_staticHead 
+        redeclare function extends pressureLoss_m_flow_staticHead
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction and static head"
           import Modelica.Math;
           import Modelica.Constants.pi;
@@ -2308,25 +2308,25 @@ This component describes only the <strong>Hagen-Poiseuille</strong> equation.
           // WARNING: The following equation is only correct for circular tubes!
           Real k = 8*zeta/(pi*diameter*diameter)^2;
 
-          SI.Pressure dp_grav_a = g_times_height_ab*rho_a 
+          SI.Pressure dp_grav_a = g_times_height_ab*rho_a
             "Static head if mass flows in design direction (a to b)";
-          SI.Pressure dp_grav_b = g_times_height_ab*rho_b 
+          SI.Pressure dp_grav_b = g_times_height_ab*rho_b
             "Static head if mass flows against design direction (b to a)";
 
           Real k1 = k/rho_a "If m_flow >= 0 then dp = k1*m_flow^2 + dp_grav_a";
           Real k2 = k/rho_b "If m_flow < 0 then dp = -k2*m_flow^2 + dp_grav_b";
 
-          SI.MassFlowRate m_flow_a=if dp_grav_a >= dp_grav_b then m_flow_small else m_flow_small + sqrt((dp_grav_b - dp_grav_a)/k1) 
+          SI.MassFlowRate m_flow_a=if dp_grav_a >= dp_grav_b then m_flow_small else m_flow_small + sqrt((dp_grav_b - dp_grav_a)/k1)
             "Upper end of regularization domain of the dp(m_flow) relation";
-          SI.MassFlowRate m_flow_b=if dp_grav_a >= dp_grav_b then -m_flow_small else -m_flow_small - sqrt((dp_grav_b - dp_grav_a)/k2) 
+          SI.MassFlowRate m_flow_b=if dp_grav_a >= dp_grav_b then -m_flow_small else -m_flow_small - sqrt((dp_grav_b - dp_grav_a)/k2)
             "Lower end of regularization domain of the dp(m_flow) relation";
 
           SI.Pressure dp_a "Value at upper end of regularization domain";
           SI.Pressure dp_b "Value at lower end of regularization domain";
 
-          Real ddp_dm_flow_a 
+          Real ddp_dm_flow_a
             "Derivative of pressure drop with mass flow rate at m_flow_a";
-          Real ddp_dm_flow_b 
+          Real ddp_dm_flow_b
             "Derivative of pressure drop with mass flow rate at m_flow_b";
 
           // Properly define zero mass flow conditions
@@ -2344,7 +2344,7 @@ This component describes only the <strong>Hagen-Poiseuille</strong> equation.
       = 0.5*zeta/(pi*(D/2)^2)^2
       = 8*zeta/(pi*D^2)^2
   */
-          assert(roughness > 1e-10, 
+          assert(roughness > 1e-10,
                  "roughness > 0 required for quadratic turbulent wall friction characteristic");
 
           if m_flow>=m_flow_a then
@@ -2393,14 +2393,14 @@ Reynolds numbers, i.e., the values at the right ordinate where
 </html>"));
       end QuadraticTurbulent;
 
-      package LaminarAndQuadraticTurbulent 
+      package LaminarAndQuadraticTurbulent
         "Pipe wall friction for laminar and turbulent flow in circular tubes (simple characteristic)"
 
         extends PartialWallFriction(
-                  final use_mu = true, 
-                  final use_roughness = true, 
-                  final use_dp_small = true, 
-                  final use_m_flow_small = true, 
+                  final use_mu = true,
+                  final use_roughness = true,
+                  final use_dp_small = true,
+                  final use_m_flow_small = true,
                   final use_Re_turbulent = true);
 
         import ln = Modelica.Math.log "Logarithm, base e";
@@ -2408,7 +2408,7 @@ Reynolds numbers, i.e., the values at the right ordinate where
         import Modelica.Math.exp "Exponential function";
         import Modelica.Constants.pi;
 
-        redeclare function extends massFlowRate_dp 
+        redeclare function extends massFlowRate_dp
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction"
           import Modelica.Math;
         protected
@@ -2453,7 +2453,7 @@ Laminar region:
    (because dummy values) and therefore the division is only performed
    if zetaLaminarKnown = true.
 */
-          assert(roughness > 1e-10, 
+          assert(roughness > 1e-10,
                  "roughness > 0 required for quadratic turbulent wall friction characteristic");
           // WARNING: The following equations are only correct for circular tubes!
           zeta   := (length/diameter)/(2*Math.log10(3.7 /(roughness/diameter)))^2;
@@ -2461,14 +2461,14 @@ Laminar region:
           k_inv  := (pi*diameter*diameter)^2/(8*zeta);
           yd0    := (rho_a + rho_b)/(k0*(mu_a + mu_b));
           dp_turbulent := max(((mu_a + mu_b)*diameter*pi/8)^2*Re_turbulent^2/(k_inv*(rho_a+rho_b)/2), dp_small);
-          m_flow := Modelica.Fluid.Utilities.regRoot2(dp, dp_turbulent, rho_a*k_inv, rho_b*k_inv, 
+          m_flow := Modelica.Fluid.Utilities.regRoot2(dp, dp_turbulent, rho_a*k_inv, rho_b*k_inv,
                                                       use_yd0=true, yd0=yd0);
           annotation (smoothOrder=1, Documentation(info="<html>
 
 </html>"));
         end massFlowRate_dp;
 
-        redeclare function extends pressureLoss_m_flow 
+        redeclare function extends pressureLoss_m_flow
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction"
           import Modelica.Math;
           import Modelica.Constants.pi;
@@ -2478,7 +2478,7 @@ Laminar region:
           Real k0;
           Real k;
           Real yd0 "Derivative of dp = f(m_flow) at zero";
-          SI.MassFlowRate m_flow_turbulent 
+          SI.MassFlowRate m_flow_turbulent
             "The turbulent region is: |m_flow| >= m_flow_turbulent";
 
         algorithm
@@ -2512,7 +2512,7 @@ Laminar region:
    at m_flow=0, the mean values of mu and d are used in the
    laminar region: mu/rho = (mu_a + mu_b)/(rho_a + rho_b)
 */
-          assert(roughness > 1e-10, 
+          assert(roughness > 1e-10,
                  "roughness > 0 required for quadratic turbulent wall friction characteristic");
           // WARNING: The following equations are only correct for circular tubes!
           zeta := (length/diameter)/(2*Math.log10(3.7 /(roughness/diameter)))^2;
@@ -2520,42 +2520,42 @@ Laminar region:
           k    := 8*zeta/(pi*diameter*diameter)^2;
           yd0  := k0*(mu_a + mu_b)/(rho_a + rho_b);
           m_flow_turbulent := max((pi/8)*diameter*(mu_a + mu_b)*Re_turbulent, m_flow_small);
-          dp :=Modelica.Fluid.Utilities.regSquare2(m_flow, m_flow_turbulent, k/rho_a, k/rho_b, 
+          dp :=Modelica.Fluid.Utilities.regSquare2(m_flow, m_flow_turbulent, k/rho_a, k/rho_b,
                                                    use_yd0=true, yd0=yd0);
           annotation (smoothOrder=1, Documentation(info="<html>
 
 </html>"));
         end pressureLoss_m_flow;
 
-        redeclare function extends massFlowRate_dp_staticHead 
+        redeclare function extends massFlowRate_dp_staticHead
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction and static head"
           import Modelica.Math;
 
         protected
           Real Delta(min=0) = roughness/diameter "Relative roughness";
-          SI.ReynoldsNumber Re1 = min(745*exp(if Delta <= 0.0065 then 1 else 0.0065/Delta), Re_turbulent) 
+          SI.ReynoldsNumber Re1 = min(745*exp(if Delta <= 0.0065 then 1 else 0.0065/Delta), Re_turbulent)
             "Boundary between laminar regime and transition";
-          SI.ReynoldsNumber Re2 = Re_turbulent 
+          SI.ReynoldsNumber Re2 = Re_turbulent
             "Boundary between transition and turbulent regime";
 
-          SI.Pressure dp_a 
+          SI.Pressure dp_a
             "Upper end of regularization domain of the m_flow(dp) relation";
-          SI.Pressure dp_b 
+          SI.Pressure dp_b
             "Lower end of regularization domain of the m_flow(dp) relation";
 
-          SI.MassFlowRate m_flow_a 
+          SI.MassFlowRate m_flow_a
             "Value at upper end of regularization domain";
-          SI.MassFlowRate m_flow_b 
+          SI.MassFlowRate m_flow_b
             "Value at lower end of regularization domain";
 
-          SI.MassFlowRate dm_flow_ddp_fric_a 
+          SI.MassFlowRate dm_flow_ddp_fric_a
             "Derivative at upper end of regularization domain";
-          SI.MassFlowRate dm_flow_ddp_fric_b 
+          SI.MassFlowRate dm_flow_ddp_fric_b
             "Derivative at lower end of regularization domain";
 
-          SI.Pressure dp_grav_a = g_times_height_ab*rho_a 
+          SI.Pressure dp_grav_a = g_times_height_ab*rho_a
             "Static head if mass flows in design direction (a to b)";
-          SI.Pressure dp_grav_b = g_times_height_ab*rho_b 
+          SI.Pressure dp_grav_b = g_times_height_ab*rho_b
             "Static head if mass flows against design direction (b to a)";
 
           // Properly define zero mass flow conditions
@@ -2563,7 +2563,7 @@ Laminar region:
           SI.Pressure dp_zero = (dp_grav_a + dp_grav_b)/2;
           Real dm_flow_ddp_fric_zero;
         algorithm
-          assert(roughness > 1e-10, 
+          assert(roughness > 1e-10,
             "roughness > 0 required for quadratic turbulent wall friction characteristic");
 
           dp_a := max(dp_grav_a, dp_grav_b)+dp_small;
@@ -2594,33 +2594,33 @@ Laminar region:
 </html>"));
         end massFlowRate_dp_staticHead;
 
-        redeclare function extends pressureLoss_m_flow_staticHead 
+        redeclare function extends pressureLoss_m_flow_staticHead
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction and static head"
           import Modelica.Math;
 
         protected
           Real Delta(min=0) = roughness/diameter "Relative roughness";
-          SI.ReynoldsNumber Re1 = min(745*exp(if Delta <= 0.0065 then 1 else 0.0065/Delta), Re_turbulent) 
+          SI.ReynoldsNumber Re1 = min(745*exp(if Delta <= 0.0065 then 1 else 0.0065/Delta), Re_turbulent)
             "Boundary between laminar regime and transition";
-          SI.ReynoldsNumber Re2 = Re_turbulent 
+          SI.ReynoldsNumber Re2 = Re_turbulent
             "Boundary between transition and turbulent regime";
 
-          SI.MassFlowRate m_flow_a 
+          SI.MassFlowRate m_flow_a
             "Upper end of regularization domain of the dp(m_flow) relation";
-          SI.MassFlowRate m_flow_b 
+          SI.MassFlowRate m_flow_b
             "Lower end of regularization domain of the dp(m_flow) relation";
 
           SI.Pressure dp_a "Value at upper end of regularization domain";
           SI.Pressure dp_b "Value at lower end of regularization domain";
 
-          SI.Pressure dp_grav_a = g_times_height_ab*rho_a 
+          SI.Pressure dp_grav_a = g_times_height_ab*rho_a
             "Static head if mass flows in design direction (a to b)";
-          SI.Pressure dp_grav_b = g_times_height_ab*rho_b 
+          SI.Pressure dp_grav_b = g_times_height_ab*rho_b
             "Static head if mass flows against design direction (b to a)";
 
-          Real ddp_dm_flow_a 
+          Real ddp_dm_flow_a
             "Derivative of pressure drop with mass flow rate at m_flow_a";
-          Real ddp_dm_flow_b 
+          Real ddp_dm_flow_b
             "Derivative of pressure drop with mass flow rate at m_flow_b";
 
           // Properly define zero mass flow conditions
@@ -2629,7 +2629,7 @@ Laminar region:
           Real ddp_dm_flow_zero;
 
         algorithm
-          assert(roughness > 1e-10, 
+          assert(roughness > 1e-10,
             "roughness > 0 required for quadratic turbulent wall friction characteristic");
 
           m_flow_a := if dp_grav_a<dp_grav_b then 
@@ -2666,32 +2666,32 @@ Laminar region:
 </html>"));
         end pressureLoss_m_flow_staticHead;
 
-        package Internal 
+        package Internal
           "Functions to calculate mass flow rate from friction pressure drop and vice versa"
           extends Modelica.Icons.InternalPackage;
-          function m_flow_of_dp_fric 
+          function m_flow_of_dp_fric
             "Calculate mass flow rate as function of pressure drop due to friction"
             extends Modelica.Icons.Function;
 
-            input SI.Pressure dp_fric 
+            input SI.Pressure dp_fric
               "Pressure loss due to friction (dp = port_a.p - port_b.p)";
             input SI.Density rho_a "Density at port_a";
             input SI.Density rho_b "Density at port_b";
-            input SI.DynamicViscosity mu_a 
+            input SI.DynamicViscosity mu_a
               "Dynamic viscosity at port_a (dummy if use_mu = false)";
-            input SI.DynamicViscosity mu_b 
+            input SI.DynamicViscosity mu_b
               "Dynamic viscosity at port_b (dummy if use_mu = false)";
             input SI.Length length "Length of pipe";
             input SI.Diameter diameter "Inner (hydraulic) diameter of pipe";
             input SI.Area crossArea "Inner cross section area";
-            input SI.ReynoldsNumber Re1 
+            input SI.ReynoldsNumber Re1
               "Boundary between laminar regime and transition";
-            input SI.ReynoldsNumber Re2 
+            input SI.ReynoldsNumber Re2
               "Boundary between transition and turbulent regime";
             input Real Delta(min=0) "Relative roughness";
-            output SI.MassFlowRate m_flow 
+            output SI.MassFlowRate m_flow
               "Mass flow rate from port_a to port_b";
-            output Real dm_flow_ddp_fric 
+            output Real dm_flow_ddp_fric
               "Derivative of mass flow rate with dp_fric";
           protected
             SI.DynamicViscosity mu "Upstream viscosity";
@@ -2700,11 +2700,11 @@ Laminar region:
             Real zeta;
             Real k0;
             Real k_inv;
-            Real dm_flow_ddp_laminar 
+            Real dm_flow_ddp_laminar
               "Derivative of m_flow=m_flow(dp) in laminar regime";
-            SI.AbsolutePressure dp_fric_turbulent 
+            SI.AbsolutePressure dp_fric_turbulent
               "The turbulent region is: |dp_fric| >= dp_fric_turbulent, simple quadratic correlation";
-            SI.AbsolutePressure dp_fric_laminar 
+            SI.AbsolutePressure dp_fric_laminar
               "The laminar region is: |dp_fric| <= dp_fric_laminar";
           algorithm
           /*
@@ -2755,35 +2755,35 @@ Laminar region:
             else
               // Preliminary testing seems to indicate that the log-log transform is not required here
               (m_flow,dm_flow_ddp_fric) := Utilities.cubicHermite_withDerivative(
-                dp_fric, dp_fric_laminar, dp_fric_turbulent, dm_flow_ddp_laminar*dp_fric_laminar, 
-                sign(dp_fric_turbulent)*sqrt(rho*k_inv*abs(dp_fric_turbulent)), dm_flow_ddp_laminar, 
+                dp_fric, dp_fric_laminar, dp_fric_turbulent, dm_flow_ddp_laminar*dp_fric_laminar,
+                sign(dp_fric_turbulent)*sqrt(rho*k_inv*abs(dp_fric_turbulent)), dm_flow_ddp_laminar,
                 if abs(dp_fric_turbulent)>0 then 0.5*rho*k_inv*(rho*k_inv*abs(dp_fric_turbulent))^(-0.5) else Modelica.Constants.inf);
             end if;
             annotation (smoothOrder=1);
           end m_flow_of_dp_fric;
 
-          function dp_fric_of_m_flow 
+          function dp_fric_of_m_flow
             "Calculate pressure drop due to friction as function of mass flow rate"
             extends Modelica.Icons.Function;
 
             input SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
             input SI.Density rho_a "Density at port_a";
             input SI.Density rho_b "Density at port_b";
-            input SI.DynamicViscosity mu_a 
+            input SI.DynamicViscosity mu_a
               "Dynamic viscosity at port_a (dummy if use_mu = false)";
-            input SI.DynamicViscosity mu_b 
+            input SI.DynamicViscosity mu_b
               "Dynamic viscosity at port_b (dummy if use_mu = false)";
             input SI.Length length "Length of pipe";
             input SI.Diameter diameter "Inner (hydraulic) diameter of pipe";
             input SI.Area crossArea "Inner cross section area";
-            input SI.ReynoldsNumber Re1 
+            input SI.ReynoldsNumber Re1
               "Boundary between laminar regime and transition";
-            input SI.ReynoldsNumber Re2 
+            input SI.ReynoldsNumber Re2
               "Boundary between transition and turbulent regime";
             input Real Delta(min=0) "Relative roughness";
-            output SI.Pressure dp_fric 
+            output SI.Pressure dp_fric
               "Pressure loss due to friction (dp_fric = port_a.p - port_b.p - dp_grav)";
-            output Real ddp_fric_dm_flow 
+            output Real ddp_fric_dm_flow
               "Derivative of pressure drop with mass flow rate";
           protected
             SI.DynamicViscosity mu "Upstream viscosity";
@@ -2791,11 +2791,11 @@ Laminar region:
             Real zeta;
             Real k0;
             Real k;
-            Real ddp_fric_dm_flow_laminar 
+            Real ddp_fric_dm_flow_laminar
               "Derivative of dp_fric = f(m_flow) at zero";
-            SI.MassFlowRate m_flow_turbulent 
+            SI.MassFlowRate m_flow_turbulent
               "The turbulent region is: |m_flow| >= m_flow_turbulent";
-            SI.MassFlowRate m_flow_laminar 
+            SI.MassFlowRate m_flow_laminar
               "The laminar region is: |m_flow| <= m_flow_laminar";
           algorithm
           /*
@@ -2847,7 +2847,7 @@ Laminar region:
             else
               // Preliminary testing seems to indicate that the log-log transform is not required here
               (dp_fric,ddp_fric_dm_flow) := Utilities.cubicHermite_withDerivative(
-                m_flow, m_flow_laminar, m_flow_turbulent, ddp_fric_dm_flow_laminar*m_flow_laminar, 
+                m_flow, m_flow_laminar, m_flow_turbulent, ddp_fric_dm_flow_laminar*m_flow_laminar,
                 k/rho*m_flow_turbulent*abs(m_flow_turbulent), ddp_fric_dm_flow_laminar, 2*k/rho*abs(m_flow_turbulent));
             end if;
             annotation (smoothOrder=1);
@@ -2867,33 +2867,33 @@ identical to laminar wall friction.
 </html>"));
       end LaminarAndQuadraticTurbulent;
 
-      package Detailed 
+      package Detailed
         "Pipe wall friction for laminar and turbulent flow (detailed characteristic)"
 
         extends PartialWallFriction(
-                  final use_mu = true, 
-                  final use_roughness = true, 
-                  final use_dp_small = true, 
-                  final use_m_flow_small = true, 
+                  final use_mu = true,
+                  final use_roughness = true,
+                  final use_dp_small = true,
+                  final use_m_flow_small = true,
                   final use_Re_turbulent = true);
 
         import ln = Modelica.Math.log "Logarithm, base e";
         import Modelica.Math.log10 "Logarithm, base 10";
         import Modelica.Math.exp "Exponential function";
 
-        redeclare function extends massFlowRate_dp 
+        redeclare function extends massFlowRate_dp
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction"
           import Modelica.Math;
         protected
           Real Delta(min=0) = roughness/diameter "Relative roughness";
-          SI.ReynoldsNumber Re1 = min((745*Math.exp(if Delta <= 0.0065 then 1 else 0.0065/Delta))^0.97, Re_turbulent) 
+          SI.ReynoldsNumber Re1 = min((745*Math.exp(if Delta <= 0.0065 then 1 else 0.0065/Delta))^0.97, Re_turbulent)
             "Re leaving laminar curve";
           SI.ReynoldsNumber Re2 = Re_turbulent "Re entering turbulent curve";
           SI.DynamicViscosity mu "Upstream viscosity";
           SI.Density rho "Upstream density";
           SI.ReynoldsNumber Re "Reynolds number";
           Real lambda2 "Modified friction coefficient (= lambda*Re^2)";
-          function interpolateInRegion2 = Modelica.Fluid.Dissipation.Utilities.Functions.General.CubicInterpolation_Re 
+          function interpolateInRegion2 = Modelica.Fluid.Dissipation.Utilities.Functions.General.CubicInterpolation_Re
             "Cubic Hermite spline interpolation in transition region";
         algorithm
           // Determine upstream density, upstream viscosity, and lambda2
@@ -2919,20 +2919,20 @@ identical to laminar wall friction.
 </html>"));
         end massFlowRate_dp;
 
-        redeclare function extends pressureLoss_m_flow 
+        redeclare function extends pressureLoss_m_flow
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction"
           import Modelica.Math;
           import Modelica.Constants.pi;
         protected
           Real Delta(min=0) = roughness/diameter "Relative roughness";
-          SI.ReynoldsNumber Re1 = min(745*Math.exp(if Delta <= 0.0065 then 1 else 0.0065/Delta), Re_turbulent) 
+          SI.ReynoldsNumber Re1 = min(745*Math.exp(if Delta <= 0.0065 then 1 else 0.0065/Delta), Re_turbulent)
             "Re leaving laminar curve";
           SI.ReynoldsNumber Re2 = Re_turbulent "Re entering turbulent curve";
           SI.DynamicViscosity mu "Upstream viscosity";
           SI.Density rho "Upstream density";
           SI.ReynoldsNumber Re "Reynolds number";
           Real lambda2 "Modified friction coefficient (= lambda*Re^2)";
-          function interpolateInRegion2 = Modelica.Fluid.Dissipation.Utilities.Functions.General.CubicInterpolation_lambda 
+          function interpolateInRegion2 = Modelica.Fluid.Dissipation.Utilities.Functions.General.CubicInterpolation_lambda
             "Cubic Hermite spline interpolation in transition region";
         algorithm
           // Determine upstream density and upstream viscosity
@@ -2944,40 +2944,40 @@ identical to laminar wall friction.
           lambda2 := if Re <= Re1 then 64*Re else 
                     (if Re >= Re2 then 0.25*(Re/Math.log10(Delta/3.7 + 5.74/Re^0.9))^2 else 
                      interpolateInRegion2(Re, Re1, Re2, Delta));
-          dp :=length*mu*mu/(2*rho*diameter*diameter*diameter)* 
+          dp :=length*mu*mu/(2*rho*diameter*diameter*diameter)*
                (if m_flow >= 0 then lambda2 else -lambda2);
                   annotation (smoothOrder=1, Documentation(info="<html>
 
 </html>"));
         end pressureLoss_m_flow;
 
-        redeclare function extends massFlowRate_dp_staticHead 
+        redeclare function extends massFlowRate_dp_staticHead
           "Return mass flow rate m_flow as function of pressure loss dp, i.e., m_flow = f(dp), due to wall friction and static head"
 
         protected
           Real Delta(min=0) = roughness/diameter "Relative roughness";
           SI.ReynoldsNumber Re "Reynolds number";
-          SI.ReynoldsNumber Re1 = min((745*exp(if Delta <= 0.0065 then 1 else 0.0065/Delta))^0.97, Re_turbulent) 
+          SI.ReynoldsNumber Re1 = min((745*exp(if Delta <= 0.0065 then 1 else 0.0065/Delta))^0.97, Re_turbulent)
             "Boundary between laminar regime and transition";
-          SI.ReynoldsNumber Re2 = Re_turbulent 
+          SI.ReynoldsNumber Re2 = Re_turbulent
             "Boundary between transition and turbulent regime";
-          SI.Pressure dp_a 
+          SI.Pressure dp_a
             "Upper end of regularization domain of the m_flow(dp) relation";
-          SI.Pressure dp_b 
+          SI.Pressure dp_b
             "Lower end of regularization domain of the m_flow(dp) relation";
-          SI.MassFlowRate m_flow_a 
+          SI.MassFlowRate m_flow_a
             "Value at upper end of regularization domain";
-          SI.MassFlowRate m_flow_b 
+          SI.MassFlowRate m_flow_b
             "Value at lower end of regularization domain";
 
-          SI.MassFlowRate dm_flow_ddp_fric_a 
+          SI.MassFlowRate dm_flow_ddp_fric_a
             "Derivative at upper end of regularization domain";
-          SI.MassFlowRate dm_flow_ddp_fric_b 
+          SI.MassFlowRate dm_flow_ddp_fric_b
             "Derivative at lower end of regularization domain";
 
-          SI.Pressure dp_grav_a = g_times_height_ab*rho_a 
+          SI.Pressure dp_grav_a = g_times_height_ab*rho_a
             "Static head if mass flows in design direction (a to b)";
-          SI.Pressure dp_grav_b = g_times_height_ab*rho_b 
+          SI.Pressure dp_grav_b = g_times_height_ab*rho_b
             "Static head if mass flows against design direction (b to a)";
 
           // Properly define zero mass flow conditions
@@ -3012,32 +3012,32 @@ identical to laminar wall friction.
           annotation (smoothOrder=1);
         end massFlowRate_dp_staticHead;
 
-        redeclare function extends pressureLoss_m_flow_staticHead 
+        redeclare function extends pressureLoss_m_flow_staticHead
           "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction and static head"
 
         protected
           Real Delta(min=0) = roughness/diameter "Relative roughness";
-          SI.ReynoldsNumber Re1 = min(745*exp(if Delta <= 0.0065 then 1 else 0.0065/Delta), Re_turbulent) 
+          SI.ReynoldsNumber Re1 = min(745*exp(if Delta <= 0.0065 then 1 else 0.0065/Delta), Re_turbulent)
             "Boundary between laminar regime and transition";
-          SI.ReynoldsNumber Re2 = Re_turbulent 
+          SI.ReynoldsNumber Re2 = Re_turbulent
             "Boundary between transition and turbulent regime";
 
-          SI.MassFlowRate m_flow_a 
+          SI.MassFlowRate m_flow_a
             "Upper end of regularization domain of the dp(m_flow) relation";
-          SI.MassFlowRate m_flow_b 
+          SI.MassFlowRate m_flow_b
             "Lower end of regularization domain of the dp(m_flow) relation";
 
           SI.Pressure dp_a "Value at upper end of regularization domain";
           SI.Pressure dp_b "Value at lower end of regularization domain";
 
-          SI.Pressure dp_grav_a = g_times_height_ab*rho_a 
+          SI.Pressure dp_grav_a = g_times_height_ab*rho_a
             "Static head if mass flows in design direction (a to b)";
-          SI.Pressure dp_grav_b = g_times_height_ab*rho_b 
+          SI.Pressure dp_grav_b = g_times_height_ab*rho_b
             "Static head if mass flows against design direction (b to a)";
 
-          Real ddp_dm_flow_a 
+          Real ddp_dm_flow_a
             "Derivative of pressure drop with mass flow rate at m_flow_a";
-          Real ddp_dm_flow_b 
+          Real ddp_dm_flow_b
             "Derivative of pressure drop with mass flow rate at m_flow_b";
 
           // Properly define zero mass flow conditions
@@ -3078,45 +3078,45 @@ identical to laminar wall friction.
           annotation (smoothOrder=1);
         end pressureLoss_m_flow_staticHead;
 
-      package Internal 
+      package Internal
           "Functions to calculate mass flow rate from friction pressure drop and vice versa"
         extends Modelica.Icons.InternalPackage;
-        function m_flow_of_dp_fric 
+        function m_flow_of_dp_fric
             "Calculate mass flow rate as function of pressure drop due to friction"
           extends Modelica.Icons.Function;
 
-          input SI.Pressure dp_fric 
+          input SI.Pressure dp_fric
               "Pressure loss due to friction (dp = port_a.p - port_b.p)";
           input SI.Density rho_a "Density at port_a";
           input SI.Density rho_b "Density at port_b";
-          input SI.DynamicViscosity mu_a 
+          input SI.DynamicViscosity mu_a
               "Dynamic viscosity at port_a (dummy if use_mu = false)";
-          input SI.DynamicViscosity mu_b 
+          input SI.DynamicViscosity mu_b
               "Dynamic viscosity at port_b (dummy if use_mu = false)";
           input SI.Length length "Length of pipe";
           input SI.Diameter diameter "Inner (hydraulic) diameter of pipe";
           input SI.Area crossArea "Inner cross section area";
-          input SI.ReynoldsNumber Re1 
+          input SI.ReynoldsNumber Re1
               "Boundary between laminar regime and transition";
-          input SI.ReynoldsNumber Re2 
+          input SI.ReynoldsNumber Re2
               "Boundary between transition and turbulent regime";
           input Real Delta(min=0) "Relative roughness";
           output SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
-          output Real dm_flow_ddp_fric 
+          output Real dm_flow_ddp_fric
               "Derivative of mass flow rate with dp_fric";
 
           protected
-          function interpolateInRegion2_withDerivative 
+          function interpolateInRegion2_withDerivative
               "Interpolation in log-log space using a cubic Hermite polynomial, where x=log10(lambda2), y=log10(Re)"
             extends Modelica.Icons.Function;
 
             input Real lambda2 "Known independent variable";
-            input SI.ReynoldsNumber Re1 
+            input SI.ReynoldsNumber Re1
                 "Boundary between laminar regime and transition";
-            input SI.ReynoldsNumber Re2 
+            input SI.ReynoldsNumber Re2
                 "Boundary between transition and turbulent regime";
             input Real Delta(min=0) "Relative roughness";
-            input SI.Pressure dp_fric 
+            input SI.Pressure dp_fric
                 "Pressure loss due to friction (dp = port_a.p - port_b.p)";
             output SI.ReynoldsNumber Re "Unknown return variable";
             output Real dRe_ddp "Derivative of return value";
@@ -3171,7 +3171,7 @@ identical to laminar wall friction.
           end if;
 
           // Positive mass flow rate
-          lambda2 := abs(dp_fric)*2*diameter^3*rho/(length*mu*mu) 
+          lambda2 := abs(dp_fric)*2*diameter^3*rho/(length*mu*mu)
               "Known as lambda2=f(dp)";
 
           aux1:=(2*diameter^3*rho)/(length*mu^2);
@@ -3182,7 +3182,7 @@ identical to laminar wall friction.
 
           // Modify Re, if turbulent flow
           if Re > Re1 then
-            Re :=-2*sqrt(lambda2)*log10(2.51/sqrt(lambda2) + 0.27*Delta) 
+            Re :=-2*sqrt(lambda2)*log10(2.51/sqrt(lambda2) + 0.27*Delta)
                 "Colebrook-White";
             aux2 := sqrt(aux1*abs(dp_fric));
             dRe_ddp := 1/log(10)*(-2*log(2.51/aux2+0.27*Delta)*aux1/(2*aux2)+2*2.51/(2*abs(dp_fric)*(2.51/aux2+0.27*Delta)));
@@ -3198,39 +3198,39 @@ identical to laminar wall friction.
           annotation(smoothOrder=1);
         end m_flow_of_dp_fric;
 
-        function dp_fric_of_m_flow 
+        function dp_fric_of_m_flow
             "Calculate pressure drop due to friction as function of mass flow rate"
           extends Modelica.Icons.Function;
 
           input SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
           input SI.Density rho_a "Density at port_a";
           input SI.Density rho_b "Density at port_b";
-          input SI.DynamicViscosity mu_a 
+          input SI.DynamicViscosity mu_a
               "Dynamic viscosity at port_a (dummy if use_mu = false)";
-          input SI.DynamicViscosity mu_b 
+          input SI.DynamicViscosity mu_b
               "Dynamic viscosity at port_b (dummy if use_mu = false)";
           input SI.Length length "Length of pipe";
           input SI.Diameter diameter "Inner (hydraulic) diameter of pipe";
           input SI.Area crossArea "Inner cross section area";
-          input SI.ReynoldsNumber Re1 
+          input SI.ReynoldsNumber Re1
               "Boundary between laminar regime and transition";
-          input SI.ReynoldsNumber Re2 
+          input SI.ReynoldsNumber Re2
               "Boundary between transition and turbulent regime";
           input Real Delta(min=0) "Relative roughness";
-          output SI.Pressure dp_fric 
+          output SI.Pressure dp_fric
               "Pressure loss due to friction (dp_fric = port_a.p - port_b.p - dp_grav)";
-          output Real ddp_fric_dm_flow 
+          output Real ddp_fric_dm_flow
               "Derivative of pressure drop with mass flow rate";
 
           protected
-          function interpolateInRegion2 
+          function interpolateInRegion2
               "Interpolation in log-log space using a cubic Hermite polynomial, where x=log10(Re), y=log10(lambda2)"
             extends Modelica.Icons.Function;
 
             input SI.ReynoldsNumber Re "Known independent variable";
-            input SI.ReynoldsNumber Re1 
+            input SI.ReynoldsNumber Re1
                 "Boundary between laminar regime and transition";
-            input SI.ReynoldsNumber Re2 
+            input SI.ReynoldsNumber Re2
                 "Boundary between transition and turbulent regime";
             input Real Delta(min=0) "Relative roughness";
             input SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
@@ -3296,14 +3296,14 @@ identical to laminar wall friction.
           elseif Re >= Re2 then
             lambda2 := 0.25*(Re/log10(Delta/3.7 + 5.74/Re^0.9))^2 "Swamee-Jain";
             aux2 := Delta/3.7+5.74/((aux1*abs(m_flow))^0.9);
-            dlambda2_dm_flow := 0.5*aux1*Re*log(10)^2*(1/(log(aux2)^2)+(5.74*0.9)/(log(aux2)^3*Re^0.9*aux2)) 
+            dlambda2_dm_flow := 0.5*aux1*Re*log(10)^2*(1/(log(aux2)^2)+(5.74*0.9)/(log(aux2)^3*Re^0.9*aux2))
                 "Swamee-Jain";
           else
             (lambda2, dlambda2_dm_flow) := interpolateInRegion2(Re, Re1, Re2, Delta, m_flow);
           end if;
 
           // Compute pressure drop from lambda2
-          dp_fric :=length*mu*mu/(2*rho*diameter*diameter*diameter)* 
+          dp_fric :=length*mu*mu/(2*rho*diameter*diameter*diameter)*
                (if m_flow >= 0 then lambda2 else -lambda2);
 
           // Compute derivative from dlambda2/dm_flow

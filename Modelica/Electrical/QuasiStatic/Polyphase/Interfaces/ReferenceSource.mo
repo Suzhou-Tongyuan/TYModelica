@@ -1,23 +1,23 @@
 ﻿within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
-partial model ReferenceSource 
+partial model ReferenceSource
   "Partial of voltage or current source with reference input"
   extends QuasiStatic.Polyphase.Interfaces.OnePort;
   import Modelica.Constants.pi;
 equation
   Connections.root(plug_p.reference);
   annotation (Icon(graphics={Ellipse(
-              extent={{-50,50},{50,-50}}, 
-              lineColor={85,170,255}, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
-        Line(points={{-90,0},{-50,0}}, color={85,170,255}), 
-        Line(points={{50,0},{90,0}}, color={85,170,255}), 
+              extent={{-50,50},{50,-50}},
+              lineColor={85,170,255},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
+        Line(points={{-90,0},{-50,0}}, color={85,170,255}),
+        Line(points={{50,0},{90,0}}, color={85,170,255}),
         Text(
-          extent={{160,-100},{-160,-60}}, 
-          textString="m=%m"), 
+          extent={{160,-100},{-160,-60}},
+          textString="m=%m"),
                            Text(
-              extent={{-150,60},{150,100}}, 
-              textString="%name", 
+              extent={{-150,60},{150,100}},
+              textString="%name",
               textColor={0,0,255})}), Documentation(info="<html>
 <p>
 The source partial model relies on the

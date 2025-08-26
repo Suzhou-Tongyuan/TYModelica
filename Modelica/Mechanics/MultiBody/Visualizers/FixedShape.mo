@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.MultiBody.Visualizers;
-model FixedShape 
+model FixedShape
   "Visualizing an elementary shape with dynamically varying shape attributes (has one frame connector)"
   import Modelica.Mechanics.MultiBody.Types;
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialVisualizer;
@@ -7,13 +7,13 @@ model FixedShape
   parameter Boolean animation=true "= true, if animation shall be enabled";
   parameter Types.ShapeType shapeType="box" "Type of shape" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input SI.Position r_shape[3]={0,0,0} 
+  input SI.Position r_shape[3]={0,0,0}
     "Vector from frame_a to shape origin, resolved in frame_a" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input Types.Axis lengthDirection={1,0,0} 
+  input Types.Axis lengthDirection={1,0,0}
     "Vector in length direction of shape, resolved in frame_a" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input Types.Axis widthDirection={0,1,0} 
+  input Types.Axis widthDirection={0,1,0}
     "Vector in width direction of shape, resolved in frame_a" 
     annotation (Dialog(group="if animation = true", enable=animation));
   input SI.Distance length(start=1) "Length of shape" 
@@ -22,29 +22,29 @@ model FixedShape
     annotation (Dialog(group="if animation = true", enable=animation));
   input SI.Distance height(start=0.1) "Height of shape" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input Modelica.Mechanics.MultiBody.Types.Color color={0,128,255} 
+  input Modelica.Mechanics.MultiBody.Types.Color color={0,128,255}
     "Color of shape" 
     annotation (Dialog(colorSelector=true, group="if animation = true", enable=animation));
-  input Types.ShapeExtra extra=0.0 
+  input Types.ShapeExtra extra=0.0
     "Additional data for cylinder, cone, pipe, gearwheel and spring" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(group="if animation = true", enable=animation));
 
 protected
   Advanced.Shape vis(
-    shapeType=shapeType, 
-    r_shape=r_shape, 
-    lengthDirection=lengthDirection, 
-    widthDirection=widthDirection, 
-    length=length, 
-    width=width, 
-    height=height, 
-    color=color, 
-    extra=extra, 
-    specularCoefficient=specularCoefficient, 
-    r=frame_a.r_0, 
+    shapeType=shapeType,
+    r_shape=r_shape,
+    lengthDirection=lengthDirection,
+    widthDirection=widthDirection,
+    length=length,
+    width=width,
+    height=height,
+    color=color,
+    extra=extra,
+    specularCoefficient=specularCoefficient,
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
 equation
   // No forces and torques
@@ -158,30 +158,30 @@ respectively. The predefined type
 <a href=\"modelica://Modelica.Mechanics.MultiBody.Types.Color\">MultiBody.Types.Color</a> contains a menu
 definition of the colors used in the MultiBody library together with a color editor.
 </p>
-</html>"), 
+</html>"),
          Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Polygon(
-          points={{-100,32},{-64,46},{2,30},{72,54},{50,32},{-10,12},{-100,32}}, 
-          lineColor={215,215,215}, 
-          fillColor={160,160,160}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-100,32},{-64,46},{2,30},{72,54},{50,32},{-10,12},{-100,32}},
+          lineColor={215,215,215},
+          fillColor={160,160,160},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{72,54},{50,32},{50,-60},{72,-32},{72,54}}, 
-          lineColor={215,215,215}, 
-          fillColor={160,160,164}, 
-          fillPattern=FillPattern.Solid), 
+          points={{72,54},{50,32},{50,-60},{72,-32},{72,54}},
+          lineColor={215,215,215},
+          fillColor={160,160,164},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,-65},{150,-95}}, 
-          textString="%shapeType"), 
+          extent={{-150,-65},{150,-95}},
+          textString="%shapeType"),
         Text(
-          extent={{-150,100},{150,60}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,100},{150,60}},
+          textString="%name",
+          textColor={0,0,255}),
         Polygon(
-          points={{-100,32},{-100,-60},{-10,-42},{50,-60},{50,32},{-10,12},{-100,32}}, 
-          lineColor={215,215,215}, 
-          fillColor={0,127,255}, 
+          points={{-100,32},{-100,-60},{-10,-42},{50,-60},{50,32},{-10,12},{-100,32}},
+          lineColor={215,215,215},
+          fillColor={0,127,255},
           fillPattern=FillPattern.Solid)}));
 end FixedShape;

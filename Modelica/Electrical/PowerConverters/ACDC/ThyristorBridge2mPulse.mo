@@ -3,16 +3,16 @@ model ThyristorBridge2mPulse "2*m pulse thyristor rectifier bridge"
   extends Icons.Converter;
   import Modelica.Constants.pi;
   // parameter Integer m(final min=3) = 3 "Number of phases" annotation(Evaluate=true);
-  parameter SI.Resistance RonThyristor(final min=0) = 1e-05 
+  parameter SI.Resistance RonThyristor(final min=0) = 1e-05
     "Closed thyristor resistance";
-  parameter SI.Conductance GoffThyristor(final min=0) = 1e-05 
+  parameter SI.Conductance GoffThyristor(final min=0) = 1e-05
     "Opened thyristor conductance";
-  parameter SI.Voltage VkneeThyristor(final min=0) = 0 
+  parameter SI.Voltage VkneeThyristor(final min=0) = 0
     "Thyristor forward threshold voltage";
-  parameter Boolean offStart_p[m]=fill(true, m) 
+  parameter Boolean offStart_p[m]=fill(true, m)
     "Boolean start value of variable thyristor_p[:].off" 
     annotation (choices(checkBox=true));
-  parameter Boolean offStart_n[m]=fill(true, m) 
+  parameter Boolean offStart_n[m]=fill(true, m)
     "Boolean start value of variable thyristor_n[:].off" 
     annotation (choices(checkBox=true));
   extends PowerConverters.Interfaces.ACDC.ACplug;
@@ -20,28 +20,28 @@ model ThyristorBridge2mPulse "2*m pulse thyristor rectifier bridge"
   extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T=293.15);
   extends Interfaces.Enable.Enable2m;
   Modelica.Electrical.Polyphase.Ideal.IdealThyristor thyristor_p(
-    final m=m, 
-    final Ron=fill(RonThyristor, m), 
-    final Goff=fill(GoffThyristor, m), 
-    final Vknee=fill(VkneeThyristor, m), 
-    final useHeatPort=useHeatPort, 
-    final idealThyristor(off(start=offStart_p, fixed=fill(true, m)))) 
+    final m=m,
+    final Ron=fill(RonThyristor, m),
+    final Goff=fill(GoffThyristor, m),
+    final Vknee=fill(VkneeThyristor, m),
+    final useHeatPort=useHeatPort,
+    final idealThyristor(off(start=offStart_p, fixed=fill(true, m))))
     "Thyristors connected to positive DC potential" annotation (Placement(
         transformation(
-        origin={0,40}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={0,40},
+        extent={{-10,-10},{10,10}},
         rotation=90)));
   Modelica.Electrical.Polyphase.Ideal.IdealThyristor thyristor_n(
-    final m=m, 
-    final Ron=fill(RonThyristor, m), 
-    final Goff=fill(GoffThyristor, m), 
-    final Vknee=fill(VkneeThyristor, m), 
-    final useHeatPort=useHeatPort, 
-    final idealThyristor(off(start=offStart_n, fixed=fill(true, m)))) 
+    final m=m,
+    final Ron=fill(RonThyristor, m),
+    final Goff=fill(GoffThyristor, m),
+    final Vknee=fill(VkneeThyristor, m),
+    final useHeatPort=useHeatPort,
+    final idealThyristor(off(start=offStart_n, fixed=fill(true, m))))
     "Thyristors connected to negative DC potential" annotation (Placement(
         transformation(
-        origin={0,-10}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={0,-10},
+        extent={{-10,-10},{10,10}},
         rotation=90)));
   Modelica.Electrical.Polyphase.Basic.Star star_p(final m=m) 
     annotation (Placement(transformation(extent={{70,70},{90,50}})));
@@ -51,12 +51,12 @@ model ThyristorBridge2mPulse "2*m pulse thyristor rectifier bridge"
     thermalConnector(final m=m) if useHeatPort 
     annotation (Placement(transformation(extent={{10,-100},{30,-80}})));
   Modelica.Blocks.Logical.Pre pre_p[m] annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=90, 
+        extent={{-10,-10},{10,10}},
+        rotation=90,
         origin={-60,-36})));
   Modelica.Blocks.Logical.Pre pre_n[m] annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=90, 
+        extent={{-10,-10},{10,10}},
+        rotation=90,
         origin={-20,-36})));
 equation
   if not useHeatPort then
@@ -82,40 +82,40 @@ equation
       points={{10,40},{20,40},{20,-80}}, color={191,0,0}));
   connect(andCondition_p.y, pre_p.u) 
     annotation (Line(points={{-60,-69},{-60,-48}}, color={255,0,255}));
-  connect(pre_p.y, thyristor_p.fire) annotation (Line(points={{-60,-25},{-60,-25},{-60,46},{-60,50},{-11.8,50}}, 
+  connect(pre_p.y, thyristor_p.fire) annotation (Line(points={{-60,-25},{-60,-25},{-60,46},{-60,50},{-11.8,50}},
                                                 color={255,0,255}));
-  connect(pre_n.y, thyristor_n.fire) annotation (Line(points={{-20,-25},{-20,0},{-11.8,0}}, 
+  connect(pre_n.y, thyristor_n.fire) annotation (Line(points={{-20,-25},{-20,0},{-11.8,0}},
                              color={255,0,255}));
-  connect(andCondition_n.y, pre_n.u) annotation (Line(points={{60,-69},{60, 
+  connect(andCondition_n.y, pre_n.u) annotation (Line(points={{60,-69},{60,
           -60},{-20,-60},{-20,-48}}, color={255,0,255}));
-  annotation (defaultComponentName="rectifier", 
+  annotation (defaultComponentName="rectifier",
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}), graphics={
         Text(
-          extent={{-100,70},{0,50}}, 
-          textColor={0,0,255}, 
-          textString="AC"), 
+          extent={{-100,70},{0,50}},
+          textColor={0,0,255},
+          textString="AC"),
         Text(
-          extent={{0,-50},{100,-70}}, 
-          textColor={0,0,255}, 
-          textString="DC"), 
+          extent={{0,-50},{100,-70}},
+          textColor={0,0,255},
+          textString="DC"),
         Rectangle(
-          extent={{-40,24},{40,-24}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-40,24},{40,-24}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Line(
-          points={{-40,0},{40,0}}, 
-          color={0,0,255}), 
+          points={{-40,0},{40,0}},
+          color={0,0,255}),
         Line(
-          points={{20,24},{20,-24}}, 
-          color={0,0,255}), 
+          points={{20,24},{20,-24}},
+          color={0,0,255}),
         Line(
-          points={{20,0},{-20,24},{-20,-24},{20,0}}, 
-          color={0,0,255}), 
+          points={{20,0},{-20,24},{-20,-24},{20,0}},
+          color={0,0,255}),
         Line(
-          points={{0,12},{0,28}}, 
-          color={0,0,255})}), 
+          points={{0,12},{0,28}},
+          color={0,0,255})}),
     Documentation(info="<html>
 <p>
 General information about AC/DC converters can be found at the

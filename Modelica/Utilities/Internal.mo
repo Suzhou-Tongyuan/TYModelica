@@ -1,9 +1,9 @@
 ﻿within Modelica.Utilities;
-package Internal 
+package Internal
   "Internal components that a user should usually not directly utilize"
   extends Modelica.Icons.InternalPackage;
   import Modelica.Units.SI;
-partial package PartialModelicaServices 
+partial package PartialModelicaServices
     "Interfaces of components requiring a tool specific implementation"
     extends Modelica.Icons.InternalPackage;
   package Animation "Models and functions for 3-dim. animation"
@@ -13,25 +13,25 @@ partial package PartialModelicaServices
     import Modelica.Mechanics.MultiBody.Frames;
     import Modelica.Mechanics.MultiBody.Types;
 
-    parameter Types.ShapeType shapeType="box" 
+    parameter Types.ShapeType shapeType="box"
       "Type of shape (box, sphere, cylinder, pipecylinder, cone, pipe, beam, gearwheel, spring, <external shape>)" annotation(Evaluate=true);
-    input Frames.Orientation R=Frames.nullRotation() 
+    input Frames.Orientation R=Frames.nullRotation()
       "Orientation object to rotate the world frame into the object frame" annotation(Dialog);
-    input SI.Position r[3]={0,0,0} 
+    input SI.Position r[3]={0,0,0}
       "Position vector from origin of world frame to origin of object frame, resolved in world frame" annotation(Dialog);
-    input SI.Position r_shape[3]={0,0,0} 
+    input SI.Position r_shape[3]={0,0,0}
       "Position vector from origin of object frame to shape origin, resolved in object frame" annotation(Dialog);
-    input Real lengthDirection[3](each final unit="1")={1,0,0} 
+    input Real lengthDirection[3](each final unit="1")={1,0,0}
       "Vector in length direction, resolved in object frame" annotation(Dialog);
-    input Real widthDirection[3](each final unit="1")={0,1,0} 
+    input Real widthDirection[3](each final unit="1")={0,1,0}
       "Vector in width direction, resolved in object frame" annotation(Dialog);
     input SI.Length length=0 "Length of visual object" annotation(Dialog);
     input SI.Length width=0 "Width of visual object" annotation(Dialog);
     input SI.Length height=0 "Height of visual object" annotation(Dialog);
-    input Types.ShapeExtra extra=0.0 
+    input Types.ShapeExtra extra=0.0
       "Additional size data for some of the shape types" annotation(Dialog);
     input Real color[3]={255,0,0} "Color of shape" annotation(Dialog(colorSelector=true));
-    input Types.SpecularCoefficient specularCoefficient = 0.7 
+    input Types.SpecularCoefficient specularCoefficient = 0.7
       "Reflection of ambient light (= 0: light is completely absorbed)" annotation(Dialog);
 
     annotation (
@@ -48,15 +48,15 @@ This model is documented at
       import Modelica.Mechanics.MultiBody.Types;
       import Modelica.Mechanics.MultiBody.Frames;
 
-      input Frames.Orientation R=Frames.nullRotation() 
+      input Frames.Orientation R=Frames.nullRotation()
         "Orientation object to rotate the world frame into the vector frame" annotation(Dialog);
-      input SI.Position r[3]={0,0,0} 
+      input SI.Position r[3]={0,0,0}
         "Position vector from origin of world frame to origin of vector frame, resolved in world frame" annotation(Dialog);
-      input Real coordinates[3]={0,0,0} 
+      input Real coordinates[3]={0,0,0}
         "Coordinates of the vector resolved in vector frame" annotation(Dialog);
-      input Types.Color color=Types.Defaults.ArrowColor 
+      input Types.Color color=Types.Defaults.ArrowColor
         "Color of vector" annotation(Dialog(colorSelector=true));
-      input Types.SpecularCoefficient specularCoefficient = 0.7 
+      input Types.SpecularCoefficient specularCoefficient = 0.7
         "Material property describing the reflecting of ambient light (= 0 means, that light is completely absorbed)" annotation(Dialog);
       parameter Types.VectorQuantity quantity = Types.VectorQuantity.Force "Quantity of the coordinates";
       input Boolean headAtOrigin=false "= true, if the vector is pointing towards the origin of vector frame" annotation(Dialog);
@@ -76,17 +76,17 @@ This model is documented at
       import Modelica.Mechanics.MultiBody.Frames;
       import Modelica.Mechanics.MultiBody.Types;
 
-      input Frames.Orientation R=Frames.nullRotation() 
+      input Frames.Orientation R=Frames.nullRotation()
         "Orientation object to rotate the world frame into the surface frame" 
         annotation(Dialog(group="Surface frame"));
-      input SI.Position r_0[3]={0,0,0} 
+      input SI.Position r_0[3]={0,0,0}
         "Position vector from origin of world frame to origin of surface frame, resolved in world frame" 
         annotation(Dialog(group="Surface frame"));
 
       parameter Integer nu=2 "Number of points in u-Dimension" annotation(Dialog(group="Surface properties"));
       parameter Integer nv=2 "Number of points in v-Dimension" annotation(Dialog(group="Surface properties"));
-      replaceable function surfaceCharacteristic = 
-        Modelica.Mechanics.MultiBody.Interfaces.partialSurfaceCharacteristic 
+      replaceable function surfaceCharacteristic =
+        Modelica.Mechanics.MultiBody.Interfaces.partialSurfaceCharacteristic
         "Function defining the surface characteristic" 
         annotation(choicesAllMatching=true,Dialog(group="Surface properties"));
 
@@ -95,7 +95,7 @@ This model is documented at
       parameter Boolean multiColoredSurface=false "= true: Color is defined for each surface point" 
         annotation(Dialog(group="Material properties"),choices(checkBox=true));
       input Real color[3]={255,0,0} "Color of surface" annotation(Dialog(colorSelector=true,group="Material properties", enable=not multiColoredSurface));
-      input Types.SpecularCoefficient specularCoefficient = 0.7 
+      input Types.SpecularCoefficient specularCoefficient = 0.7
         "Reflection of ambient light (= 0: light is completely absorbed)" 
         annotation(Dialog(group="Material properties"));
       input Real transparency=0 "Transparency of shape: 0 (= opaque) ... 1 (= fully transparent)" 
@@ -112,7 +112,7 @@ This model is documented at
 
   package ExternalReferences "Functions to access external resources"
     extends Modelica.Icons.InternalPackage;
-    partial function PartialLoadResource 
+    partial function PartialLoadResource
         "Interface for tool specific function to return the absolute path name of a URI or local file name"
       extends Modelica.Icons.Function;
       input String uri "URI or local file name";
@@ -155,7 +155,7 @@ are used.
 </html>"));
 end PartialModelicaServices;
 
-package FileSystem 
+package FileSystem
     "Internal package with external functions as interface to the file system"
  extends Modelica.Icons.InternalPackage;
 
@@ -191,7 +191,7 @@ package FileSystem
   external "C" ModelicaInternal_removeFile(fileName) annotation(IncludeDirectory="modelica://Modelica/Resources/C-Sources", Include="#include \"ModelicaInternal.h\"", Library="ModelicaExternalC");
   end removeFile;
 
-  impure function copyFile 
+  impure function copyFile
       "Copy existing file (C functions 'fopen', 'fread', 'fwrite', 'fclose')"
     extends Modelica.Icons.Function;
     input String fromName "Name of file to be copied";
@@ -199,23 +199,23 @@ package FileSystem
   external "C" ModelicaInternal_copyFile(fromName, toName) annotation(IncludeDirectory="modelica://Modelica/Resources/C-Sources", Include="#include \"ModelicaInternal.h\"", Library="ModelicaExternalC");
   end copyFile;
 
-  function readDirectory 
+  function readDirectory
       "Read names of a directory (POSIX functions opendir, readdir, closedir)"
     extends Modelica.Icons.Function;
-    input String directory 
+    input String directory
         "Name of the directory from which information is desired";
-    input Integer nNames 
+    input Integer nNames
         "Number of names that are returned (inquire with getNumberOfFiles)";
-    output String names[nNames] 
+    output String names[nNames]
         "All file and directory names in any order from the desired directory";
     external "C" ModelicaInternal_readDirectory(directory,nNames,names) annotation(IncludeDirectory="modelica://Modelica/Resources/C-Sources", Include="#include \"ModelicaInternal.h\"", Library="ModelicaExternalC");
   end readDirectory;
 
-function getNumberOfFiles 
+function getNumberOfFiles
       "Get number of files and directories in a directory (POSIX functions opendir, readdir, closedir)"
   extends Modelica.Icons.Function;
   input String directory "Directory name";
-  output Integer result 
+  output Integer result
         "Number of files and directories present in 'directory'";
   external "C" result = ModelicaInternal_getNumberOfFiles(directory) annotation(IncludeDirectory="modelica://Modelica/Resources/C-Sources", Include="#include \"ModelicaInternal.h\"", Library="ModelicaExternalC");
 end getNumberOfFiles;

@@ -1,13 +1,13 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.FixedShape;
-model HollowCylinderCircumferentialFlux 
+model HollowCylinderCircumferentialFlux
   "Hollow cylinder with circumferential flux; fixed shape; linear or non-linear material characteristics"
 
   extends BaseClasses.FixedShape;
   extends Modelica.Magnetic.FluxTubes.Icons.HollowCylinderCircumferentialFlux;
   import Modelica.Constants.pi;
   parameter SI.Length l=0.02 "Width (orthogonal to flux direction)" 
-    annotation (Dialog(group= 
-          "Fixed geometry", groupImage= 
+    annotation (Dialog(group=
+          "Fixed geometry", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/Circumferential.png"));
   parameter SI.Radius r_i=0.01 "Inner radius of hollow cylinder" 
     annotation (Dialog(group="Fixed geometry"));

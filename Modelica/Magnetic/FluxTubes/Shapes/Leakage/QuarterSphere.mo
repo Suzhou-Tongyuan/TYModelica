@@ -1,11 +1,11 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.Leakage;
-model QuarterSphere 
+model QuarterSphere
   "Leakage flux through the corners of a quarter sphere"
 
   extends BaseClasses.Leakage;
 
   parameter SI.Radius r=0.005 "Radius of quarter sphere" 
-    annotation (Dialog(group="Parameters", groupImage= 
+    annotation (Dialog(group="Parameters", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/Leakage/QuarterSphere.png"));
 
 equation

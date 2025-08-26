@@ -1,107 +1,107 @@
 ﻿within Modelica.Mechanics.MultiBody.Joints;
-model UniversalSpherical 
+model UniversalSpherical
   "Universal - spherical joint aggregation (1 constraint, no potential states)"
 
   import Modelica.Mechanics.MultiBody.Types;
 
   extends Interfaces.PartialTwoFrames;
-  Interfaces.Frame_a frame_ia 
+  Interfaces.Frame_a frame_ia
     "Coordinate system at the origin of frame_a, fixed at the rod connecting the universal with the spherical joint" 
     annotation (Placement(transformation(
-        origin={-40,100}, 
-        extent={{-16,-16},{16,16}}, 
+        origin={-40,100},
+        extent={{-16,-16},{16,16}},
         rotation=270)));
   parameter Boolean animation=true "= true, if animation shall be enabled";
-  parameter Boolean showUniversalAxes=true 
+  parameter Boolean showUniversalAxes=true
     "= true, if universal joint shall be visualized with two cylinders, otherwise with a sphere (provided animation=true)";
-  parameter Boolean computeRodLength=false 
+  parameter Boolean computeRodLength=false
     "= true, if distance between frame_a and frame_b shall be computed during initialization (see info)";
-  parameter Modelica.Mechanics.MultiBody.Types.Axis n1_a={0,0,1} 
+  parameter Modelica.Mechanics.MultiBody.Types.Axis n1_a={0,0,1}
     "Axis 1 of universal joint resolved in frame_a (axis 2 is orthogonal to axis 1 and to rod)" 
     annotation (Evaluate=true);
-  parameter SI.Position rRod_ia[3]={1,0,0} 
+  parameter SI.Position rRod_ia[3]={1,0,0}
     "Vector from origin of frame_a to origin of frame_b, resolved in frame_ia (if computeRodLength=true, rRod_ia is only an axis vector along the connecting rod)" 
     annotation (Evaluate=true);
-  parameter SI.Diameter sphereDiameter=world.defaultJointLength 
+  parameter SI.Diameter sphereDiameter=world.defaultJointLength
     "Diameter of spheres representing the universal and the spherical joint" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  input Types.Color sphereColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor 
+  input Types.Color sphereColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor
     "Color of spheres representing the universal and the spherical joint" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
-  parameter Types.ShapeType rodShapeType="cylinder" 
+  parameter Types.ShapeType rodShapeType="cylinder"
     "Shape type of rod connecting the universal and the spherical joint" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  parameter SI.Distance rodWidth=sphereDiameter/Types.Defaults.JointRodDiameterFraction 
+  parameter SI.Distance rodWidth=sphereDiameter/Types.Defaults.JointRodDiameterFraction
     "Width of rod shape in direction of axis 2 of universal joint." 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  parameter SI.Distance rodHeight=rodWidth 
+  parameter SI.Distance rodHeight=rodWidth
     "Height of rod shape in direction that is orthogonal to rod and to axis 2" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  parameter Types.ShapeExtra rodExtra=0.0 
+  parameter Types.ShapeExtra rodExtra=0.0
     "Additional parameter depending on rodShapeType" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  input Types.Color rodColor=Modelica.Mechanics.MultiBody.Types.Defaults.RodColor 
+  input Types.Color rodColor=Modelica.Mechanics.MultiBody.Types.Defaults.RodColor
     "Color of rod shape connecting the universal and the spherical joints" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
-  parameter SI.Distance cylinderLength=world.defaultJointLength 
+  parameter SI.Distance cylinderLength=world.defaultJointLength
     "Length of cylinders representing the two universal joint axes" annotation (
-     Dialog(tab="Animation", group="if animation = true and showUniversalAxes", 
+     Dialog(tab="Animation", group="if animation = true and showUniversalAxes",
                              enable=animation and showUniversalAxes));
-  parameter SI.Distance cylinderDiameter=world.defaultJointWidth 
+  parameter SI.Distance cylinderDiameter=world.defaultJointWidth
     "Diameter of cylinders representing the two universal joint axes" 
-    annotation (Dialog(tab="Animation", group= 
-          "if animation = true and showUniversalAxes", 
+    annotation (Dialog(tab="Animation", group=
+          "if animation = true and showUniversalAxes",
           enable=animation and showUniversalAxes));
-  input Types.Color cylinderColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor 
+  input Types.Color cylinderColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor
     "Color of cylinders representing the two universal joint axes" annotation (
-      Dialog(colorSelector=true, tab="Animation", group="if animation = true and showUniversalAxes", 
+      Dialog(colorSelector=true, tab="Animation", group="if animation = true and showUniversalAxes",
                               enable=animation and showUniversalAxes));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
 
-  parameter Boolean kinematicConstraint=true 
+  parameter Boolean kinematicConstraint=true
     "= false, if no constraint shall be defined, due to analytically solving a kinematic loop" 
     annotation (Dialog(tab="Advanced"));
-  Real constraintResidue = rRod_0*rRod_0 - rodLength*rodLength 
+  Real constraintResidue = rRod_0*rRod_0 - rodLength*rodLength
     "Constraint equation of joint in residue form: Either length constraint (= default) or equation to compute rod force (for analytic solution of loops in combination with Internal.RevoluteWithLengthConstraint/PrismaticWithLengthConstraint)" 
     annotation (Dialog(tab="Advanced", enable=not kinematicConstraint));
-  parameter Boolean checkTotalPower=false 
+  parameter Boolean checkTotalPower=false
     "= true, if total power flowing into this component shall be determined (must be zero)" 
     annotation (Dialog(tab="Advanced"));
-  SI.Force f_rod 
+  SI.Force f_rod
     "Constraint force in direction of the rod (positive, if rod is pressed)";
-  final parameter SI.Distance rodLength(fixed=false, start=Modelica.Math.Vectors.length(rRod_ia)) 
+  final parameter SI.Distance rodLength(fixed=false, start=Modelica.Math.Vectors.length(rRod_ia))
     "Length of rod (distance between origin of frame_a and origin of frame_b)";
-  final parameter Real eRod_ia[3](each final unit="1")=Modelica.Math.Vectors.normalizeWithAssert(rRod_ia) 
+  final parameter Real eRod_ia[3](each final unit="1")=Modelica.Math.Vectors.normalizeWithAssert(rRod_ia)
     "Unit vector from origin of frame_a to origin of frame_b, resolved in frame_ia";
   final parameter Real e2_ia[3](each final unit="1")=Modelica.Math.Vectors.normalize(
-                                                 cross(n1_a, eRod_ia)) 
+                                                 cross(n1_a, eRod_ia))
     "Unit vector in direction of axis 2 of universal joint, resolved in frame_ia (orthogonal to n1_a and eRod_ia; note: frame_ia is parallel to frame_a when the universal joint angles are zero)";
-  final parameter Real e3_ia[3](each final unit="1")=cross(eRod_ia, e2_ia) 
+  final parameter Real e3_ia[3](each final unit="1")=cross(eRod_ia, e2_ia)
     "Unit vector perpendicular to eRod_ia and e2_ia, resolved in frame_ia";
-  SI.Power totalPower 
+  SI.Power totalPower
     "Total power flowing into this element, if checkTotalPower=true (otherwise dummy)";
-  SI.Force f_b_a1[3] 
+  SI.Force f_b_a1[3]
     "frame_b.f without f_rod part, resolved in frame_a (needed for analytic loop handling)";
-  Real eRod_a[3](each final unit="1") 
+  Real eRod_a[3](each final unit="1")
     "Unit vector in direction of rRod_a, resolved in frame_a (needed for analytic loop handling)";
-  SI.Position rRod_0[3](start=rRod_ia) 
+  SI.Position rRod_0[3](start=rRod_ia)
     "Position vector from origin of frame_a to origin of frame_b resolved in world frame";
-  SI.Position rRod_a[3](start=rRod_ia) 
+  SI.Position rRod_a[3](start=rRod_ia)
     "Position vector from origin of frame_a to origin of frame_b resolved in frame_a";
 
 protected
   SI.Force f_b_a[3] "frame_b.f resolved in frame_a";
   SI.Force f_ia_a[3] "frame_ia.f resolved in frame_a";
   SI.Torque t_ia_a[3] "frame_ia.t resolved in frame_a";
-  Real n2_a[3](each final unit="1") 
+  Real n2_a[3](each final unit="1")
     "Vector in direction of axis 2 of the universal joint (e2_ia), resolved in frame_a";
   Real length2_n2_a(start=1, unit="1") "Square of length of vector n2_a";
   Real length_n2_a(unit="1") "Length of vector n2_a";
-  Real e2_a[3](each final unit="1") 
+  Real e2_a[3](each final unit="1")
     "Unit vector in direction of axis 2 of the universal joint (e2_ia), resolved in frame_a";
-  Real e3_a[3](each final unit="1") 
+  Real e3_a[3](each final unit="1")
     "Unit vector perpendicular to eRod_ia and e2_a, resolved in frame_a";
   Real der_rRod_a_L[3](each unit="1/s") "= der(rRod_a)/rodLength";
   SI.AngularVelocity w_rel_ia1[3];
@@ -111,63 +111,63 @@ protected
   Frames.Orientation R_rel_ia "Rotation from frame_a to frame_ia";
 
   Visualizers.Advanced.Shape rodShape(
-    shapeType=rodShapeType, 
-    color=rodColor, 
-    specularCoefficient=specularCoefficient, 
-    length=rodLength, 
-    width=rodWidth, 
-    height=rodHeight, 
-    lengthDirection=eRod_ia, 
-    widthDirection=e2_ia, 
-    r=frame_ia.r_0, 
+    shapeType=rodShapeType,
+    color=rodColor,
+    specularCoefficient=specularCoefficient,
+    length=rodLength,
+    width=rodWidth,
+    height=rodHeight,
+    lengthDirection=eRod_ia,
+    widthDirection=e2_ia,
+    r=frame_ia.r_0,
     R=frame_ia.R) if world.enableAnimation and animation;
   Visualizers.Advanced.Shape sphericalShape_b(
-    shapeType="sphere", 
-    color=sphereColor, 
-    specularCoefficient=specularCoefficient, 
-    length=sphereDiameter, 
-    width=sphereDiameter, 
-    height=sphereDiameter, 
-    lengthDirection={1,0,0}, 
-    widthDirection={0,1,0}, 
-    r_shape={-0.5,0,0}*sphereDiameter, 
-    r=frame_b.r_0, 
+    shapeType="sphere",
+    color=sphereColor,
+    specularCoefficient=specularCoefficient,
+    length=sphereDiameter,
+    width=sphereDiameter,
+    height=sphereDiameter,
+    lengthDirection={1,0,0},
+    widthDirection={0,1,0},
+    r_shape={-0.5,0,0}*sphereDiameter,
+    r=frame_b.r_0,
     R=frame_b.R) if world.enableAnimation and animation;
   Visualizers.Advanced.Shape sphericalShape_a(
-    shapeType="sphere", 
-    color=sphereColor, 
-    specularCoefficient=specularCoefficient, 
-    length=sphereDiameter, 
-    width=sphereDiameter, 
-    height=sphereDiameter, 
-    lengthDirection={1,0,0}, 
-    widthDirection={0,1,0}, 
-    r_shape={-0.5,0,0}*sphereDiameter, 
-    r=frame_a.r_0, 
+    shapeType="sphere",
+    color=sphereColor,
+    specularCoefficient=specularCoefficient,
+    length=sphereDiameter,
+    width=sphereDiameter,
+    height=sphereDiameter,
+    lengthDirection={1,0,0},
+    widthDirection={0,1,0},
+    r_shape={-0.5,0,0}*sphereDiameter,
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation and not showUniversalAxes;
   Visualizers.Advanced.Shape universalShape1(
-    shapeType="cylinder", 
-    color=cylinderColor, 
-    specularCoefficient=specularCoefficient, 
-    length=cylinderLength, 
-    width=cylinderDiameter, 
-    height=cylinderDiameter, 
-    lengthDirection=n1_a, 
-    widthDirection={0,1,0}, 
-    r_shape=-n1_a*(cylinderLength/2), 
-    r=frame_a.r_0, 
+    shapeType="cylinder",
+    color=cylinderColor,
+    specularCoefficient=specularCoefficient,
+    length=cylinderLength,
+    width=cylinderDiameter,
+    height=cylinderDiameter,
+    lengthDirection=n1_a,
+    widthDirection={0,1,0},
+    r_shape=-n1_a*(cylinderLength/2),
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation and showUniversalAxes;
   Visualizers.Advanced.Shape universalShape2(
-    shapeType="cylinder", 
-    color=cylinderColor, 
-    specularCoefficient=specularCoefficient, 
-    length=cylinderLength, 
-    width=cylinderDiameter, 
-    height=cylinderDiameter, 
-    lengthDirection=e2_ia, 
-    widthDirection={0,1,0}, 
-    r_shape=-e2_ia*(cylinderLength/2), 
-    r=frame_ia.r_0, 
+    shapeType="cylinder",
+    color=cylinderColor,
+    specularCoefficient=specularCoefficient,
+    length=cylinderLength,
+    width=cylinderDiameter,
+    height=cylinderDiameter,
+    lengthDirection=e2_ia,
+    widthDirection={0,1,0},
+    r_shape=-e2_ia*(cylinderLength/2),
+    r=frame_ia.r_0,
     R=frame_ia.R) if world.enableAnimation and animation and showUniversalAxes;
 
 initial equation
@@ -248,9 +248,9 @@ singular configuration.
      rRod_a            = resolve2(frame_a.R, rRod_0);
      der(rRod_a)       = resolve2(frame_a.R, der(rRod_0)) - cross(frame_a.R.w, rRod_a));
 */
-  der_rRod_a_L = (Frames.resolve2(frame_a.R, der(rRod_0)) - cross(frame_a.R.w, 
+  der_rRod_a_L = (Frames.resolve2(frame_a.R, der(rRod_0)) - cross(frame_a.R.w,
      rRod_a))/rodLength;
-  w_rel_ia1 = {e3_a*cross(n1_a, der_rRod_a_L)/length_n2_a,-e3_a*der_rRod_a_L, 
+  w_rel_ia1 = {e3_a*cross(n1_a, der_rRod_a_L)/length_n2_a,-e3_a*der_rRod_a_L,
     e2_a*der_rRod_a_L};
   R_rel_ia1 = Frames.from_T(transpose([eRod_a, e2_a, e3_a]), w_rel_ia1);
   R_rel_ia2 = Frames.from_T([eRod_ia, e2_ia, e3_ia], zeros(3));
@@ -290,7 +290,7 @@ singular configuration.
   t_ia_a = Frames.resolve1(R_rel_ia, frame_ia.t);
 
     // f_b_a1 is needed in aggregation joints to solve kinematic loops analytically
-  f_b_a1 = -e2_a*((n1_a*t_ia_a)/(rodLength*(n1_a*e3_a))) + e3_a*((e2_a*t_ia_a) 
+  f_b_a1 = -e2_a*((n1_a*t_ia_a)/(rodLength*(n1_a*e3_a))) + e3_a*((e2_a*t_ia_a)
     /rodLength);
   f_b_a = -f_rod*eRod_a + f_b_a1;
   frame_b.f = Frames.resolveRelative(f_b_a, frame_a.R, frame_b.R);
@@ -300,9 +300,9 @@ singular configuration.
 
   // Measure power for test purposes
   if checkTotalPower then
-    totalPower = frame_a.f*Frames.resolve2(frame_a.R, der(frame_a.r_0)) + 
-      frame_b.f*Frames.resolve2(frame_b.R, der(frame_b.r_0)) + frame_ia.f* 
-      Frames.resolve2(frame_ia.R, der(frame_ia.r_0)) + frame_a.t* 
+    totalPower = frame_a.f*Frames.resolve2(frame_a.R, der(frame_a.r_0)) +
+      frame_b.f*Frames.resolve2(frame_b.R, der(frame_b.r_0)) + frame_ia.f*
+      Frames.resolve2(frame_ia.R, der(frame_ia.r_0)) + frame_a.t*
       Frames.angularVelocity2(frame_a.R) + frame_b.t*Frames.angularVelocity2(
       frame_b.R) + frame_ia.t*Frames.angularVelocity2(frame_ia.R);
   else
@@ -400,87 +400,87 @@ the origin of frame_a to the middle of the rod, this might be defined as:
 <strong>equation</strong>
   <strong>connect</strong>(jointUS.frame_ia, shape.frame_a);
 </pre></blockquote>
-</html>"), 
+</html>"),
          Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Text(
-          extent={{-150,-50},{150,-90}}, 
-          textColor={0,0,255}, 
-          textString="%name"), 
+          extent={{-150,-50},{150,-90}},
+          textColor={0,0,255},
+          textString="%name"),
         Ellipse(
-          extent={{-100,-40},{-19,40}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{-100,-40},{-19,40}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{-90,-30},{-29,29}}, 
-          lineColor={160,160,164}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-90,-30},{-29,29}},
+          lineColor={160,160,164},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-60,41},{-9,-44}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-60,41},{-9,-44}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Line(
-          points={{-60,40},{-60,-40}}, 
-          thickness=0.5), 
+          points={{-60,40},{-60,-40}},
+          thickness=0.5),
         Ellipse(
-          extent={{-83,-17},{-34,21}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{-83,-17},{-34,21}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{-74,-12},{-40,15}}, 
-          lineColor={160,160,164}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-74,-12},{-40,15}},
+          lineColor={160,160,164},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{-72,-20},{-89,3},{-69,25},{-45,27},{-72,-20}}, 
-          pattern=LinePattern.None, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
+          points={{-72,-20},{-89,3},{-69,25},{-45,27},{-72,-20}},
+          pattern=LinePattern.None,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
         Line(
-          points={{-60,40},{-60,-10}}, 
-          thickness=0.5), 
+          points={{-60,40},{-60,-10}},
+          thickness=0.5),
         Line(
-          points={{-49,20},{-69,-15}}, 
-          thickness=0.5), 
+          points={{-49,20},{-69,-15}},
+          thickness=0.5),
         Ellipse(
-          extent={{44,14},{73,-14}}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{44,14},{73,-14}},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{20,-40},{100,40}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{20,-40},{100,40}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{30,-30},{90,30}}, 
-          lineColor={192,192,192}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{30,-30},{90,30}},
+          lineColor={192,192,192},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-22,45},{40,-43}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-22,45},{40,-43}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{46,14},{75,-14}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{46,14},{75,-14}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Rectangle(
-          extent={{-36,-8},{48,8}}, 
-          pattern=LinePattern.None, 
-          fillPattern=FillPattern.HorizontalCylinder, 
-          fillColor={192,192,192}), 
+          extent={{-36,-8},{48,8}},
+          pattern=LinePattern.None,
+          fillPattern=FillPattern.HorizontalCylinder,
+          fillColor={192,192,192}),
         Text(
-          extent={{-105,118},{-67,86}}, 
-          textColor={128,128,128}, 
-          textString="ia"), 
+          extent={{-105,118},{-67,86}},
+          textColor={128,128,128},
+          textString="ia"),
         Text(
-          extent={{-24,95},{167,65}}, 
-          textString="%rRod_ia"), 
+          extent={{-24,95},{167,65}},
+          textString="%rRod_ia"),
         Line(
-          points={{-40,101},{-40,60},{-60,1}}, 
-          color={128,128,128}, 
+          points={{-40,101},{-40,60},{-60,1}},
+          color={128,128,128},
           thickness=0.5)}));
 end UniversalSpherical;

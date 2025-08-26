@@ -5,8 +5,8 @@ model HBridge_R "H bridge DC/DC converter with resistive load"
   parameter SI.Resistance R=100 "Resistance";
   Modelica.Electrical.Analog.Basic.Resistor resistor(R=R) annotation (
       Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={20,50})));
 equation
   connect(resistor.p, hbridge.dc_p2) annotation (Line(
@@ -15,9 +15,9 @@ equation
       points={{20,40},{20,-6},{0,-6}}, color={0,0,255}));
   annotation (
     experiment(
-      StopTime=0.1, 
-      Interval=0.0002, 
-      Tolerance=1e-06), 
+      StopTime=0.1,
+      Interval=0.0002,
+      Tolerance=1e-06),
     Documentation(info="<html>
 <p>This example demonstrates the switching on of a resistive load operated by an H bridge.
 DC output voltage is equal to <code>2 * (dutyCycle - 0.5)</code> times the input voltage.

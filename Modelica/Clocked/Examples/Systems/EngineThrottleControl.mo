@@ -1,12 +1,12 @@
 ﻿within Modelica.Clocked.Examples.Systems;
-model EngineThrottleControl 
+model EngineThrottleControl
   "Closed-loop throttle control synchronized to the crankshaft angle of an
    internal combustion engine"
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Step speedRef(
-    startTime = 5, 
-    offset = 207.34, 
+    startTime = 5,
+    offset = 207.34,
     height = 103.67) 
     annotation (Placement(transformation(extent = {{-90,6},{-70,26}})));
   Utilities.ComponentsThrottleControl.SpeedControl speedControl 
@@ -18,13 +18,13 @@ model EngineThrottleControl
   Utilities.ComponentsThrottleControl.Engine engine 
     annotation (Placement(transformation(extent = {{32,-4},{60,24}})));
   Modelica.Blocks.Sources.Step step1(
-    height = -5, 
-    offset = 25, 
+    height = -5,
+    offset = 25,
     startTime = 2) 
     annotation (Placement(transformation(extent = {{148,23},{134,37}})));
   Modelica.Blocks.Sources.Step step2(
-    height = 5, 
-    offset = 0, 
+    height = 5,
+    offset = 0,
     startTime = 8) 
     annotation (Placement(transformation(extent = {{148,-16},{134,-2}})));
   Modelica.Blocks.Math.Add add(k1 = -1, k2 = -1) 
@@ -33,8 +33,8 @@ model EngineThrottleControl
     annotation (Placement(transformation(extent = {{90,0},{70,20}})));
   Modelica.Mechanics.Rotational.Sensors.AngleSensor angleSensor 
     annotation (Placement(transformation(
-      extent = {{-10,-10},{10,10}}, 
-      rotation = -90, 
+      extent = {{-10,-10},{10,10}},
+      rotation = -90,
       origin = {70,-30})));
   Modelica.Blocks.Continuous.Der derivative 
     annotation (Placement(transformation(extent = {{20,-60},{0,-40}})));
@@ -44,11 +44,11 @@ model EngineThrottleControl
 equation
   connect(speedRef.y, sample1.u) 
     annotation (Line(
-      points = {{-69,16},{-61.4,16}}, 
+      points = {{-69,16},{-61.4,16}},
       color = {0,0,127}));
   connect(sample1.y, speedControl.N_des) 
     annotation (Line(
-      points = {{-45.3,16},{-35.2,16}}, 
+      points = {{-45.3,16},{-35.2,16}},
       color = {0,0,127}));
   connect(speedControl.Theta, hold1.u) 
     annotation (Line(points={{1.6,10},{6.8,10}}, color={0,0,127}));
@@ -59,52 +59,52 @@ equation
       points = {{70,10},{60,10}}));
   connect(add.y, torque.tau) 
     annotation (Line(
-      points = {{103.4,10},{92,10}}, 
+      points = {{103.4,10},{92,10}},
       color = {0,0,127}));
   connect(step2.y, add.u2) 
     annotation (Line(
-      points = {{133.3,-9},{128,-9},{128,6.4},{117.2,6.4}}, 
+      points = {{133.3,-9},{128,-9},{128,6.4},{117.2,6.4}},
       color = {0,0,127}));
   connect(step1.y, add.u1) 
     annotation (Line(
-      points = {{133.3,30},{128,30},{128,13.6},{117.2,13.6}}, 
+      points = {{133.3,30},{128,30},{128,13.6},{117.2,13.6}},
       color = {0,0,127}));
   connect(engine.flange_b, angleSensor.flange) 
     annotation (Line(
       points = {{60,10},{70,10},{70,-20}}));
   connect(angleSensor.phi, derivative.u) 
     annotation (Line(
-      points = {{70,-41},{70,-50},{22,-50}}, 
+      points = {{70,-41},{70,-50},{22,-50}},
       color = {0,0,127}));
   connect(derivative.y, sample2.u) 
     annotation (Line(
-      points = {{-1,-50},{-22.8,-50}}, 
+      points = {{-1,-50},{-22.8,-50}},
       color = {0,0,127}));
   connect(sample2.y, speedControl.N) 
     annotation (Line(
-      points = {{-36.6,-50},{-50,-50},{-50,1},{-35.2,1}}, 
+      points = {{-36.6,-50},{-50,-50},{-50,1},{-35.2,1}},
       color = {0,0,127}));
   connect(sample2.clock, engine.synchronize) 
     annotation (Line(
-      points = {{-30,-42.8},{-30,-20},{64,-20},{64,0},{61.4,0},{61.4,0.2}}, 
-      color = {175,175,175}, 
-      pattern = LinePattern.Dot, 
+      points = {{-30,-42.8},{-30,-20},{64,-20},{64,0},{61.4,0},{61.4,0.2}},
+      color = {175,175,175},
+      pattern = LinePattern.Dot,
       thickness = 0.5));
 
   annotation (
     Diagram(
       coordinateSystem(
-        preserveAspectRatio = true, 
-        extent = {{-100,-100},{160,100}}), 
+        preserveAspectRatio = true,
+        extent = {{-100,-100},{160,100}}),
       graphics={
         Rectangle(
-          extent = {{100,60},{152,-30}}, 
-          lineColor = {0,0,255}), 
+          extent = {{100,60},{152,-30}},
+          lineColor = {0,0,255}),
         Text(
-          extent = {{100,60},{150,40}}, 
-          textColor = {0,0,255}, 
-          textString = "Load torque")}), 
-    experiment(StopTime = 1.1), 
+          extent = {{100,60},{150,40}},
+          textColor = {0,0,255},
+          textString = "Load torque")}),
+    experiment(StopTime = 1.1),
     Documentation(info="<html>
 <p>
 This example shows how to model a non-periodic synchronous sampled data systems

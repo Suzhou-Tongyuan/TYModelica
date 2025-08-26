@@ -1,57 +1,57 @@
 ﻿within Modelica.Mechanics.MultiBody.Forces;
-model Torque 
+model Torque
   "Torque acting between two frames, defined by 3 input signals and resolved in frame world, frame_a, frame_b or frame_resolve"
   import Modelica.Units.Conversions.to_unit1;
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;
   Interfaces.Frame_resolve frame_resolve if 
-       resolveInFrame == Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_resolve 
+       resolveInFrame == Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_resolve
     "The input signals are optionally resolved in this frame" 
     annotation (Placement(transformation(
-        origin={40,100}, 
-        extent={{-16,-16},{16,16}}, 
+        origin={40,100},
+        extent={{-16,-16},{16,16}},
         rotation=90)));
 
-  Modelica.Blocks.Interfaces.RealInput torque[3](each final quantity="Torque", each final unit="N.m") 
+  Modelica.Blocks.Interfaces.RealInput torque[3](each final quantity="Torque", each final unit="N.m")
     "x-, y-, z-coordinates of torque resolved in frame defined by resolveInFrame" 
     annotation (Placement(transformation(
-        origin={-60,120}, 
-        extent={{-20,-20},{20,20}}, 
+        origin={-60,120},
+        extent={{-20,-20},{20,20}},
         rotation=270)));
   parameter Boolean animation=true "= true, if animation shall be enabled";
   parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB 
-    resolveInFrame= 
-    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_b 
+    resolveInFrame=
+    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_b
     "Frame in which input force is resolved (1: world, 2: frame_a, 3: frame_b, 4: frame_resolve)";
-  input SI.Diameter connectionLineDiameter=world.defaultArrowDiameter 
+  input SI.Diameter connectionLineDiameter=world.defaultArrowDiameter
     "Diameter of line connecting frame_a and frame_b" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input Types.Color torqueColor=Modelica.Mechanics.MultiBody.Types.Defaults.TorqueColor 
+  input Types.Color torqueColor=Modelica.Mechanics.MultiBody.Types.Defaults.TorqueColor
     "Color of torque arrow" annotation (Dialog(colorSelector=true, group="if animation = true", enable=animation));
-  input Types.Color connectionLineColor=Modelica.Mechanics.MultiBody.Types.Defaults.SensorColor 
+  input Types.Color connectionLineColor=Modelica.Mechanics.MultiBody.Types.Defaults.SensorColor
     "Color of line connecting frame_a and frame_b" 
     annotation (Dialog(colorSelector=true, group="if animation = true", enable=animation));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(group="if animation = true", enable=animation));
 
 protected
   Visualizers.Advanced.DoubleArrow torqueArrow(
-    color=torqueColor, 
-    specularCoefficient=specularCoefficient, 
-    R=frame_b.R, 
-    r=frame_b.r_0, 
-    quantity=Modelica.Mechanics.MultiBody.Types.VectorQuantity.Torque, 
-    headAtOrigin=true, 
+    color=torqueColor,
+    specularCoefficient=specularCoefficient,
+    R=frame_b.R,
+    r=frame_b.r_0,
+    quantity=Modelica.Mechanics.MultiBody.Types.VectorQuantity.Torque,
+    headAtOrigin=true,
     r_head=-frame_b.t) if world.enableAnimation and animation;
   Visualizers.Advanced.Shape connectionLine(
-    shapeType="cylinder", 
-    lengthDirection = to_unit1(basicTorque.r_0), 
-    widthDirection={0,1,0}, 
-    length=Modelica.Math.Vectors.length(basicTorque.r_0), 
-    width=connectionLineDiameter, 
-    height=connectionLineDiameter, 
-    color=connectionLineColor, 
-    specularCoefficient=specularCoefficient, 
+    shapeType="cylinder",
+    lengthDirection = to_unit1(basicTorque.r_0),
+    widthDirection={0,1,0},
+    length=Modelica.Math.Vectors.length(basicTorque.r_0),
+    width=connectionLineDiameter,
+    height=connectionLineDiameter,
+    color=connectionLineColor,
+    specularCoefficient=specularCoefficient,
     r=frame_a.r_0) if world.enableAnimation and animation;
 
 public
@@ -63,56 +63,56 @@ protected
     annotation (Placement(transformation(extent={{34,10},{54,30}})));
 equation
   connect(basicTorque.frame_a, frame_a) annotation (Line(
-      points={{-8,0},{-100,0}}, 
-      color={95,95,95}, 
+      points={{-8,0},{-100,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(basicTorque.frame_b, frame_b) annotation (Line(
-      points={{12,0},{100,0}}, 
-      color={95,95,95}, 
+      points={{12,0},{100,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(basicTorque.torque, torque) annotation (Line(
       points={{-4,12},{-4,60},{-60,60},{-60,120}}, color={0,0,127}));
   connect(basicTorque.frame_resolve, frame_resolve) annotation (Line(
-      points={{6,10},{6,60},{40,60},{40,100}}, 
-      color={95,95,95}, 
+      points={{6,10},{6,60},{40,60},{40,100}},
+      color={95,95,95},
       pattern=LinePattern.Dot));
   connect(zeroPosition.frame_resolve, basicTorque.frame_resolve) annotation (
       Line(
-      points={{34,20},{20,20},{20,10},{6,10}}, 
-      color={95,95,95}, 
+      points={{34,20},{20,20},{20,10},{6,10}},
+      color={95,95,95},
       pattern=LinePattern.Dot));
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics={
         Rectangle(
-          extent={{-98,99},{99,-98}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-98,99},{99,-98}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-59,55},{72,30}}, 
-          textColor={192,192,192}, 
-          textString="resolve"), 
+          extent={{-59,55},{72,30}},
+          textColor={192,192,192},
+          textString="resolve"),
         Text(
-          extent={{-150,-30},{150,-70}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,-30},{150,-70}},
+          textString="%name",
+          textColor={0,0,255}),
         Polygon(
-          points={{100,20},{84,52},{69,39},{100,20}}, 
-          fillPattern=FillPattern.Solid), 
+          points={{100,20},{84,52},{69,39},{100,20}},
+          fillPattern=FillPattern.Solid),
         Line(
-          points={{40,100},{76,46}}, 
-          color={95,95,95}, 
-          pattern=LinePattern.Dot), 
+          points={{40,100},{76,46}},
+          color={95,95,95},
+          pattern=LinePattern.Dot),
         Polygon(
-          points={{-99,20},{-86,53},{-70,42},{-99,20}}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-99,20},{-86,53},{-70,42},{-99,20}},
+          fillPattern=FillPattern.Solid),
         Line(
-          points={{-60,100},{40,100}}, 
-          color={95,95,95}, 
-          pattern=LinePattern.Dot), 
-        Line(points={{-79,47},{-70,61},{-59,72},{-45,81},{-32,84},{-20,85}}), 
-        Line(points={{77,45},{66,60},{55,69},{49,74},{41,80},{31,84},{20,85}})}), 
+          points={{-60,100},{40,100}},
+          color={95,95,95},
+          pattern=LinePattern.Dot),
+        Line(points={{-79,47},{-70,61},{-59,72},{-45,81},{-32,84},{-20,85}}),
+        Line(points={{77,45},{66,60},{55,69},{49,74},{41,80},{31,84},{20,85}})}),
     Documentation(info="<html>
 <p>
 The <strong>3</strong> signals of the <strong>torque</strong> connector are interpreted

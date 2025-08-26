@@ -1,5 +1,5 @@
 ﻿within Modelica.Magnetic.FundamentalWave.Types;
-record SalientVoltage = Salient (redeclare SI.Voltage d, 
+record SalientVoltage = Salient (redeclare SI.Voltage d,
       redeclare SI.Voltage q) "Salient voltage" annotation (
     Documentation(info="<html>
 <p>Type representing the d- and q-axis of a voltage phasor.</p>

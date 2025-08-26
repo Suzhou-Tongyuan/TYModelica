@@ -1,5 +1,5 @@
 ﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Losses;
-model PermanentMagnetLosses 
+model PermanentMagnetLosses
   "Model of permanent magnet losses dependent on current and speed"
   extends Modelica.Electrical.Machines.Interfaces.FlangeSupport;
   import Modelica.Electrical.QuasiStatic.Polyphase.Functions.quasiRMS;
@@ -10,19 +10,19 @@ model PermanentMagnetLosses
   extends 
     Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPortWithoutT(
       useHeatPort=false);
-  input SI.ComplexCurrent is[m] 
+  input SI.ComplexCurrent is[m]
     "Instantaneous stator currents";
   SI.Current iRMS=quasiRMS(is);
 equation
   if (permanentMagnetLossParameters.PRef <= 0) then
     tau = 0;
   else
-    tau = -permanentMagnetLossParameters.tauRef*(permanentMagnetLossParameters.c + (1 - permanentMagnetLossParameters.c)* 
-      (iRMS/permanentMagnetLossParameters.IRef)^permanentMagnetLossParameters.power_I)* 
+    tau = -permanentMagnetLossParameters.tauRef*(permanentMagnetLossParameters.c + (1 - permanentMagnetLossParameters.c)*
+      (iRMS/permanentMagnetLossParameters.IRef)^permanentMagnetLossParameters.power_I)*
       sign(w)*(abs(w)/permanentMagnetLossParameters.wRef)^permanentMagnetLossParameters.power_w;
   end if;
   lossPower = -tau*w;
-  annotation (defaultComponentName="magnetLoss", Icon(graphics={Ellipse(extent={{-40,-40},{40,40}}, lineColor= 
+  annotation (defaultComponentName="magnetLoss", Icon(graphics={Ellipse(extent={{-40,-40},{40,40}}, lineColor=
               {200,0,0})}), Documentation(info="<html>
 <p>
 Permanent magnet losses are modeled dependent on current and speed.

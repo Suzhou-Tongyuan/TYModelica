@@ -1,9 +1,9 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames;
 function from_nxz "Return fixed orientation object from n_x and n_z vectors"
   extends Modelica.Icons.Function;
-  input Real n_x[3](each final unit="1") 
+  input Real n_x[3](each final unit="1")
     "Vector in direction of x-axis of frame 2, resolved in frame 1";
-  input Real n_z[3](each final unit="1") 
+  input Real n_z[3](each final unit="1")
     "Vector in direction of z-axis of frame 2, resolved in frame 1";
   output Orientation R "Orientation object to rotate frame 1 into frame 2";
 algorithm

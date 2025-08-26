@@ -1,26 +1,26 @@
 ﻿within Modelica.Thermal.FluidHeatFlow.BaseClasses;
 partial model TwoPort "Partial model of two port"
-  parameter FluidHeatFlow.Media.Medium medium=FluidHeatFlow.Media.Medium() 
+  parameter FluidHeatFlow.Media.Medium medium=FluidHeatFlow.Media.Medium()
     "Medium in the component" annotation (choicesAllMatching=true);
   parameter SI.Mass m(start=1) "Mass of medium";
-  parameter SI.Temperature T0(start=293.15, displayUnit="degC") 
+  parameter SI.Temperature T0(start=293.15, displayUnit="degC")
     "Initial temperature of medium" 
     annotation(Dialog(enable=m>Modelica.Constants.small));
-  parameter Boolean T0fixed=false 
+  parameter Boolean T0fixed=false
     "Initial temperature guess value or fixed" 
   annotation(choices(checkBox=true),Dialog(enable=m>Modelica.Constants.small));
-  parameter Real tapT(final min=0, final max=1)=1 
+  parameter Real tapT(final min=0, final max=1)=1
     "Defines temperature of heatPort between inlet and outlet temperature";
   SI.Pressure dp "Pressure drop a->b";
   SI.VolumeFlowRate V_flow(start=0) "Volume flow a->b";
   SI.HeatFlowRate Q_flow "Heat exchange with ambient";
-  output SI.Temperature T(start=T0, fixed=T0fixed) 
+  output SI.Temperature T(start=T0, fixed=T0fixed)
     "Outlet temperature of medium";
   output SI.Temperature T_a "Temperature at flowPort_a";
   output SI.Temperature T_b "Temperature at flowPort_b";
-  output SI.TemperatureDifference dT 
+  output SI.TemperatureDifference dT
     "Temperature increase of coolant in flow direction";
-  SI.Temperature T_q 
+  SI.Temperature T_q
     "Temperature relevant for heat exchange with ambient";
 protected
   SI.SpecificEnthalpy h(start=medium.cp*T0) "Medium's specific enthalpy";

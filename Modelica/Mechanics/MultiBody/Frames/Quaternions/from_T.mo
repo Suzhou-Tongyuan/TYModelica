@@ -1,13 +1,13 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
-function from_T 
+function from_T
   "Return quaternion orientation object Q from transformation matrix T"
 
   extends Modelica.Icons.Function;
-  input Real T[3, 3] 
+  input Real T[3, 3]
     "Transformation matrix to transform vector from frame 1 to frame 2 (v2=T*v1)";
-  input Quaternions.Orientation Q_guess=nullRotation() 
+  input Quaternions.Orientation Q_guess=nullRotation()
     "Guess value for Q (there are 2 solutions; the one close to Q_guess is used";
-  output Quaternions.Orientation Q 
+  output Quaternions.Orientation Q
     "Quaternions orientation object to rotate frame 1 into frame 2 (Q and -Q have same transformation matrix)";
 protected
   Real paux;
@@ -48,19 +48,19 @@ algorithm
   elseif c1 > c2 and c1 > c3 and c1 > c4 then
     paux := sqrt(c1)/2;
     paux4 := 4*paux;
-    Q := {paux,(T[1, 2] + T[2, 1])/paux4,(T[1, 3] + T[3, 1])/paux4,(T[2, 3] 
+    Q := {paux,(T[1, 2] + T[2, 1])/paux4,(T[1, 3] + T[3, 1])/paux4,(T[2, 3]
        - T[3, 2])/paux4};
 
   elseif c2 > c1 and c2 > c3 and c2 > c4 then
     paux := sqrt(c2)/2;
     paux4 := 4*paux;
-    Q := {(T[1, 2] + T[2, 1])/paux4,paux,(T[2, 3] + T[3, 2])/paux4,(T[3, 1] 
+    Q := {(T[1, 2] + T[2, 1])/paux4,paux,(T[2, 3] + T[3, 2])/paux4,(T[3, 1]
        - T[1, 3])/paux4};
 
   else
     paux := sqrt(c3)/2;
     paux4 := 4*paux;
-    Q := {(T[1, 3] + T[3, 1])/paux4,(T[2, 3] + T[3, 2])/paux4,paux,(T[1, 2] 
+    Q := {(T[1, 3] + T[3, 1])/paux4,(T[2, 3] + T[3, 2])/paux4,paux,(T[1, 2]
        - T[2, 1])/paux4};
   end if;
 

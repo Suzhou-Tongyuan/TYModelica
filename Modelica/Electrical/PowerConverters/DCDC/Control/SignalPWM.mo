@@ -1,8 +1,8 @@
 ﻿within Modelica.Electrical.PowerConverters.DCDC.Control;
-model SignalPWM 
+model SignalPWM
   "Generates a pulse width modulated (PWM) boolean fire signal"
   extends Icons.Control;
-  parameter Boolean useConstantDutyCycle=true 
+  parameter Boolean useConstantDutyCycle=true
     "Enables constant duty cycle";
   parameter Real constantDutyCycle=0 "Constant duty cycle" 
     annotation (Dialog(enable=useConstantDutyCycle));
@@ -13,13 +13,13 @@ model SignalPWM
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.BooleanOutput fire "Firing PWM signal" 
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=90, 
+        extent={{-10,-10},{10,10}},
+        rotation=90,
         origin={-60,110})));
   Modelica.Blocks.Interfaces.BooleanOutput notFire "Firing PWM signal" 
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=90, 
+        extent={{-10,-10},{10,10}},
+        rotation=90,
         origin={60,110})));
   Modelica.Blocks.Sources.Constant const(final k=constantDutyCycle) if 
     useConstantDutyCycle 
@@ -28,23 +28,23 @@ model SignalPWM
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Modelica.Blocks.Logical.Less greaterEqual annotation (Placement(
         transformation(
-        extent={{-10,10},{10,-10}}, 
+        extent={{-10,10},{10,-10}},
         origin={22,-8})));
-  Modelica.Blocks.Discrete.ZeroOrderHold zeroOrderHold(final startTime= 
+  Modelica.Blocks.Discrete.ZeroOrderHold zeroOrderHold(final startTime=
         startTime, final samplePeriod=1/f) 
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
   Modelica.Blocks.Sources.SawTooth sawtooth(
-    final period=1/f, 
-    final amplitude=1, 
-    final nperiod=-1, 
-    final offset=0, 
+    final period=1/f,
+    final amplitude=1,
+    final nperiod=-1,
+    final offset=0,
     final startTime=startTime) annotation (Placement(transformation(
-        origin={-50,-50}, 
+        origin={-50,-50},
         extent={{-10,-10},{10,10}})));
   Modelica.Blocks.Logical.Not inverse annotation (Placement(
         transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=90, 
+        extent={{-10,10},{10,-10}},
+        rotation=90,
         origin={52,20})));
 equation
   connect(const.y, limiter.u) annotation (Line(
@@ -63,28 +63,28 @@ equation
       points={{33,-8},{36,-8},{36,80},{-60,80},{-60,110}}, color={255,0,255}));
   connect(inverse.y, notFire) annotation (Line(
       points={{52,31},{52,80},{60,80},{60,110}}, color={255,0,255}));
-  annotation (defaultComponentName="pwm", 
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+  annotation (defaultComponentName="pwm",
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}),graphics={Line(
-                points={{-100,0},{-98,0},{12,0}}, 
+                points={{-100,0},{-98,0},{12,0}},
                 color={0,0,255}),Line(
-                points={{-60,-22},{-60,-64},{44,-64},{44,-36}}, 
+                points={{-60,-22},{-60,-64},{44,-64},{44,-36}},
                 color={0,0,255}),Line(
-                points={{-80,-16},{-80,-20},{-40,20},{-40,-20},{-36,-16}}, 
+                points={{-80,-16},{-80,-20},{-40,20},{-40,-20},{-36,-16}},
                 color={0,0,255}),Line(
-                points={{-62,0},{-76,4},{-76,-4},{-62,0}}, 
+                points={{-62,0},{-76,4},{-76,-4},{-62,0}},
                 color={0,0,255}),Line(
-                points={{44,-36},{44,-36},{40,-50},{44,-50},{48,-50},{44, 
-            -36}}, 
+                points={{44,-36},{44,-36},{40,-50},{44,-50},{48,-50},{44,
+            -36}},
                 color={0,0,255}),Line(
-                points={{20,-20},{22,-20},{24,-20},{24,20},{44,20},{44,-20}, 
-            {64,-20},{64,-16}}, 
+                points={{20,-20},{22,-20},{24,-20},{24,20},{44,20},{44,-20},
+            {64,-20},{64,-16}},
                 color={255,0,255}),Line(
-                points={{-40,-16},{-40,-20},{0,20},{0,-20},{4,-16}}, 
+                points={{-40,-16},{-40,-20},{0,20},{0,-20},{4,-16}},
                 color={0,0,255}),Line(
-                points={{60,-20},{62,-20},{64,-20},{64,20},{84,20},{84,-20}, 
-            {84,-20},{88,-20}}, 
-                color={255,0,255})}), 
+                points={{60,-20},{62,-20},{64,-20},{64,20},{84,20},{84,-20},
+            {84,-20},{88,-20}},
+                color={255,0,255})}),
     Documentation(info="<html>
 <p>
 This controller can be used both for DC/DC and AC/DC converters.

@@ -1,10 +1,10 @@
 ﻿within Modelica.Electrical.QuasiStatic.Polyphase.Functions;
-function activePower 
+function activePower
   "Calculate active power of complex input voltage and current"
   extends Modelica.Icons.Function;
-  input SI.ComplexVoltage v[:] 
+  input SI.ComplexVoltage v[:]
     "QuasiStatic voltage phasors";
-  input SI.ComplexCurrent i[size(v, 1)] 
+  input SI.ComplexCurrent i[size(v, 1)]
     "QuasiStatic current phasors";
   output SI.Power p "Active power";
 algorithm

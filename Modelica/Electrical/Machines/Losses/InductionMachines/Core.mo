@@ -1,22 +1,22 @@
 ﻿within Modelica.Electrical.Machines.Losses.InductionMachines;
 model Core "Model of core losses"
-  parameter Machines.Losses.CoreParameters coreParameters(m=3) 
+  parameter Machines.Losses.CoreParameters coreParameters(m=3)
     "Core parameters";
   //for backwards compatibility present but unused
   final parameter Integer m=coreParameters.m "Number of phases" annotation(Evaluate=true);
-  parameter Real turnsRatio(final min=Modelica.Constants.small) 
+  parameter Real turnsRatio(final min=Modelica.Constants.small)
     "Effective number of stator turns / effective number of rotor turns (if used as rotor core)";
   extends 
     Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPortWithoutT(
       useHeatPort=false);
   Machines.Interfaces.SpacePhasor spacePhasor annotation (Placement(
-        transformation(extent={{-110,-10},{-90,10}}), iconTransformation(extent= 
+        transformation(extent={{-110,-10},{-90,10}}), iconTransformation(extent=
            {{-110,-10},{-90,10}})));
-  input SI.AngularVelocity w 
+  input SI.AngularVelocity w
     "Remagnetization angular velocity" annotation (Dialog(group="Losses"));
   SI.Conductance Gc "Variable core loss conductance";
 protected
-  SI.AngularVelocity wLimit=noEvent(max(noEvent(abs(w)), 
+  SI.AngularVelocity wLimit=noEvent(max(noEvent(abs(w)),
       coreParameters.wMin)) "Limited angular velocity";
 equation
   if (coreParameters.PRef <= 0) then
@@ -30,29 +30,29 @@ equation
   lossPower = 3/2*(+spacePhasor.v_[1]*spacePhasor.i_[1] + spacePhasor.v_[2]*spacePhasor.i_[2]);
   annotation (Icon(graphics={
         Rectangle(
-          extent={{-70,30},{70,-30}}, 
-          lineColor={0,0,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-90,0},{-70,0}}), 
-        Line(points={{-70,10},{70,10}}, color={0,0,255}), 
-        Line(points={{-70,-30},{70,-30}}, color={0,0,255}), 
-        Line(points={{-70,-10},{70,-10}}, color={0,0,255}), 
+          extent={{-70,30},{70,-30}},
+          lineColor={0,0,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-90,0},{-70,0}}),
+        Line(points={{-70,10},{70,10}}, color={0,0,255}),
+        Line(points={{-70,-30},{70,-30}}, color={0,0,255}),
+        Line(points={{-70,-10},{70,-10}}, color={0,0,255}),
         Line(
-          points={{70,0},{80,0}}, 
-          color={0,0,255}), 
+          points={{70,0},{80,0}},
+          color={0,0,255}),
         Line(
-          points={{80,20},{80,-20}}, 
-          color={0,0,255}), 
+          points={{80,20},{80,-20}},
+          color={0,0,255}),
         Line(
-          points={{90,14},{90,-14}}, 
-          color={0,0,255}), 
+          points={{90,14},{90,-14}},
+          color={0,0,255}),
         Line(
-          points={{100,8},{100,-8}}, 
-          color={0,0,255}), 
+          points={{100,8},{100,-8}},
+          color={0,0,255}),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textColor={0,0,255}, 
+          extent={{-150,90},{150,50}},
+          textColor={0,0,255},
           textString="%name")}), Documentation(info="<html>
 <p>
 Core losses can be separated into <strong>eddy current</strong> and <strong>hysteresis</strong> losses. The total core losses

@@ -1,24 +1,24 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
-type Orientation 
+type Orientation
   "Orientation type defining rotation from a frame 1 into a frame 2 with quaternions {p1,p2,p3,p0}"
 
   extends Internal.QuaternionBase;
 
-  encapsulated function equalityConstraint 
+  encapsulated function equalityConstraint
     "Return the constraint residues to express that two frames have the same quaternion orientation"
 
     import Modelica;
     import Modelica.Mechanics.MultiBody.Frames.Quaternions;
     extends Modelica.Icons.Function;
-    input Quaternions.Orientation Q1 
+    input Quaternions.Orientation Q1
       "Quaternions orientation object to rotate frame 0 into frame 1";
-    input Quaternions.Orientation Q2 
+    input Quaternions.Orientation Q2
       "Quaternions orientation object to rotate frame 0 into frame 2";
-    output Real residue[3] 
+    output Real residue[3]
       "Zero vector if Q1 and Q2 are identical (the first three elements of the relative transformation (is {0,0,0} for the null rotation, guarded by atan2 to make the mirrored solution invalid";
   algorithm
-    residue := { Modelica.Math.atan2({ Q1[4],  Q1[3], -Q1[2], -Q1[1]}*Q2, Q1*Q2), 
-                 Modelica.Math.atan2({-Q1[3],  Q1[4],  Q1[1], -Q1[2]}*Q2, Q1*Q2), 
+    residue := { Modelica.Math.atan2({ Q1[4],  Q1[3], -Q1[2], -Q1[1]}*Q2, Q1*Q2),
+                 Modelica.Math.atan2({-Q1[3],  Q1[4],  Q1[1], -Q1[2]}*Q2, Q1*Q2),
                  Modelica.Math.atan2({ Q1[2], -Q1[1],  Q1[4], -Q1[3]}*Q2, Q1*Q2)};
     annotation(Inline=true, Documentation(info="<html>
 <h4>Syntax</h4>

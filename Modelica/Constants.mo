@@ -1,5 +1,5 @@
 ﻿within Modelica;
-package Constants 
+package Constants
   "Library of mathematical constants and constants of nature (e.g., pi, eps, R, sigma)"
 
   extends Modelica.Icons.Package;
@@ -11,17 +11,17 @@ package Constants
   final constant Real pi=2*Modelica.Math.asin(1.0); // 3.14159265358979;
   final constant Real D2R=pi/180 "Degree to Radian";
   final constant Real R2D=180/pi "Radian to Degree";
-  final constant Real gamma=0.57721566490153286061 
+  final constant Real gamma=0.57721566490153286061
     "See http://en.wikipedia.org/wiki/Euler_constant";
 
   // Machine dependent constants
-  final constant Real eps=ModelicaServices.Machine.eps 
+  final constant Real eps=ModelicaServices.Machine.eps
     "Biggest number such that 1.0 + eps = 1.0";
-  final constant Real small=ModelicaServices.Machine.small 
+  final constant Real small=ModelicaServices.Machine.small
     "Smallest number such that small and -small are representable on the machine";
-  final constant Real inf=ModelicaServices.Machine.inf 
+  final constant Real inf=ModelicaServices.Machine.inf
     "Biggest Real number such that inf and -inf are representable on the machine";
-  final constant Integer Integer_inf=ModelicaServices.Machine.Integer_inf 
+  final constant Integer Integer_inf=ModelicaServices.Machine.Integer_inf
     "Biggest Integer number such that Integer_inf and -Integer_inf are representable on the machine";
 
   // Constants of nature
@@ -33,27 +33,27 @@ package Constants
   // where alpha is the experimental fine-structure constant,
   // and the value is from https://physics.nist.gov/cuu/pdf/wall_2018.pdf
   final constant SI.Velocity c=299792458 "Speed of light in vacuum";
-  final constant SI.Acceleration g_n=9.80665 
+  final constant SI.Acceleration g_n=9.80665
     "Standard acceleration of gravity on earth";
-  final constant Real G(final unit="m3/(kg.s2)") = 6.67430e-11 
+  final constant Real G(final unit="m3/(kg.s2)") = 6.67430e-11
     "Newtonian constant of gravitation";
   final constant SI.ElectricCharge q = 1.602176634e-19 "Elementary charge";
-  final constant SI.FaradayConstant F = q*N_A 
+  final constant SI.FaradayConstant F = q*N_A
     "Faraday constant, C/mol";
-  final constant Real h(final unit="J.s") = 6.62607015e-34 
+  final constant Real h(final unit="J.s") = 6.62607015e-34
     "Planck constant";
-  final constant Real k(final unit="J/K") = 1.380649e-23 
+  final constant Real k(final unit="J/K") = 1.380649e-23
     "Boltzmann constant";
-  final constant Real R(final unit="J/(mol.K)") = k*N_A 
+  final constant Real R(final unit="J/(mol.K)") = k*N_A
     "Molar gas constant";
-  final constant Real sigma(final unit="W/(m2.K4)") = 2*pi^5*k^4/(15*h^3*c^2) 
+  final constant Real sigma(final unit="W/(m2.K4)") = 2*pi^5*k^4/(15*h^3*c^2)
     "Stefan-Boltzmann constant ";
-  final constant Real N_A(final unit="1/mol") = 6.02214076e23 
+  final constant Real N_A(final unit="1/mol") = 6.02214076e23
     "Avogadro constant";
   final constant Real mu_0(final unit="N/A2") = 4*pi*1.00000000055e-7 "Magnetic constant";
-  final constant Real epsilon_0(final unit="F/m") = 1/(mu_0*c*c) 
+  final constant Real epsilon_0(final unit="F/m") = 1/(mu_0*c*c)
     "Electric constant";
-  final constant NonSI.Temperature_degC T_zero=-273.15 
+  final constant NonSI.Temperature_degC T_zero=-273.15
     "Absolute zero temperature";
   annotation (
     Documentation(info="<html>
@@ -116,27 +116,27 @@ Copyright &copy; 1998-2020, Modelica Association and contributors
        by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a>:<br>
        Realized.</li>
 </ul>
-</html>"), 
+</html>"),
     Icon(coordinateSystem(extent={{-100.0,-100.0},{100.0,100.0}}), graphics={
       Polygon(
-        origin={-9.2597,25.6673}, 
-        fillColor={102,102,102}, 
-        pattern=LinePattern.None, 
-        fillPattern=FillPattern.Solid, 
-        points={{48.017,11.336},{48.017,11.336},{10.766,11.336},{-25.684,10.95},{-34.944,-15.111},{-34.944,-15.111},{-32.298,-15.244},{-32.298,-15.244},{-22.112,0.168},{11.292,0.234},{48.267,-0.097},{48.267,-0.097}}, 
-        smooth=Smooth.Bezier), 
+        origin={-9.2597,25.6673},
+        fillColor={102,102,102},
+        pattern=LinePattern.None,
+        fillPattern=FillPattern.Solid,
+        points={{48.017,11.336},{48.017,11.336},{10.766,11.336},{-25.684,10.95},{-34.944,-15.111},{-34.944,-15.111},{-32.298,-15.244},{-32.298,-15.244},{-22.112,0.168},{11.292,0.234},{48.267,-0.097},{48.267,-0.097}},
+        smooth=Smooth.Bezier),
       Polygon(
-        origin={-19.9923,-8.3993}, 
-        fillColor={102,102,102}, 
-        pattern=LinePattern.None, 
-        fillPattern=FillPattern.Solid, 
-        points={{3.239,37.343},{3.305,37.343},{-0.399,2.683},{-16.936,-20.071},{-7.808,-28.604},{6.811,-22.519},{9.986,37.145},{9.986,37.145}}, 
-        smooth=Smooth.Bezier), 
+        origin={-19.9923,-8.3993},
+        fillColor={102,102,102},
+        pattern=LinePattern.None,
+        fillPattern=FillPattern.Solid,
+        points={{3.239,37.343},{3.305,37.343},{-0.399,2.683},{-16.936,-20.071},{-7.808,-28.604},{6.811,-22.519},{9.986,37.145},{9.986,37.145}},
+        smooth=Smooth.Bezier),
       Polygon(
-        origin={23.753,-11.5422}, 
-        fillColor={102,102,102}, 
-        pattern=LinePattern.None, 
-        fillPattern=FillPattern.Solid, 
-        points={{-10.873,41.478},{-10.873,41.478},{-14.048,-4.162},{-9.352,-24.8},{7.912,-24.469},{16.247,0.27},{16.247,0.27},{13.336,0.071},{13.336,0.071},{7.515,-9.983},{-3.134,-7.271},{-2.671,41.214},{-2.671,41.214}}, 
+        origin={23.753,-11.5422},
+        fillColor={102,102,102},
+        pattern=LinePattern.None,
+        fillPattern=FillPattern.Solid,
+        points={{-10.873,41.478},{-10.873,41.478},{-14.048,-4.162},{-9.352,-24.8},{7.912,-24.469},{16.247,0.27},{16.247,0.27},{13.336,0.071},{13.336,0.071},{7.515,-9.983},{-3.134,-7.271},{-2.671,41.214},{-2.671,41.214}},
         smooth=Smooth.Bezier)}));
 end Constants;

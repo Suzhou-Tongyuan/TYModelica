@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.Internal;
-function maxWithoutEvent 
+function maxWithoutEvent
   "Maximum of the input arguments, without event and function can be differentiated"
   extends Modelica.Icons.Function;
   input Real u1;
@@ -8,8 +8,8 @@ function maxWithoutEvent
 algorithm
   y := if u1 > u2 then u1 else u2;
   annotation (
-    Inline=false, 
-    derivative=maxWithoutEvent_d, 
+    Inline=false,
+    derivative=maxWithoutEvent_d,
     Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>

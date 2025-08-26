@@ -1,18 +1,18 @@
 ﻿within Modelica.Electrical.PowerConverters.Interfaces.Enable;
-partial model Enable2 
+partial model Enable2
   "Partial model providing enable parameter and optional enable input for two firing signals"
   extends PowerConverters.Interfaces.Enable.Enable1;
-  Modelica.Blocks.Logical.And andCondition_n 
+  Modelica.Blocks.Logical.And andCondition_n
     "And condition for negative firing signal" annotation (Placement(
         transformation(
-        extent={{10,-10},{-10,10}}, 
-        rotation=270, 
+        extent={{10,-10},{-10,10}},
+        rotation=270,
         origin={60,-80})));
-  Modelica.Blocks.Interfaces.BooleanInput fire_n 
+  Modelica.Blocks.Interfaces.BooleanInput fire_n
     "Firing signal of negative potential transistor" annotation (Placement(
         transformation(
-        extent={{-20,-20},{20,20}}, 
-        rotation=90, 
+        extent={{-20,-20},{20,20}},
+        rotation=90,
         origin={60,-120})));
 equation
   connect(fire_n, andCondition_n.u1) annotation (Line(

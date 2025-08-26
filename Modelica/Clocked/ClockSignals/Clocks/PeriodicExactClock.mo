@@ -1,15 +1,15 @@
 ﻿within Modelica.Clocked.ClockSignals.Clocks;
-block PeriodicExactClock 
+block PeriodicExactClock
   "Generate a periodic clock signal with a period defined by an Integer number with resolution"
   import Modelica.Clocked.Types.Resolution;
 
-  parameter Integer factor(min=0) 
+  parameter Integer factor(min=0)
     "Sample factor with respect to resolution" annotation(Evaluate=true);
   parameter Clocked.Types.Resolution resolution=Resolution.ms "Clock resolution" 
     annotation (Evaluate=true, __Dymola_editText=false);
   extends Clocked.ClockSignals.Interfaces.PartialPeriodicClock;
 protected
-  constant Integer conversionTable[8]={365*24*60*60, 24*60*60, 60*60, 60, 1, 1000, 1000*1000, 1000*1000*1000} 
+  constant Integer conversionTable[8]={365*24*60*60, 24*60*60, 60*60, 60, 1, 1000, 1000*1000, 1000*1000*1000}
     "Table to convert from Resolution to Integer clock resolution";
   parameter Integer resolutionFactor = conversionTable[Integer(resolution)] annotation(Evaluate=true);
   Clock c annotation(HideResult=true);
@@ -35,32 +35,32 @@ equation
   end if;
 
   annotation (
-       defaultComponentName="periodicClock1", 
-    Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,100}}, initialScale=0.06), 
+       defaultComponentName="periodicClock1",
+    Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,100}}, initialScale=0.06),
                     graphics={
         Rectangle(
-          extent={{20,58},{40,46}}, 
-          fillPattern=FillPattern.Solid, 
-          rotation=90, 
-          origin={52,60}, 
-          lineColor={95,95,95}, 
-          fillColor={95,95,95}), 
+          extent={{20,58},{40,46}},
+          fillPattern=FillPattern.Solid,
+          rotation=90,
+          origin={52,60},
+          lineColor={95,95,95},
+          fillColor={95,95,95}),
         Rectangle(
-          extent={{20,58},{40,46}}, 
-          fillPattern=FillPattern.Solid, 
-          rotation=45, 
-          origin={-50,-120}, 
-          lineColor={95,95,95}, 
-          fillColor={95,95,95}), 
+          extent={{20,58},{40,46}},
+          fillPattern=FillPattern.Solid,
+          rotation=45,
+          origin={-50,-120},
+          lineColor={95,95,95},
+          fillColor={95,95,95}),
         Text(
-          extent={{-150,-110},{150,-150}}, 
-          textColor={0,0,0}, 
-          textString="%factor %resolution"), 
+          extent={{-150,-110},{150,-150}},
+          textColor={0,0,0},
+          textString="%factor %resolution"),
         Text(
-          visible=useSolver, 
-          extent={{-150,-160},{150,-200}}, 
-          textColor={0,0,0}, 
-          textString="%solverMethod")}), 
+          visible=useSolver,
+          extent={{-150,-160},{150,-200}},
+          textColor={0,0,0},
+          textString="%solverMethod")}),
     Documentation(info="<html>
 <p>
 This component generates a periodic clock that starts ticking when

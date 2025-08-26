@@ -1,5 +1,5 @@
 ﻿within Modelica.Clocked.ClockSignals.Clocks;
-block EventClock 
+block EventClock
   "Generate a clock signal when the Boolean input changes from false to true"
   extends Clocked.ClockSignals.Interfaces.PartialClock;
   Modelica.Blocks.Interfaces.BooleanInput u 
@@ -12,13 +12,13 @@ equation
   end if;
 
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,100}}, initialScale=0.06), 
+    Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,100}}, initialScale=0.06),
                     graphics={
         Text(
-          visible=useSolver, 
-          extent={{-150,-110},{150,-150}}, 
-          textColor={0,0,0}, 
-          textString="%solverMethod")}), 
+          visible=useSolver,
+          extent={{-150,-110},{150,-150}},
+          textColor={0,0,0},
+          textString="%solverMethod")}),
     Documentation(info="<html>
 <p>
 This component generates a clock signal triggered by a continuous-time

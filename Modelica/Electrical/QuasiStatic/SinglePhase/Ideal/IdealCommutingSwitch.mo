@@ -4,7 +4,7 @@ model IdealCommutingSwitch "Ideal commuting switch"
   import Modelica.ComplexMath.conj;
   parameter SI.Resistance Ron(final min=0) = 1e-5 "Closed switch resistance";
   parameter SI.Conductance Goff(final min=0) = 1e-5 "Opened switch conductance";
-  extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T= 
+  extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T=
        293.15);
   QuasiStatic.SinglePhase.Interfaces.PositivePin p 
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
@@ -16,8 +16,8 @@ model IdealCommutingSwitch "Ideal commuting switch"
   Modelica.Blocks.Interfaces.BooleanInput control "true => p--n2 connected, false => p--n1 connected" 
                                                         annotation (
       Placement(transformation(
-        origin={0,120}, 
-        extent={{-20,-20},{20,20}}, 
+        origin={0,120},
+        extent={{-20,-20},{20,20}},
         rotation=270)));
 protected
   Complex s1(re(final unit="1"), im(final unit="1"));
@@ -38,7 +38,7 @@ equation
   n2.i = -(s2*unitVoltage)*(if (control) then 1 else Goff);
   LossPower = real(p.v*conj(p.i)) + real(n1.v*conj(n1.i)) + real(n2.v*conj(
     n2.i));
-  annotation (defaultComponentName="switch", 
+  annotation (defaultComponentName="switch",
     Documentation(info="<html>
 <p>
 The commuting switch has a positive pin p and two negative pins n1 and n2.
@@ -63,21 +63,21 @@ behavior is <strong>not</strong> modelled. The parameters are not temperature de
 <strong>Use with care:</strong>
 This switch is only intended to be used for structural changes, not for fast switching sequences, due to the quasi-static formulation.
 </p>
-</html>"), 
+</html>"),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={
-        Ellipse(extent={{-44,4},{-36,-4}}, lineColor={85,170,255}), 
-        Line(points={{-100,0},{-44,0}}, color={85,170,255}), 
-        Line(points={{-37,2},{40,40}}, color={85,170,255}), 
-        Line(points={{40,40},{100,40}}, color={85,170,255}), 
-        Line(points={{40,0},{100,0}}, color={85,170,255}), 
+        Ellipse(extent={{-44,4},{-36,-4}}, lineColor={85,170,255}),
+        Line(points={{-100,0},{-44,0}}, color={85,170,255}),
+        Line(points={{-37,2},{40,40}}, color={85,170,255}),
+        Line(points={{40,40},{100,40}}, color={85,170,255}),
+        Line(points={{40,0},{100,0}}, color={85,170,255}),
         Line(
-          visible=useHeatPort, 
-          points={{0,-100},{0,25}}, 
-          color={127,0,0}, 
-          pattern=LinePattern.Dot), 
+          visible=useHeatPort,
+          points={{0,-100},{0,25}},
+          color={127,0,0},
+          pattern=LinePattern.Dot),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textString="%name", 
+          extent={{-150,90},{150,50}},
+          textString="%name",
           textColor={0,0,255})}));
 end IdealCommutingSwitch;

@@ -1,23 +1,23 @@
 ﻿within Modelica.Mechanics.MultiBody.Sensors;
-model RelativeAngularVelocity 
+model RelativeAngularVelocity
   "Measure relative angular velocity between two frame connectors"
   extends Internal.PartialRelativeSensor;
 
   Blocks.Interfaces.RealOutput w_rel[3](
-    each final quantity="AngularVelocity", 
-    each final unit = "rad/s") 
+    each final quantity="AngularVelocity",
+    each final unit = "rad/s")
     "Relative angular velocity vector between frame_a and frame_b resolved in frame defined by resolveInFrame" 
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=-90, 
+        extent={{-10,-10},{10,10}},
+        rotation=-90,
         origin={0,-110})));
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_resolve frame_resolve if resolveInFrame == 
-    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_resolve 
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_resolve frame_resolve if resolveInFrame ==
+    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_resolve
     "Coordinate system in which w_rel is optionally resolved" 
     annotation (Placement(transformation(extent={{84,64},{116,96}})));
 
-  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB resolveInFrame= 
-    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a 
+  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB resolveInFrame=
+    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a
     "Frame in which output vector w_rel shall be resolved (world, frame_a, frame_b, or frame_resolve)";
 
 protected
@@ -30,20 +30,20 @@ protected
 
 equation
   connect(relativeAngularVelocity.frame_a, frame_a) annotation (Line(
-      points={{-10,0},{-100,0}}, 
-      color={95,95,95}, 
+      points={{-10,0},{-100,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(relativeAngularVelocity.frame_b, frame_b) annotation (Line(
-      points={{10,0},{100,0}}, 
-      color={95,95,95}, 
+      points={{10,0},{100,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(relativeAngularVelocity.frame_resolve, frame_resolve) annotation (Line(
-      points={{10,8},{30,8},{30,80},{100,80}}, 
-      color={95,95,95}, 
+      points={{10,8},{30,8},{30,80},{100,80}},
+      color={95,95,95},
       pattern=LinePattern.Dot));
   connect(zeroPosition.frame_resolve, relativeAngularVelocity.frame_resolve) annotation (Line(
-      points={{52,30},{30,30},{30,8},{10,8}}, 
-      color={95,95,95}, 
+      points={{52,30},{30,30},{30,8},{10,8}},
+      color={95,95,95},
       pattern=LinePattern.Dot));
   connect(relativeAngularVelocity.w_rel, w_rel) annotation (Line(
       points={{0,-11},{0,-110}}, color={0,0,127}));
@@ -51,16 +51,16 @@ equation
   annotation (Icon(coordinateSystem(
           preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
         Line(
-          points={{0,-70},{0,-100}}, 
-          color={0,0,127}), 
+          points={{0,-70},{0,-100}},
+          color={0,0,127}),
         Text(
-          extent={{-127,95},{134,143}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-127,95},{134,143}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
-          extent={{-50,-14},{50,-54}}, 
-          textColor={64,64,64}, 
-          textString="rad/s")}), 
+          extent={{-50,-14},{50,-54}},
+          textColor={64,64,64},
+          textString="rad/s")}),
     Documentation(info="<html>
 <p>
 The relative angular velocity between frame_a and frame_b is

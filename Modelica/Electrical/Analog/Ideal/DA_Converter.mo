@@ -2,20 +2,20 @@
 model DA_Converter "Simple digital to analog converter"
   import L = Modelica.Electrical.Digital.Interfaces.Logic;
   Modelica.Electrical.Digital.Interfaces.DigitalInput trig "Trigger input" 
-    annotation (Placement(transformation(extent={{-10,92},{10,112}}), 
+    annotation (Placement(transformation(extent={{-10,92},{10,112}}),
         iconTransformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=-90, 
+        extent={{-10,-10},{10,10}},
+        rotation=-90,
         origin={0,100})));
   Modelica.Electrical.Digital.Interfaces.DigitalInput x[N] "Digital input" 
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}}), iconTransformation(extent={{-110,-10},{-90,10}})));
-  Modelica.Electrical.Analog.Interfaces.PositivePin p 
+  Modelica.Electrical.Analog.Interfaces.PositivePin p
     "Positive electrical pin (output)" annotation (Placement(transformation(
-          extent={{90,90},{110,110}}), 
+          extent={{90,90},{110,110}}),
                                      iconTransformation(extent={{90,90},{110,110}})));
-  Modelica.Electrical.Analog.Interfaces.NegativePin n 
+  Modelica.Electrical.Analog.Interfaces.NegativePin n
     "Negative electrical pin (output)" annotation (Placement(transformation(
-          extent={{90,-110},{110,-90}}), 
+          extent={{90,-110},{110,-90}}),
                                        iconTransformation(extent={{90,-110},{110,-90}})));
 
   SI.Voltage vout(start=0, fixed=true);
@@ -46,29 +46,29 @@ y = SUM ( x[i]*2^(i-1) )*Vref/(2^N-1),
 </pre></blockquote>
 <p>where x[i], i=1,...,N is 1 or 0. and Vref is the reference value. Therefore, the first bit in the input vector x[1] is the least significant one (LSB) and x[N] is the most significant bit (MSB).</p>
 <p>This is an abstract model of a DAC. Hence, it can not cover the dynamic behaviour of the converter. Therefore the output will change instantaneously when the trigger signal rises.</p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em> October 13, 2009   </em>
        by Matthias Franke
        </li>
 </ul>
-</html>"), 
-         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
-        Rectangle(extent={{-100,100},{100,-100}}, 
-                                              lineColor={0,0,255}), 
+        Rectangle(extent={{-100,100},{100,-100}},
+                                              lineColor={0,0,255}),
         Polygon(
-          points={{-100,-100},{100,100},{-100,100},{-100,-100}}, 
-          lineColor={0,0,255}, 
-          fillColor={127,0,127}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-100,-100},{100,100},{-100,100},{-100,-100}},
+          lineColor={0,0,255},
+          fillColor={127,0,127},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,50},{60,10}}, 
-          textColor={0,0,255}, 
-          textString="%n-bit"), 
+          extent={{-60,50},{60,10}},
+          textColor={0,0,255},
+          textString="%n-bit"),
         Text(
-          extent={{-60,-10},{60,-50}}, 
-          textColor={0,0,255}, 
+          extent={{-60,-10},{60,-50}},
+          textColor={0,0,255},
           textString="DAC")}));
 end DA_Converter;

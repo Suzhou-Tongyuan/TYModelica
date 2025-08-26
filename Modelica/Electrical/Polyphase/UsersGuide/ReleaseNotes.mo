@@ -1,7 +1,7 @@
 ﻿within Modelica.Electrical.Polyphase.UsersGuide;
 class ReleaseNotes "Release Notes"
   extends Modelica.Icons.ReleaseNotes;
-  annotation (preferredView="info", 
+  annotation (preferredView="info",
     DocumentationClass=true, Documentation(info="<html>
 
 <h5>Version 3.2.3, 2019-01-23 (Anton Haumer, Christian Kral)</h5>

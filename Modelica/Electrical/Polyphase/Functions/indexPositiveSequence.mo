@@ -1,9 +1,9 @@
 ﻿within Modelica.Electrical.Polyphase.Functions;
-function indexPositiveSequence 
+function indexPositiveSequence
   "Determines the indices of all positive sequences"
   extends Modelica.Icons.Function;
   input Integer m=3 "Number of phases";
-  output Integer ind[numberOfSymmetricBaseSystems(m)] 
+  output Integer ind[numberOfSymmetricBaseSystems(m)]
     "Number of symmetric base systems";
 protected
   Integer n=numberOfSymmetricBaseSystems(m);

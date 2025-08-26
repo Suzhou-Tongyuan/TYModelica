@@ -1,8 +1,8 @@
 ﻿within Modelica.Electrical.Machines.Interfaces.DCMachines;
-connector ThermalPortDCEE 
+connector ThermalPortDCEE
   "Thermal port of DC machine with electrical excitation"
   extends Machines.Interfaces.DCMachines.PartialThermalPortDCMachines;
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortExcitation 
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortExcitation
     "Heat port of (shunt) excitation" 
     annotation (Placement(transformation(extent={{-20,-30},{0,-10}})));
   annotation (Documentation(info="<html>

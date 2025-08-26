@@ -1,9 +1,9 @@
 ﻿within Modelica.Mechanics.Translational.Interfaces;
-partial model PartialRigid 
+partial model PartialRigid
   "Rigid connection of two translational 1D flanges"
-  SI.Position s 
+  SI.Position s
     "Absolute position of center of component (s = flange_a.s + L/2 = flange_b.s - L/2)";
-  parameter SI.Length L(start=0) 
+  parameter SI.Length L(start=0)
     "Length of component, from left flange to right flange (= flange_b.s - flange_a.s)";
   extends Translational.Interfaces.PartialTwoFlanges;
 equation

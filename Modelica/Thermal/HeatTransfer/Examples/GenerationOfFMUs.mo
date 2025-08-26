@@ -1,5 +1,5 @@
 ﻿within Modelica.Thermal.HeatTransfer.Examples;
-model GenerationOfFMUs 
+model GenerationOfFMUs
   "Example to demonstrate variants to generate FMUs (Functional Mock-up Units)"
   extends Modelica.Icons.Example;
 
@@ -11,18 +11,18 @@ model GenerationOfFMUs
     annotation (Placement(transformation(extent={{40,40},{60,60}})));
   HeatTransfer.Examples.Utilities.Conduction conductor(G=10) 
     annotation (Placement(transformation(extent={{20,-80},{40,-60}})));
-  HeatTransfer.Components.HeatCapacitor capacitor3a(C=1.1, T(fixed=true, start= 
+  HeatTransfer.Components.HeatCapacitor capacitor3a(C=1.1, T(fixed=true, start=
           293.15)) 
     annotation (Placement(transformation(extent={{-30,-70},{-10,-50}})));
   HeatTransfer.Sources.PrescribedHeatFlow heatFlow3 
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
-  HeatTransfer.Components.GeneralHeatFlowToTemperatureAdaptor heatFlowToTemperature3a(use_pder= 
+  HeatTransfer.Components.GeneralHeatFlowToTemperatureAdaptor heatFlowToTemperature3a(use_pder=
         false) 
     annotation (Placement(transformation(extent={{-10,-80},{10,-60}})));
-  HeatTransfer.Components.HeatCapacitor capacitor3b(C=2.2, T(fixed=true, start= 
+  HeatTransfer.Components.HeatCapacitor capacitor3b(C=2.2, T(fixed=true, start=
           293.15)) 
     annotation (Placement(transformation(extent={{70,-70},{90,-50}})));
-  HeatTransfer.Components.GeneralHeatFlowToTemperatureAdaptor heatFlowToTemperature3b(use_pder= 
+  HeatTransfer.Components.GeneralHeatFlowToTemperatureAdaptor heatFlowToTemperature3b(use_pder=
         false) 
     annotation (Placement(transformation(extent={{70,-80},{50,-60}})));
 equation
@@ -40,7 +40,7 @@ equation
     annotation (Line(points={{3,-62},{18,-62}}, color={0,0,127}));
   connect(conductor.T2,heatFlowToTemperature3b. p) 
     annotation (Line(points={{42,-62},{57,-62}}, color={0,0,127}));
-  connect(sine1.y, heatFlow3.Q_flow) annotation (Line(points={{-79,50},{-70,50}, 
+  connect(sine1.y, heatFlow3.Q_flow) annotation (Line(points={{-79,50},{-70,50},
           {-70,-70},{-60,-70}}, color={0,0,127}));
   connect(heatFlow3.port, capacitor3a.port) 
     annotation (Line(points={{-40,-70},{-20,-70}}, color={191,0,0}));
@@ -48,7 +48,7 @@ equation
     annotation (Line(points={{-20,-70},{-2,-70}}, color={191,0,0}));
   connect(heatFlowToTemperature3b.heatPort, capacitor3b.port) 
     annotation (Line(points={{62,-70},{80,-70}}, color={191,0,0}));
-  connect(directCapacity.derT, inverseCapacity.derT) annotation (Line(points={{21, 
+  connect(directCapacity.derT, inverseCapacity.derT) annotation (Line(points={{21,
           53},{28.5,53},{28.5,53},{38,53}}, color={0,0,127}));
   annotation (experiment(StopTime=1, Interval=0.001), Documentation(info="<html>
 <p>

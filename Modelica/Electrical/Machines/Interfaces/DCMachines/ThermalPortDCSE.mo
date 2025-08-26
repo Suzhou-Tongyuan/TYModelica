@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical.Machines.Interfaces.DCMachines;
-connector ThermalPortDCSE 
+connector ThermalPortDCSE
   "Thermal port of DC machine with series excitation"
   extends Machines.Interfaces.DCMachines.PartialThermalPortDCMachines;
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a 

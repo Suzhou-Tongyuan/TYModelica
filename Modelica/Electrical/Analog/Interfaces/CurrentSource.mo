@@ -17,7 +17,7 @@ equation
        by Christoph Clauss<br> initially implemented<br>
        </li>
 </ul>
-</html>", 
+</html>",
         info="<html>
 <p>The CurrentSource partial model prepares current sources by providing the pins, and the offset and startTime parameters, which are the same at all current sources. The source behavior is taken from Modelica.Blocks signal sources by inheritance and usage of the replaceable possibilities.</p>
 </html>"));

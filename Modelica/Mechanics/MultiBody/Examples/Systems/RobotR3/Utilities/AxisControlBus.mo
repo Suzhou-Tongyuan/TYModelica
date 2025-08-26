@@ -7,7 +7,7 @@ expandable connector AxisControlBus "Data bus for one robot axis"
   SI.Angle angle "Angle of axis flange" annotation(HideResult=false);
   SI.AngularVelocity speed_ref "Reference speed of axis flange" annotation(HideResult=false);
   SI.AngularVelocity speed "Speed of axis flange" annotation(HideResult=false);
-  SI.AngularAcceleration acceleration_ref 
+  SI.AngularAcceleration acceleration_ref
     "Reference acceleration of axis flange" annotation(HideResult=false);
   SI.AngularAcceleration acceleration "Acceleration of axis flange" annotation(HideResult=false);
   SI.Current current_ref "Reference current of motor" annotation(HideResult=false);
@@ -15,7 +15,7 @@ expandable connector AxisControlBus "Data bus for one robot axis"
   SI.Angle motorAngle "Angle of motor flange" annotation(HideResult=false);
   SI.AngularVelocity motorSpeed "Speed of motor flange" annotation(HideResult=false);
 
-  annotation (defaultComponentPrefixes="protected", 
+  annotation (defaultComponentPrefixes="protected",
     Documentation(info="<html>
 <p>
 Signal bus that is used to communicate all signals for <strong>one</strong> axis.

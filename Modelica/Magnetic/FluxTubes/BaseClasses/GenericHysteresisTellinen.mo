@@ -8,9 +8,9 @@ protected
   SI.MagneticFluxDensity hystR "Rising branch of limiting hysteresis loop";
   SI.MagneticFluxDensity hystF "Falling branch of limiting hysteresis loop";
 
-  SI.MagneticFluxDensity diffHyst 
+  SI.MagneticFluxDensity diffHyst
     "Distance between rising and falling limiting hysteresis branch at the current operating point";
-  Real dHyst(final quantity="MagneticFluxDensitySlope", final unit="T/s") 
+  Real dHyst(final quantity="MagneticFluxDensitySlope", final unit="T/s")
     "Slope of the Rising (when der(H)>0) or Falling (when der(H)<0) limiting hysteresis branch at the current operating point";
   Real k;
 

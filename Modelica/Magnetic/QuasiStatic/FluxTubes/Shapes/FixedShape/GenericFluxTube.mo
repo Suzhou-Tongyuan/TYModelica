@@ -1,12 +1,12 @@
 ﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.FixedShape;
-model GenericFluxTube 
+model GenericFluxTube
 "Flux tube with fixed cross-section, fixed length and linear material characteristics"
 
   extends BaseClasses.FixedShape;
   extends Modelica.Magnetic.QuasiStatic.FluxTubes.Icons.Reluctance;
 
   parameter SI.Length l=0.01 "Length in direction of flux" 
-    annotation(Dialog(group="Fixed geometry", groupImage= 
+    annotation(Dialog(group="Fixed geometry", groupImage=
       "modelica://Modelica/Resources/Images/Magnetic/QuasiStatic/FluxTubes/GenericFluxTube_qs.png"));
   parameter SI.CrossSection area=0.0001 "Area of cross section" 
     annotation (Dialog(group="Fixed geometry"));
@@ -25,7 +25,7 @@ the magnetic reluctance by:</p>
 
 <div>
 <img src=\"modelica://Modelica/Resources/Images/Magnetic/QuasiStatic/FluxTubes/GenericFluxTube_qs.png\">
-</div></html>", 
+</div></html>",
     revisions="<html>
 <h5>Version 3.2.2, 2014-01-15 (Christian&nbsp;Kral)</h5>
 <ul>

@@ -2,60 +2,60 @@
 package Noise "Library of noise blocks"
   extends Modelica.Icons.Package;
 
-  model GlobalSeed 
+  model GlobalSeed
     "Defines global settings for the blocks of sublibrary Noise, especially a global seed value is defined"
-    parameter Boolean enableNoise = true 
+    parameter Boolean enableNoise = true
       "= true, if noise blocks generate noise as output; = false, if they generate a constant output" 
       annotation(choices(checkBox=true));
-    parameter Boolean useAutomaticSeed = false 
+    parameter Boolean useAutomaticSeed = false
       "= true, choose a seed by system time and process id; = false, use fixedSeed" 
       annotation(choices(checkBox=true));
-    parameter Integer fixedSeed = 67867967 
+    parameter Integer fixedSeed = 67867967
       "Fixed global seed for random number generators (if useAutomaticSeed = false)" 
         annotation(Dialog(enable=not useAutomaticSeed));
     final parameter Integer seed(fixed=false) "Actually used global seed";
-    final parameter Integer id_impure(fixed=false) 
+    final parameter Integer id_impure(fixed=false)
       "ID for impure random number generators Modelica.Math.Random.Utilities.impureXXX" annotation(HideResult=true);
   initial equation
     seed = if useAutomaticSeed then Modelica.Math.Random.Utilities.automaticGlobalSeed() else fixedSeed;
     id_impure = Modelica.Math.Random.Utilities.initializeImpureRandom(seed);
 
     annotation (
-      defaultComponentName="globalSeed", 
-      defaultComponentPrefixes="inner", 
+      defaultComponentName="globalSeed",
+      defaultComponentPrefixes="inner",
       missingInnerMessage="
 Your model is using an outer \"globalSeed\" component but
 an inner \"globalSeed\" component is not defined and therefore
 a default inner \"globalSeed\" component is introduced by the tool.
 To change the default setting, drag Noise.GlobalSeed
 into your model and specify the seed.
-", Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), 
+", Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
                            graphics={Ellipse(
-            extent={{-100,100},{100,-100}}, 
-            lineColor={0,0,127}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-100,100},{100,-100}},
+            lineColor={0,0,127},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
                                           Text(
-          extent={{-150,150},{150,110}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
-          Line(visible = enableNoise, 
-               points={{-73,-15},{-59,-15},{-59,1},{-51,1},{-51,-47},{-43,-47},{-43, 
-                -25},{-35,-25},{-35,59},{-27,59},{-27,27},{-27,27},{-27,-33},{-17,-33},{-17,-15},{-7,-15},{-7,-43},{3, 
-                -43},{3,39},{9,39},{9,53},{15,53},{15,-3},{25,-3},{25,9},{31,9},{31, 
-                -21},{41,-21},{41,51},{51,51},{51,17},{59,17},{59,-49},{69,-49}}, 
-              color={215,215,215}), 
-          Text(visible=enableNoise and not useAutomaticSeed, 
-            extent={{-90,-4},{88,-30}}, 
-            textColor={255,0,0}, 
-            textString="%fixedSeed"), 
-          Line(visible = not enableNoise, 
-            points={{-80,-4},{84,-4}}, 
-            color={215,215,215}), 
-          Text(visible=enableNoise and not useAutomaticSeed, 
-            extent={{-84,34},{94,8}}, 
-            textColor={255,0,0}, 
-            textString="fixedSeed =")}), 
+          extent={{-150,150},{150,110}},
+          textString="%name",
+          textColor={0,0,255}),
+          Line(visible = enableNoise,
+               points={{-73,-15},{-59,-15},{-59,1},{-51,1},{-51,-47},{-43,-47},{-43,
+                -25},{-35,-25},{-35,59},{-27,59},{-27,27},{-27,27},{-27,-33},{-17,-33},{-17,-15},{-7,-15},{-7,-43},{3,
+                -43},{3,39},{9,39},{9,53},{15,53},{15,-3},{25,-3},{25,9},{31,9},{31,
+                -21},{41,-21},{41,51},{51,51},{51,17},{59,17},{59,-49},{69,-49}},
+              color={215,215,215}),
+          Text(visible=enableNoise and not useAutomaticSeed,
+            extent={{-90,-4},{88,-30}},
+            textColor={255,0,0},
+            textString="%fixedSeed"),
+          Line(visible = not enableNoise,
+            points={{-80,-4},{84,-4}},
+            color={215,215,215}),
+          Text(visible=enableNoise and not useAutomaticSeed,
+            extent={{-84,34},{94,8}},
+            textColor={255,0,0},
+            textString="fixedSeed =")}),
       Documentation(revisions="<html>
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
@@ -166,22 +166,22 @@ So, the block will usually reside on the top level of the model.
       r = distribution(r_raw, y_min, y_max);
     end when;
 
-      annotation(Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+      annotation(Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
               {100,100}}), graphics={
-          Line(visible=enableNoise, 
-            points={{-76,60},{78,60}}, color={95,95,95}, 
-            pattern=LinePattern.Dot), 
-          Line(visible=enableNoise, 
-            points={{-76,-60},{78,-60}}, color={95,95,95}, 
-            pattern=LinePattern.Dot), 
-          Text(visible=enableNoise, 
-            extent={{-70,94},{95,64}}, 
-            textColor={175,175,175}, 
-            textString="%y_max"), 
-          Text(visible=enableNoise, 
-            extent={{-70,-64},{95,-94}}, 
-            textColor={175,175,175}, 
-            textString="%y_min")}), 
+          Line(visible=enableNoise,
+            points={{-76,60},{78,60}}, color={95,95,95},
+            pattern=LinePattern.Dot),
+          Line(visible=enableNoise,
+            points={{-76,-60},{78,-60}}, color={95,95,95},
+            pattern=LinePattern.Dot),
+          Text(visible=enableNoise,
+            extent={{-70,94},{95,64}},
+            textColor={175,175,175},
+            textString="%y_max"),
+          Text(visible=enableNoise,
+            extent={{-70,-64},{95,-94}},
+            textColor={175,175,175},
+            textString="%y_min")}),
       Documentation(info="<html>
 <p>
 A summary of the common properties of the noise blocks is provided in the documentation of package
@@ -221,7 +221,7 @@ is dragged to provide global settings for all instances.
 
     // Main dialog menu
     parameter Real mu=0 "Expectation (mean) value of the normal distribution" annotation(Dialog(enable=enableNoise));
-    parameter Real sigma(start=1) 
+    parameter Real sigma(start=1)
       "Standard deviation of the normal distribution" annotation(Dialog(enable=enableNoise));
 
   initial equation
@@ -233,16 +233,16 @@ is dragged to provide global settings for all instances.
       r = distribution(r_raw, mu, sigma);
     end when;
 
-      annotation(Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+      annotation(Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
               {100,100}}), graphics={
-              Text(visible=enableNoise, 
-               extent={{-66,92},{94,66}}, 
-               textColor={175,175,175}, 
-               textString="mu=%mu"), 
-              Text(visible=enableNoise, 
-               extent={{-70,-68},{94,-96}}, 
-               textColor={175,175,175}, 
-               textString="sigma=%sigma")}), 
+              Text(visible=enableNoise,
+               extent={{-66,92},{94,66}},
+               textColor={175,175,175},
+               textString="mu=%mu"),
+              Text(visible=enableNoise,
+               extent={{-70,-68},{94,-96}},
+               textColor={175,175,175},
+               textString="sigma=%sigma")}),
       Documentation(info="<html>
 <p>
 A summary of the common properties of the noise blocks is provided in the documentation of package
@@ -276,18 +276,18 @@ is dragged to provide global settings for all instances.
 </html>"));
   end NormalNoise;
 
-  block TruncatedNormalNoise 
+  block TruncatedNormalNoise
     "Noise generator with truncated normal distribution"
-    import distribution = 
+    import distribution =
       Modelica.Math.Distributions.TruncatedNormal.quantile;
     extends Modelica.Blocks.Interfaces.PartialNoise;
 
     // Main dialog menu
     parameter Real y_min(start=0) "Lower limit of y" annotation(Dialog(enable=enableNoise));
     parameter Real y_max(start=1) "Upper limit of y" annotation(Dialog(enable=enableNoise));
-    parameter Real mu =    (y_max + y_min)/2 
+    parameter Real mu =    (y_max + y_min)/2
       "Expectation (mean) value of the normal distribution" annotation(Dialog(enable=enableNoise,tab="Advanced",group="Noise generation"));
-    parameter Real sigma = (y_max - y_min)/6 
+    parameter Real sigma = (y_max - y_min)/6
       "Standard deviation of the normal distribution" annotation(Dialog(enable=enableNoise,tab="Advanced",group="Noise generation"));
 
   initial equation
@@ -299,28 +299,28 @@ is dragged to provide global settings for all instances.
       r = distribution(r_raw, y_min, y_max, mu, sigma);
     end when;
 
-      annotation(Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+      annotation(Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
               {100,100}}), graphics={
-          Line(visible=enableNoise, 
-            points={{-76,60},{78,60}}, color={95,95,95}, 
-            pattern=LinePattern.Dot), 
-          Line(visible=enableNoise, 
-            points={{-76,-60},{78,-60}}, color={95,95,95}, 
-            pattern=LinePattern.Dot), 
-          Text(visible=enableNoise, 
-            extent={{-70,94},{95,64}}, 
-            textColor={175,175,175}, 
-            textString="%y_max"), 
-          Text(visible=enableNoise, 
-            extent={{-70,-64},{95,-94}}, 
-            textColor={175,175,175}, 
-            textString="%y_min"), 
+          Line(visible=enableNoise,
+            points={{-76,60},{78,60}}, color={95,95,95},
+            pattern=LinePattern.Dot),
+          Line(visible=enableNoise,
+            points={{-76,-60},{78,-60}}, color={95,95,95},
+            pattern=LinePattern.Dot),
+          Text(visible=enableNoise,
+            extent={{-70,94},{95,64}},
+            textColor={175,175,175},
+            textString="%y_max"),
+          Text(visible=enableNoise,
+            extent={{-70,-64},{95,-94}},
+            textColor={175,175,175},
+            textString="%y_min"),
           Text(
-            extent={{-71,12},{71,-12}}, 
-            textColor={175,175,175}, 
-            origin={-88,-11}, 
-            rotation=90, 
-            textString="normal")}), 
+            extent={{-71,12},{71,-12}},
+            textColor={175,175,175},
+            origin={-88,-11},
+            rotation=90,
+            textString="normal")}),
       Documentation(info="<html>
 <p>
 A summary of the common properties of the noise blocks is provided in the documentation of package
@@ -364,7 +364,7 @@ is dragged to provide global settings for all instances.
 </html>"));
   end TruncatedNormalNoise;
 
-  block BandLimitedWhiteNoise 
+  block BandLimitedWhiteNoise
     "Noise generator to produce band-limited white noise with normal distribution"
     import distribution = Modelica.Math.Distributions.Normal.quantile;
     extends Modelica.Blocks.Interfaces.PartialNoise;
@@ -386,15 +386,15 @@ is dragged to provide global settings for all instances.
     end when;
                                                                                         annotation(Dialog(enable=enableNoise), Icon(
           graphics={Text(
-            extent={{-70,96},{92,60}}, 
-            textColor={175,175,175}, 
-            textString="%noisePower"), 
+            extent={{-70,96},{92,60}},
+            textColor={175,175,175},
+            textString="%noisePower"),
           Text(
-            extent={{-96,11},{96,-11}}, 
-            textColor={175,175,175}, 
-            origin={-87,0}, 
-            rotation=90, 
-            textString="white noise")}), 
+            extent={{-96,11},{96,-11}},
+            textColor={175,175,175},
+            origin={-87,0},
+            rotation=90,
+            textString="white noise")}),
                 Documentation(info="<html>
 <p>
 A summary of the common properties of the noise blocks is provided in the documentation of package
@@ -460,7 +460,7 @@ demonstrates how to utilize this block to model wind gust.
 </html>"));
   end BandLimitedWhiteNoise;
   annotation (Icon(graphics={Line(
-      points={{-84,0},{-54,0},{-54,40},{-24,40},{-24,-70},{6,-70},{6,80}, 
+      points={{-84,0},{-54,0},{-54,40},{-24,40},{-24,-70},{6,-70},{6,80},
           {36,80},{36,-20},{66,-20},{66,60}})}), Documentation(info="<html>
 <p>
 This sublibrary contains blocks that generate <strong>reproducible noise</strong> with pseudo random

@@ -20,7 +20,7 @@ This package contains time-dependent and controlled polyphase voltage and curren
 <li>CosineCurrent : phase shift between consecutive currents by default given by
 <a href=\"modelica://Modelica.Electrical.Polyphase.Functions.symmetricOrientation\">symmetricOrientation</a></li>
 </ul>
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

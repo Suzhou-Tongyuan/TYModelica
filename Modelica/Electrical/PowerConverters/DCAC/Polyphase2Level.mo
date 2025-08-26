@@ -2,74 +2,74 @@
 model Polyphase2Level "Polyphase DC to AC converter"
   extends Modelica.Blocks.Icons.Block;
   extends Interfaces.Enable.Enable2m;
-  parameter SI.Resistance RonTransistor=1e-05 
+  parameter SI.Resistance RonTransistor=1e-05
     "Transistor closed resistance";
-  parameter SI.Conductance GoffTransistor=1e-05 
+  parameter SI.Conductance GoffTransistor=1e-05
     "Transistor opened conductance";
-  parameter SI.Voltage VkneeTransistor=0 
+  parameter SI.Voltage VkneeTransistor=0
     "Transistor threshold voltage";
-  parameter SI.Resistance RonDiode=1e-05 
+  parameter SI.Resistance RonDiode=1e-05
     "Diode closed resistance";
-  parameter SI.Conductance GoffDiode=1e-05 
+  parameter SI.Conductance GoffDiode=1e-05
     "Diode opened conductance";
   parameter SI.Voltage VkneeDiode=0 "Diode threshold voltage";
   // parameter Boolean useEnable "Enables enable signal connector";
   extends PowerConverters.Interfaces.DCAC.DCtwoPin;
   extends PowerConverters.Interfaces.DCAC.ACplug;
-  extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T= 
+  extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T=
        293.15);
   Modelica.Electrical.Polyphase.Ideal.IdealGTOThyristor transistor_p(
-    final m=m, 
-    final Ron=fill(RonTransistor, m), 
-    final Goff=fill(GoffTransistor, m), 
-    final Vknee=fill(VkneeTransistor, m), 
+    final m=m,
+    final Ron=fill(RonTransistor, m),
+    final Goff=fill(GoffTransistor, m),
+    final Vknee=fill(VkneeTransistor, m),
     final useHeatPort=useHeatPort) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=270, 
+        extent={{-10,10},{10,-10}},
+        rotation=270,
         origin={30,20})));
   Modelica.Electrical.Polyphase.Ideal.IdealDiode diode_p(
-    final m=m, 
-    final Ron=fill(RonDiode, m), 
-    final Goff=fill(GoffDiode, m), 
-    final Vknee=fill(VkneeDiode, m), 
+    final m=m,
+    final Ron=fill(RonDiode, m),
+    final Goff=fill(GoffDiode, m),
+    final Vknee=fill(VkneeDiode, m),
     final useHeatPort=useHeatPort) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=90, 
+        extent={{-10,-10},{10,10}},
+        rotation=90,
         origin={70,20})));
   Modelica.Electrical.Polyphase.Basic.Star star_p(final m=m) annotation (
       Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=90, 
+        extent={{-10,10},{10,-10}},
+        rotation=90,
         origin={50,50})));
   Modelica.Electrical.Polyphase.Ideal.IdealGTOThyristor transistor_n(
-    final m=m, 
-    final Ron=fill(RonTransistor, m), 
-    final Goff=fill(GoffTransistor, m), 
-    final Vknee=fill(VkneeTransistor, m), 
+    final m=m,
+    final Ron=fill(RonTransistor, m),
+    final Goff=fill(GoffTransistor, m),
+    final Vknee=fill(VkneeTransistor, m),
     final useHeatPort=useHeatPort) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=270, 
+        extent={{-10,10},{10,-10}},
+        rotation=270,
         origin={30,-20})));
   Modelica.Electrical.Polyphase.Ideal.IdealDiode diode_n(
-    final m=m, 
-    final Ron=fill(RonDiode, m), 
-    final Goff=fill(GoffDiode, m), 
-    final Vknee=fill(VkneeDiode, m), 
+    final m=m,
+    final Ron=fill(RonDiode, m),
+    final Goff=fill(GoffDiode, m),
+    final Vknee=fill(VkneeDiode, m),
     final useHeatPort=useHeatPort) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=90, 
+        extent={{-10,-10},{10,10}},
+        rotation=90,
         origin={70,-20})));
   Modelica.Electrical.Polyphase.Basic.Star star_n(final m=m) annotation (
       Placement(transformation(
-        extent={{10,10},{-10,-10}}, 
-        rotation=90, 
+        extent={{10,10},{-10,-10}},
+        rotation=90,
         origin={50,-50})));
   Modelica.Thermal.HeatTransfer.Components.ThermalCollector 
     thermalCollector(final m=m) if useHeatPort 
     annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
 equation
   if not useHeatPort then
-    LossPower = sum(transistor_p.idealGTOThyristor.LossPower) + sum(diode_n.idealDiode.LossPower) 
+    LossPower = sum(transistor_p.idealGTOThyristor.LossPower) + sum(diode_n.idealDiode.LossPower)
        + sum(transistor_n.idealGTOThyristor.LossPower) + sum(diode_n.idealDiode.LossPower);
   end if;
   connect(transistor_p.plug_p, star_p.plug_p) annotation (Line(
@@ -106,52 +106,52 @@ equation
       points={{-60,-69},{-60,10},{18,10}}, color={255,0,255}));
   connect(andCondition_n.y, transistor_n.fire) annotation (Line(
       points={{60,-69},{60,-64},{16,-64},{16,-30},{18,-30}}, color={255,0,255}));
-  annotation (defaultComponentName="inverter", 
+  annotation (defaultComponentName="inverter",
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}), graphics={
         Line(
-          points={{-100,-100},{100,100}}, 
-          color={0,0,127}), 
+          points={{-100,-100},{100,100}},
+          color={0,0,127}),
         Rectangle(
-          extent={{-40,40},{40,-40}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-40,40},{40,-40}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Line(
-          points={{-20,20},{-20,-20}}, 
-          color={0,0,255}), 
+          points={{-20,20},{-20,-20}},
+          color={0,0,255}),
         Line(
-          points={{-28,20},{-28,-20}}, 
-          color={0,0,255}), 
+          points={{-28,20},{-28,-20}},
+          color={0,0,255}),
         Line(
-          points={{-40,0},{-28,0}}, 
-          color={0,0,255}), 
+          points={{-40,0},{-28,0}},
+          color={0,0,255}),
         Line(
-          points={{-20,4},{0,24},{0,40}}, 
-          color={0,0,255}), 
+          points={{-20,4},{0,24},{0,40}},
+          color={0,0,255}),
         Line(
-          points={{-20,-4},{0,-24},{0,-40}}, 
-          color={0,0,255}), 
+          points={{-20,-4},{0,-24},{0,-40}},
+          color={0,0,255}),
         Line(
-          points={{-4,-20},{-10,-8},{-16,-14},{-4,-20}}, 
-          color={0,0,255}), 
+          points={{-4,-20},{-10,-8},{-16,-14},{-4,-20}},
+          color={0,0,255}),
         Line(
-          points={{0,-24},{10,-24},{10,24},{0,24}}, 
-          color={0,0,255}), 
+          points={{0,-24},{10,-24},{10,24},{0,24}},
+          color={0,0,255}),
         Line(
-          points={{0,8},{20,8}}, 
-          color={0,0,255}), 
+          points={{0,8},{20,8}},
+          color={0,0,255}),
         Line(
-          points={{10,8},{0,-8},{20,-8},{10,8}}, 
-          color={0,0,255}), 
+          points={{10,8},{0,-8},{20,-8},{10,8}},
+          color={0,0,255}),
         Text(
-          extent={{-100,70},{0,50}}, 
-          textColor={0,0,255}, 
-          textString="DC"), 
+          extent={{-100,70},{0,50}},
+          textColor={0,0,255},
+          textString="DC"),
         Text(
-          extent={{0,-50},{100,-70}}, 
-          textColor={0,0,255}, 
-          textString="AC")}), 
+          extent={{0,-50},{100,-70}},
+          textColor={0,0,255},
+          textString="AC")}),
     Documentation(info="<html>
 <p>
 This is a polyphase two level inverter. The boolean signals <code>fire_p[k]</code> and <code>fire_n[k]</code> for any phase <code>k</code> shall not be <code>true</code> at the same time to avoid DC bus short circuits. The inverter consists of <code>2*m</code> transistors and two anti parallel free wheeling diodes, respectively, where <code>m</code> is the number of phases.

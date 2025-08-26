@@ -1,41 +1,41 @@
 ﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
-model BasicTransformAbsoluteVector 
+model BasicTransformAbsoluteVector
   "Transform absolute vector into another frame"
   import Modelica.Mechanics.MultiBody.Frames;
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameA;
 
   extends Modelica.Icons.RoundSensor;
 
-  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameA frame_r_in= 
-    Modelica.Mechanics.MultiBody.Types.ResolveInFrameA.frame_a 
+  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameA frame_r_in=
+    Modelica.Mechanics.MultiBody.Types.ResolveInFrameA.frame_a
     "Frame in which vector r_in is resolved (world, frame_a, or frame_resolve)";
-  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameA frame_r_out= 
-    frame_r_in 
+  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameA frame_r_out=
+    frame_r_in
     "Frame in which vector r_out (= r_in in other frame) is resolved (world, frame_a, or frame_resolve)";
 
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a 
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a
     "Coordinate system from which absolute kinematic quantities are measured" 
     annotation (Placement(
         transformation(extent={{-116,-16},{-84,16}})));
 
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_resolve frame_resolve 
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_resolve frame_resolve
     "Coordinate system in which vector is optionally resolved" 
-    annotation (Placement(transformation(extent={{-16,-16},{16,16}}, 
+    annotation (Placement(transformation(extent={{-16,-16},{16,16}},
         origin={100,0})));
 
-  Blocks.Interfaces.RealInput r_in[3] 
+  Blocks.Interfaces.RealInput r_in[3]
     "Input vector resolved in frame defined by frame_r_in" 
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, 
-        rotation=-90, 
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},
+        rotation=-90,
         origin={0,120})));
-  Blocks.Interfaces.RealOutput r_out[3] 
+  Blocks.Interfaces.RealOutput r_out[3]
     "Input vector r_in resolved in frame defined by frame_r_out" 
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, 
-        rotation=-90, 
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=-90,
         origin={0,-110})));
 
 protected
-  Modelica.Mechanics.MultiBody.Frames.Orientation R1 
+  Modelica.Mechanics.MultiBody.Frames.Orientation R1
     "Orientation object from world frame to frame in which r_in is resolved";
 equation
   assert(cardinality(frame_a) > 0, "Connector frame_a must be connected at least once");
@@ -72,32 +72,32 @@ equation
     end if;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100, 
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
             -100},{100,100}}), graphics={
         Text(
-          extent={{-128,-84},{-2,-112}}, 
-          textString="r_out"), 
+          extent={{-128,-84},{-2,-112}},
+          textString="r_out"),
         Text(
-          extent={{-108,137},{-22,109}}, 
-          textString="r_in"), 
+          extent={{-108,137},{-22,109}},
+          textString="r_in"),
         Line(
-          points={{0,100},{0,70}}, 
-          color={0,0,127}), 
+          points={{0,100},{0,70}},
+          color={0,0,127}),
         Line(
-          points={{0,-70},{0,-100}}, 
-          color={0,0,127}), 
+          points={{0,-70},{0,-100}},
+          color={0,0,127}),
         Text(
-          extent={{58,47},{189,22}}, 
-          textColor={95,95,95}, 
-          textString="resolve"), 
+          extent={{58,47},{189,22}},
+          textColor={95,95,95},
+          textString="resolve"),
         Text(
-          extent={{-116,45},{-80,20}}, 
-          textColor={95,95,95}, 
-          textString="a"), 
+          extent={{-116,45},{-80,20}},
+          textColor={95,95,95},
+          textString="a"),
         Line(
-          points={{-70,0},{-96,0},{-96,0}}), 
+          points={{-70,0},{-96,0},{-96,0}}),
         Line(
-          points={{95,0},{95,0},{70,0},{70,0}}, 
+          points={{95,0},{95,0},{70,0},{70,0}},
           pattern=LinePattern.Dot)}), Documentation(info="<html>
 <p>
 This basic sensor transforms an absolute vector <strong>r_in</strong>,

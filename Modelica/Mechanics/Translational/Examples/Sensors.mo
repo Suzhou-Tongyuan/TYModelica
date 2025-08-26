@@ -15,9 +15,9 @@ model Sensors "Sensors for translational systems"
   Translational.Sensors.PositionSensor positionSensor2 annotation (
       Placement(transformation(extent={{60,10},{80,30}})));
   Translational.Components.Mass mass(
-    L=1, 
-    s(fixed=true), 
-    v(fixed=true), 
+    L=1,
+    s(fixed=true),
+    v(fixed=true),
     m=1) annotation (Placement(transformation(extent={{30,10},{50,30}})));
   Translational.Sources.Force force annotation (Placement(transformation(
           extent={{-70,10},{-50,30}})));
@@ -29,13 +29,13 @@ equation
   connect(forceSensor.flange_a, force.flange) annotation (Line(
       points={{-40,20},{-50,20}}, color={0,127,0}));
   connect(mass.flange_a, positionSensor1.flange) annotation (Line(
-      points={{30,20},{20,20},{20,-10},{60,-10}}, 
+      points={{30,20},{20,20},{20,-10},{60,-10}},
                                         color={0,127,0}));
   connect(mass.flange_a, speedSensor1.flange) annotation (Line(
-      points={{30,20},{20,20},{20,-40},{60,-40}}, 
+      points={{30,20},{20,20},{20,-40},{60,-40}},
                                           color={0,127,0}));
   connect(mass.flange_a, accSensor1.flange) annotation (Line(
-      points={{30,20},{20,20},{20,-70},{60,-70}}, 
+      points={{30,20},{20,20},{20,-70},{60,-70}},
                                           color={0,127,0}));
   connect(mass.flange_b, positionSensor2.flange) annotation (Line(
       points={{50,20},{60,20}}, color={0,127,0}));
@@ -63,6 +63,6 @@ length&nbsp;<var>L</var> of the component.
 Plot <code>positionSensor1.s</code>, <code>positionSensor2.s</code> and <code>mass.s</code>
 to see the difference.
 </p>
-</html>"), 
+</html>"),
        experiment(StopTime=1.0, Interval=0.001));
 end Sensors;

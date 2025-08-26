@@ -3,13 +3,13 @@ package Types "Common types for fluid models"
   extends Modelica.Icons.TypesPackage;
 
   type HydraulicConductance = Modelica.Icons.TypeReal (
-      final quantity="HydraulicConductance", 
+      final quantity="HydraulicConductance",
       final unit="kg/(s.Pa)") "Real type for hydraulic conductance";
   type HydraulicResistance = Modelica.Icons.TypeReal (
-      final quantity="HydraulicResistance", 
+      final quantity="HydraulicResistance",
       final unit="Pa.s/kg") "Real type for hydraulic resistance";
 
-  type Roughness = Modelica.Icons.TypeReal (final quantity="Length", final unit="m", displayUnit="mm", min=0) 
+  type Roughness = Modelica.Icons.TypeReal (final quantity="Length", final unit="m", displayUnit="mm", min=0)
     "Real type for roughness of a pipe" 
     annotation (Documentation(info="<html>
 <p>
@@ -64,13 +64,13 @@ As a short summary:
 </dl>
 </html>"));
   type Dynamics = enumeration(
-      DynamicFreeInitial 
-        "DynamicFreeInitial -- Dynamic balance, Initial guess value", 
-      FixedInitial "FixedInitial -- Dynamic balance, Initial value fixed", 
-      SteadyStateInitial 
-        "SteadyStateInitial -- Dynamic balance, Steady state initial with guess value", 
+      DynamicFreeInitial
+        "DynamicFreeInitial -- Dynamic balance, Initial guess value",
+      FixedInitial "FixedInitial -- Dynamic balance, Initial value fixed",
+      SteadyStateInitial
+        "SteadyStateInitial -- Dynamic balance, Steady state initial with guess value",
 
-      SteadyState "SteadyState -- Steady state balance, Initial guess value") 
+      SteadyState "SteadyState -- Steady state balance, Initial guess value")
     "Enumeration to define definition of balance equations" 
   annotation (Documentation(info="<html>
 <p>
@@ -187,10 +187,10 @@ media have Medium.singleState = <strong>true</strong>.
 </html>"));
 
   type CvTypes = enumeration(
-      Av "Av (metric) flow coefficient", 
-      Kv "Kv (metric) flow coefficient", 
-      Cv "Cv (US) flow coefficient", 
-      OpPoint "Av defined by operating point") 
+      Av "Av (metric) flow coefficient",
+      Kv "Kv (metric) flow coefficient",
+      Cv "Cv (US) flow coefficient",
+      OpPoint "Av defined by operating point")
     "Enumeration to define the choice of valve flow coefficient" annotation (
       Documentation(info="<html>
 
@@ -226,9 +226,9 @@ The details of the coefficients are explained in the
 </html>"));
 
   type PortFlowDirection = enumeration(
-      Entering "Fluid flow is only entering", 
-      Leaving "Fluid flow is only leaving", 
-      Bidirectional "No restrictions on fluid flow (flow reversal possible)") 
+      Entering "Fluid flow is only entering",
+      Leaving "Fluid flow is only leaving",
+      Bidirectional "No restrictions on fluid flow (flow reversal possible)")
     "Enumeration to define whether flow reversal is allowed" annotation (
       Documentation(info="<html>
 
@@ -260,10 +260,10 @@ make the simulation of your model faster.
 </html>"));
 
   type ModelStructure = enumeration(
-      av_vb "av_vb: port_a - volume - flow model - volume - port_b", 
-      a_v_b "a_v_b: port_a - flow model - volume - flow model - port_b", 
-      av_b "av_b: port_a - volume - flow model - port_b", 
-      a_vb "a_vb: port_a - flow model - volume - port_b") 
+      av_vb "av_vb: port_a - volume - flow model - volume - port_b",
+      a_v_b "a_v_b: port_a - flow model - volume - flow model - port_b",
+      av_b "av_b: port_a - volume - flow model - port_b",
+      a_vb "a_vb: port_a - flow model - volume - port_b")
     "Enumeration with choices for model structure in distributed pipe model" 
     annotation (Documentation(info="<html>
 
@@ -317,14 +317,14 @@ ModelStructure.a_vb).
 </p>
 
 </html>"));
-  type CheckValveHomotopyType = enumeration(Open, Closed, NoHomotopy) 
+  type CheckValveHomotopyType = enumeration(Open, Closed, NoHomotopy)
    "Enumeration with choices for check valve homotopy" 
     annotation (Documentation(info="<html>
     <p>If it is know whether the check valve will start open or closed this can simplify the initialization.</p>
     <p>The choice <strong>NoHomotopy</strong> is useful if nothing is known for the check valve.</p>
     </html>"));
 
-  annotation (preferredView="info", 
+  annotation (preferredView="info",
               Documentation(info="<html>
 
 </html>"));

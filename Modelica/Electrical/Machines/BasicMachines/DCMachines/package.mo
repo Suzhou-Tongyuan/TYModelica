@@ -9,7 +9,7 @@ This package contains models of DC machines:
 <li>DC_ElectricalExcited: DC machine with electrical shunt or separate excitation</li>
 <li>DC_SeriesExcited: DC machine with series excitation</li>
 </ul>
-</html>", 
+</html>",
       revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

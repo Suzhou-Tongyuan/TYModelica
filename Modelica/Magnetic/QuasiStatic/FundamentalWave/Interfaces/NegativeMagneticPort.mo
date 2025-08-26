@@ -3,20 +3,20 @@ connector NegativeMagneticPort "Negative quasi-static magnetic port of fundament
   extends FundamentalWave.Interfaces.MagneticPort;
   Modelica.Electrical.QuasiStatic.Types.Reference reference "Reference";
   annotation (
-    defaultComponentName="port_n", 
+    defaultComponentName="port_n",
     Diagram(graphics={Text(
-          extent={{-100,100},{100,60}}, 
-          textColor={255,170,85}, 
+          extent={{-100,100},{100,60}},
+          textColor={255,170,85},
           textString="%name"), Ellipse(
-          extent={{-40,40},{40,-40}}, 
-          lineColor={255,170,85}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid)}), 
+          extent={{-40,40},{40,-40}},
+          lineColor={255,170,85},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid)}),
     Icon(graphics={Ellipse(
-          extent={{-100,100},{100,-100}}, 
-          lineColor={255,170,85}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid)}), 
+          extent={{-100,100},{100,-100}},
+          lineColor={255,170,85},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 
 <p>

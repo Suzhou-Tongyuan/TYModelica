@@ -1,120 +1,120 @@
 ﻿within Modelica.Electrical.Machines.BasicMachines.SynchronousMachines;
 model SM_PermanentMagnet "Permanent magnet synchronous machine"
   extends Machines.Interfaces.PartialBasicInductionMachine(
-    Lssigma(start=0.1/(2*pi*fsNominal)), 
-    final idq_ss=airGap.i_ss, 
-    final idq_sr=airGap.i_sr, 
-    final idq_rs=airGap.i_rs, 
-    final idq_rr=airGap.i_rr, 
+    Lssigma(start=0.1/(2*pi*fsNominal)),
+    final idq_ss=airGap.i_ss,
+    final idq_sr=airGap.i_sr,
+    final idq_rs=airGap.i_rs,
+    final idq_rr=airGap.i_rr,
     redeclare final Machines.Thermal.SynchronousMachines.ThermalAmbientSMPM 
       thermalAmbient(
-      final useDamperCage=useDamperCage, 
-      final Tr=TrOperational, 
-      final Tpm=TpmOperational), 
+      final useDamperCage=useDamperCage,
+      final Tr=TrOperational,
+      final Tpm=TpmOperational),
     redeclare final Machines.Interfaces.InductionMachines.ThermalPortSMPM 
-      thermalPort(final useDamperCage=useDamperCage), 
+      thermalPort(final useDamperCage=useDamperCage),
     redeclare final Machines.Interfaces.InductionMachines.ThermalPortSMPM 
-      internalThermalPort(final useDamperCage=useDamperCage), 
+      internalThermalPort(final useDamperCage=useDamperCage),
     redeclare final Machines.Interfaces.InductionMachines.PowerBalanceSMPM 
       powerBalance(
-      final lossPowerRotorWinding=damperCageLossPower, 
-      final lossPowerRotorCore=0, 
-      final lossPowerPermanentMagnet=permanentMagnet.lossPower), 
+      final lossPowerRotorWinding=damperCageLossPower,
+      final lossPowerRotorCore=0,
+      final lossPowerPermanentMagnet=permanentMagnet.lossPower),
     statorCore(final w=statorCoreParameters.wRef));
   Modelica.Blocks.Interfaces.RealOutput ir[2](
-    start=zeros(2), 
-    each final quantity="ElectricCurrent", 
+    start=zeros(2),
+    each final quantity="ElectricCurrent",
     each final unit="A") if useDamperCage "Damper cage currents" 
     annotation (Placement(visible=false),Dialog(showStartAttribute=true));
   Modelica.Blocks.Interfaces.RealOutput idq_dr[2](
-    each stateSelect=StateSelect.prefer, 
-    each final quantity="ElectricCurrent", 
-    each final unit="A") if useDamperCage 
+    each stateSelect=StateSelect.prefer,
+    each final quantity="ElectricCurrent",
+    each final unit="A") if useDamperCage
     "Damper space phasor current / rotor fixed frame" 
     annotation (Placement(visible=false));
   Machines.BasicMachines.Components.AirGapR airGap(
-    final p=p, 
-    final Lmd=Lmd, 
-    final Lmq=Lmq, 
-    final m=m) annotation (Placement(transformation(extent={{-10,-10},{10,10}}, 
+    final p=p,
+    final Lmd=Lmd,
+    final Lmq=Lmq,
+    final m=m) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
           rotation=270)));
-  final parameter SI.Temperature TpmOperational=293.15 
+  final parameter SI.Temperature TpmOperational=293.15
     "Operational temperature of permanent magnet" 
     annotation (Dialog(group="Operational temperatures"));
-  parameter SI.Temperature TrOperational(start=293.15) 
+  parameter SI.Temperature TrOperational(start=293.15)
     "Operational temperature of (optional) damper cage" annotation (
       Dialog(group="Operational temperatures", enable=not useThermalPort 
            and useDamperCage));
-  parameter SI.Voltage VsOpenCircuit(start=112.3) 
+  parameter SI.Voltage VsOpenCircuit(start=112.3)
     "Open circuit RMS voltage per phase @ fsNominal";
-  parameter SI.Inductance Lmd(start=0.3/(2*pi*fsNominal)) 
+  parameter SI.Inductance Lmd(start=0.3/(2*pi*fsNominal))
     "Stator main field inductance per phase in d-axis" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter SI.Inductance Lmq(start=0.3/(2*pi*fsNominal)) 
+  parameter SI.Inductance Lmq(start=0.3/(2*pi*fsNominal))
     "Stator main field inductance per phase in q-axis" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter Boolean useDamperCage(start=true) 
-    "Enable / disable damper cage" annotation (Evaluate=true, Dialog(tab= 
+  parameter Boolean useDamperCage(start=true)
+    "Enable / disable damper cage" annotation (Evaluate=true, Dialog(tab=
           "Nominal resistances and inductances", group="Damper cage"));
-  parameter SI.Inductance Lrsigmad(start=0.05/(2*pi* 
+  parameter SI.Inductance Lrsigmad(start=0.05/(2*pi*
         fsNominal)) "Damper stray inductance in d-axis" annotation (
       Dialog(
-      tab="Nominal resistances and inductances", 
-      group="Damper cage", 
+      tab="Nominal resistances and inductances",
+      group="Damper cage",
       enable=useDamperCage));
-  parameter SI.Inductance Lrsigmaq=Lrsigmad 
+  parameter SI.Inductance Lrsigmaq=Lrsigmad
     "Damper stray inductance in q-axis" annotation (Dialog(
-      tab="Nominal resistances and inductances", 
-      group="Damper cage", 
+      tab="Nominal resistances and inductances",
+      group="Damper cage",
       enable=useDamperCage));
-  parameter SI.Resistance Rrd(start=0.04) 
+  parameter SI.Resistance Rrd(start=0.04)
     "Damper resistance in d-axis at TRef" annotation (Dialog(
-      tab="Nominal resistances and inductances", 
-      group="Damper cage", 
+      tab="Nominal resistances and inductances",
+      group="Damper cage",
       enable=useDamperCage));
-  parameter SI.Resistance Rrq=Rrd 
+  parameter SI.Resistance Rrq=Rrd
     "Damper resistance in q-axis at TRef" annotation (Dialog(
-      tab="Nominal resistances and inductances", 
-      group="Damper cage", 
+      tab="Nominal resistances and inductances",
+      group="Damper cage",
       enable=useDamperCage));
-  parameter SI.Temperature TrRef(start=293.15) 
+  parameter SI.Temperature TrRef(start=293.15)
     "Reference temperature of damper resistances in d- and q-axis" 
     annotation (Dialog(
-      tab="Nominal resistances and inductances", 
-      group="Damper cage", 
+      tab="Nominal resistances and inductances",
+      group="Damper cage",
       enable=useDamperCage));
-  parameter Machines.Thermal.LinearTemperatureCoefficient20 alpha20r(start=0) 
+  parameter Machines.Thermal.LinearTemperatureCoefficient20 alpha20r(start=0)
     "Temperature coefficient of damper resistances in d- and q-axis" 
     annotation (Dialog(
-      tab="Nominal resistances and inductances", 
-      group="Damper cage", 
+      tab="Nominal resistances and inductances",
+      group="Damper cage",
       enable=useDamperCage));
   parameter Machines.Losses.PermanentMagnetLossParameters permanentMagnetLossParameters(IRef(
-        start=100), wRef(start=2*pi*fsNominal/p)) 
+        start=100), wRef(start=2*pi*fsNominal/p))
     "Permanent magnet loss parameter record" annotation (Dialog(tab="Losses"));
   Components.PermanentMagnetWithLosses permanentMagnet(
-    final Ie=Ie, 
-    final useHeatPort=true, 
-    final m=m, 
-    final permanentMagnetLossParameters=permanentMagnetLossParameters, 
+    final Ie=Ie,
+    final useHeatPort=true,
+    final m=m,
+    final permanentMagnetLossParameters=permanentMagnetLossParameters,
     final is=is) annotation (Placement(transformation(
-        origin={30,-30}, 
-        extent={{10,10},{-10,-10}}, 
+        origin={30,-30},
+        extent={{10,10},{-10,-10}},
         rotation=180)));
   Machines.BasicMachines.Components.DamperCage damperCage(
-    final Lrsigmad=Lrsigmad, 
-    final Lrsigmaq=Lrsigmaq, 
-    final Rrd=Rrd, 
-    final Rrq=Rrq, 
-    final T_ref=TrRef, 
-    final alpha=Machines.Thermal.convertAlpha(alpha20r, TrRef), 
+    final Lrsigmad=Lrsigmad,
+    final Lrsigmaq=Lrsigmaq,
+    final Rrd=Rrd,
+    final Rrq=Rrq,
+    final T_ref=TrRef,
+    final alpha=Machines.Thermal.convertAlpha(alpha20r, TrRef),
     final useHeatPort=true) if useDamperCage annotation (Placement(
         transformation(
-        origin={0,-40}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={0,-40},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
 protected
-  final parameter SI.Current Ie=sqrt(2)*VsOpenCircuit/(Lmd* 
+  final parameter SI.Current Ie=sqrt(2)*VsOpenCircuit/(Lmd*
       2*pi*fsNominal) "Equivalent excitation current";
   Modelica.Blocks.Interfaces.RealOutput damperCageLossPower(final
       quantity="Power", final unit="W") "Damper losses";
@@ -146,18 +146,18 @@ equation
   connect(internalSupport, permanentMagnet.support) annotation (Line(
       points={{60,-100},{60,-100},{60,-90},{30,-90},{30,-40},{30,-40}}));
   annotation (
-    defaultComponentName="smpm", 
+    defaultComponentName="smpm",
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={
         Rectangle(
-          extent={{-130,10},{-100,-10}}, 
-          fillColor={0,255,0}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-130,10},{-100,-10}},
+          fillColor={0,255,0},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-100,10},{-70,-10}}, 
-          fillColor={255,0,0}, 
-          fillPattern=FillPattern.Solid), 
-        Ellipse(extent={{-134,34},{-66,-34}}, lineColor={0,0,255})}), 
+          extent={{-100,10},{-70,-10}},
+          fillColor={255,0,0},
+          fillPattern=FillPattern.Solid),
+        Ellipse(extent={{-134,34},{-66,-34}}, lineColor={0,0,255})}),
     Documentation(info="<html>
 <p><strong>Model of a three-phase permanent magnet synchronous machine.</strong><br>
 Resistance and stray inductance of stator is modeled directly in stator phases, then using space phasor transformation and a rotor-fixed <em>AirGap</em> model. Resistance and stray inductance of rotor's squirrel cage is modeled in two axis of the rotor-fixed coordinate system. Permanent magnet excitation is modelled by a constant equivalent excitation current feeding the d-axis. The machine models take the following loss effects into account:

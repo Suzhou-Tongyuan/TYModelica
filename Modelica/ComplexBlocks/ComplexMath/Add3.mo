@@ -3,15 +3,15 @@ block Add3 "Output the sum of the three inputs"
   extends Modelica.ComplexBlocks.Icons.ComplexBlock;
 
   parameter Complex k1=Complex(1, 0) "Gain of upper input";
-  parameter Boolean useConjugateInput1=false 
+  parameter Boolean useConjugateInput1=false
     "If true, input 1 is processed conjugate complex";
 
   parameter Complex k2=Complex(1, 0) "Gain of middle input";
-  parameter Boolean useConjugateInput2=false 
+  parameter Boolean useConjugateInput2=false
     "If true, input 2 is processed conjugate complex";
 
   parameter Complex k3=Complex(1, 0) "Gain of lower input";
-  parameter Boolean useConjugateInput3=false 
+  parameter Boolean useConjugateInput3=false
     "If true, input 3 is processed conjugate complex";
 
   Interfaces.ComplexInput u1 "Connector 1 of Complex input signals" 
@@ -24,8 +24,8 @@ block Add3 "Output the sum of the three inputs"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 
 equation
-  y = k1*(if useConjugateInput1 then Modelica.ComplexMath.conj(u1) else u1) 
-     + k2*(if useConjugateInput2 then Modelica.ComplexMath.conj(u2) else u2) 
+  y = k1*(if useConjugateInput1 then Modelica.ComplexMath.conj(u1) else u1)
+     + k2*(if useConjugateInput2 then Modelica.ComplexMath.conj(u2) else u2)
      + k3*(if useConjugateInput3 then Modelica.ComplexMath.conj(u3) else u3);
   annotation (
     Documentation(info="<html>
@@ -57,12 +57,12 @@ result in the following equation:
 y = 2 * Modelica.ComplexMath.conj(u1) - 3 * u2 + u3;
 </pre></blockquote>
 
-</html>"), 
+</html>"),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-            100,100}}), graphics={Text(extent={{-98,50},{5,90}}, textString="%k1"), 
-            Text(extent={{-98,-20},{5,20}}, textString="%k2"), 
-            Text(extent={{-98,-50},{5,-90}}, textString="%k3"), 
-            Text(extent={{10,40},{90,-40}}, 
-          textColor={85,170,255}, 
+            100,100}}), graphics={Text(extent={{-98,50},{5,90}}, textString="%k1"),
+            Text(extent={{-98,-20},{5,20}}, textString="%k2"),
+            Text(extent={{-98,-50},{5,-90}}, textString="%k3"),
+            Text(extent={{10,40},{90,-40}},
+          textColor={85,170,255},
           textString="+")}));
 end Add3;

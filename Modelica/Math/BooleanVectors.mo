@@ -1,7 +1,7 @@
 ﻿within Modelica.Math;
 package BooleanVectors "Library of functions operating on Boolean vectors"
  extends Modelica.Icons.Package;
-function allTrue 
+function allTrue
     "Returns true, if all elements of the Boolean input vector are true ('and')"
   extends Modelica.Icons.Function;
   input Boolean b[:] "Boolean vector";
@@ -48,7 +48,7 @@ i.e., size(b,1)=0, the function returns <strong>false</strong> (as opposed to <a
 </html>"));
 end allTrue;
 
-function andTrue 
+function andTrue
     "Returns true, if all elements of the Boolean input vector are true ('and')"
   extends Modelica.Icons.Function;
   input Boolean b[:] "Boolean vector";
@@ -95,7 +95,7 @@ i.e., size(b,1)=0, the function returns <strong>true</strong> (as opposed to <a 
 </html>"));
 end andTrue;
 
-function anyTrue 
+function anyTrue
     "Returns true, if at least one element of the Boolean input vector is true ('or')"
 
   extends Modelica.Icons.Function;
@@ -177,12 +177,12 @@ This function returns the number of <strong>true</strong> elements in a Boolean 
 </html>"));
 end countTrue;
 
-function enumerate 
+function enumerate
     "Enumerates the true elements in a Boolean vector (0 for false elements)"
   extends Modelica.Icons.Function;
 
   input Boolean b[:] "Boolean vector";
-  output Integer enumerated[size(b, 1)] 
+  output Integer enumerated[size(b, 1)]
       "Indices of the true elements in b (increasing order; 0 for false elements)";
 
   protected
@@ -228,7 +228,7 @@ indicated by 0.
 </html>"));
 end enumerate;
 
-function firstTrueIndex 
+function firstTrueIndex
     "Returns the index of the first true element of a Boolean vector"
   extends Modelica.Icons.Function;
   input Boolean b[:] "Boolean vector";
@@ -328,7 +328,7 @@ the integer vector is the number of <strong>true</strong> elements in b.
 </html>"));
 end index;
 
-function oneTrue 
+function oneTrue
     "Returns true, if exactly one element of the Boolean input vector is true (\"xor\")"
   extends Modelica.Icons.Function;
 
@@ -381,12 +381,12 @@ This library provides functions operating on vectors that have
 a Boolean vector as input argument.
 </p>
 </html>"), Icon(graphics={Rectangle(
-          extent={{-16,62},{14,14}}, 
-          lineColor={255,0,255}, 
-          fillColor={255,0,255}, 
+          extent={{-16,62},{14,14}},
+          lineColor={255,0,255},
+          fillColor={255,0,255},
           fillPattern=FillPattern.Solid), Rectangle(
-          extent={{-16,-18},{14,-66}}, 
-          lineColor={255,0,255}, 
-          fillColor={255,0,255}, 
+          extent={{-16,-18},{14,-66}},
+          lineColor={255,0,255},
+          fillColor={255,0,255},
           fillPattern=FillPattern.Solid)}));
 end BooleanVectors;

@@ -8,34 +8,34 @@ model Comparator "Comparator"
   parameter SI.Voltage Vref=0 "Reference voltage";
   parameter Real k=(Vref - Vns)/(Vps - Vns) "Calculated potentiometer ratio to reach Vref";
   parameter SI.Resistance R=1000 "Resistance of potentiometer";
-  Modelica.Electrical.Analog.Ideal.IdealizedOpAmpLimited opAmp(Vps=Vps, Vns= 
+  Modelica.Electrical.Analog.Ideal.IdealizedOpAmpLimited opAmp(Vps=Vps, Vns=
         Vns) annotation (Placement(transformation(extent={{0,10},{20,-10}})));
   Modelica.Electrical.Analog.Basic.Ground ground 
     annotation (Placement(transformation(extent={{-20,-100},{0,-80}})));
   Modelica.Electrical.Analog.Sources.TrapezoidVoltage vIn(
-    rising=0.2/f, 
-    width=0.3/f, 
-    falling=0.2/f, 
-    period=1/f, 
-    nperiod=-1, 
-    startTime=-(vIn.rising + vIn.width/2), 
-    V=2*Vin, 
+    rising=0.2/f,
+    width=0.3/f,
+    falling=0.2/f,
+    period=1/f,
+    nperiod=-1,
+    startTime=-(vIn.rising + vIn.width/2),
+    V=2*Vin,
     offset=-Vin) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-80,0})));
   Modelica.Electrical.Analog.Sensors.VoltageSensor vOut annotation (Placement(
         transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=270, 
+        extent={{-10,10},{10,-10}},
+        rotation=270,
         origin={50,-20})));
-  Modelica.Electrical.Analog.Basic.Potentiometer potentiometer(R=R, rConstant= 
+  Modelica.Electrical.Analog.Basic.Potentiometer potentiometer(R=R, rConstant=
        k) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
+        extent={{-10,10},{10,-10}},
         origin={-10,-30})));
-  Modelica.Electrical.Analog.Sources.SupplyVoltage supplyVoltage(Vps=Vps, Vns= 
+  Modelica.Electrical.Analog.Sources.SupplyVoltage supplyVoltage(Vps=Vps, Vns=
        Vns) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={-10,-50})));
 equation
   connect(vIn.p, opAmp.in_p) annotation (Line(
@@ -56,10 +56,10 @@ equation
       points={{-10,-80},{-10,-50}}, color={0,0,255}));
   annotation (Documentation(info="<html>
 <p>This is a comparator. Resistance R1 can be chosen, resistance R2 is defined by the desired reference voltage Vref (between Vn and Vp). The output switches between Vn for input voltage &lt; Vref and Vp for input voltage &gt; Vref.</p>
-</html>"), 
+</html>"),
     experiment(
-      StartTime=0, 
-      StopTime=1, 
-      Tolerance=1e-006, 
+      StartTime=0,
+      StopTime=1,
+      Tolerance=1e-006,
       Interval=0.001));
 end Comparator;

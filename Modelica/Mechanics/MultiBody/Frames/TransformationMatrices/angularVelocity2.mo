@@ -1,12 +1,12 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
-function angularVelocity2 
+function angularVelocity2
   "Return angular velocity resolved in frame 2 from orientation object and its derivative"
 
   extends Modelica.Icons.Function;
-  input TransformationMatrices.Orientation T 
+  input TransformationMatrices.Orientation T
     "Orientation object to rotate frame 1 into frame 2";
   input der_Orientation der_T "Derivative of T";
-  output SI.AngularVelocity w[3] 
+  output SI.AngularVelocity w[3]
     "Angular velocity of frame 2 with respect to frame 1 resolved in frame 2";
 algorithm
   /* The angular velocity w of frame 2 with respect to frame 1 resolved in frame 2,

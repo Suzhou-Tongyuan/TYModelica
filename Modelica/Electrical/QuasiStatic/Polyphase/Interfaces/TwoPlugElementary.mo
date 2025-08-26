@@ -3,18 +3,18 @@ partial model TwoPlugElementary "Two plugs with pin-adapter and reference connec
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);
   SI.AngularVelocity omega "Angular velocity of reference frame";
 
-  PositivePlug plug_p(final m=m) 
+  PositivePlug plug_p(final m=m)
     "Positive quasi-static polyphase plug" annotation (Placement(
         transformation(extent={{-110,-10},{-90,10}})));
-  NegativePlug plug_n(final m=m) 
+  NegativePlug plug_n(final m=m)
     "Negative quasi-static polyphase plug" annotation (Placement(
         transformation(extent={{90,-10},{110,10}})));
   Basic.PlugToPins_p plugToPins_p(final m=m) annotation (Placement(
         transformation(extent={{-80,-10},{-60,10}})));
   Basic.PlugToPins_n plugToPins_n(final m=m) annotation (Placement(
         transformation(
-        origin={70,0}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={70,0},
+        extent={{-10,-10},{10,10}},
         rotation=180)));
 equation
   omega = der(plug_p.reference.gamma);

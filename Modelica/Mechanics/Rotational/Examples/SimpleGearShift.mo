@@ -1,13 +1,13 @@
 ﻿within Modelica.Mechanics.Rotational.Examples;
 model SimpleGearShift "Simple Gearshift"
   extends Modelica.Icons.Example;
-  output SI.AngularVelocity wEngine=engine.w 
+  output SI.AngularVelocity wEngine=engine.w
     "Speed of engine";
   output SI.AngularVelocity wLoad=load.w "Speed of load";
   output Real gearRatio=wLoad/max(wEngine, 1E-6) "Gear ratio load/engine";
   Modelica.Mechanics.Rotational.Sources.TorqueStep torqueStep(
-    offsetTorque=0, 
-    startTime=0.5, 
+    offsetTorque=0,
+    startTime=0.5,
     stepTorque=20) 
     annotation (Placement(transformation(extent={{-80,-20},{-60,0}})));
   Modelica.Mechanics.Rotational.Components.Inertia engine(J=1) 
@@ -16,18 +16,18 @@ model SimpleGearShift "Simple Gearshift"
       ratio=75/50) 
     annotation (Placement(transformation(extent={{-10,0},{10,-20}})));
   Modelica.Mechanics.Rotational.Components.Inertia load(
-    J=10, 
-    phi(fixed=true, start=0), 
+    J=10,
+    phi(fixed=true, start=0),
     w(fixed=true, start=0)) 
     annotation (Placement(transformation(extent={{30,-20},{50,0}})));
   Modelica.Mechanics.Rotational.Sources.QuadraticSpeedDependentTorque 
-    quadraticSpeedDependentTorque(w_nominal(displayUnit="rpm")= 
+    quadraticSpeedDependentTorque(w_nominal(displayUnit="rpm")=
       10.471975511966, tau_nominal=-20) 
     annotation (Placement(transformation(extent={{80,-20},{60,0}})));
   Modelica.Mechanics.Rotational.Components.Clutch clutch(
-    cgeo=2, 
-    fn_max=100, 
-    phi_rel(fixed=true), 
+    cgeo=2,
+    fn_max=100,
+    phi_rel(fixed=true),
     w_rel(fixed=true)) 
     annotation (Placement(transformation(extent={{-10,10},{10,30}})));
   Modelica.Mechanics.Rotational.Components.Brake brake(cgeo=2, fn_max=100) 
@@ -37,9 +37,9 @@ model SimpleGearShift "Simple Gearshift"
   Modelica.Blocks.Sources.Constant const1(k=1) 
     annotation (Placement(transformation(extent={{-40,50},{-20,70}})));
   Modelica.Blocks.Sources.Ramp ramp(
-    height=1, 
-    offset=0, 
-    startTime=2, 
+    height=1,
+    offset=0,
+    startTime=2,
     duration=0.1) 
     annotation (Placement(transformation(extent={{-60,30},{-40,50}})));
 equation

@@ -1,9 +1,9 @@
 ﻿within Modelica.Utilities;
-package Examples 
+package Examples
   "Examples to demonstrate the usage of package Modelica.Utilities"
   extends Modelica.Icons.ExamplesPackage;
 
-  function calculator 
+  function calculator
     "Interpreter to evaluate simple expressions consisting of +, -, *, /, (), sin(), cos(), tan(), sqrt(), asin(), acos(), atan(), exp(), log(), pi"
     import Modelica.Utilities.Strings;
     extends Modelica.Icons.Function;
@@ -54,7 +54,7 @@ calculator(\"sin(pi/6)\");  // returns 0.5
 </html>"));
   end calculator;
 
-  function expression 
+  function expression
     "Expression interpreter that returns with the position after the expression (expression may consist of +, -, *, /, (), sin(), cos(), tan(), sqrt(), asin(), acos(), atan(), exp(), log(), pi)"
     import Modelica.Utilities.Types;
     import Modelica.Utilities.Strings;
@@ -63,9 +63,9 @@ calculator(\"sin(pi/6)\");  // returns 0.5
 
     extends Modelica.Icons.Function;
     input String string "Expression that is evaluated";
-    input Integer startIndex=1 
+    input Integer startIndex=1
       "Start scanning of expression at character startIndex";
-    input String message="" 
+    input String message=""
       "Message used in error message if scan is not successful";
     output Real result "Value of expression";
     output Integer nextIndex "Index after the scanned expression";
@@ -139,7 +139,7 @@ calculator(\"sin(pi/6)\");  // returns 0.5
            result := Math.tan(result);
          elseif functionName == "sqrt" then
            if result < 0.0 then
-              Strings.syntaxError(string, startIndex, "Argument of call \"sqrt(" + String(result) + ")\" is negative.\n" + 
+              Strings.syntaxError(string, startIndex, "Argument of call \"sqrt(" + String(result) + ")\" is negative.\n" +
                           "Imaginary numbers are not supported by the calculator.\n" + message);
            end if;
            result := sqrt(result);
@@ -279,7 +279,7 @@ expression(\"sin(pi/6)\");  // returns 0.5
   function readRealParameter "Read the value of a Real parameter from file"
     extends Modelica.Icons.Function;
     input String fileName "Name of file" annotation(Dialog(
-                           loadSelector(filter="Text files (*.txt)", 
+                           loadSelector(filter="Text files (*.txt)",
                            caption="Open file in which Real parameters are present")));
     input String name "Name of parameter";
     output Real result "Actual value of parameter on file";
@@ -328,7 +328,7 @@ expression(\"sin(pi/6)\");  // returns 0.5
     if not found then
        Streams.error("Parameter \"" + name + "\" not found in file \"" + fileName + "\"");
     end if;
-    annotation (Documentation(info= 
+    annotation (Documentation(info=
                    "<html>
 <h4>Syntax</h4>
 <blockquote><pre>
@@ -371,21 +371,21 @@ readRealParameter(\"test.txt\", \"w_rel0\")
 </html>"));
   end readRealParameter;
 
-  model readRealParameterModel 
+  model readRealParameterModel
     "Demonstrate usage of Examples.readRealParameter/.expression"
 
     extends Modelica.Icons.Example;
 
     parameter String file = Modelica.Utilities.Files.loadResource(
-    "modelica://Modelica/Resources/Data/Utilities/Examples_readRealParameters.txt") 
+    "modelica://Modelica/Resources/Data/Utilities/Examples_readRealParameters.txt")
       "File on which data is present" 
-          annotation(Dialog(loadSelector(filter="Text files (*.txt)", 
+          annotation(Dialog(loadSelector(filter="Text files (*.txt)",
                         caption="Open text file to read parameters of the form \"name = value\"")));
-    parameter Modelica.Units.SI.Inertia J = readRealParameter(file, "J") 
+    parameter Modelica.Units.SI.Inertia J = readRealParameter(file, "J")
       "Inertia";
-    parameter Modelica.Units.SI.Angle phi_rel0 = readRealParameter(file, "phi_rel0") 
+    parameter Modelica.Units.SI.Angle phi_rel0 = readRealParameter(file, "phi_rel0")
       "Relative angle";
-    parameter Modelica.Units.SI.AngularVelocity w_rel0 = readRealParameter(file, "w_rel0") 
+    parameter Modelica.Units.SI.AngularVelocity w_rel0 = readRealParameter(file, "w_rel0")
       "Relative angular velocity";
   equation
     when terminal() then
@@ -401,7 +401,7 @@ from a file.
 </html>"), experiment(StopTime=1.01));
   end readRealParameterModel;
 
-  model WriteRealMatrixToFile 
+  model WriteRealMatrixToFile
     "Demonstrate usage of function Streams.writeRealMatrix"
     extends Modelica.Icons.Example;
     parameter Real A[3,2] = [11, 12;
@@ -427,7 +427,7 @@ using function <a href=\"modelica://Modelica.Utilities.Streams.writeRealMatrix\"
 </html>"));
   end WriteRealMatrixToFile;
 
-  model ReadRealMatrixFromFile 
+  model ReadRealMatrixFromFile
     "Demonstrate usage of function Streams.readRealMatrix"
     import Modelica.Utilities.Streams.print;
     extends Modelica.Icons.Example;

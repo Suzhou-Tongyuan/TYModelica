@@ -7,8 +7,8 @@ function resolve1 "Transform vector from frame 2 to frame 1"
 algorithm
   v1 := transpose(R.T)*v2;
   annotation (
-    derivative(noDerivative=R) = Internal.resolve1_der, 
-    InlineAfterIndexReduction=true, 
+    derivative(noDerivative=R) = Internal.resolve1_der,
+    InlineAfterIndexReduction=true,
     Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>

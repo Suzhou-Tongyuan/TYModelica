@@ -1,11 +1,11 @@
 ﻿within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
-block ComputationalDelay 
+block ComputationalDelay
   "Delay a clocked signal for at most one period, in order to model a computational delay"
 extends Clocked.RealSignals.Interfaces.PartialClockedSISO;
-  parameter Integer shiftCounter(min=0,max=resolution) = 0 
+  parameter Integer shiftCounter(min=0,max=resolution) = 0
     "(min=0, max=resolution), computational delay = interval()*shiftCounter/resolution" 
        annotation(Evaluate=true,Dialog(group="Computational delay in seconds = interval() * shiftCounter/resolution"));
-  parameter Integer resolution(min=1) = 1 
+  parameter Integer resolution(min=1) = 1
     "Time quantization resolution of sample interval" 
        annotation(Evaluate=true,Dialog(group="Computational delay in seconds = interval() * shiftCounter/resolution"));
 protected

@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical.QuasiStatic.Polyphase.Functions;
-function quasiRMS 
+function quasiRMS
   "Overall quasi-RMS value of complex input (current or voltage)"
   extends Modelica.Icons.Function;
   import Modelica.ComplexMath.abs;

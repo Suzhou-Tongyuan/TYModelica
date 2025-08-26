@@ -4,7 +4,7 @@ package DCMachines "Loss models for DC machines"
 
   annotation (Documentation(info="<html>
 This package contains loss models used for DC machine models.
-</html>", 
+</html>",
       revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

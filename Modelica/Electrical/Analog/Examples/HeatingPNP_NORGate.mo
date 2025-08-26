@@ -6,46 +6,46 @@ model HeatingPNP_NORGate "Heating PNP NOR Gate"
 
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor HeatCapacitor1(C=0.1) 
   annotation (Placement(transformation(
-        origin={76,-84}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={76,-84},
+        extent={{-10,-10},{10,10}},
         rotation=180)));
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor TC1(G=0.01) 
   annotation (Placement(transformation(
-        origin={90,-50}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={90,-50},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor TC2(G=0.01) 
   annotation (Placement(transformation(
-        origin={60,-50}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={60,-50},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
 
   Modelica.Electrical.Analog.Sources.RampVoltage V(V=6, duration=5) 
   annotation (Placement(transformation(
-        origin={90,38}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={90,38},
+        extent={{-10,-10},{10,10}},
         rotation=90)));
   Modelica.Electrical.Analog.Sources.TrapezoidVoltage V1(
-    startTime=55, 
-    rising=5, 
-    width=15, 
-    falling=5, 
-    period=50, 
-    nperiod=10, 
+    startTime=55,
+    rising=5,
+    width=15,
+    falling=5,
+    period=50,
+    nperiod=10,
     V=-6)     annotation (Placement(transformation(
-        origin={-90,18}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-90,18},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Sources.TrapezoidVoltage V2(
-    startTime=65, 
-    rising=5, 
-    width=15, 
-    falling=5, 
-    period=50, 
-    nperiod=10, 
+    startTime=65,
+    rising=5,
+    width=15,
+    falling=5,
+    period=50,
+    nperiod=10,
     V=-6)     annotation (Placement(transformation(
-        origin={-50,-42}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-50,-42},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Resistor R1(R=1800) 
   annotation (Placement(transformation(extent={{-90,48},{-70,68}})));
@@ -63,18 +63,18 @@ model HeatingPNP_NORGate "Heating PNP NOR Gate"
   annotation (Placement(transformation(extent={{30,-52},{50,-32}})));
   Modelica.Electrical.Analog.Basic.Capacitor C1(final C=CapVal) 
   annotation (Placement(transformation(
-        origin={-70,38}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-70,38},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Capacitor C2(final C=CapVal) 
   annotation (Placement(transformation(
-        origin={60,42}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={60,42},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Capacitor C3(final C=CapVal) 
   annotation (Placement(transformation(
-        origin={-16,-40}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-16,-40},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Ground Gnd5 
   annotation (Placement(transformation(extent={{-26,-76},{-6,-56}})));
@@ -83,43 +83,43 @@ model HeatingPNP_NORGate "Heating PNP NOR Gate"
   Modelica.Electrical.Analog.Basic.Ground Gnd7 
   annotation (Placement(transformation(extent={{-80,2},{-60,22}})));
   Modelica.Electrical.Analog.Semiconductors.PNP T1(
-    Bf=100, 
-    Br=1, 
-    Is=1e-14, 
-    Vak=0, 
-    final Tauf=tauVal, 
-    final Taur=tauVal, 
-    final Ccs=CapVal, 
-    final Cje=CapVal, 
-    final Cjc=CapVal, 
-    Phie=1, 
-    Me=0.5, 
-    Phic=1, 
-    Mc=0.5, 
-    Gbc=1e-12, 
-    Gbe=1e-12, 
-    EMax=40, 
-    vt_t(start=0.01, fixed=false), 
+    Bf=100,
+    Br=1,
+    Is=1e-14,
+    Vak=0,
+    final Tauf=tauVal,
+    final Taur=tauVal,
+    final Ccs=CapVal,
+    final Cje=CapVal,
+    final Cjc=CapVal,
+    Phie=1,
+    Me=0.5,
+    Phic=1,
+    Mc=0.5,
+    Gbc=1e-12,
+    Gbe=1e-12,
+    EMax=40,
+    vt_t(start=0.01, fixed=false),
     useTemperatureDependency=true) 
     annotation (Placement(transformation(extent={{-20,48},{0,68}})));
   Modelica.Electrical.Analog.Semiconductors.PNP T2(
-    Bf=100, 
-    Br=1, 
-    Is=1e-14, 
-    Vak=0, 
-    final Tauf=tauVal, 
-    final Taur=tauVal, 
-    final Ccs=CapVal, 
-    final Cje=CapVal, 
-    final Cjc=CapVal, 
-    Phie=1, 
-    Me=0.5, 
-    Phic=1, 
-    Mc=0.5, 
-    Gbc=1e-12, 
-    Gbe=1e-12, 
-    EMax=40, 
-    vt_t(start=0.01, fixed=false), 
+    Bf=100,
+    Br=1,
+    Is=1e-14,
+    Vak=0,
+    final Tauf=tauVal,
+    final Taur=tauVal,
+    final Ccs=CapVal,
+    final Cje=CapVal,
+    final Cjc=CapVal,
+    Phie=1,
+    Me=0.5,
+    Phic=1,
+    Mc=0.5,
+    Gbc=1e-12,
+    Gbe=1e-12,
+    EMax=40,
+    vt_t(start=0.01, fixed=false),
     useTemperatureDependency=true) 
     annotation (Placement(transformation(extent={{20,-22},{40,-2}})));
   Modelica.Electrical.Analog.Basic.Ground Gnd1 
@@ -149,15 +149,15 @@ equation
   connect(T2.C, RI.p) 
   annotation (Line(points={{40,-6},{40,68},{60,68}}, color={0,0,255}));
   connect(TC1.port_b, HeatCapacitor1.port) 
-                                         annotation (Line(points={{90,-60},{84, 
+                                         annotation (Line(points={{90,-60},{84,
           -60},{84,-74},{76,-74}}, color={191,0,0}));
   connect(TC2.port_b, HeatCapacitor1.port) 
-                                         annotation (Line(points={{60,-60},{68, 
+                                         annotation (Line(points={{60,-60},{68,
           -60},{68,-74},{76,-74}}, color={191,0,0}));
   connect(TC2.port_a, T2.heatPort) 
   annotation (Line(points={{60,-40},{60,-22},{30,-22}}, color={191,0,0}));
   connect(TC1.port_a, T1.heatPort) 
-                                 annotation (Line(points={{90,-40},{90,2},{-10, 
+                                 annotation (Line(points={{90,-40},{90,2},{-10,
           2},{-10,48}}, color={191,0,0}));
   connect(V.n, RI.n) 
     annotation (Line(points={{90,48},{90,68},{80,68}}, color={0,0,255}));
@@ -175,17 +175,17 @@ equation
     annotation (Line(points={{60,52},{60,68}}, color={0,0,255}));
   connect(C2.n, Gnd6.p) 
     annotation (Line(points={{60,32},{60,26}}, color={0,0,255}));
-annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{100,100}}), graphics={Text(
-          extent={{-98,100},{-4,72}}, 
-          textColor={0,0,255}, 
-          textString="Heating \"PNP NOR\" Gate")}), 
+          extent={{-98,100},{-4,72}},
+          textColor={0,0,255},
+          textString="Heating \"PNP NOR\" Gate")}),
                                   Documentation(info="<html>
 <p>The heating &quot;PNP NOR&quot; gate shows a heat flow always if a transistor is conducting.</p>
 <p>Simulate until T=200 s. Plot V1.v and V2.v and C2.v to see the NOR-functionality. High potential is -6V which means logic &quot;true&quot;. Low potential is 0V which means logic &quot;false&quot;.</p>
 <p>To see which transistor is conducting one can have a look at the temperatures T1.heatPort.T and T2.heatPort.T and the heat flows T1.heatPort.Q_flow and T2.heatPort.Q_flow of the heatports of the transistors T1 and T2.</p>
 <p>They are different from zero if the transistor is conducting.</p>
-</html>", 
+</html>",
    revisions="<html>
 <h4>Release Notes</h4>
 <ul>

@@ -25,7 +25,7 @@ record DifferentialAmplifierData "Data record for differential amplifier"
     annotation(Dialog(group="OpAmp"));
   parameter SI.Resistance RInstrument=100e3 "Input resistance of instrument" 
     annotation(Dialog(group="Measurement"));
-  annotation (defaultComponentPrefixes="parameter", defaultComponentName="data", 
+  annotation (defaultComponentPrefixes="parameter", defaultComponentName="data",
     Documentation(info="<html>
 <p>
 Summarizes parameters for:

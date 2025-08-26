@@ -1,11 +1,11 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
-function axisRotation 
+function axisRotation
   "Return rotation object to rotate around one frame axis"
   extends Modelica.Icons.Function;
   input Integer axis(min=1, max=3) "Rotate around 'axis' of frame 1";
-  input SI.Angle angle 
+  input SI.Angle angle
     "Rotation angle to rotate frame 1 into frame 2 along 'axis' of frame 1";
-  output TransformationMatrices.Orientation T 
+  output TransformationMatrices.Orientation T
     "Orientation object to rotate frame 1 into frame 2";
 algorithm
   T := if axis == 1 then [1, 0, 0; 0, Modelica.Math.cos(angle), Modelica.Math.sin(angle); 0, -Modelica.Math.sin(angle),

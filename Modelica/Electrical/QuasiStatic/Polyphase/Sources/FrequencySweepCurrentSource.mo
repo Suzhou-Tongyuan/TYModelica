@@ -13,11 +13,11 @@ model FrequencySweepCurrentSource "Current source with integrated frequency swee
   SI.Frequency f=currentSource.f   "Actual frequency";
   VariableCurrentSource currentSource(final m=m) annotation (Placement(transformation(extent={{-10,10},{10,-10}})));
   Modelica.Blocks.Sources.LogFrequencySweep logFrequencySweep(
-    final wMin=fStart, 
-    final wMax=fStop, 
-    final startTime=startTime, 
+    final wMin=fStart,
+    final wMax=fStop,
+    final startTime=startTime,
     final duration=duration) annotation (Placement(transformation(extent={{40,-60},{20,-40}})));
-  Modelica.ComplexBlocks.Sources.ComplexConstant const[m](final k= 
+  Modelica.ComplexBlocks.Sources.ComplexConstant const[m](final k=
         Modelica.ComplexMath.fromPolar(len=I, phi=phi)) 
     annotation (Placement(transformation(extent={{-60,-60},{-40,-40}})));
 equation
@@ -27,29 +27,29 @@ equation
   connect(currentSource.I, const.y) annotation (Line(points={{-6.2,-12},{-6,-12},{-6,-50},{-39,-50}}, color={85,170,255}));
   annotation (defaultComponentName="currentSource",Icon(graphics={
         Ellipse(
-          extent={{-50,50},{50,-50}}, 
-          lineColor={85,170,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-90,0},{-50,0}}, color={85,170,255}), 
-        Line(points={{50,0},{90,0}}, color={85,170,255}), 
-        Line(points={{0,-50},{0,50}}, color={85,170,255}), 
+          extent={{-50,50},{50,-50}},
+          lineColor={85,170,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-90,0},{-50,0}}, color={85,170,255}),
+        Line(points={{50,0},{90,0}}, color={85,170,255}),
+        Line(points={{0,-50},{0,50}}, color={85,170,255}),
         Text(
-          extent={{150,60},{-150,100}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{150,60},{-150,100}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
-          points={{-44,0},{-32,14},{-20,32},{-12,42},{-6,30},{0,0},{4,-28},{8,-40},{12,-20},{14,2},{16,30},{18,42},{20,28},{24,-32},{26,-40},{28,0}}, 
-          color={192,192,192}, 
-          smooth=Smooth.Bezier), 
+          points={{-44,0},{-32,14},{-20,32},{-12,42},{-6,30},{0,0},{4,-28},{8,-40},{12,-20},{14,2},{16,30},{18,42},{20,28},{24,-32},{26,-40},{28,0}},
+          color={192,192,192},
+          smooth=Smooth.Bezier),
         Polygon(
-          points={{90,0},{60,10},{60,-10},{90,0}}, 
-          lineColor={85,170,255}, 
-          fillColor={85,170,255}, 
-          fillPattern=FillPattern.Solid), 
+          points={{90,0},{60,10},{60,-10},{90,0}},
+          lineColor={85,170,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{160,-100},{-160,-60}}, 
-          textString="m=%m")}), 
+          extent={{160,-100},{-160,-60}},
+          textString="m=%m")}),
     Documentation(info="<html>
 <p>This source provides polyphase constant RMS phase currents <code>I</code> and phase angles <code>phi</code>,
 whereas the frequency sweeps from

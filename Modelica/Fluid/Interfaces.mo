@@ -1,199 +1,199 @@
 ﻿within Modelica.Fluid;
-package Interfaces 
+package Interfaces
   "Interfaces for steady state and unsteady, mixed-phase, multi-substance, incompressible and compressible flow"
 
   extends Modelica.Icons.InterfacesPackage;
 
-  connector FluidPort 
+  connector FluidPort
     "Interface for quasi one-dimensional fluid flow in a piping network (incompressible or compressible, one or more phases, one or more substances)"
 
-    replaceable package Medium = Modelica.Media.Interfaces.PartialMedium 
+    replaceable package Medium = Modelica.Media.Interfaces.PartialMedium
       "Medium model" annotation (choicesAllMatching=true);
 
-    flow Medium.MassFlowRate m_flow 
+    flow Medium.MassFlowRate m_flow
       "Mass flow rate from the connection point into the component";
     Medium.AbsolutePressure p "Thermodynamic pressure in the connection point";
-    stream Medium.SpecificEnthalpy h_outflow 
+    stream Medium.SpecificEnthalpy h_outflow
       "Specific thermodynamic enthalpy close to the connection point if m_flow < 0";
-    stream Medium.MassFraction Xi_outflow[Medium.nXi] 
+    stream Medium.MassFraction Xi_outflow[Medium.nXi]
       "Independent mixture mass fractions m_i/m close to the connection point if m_flow < 0";
-    stream Medium.ExtraProperty C_outflow[Medium.nC] 
+    stream Medium.ExtraProperty C_outflow[Medium.nC]
       "Properties c_i/m close to the connection point if m_flow < 0";
   end FluidPort;
 
   connector FluidPort_a "Generic fluid connector at design inlet"
     extends FluidPort;
-    annotation (defaultComponentName="port_a", 
-                Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100, 
+    annotation (defaultComponentName="port_a",
+                Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
               -100},{100,100}}), graphics={Ellipse(
-            extent={{-40,40},{40,-40}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), Text(extent={{-150,110},{150,50}}, 
-              textString="%name")}), 
+            extent={{-40,40},{40,-40}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid), Text(extent={{-150,110},{150,50}},
+              textString="%name")}),
          Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
               100,100}}), graphics={Ellipse(
-            extent={{-100,100},{100,-100}}, 
-            lineColor={0,127,255}, 
-            fillColor={0,127,255}, 
+            extent={{-100,100},{100,-100}},
+            lineColor={0,127,255},
+            fillColor={0,127,255},
             fillPattern=FillPattern.Solid), Ellipse(
-            extent={{-100,100},{100,-100}}, 
-            fillColor={0,127,255}, 
+            extent={{-100,100},{100,-100}},
+            fillColor={0,127,255},
             fillPattern=FillPattern.Solid)}));
   end FluidPort_a;
 
   connector FluidPort_b "Generic fluid connector at design outlet"
     extends FluidPort;
-    annotation (defaultComponentName="port_b", 
-                Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100, 
+    annotation (defaultComponentName="port_b",
+                Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
               -100},{100,100}}), graphics={
           Ellipse(
-            extent={{-40,40},{40,-40}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-40,40},{40,-40}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-30,30},{30,-30}}, 
-            lineColor={0,127,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
-          Text(extent={{-150,110},{150,50}}, textString="%name")}), 
+            extent={{-30,30},{30,-30}},
+            lineColor={0,127,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(extent={{-150,110},{150,50}}, textString="%name")}),
          Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
               100,100}}), graphics={
           Ellipse(
-            extent={{-100,100},{100,-100}}, 
-            lineColor={0,127,255}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-100,100},{100,-100}},
+            lineColor={0,127,255},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-100,100},{100,-100}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-100,100},{100,-100}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-80,80},{80,-80}}, 
-            lineColor={0,127,255}, 
-            fillColor={255,255,255}, 
+            extent={{-80,80},{80,-80}},
+            lineColor={0,127,255},
+            fillColor={255,255,255},
             fillPattern=FillPattern.Solid)}));
   end FluidPort_b;
 
-  connector FluidPorts_a 
+  connector FluidPorts_a
     "Fluid connector with filled, large icon to be used for vectors of FluidPorts (vector dimensions must be added after dragging)"
     extends FluidPort;
-    annotation (defaultComponentName="ports_a", 
+    annotation (defaultComponentName="ports_a",
                 Diagram(coordinateSystem(
-          preserveAspectRatio=false, 
-          extent={{-50,-200},{50,200}}, 
+          preserveAspectRatio=false,
+          extent={{-50,-200},{50,200}},
           initialScale=0.2), graphics={
-          Text(extent={{-75,130},{75,100}}, textString="%name"), 
+          Text(extent={{-75,130},{75,100}}, textString="%name"),
           Rectangle(
-            extent={{25,-100},{-25,100}}, 
-            lineColor={0,127,255}), 
+            extent={{25,-100},{-25,100}},
+            lineColor={0,127,255}),
           Ellipse(
-            extent={{-25,90},{25,40}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-25,90},{25,40}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-25,25},{25,-25}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-25,25},{25,-25}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-25,-40},{25,-90}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid)}), 
+            extent={{-25,-40},{25,-90}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid)}),
          Icon(coordinateSystem(
-          preserveAspectRatio=false, 
-          extent={{-50,-200},{50,200}}, 
+          preserveAspectRatio=false,
+          extent={{-50,-200},{50,200}},
           initialScale=0.2), graphics={
           Rectangle(
-            extent={{50,-200},{-50,200}}, 
-            lineColor={0,127,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{50,-200},{-50,200}},
+            lineColor={0,127,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-50,180},{50,80}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-50,180},{50,80}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-50,50},{50,-50}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-50,50},{50,-50}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-50,-80},{50,-180}}, 
-            fillColor={0,127,255}, 
+            extent={{-50,-80},{50,-180}},
+            fillColor={0,127,255},
             fillPattern=FillPattern.Solid)}));
   end FluidPorts_a;
 
-  connector FluidPorts_b 
+  connector FluidPorts_b
     "Fluid connector with outlined, large icon to be used for vectors of FluidPorts (vector dimensions must be added after dragging)"
     extends FluidPort;
-    annotation (defaultComponentName="ports_b", 
+    annotation (defaultComponentName="ports_b",
                 Diagram(coordinateSystem(
-          preserveAspectRatio=false, 
-          extent={{-50,-200},{50,200}}, 
+          preserveAspectRatio=false,
+          extent={{-50,-200},{50,200}},
           initialScale=0.2), graphics={
-          Text(extent={{-75,130},{75,100}}, textString="%name"), 
+          Text(extent={{-75,130},{75,100}}, textString="%name"),
           Rectangle(
-            extent={{-25,100},{25,-100}}), 
+            extent={{-25,100},{25,-100}}),
           Ellipse(
-            extent={{-25,90},{25,40}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-25,90},{25,40}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-25,25},{25,-25}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-25,25},{25,-25}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-25,-40},{25,-90}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-25,-40},{25,-90}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-15,-50},{15,-80}}, 
-            lineColor={0,127,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-15,-50},{15,-80}},
+            lineColor={0,127,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            lineColor={0,127,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-15,15},{15,-15}},
+            lineColor={0,127,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-15,50},{15,80}}, 
-            lineColor={0,127,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid)}), 
+            extent={{-15,50},{15,80}},
+            lineColor={0,127,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid)}),
          Icon(coordinateSystem(
-          preserveAspectRatio=false, 
-          extent={{-50,-200},{50,200}}, 
+          preserveAspectRatio=false,
+          extent={{-50,-200},{50,200}},
           initialScale=0.2), graphics={
           Rectangle(
-            extent={{-50,200},{50,-200}}, 
-            lineColor={0,127,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-50,200},{50,-200}},
+            lineColor={0,127,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-50,180},{50,80}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-50,180},{50,80}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-50,50},{50,-50}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-50,50},{50,-50}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-50,-80},{50,-180}}, 
-            fillColor={0,127,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-50,-80},{50,-180}},
+            fillColor={0,127,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-30,30},{30,-30}}, 
-            lineColor={0,127,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-30,30},{30,-30}},
+            lineColor={0,127,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-30,100},{30,160}}, 
-            lineColor={0,127,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-30,100},{30,160}},
+            lineColor={0,127,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-30,-100},{30,-160}}, 
-            lineColor={0,127,255}, 
-            fillColor={255,255,255}, 
+            extent={{-30,-100},{30,-160}},
+            lineColor={0,127,255},
+            fillColor={255,255,255},
             fillPattern=FillPattern.Solid)}));
   end FluidPorts_b;
 
@@ -201,31 +201,31 @@ package Interfaces
     import Modelica.Constants;
     outer Modelica.Fluid.System system "System wide properties";
 
-    replaceable package Medium = 
+    replaceable package Medium =
         Modelica.Media.Interfaces.PartialMedium "Medium in the component" 
         annotation (choicesAllMatching = true);
 
-    parameter Boolean allowFlowReversal = system.allowFlowReversal 
+    parameter Boolean allowFlowReversal = system.allowFlowReversal
       "= true to allow flow reversal, false restricts to design direction (port_a -> port_b)" 
       annotation(Dialog(tab="Assumptions"), Evaluate=true);
 
     Modelica.Fluid.Interfaces.FluidPort_a port_a(
-                                  redeclare package Medium = Medium, 
-                       m_flow(min=if allowFlowReversal then -Constants.inf else 0)) 
+                                  redeclare package Medium = Medium,
+                       m_flow(min=if allowFlowReversal then -Constants.inf else 0))
       "Fluid connector a (positive design flow direction is from port_a to port_b)" 
       annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
     Modelica.Fluid.Interfaces.FluidPort_b port_b(
-                                  redeclare package Medium = Medium, 
-                       m_flow(max=if allowFlowReversal then +Constants.inf else 0)) 
+                                  redeclare package Medium = Medium,
+                       m_flow(max=if allowFlowReversal then +Constants.inf else 0))
       "Fluid connector b (positive design flow direction is from port_a to port_b)" 
       annotation (Placement(transformation(extent={{110,-10},{90,10}}), iconTransformation(extent={{110,-10},{90,10}})));
     // Model structure, e.g., used for visualization
   protected
-    parameter Boolean port_a_exposesState = false 
+    parameter Boolean port_a_exposesState = false
       "= true if port_a exposes the state of a fluid volume";
-    parameter Boolean port_b_exposesState = false 
+    parameter Boolean port_b_exposesState = false
       "= true if port_b.p exposes the state of a fluid volume";
-    parameter Boolean showDesignFlowDirection = true 
+    parameter Boolean showDesignFlowDirection = true
       "= false to hide the arrow in the model icon";
 
     annotation (
@@ -240,93 +240,93 @@ An extending model providing direct access to internal storage of mass or energy
 should redefine the protected parameters <code><strong>port_a_exposesState</strong></code> and <code><strong>port_b_exposesState</strong></code> appropriately.
 This will be visualized at the port icons, in order to improve the understanding of fluid model diagrams.
 </p>
-</html>"), 
+</html>"),
       Icon(coordinateSystem(
-            preserveAspectRatio=true, 
+            preserveAspectRatio=true,
             extent={{-100,-100},{100,100}}), graphics={
           Polygon(
-            points={{20,-70},{60,-85},{20,-100},{20,-70}}, 
-            lineColor={0,128,255}, 
-            fillColor={0,128,255}, 
-            fillPattern=FillPattern.Solid, 
-            visible=showDesignFlowDirection), 
+            points={{20,-70},{60,-85},{20,-100},{20,-70}},
+            lineColor={0,128,255},
+            fillColor={0,128,255},
+            fillPattern=FillPattern.Solid,
+            visible=showDesignFlowDirection),
           Polygon(
-            points={{20,-75},{50,-85},{20,-95},{20,-75}}, 
-            lineColor={255,255,255}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid, 
-            visible=allowFlowReversal), 
+            points={{20,-75},{50,-85},{20,-95},{20,-75}},
+            lineColor={255,255,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid,
+            visible=allowFlowReversal),
           Line(
-            points={{55,-85},{-60,-85}}, 
-            color={0,128,255}, 
-            visible=showDesignFlowDirection), 
+            points={{55,-85},{-60,-85}},
+            color={0,128,255},
+            visible=showDesignFlowDirection),
           Text(
-            extent={{-149,-114},{151,-154}}, 
-            textColor={0,0,255}, 
-            textString="%name"), 
+            extent={{-149,-114},{151,-154}},
+            textColor={0,0,255},
+            textString="%name"),
           Ellipse(
-            extent={{-110,26},{-90,-24}}, 
-            fillPattern=FillPattern.Solid, 
-            visible=port_a_exposesState), 
+            extent={{-110,26},{-90,-24}},
+            fillPattern=FillPattern.Solid,
+            visible=port_a_exposesState),
           Ellipse(
-            extent={{90,25},{110,-25}}, 
-            fillPattern=FillPattern.Solid, 
+            extent={{90,25},{110,-25}},
+            fillPattern=FillPattern.Solid,
             visible=port_b_exposesState)}));
   end PartialTwoPort;
 
-partial model PartialTwoPortTransport 
+partial model PartialTwoPortTransport
     "Partial element transporting fluid between two ports without storage of mass or energy"
 
   extends PartialTwoPort(
-    final port_a_exposesState=false, 
+    final port_a_exposesState=false,
     final port_b_exposesState=false);
 
   // Advanced
   // Note: value of dp_start shall be refined by derived model, basing on local dp_nominal
-  parameter Medium.AbsolutePressure dp_start(min=-Modelica.Constants.inf) = 0.01*system.p_start 
+  parameter Medium.AbsolutePressure dp_start(min=-Modelica.Constants.inf) = 0.01*system.p_start
       "Guess value of dp = port_a.p - port_b.p" 
     annotation(Dialog(tab = "Advanced"));
-  parameter Medium.MassFlowRate m_flow_start = system.m_flow_start 
+  parameter Medium.MassFlowRate m_flow_start = system.m_flow_start
       "Guess value of m_flow = port_a.m_flow" 
     annotation(Dialog(tab = "Advanced"));
   // Note: value of m_flow_small shall be refined by derived model, basing on local m_flow_nominal
-  parameter Medium.MassFlowRate m_flow_small = if system.use_eps_Re then system.eps_m_flow*system.m_flow_nominal else system.m_flow_small 
+  parameter Medium.MassFlowRate m_flow_small = if system.use_eps_Re then system.eps_m_flow*system.m_flow_nominal else system.m_flow_small
       "Small mass flow rate for regularization of zero flow" 
     annotation(Dialog(tab = "Advanced"));
 
   // Diagnostics
-  parameter Boolean show_T = true 
+  parameter Boolean show_T = true
       "= true, if temperatures at port_a and port_b are computed" 
     annotation(Dialog(tab="Advanced",group="Diagnostics"));
-  parameter Boolean show_V_flow = true 
+  parameter Boolean show_V_flow = true
       "= true, if volume flow rate at inflowing port is computed" 
     annotation(Dialog(tab="Advanced",group="Diagnostics"));
 
   // Variables
   Medium.MassFlowRate m_flow(
-     min=if allowFlowReversal then -Modelica.Constants.inf else 0, 
+     min=if allowFlowReversal then -Modelica.Constants.inf else 0,
      start = m_flow_start) "Mass flow rate in design flow direction";
-  SI.Pressure dp(start=dp_start) 
+  SI.Pressure dp(start=dp_start)
       "Pressure difference between port_a and port_b (= port_a.p - port_b.p)";
 
-  SI.VolumeFlowRate V_flow= 
-      m_flow/Modelica.Fluid.Utilities.regStep(m_flow, 
-                  Medium.density(state_a), 
-                  Medium.density(state_b), 
-                  m_flow_small) if show_V_flow 
+  SI.VolumeFlowRate V_flow=
+      m_flow/Modelica.Fluid.Utilities.regStep(m_flow,
+                  Medium.density(state_a),
+                  Medium.density(state_b),
+                  m_flow_small) if show_V_flow
       "Volume flow rate at inflowing port (positive when flow from port_a to port_b)";
 
-  Medium.Temperature port_a_T= 
-      Modelica.Fluid.Utilities.regStep(port_a.m_flow, 
-                  Medium.temperature(state_a), 
-                  Medium.temperature(Medium.setState_phX(port_a.p, port_a.h_outflow, port_a.Xi_outflow)), 
-                  m_flow_small) if show_T 
+  Medium.Temperature port_a_T=
+      Modelica.Fluid.Utilities.regStep(port_a.m_flow,
+                  Medium.temperature(state_a),
+                  Medium.temperature(Medium.setState_phX(port_a.p, port_a.h_outflow, port_a.Xi_outflow)),
+                  m_flow_small) if show_T
       "Temperature close to port_a, if show_T = true";
-  Medium.Temperature port_b_T= 
-      Modelica.Fluid.Utilities.regStep(port_b.m_flow, 
-                  Medium.temperature(state_b), 
-                  Medium.temperature(Medium.setState_phX(port_b.p, port_b.h_outflow, port_b.Xi_outflow)), 
-                  m_flow_small) if show_T 
+  Medium.Temperature port_b_T=
+      Modelica.Fluid.Utilities.regStep(port_b.m_flow,
+                  Medium.temperature(state_b),
+                  Medium.temperature(Medium.setState_phX(port_b.p, port_b.h_outflow, port_b.Xi_outflow)),
+                  m_flow_small) if show_T
       "Temperature close to port_b, if show_T = true";
   protected
   Medium.ThermodynamicState state_a "State for medium inflowing through port_a";
@@ -377,70 +377,70 @@ Moreover appropriate values shall be assigned to the following parameters:
 </html>"));
 end PartialTwoPortTransport;
 
-  connector HeatPorts_a 
+  connector HeatPorts_a
     "HeatPort connector with filled, large icon to be used for vectors of HeatPorts (vector dimensions must be added after dragging)"
     extends Modelica.Thermal.HeatTransfer.Interfaces.HeatPort;
-    annotation (defaultComponentName="heatPorts_a", 
+    annotation (defaultComponentName="heatPorts_a",
          Icon(coordinateSystem(
-          preserveAspectRatio=false, 
-          extent={{-200,-50},{200,50}}, 
+          preserveAspectRatio=false,
+          extent={{-200,-50},{200,50}},
           initialScale=0.2), graphics={
           Rectangle(
-            extent={{-201,50},{200,-50}}, 
-            lineColor={127,0,0}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-201,50},{200,-50}},
+            lineColor={127,0,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-171,45},{-83,-45}}, 
-            lineColor={127,0,0}, 
-            fillColor={127,0,0}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-171,45},{-83,-45}},
+            lineColor={127,0,0},
+            fillColor={127,0,0},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-45,45},{43,-45}}, 
-            lineColor={127,0,0}, 
-            fillColor={127,0,0}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-45,45},{43,-45}},
+            lineColor={127,0,0},
+            fillColor={127,0,0},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{82,45},{170,-45}}, 
-            lineColor={127,0,0}, 
-            fillColor={127,0,0}, 
+            extent={{82,45},{170,-45}},
+            lineColor={127,0,0},
+            fillColor={127,0,0},
             fillPattern=FillPattern.Solid)}));
   end HeatPorts_a;
 
-  connector HeatPorts_b 
+  connector HeatPorts_b
     "HeatPort connector with filled, large icon to be used for vectors of HeatPorts (vector dimensions must be added after dragging)"
     extends Modelica.Thermal.HeatTransfer.Interfaces.HeatPort;
-    annotation (defaultComponentName="heatPorts_b", 
+    annotation (defaultComponentName="heatPorts_b",
          Icon(coordinateSystem(
-          preserveAspectRatio=false, 
-          extent={{-200,-50},{200,50}}, 
+          preserveAspectRatio=false,
+          extent={{-200,-50},{200,50}},
           initialScale=0.2), graphics={
           Rectangle(
-            extent={{-200,50},{200,-51}}, 
-            lineColor={127,0,0}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-200,50},{200,-51}},
+            lineColor={127,0,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-170,44},{-82,-46}}, 
-            lineColor={127,0,0}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-170,44},{-82,-46}},
+            lineColor={127,0,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-44,46},{44,-44}}, 
-            lineColor={127,0,0}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-44,46},{44,-44}},
+            lineColor={127,0,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{82,45},{170,-45}}, 
-            lineColor={127,0,0}, 
-            fillColor={255,255,255}, 
+            extent={{82,45},{170,-45}},
+            lineColor={127,0,0},
+            fillColor={255,255,255},
             fillPattern=FillPattern.Solid)}));
   end HeatPorts_b;
 
   partial model PartialHeatTransfer "Common interface for heat transfer models"
 
     // Parameters
-    replaceable package Medium=Modelica.Media.Interfaces.PartialMedium 
+    replaceable package Medium=Modelica.Media.Interfaces.PartialMedium
       "Medium in the component" 
       annotation(Dialog(tab="Internal Interface",enable=false));
 
@@ -448,7 +448,7 @@ end PartialTwoPortTransport;
       annotation(Dialog(tab="Internal Interface",enable=false), Evaluate=true);
 
     // Inputs provided to heat transfer model
-    input Medium.ThermodynamicState[n] states 
+    input Medium.ThermodynamicState[n] states
       "Thermodynamic states of flow segments";
 
     input SI.Area[n] surfaceAreas "Heat transfer areas";
@@ -457,10 +457,10 @@ end PartialTwoPortTransport;
     output SI.HeatFlowRate[n] Q_flows "Heat flow rates";
 
     // Parameters
-    parameter Boolean use_k = false 
+    parameter Boolean use_k = false
       "= true to use k value for thermal isolation" 
       annotation(Dialog(tab="Internal Interface",enable=false));
-    parameter SI.CoefficientOfHeatTransfer k = 0 
+    parameter SI.CoefficientOfHeatTransfer k = 0
       "Heat transfer coefficient to ambient" 
       annotation(Dialog(group="Ambient"),Evaluate=true);
     parameter SI.Temperature T_ambient = system.T_ambient "Ambient temperature" 
@@ -468,12 +468,12 @@ end PartialTwoPortTransport;
     outer Modelica.Fluid.System system "System wide properties";
 
     // Heat ports
-    Modelica.Fluid.Interfaces.HeatPorts_a[n] heatPorts 
+    Modelica.Fluid.Interfaces.HeatPorts_a[n] heatPorts
       "Heat port to component boundary" 
       annotation (Placement(transformation(extent={{-10,60},{10,80}}), iconTransformation(extent={{-20,60},{20,80}})));
 
     // Variables
-    SI.Temperature[n] Ts = Medium.temperature(states) 
+    SI.Temperature[n] Ts = Medium.temperature(states)
       "Temperatures defined by fluid states";
 
   equation
@@ -498,14 +498,14 @@ the boundary temperatures <code>heatPorts[n].T</code>, and the heat flow rates <
 </html>"));
   end PartialHeatTransfer;
 
-    partial model PartialLumpedVolume 
+    partial model PartialLumpedVolume
     "Lumped volume with mass and energy balance"
     import Modelica.Fluid.Types;
     import Modelica.Fluid.Types.Dynamics;
     import Modelica.Media.Interfaces.Choices.IndependentVariables;
 
       outer Modelica.Fluid.System system "System properties";
-      replaceable package Medium = 
+      replaceable package Medium =
         Modelica.Media.Interfaces.PartialMedium "Medium in the component" 
           annotation (choicesAllMatching = true);
 
@@ -513,48 +513,48 @@ the boundary temperatures <code>heatPorts[n].T</code>, and the heat flow rates <
       input SI.Volume fluidVolume "Volume";
 
       // Assumptions
-      parameter Types.Dynamics energyDynamics=system.energyDynamics 
+      parameter Types.Dynamics energyDynamics=system.energyDynamics
       "Formulation of energy balance" 
         annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-      parameter Types.Dynamics massDynamics=system.massDynamics 
+      parameter Types.Dynamics massDynamics=system.massDynamics
       "Formulation of mass balance" 
         annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-      final parameter Types.Dynamics substanceDynamics=massDynamics 
+      final parameter Types.Dynamics substanceDynamics=massDynamics
       "Formulation of substance balance" 
         annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-      final parameter Types.Dynamics traceDynamics=massDynamics 
+      final parameter Types.Dynamics traceDynamics=massDynamics
       "Formulation of trace substance balance" 
         annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
 
       // Initialization
-      parameter Medium.AbsolutePressure p_start = system.p_start 
+      parameter Medium.AbsolutePressure p_start = system.p_start
       "Start value of pressure" 
         annotation(Dialog(tab = "Initialization"));
-      parameter Boolean use_T_start = true 
+      parameter Boolean use_T_start = true
       "= true, use T_start, otherwise h_start" 
         annotation(Dialog(tab = "Initialization"), Evaluate=true);
-      parameter Medium.Temperature T_start= 
-        if use_T_start then system.T_start else Medium.temperature_phX(p_start,h_start,X_start) 
+      parameter Medium.Temperature T_start=
+        if use_T_start then system.T_start else Medium.temperature_phX(p_start,h_start,X_start)
       "Start value of temperature" 
         annotation(Dialog(tab = "Initialization", enable = use_T_start));
-      parameter Medium.SpecificEnthalpy h_start= 
-        if use_T_start then Medium.specificEnthalpy_pTX(p_start, T_start, X_start) else Medium.h_default 
+      parameter Medium.SpecificEnthalpy h_start=
+        if use_T_start then Medium.specificEnthalpy_pTX(p_start, T_start, X_start) else Medium.h_default
       "Start value of specific enthalpy" 
         annotation(Dialog(tab = "Initialization", enable = not use_T_start));
-      parameter Medium.MassFraction X_start[Medium.nX] = Medium.X_default 
+      parameter Medium.MassFraction X_start[Medium.nX] = Medium.X_default
       "Start value of mass fractions m_i/m" 
         annotation (Dialog(tab="Initialization", enable=Medium.nXi > 0));
       parameter Medium.ExtraProperty C_start[Medium.nC](
-           quantity=Medium.extraPropertiesNames) = Medium.C_default 
+           quantity=Medium.extraPropertiesNames) = Medium.C_default
       "Start value of trace substances" 
         annotation (Dialog(tab="Initialization", enable=Medium.nC > 0));
 
       Medium.BaseProperties medium(
         preferredMediumStates = (if energyDynamics == Dynamics.SteadyState and 
-                                    massDynamics   == Dynamics.SteadyState then false else true), 
-        p(start=p_start), 
-        h(start=h_start), 
-        T(start=T_start), 
+                                    massDynamics   == Dynamics.SteadyState then false else true),
+        p(start=p_start),
+        h(start=h_start),
+        T(start=T_start),
         Xi(start=X_start[1:Medium.nXi]));
       SI.Energy U "Internal energy of fluid";
       SI.Mass m "Mass of fluid";
@@ -566,22 +566,22 @@ the boundary temperatures <code>heatPorts[n].T</code>, and the heat flow rates <
 
       // variables that need to be defined by an extending class
       SI.MassFlowRate mb_flow "Mass flows across boundaries";
-      SI.MassFlowRate[Medium.nXi] mbXi_flow 
+      SI.MassFlowRate[Medium.nXi] mbXi_flow
       "Substance mass flows across boundaries";
-      Medium.ExtraPropertyFlowRate[Medium.nC] mbC_flow 
+      Medium.ExtraPropertyFlowRate[Medium.nC] mbC_flow
       "Trace substance mass flows across boundaries";
-      SI.EnthalpyFlowRate Hb_flow 
+      SI.EnthalpyFlowRate Hb_flow
       "Enthalpy flow across boundaries or energy source/sink";
-      SI.HeatFlowRate Qb_flow 
+      SI.HeatFlowRate Qb_flow
       "Heat flow across boundaries or energy source/sink";
       SI.Power Wb_flow "Work flow across boundaries or source term";
   protected
-      parameter Boolean initialize_p = not Medium.singleState 
+      parameter Boolean initialize_p = not Medium.singleState
       "= true to set up initial equations for pressure";
-      Real[Medium.nC] mC_scaled(min=fill(Modelica.Constants.eps, Medium.nC)) 
+      Real[Medium.nC] mC_scaled(min=fill(Modelica.Constants.eps, Medium.nC))
       "Scaled masses of trace substances in the fluid";
     equation
-      assert(not (energyDynamics<>Dynamics.SteadyState and massDynamics==Dynamics.SteadyState) or Medium.singleState, 
+      assert(not (energyDynamics<>Dynamics.SteadyState and massDynamics==Dynamics.SteadyState) or Medium.singleState,
              "Bad combination of dynamics options and Medium not conserving mass if fluidVolume is fixed.");
 
       // Total quantities
@@ -695,15 +695,15 @@ Further source terms must be defined by an extending class for fluid flow across
 </html>"));
     end PartialLumpedVolume;
 
-      partial model PartialLumpedFlow 
+      partial model PartialLumpedFlow
     "Base class for a lumped momentum balance"
 
         outer Modelica.Fluid.System system "System properties";
 
-        replaceable package Medium = 
+        replaceable package Medium =
           Modelica.Media.Interfaces.PartialMedium "Medium in the component";
 
-        parameter Boolean allowFlowReversal = system.allowFlowReversal 
+        parameter Boolean allowFlowReversal = system.allowFlowReversal
       "= true to allow flow reversal, false restricts to design direction (m_flow >= 0)" 
           annotation(Dialog(tab="Assumptions"), Evaluate=true);
 
@@ -712,18 +712,18 @@ Further source terms must be defined by an extending class for fluid flow across
 
         // Variables defined by the flow model
         Medium.MassFlowRate m_flow(
-           min=if allowFlowReversal then -Modelica.Constants.inf else 0, 
-           start = m_flow_start, 
+           min=if allowFlowReversal then -Modelica.Constants.inf else 0,
+           start = m_flow_start,
            stateSelect = if momentumDynamics == Types.Dynamics.SteadyState then StateSelect.default else 
-                                     StateSelect.prefer) 
+                                     StateSelect.prefer)
       "Mass flow rates between states";
 
         // Parameters
-        parameter Modelica.Fluid.Types.Dynamics momentumDynamics=system.momentumDynamics 
+        parameter Modelica.Fluid.Types.Dynamics momentumDynamics=system.momentumDynamics
       "Formulation of momentum balance" 
           annotation(Dialog(tab="Assumptions", group="Dynamics"), Evaluate=true);
 
-        parameter Medium.MassFlowRate m_flow_start=system.m_flow_start 
+        parameter Medium.MassFlowRate m_flow_start=system.m_flow_start
       "Start value of mass flow rates" 
           annotation(Dialog(tab="Initialization"));
 
@@ -773,14 +773,14 @@ The length of the flow path <code><strong>pathLength</strong></code> is an input
 </html>"));
       end PartialLumpedFlow;
 
-partial model PartialDistributedVolume 
+partial model PartialDistributedVolume
     "Base class for distributed volume models"
     import Modelica.Fluid.Types;
     import Modelica.Fluid.Types.Dynamics;
     import Modelica.Media.Interfaces.Choices.IndependentVariables;
   outer Modelica.Fluid.System system "System properties";
 
-  replaceable package Medium = 
+  replaceable package Medium =
     Modelica.Media.Interfaces.PartialMedium "Medium in the component" 
       annotation (choicesAllMatching = true);
 
@@ -788,32 +788,32 @@ partial model PartialDistributedVolume
   parameter Integer n=2 "Number of discrete volumes";
 
   // Inputs provided to the volume model
-  input SI.Volume[n] fluidVolumes 
+  input SI.Volume[n] fluidVolumes
       "Discretized volume, determine in inheriting class";
 
   // Assumptions
-  parameter Types.Dynamics energyDynamics=system.energyDynamics 
+  parameter Types.Dynamics energyDynamics=system.energyDynamics
       "Formulation of energy balances" 
     annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-  parameter Types.Dynamics massDynamics=system.massDynamics 
+  parameter Types.Dynamics massDynamics=system.massDynamics
       "Formulation of mass balances" 
     annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-  final parameter Types.Dynamics substanceDynamics=massDynamics 
+  final parameter Types.Dynamics substanceDynamics=massDynamics
       "Formulation of substance balances" 
     annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-  final parameter Types.Dynamics traceDynamics=massDynamics 
+  final parameter Types.Dynamics traceDynamics=massDynamics
       "Formulation of trace substance balances" 
     annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
 
   //Initialization
-  parameter Medium.AbsolutePressure p_a_start=system.p_start 
+  parameter Medium.AbsolutePressure p_a_start=system.p_start
       "Start value of pressure at port a" 
     annotation(Dialog(tab = "Initialization"));
-  parameter Medium.AbsolutePressure p_b_start=p_a_start 
+  parameter Medium.AbsolutePressure p_b_start=p_a_start
       "Start value of pressure at port b" 
     annotation(Dialog(tab = "Initialization"));
   final parameter Medium.AbsolutePressure[n] ps_start=if n > 1 then linspace(
-        p_a_start, p_b_start, n) else {(p_a_start + p_b_start)/2} 
+        p_a_start, p_b_start, n) else {(p_a_start + p_b_start)/2}
       "Start value of pressure";
 
   parameter Boolean use_T_start=true "Use T_start if true, otherwise h_start" 
@@ -821,21 +821,21 @@ partial model PartialDistributedVolume
 
   parameter Medium.Temperature T_start=if use_T_start then system.T_start else 
               Medium.temperature_phX(
-        (p_a_start + p_b_start)/2, 
-        h_start, 
+        (p_a_start + p_b_start)/2,
+        h_start,
         X_start) "Start value of temperature" 
     annotation(Evaluate=true, Dialog(tab = "Initialization", enable = use_T_start));
   parameter Medium.SpecificEnthalpy h_start=if use_T_start then 
         Medium.specificEnthalpy_pTX(
-        (p_a_start + p_b_start)/2, 
-        T_start, 
+        (p_a_start + p_b_start)/2,
+        T_start,
         X_start) else Medium.h_default "Start value of specific enthalpy" 
     annotation(Evaluate=true, Dialog(tab = "Initialization", enable = not use_T_start));
-  parameter Medium.MassFraction X_start[Medium.nX] = Medium.X_default 
+  parameter Medium.MassFraction X_start[Medium.nX] = Medium.X_default
       "Start value of mass fractions m_i/m" 
     annotation (Dialog(tab="Initialization", enable=Medium.nXi > 0));
   parameter Medium.ExtraProperty C_start[Medium.nC](
-       quantity=Medium.extraPropertiesNames) = Medium.C_default 
+       quantity=Medium.extraPropertiesNames) = Medium.C_default
       "Start value of trace substances" 
     annotation (Dialog(tab="Initialization", enable=Medium.nC > 0));
 
@@ -850,28 +850,28 @@ partial model PartialDistributedVolume
   Medium.ExtraProperty Cs[n, Medium.nC] "Trace substance mixture content";
 
   Medium.BaseProperties[n] mediums(
-    each preferredMediumStates=true, 
-    p(start=ps_start), 
-    each h(start=h_start), 
-    each T(start=T_start), 
+    each preferredMediumStates=true,
+    p(start=ps_start),
+    each h(start=h_start),
+    each T(start=T_start),
     each Xi(start=X_start[1:Medium.nXi]));
 
   //Source terms, have to be defined by an extending model (to zero if not used)
   Medium.MassFlowRate[n] mb_flows "Mass flow rate, source or sink";
-  Medium.MassFlowRate[n,Medium.nXi] mbXi_flows 
+  Medium.MassFlowRate[n,Medium.nXi] mbXi_flows
       "Independent mass flow rates, source or sink";
-  Medium.ExtraPropertyFlowRate[n,Medium.nC] mbC_flows 
+  Medium.ExtraPropertyFlowRate[n,Medium.nC] mbC_flows
       "Trace substance mass flow rates, source or sink";
   SI.EnthalpyFlowRate[n] Hb_flows "Enthalpy flow rate, source or sink";
   SI.HeatFlowRate[n] Qb_flows "Heat flow rate, source or sink";
   SI.Power[n] Wb_flows "Mechanical power, p*der(V) etc.";
 
   protected
-  parameter Boolean initialize_p = not Medium.singleState 
+  parameter Boolean initialize_p = not Medium.singleState
       "= true to set up initial equations for pressure";
 
 equation
-  assert(not (energyDynamics<>Dynamics.SteadyState and massDynamics==Dynamics.SteadyState) or Medium.singleState, 
+  assert(not (energyDynamics<>Dynamics.SteadyState and massDynamics==Dynamics.SteadyState) or Medium.singleState,
          "Bad combination of dynamics options and Medium not conserving mass if fluidVolumes are fixed.");
 
   // Total quantities
@@ -1005,15 +1005,15 @@ Further source terms must be defined by an extending class for fluid flow across
 </html>"));
 end PartialDistributedVolume;
 
-      partial model PartialDistributedFlow 
+      partial model PartialDistributedFlow
     "Base class for a distributed momentum balance"
 
         outer Modelica.Fluid.System system "System properties";
 
-        replaceable package Medium = 
+        replaceable package Medium =
           Modelica.Media.Interfaces.PartialMedium "Medium in the component";
 
-        parameter Boolean allowFlowReversal = system.allowFlowReversal 
+        parameter Boolean allowFlowReversal = system.allowFlowReversal
       "= true to allow flow reversal, false restricts to design direction (m_flows >= zeros(m))" 
           annotation(Dialog(tab="Assumptions"), Evaluate=true);
 
@@ -1025,18 +1025,18 @@ end PartialDistributedVolume;
 
         // Variables defined by momentum model
         Medium.MassFlowRate[m] m_flows(
-           each min=if allowFlowReversal then -Modelica.Constants.inf else 0, 
-           each start = m_flow_start, 
+           each min=if allowFlowReversal then -Modelica.Constants.inf else 0,
+           each start = m_flow_start,
            each stateSelect = if momentumDynamics == Types.Dynamics.SteadyState then StateSelect.default else 
-                                     StateSelect.prefer) 
+                                     StateSelect.prefer)
       "Mass flow rates between states";
 
         // Parameters
-        parameter Modelica.Fluid.Types.Dynamics momentumDynamics=system.momentumDynamics 
+        parameter Modelica.Fluid.Types.Dynamics momentumDynamics=system.momentumDynamics
       "Formulation of momentum balance" 
           annotation(Dialog(tab="Assumptions", group="Dynamics"), Evaluate=true);
 
-        parameter Medium.MassFlowRate m_flow_start=system.m_flow_start 
+        parameter Medium.MassFlowRate m_flow_start=system.m_flow_start
       "Start value of mass flow rates" 
           annotation(Dialog(tab="Initialization"));
 
@@ -1086,21 +1086,21 @@ The lengths along the flow path <code><strong>pathLengths[m]</strong></code> are
 </html>"));
       end PartialDistributedFlow;
 
-  partial model PartialPressureLoss 
+  partial model PartialPressureLoss
     "Base flow model for pressure loss functions with the same area at port_a and at port_b"
     extends Modelica.Fluid.Interfaces.PartialTwoPortTransport;
   protected
     parameter Medium.ThermodynamicState state_dp_small=Medium.setState_pTX(
-                         Medium.reference_p, 
-                         Medium.reference_T, 
+                         Medium.reference_p,
+                         Medium.reference_T,
                          Medium.reference_X) "Medium state to compute dp_small";
-    Medium.Density d_a 
+    Medium.Density d_a
       "Density at port_a when fluid is flowing from port_a to port_b";
-    Medium.Density d_b 
+    Medium.Density d_b
       "If allowFlowReversal=true then density at port_b when fluid is flowing from port_b to port_a else d_a";
-    Medium.DynamicViscosity eta_a 
+    Medium.DynamicViscosity eta_a
       "Dynamic viscosity at port_a when fluid is flowing from port_a to port_b";
-    Medium.DynamicViscosity eta_b 
+    Medium.DynamicViscosity eta_b
       "If allowFlowReversal=true then dynamic viscosity at port_b when fluid is flowing from port_b to port_a else eta_a";
   equation
     // Isenthalpic state transformation (no storage and no loss of energy)

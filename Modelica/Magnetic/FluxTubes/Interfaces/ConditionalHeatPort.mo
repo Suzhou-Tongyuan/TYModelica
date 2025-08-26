@@ -1,15 +1,15 @@
 ﻿within Modelica.Magnetic.FluxTubes.Interfaces;
-partial model ConditionalHeatPort 
+partial model ConditionalHeatPort
   "Partial model to include a conditional HeatPort in order to describe the power loss via a thermal network"
 
   parameter Boolean useHeatPort = false "= true, if HeatPort is enabled" 
   annotation(Evaluate=true, HideResult=true, choices(checkBox=true), Dialog(tab="Losses and heat", group="HeatPort"));
-  parameter SI.Temperature T=293.15 
+  parameter SI.Temperature T=293.15
     "Fixed device temperature if useHeatPort = false" annotation(Dialog(tab="Losses and heat", group="HeatPort", enable=not useHeatPort));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(final T=T_heatPort, final Q_flow=-LossPower) if useHeatPort 
-    annotation (Placement(transformation(extent={{-10,-110},{10,-90}}), 
+    annotation (Placement(transformation(extent={{-10,-110},{10,-90}}),
         iconTransformation(extent={{-10,-110},{10,-90}})));
-  SI.Power LossPower 
+  SI.Power LossPower
     "Loss power leaving component via HeatPort";
   SI.Temperature T_heatPort "Temperature of HeatPort";
 equation
@@ -23,7 +23,7 @@ equation
        by Christoph Clauss<br> initially implemented<br>
        </li>
 </ul>
-</html>", 
+</html>",
       info="<html>
 <p>
 This partial model provides a conditional heating port for the connection to a thermal network.

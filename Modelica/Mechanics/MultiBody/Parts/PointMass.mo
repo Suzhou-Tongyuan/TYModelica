@@ -1,42 +1,42 @@
 ﻿within Modelica.Mechanics.MultiBody.Parts;
-model PointMass 
+model PointMass
   "Rigid body where body rotation and inertia tensor is neglected (6 potential states)"
 
   import Modelica.Mechanics.MultiBody.Types;
-  Interfaces.Frame_a frame_a 
+  Interfaces.Frame_a frame_a
     "Coordinate system fixed at center of mass point" annotation (Placement(
         transformation(extent={{-16,-16},{16,16}})));
-  parameter Boolean animation=true 
+  parameter Boolean animation=true
     "= true, if animation shall be enabled (show sphere)";
   parameter SI.Mass m(min=0) "Mass of mass point";
-  input SI.Diameter sphereDiameter=world.defaultBodyDiameter 
+  input SI.Diameter sphereDiameter=world.defaultBodyDiameter
     "Diameter of sphere" annotation (Dialog(
-      tab="Animation", 
-      group="if animation = true", 
+      tab="Animation",
+      group="if animation = true",
       enable=animation));
-  input Types.Color sphereColor=Modelica.Mechanics.MultiBody.Types.Defaults.BodyColor 
+  input Types.Color sphereColor=Modelica.Mechanics.MultiBody.Types.Defaults.BodyColor
     "Color of sphere" annotation (Dialog(
-      colorSelector=true, 
-      tab="Animation", 
-      group="if animation = true", 
+      colorSelector=true,
+      tab="Animation",
+      group="if animation = true",
       enable=animation));
-  input Types.SpecularCoefficient specularCoefficient=world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient=world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(
-      tab="Animation", 
-      group="if animation = true", 
+      tab="Animation",
+      group="if animation = true",
       enable=animation));
-  parameter StateSelect stateSelect=StateSelect.avoid 
+  parameter StateSelect stateSelect=StateSelect.avoid
     "Priority to use frame_a.r_0, v_0 (= der(frame_a.r_0)) as states" 
     annotation (Dialog(tab="Advanced"));
 
-  SI.Position r_0[3](start={0,0,0}, each stateSelect=stateSelect) 
+  SI.Position r_0[3](start={0,0,0}, each stateSelect=stateSelect)
     "Position vector from origin of world frame to origin of frame_a, resolved in world frame" 
     annotation (Dialog(group="Initialization",showStartAttribute=true));
-  SI.Velocity v_0[3](start={0,0,0}, each stateSelect=stateSelect) 
+  SI.Velocity v_0[3](start={0,0,0}, each stateSelect=stateSelect)
     "Absolute velocity of frame_a, resolved in world frame (= der(r_0))" 
     annotation (Dialog(group="Initialization",showStartAttribute=true));
-  SI.Acceleration a_0[3](start={0,0,0}) 
+  SI.Acceleration a_0[3](start={0,0,0})
     "Absolute acceleration of frame_a resolved in world frame (= der(v_0))" 
     annotation (Dialog(group="Initialization",showStartAttribute=true));
 
@@ -45,16 +45,16 @@ protected
 
   // Declarations for animation
   Visualizers.Advanced.Shape sphere(
-    shapeType="sphere", 
-    color=sphereColor, 
-    specularCoefficient=specularCoefficient, 
-    length=sphereDiameter, 
-    width=sphereDiameter, 
-    height=sphereDiameter, 
-    lengthDirection={1,0,0}, 
-    widthDirection={0,1,0}, 
-    r_shape=-{1,0,0}*sphereDiameter/2, 
-    r=frame_a.r_0, 
+    shapeType="sphere",
+    color=sphereColor,
+    specularCoefficient=specularCoefficient,
+    length=sphereDiameter,
+    width=sphereDiameter,
+    height=sphereDiameter,
+    lengthDirection={1,0,0},
+    widthDirection={0,1,0},
+    r_shape=-{1,0,0}*sphereDiameter/2,
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
 equation
   // If any possible, do not use the connector as root
@@ -85,19 +85,19 @@ the only case where this is done.
   frame_a.f = m*Frames.resolve2(frame_a.R, a_0 - world.gravityAcceleration(
     r_0));
   annotation (Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Text(
-          extent={{150,-90},{-150,-60}}, 
-          textString="m=%m"), 
+          extent={{150,-90},{-150,-60}},
+          textString="m=%m"),
         Text(
-          extent={{-150,100},{150,60}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,100},{150,60}},
+          textString="%name",
+          textColor={0,0,255}),
         Ellipse(
-          extent={{-50,50},{50,-50}}, 
-          lineColor={0,24,48}, 
-          fillPattern=FillPattern.Sphere, 
+          extent={{-50,50},{50,-50}},
+          lineColor={0,24,48},
+          fillPattern=FillPattern.Sphere,
           fillColor={0,127,255})}), Documentation(info="<html>
 <p>
 <strong>Rigid body</strong> where the inertia tensor is neglected.

@@ -15,7 +15,7 @@ This package contains space phasor transformation blocks for use in controllers:
 Space phasors are defined as vectors of length = 2,
 the first element representing the real part and the second element representing the imaginary part of the space phasor.
 </p>
-</html>", 
+</html>",
       revisions="<html>
   <dl>
   <dt><strong>Main Authors:</strong></dt>

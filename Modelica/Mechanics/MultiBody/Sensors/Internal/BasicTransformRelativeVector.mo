@@ -1,29 +1,29 @@
 ﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
-model BasicTransformRelativeVector 
+model BasicTransformRelativeVector
   "Transform relative vector into another frame"
   import Modelica.Mechanics.MultiBody.Frames;
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB;
   extends Modelica.Mechanics.MultiBody.Sensors.Internal.PartialRelativeBaseSensor;
-  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB frame_r_in= 
-  Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a 
+  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB frame_r_in=
+  Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a
     "Frame in which vector r_in is resolved (world, frame_a, frame_b, or frame_resolve)";
-  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB frame_r_out= 
-    frame_r_in 
+  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB frame_r_out=
+    frame_r_in
     "Frame in which vector r_out (= r_in in other frame) is resolved (world, frame_a, frame_b, or frame_resolve)";
 
-  Blocks.Interfaces.RealInput r_in[3] 
+  Blocks.Interfaces.RealInput r_in[3]
     "Input vector resolved in frame defined by frame_r_in" 
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, 
-        rotation=-90, 
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},
+        rotation=-90,
         origin={0,120})));
-  Blocks.Interfaces.RealOutput r_out[3] 
+  Blocks.Interfaces.RealOutput r_out[3]
     "Input vector r_in resolved in frame defined by frame_r_out" 
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, 
-        rotation=-90, 
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=-90,
         origin={0,-110})));
 
 protected
-  Modelica.Mechanics.MultiBody.Frames.Orientation R1 
+  Modelica.Mechanics.MultiBody.Frames.Orientation R1
     "Orientation object from world frame to frame in which r_in is resolved";
 equation
    if frame_r_out == frame_r_in then
@@ -50,16 +50,16 @@ equation
          r_out = Frames.resolveRelative(r_in, R1, frame_resolve.R);
       end if;
    end if;
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100, 
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
             -100},{100,100}}), graphics={
         Text(
-          extent={{-128,-92},{-2,-120}}, 
-          textString="r_out"), 
+          extent={{-128,-92},{-2,-120}},
+          textString="r_out"),
         Text(
-          extent={{-108,144},{-22,116}}, 
-          textString="r_in"), 
+          extent={{-108,144},{-22,116}},
+          textString="r_in"),
         Line(
-          points={{0,100},{0,70}}, 
+          points={{0,100},{0,70}},
           color={0,0,127})}), Documentation(info="<html>
 <p>
 This basic sensor transforms a relative vector <strong>r_in</strong>,

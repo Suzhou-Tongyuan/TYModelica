@@ -1,5 +1,5 @@
 ﻿within Modelica.Clocked.RealSignals.Sampler;
-block Sample 
+block Sample
   "Sample the continuous-time, Real input signal and provide it as clocked output signal (clock is inferred)"
   extends Clocked.RealSignals.Interfaces.PartialSISOSampler;
 
@@ -7,15 +7,15 @@ equation
   y = sample(u);
 
   annotation (
-   defaultComponentName="sample1", 
+   defaultComponentName="sample1",
    Icon(coordinateSystem(
-        preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}, 
-        initialScale=0.06), 
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}},
+        initialScale=0.06),
                      graphics={
-   Text(extent={{-150,90},{150,50}}, 
-        textString="%name", 
-        textColor={0,0,255})}), 
+   Text(extent={{-150,90},{150,50}},
+        textString="%name",
+        textColor={0,0,255})}),
     Documentation(info="<html>
 <p>
 This block samples the continuous-time, Real input signal u and provides it as

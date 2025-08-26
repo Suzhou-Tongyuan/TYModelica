@@ -8,7 +8,7 @@ This package contains connectors and interfaces (partial models) for
 electrical polyphase components, based on Modelica.Electrical.Analog.
 </p>
 
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

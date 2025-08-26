@@ -1,18 +1,18 @@
 ﻿within Modelica.Mechanics.MultiBody.Parts;
-model Mounting1D 
+model Mounting1D
   "Propagate 1-dim. support torque to 3-dim. system (provided world.driveTrainMechanics3D=true)"
   parameter SI.Angle phi0=0 "Fixed offset angle of housing";
-  parameter Modelica.Mechanics.MultiBody.Types.Axis n={1,0,0} 
+  parameter Modelica.Mechanics.MultiBody.Types.Axis n={1,0,0}
     "Axis of rotation = axis of support torque (resolved in frame_a)" 
      annotation (Evaluate=true);
-  Modelica.Mechanics.Rotational.Interfaces.Flange_b flange_b 
+  Modelica.Mechanics.Rotational.Interfaces.Flange_b flange_b
     "(right) flange fixed in housing" annotation (Placement(transformation(
           extent={{110,10},{90,-10}})));
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a if world.driveTrainMechanics3D 
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a if world.driveTrainMechanics3D
     "Frame in which housing is fixed (connector is removed, if world.driveTrainMechanics3D=false)" 
     annotation (Placement(transformation(
-        origin={0,-100}, 
-        extent={{-20,-20},{20,20}}, 
+        origin={0,-100},
+        extent={{-20,-20},{20,20}},
         rotation=90)));
 protected
   outer Modelica.Mechanics.MultiBody.World world;
@@ -25,13 +25,13 @@ protected
   equation
     frame_a.f = zeros(3);
     frame_a.t = t;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
               -100},{100,100}}), graphics={Rectangle(
-                extent={{-100,100},{100,-100}}, 
-                fillColor={255,255,255}, 
+                extent={{-100,100},{100,-100}},
+                fillColor={255,255,255},
                 fillPattern=FillPattern.Solid),Text(
-                extent={{-150,110},{150,150}}, 
-                textColor={0,0,255}, 
+                extent={{-150,110},{150,150}},
+                textColor={0,0,255},
                 textString="%name")}));
   end Housing;
   Housing housing(t=-n*flange_b.tau) if world.driveTrainMechanics3D 
@@ -39,24 +39,24 @@ protected
 equation
   flange_b.phi = phi0;
   connect(housing.frame_a, frame_a) annotation (Line(
-      points={{20,-50},{0,-50},{0,-100}}, 
-      color={95,95,95}, 
+      points={{20,-50},{0,-50},{0,-100}},
+      color={95,95,95},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
         Rectangle(
-          extent={{-80,-60},{80,-100}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-80,-60},{80,-100}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,60},{150,20}}, 
-          textColor={0,0,255}, 
-          textString="%name"), 
-        Line(points={{80,-60},{40,-100}}), 
-        Line(points={{40,-60},{0,-100}}), 
-        Line(points={{0,-60},{-40,-100}}), 
-        Line(points={{-40,-60},{-80,-100}}), 
-        Line(points={{0,-60},{0,0}}), 
+          extent={{-150,60},{150,20}},
+          textColor={0,0,255},
+          textString="%name"),
+        Line(points={{80,-60},{40,-100}}),
+        Line(points={{40,-60},{0,-100}}),
+        Line(points={{0,-60},{-40,-100}}),
+        Line(points={{-40,-60},{-80,-100}}),
+        Line(points={{0,-60},{0,0}}),
         Line(points={{0,0},{90,0}})}), Documentation(info="<html>
 <p>This component is used to acquire support torques from a 1-dim.-rotational
 mechanical system (e.g., components from Modelica.Mechanics.Rotational)

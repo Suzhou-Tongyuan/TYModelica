@@ -1,25 +1,25 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
-type Orientation 
+type Orientation
   "Orientation type defining rotation from a frame 1 into a frame 2 with a transformation matrix"
 
   extends Internal.TransformationMatrix;
 
-  encapsulated function equalityConstraint 
+  encapsulated function equalityConstraint
     "Return the constraint residues to express that two frames have the same orientation"
 
     import Modelica;
     import Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
     extends Modelica.Icons.Function;
-    input TransformationMatrices.Orientation T1 
+    input TransformationMatrices.Orientation T1
       "Orientation object to rotate frame 0 into frame 1";
-    input TransformationMatrices.Orientation T2 
+    input TransformationMatrices.Orientation T2
       "Orientation object to rotate frame 0 into frame 2";
-    output Real residue[3] 
+    output Real residue[3]
       "The rotation angles around x-, y-, and z-axis of frame 1 to rotate frame 1 into frame 2 for a small rotation (should be zero)";
   algorithm
     residue := {
-      cross(T1[1, :], T1[2, :]) * T2[2, :], 
-      -cross(T1[1, :], T1[2, :]) * T2[1, :], 
+      cross(T1[1, :], T1[2, :]) * T2[2, :],
+      -cross(T1[1, :], T1[2, :]) * T2[1, :],
       T1[2, :]*T2[1, :]};
     annotation(Inline=true, Documentation(info="<html>
 <h4>Syntax</h4>

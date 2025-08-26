@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical;
-package Digital 
+package Digital
   "Library for digital electrical components based on the VHDL standard with 9-valued logic and conversion to 2-,3-,4-valued logic"
   extends Modelica.Icons.Package;
 
@@ -168,30 +168,30 @@ the library and has the following content:
           D.Sources.DigitalClock CLK(period=20, startTime=0, width=50) annotation (Placement(transformation(
                   extent={{-80,-56},{-60,-36}})));
           D.Sources.Table D0(
-            y0=L.'0', 
-            x={L.'1',L.'0',L.'1',L.'0'}, 
-            t={50,100,145,200}) annotation (Placement(transformation(extent={{-80,58}, 
+            y0=L.'0',
+            x={L.'1',L.'0',L.'1',L.'0'},
+            t={50,100,145,200}) annotation (Placement(transformation(extent={{-80,58},
                 {-60,78}})));
           D.Sources.Table D1(
-            y0=L.'0', 
-            x={L.'1',L.'0',L.'1',L.'0'}, 
-            t={22,140,150,180}) annotation (Placement(transformation(extent={{-80,32}, 
+            y0=L.'0',
+            x={L.'1',L.'0',L.'1',L.'0'},
+            t={22,140,150,180}) annotation (Placement(transformation(extent={{-80,32},
                 {-60,52}})));
-          D.Examples.Utilities.MUX4 MUX annotation (Placement(transformation(extent={{-10,0}, 
+          D.Examples.Utilities.MUX4 MUX annotation (Placement(transformation(extent={{-10,0},
                 {70,80}})));
           D.Sources.Table D2(
-            y0=L.'0', 
-            x={L.'1',L.'0',L.'1',L.'0'}, 
-            t={22,140,150,180}) annotation (Placement(transformation(extent={{-80,6}, 
+            y0=L.'0',
+            x={L.'1',L.'0',L.'1',L.'0'},
+            t={22,140,150,180}) annotation (Placement(transformation(extent={{-80,6},
                 {-60,26}})));
           D.Sources.Table D3(
-            y0=L.'0', 
-            x={L.'1',L.'0',L.'1',L.'0'}, 
-            t={22,140,150,180}) annotation (Placement(transformation(extent={{-80,-20}, 
+            y0=L.'0',
+            x={L.'1',L.'0',L.'1',L.'0'},
+            t={22,140,150,180}) annotation (Placement(transformation(extent={{-80,-20},
                 {-60,0}})));
-          D.Examples.Utilities.JKFF FF annotation (Placement(transformation(extent={{-20,-62}, 
+          D.Examples.Utilities.JKFF FF annotation (Placement(transformation(extent={{-20,-62},
                 {0,-42}})));
-          D.Sources.Set Enable(x=Modelica.Electrical.Digital.Interfaces.Logic.'1') annotation (Placement(transformation(extent={{-80,-82}, 
+          D.Sources.Set Enable(x=Modelica.Electrical.Digital.Interfaces.Logic.'1') annotation (Placement(transformation(extent={{-80,-82},
                 {-60,-62}})));
         equation
           connect(CLK.y, FF.clk) annotation (Line(
@@ -224,19 +224,19 @@ the library and has the following content:
           extends Modelica.Icons.Example;
 
           D.Examples.Utilities.JKFF FF 
-                         annotation (Placement(transformation(extent={{-10,-40},{70, 
+                         annotation (Placement(transformation(extent={{-10,-40},{70,
                     40}})));
           D.Sources.DigitalClock CLK(period=10, startTime=0, width=50) annotation (Placement(transformation(
                   extent={{-80,-10},{-60,10}})));
           D.Sources.Table J(
-            y0=L.'0', 
-            x={L.'1',L.'0',L.'1',L.'0'}, 
-            t={50,100,145,200}) annotation (Placement(transformation(extent={{-80, 
+            y0=L.'0',
+            x={L.'1',L.'0',L.'1',L.'0'},
+            t={50,100,145,200}) annotation (Placement(transformation(extent={{-80,
                     18},{-60,38}})));
           D.Sources.Table K(
-            y0=L.'0', 
-            x={L.'1',L.'0',L.'1',L.'0'}, 
-            t={22,140,150,180}) annotation (Placement(transformation(extent={{-80, 
+            y0=L.'0',
+            x={L.'1',L.'0',L.'1',L.'0'},
+            t={22,140,150,180}) annotation (Placement(transformation(extent={{-80,
                     -38},{-60,-18}})));
         equation
           connect(J.y, FF.j) annotation (Line(
@@ -257,41 +257,41 @@ the library and has the following content:
           extends Modelica.Icons.Example;
 
           Modelica.Electrical.Digital.Sources.Table a(
-            t={1,2,3,4}, 
-            x={L.'1',L.'0',L.'1',L.'0'}, 
+            t={1,2,3,4},
+            x={L.'1',L.'0',L.'1',L.'0'},
             y0=L.'0') annotation (Placement(transformation(extent={{-80,18},{-60,38}})));
           Modelica.Electrical.Digital.Sources.Table b(
-            x={L.'1',L.'0'}, 
-            t={2,4}, 
+            x={L.'1',L.'0'},
+            t={2,4},
             y0=L.'0') annotation (Placement(transformation(extent={{-80,-38},{-60,-18}})));
           Modelica.Electrical.Digital.Examples.Utilities.HalfAdder Adder(delayTime=0.3, AND(G2(
-                                                                                        y(       start=L.'U', fixed=true))), 
+                                                                                        y(       start=L.'U', fixed=true))),
         XOR(G2(                                                                                                    y(       start=L.'U', fixed=true)))) 
-                                annotation (Placement(transformation(extent={{-40, 
+                                annotation (Placement(transformation(extent={{-40,
                     -40},{40,40}})));
           Modelica.Electrical.Digital.Converters.LogicToReal s(
-        n=1, 
-        value_U=0.5, 
-        value_X=0.5, 
-        value_0=0, 
-        value_1=1, 
-        value_Z=0.5, 
-        value_W=0.5, 
-        value_L=0, 
-        value_H=1, 
-        value_m=0.5) annotation (Placement(transformation(extent={{60, 
+        n=1,
+        value_U=0.5,
+        value_X=0.5,
+        value_0=0,
+        value_1=1,
+        value_Z=0.5,
+        value_W=0.5,
+        value_L=0,
+        value_H=1,
+        value_m=0.5) annotation (Placement(transformation(extent={{60,
                     18},{80,38}})));
           Modelica.Electrical.Digital.Converters.LogicToReal c(
-        n=1, 
-        value_U=0.5, 
-        value_X=0.5, 
-        value_0=0, 
-        value_1=1, 
-        value_Z=0.5, 
-        value_W=0.5, 
-        value_L=0, 
-        value_H=1, 
-        value_m=0.5) annotation (Placement(transformation(extent={{60, 
+        n=1,
+        value_U=0.5,
+        value_X=0.5,
+        value_0=0,
+        value_1=1,
+        value_Z=0.5,
+        value_W=0.5,
+        value_L=0,
+        value_H=1,
+        value_m=0.5) annotation (Placement(transformation(extent={{60,
                     -38},{80,-18}})));
         equation
           connect(b.y,Adder. b) annotation (Line(
@@ -349,10 +349,10 @@ The simulation stop time should be 5 seconds.
           D.Examples.Utilities.FullAdder Adder1 annotation (Placement(
                 transformation(extent={{0,-30},{60,30}})));
           D.Converters.LogicToReal s(value_0=0, value_1=1, value_H=1, value_L=0, value_m=0.5, value_U=0.5, value_W=0.5, value_X=0.5, value_Z=0.5, n=1) 
-                                   annotation (Placement(transformation(extent={{70, 
+                                   annotation (Placement(transformation(extent={{70,
                     12},{90,32}})));
           D.Converters.LogicToReal c_out(value_0=0, value_1=1, value_H=1, value_L=0, value_m=0.5, value_U=0.5, value_W=0.5, value_X=0.5, value_Z=0.5, n=1) 
-                                       annotation (Placement(transformation(extent= 
+                                       annotation (Placement(transformation(extent=
                     {{70,-32},{90,-12}})));
           D.Examples.Utilities.Counter3 Counter 
             annotation (Placement(transformation(extent={{-60,-18},{-20,22}})));
@@ -362,19 +362,19 @@ The simulation stop time should be 5 seconds.
                     -90,-22},{-70,-2}})));
         equation
           connect(Adder1.s, s.x[1]) 
-                                   annotation (Line(points={{60.3,21},{68,21},{68, 
+                                   annotation (Line(points={{60.3,21},{68,21},{68,
                   22},{75,22}}, color={127,0,127}));
           connect(Adder1.c_out, c_out.x[1]) 
-                                           annotation (Line(points={{60,-21},{68, 
+                                           annotation (Line(points={{60,-21},{68,
                   -21},{68,-22},{75,-22}}, color={127,0,127}));
           connect(CLK.y, Counter.count) annotation (Line(points={{-70,-12},{-60,-12}}, color={127,0,127}));
-          connect(Enable.y, Counter.enable) annotation (Line(points={{-70,16},{-60, 
+          connect(Enable.y, Counter.enable) annotation (Line(points={{-70,16},{-60,
                   16}}, color={127,0,127}));
-          connect(Counter.q2, Adder1.a) annotation (Line(points={{-20,16},{-10,16}, 
+          connect(Counter.q2, Adder1.a) annotation (Line(points={{-20,16},{-10,16},
                   {-10,21},{0,21}}, color={127,0,127}));
           connect(Counter.q1, Adder1.b) annotation (Line(points={{-20,2},{-10,2},{
                   -10,9},{0,9}}, color={127,0,127}));
-          connect(Counter.q0, Adder1.c_in) annotation (Line(points={{-20,-12},{-10, 
+          connect(Counter.q0, Adder1.c_in) annotation (Line(points={{-20,-12},{-10,
                   -12},{-10,-21},{0,-21}}, color={127,0,127}));
           annotation (
             Documentation(info="<html>
@@ -413,48 +413,48 @@ The simulation stop time should be 10 seconds.
           extends Modelica.Icons.Example;
 
           Modelica.Electrical.Digital.Sources.Table b4(
-            y0=L.'0', 
-            x={L.'1',L.'0'}, 
+            y0=L.'0',
+            x={L.'1',L.'0'},
             t={1,3}) annotation (Placement(transformation(extent={{70,-20},{110,20}})));
           Modelica.Electrical.Digital.Sources.Table b1(
-            x={L.'1',L.'0',L.'1'}, 
-            y0=L.'0', 
+            x={L.'1',L.'0',L.'1'},
+            y0=L.'0',
             t={1,2,3}) annotation (Placement(transformation(extent={{-170,-20},{
                     -130,20}})));
           Modelica.Electrical.Digital.Sources.Table b2(
-            y0=L.'0', 
-            x={L.'1'}, 
+            y0=L.'0',
+            x={L.'1'},
             t={4}) annotation (Placement(transformation(extent={{-90,-20},{-50,20}})));
           Modelica.Electrical.Digital.Sources.Table b3(
-            y0=L.'0', 
-            x={L.'1'}, 
+            y0=L.'0',
+            x={L.'1'},
             t={1}) annotation (Placement(transformation(extent={{-10,-20},{30,20}})));
           Modelica.Electrical.Digital.Sources.Table a1(
-            y0=L.'0', 
-            x={L.'1',L.'0',L.'1'}, 
-            t={1,2,3}) annotation (Placement(transformation(extent={{-170,40},{-130, 
+            y0=L.'0',
+            x={L.'1',L.'0',L.'1'},
+            t={1,2,3}) annotation (Placement(transformation(extent={{-170,40},{-130,
                     80}})));
           Modelica.Electrical.Digital.Sources.Table a2(
-            y0=L.'0', 
-            x={L.'1'}, 
+            y0=L.'0',
+            x={L.'1'},
             t={1}) annotation (Placement(transformation(extent={{-90,40},{-50,80}})));
           Modelica.Electrical.Digital.Sources.Table a3(
-            y0=L.'0', 
-            x={L.'1',L.'0'}, 
+            y0=L.'0',
+            x={L.'1',L.'0'},
             t={1,4}) annotation (Placement(transformation(extent={{-8,40},{30,80}})));
           Modelica.Electrical.Digital.Sources.Table a4(
-            y0=L.'0', 
-            x={L.'0'}, 
+            y0=L.'0',
+            x={L.'0'},
             t={1}) annotation (Placement(transformation(extent={{70,40},{110,80}})));
           Modelica.Electrical.Digital.Sources.Set Set(x=L.'0') 
             annotation (Placement(transformation(
-                origin={-150,-74}, 
-                extent={{20,20},{-20,-20}}, 
+                origin={-150,-74},
+                extent={{20,20},{-20,-20}},
                 rotation=180)));
           Modelica.Electrical.Digital.Examples.Utilities.FullAdder Adder1(Adder1(AND(G2(
                                                                           y(      start=L.'U', fixed=true))),XOR(G2(y(start=L.'U', fixed=true)))),Adder2(AND(G2(
                                                                           y(      start=L.'U', fixed=true))),XOR(G2(y(start=L.'U', fixed=true))))) 
-                                       annotation (Placement(transformation(extent= 
+                                       annotation (Placement(transformation(extent=
                     {{-100,-80},{-60,-40}})));
           Modelica.Electrical.Digital.Examples.Utilities.FullAdder Adder2(Adder1(AND(G2(
                                                                           y(      start=L.'U', fixed=true))),XOR(G2(y(start=L.'U', fixed=true)))),Adder2(AND(G2(
@@ -497,7 +497,7 @@ The simulation stop time should be 10 seconds.
           connect(a4.y, Adder4.a) annotation (Line(
               points={{110,60},{130,60},{130,-46},{140,-46}}, color={127,0,127}));
           annotation (
-            Diagram(coordinateSystem(extent = {{-200,-100},{200,100}})), 
+            Diagram(coordinateSystem(extent = {{-200,-100},{200,100}})),
             Documentation(info="<html>
 <p>
 Four FullAdders are combined to built a four bit adder unit.
@@ -582,9 +582,9 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-50,28},{-30,28}}, color={127,0,127}));
           connect(clock.y, Counter.count) annotation (Line(
               points={{-50,-28},{-30,-28}}, color={127,0,127}));
-          connect(Q0.x[1], Counter.q[1]) annotation (Line(points={{71,-30},{58,-30}, 
+          connect(Q0.x[1], Counter.q[1]) annotation (Line(points={{71,-30},{58,-30},
                   {58,-24},{50,-24}}, color={127,0,127}));
-          connect(Q1.x[1], Counter.q[2]) annotation (Line(points={{71,-10},{60,-10}, 
+          connect(Q1.x[1], Counter.q[2]) annotation (Line(points={{71,-10},{60,-10},
                   {60,-8},{50,-8}}, color={127,0,127}));
           connect(Q2.x[1], Counter.q[3]) annotation (Line(points={{71,10},{60,10},{
                   60,8},{50,8}}, color={127,0,127}));
@@ -603,8 +603,8 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           extends Modelica.Icons.Example;
 
           Modelica.Electrical.Digital.Delay.InertialDelaySensitiveVector delay(
-            final tHL=1, 
-            final tLH=2, 
+            final tHL=1,
+            final tLH=2,
             final n=3, inertialDelaySensitive(each y(start=L.'U', fixed=true))) 
             annotation (Placement(transformation(extent={{-36,-28},{40,48}})));
           Modelica.Electrical.Digital.Sources.Table table(x={L.'0',L.'1',L.'0', L.'1', L.'0'}, t={0,1,5,7,8}) 
@@ -623,7 +623,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-76,-40},{-30.68,-40},{-30.68,13.4833}}, color={127,0,127}));
           annotation (Documentation(info="<html>
 <p>This example is a simple test of the vector valued sensitive delay component. The delay times are chosen different from each other. To examine the results plot both the input vector x and the output vector y.</p>
-</html>"), 
+</html>"),
         experiment(StopTime=10));
         end VectorDelay;
 
@@ -640,10 +640,10 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           Modelica.Electrical.Digital.Sources.Table data_1(t={0,10}, x={L.'H',L.'X'}) 
             annotation (Placement(transformation(extent={{-86,40},{-66,60}})));
           Modelica.Electrical.Digital.Registers.DFFREG dFFREG(
-            n=2, 
-            tHL=5, 
-            tLH=6, 
-            delay( inertialDelaySensitive(each y(start=L.'U', fixed=true))), 
+            n=2,
+            tHL=5,
+            tLH=6,
+            delay( inertialDelaySensitive(each y(start=L.'U', fixed=true))),
         dFFR(                                                            clock(     start=L.'U', fixed=true), reset(     start=L.'U',fixed=true))) 
             annotation (Placement(transformation(extent={{-24,-26},{70,68}})));
 
@@ -656,7 +656,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-66,18},{-44,18},{-44,37.92},{-20.24,37.92}}, color={127,0,127}));
           connect(data_1.y, dFFREG.dataIn[2]) annotation (Line(
               points={{-66,50},{-44,50},{-44,41.68},{-20.24,41.68}}, color={127,0,127}));
-          annotation (experiment(StopTime=25), 
+          annotation (experiment(StopTime=25),
         Documentation(info="<html>
 <p>This example is a simple test of the Registers.DFFREG component. The data width is set to two. After simulation plot both the dataIn and the dataOut vectors. To verify the results compare the truth table which is documented in the DFFREG component.</p>
 </html>"));
@@ -675,9 +675,9 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           Modelica.Electrical.Digital.Sources.Table data_1(t={0,10}, x={L.'H',L.'X'}) 
             annotation (Placement(transformation(extent={{-86,40},{-66,60}})));
           Modelica.Electrical.Digital.Registers.DFFREGL dFFREGL(
-            n=2, 
-            tHL=5, 
-            tLH=6,delay(inertialDelaySensitive(each y(start=L.'U', fixed=true))), 
+            n=2,
+            tHL=5,
+            tLH=6,delay(inertialDelaySensitive(each y(start=L.'U', fixed=true))),
         dFFR(                                                                 clock(     start=L.'U', fixed=true), reset(     start=L.'U', fixed=true))) 
             annotation (Placement(transformation(extent={{-41,-39},{62,65}})));
         equation
@@ -690,7 +690,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-68,20},{-52,20},{-52,31.72},{-36.88,31.72}}, color={127,0,127}));
           connect(data_1.y, dFFREGL.dataIn[2]) annotation (Line(
               points={{-66,50},{-52,50},{-52,35.88},{-36.88,35.88}}, color={127,0,127}));
-          annotation (experiment(StopTime=25), 
+          annotation (experiment(StopTime=25),
         Documentation(info="<html>
 <p>This example is a simple test of the Registers.DFFREGL component. The data width is set to two. After simulation plot both the dataIn and the dataOut vectors. To verify the results compare the truth table which is documented in the DFFREGL component.</p>
 </html>"));
@@ -711,8 +711,8 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           Modelica.Electrical.Digital.Sources.Table set(x={L.'0',L.'1',L.'0'}, t={0,5,6}) 
             annotation (Placement(transformation(extent={{-86,74},{-66,94}})));
           Modelica.Electrical.Digital.Registers.DFFREGSRH dFFREGSRH(
-            tHL=2, 
-            tLH=3, 
+            tHL=2,
+            tLH=3,
             n=2) 
             annotation (Placement(transformation(extent={{-34,-37},{73,71}})));
         equation
@@ -727,7 +727,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-66,18},{-48,18},{-48,36.44},{-29.72,36.44}}, color={127,0,127}));
           connect(data_1.y, dFFREGSRH.dataIn[2]) annotation (Line(
               points={{-66,50},{-48,50},{-48,40.76},{-29.72,40.76}}, color={127,0,127}));
-          annotation (experiment(StopTime=15), 
+          annotation (experiment(StopTime=15),
         Documentation(info="<html>
 <p>This example is a simple test of the Registers.DFFREGSRH component. The data width is set to two. After simulation plot both the dataIn and the dataOut vectors. To verify the results compare the truth table which is documented in the DFFREGSRH component.</p>
 </html>"));
@@ -748,8 +748,8 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           Modelica.Electrical.Digital.Sources.Table set(t={0,5,6}, x={L.'1',L.'0',L.'1'}) 
             annotation (Placement(transformation(extent={{-86,74},{-66,94}})));
           Modelica.Electrical.Digital.Registers.DFFREGSRL dFFREGSRL(
-            tHL=2, 
-            tLH=3, 
+            tHL=2,
+            tLH=3,
             n=2) annotation (Placement(transformation(extent={{-45,-54},{81,72}})));
         equation
           connect(reset.y, dFFREGSRL.reset) annotation (Line(
@@ -762,7 +762,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-66,18},{-56,18},{-56,31.68},{-39.96,31.68}}, color={127,0,127}));
           connect(data_1.y, dFFREGSRL.dataIn[2]) annotation (Line(
               points={{-66,50},{-56,50},{-56,36.72},{-39.96,36.72}}, color={127,0,127}));
-          annotation (experiment(StopTime=15), 
+          annotation (experiment(StopTime=15),
         Documentation(info="<html>
 <p>This example is a simple test of the Registers.DFFREGSRL component. The data width is set to two. After simulation plot both the dataIn and the dataOut vectors. To verify the results compare the truth table which is documented in the DFFREGSRL component.</p>
 </html>"));
@@ -781,8 +781,8 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           Modelica.Electrical.Digital.Sources.Table data_1(x={L.'0',L.'1'}, t={0,16}) 
             annotation (Placement(transformation(extent={{-86,40},{-66,60}})));
           Modelica.Electrical.Digital.Registers.DLATREG dLATREG(
-            n=2, 
-            tHL=2, 
+            n=2,
+            tHL=2,
             tLH=3, delay(inertialDelaySensitive(each y( start=L.'U', fixed=true)))) 
             annotation (Placement(transformation(extent={{-45,-50},{84,79}})));
         equation
@@ -795,7 +795,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-66,18},{-56,18},{-56,37.72},{-39.84,37.72}}, color={127,0,127}));
           connect(data_1.y, dLATREG.dataIn[2]) annotation (Line(
               points={{-66,50},{-56,50},{-56,42.88},{-39.84,42.88}}, color={127,0,127}));
-          annotation (experiment(StopTime=25), 
+          annotation (experiment(StopTime=25),
         Documentation(info="<html>
 <p>This example is a simple test of the Registers.DLATREG component. The data width is set to two. After simulation plot both the dataIn and the dataOut vectors. To verify the results compare the truth table which is documented in the DLATREG component.</p>
 </html>"));
@@ -814,8 +814,8 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           Modelica.Electrical.Digital.Sources.Table data_1(x={L.'0',L.'1'}, t={0,16}) 
             annotation (Placement(transformation(extent={{-86,40},{-66,60}})));
           Modelica.Electrical.Digital.Registers.DLATREGL dLATREGL(
-            tHL=2, 
-            tLH=3, 
+            tHL=2,
+            tLH=3,
             n=2, delay(inertialDelaySensitive(each y(start=L.'U', fixed=true)))) annotation (Placement(transformation(extent={{-45,-50},{84,79}})));
         equation
 
@@ -827,7 +827,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-66,18},{-56,18},{-56,37.72},{-39.84,37.72}}, color={127,0,127}));
           connect(data_1.y, dLATREGL.dataIn[2]) annotation (Line(
               points={{-66,50},{-56,50},{-56,42.88},{-39.84,42.88}}, color={127,0,127}));
-          annotation (experiment(StopTime=25), 
+          annotation (experiment(StopTime=25),
         Documentation(info="<html>
 <p>This example is a simple test of the Registers.DLATREGL component. The data width is set to two. After simulation plot both the dataIn and the dataOut vectors. To verify the results compare the truth table which is documented in the DLATREGL component.</p>
 </html>"));
@@ -848,8 +848,8 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           Modelica.Electrical.Digital.Sources.Table set(x={L.'0',L.'1',L.'0'}, t={0,5,6}) 
             annotation (Placement(transformation(extent={{-86,74},{-66,94}})));
           Modelica.Electrical.Digital.Registers.DLATREGSRH dLATREGSRH(
-            tHL=2, 
-            tLH=3, 
+            tHL=2,
+            tLH=3,
             n=2, delay(inertialDelaySensitive(each y(start=L.'U', fixed=true)))) annotation (Placement(transformation(extent={{-45,-42},{69,71}})));
         equation
 
@@ -864,7 +864,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           connect(set.y, dLATREGSRH.set) annotation (Line(
               points={{-66,84},{-40.44,84},{-40.44,59.7}}, color={127,0,127}));
 
-          annotation (experiment(StopTime=25), 
+          annotation (experiment(StopTime=25),
         Documentation(info="<html>
 <p>This example is a simple test of the Registers.DLATREGSRH component. The data width is set to two. After simulation plot both the dataIn and the dataOut vectors. To verify the results compare the truth table which is documented in the DLATREGSRH component.</p>
 </html>"));
@@ -885,8 +885,8 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           Modelica.Electrical.Digital.Sources.Table set(t={0,5,6}, x={L.'1',L.'0',L.'1'}) 
             annotation (Placement(transformation(extent={{-86,74},{-66,94}})));
           Modelica.Electrical.Digital.Registers.DLATREGSRL dLATREGSRL(
-            tHL=2, 
-            tLH=3, 
+            tHL=2,
+            tLH=3,
             n=2, delay(inertialDelaySensitive(each y(start=L.'U',fixed=true)))) annotation (Placement(transformation(extent={{-45,-43},{69,71}})));
         equation
 
@@ -900,7 +900,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-66,50},{-56,50},{-56,39.08},{-40.44,39.08}}, color={127,0,127}));
           connect(set.y, dLATREGSRL.set) annotation (Line(
               points={{-66,84},{-40.44,84},{-40.44,59.6}}, color={127,0,127}));
-          annotation (experiment(StopTime=25), 
+          annotation (experiment(StopTime=25),
         Documentation(info="<html>
 <p>This example is a simple test of the Registers.DLATREGSRL component. The data width is set to two. After simulation plot both the dataIn and the dataOut vectors. To verify the results compare the truth table which is documented in the DLATREGSRL component.</p>
 </html>"));
@@ -910,13 +910,13 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           import L = Modelica.Electrical.Digital.Interfaces.Logic;
           extends Modelica.Icons.Example;
           Modelica.Electrical.Digital.Sources.Table e_table(
-        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U', 
-        x={L.'0',L.'1',L.'Z'}, 
+        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U',
+        x={L.'0',L.'1',L.'Z'},
         t={0,5,9}) 
             annotation (Placement(transformation(extent={{-75,30},{-55,50}})));
           Modelica.Electrical.Digital.Sources.Table x_table(
-        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U', 
-        x={L.'1',L.'0'}, 
+        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U',
+        x={L.'1',L.'0'},
         t={1,7}) 
             annotation (Placement(transformation(extent={{-75,-20},{-55,0}})));
           Modelica.Electrical.Digital.Tristates.NXFERGATE nXFERGATE(
@@ -928,7 +928,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-55,-10},{-45.2,-10},{-45.2,-10.15},{-35.4,-10.15}}, color={127,0,127}));
           connect(e_table.y, nXFERGATE.enable) annotation (Line(
               points={{-55,40},{-35.4,40},{-35.4,27.05}}, color={127,0,127}));
-          annotation (experiment(StopTime=12), 
+          annotation (experiment(StopTime=12),
             Documentation(info="<html>
 <p>This example is a simple test of the Tristates.NXFERGATE component.</p>
 </html>"));
@@ -939,13 +939,13 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           extends Modelica.Icons.Example;
 
           Modelica.Electrical.Digital.Sources.Table e_table(
-        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U', 
-        x={L.'0',L.'1',L.'Z'}, 
+        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U',
+        x={L.'0',L.'1',L.'Z'},
         t={0,5,9}) 
             annotation (Placement(transformation(extent={{-75,30},{-55,50}})));
           Modelica.Electrical.Digital.Sources.Table x_table(
-        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U', 
-        x={L.'1',L.'0'}, 
+        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U',
+        x={L.'1',L.'0'},
         t={1,7}) 
             annotation (Placement(transformation(extent={{-75,-20},{-55,0}})));
           Modelica.Electrical.Digital.Tristates.NRXFERGATE nRXFERGATE(
@@ -956,7 +956,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-55,-10},{-45.05,-10},{-45.05,-9.9},{-35.1,-9.9}}, color={127,0,127}));
           connect(e_table.y, nRXFERGATE.enable) annotation (Line(
               points={{-55,40},{-35.1,40},{-35.1,29.3}}, color={127,0,127}));
-          annotation (experiment(StopTime=12), 
+          annotation (experiment(StopTime=12),
             Documentation(info="<html>
 <p>This example is a simple test of the Tristates.NRXFER component.  After simulation until 12 s plot x, enable, and y of the <code>nRXFERGATE </code>component. To verify the result compare to the truth table <code>NRXferTable</code>.</p>
 </html>"));
@@ -966,18 +966,18 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           import L = Modelica.Electrical.Digital.Interfaces.Logic;
           extends Modelica.Icons.Example;
           Modelica.Electrical.Digital.Sources.Table e_table(
-        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U', 
-        x={L.'0',L.'1',L.'Z'}, 
+        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U',
+        x={L.'0',L.'1',L.'Z'},
         t={0,5,9}) 
             annotation (Placement(transformation(extent={{-75,30},{-55,50}})));
           Modelica.Electrical.Digital.Sources.Table x_table(
-        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U', 
-        x={L.'1',L.'0'}, 
+        y0=Modelica.Electrical.Digital.Interfaces.Logic.'U',
+        x={L.'1',L.'0'},
         t={1,7}) 
             annotation (Placement(transformation(extent={{-75,-20},{-55,0}})));
           Modelica.Electrical.Digital.Tristates.BUF3S bUF3S(
-            tHL=1, 
-            tLH=1, 
+            tHL=1,
+            tLH=1,
             strength=Modelica.Electrical.Digital.Interfaces.Strength.'S_X01') 
             annotation (Placement(transformation(extent={{-40,-50},{48,38}})));
         equation
@@ -985,7 +985,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-55,-10},{-35.6,-10.4}}, color={127,0,127}));
           connect(e_table.y, bUF3S.enable) annotation (Line(
               points={{-55,40},{-35.6,40},{-35.6,24.8}}, color={127,0,127}));
-          annotation (experiment(StopTime=12), 
+          annotation (experiment(StopTime=12),
             Documentation(info="<html>
 <p>This example is a simple test of the Tristates.BUF3S component.  After simulation until 12 s plot x, enable, and y of the <code>bUF3S</code> component. To verify the result compare to the truth table Buf3sTable.</p>
 </html>"));
@@ -996,13 +996,13 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           extends Modelica.Icons.Example;
 
           Modelica.Electrical.Digital.Sources.Table e_table(
-        y0=L.'U', 
-        x={L.'0',L.'1',L.'Z'}, 
+        y0=L.'U',
+        x={L.'0',L.'1',L.'Z'},
         t={0,5,9}) 
             annotation (Placement(transformation(extent={{-75,30},{-55,50}})));
           Modelica.Electrical.Digital.Sources.Table x_table(
-        y0=L.'U', 
-        x={L.'1',L.'0'}, 
+        y0=L.'U',
+        x={L.'1',L.'0'},
         t={1,7}) 
             annotation (Placement(transformation(extent={{-75,-20},{-55,0}})));
           Modelica.Electrical.Digital.Tristates.INV3S iNV3S 
@@ -1012,7 +1012,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-55,-10},{-42.6,-10},{-42.6,-9.8},{-30.2,-9.8}}, color={127,0,127}));
           connect(e_table.y, iNV3S.enable) annotation (Line(
               points={{-55,40},{-30.2,40},{-30.2,20.6}}, color={127,0,127}));
-          annotation (experiment(StopTime=12), 
+          annotation (experiment(StopTime=12),
             Documentation(info="<html>
 <p>This example is a simple test of the Tristates.INV3S component. After simulation until 12 s plot x, enable, and y of the <code>iNV3S</code> component. To verify the result compare to the truth table <code>T.UX01Table</code>.</p>
 </html>"));
@@ -1022,33 +1022,33 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           import L = Modelica.Electrical.Digital.Interfaces.Logic;
           extends Modelica.Icons.Example;
         Modelica.Electrical.Digital.Sources.Table e_table2(
-        y0=L.'U', 
-        x={L.'0',L.'1',L.'0'}, 
+        y0=L.'U',
+        x={L.'0',L.'1',L.'0'},
         t={0,3,9}) 
             annotation (Placement(transformation(extent={{-85,68},{-65,88}})));
           Modelica.Electrical.Digital.Sources.Table x_table2(
-        y0=L.'U', 
-        x={L.'1',L.'0'}, 
+        y0=L.'U',
+        x={L.'1',L.'0'},
         t={1,7}) 
             annotation (Placement(transformation(extent={{-85,18},{-65,38}})));
           Modelica.Electrical.Digital.Tristates.BUF3S bUF3S2(
-            tHL=1, 
-            tLH=1, 
+            tHL=1,
+            tLH=1,
             strength=Modelica.Electrical.Digital.Interfaces.Strength.'S_X01') 
             annotation (Placement(transformation(extent={{-48,-1},{16,63}})));
           Modelica.Electrical.Digital.Sources.Table e_table1(
-        y0=L.'U', 
-        t={0,3,9}, 
+        y0=L.'U',
+        t={0,3,9},
         x={L.'0',L.'1',L.'0'}) 
             annotation (Placement(transformation(extent={{-85,-24},{-65,-4}})));
           Modelica.Electrical.Digital.Sources.Table x_table1(
-        y0=L.'U', 
-        x={L.'0',L.'1',L.'0'}, 
+        y0=L.'U',
+        x={L.'0',L.'1',L.'0'},
         t={1,5,7}) 
             annotation (Placement(transformation(extent={{-85,-74},{-65,-54}})));
           Modelica.Electrical.Digital.Tristates.BUF3S bUF3S1(
-            tHL=1, 
-            tLH=1, 
+            tHL=1,
+            tLH=1,
             strength=Modelica.Electrical.Digital.Interfaces.Strength.'S_X01') 
             annotation (Placement(transformation(extent={{-52,-94},{14,-28}})));
           Modelica.Electrical.Digital.Tristates.WiredX wiredX(n=2) 
@@ -1066,7 +1066,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{10.7,-64.3},{24,-64.3},{24,-21.8},{36.8,-21.8}}, color={127,0,127}));
           connect(bUF3S2.y, wiredX.x[2]) annotation (Line(
               points={{12.8,27.8},{26,27.8},{26,-0.2},{36.8,-0.2}}, color={127,0,127}));
-          annotation (experiment(StopTime=12), 
+          annotation (experiment(StopTime=12),
             Documentation(info="<html>
 <p>This example is a simple test of the Tristates.WiredX component. The input width is set to two. After simulation until 12 s plot x[1], x[2], and y of the WiredX component. To verify the result compare to the truth table  Tables.ResolutionTable.</p>
 </html>"));
@@ -1079,18 +1079,18 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           D.Multiplexers.MUX2x1 Mux2x1 
             annotation (Placement(transformation(extent={{-34,-48},{56,48}})));
           D.Sources.Table Input1(
-            y0=L.'U', 
-            x={L.'X',L.'0',L.'1',L.'0',L.'X',L.'U'}, 
+            y0=L.'U',
+            x={L.'X',L.'0',L.'1',L.'0',L.'X',L.'U'},
             t={2,4,6,8,10,12}) 
             annotation (Placement(transformation(extent={{-90,14},{-70,34}})));
           D.Sources.Step Select(
-            before=L.'0', 
-            after=L.'1', 
+            before=L.'0',
+            after=L.'1',
             stepTime=7) 
             annotation (Placement(transformation(extent={{-90,58},{-70,78}})));
           D.Sources.Table Input0(
-            y0=L.'U', 
-            t={2,4,6,8,10,12}, 
+            y0=L.'U',
+            t={2,4,6,8,10,12},
             x={L.'1',L.'X',L.'0',L.'X',L.'1',L.'U'}) 
             annotation (Placement(transformation(extent={{-90,-34},{-70,-14}})));
         equation
@@ -1100,7 +1100,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-70,-24},{-29.5,-24}}, color={127,0,127}));
           connect(Input1.y, Mux2x1.in1) annotation (Line(
               points={{-70,24},{-29.5,24}}, color={127,0,127}));
-          annotation (experiment(StopTime=15), 
+          annotation (experiment(StopTime=15),
             Documentation(info="<html>
 <p>This example is a simple test of a single multiplexer component with 2 inputs prescribed by sources, one select input, and one output. After simulation until 15 s plot Mux2x1.in0, Mux2x1.in1, Mux2x1.sel, and Mux2x1.out. Compare the output signal with the input signals. If the select signal changes, the output switches to the other input.</p>
 </html>"));
@@ -1115,20 +1115,20 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
             annotation (Placement(transformation(extent={{-11,-41},{103,73}})));
           Modelica.Electrical.Digital.Sources.Table 
                         addr_1(
-            y0=L.'U', 
-            x={L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-', 
-               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-', 
-               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-', 
-               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-', 
-               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-', 
-               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-', 
-               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-', 
-               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-', 
-               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-'}, 
-            t={5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110, 
-                115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195, 
-                200,205,210,215,220,225,230,235,240,245,250,255,260,265,270,275,280, 
-                285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365, 
+            y0=L.'U',
+            x={L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-',
+               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-',
+               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-',
+               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-',
+               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-',
+               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-',
+               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-',
+               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-',
+               L.'U',L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-'},
+            t={5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,
+                115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,
+                200,205,210,215,220,225,230,235,240,245,250,255,260,265,270,275,280,
+                285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,
                 370,375,380,385,390,395,400}) 
             annotation (Placement(transformation(extent={{-78,76},{-58,96}})));
           Modelica.Electrical.Digital.Sources.Set 
@@ -1142,8 +1142,8 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
             annotation (Placement(transformation(extent={{-78,-70},{-58,-50}})));
           Modelica.Electrical.Digital.Sources.Table 
                         addr_0(
-            y0=Modelica.Electrical.Digital.Interfaces.Logic.'U', 
-            t={45,90,135,180,225,270,315,360}, 
+            y0=Modelica.Electrical.Digital.Interfaces.Logic.'U',
+            t={45,90,135,180,225,270,315,360},
             x={L.'X',L.'0',L.'1',L.'Z',L.'W',L.'L',L.'H',L.'-'}) 
             annotation (Placement(transformation(extent={{-78,48},{-58,68}})));
           Modelica.Electrical.Digital.Sources.Set 
@@ -1163,7 +1163,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               points={{-58,30},{-32,30},{-32,30.25},{-5.3,30.25}}, color={127,0,127}));
           connect(data_0.y,dLATRAM. dataIn[1]) annotation (Line(
               points={{-58,2},{-34,2},{-34,24.55},{-5.3,24.55}}, color={127,0,127}));
-          annotation (experiment(StopTime=400), 
+          annotation (experiment(StopTime=400),
             Documentation(info="<html>
 <p>This example is a simple and uncomplete test of a single DLATRAM component . After simulation until 400 s plot dLATRAM.addr[1], dLATRAM.addr[2], and dLATRAM.dataOUT[1], dLATRAM.dataOut[2]. The address inputs are  prescribed with all possible combinations of logic values. It can be checked in which cases of address values the output is 'X' or '0'.</p>
 </html>"));
@@ -1192,19 +1192,19 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
                     extent={{-110,-80},{-90,-60}})));
             D.Interfaces.DigitalOutput d annotation (Placement(transformation(
                     extent={{90,-10},{110,10}})));
-            D.Basic.Or Or1(n=4) annotation (Placement(transformation(extent={{50,20}, 
+            D.Basic.Or Or1(n=4) annotation (Placement(transformation(extent={{50,20},
                       {70,40}})));
-            D.Basic.And And1(n=3) annotation (Placement(transformation(extent={{-20, 
+            D.Basic.And And1(n=3) annotation (Placement(transformation(extent={{-20,
                       60},{0,80}})));
-            D.Basic.And And2(n=3) annotation (Placement(transformation(extent={{-20, 
+            D.Basic.And And2(n=3) annotation (Placement(transformation(extent={{-20,
                       34},{0,54}})));
-            D.Basic.And And3(n=3) annotation (Placement(transformation(extent={{-20, 
+            D.Basic.And And3(n=3) annotation (Placement(transformation(extent={{-20,
                       8},{0,28}})));
-            D.Basic.And And4(n=3) annotation (Placement(transformation(extent={{-20, 
+            D.Basic.And And4(n=3) annotation (Placement(transformation(extent={{-20,
                       -18},{0,2}})));
-            D.Basic.Not Not1 annotation (Placement(transformation(extent={{-76,-54}, 
+            D.Basic.Not Not1 annotation (Placement(transformation(extent={{-76,-54},
                       {-56,-34}})));
-            D.Basic.Not Not2 annotation (Placement(transformation(extent={{-76,-80}, 
+            D.Basic.Not Not2 annotation (Placement(transformation(extent={{-76,-80},
                       {-56,-60}})));
         equation
             connect(a0, Not1.x) annotation (Line(
@@ -1242,55 +1242,55 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
             connect(a0, And2.x[3]) annotation (Line(
                 points={{-100,-44},{-80,-44},{-80,49.3333},{-16,49.3333}}, color={127,0,127}));
             connect(a1, And4.x[1]) annotation (Line(
-                points={{-100,-70},{-80,-70},{-80,-90},{-30,-90},{-30,-13.3333}, 
+                points={{-100,-70},{-80,-70},{-80,-90},{-30,-90},{-30,-13.3333},
                 {-16,-13.3333}}, color={127,0,127}));
             connect(a1, And3.x[1]) annotation (Line(
-                points={{-100,-70},{-80,-70},{-80,-90},{-30,-90},{-30,12.6667}, 
+                points={{-100,-70},{-80,-70},{-80,-90},{-30,-90},{-30,12.6667},
                 {-16,12.6667}}, color={127,0,127}));
           annotation (
             Documentation(info="<html>
 <p>MUX4 is a four bit multiplexer which is built up by And, Not, and Or gates according to the schematic.</p>
 <p>The parameters delayTime and q0 are prepared but <strong>not</strong> yet used in the component. The MUX4 component uses standard values in its components.</p>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                   {100,100}}), graphics={
               Rectangle(
-                extent={{-90,100},{90,-100}}, 
-                lineThickness=0.5, 
-                fillColor={255,255,170}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-90,100},{90,-100}},
+                lineThickness=0.5,
+                fillColor={255,255,170},
+                fillPattern=FillPattern.Solid),
               Line(
-                points={{-60,100},{-60,-100}}, 
-                thickness=0.5), 
+                points={{-60,100},{-60,-100}},
+                thickness=0.5),
               Line(
-                points={{60,100},{60,-100}}, 
-                thickness=0.5), 
+                points={{60,100},{60,-100}},
+                thickness=0.5),
               Text(
-                extent={{-86,80},{-64,60}}, 
-                textString="D0"), 
+                extent={{-86,80},{-64,60}},
+                textString="D0"),
               Text(
-                extent={{64,12},{86,-8}}, 
-                textString="D"), 
+                extent={{64,12},{86,-8}},
+                textString="D"),
               Text(
-                extent={{-150,-100},{150,-160}}, 
-                textColor={0,0,255}, 
-                textString="%name"), 
+                extent={{-150,-100},{150,-160}},
+                textColor={0,0,255},
+                textString="%name"),
               Text(
-                extent={{-60,100},{60,40}}, 
-                textString="MUX"), 
+                extent={{-60,100},{60,40}},
+                textString="MUX"),
               Text(
-                extent={{-86,-60},{-64,-80}}, 
-                textString="A1"), 
+                extent={{-86,-60},{-64,-80}},
+                textString="A1"),
               Text(
-                extent={{-86,54},{-64,34}}, 
-                textString="D1"), 
+                extent={{-86,54},{-64,34}},
+                textString="D1"),
               Text(
-                extent={{-86,28},{-64,8}}, 
-                textString="D2"), 
+                extent={{-86,28},{-64,8}},
+                textString="D2"),
               Text(
-                extent={{-86,2},{-64,-18}}, 
-                textString="D3"), 
+                extent={{-86,2},{-64,-18}},
+                textString="D3"),
               Text(
-                extent={{-86,-36},{-64,-56}}, 
+                extent={{-86,-36},{-64,-56}},
                 textString="A0")}));
         end MUX4;
 
@@ -1300,11 +1300,11 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
 
           parameter SI.Time delayTime=0 "Delay time";
           parameter D.Interfaces.Logic q0=L.'U' "Initial value of output";
-          D.Basic.Nor Nor1 annotation (Placement(transformation(extent={{-40,42}, 
+          D.Basic.Nor Nor1 annotation (Placement(transformation(extent={{-40,42},
                       {0,82}})));
-          D.Basic.Nor Nor2 annotation (Placement(transformation(extent={{-40,-82}, 
+          D.Basic.Nor Nor2 annotation (Placement(transformation(extent={{-40,-82},
                       {0,-42}})));
-          D.Interfaces.DigitalInput s annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalInput s annotation (Placement(transformation(extent=
                      {{-110,60},{-90,80}})));
           D.Interfaces.DigitalInput r annotation (Placement(transformation(
                     extent={{-110,-80},{-90,-60}})));
@@ -1324,42 +1324,42 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           connect(Nor2.y,q) annotation (Line(
                 points={{0,-62},{70,-62},{70,70},{100,70}}, color={127,0,127}));
           connect(TD1.y, Nor2.x[2]) annotation (Line(points={{-40,-54},{-32,-54}}, color={127,0,127}));
-          connect(TD1.x, Nor1.y) annotation (Line(points={{-56,-54},{-70,-54},{-70, 
+          connect(TD1.x, Nor1.y) annotation (Line(points={{-56,-54},{-70,-54},{-70,
                     -20},{20,20},{20,62},{0,62}}, color={127,0,127}));
           annotation (
             Documentation(info="<html>
 <p>RS is a basic component for e.g., the RS (set-reset) flipflop, which is built up by Nor gates according to the schematic. To avoid a numerical loop a small transport delay is inserted which delay time is a parameter of the RS component. Also its initial value can be set by parameter.</p>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                   {100,100}}), graphics={
               Rectangle(
-                extent={{-90,100},{90,-100}}, 
-                lineThickness=0.5, 
-                fillColor={255,255,170}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-90,100},{90,-100}},
+                lineThickness=0.5,
+                fillColor={255,255,170},
+                fillPattern=FillPattern.Solid),
               Text(
-                extent={{-100,100},{100,40}}, 
-                textString="RS"), 
+                extent={{-100,100},{100,40}},
+                textString="RS"),
               Line(
-                points={{-60,100},{-60,-100}}, 
-                thickness=0.5), 
+                points={{-60,100},{-60,-100}},
+                thickness=0.5),
               Line(
-                points={{60,100},{60,-100}}, 
-                thickness=0.5), 
+                points={{60,100},{60,-100}},
+                thickness=0.5),
               Text(
-                extent={{-86,-60},{-64,-80}}, 
-                textString="R"), 
+                extent={{-86,-60},{-64,-80}},
+                textString="R"),
               Text(
-                extent={{-86,80},{-64,60}}, 
-                textString="S"), 
+                extent={{-86,80},{-64,60}},
+                textString="S"),
               Text(
-                extent={{64,80},{86,60}}, 
-                textString="Q"), 
+                extent={{64,80},{86,60}},
+                textString="Q"),
               Text(
-                extent={{64,-60},{86,-80}}, 
-                textString="QN"), 
+                extent={{64,-60},{86,-80}},
+                textString="QN"),
               Text(
-                extent={{-150,-100},{150,-160}}, 
-                textColor={0,0,255}, 
+                extent={{-150,-100},{150,-160}},
+                textColor={0,0,255},
                 textString="%name")}));
         end RS;
 
@@ -1369,11 +1369,11 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
 
           parameter SI.Time delayTime=0.01 "Delay time";
           parameter D.Interfaces.Logic q0=L.'U' "Initial value";
-          D.Interfaces.DigitalInput s annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalInput s annotation (Placement(transformation(extent=
                      {{-110,60},{-90,80}})));
           D.Interfaces.DigitalInput r annotation (Placement(transformation(
                     extent={{-110,-80},{-90,-60}})));
-          D.Interfaces.DigitalOutput q annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalOutput q annotation (Placement(transformation(extent=
                       {{90,60},{110,80}})));
           D.Interfaces.DigitalOutput qn "not Q" 
             annotation (Placement(transformation(extent={{90,-80},{110,-60}})));
@@ -1382,9 +1382,9 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           D.Examples.Utilities.RS RS1(delayTime=delayTime,q0=q0) 
                                             annotation (Placement(transformation(
                     extent={{-10,-40},{70,40}})));
-          D.Basic.And And1 annotation (Placement(transformation(extent={{-70, 
+          D.Basic.And And1 annotation (Placement(transformation(extent={{-70,
                       8},{-30,48}})));
-          D.Basic.And And2 annotation (Placement(transformation(extent={{-70, 
+          D.Basic.And And2 annotation (Placement(transformation(extent={{-70,
                       -48},{-30,-8}})));
         equation
           connect(And2.y, RS1.r) 
@@ -1408,38 +1408,38 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           annotation (
             Documentation(info="<html>
 <p>Basing on the RS component RSFF is a RS (set-reset) flipflop composed according the schematic. Its parameter delayTime is the delay time of the RS component transport delay, q0 is the initial value of that delay.</p>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                   {100,100}}), graphics={
               Rectangle(
-                extent={{-90,100},{90,-100}}, 
-                lineThickness=0.5, 
-                fillColor={255,255,170}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-90,100},{90,-100}},
+                lineThickness=0.5,
+                fillColor={255,255,170},
+                fillPattern=FillPattern.Solid),
               Text(
-                extent={{-100,100},{100,40}}, 
-                textString="RS"), 
+                extent={{-100,100},{100,40}},
+                textString="RS"),
               Line(
-                points={{-60,100},{-60,-100}}, 
-                thickness=0.5), 
+                points={{-60,100},{-60,-100}},
+                thickness=0.5),
               Line(
-                points={{60,100},{60,-100}}, 
-                thickness=0.5), 
+                points={{60,100},{60,-100}},
+                thickness=0.5),
               Text(
-                extent={{-86,-60},{-64,-80}}, 
-                textString="R"), 
+                extent={{-86,-60},{-64,-80}},
+                textString="R"),
               Text(
-                extent={{-86,80},{-64,60}}, 
-                textString="S"), 
+                extent={{-86,80},{-64,60}},
+                textString="S"),
               Text(
-                extent={{64,80},{86,60}}, 
-                textString="Q"), 
+                extent={{64,80},{86,60}},
+                textString="Q"),
               Text(
-                extent={{64,-60},{86,-80}}, 
-                textString="QN"), 
-              Line(points={{-90,20},{-60,0},{-90,-20}}), 
+                extent={{64,-60},{86,-80}},
+                textString="QN"),
+              Line(points={{-90,20},{-60,0},{-90,-20}}),
               Text(
-                extent={{-150,-100},{150,-160}}, 
-                textColor={0,0,255}, 
+                extent={{-150,-100},{150,-160}},
+                textColor={0,0,255},
                 textString="%name")}));
         end RSFF;
 
@@ -1449,9 +1449,9 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
 
           parameter SI.Time Tdel=0.01 "Delay time";
           parameter L QInit=L.'U' "Initial value";
-          D.Interfaces.DigitalInput d annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalInput d annotation (Placement(transformation(extent=
                      {{-110,60},{-90,80}})));
-          D.Interfaces.DigitalOutput q annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalOutput q annotation (Placement(transformation(extent=
                       {{90,60},{110,80}})));
           D.Interfaces.DigitalOutput qn "not Q" 
             annotation (Placement(transformation(extent={{90,-80},{110,-60}})));
@@ -1459,7 +1459,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
                     extent={{-110,-10},{-90,10}})));
           D.Examples.Utilities.RSFF RSFF1 annotation (Placement(transformation(
                     extent={{-10,-40},{70,40}})));
-          D.Basic.Not Not1 annotation (Placement(transformation(extent={{-70, 
+          D.Basic.Not Not1 annotation (Placement(transformation(extent={{-70,
                       -48},{-30,-8}})));
         equation
           connect(RSFF1.q,q) 
@@ -1480,35 +1480,35 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           annotation (
             Documentation(info="<html>
 <p>Basing on the RS component DFF is a D  flipflop composed according the schematic. Its parameter delayTime is the delay time of the RS component transport delay, q0 is the initial value of that delay.</p>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                   {100,100}}), graphics={
               Rectangle(
-                extent={{-90,100},{90,-100}}, 
-                lineThickness=0.5, 
-                fillColor={255,255,170}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-90,100},{90,-100}},
+                lineThickness=0.5,
+                fillColor={255,255,170},
+                fillPattern=FillPattern.Solid),
               Line(
-                points={{-60,100},{-60,-100}}, 
-                thickness=0.5), 
+                points={{-60,100},{-60,-100}},
+                thickness=0.5),
               Line(
-                points={{60,100},{60,-100}}, 
-                thickness=0.5), 
+                points={{60,100},{60,-100}},
+                thickness=0.5),
               Text(
-                extent={{-86,80},{-64,60}}, 
-                textString="D"), 
+                extent={{-86,80},{-64,60}},
+                textString="D"),
               Text(
-                extent={{64,80},{86,60}}, 
-                textString="Q"), 
+                extent={{64,80},{86,60}},
+                textString="Q"),
               Text(
-                extent={{64,-60},{86,-80}}, 
-                textString="QN"), 
-              Line(points={{-90,20},{-60,0},{-90,-20}}), 
+                extent={{64,-60},{86,-80}},
+                textString="QN"),
+              Line(points={{-90,20},{-60,0},{-90,-20}}),
               Text(
-                extent={{-150,-100},{150,-160}}, 
-                textColor={0,0,255}, 
-                textString="%name"), 
+                extent={{-150,-100},{150,-160}},
+                textColor={0,0,255},
+                textString="%name"),
               Text(
-                extent={{-100,100},{100,40}}, 
+                extent={{-100,100},{100,40}},
                 textString="D")}));
         end DFF;
 
@@ -1518,15 +1518,15 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
 
           parameter SI.Time delayTime=0.001 "Delay time";
           parameter D.Interfaces.Logic q0=L.'0' "Initial value";
-          D.Interfaces.DigitalInput j annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalInput j annotation (Placement(transformation(extent=
                      {{-110,60},{-90,80}})));
-          D.Interfaces.DigitalOutput q annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalOutput q annotation (Placement(transformation(extent=
                       {{90,60},{110,80}})));
           D.Interfaces.DigitalOutput qn "not Q" 
             annotation (Placement(transformation(extent={{90,-80},{110,-60}})));
           D.Interfaces.DigitalInput clk annotation (Placement(transformation(
                     extent={{-110,-10},{-90,10}})));
-          D.Interfaces.DigitalInput k annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalInput k annotation (Placement(transformation(extent=
                      {{-110,-80},{-90,-60}})));
           D.Examples.Utilities.RS RS1(delayTime=delayTime,q0=q0) 
                                        annotation (Placement(transformation(
@@ -1534,15 +1534,15 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           D.Examples.Utilities.RS RS2(delayTime=delayTime,q0=q0) 
                                        annotation (Placement(transformation(
                   extent={{-44,-20},{-4,20}})));
-          D.Basic.And And1(n=3) annotation (Placement(transformation(extent={{-70, 
+          D.Basic.And And1(n=3) annotation (Placement(transformation(extent={{-70,
                     4},{-50,24}})));
-          D.Basic.And And2(n=3) annotation (Placement(transformation(extent={{-70, 
+          D.Basic.And And2(n=3) annotation (Placement(transformation(extent={{-70,
                     -24},{-50,-4}})));
-          D.Basic.And And3 annotation (Placement(transformation(extent={{4,0},{24, 
+          D.Basic.And And3 annotation (Placement(transformation(extent={{4,0},{24,
                     20}})));
           D.Basic.And And4 annotation (Placement(transformation(extent={{4,-28},{
                     24,-8}})));
-          D.Basic.Not Not1 annotation (Placement(transformation(extent={{-34,-66}, 
+          D.Basic.Not Not1 annotation (Placement(transformation(extent={{-34,-66},
                     {-14,-46}})));
         equation
             connect(And2.y, RS2.r) annotation (Line(points={{-50,-14},{-44,-14}}, color={127,0,127}));
@@ -1557,57 +1557,57 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
             connect(And3.y, RS1.s) annotation (Line(points={{24,10},{30,10}}, color={127,0,127}));
             connect(RS2.qn, And4.x[2]) annotation (Line(points={{-4,-14},{8,-14}}, color={127,0,127}));
             connect(RS2.q, And3.x[2]) annotation (Line(points={{-4,14},{8,14}}, color={127,0,127}));
-            connect(clk, Not1.x) annotation (Line(points={{-100,0},{-80,0},{-80,-56}, 
+            connect(clk, Not1.x) annotation (Line(points={{-100,0},{-80,0},{-80,-56},
                     {-30,-56}}, color={127,0,127}));
             connect(Not1.y, And3.x[1]) annotation (Line(points={{-14,-56},{2,-56},{
                     2,6},{8,6}}, color={127,0,127}));
             connect(Not1.y, And4.x[1]) annotation (Line(points={{-14,-56},{2,-56},{
                     2,-22},{8,-22}}, color={127,0,127}));
-            connect(j, And1.x[2]) annotation (Line(points={{-100,70},{-74,70},{-74, 
+            connect(j, And1.x[2]) annotation (Line(points={{-100,70},{-74,70},{-74,
                     14},{-66,14}}, color={127,0,127}));
-            connect(RS1.q, And2.x[1]) annotation (Line(points={{70,10},{80,10}, 
+            connect(RS1.q, And2.x[1]) annotation (Line(points={{70,10},{80,10},
                 {80,-36},{-70,-36},{-70,-19.3333},{-66,-19.3333}}, color={127,0,127}));
-            connect(RS1.qn, And1.x[3]) annotation (Line(points={{70,-18},{86, 
+            connect(RS1.qn, And1.x[3]) annotation (Line(points={{70,-18},{86,
                 -18},{86,36},{-70,36},{-70,19.3333},{-66,19.3333}}, color={127,0,127}));
           connect(RS1.qn, q) annotation (Line(points={{70,-18},{86,-18},{86,70},{
                     100,70}}, color={127,0,127}));
-          connect(RS1.q, qn) annotation (Line(points={{70,10},{80,10},{80,-70},{100, 
+          connect(RS1.q, qn) annotation (Line(points={{70,10},{80,10},{80,-70},{100,
                     -70}}, color={127,0,127}));
           annotation (
             Documentation(info="<html>
 <p>Basing on the RS component JKFF is a J-K-flipflop composed according the schematic. Its parameter delayTime is the delay time of the RS component transport delay, q0 is the initial value of that delay.</p>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                   {100,100}}), graphics={
               Rectangle(
-                extent={{-90,100},{90,-100}}, 
-                lineThickness=0.5, 
-                fillColor={255,255,170}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-90,100},{90,-100}},
+                lineThickness=0.5,
+                fillColor={255,255,170},
+                fillPattern=FillPattern.Solid),
               Line(
-                points={{-60,100},{-60,-100}}, 
-                thickness=0.5), 
+                points={{-60,100},{-60,-100}},
+                thickness=0.5),
               Line(
-                points={{60,100},{60,-100}}, 
-                thickness=0.5), 
+                points={{60,100},{60,-100}},
+                thickness=0.5),
               Text(
-                extent={{-86,80},{-64,60}}, 
-                textString="J"), 
+                extent={{-86,80},{-64,60}},
+                textString="J"),
               Text(
-                extent={{64,80},{86,60}}, 
-                textString="Q"), 
+                extent={{64,80},{86,60}},
+                textString="Q"),
               Text(
-                extent={{64,-60},{86,-80}}, 
-                textString="QN"), 
-              Line(points={{-90,20},{-60,0},{-90,-20}}), 
+                extent={{64,-60},{86,-80}},
+                textString="QN"),
+              Line(points={{-90,20},{-60,0},{-90,-20}}),
               Text(
-                extent={{-150,-100},{150,-160}}, 
-                textColor={0,0,255}, 
-                textString="%name"), 
+                extent={{-150,-100},{150,-160}},
+                textColor={0,0,255},
+                textString="%name"),
               Text(
-                extent={{-100,100},{100,40}}, 
-                textString="JK"), 
+                extent={{-100,100},{100,40}},
+                textString="JK"),
               Text(
-                extent={{-86,-60},{-64,-80}}, 
+                extent={{-86,-60},{-64,-80}},
                 textString="K")}));
         end JKFF;
 
@@ -1615,63 +1615,63 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
                     import L = Modelica.Electrical.Digital.Interfaces.Logic;
                     parameter Real delayTime=0 "Delay time";
                     Modelica.Electrical.Digital.Interfaces.DigitalInput b 
-                      annotation (Placement(transformation(extent={{-110,-80},{-90, 
+                      annotation (Placement(transformation(extent={{-110,-80},{-90,
                       -60}})));
                     Modelica.Electrical.Digital.Interfaces.DigitalOutput s 
                                          annotation (Placement(transformation(
                     extent={{90,60},{110,80}})));
                     Modelica.Electrical.Digital.Interfaces.DigitalInput a 
-                      annotation (Placement(transformation(extent={{-110,60},{-90, 
+                      annotation (Placement(transformation(extent={{-110,60},{-90,
                       80}})));
                     Modelica.Electrical.Digital.Interfaces.DigitalOutput c 
                                          annotation (Placement(transformation(
                     extent={{90,-80},{110,-60}})));
                     Modelica.Electrical.Digital.Gates.AndGate AND(tLH=delayTime, tHL=delayTime, G2(y(start=L.'U',fixed=true))) 
-                      annotation (Placement(transformation(extent={{-20,-82},{20, 
+                      annotation (Placement(transformation(extent={{-20,-82},{20,
                       -42}})));
                     Modelica.Electrical.Digital.Gates.XorGate XOR(tLH=delayTime, tHL=delayTime, G2(y(start=L.'U', fixed=true))) 
                       annotation (Placement(transformation(extent={{-20,42},{20,82}})));
 
                   equation
                     connect(AND.y, c) 
-                                   annotation (Line(points={{20,-62},{60,-62},{60,-70}, 
+                                   annotation (Line(points={{20,-62},{60,-62},{60,-70},
                     {100,-70}}, color={127,0,127}));
                     connect(XOR.y, s) 
-                                   annotation (Line(points={{20,62},{60,62},{60,70}, 
+                                   annotation (Line(points={{20,62},{60,62},{60,70},
                     {100,70}}, color={127,0,127}));
                     connect(b, AND.x[1]) 
                                       annotation (Line(points={{-100,-70},{-12,-70}}, color={127,0,127}));
                     connect(b, XOR.x[1]) 
-                                      annotation (Line(points={{-100,-70},{-30,-70}, 
+                                      annotation (Line(points={{-100,-70},{-30,-70},
                     {-30,54},{-12,54}}, color={127,0,127}));
                     connect(a, XOR.x[2]) 
                                       annotation (Line(points={{-100,70},{-12,70}}, color={127,0,127}));
                     connect(a, AND.x[2]) 
                                       annotation (Line(points={{-100,70},{-40,70},{
                     -40,-54},{-12,-54}}, color={127,0,127}));
-                    annotation (Icon(coordinateSystem(preserveAspectRatio=true, 
+                    annotation (Icon(coordinateSystem(preserveAspectRatio=true,
                     extent={{-100,-100},{100,100}}), graphics={Rectangle(
-                                  extent={{-90,100},{90,-100}}, 
-                                  lineThickness=0.5, 
-                                  fillColor={255,255,170}, 
+                                  extent={{-90,100},{90,-100}},
+                                  lineThickness=0.5,
+                                  fillColor={255,255,170},
                                   fillPattern=FillPattern.Solid),Text(
-                                  extent={{-90,80},{-60,60}}, 
+                                  extent={{-90,80},{-60,60}},
                                   textString="a"),Text(
-                                  extent={{-90,-60},{-60,-80}}, 
+                                  extent={{-90,-60},{-60,-80}},
                                   textString="b"),Text(
-                                  extent={{60,80},{90,60}}, 
+                                  extent={{60,80},{90,60}},
                                   textString="s"),Text(
-                                  extent={{60,-60},{90,-80}}, 
+                                  extent={{60,-60},{90,-80}},
                                   textString="c"),Text(
-                                  extent={{-150,-100},{150,-160}}, 
-                                  textColor={0,0,255}, 
+                                  extent={{-150,-100},{150,-160}},
+                                  textColor={0,0,255},
                                   textString="%name"),Text(
-                                  extent={{-100,100},{100,0}}, 
+                                  extent={{-100,100},{100,0}},
                                   textString="+"),Line(
-                                  points={{-60,100},{-60,-100}}, 
+                                  points={{-60,100},{-60,-100}},
                                   thickness=0.5),Line(
-                                  points={{60,100},{60,-100}}, 
-                                  thickness=0.5)}), 
+                                  points={{60,100},{60,-100}},
+                                  thickness=0.5)}),
                       Documentation(info="<html>
 <p>HalfAdder is a two bit adder which is composed by Gates components.</p>
 <p>Its logic behavior is like this:</p>
@@ -1711,7 +1711,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
 </html>"));
                   end HalfAdder;
 
-        model FullAdder 
+        model FullAdder
         "Adding circuit for binary numbers with input carry bit"
 
           HalfAdder Adder2(delayTime=0.001) 
@@ -1722,31 +1722,31 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
                     extent={{-60,36},{-20,76}})));
           Modelica.Electrical.Digital.Interfaces.DigitalInput a 
             annotation (Placement(transformation(
-                  origin={-100,70}, 
-                  extent={{-10,-10},{10,10}}, 
+                  origin={-100,70},
+                  extent={{-10,-10},{10,10}},
                   rotation=180)));
           Modelica.Electrical.Digital.Interfaces.DigitalInput b 
             annotation (Placement(transformation(
-                  origin={-100,30}, 
-                  extent={{-10,-10},{10,10}}, 
+                  origin={-100,30},
+                  extent={{-10,-10},{10,10}},
                   rotation=180)));
           Modelica.Electrical.Digital.Interfaces.DigitalInput c_in 
             annotation (Placement(transformation(
-                  origin={-100,-70}, 
-                  extent={{-10,-10},{10,10}}, 
+                  origin={-100,-70},
+                  extent={{-10,-10},{10,10}},
                   rotation=180)));
           Modelica.Electrical.Digital.Interfaces.DigitalOutput s 
             annotation (Placement(transformation(
-                  origin={101,70}, 
-                  extent={{11,-10},{-11,10}}, 
+                  origin={101,70},
+                  extent={{11,-10},{-11,10}},
                   rotation=180)));
           Modelica.Electrical.Digital.Interfaces.DigitalOutput c_out 
             annotation (Placement(transformation(
-                  origin={100,-70}, 
-                  extent={{10,-10},{-10,10}}, 
+                  origin={100,-70},
+                  extent={{10,-10},{-10,10}},
                   rotation=180)));
           Modelica.Electrical.Digital.Basic.Or OR 
-                       annotation (Placement(transformation(extent={{10,-90},{50, 
+                       annotation (Placement(transformation(extent={{10,-90},{50,
                       -50}})));
         equation
 
@@ -1758,12 +1758,12 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           connect(Adder2.s, s) 
             annotation (Line(points={{50,70},{101,70}}, color={127,0,127}));
             connect(Adder1.a, a) annotation (Line(points={{-60,70},{-100,70}}, color={127,0,127}));
-            connect(b, Adder1.b) annotation (Line(points={{-100,30},{-70,30},{-70, 
+            connect(b, Adder1.b) annotation (Line(points={{-100,30},{-70,30},{-70,
                     42},{-60,42}}, color={127,0,127}));
             connect(Adder1.s, Adder2.a) annotation (Line(points={{-20,70},{10,70}}, color={127,0,127}));
             connect(Adder1.c, OR.x[1]) annotation (Line(points={{-20,42},{-10,42},{
                     -10,-78},{18,-78}}, color={127,0,127}));
-            connect(c_in, Adder2.b) annotation (Line(points={{-100,-70},{0,-70},{0, 
+            connect(c_in, Adder2.b) annotation (Line(points={{-100,-70},{0,-70},{0,
                     42},{10,42}}, color={127,0,127}));
           annotation (
             Documentation(info="<html>
@@ -1835,40 +1835,40 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
 </tr>
 </table>
 </html>"), Icon(coordinateSystem(
-                  preserveAspectRatio=true, 
+                  preserveAspectRatio=true,
                   extent={{-100,-100},{100,100}}), graphics={
               Rectangle(
-                extent={{-90,100},{90,-100}}, 
-                lineThickness=0.5, 
-                fillColor={255,255,170}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-90,100},{90,-100}},
+                lineThickness=0.5,
+                fillColor={255,255,170},
+                fillPattern=FillPattern.Solid),
               Text(
-                extent={{-150,-96},{150,-151}}, 
-                textColor={0,0,255}, 
-                textString="%name"), 
+                extent={{-150,-96},{150,-151}},
+                textColor={0,0,255},
+                textString="%name"),
               Text(
-                extent={{-86,80},{-64,60}}, 
-                textString="a"), 
+                extent={{-86,80},{-64,60}},
+                textString="a"),
               Text(
-                extent={{-86,40},{-64,20}}, 
-                textString="b"), 
+                extent={{-86,40},{-64,20}},
+                textString="b"),
               Text(
-                extent={{-86,-60},{-64,-80}}, 
-                textString="c_in"), 
+                extent={{-86,-60},{-64,-80}},
+                textString="c_in"),
               Text(
-                extent={{60,-60},{90,-80}}, 
-                textString="c_out"), 
+                extent={{60,-60},{90,-80}},
+                textString="c_out"),
               Text(
-                extent={{64,80},{86,60}}, 
-                textString="s"), 
+                extent={{64,80},{86,60}},
+                textString="s"),
               Text(
-                extent={{-100,100},{100,0}}, 
-                textString="+"), 
+                extent={{-100,100},{100,0}},
+                textString="+"),
               Line(
-                points={{-60,100},{-60,-100}}, 
-                thickness=0.5), 
+                points={{-60,100},{-60,-100}},
+                thickness=0.5),
               Line(
-                points={{60,100},{60,-100}}, 
+                points={{60,100},{60,-100}},
                 thickness=0.5)}));
         end FullAdder;
 
@@ -1877,7 +1877,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
 
           parameter Integer n=2 "Number of single adders";
           Modelica.Electrical.Digital.Examples.Utilities.FullAdder Adder[n] 
-                                       annotation (Placement(transformation(extent= 
+                                       annotation (Placement(transformation(extent=
                       {{-20,-20},{20,20}})));
           Modelica.Electrical.Digital.Interfaces.DigitalInput a[n] 
                                                annotation (Placement(transformation(
@@ -1909,34 +1909,34 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
             Documentation(info="<html>
 <p>The Adder is a generic n bit adder which is composed as a chain of FullAdder components. n can be chosen by the user, a and b are the n bit input vectors, s is the sum vector, and c_out is the carry bit of the &quot;highest&quot; FullAdder.   All components are built up by Gate components.</p>
 </html>"), Icon(coordinateSystem(
-                  preserveAspectRatio=true, 
+                  preserveAspectRatio=true,
                   extent={{-100,-100},{100,100}}), graphics={
               Rectangle(
-                extent={{-90,100},{90,-100}}, 
-                lineThickness=0.5, 
-                fillColor={255,255,170}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-90,100},{90,-100}},
+                lineThickness=0.5,
+                fillColor={255,255,170},
+                fillPattern=FillPattern.Solid),
               Text(
-                extent={{68,80},{88,60}}, 
-                textString="S"), 
+                extent={{68,80},{88,60}},
+                textString="S"),
               Text(
-                extent={{-150,-100},{150,-160}}, 
-                textColor={0,0,255}, 
-                textString="%name"), 
+                extent={{-150,-100},{150,-160}},
+                textColor={0,0,255},
+                textString="%name"),
               Text(
-                extent={{-40,60},{40,20}}, 
-                textString="Adder"), 
+                extent={{-40,60},{40,20}},
+                textString="Adder"),
               Text(
-                extent={{48,-60},{88,-80}}, 
-                textString="Cout"), 
+                extent={{48,-60},{88,-80}},
+                textString="Cout"),
               Text(
-                extent={{-90,-60},{-50,-80}}, 
-                textString="Cin"), 
+                extent={{-90,-60},{-50,-80}},
+                textString="Cin"),
               Text(
-                extent={{-88,80},{-68,60}}, 
-                textString="A"), 
+                extent={{-88,80},{-68,60}},
+                textString="A"),
               Text(
-                extent={{-88,40},{-68,20}}, 
+                extent={{-88,40},{-68,20}},
                 textString="B")}));
         end Adder;
 
@@ -1947,7 +1947,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           D.Interfaces.DigitalInput enable 
                                          annotation (Placement(transformation(
                     extent={{-110,60},{-90,80}})));
-          D.Interfaces.DigitalOutput q2 annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalOutput q2 annotation (Placement(transformation(extent=
                      {{90,60},{110,80}})));
           D.Interfaces.DigitalInput count 
                                          annotation (Placement(transformation(
@@ -1958,9 +1958,9 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
                annotation (Placement(transformation(extent={{-20,-20},{20,20}})));
           D.Examples.Utilities.JKFF FF3 
                annotation (Placement(transformation(extent={{34,-20},{74,20}})));
-          D.Interfaces.DigitalOutput q1 annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalOutput q1 annotation (Placement(transformation(extent=
                      {{90,-10},{110,10}})));
-          D.Interfaces.DigitalOutput q0 annotation (Placement(transformation(extent= 
+          D.Interfaces.DigitalOutput q0 annotation (Placement(transformation(extent=
                      {{90,-80},{110,-60}})));
         equation
           connect(enable, FF1.j) annotation (Line(
@@ -1985,39 +1985,39 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
                 points={{74,14},{80,14},{80,70},{100,70}}, color={127,0,127}));
           connect(FF1.q, q0) annotation (Line(points={{-34,14},{-30,14},{-30,-70},{
                     100,-70}}, color={127,0,127}));
-          connect(FF2.q, q1) annotation (Line(points={{20,14},{24,14},{24,-50},{86, 
+          connect(FF2.q, q1) annotation (Line(points={{20,14},{24,14},{24,-50},{86,
                     -50},{86,0},{100,0}}, color={127,0,127}));
            annotation (
              Documentation(info="<html>
 <p>The Counter3 counts the high-low slopes of the count signal, if the enable signal is set to be true. It is composed by three JK flipflops. q0, q1, and q2 are the bits of the resulting number, where q0 is the lowest, and q2 the highest bit.</p>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                   {100,100}}), graphics={
               Rectangle(
-                extent={{-90,100},{90,-100}}, 
-                lineThickness=0.5, 
-                fillColor={255,255,170}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-90,100},{90,-100}},
+                lineThickness=0.5,
+                fillColor={255,255,170},
+                fillPattern=FillPattern.Solid),
               Text(
-                extent={{-80,80},{-40,60}}, 
-                textString="ENABLE"), 
+                extent={{-80,80},{-40,60}},
+                textString="ENABLE"),
               Text(
-                extent={{64,80},{86,60}}, 
-                textString="Q2"), 
+                extent={{64,80},{86,60}},
+                textString="Q2"),
               Text(
-                extent={{64,-60},{86,-80}}, 
-                textString="Q0"), 
+                extent={{64,-60},{86,-80}},
+                textString="Q0"),
               Text(
-                extent={{-150,-100},{150,-160}}, 
-                textColor={0,0,255}, 
-                textString="%name"), 
+                extent={{-150,-100},{150,-160}},
+                textColor={0,0,255},
+                textString="%name"),
               Text(
-                extent={{-60,40},{60,0}}, 
-                textString="Counter3"), 
+                extent={{-60,40},{60,0}},
+                textString="Counter3"),
               Text(
-                extent={{-80,-60},{-40,-80}}, 
-                textString="COUNT"), 
+                extent={{-80,-60},{-40,-80}},
+                textString="COUNT"),
               Text(
-                extent={{62,8},{84,-12}}, 
+                extent={{62,8},{84,-12}},
                 textString="Q1")}));
         end Counter3;
 
@@ -2029,10 +2029,10 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           parameter SI.Time delayTime=0.001 "Delay of each JKFF";
           parameter D.Interfaces.Logic q0=L.'0' "Initial value";
           D.Interfaces.DigitalInput enable 
-                                        annotation (Placement(transformation(extent= 
+                                        annotation (Placement(transformation(extent=
                      {{-110,60},{-90,80}})));
           D.Interfaces.DigitalInput count 
-                                        annotation (Placement(transformation(extent= 
+                                        annotation (Placement(transformation(extent=
                      {{-110,-80},{-90,-60}})));
           D.Examples.Utilities.JKFF FF[n](each delayTime=delayTime,each q0=q0);
           D.Interfaces.DigitalOutput q[n] annotation (Placement(transformation(
@@ -2051,39 +2051,39 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
           annotation (
             Documentation(info="<html>
 <p>The Counter is a generic component, which counts the high-low slopes of the count signal, if the enable signal is set to be true. It is composed by  n JK flipflops. q is the resulting number, where q[0] is the lowest, and q[n] the highest bit.</p>
-</html>"), Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+</html>"), Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                   -100},{100,100}}), graphics={Rectangle(
-                extent={{90,80},{110,-80}}, 
-                lineColor={127,0,127}, 
-                fillColor={127,0,127}, 
-                fillPattern=FillPattern.Solid)}), 
-            Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+                extent={{90,80},{110,-80}},
+                lineColor={127,0,127},
+                fillColor={127,0,127},
+                fillPattern=FillPattern.Solid)}),
+            Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                   {100,100}}), graphics={
               Rectangle(
-                extent={{90,80},{110,-80}}, 
-                lineColor={127,0,127}, 
-                fillColor={127,0,127}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{90,80},{110,-80}},
+                lineColor={127,0,127},
+                fillColor={127,0,127},
+                fillPattern=FillPattern.Solid),
               Rectangle(
-                extent={{-90,100},{90,-100}}, 
-                lineThickness=0.5, 
-                fillColor={255,255,170}, 
-                fillPattern=FillPattern.Solid), 
+                extent={{-90,100},{90,-100}},
+                lineThickness=0.5,
+                fillColor={255,255,170},
+                fillPattern=FillPattern.Solid),
               Text(
-                extent={{-80,80},{-40,60}}, 
-                textString="ENABLE"), 
+                extent={{-80,80},{-40,60}},
+                textString="ENABLE"),
               Text(
-                extent={{66,8},{88,-12}}, 
-                textString="Q"), 
+                extent={{66,8},{88,-12}},
+                textString="Q"),
               Text(
-                extent={{-150,-100},{150,-160}}, 
-                textColor={0,0,255}, 
-                textString="%name"), 
+                extent={{-150,-100},{150,-160}},
+                textColor={0,0,255},
+                textString="%name"),
               Text(
-                extent={{-40,40},{40,0}}, 
-                textString="Counter"), 
+                extent={{-40,40},{40,0}},
+                textString="Counter"),
               Text(
-                extent={{-80,-60},{-40,-80}}, 
+                extent={{-80,-60},{-40,-80}},
                 textString="COUNT")}));
         end Counter;
           annotation (Documentation(info="<html>
@@ -2102,14 +2102,14 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         extends Modelica.Icons.InterfacesPackage;
 
         type Logic = enumeration(
-        'U' "U  Uninitialized", 
-        'X' "X  Forcing Unknown", 
-        '0' "0  Forcing 0", 
-        '1' "1  Forcing 1", 
-        'Z' "Z  High Impedance", 
-        'W' "W  Weak Unknown", 
-        'L' "L  Weak 0", 
-        'H' "H  Weak 1", 
+        'U' "U  Uninitialized",
+        'X' "X  Forcing Unknown",
+        '0' "0  Forcing 0",
+        '1' "1  Forcing 1",
+        'Z' "Z  High Impedance",
+        'W' "W  Weak Unknown",
+        'L' "L  Weak 0",
+        'H' "H  Weak 1",
         '-' "-  Do not care") "Logic values and their coding according to IEEE 1164 STD_ULOGIC type" 
               annotation (Documentation(info="<html>
 <p><strong>Code Table:</strong></p>
@@ -2133,9 +2133,9 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
 </html>"));
 
         type UX01 = enumeration(
-        'U' "U  Uninitialized", 
-        'X' "X  Forcing Unknown", 
-        '0' "0  Forcing 0", 
+        'U' "U  Uninitialized",
+        'X' "X  Forcing Unknown",
+        '0' "0  Forcing 0",
         '1' "1  Forcing 1") "4-valued subtype of IEEE 1164 STD_ULOGIC type" 
           annotation (Documentation(info="<html>
 <p><strong>Code Table:</strong></p>
@@ -2153,15 +2153,15 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
 </table>
 </html>"));
         type Strength = enumeration(
-        'S_X01' "S_X01  Forcing X, 0 and 1", 
-        'S_X0H' "S_X0H  Forcing X, 0 and Weak 1", 
-        'S_XL1' "S_XL1  Forcing X, 1 and Weak 0", 
-        'S_X0Z' "S_X0Z  Forcing X, 0 and High Impedance", 
-        'S_XZ1' "S_XZ1  Forcing X, 1 and High Impedance", 
-        'S_WLH' "S_WLH  Weak X, 0 and 1", 
-        'S_WLZ' "S_WLZ  Weak X, 0 and High Impedance", 
-        'S_WZH' "S_WZH  Weak X, 1 and High Impedance", 
-        'S_W0H' "S_W0H  Weak X, 1 and Forcing 0", 
+        'S_X01' "S_X01  Forcing X, 0 and 1",
+        'S_X0H' "S_X0H  Forcing X, 0 and Weak 1",
+        'S_XL1' "S_XL1  Forcing X, 1 and Weak 0",
+        'S_X0Z' "S_X0Z  Forcing X, 0 and High Impedance",
+        'S_XZ1' "S_XZ1  Forcing X, 1 and High Impedance",
+        'S_WLH' "S_WLH  Weak X, 0 and 1",
+        'S_WLZ' "S_WLZ  Weak X, 0 and High Impedance",
+        'S_WZH' "S_WZH  Weak X, 1 and High Impedance",
+        'S_W0H' "S_W0H  Weak X, 1 and Forcing 0",
         'S_WL1' "S_WL1  Weak X, 0 and Forcing 1") "Output strengths of registers" annotation (Documentation(info="<html>
 
 <p><strong>Strength Table:</strong></p>
@@ -2190,45 +2190,45 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
 </html>"));
 
         connector DigitalInput = input DigitalSignal "Input DigitalSignal as connector" 
-          annotation (defaultComponentName="x", 
-            Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+          annotation (defaultComponentName="x",
+            Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={Rectangle(
-            extent={{-100,-100},{100,100}}, 
-            lineColor={127,0,127}, 
-            fillColor={127,0,127}, 
-            fillPattern=FillPattern.Solid)}), 
-            Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+            extent={{-100,-100},{100,100}},
+            lineColor={127,0,127},
+            fillColor={127,0,127},
+            fillPattern=FillPattern.Solid)}),
+            Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,
               -100},{100,100}}), graphics={Text(
-            extent={{-150,-100},{150,-160}}, 
-            textColor={127,0,127}, 
+            extent={{-150,-100},{150,-160}},
+            textColor={127,0,127},
             textString="%name"), Rectangle(
-            extent={{-100,-100},{100,100}}, 
-            lineColor={127,0,127}, 
-            fillColor={127,0,127}, 
-            fillPattern=FillPattern.Solid)}), 
+            extent={{-100,-100},{100,100}},
+            lineColor={127,0,127},
+            fillColor={127,0,127},
+            fillPattern=FillPattern.Solid)}),
           Documentation(info="<html>
 <p>DigitalInput is the digital input connector definition. DigitalInput is of type Logic. It can have the logic values (U, X, 0, 1, ...) which are internally coded by integer values by using the enumeration (c.f. the definition of type Logic).</p>
 </html>"));
 
         connector DigitalOutput = output DigitalSignal "Output DigitalSignal as connector" 
           annotation (defaultComponentName="y", Icon(coordinateSystem(
-                preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+                preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
           graphics={Polygon(
-            points={{-100,100},{100,0},{-100,-100},{-100,100}}, 
-            lineColor={127,0,127}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid)}), 
+            points={{-100,100},{100,0},{-100,-100},{-100,100}},
+            lineColor={127,0,127},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid)}),
                                            Diagram(coordinateSystem(
-                preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+                preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
           graphics={Polygon(
-            points={{-100,100},{100,0},{-100,-100},{-100,100}}, 
-            lineColor={127,0,127}, 
-            fillColor={255,255,255}, 
+            points={{-100,100},{100,0},{-100,-100},{-100,100}},
+            lineColor={127,0,127},
+            fillColor={255,255,255},
             fillPattern=FillPattern.Solid), Text(
-            extent={{-150,-100},{150,-160}}, 
-            textColor={127,0,127}, 
-            textString="%name")}), 
-          Documentation(info= 
+            extent={{-150,-100},{150,-160}},
+            textColor={127,0,127},
+            textString="%name")}),
+          Documentation(info=
                          "<html>
 <p>DigitalOutput is the digital output connector definition. DigitalOutput is of type Logic. It can have the logic values (U, X, 0, 1, ...) which are internally coded by integer values by using the enumeration (c.f. the definition of type Logic). The arrow shape symbolizes the signal flow direction.</p>
 </html>"));
@@ -2236,19 +2236,19 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         partial block SISO "Single input, single output"
       import D = Modelica.Electrical.Digital;
           D.Interfaces.DigitalInput x "Connector of Digital input signal" 
-                       annotation (Placement(transformation(extent={{-70,-10},{-50, 
+                       annotation (Placement(transformation(extent={{-70,-10},{-50,
                     10}})));
           D.Interfaces.DigitalOutput y "Connector of Digital output signal" 
-                        annotation (Placement(transformation(extent={{90,-10},{110, 
+                        annotation (Placement(transformation(extent={{90,-10},{110,
                     10}})));
           annotation (Icon(
-                coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+                coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), Line(points={{50,0},{92,0}}, 
-                color={127,0,127})}), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid), Line(points={{50,0},{92,0}},
+                color={127,0,127})}),
             Documentation(info="<html>
 <p>SISO is a partial model for the connection pattern with <strong>s</strong>ingle (scalar) digital <strong>i</strong>nput and <strong>s</strong>ingle (scalar) digital <strong>o</strong>utput. Besides the connectors it provides a rectangle for the icon which can be filled in by the component which inherits the SISO model.</p>
 </html>"));
@@ -2258,20 +2258,20 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
       import D = Modelica.Electrical.Digital;
 
           parameter Integer n(final min=2) = 2 "Number of inputs";
-          D.Interfaces.DigitalInput x[n] 
+          D.Interfaces.DigitalInput x[n]
         "Connector of Digital input signal vector" 
                                          annotation (Placement(transformation(
                   extent={{-70,-80},{-50,80}})));
           D.Interfaces.DigitalOutput y "Connector of Digital output signal" 
-                        annotation (Placement(transformation(extent={{90,-10},{110, 
+                        annotation (Placement(transformation(extent={{90,-10},{110,
                     10}})));
-          annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+          annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), Line(points={{50,0},{90,0}}, 
-                color={127,0,127})}), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid), Line(points={{50,0},{90,0}},
+                color={127,0,127})}),
             Documentation(info="<html>
 <p>MISO is a partial model for the connection pattern with <strong>m</strong>ultiple (vector) digital <strong>i</strong>nput and <strong>s</strong>ingle (scalar) digital <strong>o</strong>utput. Besides the connectors it provides a rectangle for the icon which can be filled in by the component which inherits the MISO model.</p>
 </html>"));
@@ -2280,29 +2280,29 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         partial block MIMO "Multiple input - multiple output"
       import D = Modelica.Electrical.Digital;
 
-          parameter Integer n(final min=1) = 1 
+          parameter Integer n(final min=1) = 1
         "Number of inputs = Number of outputs";
-          D.Interfaces.DigitalInput x[n] 
+          D.Interfaces.DigitalInput x[n]
         "Connector of Digital input signal vector" 
                                          annotation (Placement(transformation(
                   extent={{-70,-80},{-50,80}})));
-          D.Interfaces.DigitalOutput y[n] 
+          D.Interfaces.DigitalOutput y[n]
         "Connector of Digital output signal vector" 
-                        annotation (Placement(transformation(extent={{90,-10},{110, 
+                        annotation (Placement(transformation(extent={{90,-10},{110,
                     10}})));
-          annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+          annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
-            Line(points={{50,0},{90,0}}, color={127,0,127}), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
+            Line(points={{50,0},{90,0}}, color={127,0,127}),
             Rectangle(
-              extent={{50,80},{70,-80}}, 
-              lineColor={127,33,107}, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid)}), 
+              extent={{50,80},{70,-80}},
+              lineColor={127,33,107},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid)}),
             Documentation(info="<html>
 <p>MIMO is a partial model for the connection pattern with <strong>m</strong>ultiple (vector) digital <strong>i</strong>nput and <strong>m</strong>ultiple  (vector) digital <strong>o</strong>utput. Besides the connectors it provides a rectangle for the icon which can be filled in by the component which inherits the MISO model.</p>
 </html>"));
@@ -2319,7 +2319,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
               parameter S strength = S.'S_X01' "Output strength";
               parameter Integer n_addr(min=1) = 2 "Addr width";
               parameter Integer n_data(min=1) = 2 "Data width";
-              parameter String fileName = Modelica.Utilities.Files.loadResource("modelica://Modelica/Resources/Data/Electrical/Digital/Memory_Matrix.txt") 
+              parameter String fileName = Modelica.Utilities.Files.loadResource("modelica://Modelica/Resources/Data/Electrical/Digital/Memory_Matrix.txt")
                 "File where matrix for memory is stored" 
                 annotation(Dialog(group="Table data definition", loadSelector(filter="Text files (*.txt)", caption="Open file in which table is present")));
 
@@ -2387,29 +2387,29 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
                 connect(inertialDelaySensitive[i].y, dataOut[i]);
               end for;
 
-            annotation(Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+            annotation(Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
               graphics={
                 Rectangle(
-                  extent={{-60,80},{60,-80}}, 
-                  lineColor={127,0,127}, 
-                  lineThickness=0.5), 
+                  extent={{-60,80},{60,-80}},
+                  lineColor={127,0,127},
+                  lineThickness=0.5),
                 Line(
-                  points={{-84,60},{-60,60}}, 
-                  color={127,0,127}, 
-                  thickness=1), 
+                  points={{-84,60},{-60,60}},
+                  color={127,0,127},
+                  thickness=1),
                 Line(
-                  points={{60,20},{84,20}}, 
-                  color={127,0,127}, 
-                  thickness=1), 
+                  points={{60,20},{84,20}},
+                  color={127,0,127},
+                  thickness=1),
                 Line(
-                  points={{-84,-20},{-60,-20}}, 
-                  color={127,0,127}), 
+                  points={{-84,-20},{-60,-20}},
+                  color={127,0,127}),
                 Line(
-                  points={{-60,-10},{-46,-20},{-60,-30}}, 
-                  color={127,0,127}), 
+                  points={{-60,-10},{-46,-20},{-60,-30}},
+                  color={127,0,127}),
                 Text(
-                  extent={{-41,-5},{-24,-34}}, 
-                  textColor={127,33,107}, 
+                  extent={{-41,-5},{-24,-34}},
+                  textColor={127,33,107},
                   textString="RE")}));
         end MemoryBase;
 
@@ -2435,7 +2435,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         L.'U', L.'X', L.'0', L.'X', L.'X', L.'X', L.'0', L.'X', L.'X';
         L.'0', L.'0', L.'0', L.'0', L.'0', L.'0', L.'0', L.'0', L.'0';
         L.'U', L.'X', L.'0', L.'1', L.'X', L.'X', L.'0', L.'1', L.'X';
-        L.'U', L.'X', L.'0', L.'X', L.'X', L.'X', L.'0', L.'X', L.'X'] 
+        L.'U', L.'X', L.'0', L.'X', L.'X', L.'X', L.'0', L.'X', L.'X']
       "9-value logic for 'and'";
 
     constant D.Interfaces.Logic OrTable[L, L]=[
@@ -2447,11 +2447,11 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         L.'U', L.'X', L.'X', L.'1', L.'X', L.'X', L.'X', L.'1', L.'X';
         L.'U', L.'X', L.'0', L.'1', L.'X', L.'X', L.'0', L.'1', L.'X';
         L.'1', L.'1', L.'1', L.'1', L.'1', L.'1', L.'1', L.'1', L.'1';
-        L.'U', L.'X', L.'X', L.'1', L.'X', L.'X', L.'X', L.'1', L.'X'] 
+        L.'U', L.'X', L.'X', L.'1', L.'X', L.'X', L.'X', L.'1', L.'X']
       "9-value logic for 'or'";
 
     constant D.Interfaces.Logic NotTable[L]={
-        L.'U',L.'X',L.'1',L.'0',L.'X',L.'X',L.'1',L.'0',L.'X'} 
+        L.'U',L.'X',L.'1',L.'0',L.'X',L.'X',L.'1',L.'0',L.'X'}
       "9-value logic for 'not'";
 
     constant D.Interfaces.Logic XorTable[L, L]=[
@@ -2463,7 +2463,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X';
         L.'U', L.'X', L.'0', L.'1', L.'X', L.'X', L.'0', L.'1', L.'X';
         L.'U', L.'X', L.'1', L.'0', L.'X', L.'X', L.'1', L.'0', L.'X';
-        L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X'] 
+        L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X']
       "9-value logic for 'xor'";
 
     constant D.Interfaces.Logic ResolutionTable[L, L]=[
@@ -2475,7 +2475,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         L.'U', L.'X', L.'0', L.'1', L.'W', L.'W', L.'W', L.'W', L.'X';
         L.'U', L.'X', L.'0', L.'1', L.'L', L.'W', L.'L', L.'W', L.'X';
         L.'U', L.'X', L.'0', L.'1', L.'H', L.'W', L.'W', L.'H', L.'X';
-        L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X'] 
+        L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X']
       "9-value logic for 'wiredX'";
     constant D.Interfaces.Logic X01Table[L]={
         L.'X',L.'X',L.'0',L.'1',L.'X',L.'X',L.'0',L.'1',L.'X'};
@@ -2517,7 +2517,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
     1: rising edge  |
     2: X-Transition";
 
-    constant D.Interfaces.Logic StrengthMap[L, S]= 
+    constant D.Interfaces.Logic StrengthMap[L, S]=
         [L.'U', L.'U', L.'U', L.'U', L.'U', L.'U', L.'U', L.'U', L.'U', L.'U';
          L.'X', L.'X', L.'X', L.'X', L.'X', L.'W', L.'W', L.'W', L.'W', L.'W';
          L.'0', L.'0', L.'L', L.'0', L.'Z', L.'L', L.'L', L.'Z', L.'0', L.'L';
@@ -2526,7 +2526,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
          L.'X', L.'X', L.'X', L.'X', L.'X', L.'W', L.'W', L.'W', L.'W', L.'W';
          L.'0', L.'0', L.'L', L.'0', L.'Z', L.'L', L.'L', L.'Z', L.'0', L.'L';
          L.'1', L.'H', L.'1', L.'Z', L.'1', L.'H', L.'Z', L.'H', L.'H', L.'1';
-         L.'X', L.'X', L.'X', L.'X', L.'X', L.'W', L.'W', L.'W', L.'W', L.'W'] 
+         L.'X', L.'X', L.'X', L.'X', L.'X', L.'W', L.'W', L.'W', L.'W', L.'W']
       "Output strength conversion by [signal, strength] reading";
 
     constant D.Interfaces.Logic NXferTable[L, L]=[
@@ -2538,7 +2538,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X';
         L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z';
         L.'U', L.'X', L.'0', L.'1', L.'Z', L.'W', L.'L', L.'H', L.'X';
-        L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X'] 
+        L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X']
       "NX Transfer by [enable, input] reading";
 
     constant D.Interfaces.Logic NRXferTable[L, L]=[
@@ -2550,7 +2550,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         L.'U', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W';
         L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z';
         L.'U', L.'W', L.'L', L.'H', L.'Z', L.'W', L.'L', L.'H', L.'W';
-        L.'U', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W'] 
+        L.'U', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W']
       "NRX Transfer by [enable, input] reading";
 
     constant D.Interfaces.Logic PXferTable[L, L]=[
@@ -2562,7 +2562,7 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X';
         L.'U', L.'X', L.'0', L.'1', L.'Z', L.'W', L.'L', L.'H', L.'X';
         L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z';
-        L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X'] 
+        L.'U', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X', L.'X']
       "PX Transfer by [enable, input] reading";
 
     constant D.Interfaces.Logic PRXferTable[L, L]=[
@@ -2574,40 +2574,40 @@ sum   <strong>Adder4</strong>.c_out  <strong>Adder4.s</strong>  <strong>Adder3.s
         L.'U', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W';
         L.'U', L.'W', L.'L', L.'H', L.'Z', L.'W', L.'L', L.'H', L.'W';
         L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z', L.'Z';
-        L.'U', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W'] 
+        L.'U', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W', L.'W']
       "PRX Transfer by [enable, input] reading";
 
     constant D.Interfaces.Logic Buf3sTable[S, R, R]=[
-        {{{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'X',L.'0',L.'1'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'X',L.'0',L.'H'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'X',L.'L',L.'1'}}, 
-         {{L.'U',L.'U',L.'U',L.'Z'},{L.'U',L.'X',L.'X',L.'Z'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'X',L.'0',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'X',L.'Z',L.'1'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'W',L.'L',L.'H'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'Z'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'W',L.'L',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'W',L.'Z',L.'H'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'W',L.'0',L.'H'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'W',L.'L',L.'1'}}}] 
+        {{{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'X',L.'0',L.'1'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'X',L.'0',L.'H'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'X',L.'L',L.'1'}},
+         {{L.'U',L.'U',L.'U',L.'Z'},{L.'U',L.'X',L.'X',L.'Z'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'X',L.'0',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'X',L.'Z',L.'1'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'W',L.'L',L.'H'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'Z'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'W',L.'L',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'W',L.'Z',L.'H'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'W',L.'0',L.'H'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'Z',L.'Z',L.'Z',L.'Z'},{L.'U',L.'W',L.'L',L.'1'}}}]
       "Tristate Table by [strength, enable, input] reading, high-active enable";
 
     constant D.Interfaces.Logic Buf3slTable[S, R, R]=[
-        {{{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'U',L.'X',L.'0',L.'1'},{L.'Z',L.'Z',L.'Z',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'U',L.'X',L.'0',L.'H'},{L.'Z',L.'Z',L.'Z',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'U',L.'X',L.'L',L.'1'},{L.'Z',L.'Z',L.'Z',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'Z'},{L.'U',L.'X',L.'X',L.'Z'},{L.'U',L.'X',L.'0',L.'Z'},{L.'Z',L.'Z',L.'Z',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'U',L.'X',L.'Z',L.'1'},{L.'Z',L.'Z',L.'Z',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'U',L.'W',L.'L',L.'H'},{L.'Z',L.'Z',L.'Z',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'Z'},{L.'U',L.'W',L.'L',L.'Z'},{L.'Z',L.'Z',L.'Z',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'U',L.'W',L.'Z',L.'H'},{L.'Z',L.'Z',L.'Z',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'U',L.'W',L.'0',L.'H'},{L.'Z',L.'Z',L.'Z',L.'Z'}}, 
-         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'U',L.'W',L.'L',L.'1'},{L.'Z',L.'Z',L.'Z',L.'Z'}}}] 
+        {{{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'U',L.'X',L.'0',L.'1'},{L.'Z',L.'Z',L.'Z',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'U',L.'X',L.'0',L.'H'},{L.'Z',L.'Z',L.'Z',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'U',L.'X',L.'L',L.'1'},{L.'Z',L.'Z',L.'Z',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'Z'},{L.'U',L.'X',L.'X',L.'Z'},{L.'U',L.'X',L.'0',L.'Z'},{L.'Z',L.'Z',L.'Z',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'U',L.'X',L.'Z',L.'1'},{L.'Z',L.'Z',L.'Z',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'U',L.'W',L.'L',L.'H'},{L.'Z',L.'Z',L.'Z',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'Z'},{L.'U',L.'W',L.'L',L.'Z'},{L.'Z',L.'Z',L.'Z',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'U',L.'W',L.'Z',L.'H'},{L.'Z',L.'Z',L.'Z',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'U',L.'W',L.'0',L.'H'},{L.'Z',L.'Z',L.'Z',L.'Z'}},
+         {{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'W',L.'W',L.'W'},{L.'U',L.'W',L.'L',L.'1'},{L.'Z',L.'Z',L.'Z',L.'Z'}}}]
       "Tristate Table by [strength, enable, input] reading, low-active enable";
 
     constant D.Interfaces.Logic MUX2x1Table[R, R, R]=[
-        {{{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'0',L.'1'},{L.'U',L.'U',L.'U',L.'U'}}, 
-         {{L.'U',L.'X',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'U',L.'X',L.'0',L.'1'},{L.'X',L.'X',L.'X',L.'X'}}, 
-         {{L.'U',L.'U',L.'0',L.'U'},{L.'U',L.'X',L.'0',L.'X'},{L.'U',L.'X',L.'0',L.'1'},{L.'0',L.'0',L.'0',L.'0'}}, 
-         {{L.'U',L.'U',L.'U',L.'1'},{L.'U',L.'X',L.'X',L.'1'},{L.'U',L.'X',L.'0',L.'1'},{L.'1',L.'1',L.'1',L.'1'}}}] 
+        {{{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'U',L.'U',L.'U'},{L.'U',L.'X',L.'0',L.'1'},{L.'U',L.'U',L.'U',L.'U'}},
+         {{L.'U',L.'X',L.'U',L.'U'},{L.'U',L.'X',L.'X',L.'X'},{L.'U',L.'X',L.'0',L.'1'},{L.'X',L.'X',L.'X',L.'X'}},
+         {{L.'U',L.'U',L.'0',L.'U'},{L.'U',L.'X',L.'0',L.'X'},{L.'U',L.'X',L.'0',L.'1'},{L.'0',L.'0',L.'0',L.'0'}},
+         {{L.'U',L.'U',L.'U',L.'1'},{L.'U',L.'X',L.'X',L.'1'},{L.'U',L.'X',L.'0',L.'1'},{L.'1',L.'1',L.'1',L.'1'}}}]
       "Multiplexer Table by [select, input1, input0] reading";
 
     annotation (Documentation(info="<html>
@@ -2655,26 +2655,26 @@ If time less than <em>Tdel</em> the initial value <em>initout</em> holds.
 <dt><em>August 11, 2003</em></dt>
 <dd>by Christoph Clauss initially modelled.</dd>
 </dl>
-</html>"), 
+</html>"),
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
-            Polygon(points={{-6,60},{-16,40},{4,40},{-6,60}}), 
-            Line(points={{0,60},{20,60}}), 
-            Line(points={{10,60},{10,40}}), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
+            Polygon(points={{-6,60},{-16,40},{4,40},{-6,60}}),
+            Line(points={{0,60},{20,60}}),
+            Line(points={{10,60},{10,40}}),
             Text(
-              extent={{-50,-40},{50,-20}}, 
-              textString="Transport"), 
+              extent={{-50,-40},{50,-20}},
+              textString="Transport"),
             Text(
-              extent={{-50,-60},{50,-40}}, 
+              extent={{-50,-60},{50,-40}},
               textString="Delay")}));
         end TransportDelay;
 
@@ -2682,7 +2682,7 @@ If time less than <em>Tdel</em> the initial value <em>initout</em> holds.
       import D = Modelica.Electrical.Digital;
       import L = Modelica.Electrical.Digital.Interfaces.Logic;
           extends D.Interfaces.SISO;
-          parameter SI.Time delayTime(start=0) 
+          parameter SI.Time delayTime(start=0)
         "Minimum time to hold value";
           parameter D.Interfaces.Logic y0=L.'U' "Initial value of output y";
     protected
@@ -2711,25 +2711,25 @@ If time is less than <em>delayTime</em> the initial value <em>y0</em> holds.
 <dt><em>March 19, 2003</em></dt>
 <dd>by Martin Otter initially modelled.</dd>
 </dl>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
-            Polygon(points={{-6,60},{-16,40},{4,40},{-6,60}}), 
-            Line(points={{10,60},{10,40}}), 
-            Line(points={{0,60},{20,60}}), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
+            Polygon(points={{-6,60},{-16,40},{4,40},{-6,60}}),
+            Line(points={{10,60},{10,40}}),
+            Line(points={{0,60},{20,60}}),
             Text(
-              extent={{-50,-40},{50,-20}}, 
-              textString="Inertial"), 
+              extent={{-50,-40},{50,-20}},
+              textString="Inertial"),
             Text(
-              extent={{-50,-60},{50,-40}}, 
+              extent={{-50,-60},{50,-40}},
               textString="Delay")}));
         end InertialDelay;
 
@@ -2742,7 +2742,7 @@ If time is less than <em>delayTime</em> the initial value <em>y0</em> holds.
           parameter SI.Time tHL(start=0) "Fall inertial delay";
           parameter D.Interfaces.Logic y0=L.'U' "Initial value of output";
     protected
-          constant Integer delayTable[L,L]=Modelica.Electrical.Digital.Tables.DelayTable 
+          constant Integer delayTable[L,L]=Modelica.Electrical.Digital.Tables.DelayTable
         "Specification of delay according to signal change";
           SI.Time delayTime;
           D.Interfaces.Logic y_auxiliary(start=y0, fixed=true);
@@ -2796,28 +2796,28 @@ is used, if it is zero, the input is not delayed.
        by Christoph Clauss<br>
        initially modelled</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-50,-40},{50,-20}}, 
-              textString="Inertial"), 
+              extent={{-50,-40},{50,-20}},
+              textString="Inertial"),
             Text(
-              extent={{-50,-60},{50,-40}}, 
-              textString="Delay"), 
+              extent={{-50,-60},{50,-40}},
+              textString="Delay"),
             Text(
-              extent={{-50,-80},{50,-60}}, 
-              textString="sensitive"), 
-            Polygon(points={{-6,60},{-16,40},{4,40},{-6,60}}), 
-            Line(points={{10,60},{10,40}}), 
+              extent={{-50,-80},{50,-60}},
+              textString="sensitive"),
+            Polygon(points={{-6,60},{-16,40},{4,40},{-6,60}}),
+            Line(points={{10,60},{10,40}}),
             Line(points={{0,60},{20,60}})}));
         end InertialDelaySensitive;
 
@@ -2830,45 +2830,45 @@ is used, if it is zero, the input is not delayed.
           parameter SI.Time tLH=0 "Low->High delay";
           parameter Integer n(min=1) = 1 "Data width";
           D.Interfaces.DigitalInput x[n] 
-            annotation (Placement(transformation(extent={{-100,-12},{-76,12}}), 
+            annotation (Placement(transformation(extent={{-100,-12},{-76,12}}),
                 iconTransformation(extent={{-100,-15},{-72,14}})));
           D.Interfaces.DigitalOutput y[n] annotation (Placement(transformation(
-                  extent={{72,-14},{100,14}}), iconTransformation(extent={{72,-14}, 
+                  extent={{72,-14},{100,14}}), iconTransformation(extent={{72,-14},
                     {100,14}})));
-          Digital.Delay.InertialDelaySensitive inertialDelaySensitive[n](each tLH= 
+          Digital.Delay.InertialDelaySensitive inertialDelaySensitive[n](each tLH=
                 tLH, each tHL=tHL);
         equation
           for i in 1:n loop
             connect(x[i], inertialDelaySensitive[i].x);
             connect(inertialDelaySensitive[i].y, y[i]);
           end for;
-          annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+          annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Rectangle(
-              extent={{-50,54},{48,-54}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={255,255,255}), 
+              extent={{-50,54},{48,-54}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillPattern=FillPattern.Solid,
+              fillColor={255,255,255}),
             Line(
-              points={{-80,0},{-50,0}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,0},{-50,0}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{48,0},{80,0}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{48,0},{80,0}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-40,52},{38,-20}}, 
-              textColor={127,33,107}, 
-              textString="DELAY"), 
+              extent={{-40,52},{38,-20}},
+              textColor={127,33,107},
+              textString="DELAY"),
             Text(
-              extent={{-26,12},{18,-32}}, 
-              textColor={127,0,127}, 
-              textString="signal "), 
+              extent={{-26,12},{18,-32}},
+              textColor={127,0,127},
+              textString="signal "),
             Text(
-              extent={{-32,0},{28,-62}}, 
-              textColor={127,0,127}, 
+              extent={{-32,0},{28,-62}},
+              textColor={127,0,127},
               textString="sensitive")}), Documentation(info="<html>
 
 <p>
@@ -2909,19 +2909,19 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
 <dt><em>August 14, 2003</em></dt>
 <dd>by Teresa Schlegel initially modelled.</dd>
 </dl>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{-50,40},{50,80}}, 
-              textString="1"), 
+              extent={{-50,40},{50,80}},
+              textString="1"),
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Ellipse(
-              extent={{50,6},{62,-6}}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
+              extent={{50,6},{62,-6}},
+              lineThickness=0.5,
+              fillColor={255,255,255},
               fillPattern=FillPattern.Solid)}));
         end Not;
 
@@ -2954,12 +2954,12 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by  Teresa Schlegel<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={Text(
-              extent={{-50,40},{50,80}}, 
+              extent={{-50,40},{50,80}},
               textString="&"), Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
               textString="%name")}));
         end And;
 
@@ -2992,19 +2992,19 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by  Teresa Schlegel<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{-50,40},{50,80}}, 
-              textString="&"), 
+              extent={{-50,40},{50,80}},
+              textString="&"),
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Ellipse(
-              extent={{50,6},{62,-6}}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
+              extent={{50,6},{62,-6}},
+              lineThickness=0.5,
+              fillColor={255,255,255},
               fillPattern=FillPattern.Solid)}));
         end Nand;
 
@@ -3037,12 +3037,12 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by  Teresa Schlegel<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={Text(
-              extent={{-50,40},{50,80}}, 
+              extent={{-50,40},{50,80}},
               textString=">=1"), Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
               textString="%name")}));
         end Or;
 
@@ -3076,19 +3076,19 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by Liane Jacobi<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{-50,40},{50,80}}, 
-              textString=">=1"), 
+              extent={{-50,40},{50,80}},
+              textString=">=1"),
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Ellipse(
-              extent={{50,6},{62,-6}}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
+              extent={{50,6},{62,-6}},
+              lineThickness=0.5,
+              fillColor={255,255,255},
               fillPattern=FillPattern.Solid)}));
         end Nor;
 
@@ -3121,12 +3121,12 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by Liane Jacobi<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={Text(
-              extent={{-50,40},{50,80}}, 
+              extent={{-50,40},{50,80}},
               textString="=1"), Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
               textString="%name")}));
         end Xor;
 
@@ -3159,12 +3159,12 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by Liane Jacobi<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={Text(
-              extent={{-50,40},{50,80}}, 
+              extent={{-50,40},{50,80}},
               textString="="), Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
               textString="%name")}));
         end Xnor;
         annotation (Documentation(info="<html>
@@ -3179,14 +3179,14 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
       import D = Modelica.Electrical.Digital;
           extends D.Delay.DelayParams;
           extends D.Interfaces.SISO;
-          D.Basic.Not G1 annotation (Placement(transformation(extent={{-60, 
+          D.Basic.Not G1 annotation (Placement(transformation(extent={{-60,
                     -20},{-20,20}})));
           D.Delay.InertialDelaySensitive G2(tLH=tLH, tHL=tHL) 
             annotation (Placement(transformation(extent={{20,-20},{60,20}})));
         equation
           connect(G2.y, y) annotation (Line(points={{60,0},{
                   100,0}}, color={127,0,127}));
-          connect(G1.x, x) annotation (Line(points={{-52,0},{-60,0}}, color={127, 
+          connect(G1.x, x) annotation (Line(points={{-52,0},{-60,0}}, color={127,
                   0,127}));
           connect(G1.y, G2.x) 
             annotation (Line(points={{-20,0},{28,0}}, color={127,0,127}));
@@ -3198,27 +3198,27 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
 <dt><em>August 14, 2003</em></dt>
 <dd>by Teresa Schlegel initially modelled.</dd>
 </dl>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-50,80},{50,40}}, 
-              textString="1"), 
+              extent={{-50,80},{50,40}},
+              textString="1"),
             Text(
-              extent={{-18,-60},{20,-100}}, 
-              textString="Gate"), 
+              extent={{-18,-60},{20,-100}},
+              textString="Gate"),
             Ellipse(
-              extent={{50,6},{62,-6}}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
+              extent={{50,6},{62,-6}},
+              lineThickness=0.5,
+              fillColor={255,255,255},
               fillPattern=FillPattern.Solid)}));
         end InvGate;
 
@@ -3229,8 +3229,8 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
           D.Basic.And G1(final n=n) annotation (Placement(transformation(extent={
                     {-40,-20},{0,20}})));
           D.Delay.InertialDelaySensitive G2(
-            tLH=tLH, 
-            tHL=tHL, 
+            tLH=tLH,
+            tHL=tHL,
             y0=y0) annotation (Placement(transformation(extent={{20,-20},{60,20}})));
         equation
           connect(x, G1.x) 
@@ -3251,22 +3251,22 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by Teresa Schlegel<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-50,80},{50,40}}, 
-              textString="&"), 
+              extent={{-50,80},{50,40}},
+              textString="&"),
             Text(
-              extent={{-20,-60},{20,-100}}, 
+              extent={{-20,-60},{20,-100}},
               textString="Gate")}));
         end AndGate;
 
@@ -3274,11 +3274,11 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
       import D = Modelica.Electrical.Digital;
           extends D.Delay.DelayParams;
           extends D.Interfaces.MISO;
-          D.Basic.Nand G1(final n=n) annotation (Placement(transformation(extent= 
+          D.Basic.Nand G1(final n=n) annotation (Placement(transformation(extent=
                    {{-40,-20},{0,20}})));
           D.Delay.InertialDelaySensitive G2(
-            tLH=tLH, 
-            tHL=tHL, 
+            tLH=tLH,
+            tHL=tHL,
             y0=y0) annotation (Placement(transformation(extent={{20,-20},{60,20}})));
         equation
           connect(x, G1.x) 
@@ -3287,28 +3287,28 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
             annotation (Line(points={{0,0},{28,0}}, color={127,0,127}));
           connect(G2.y, y) 
             annotation (Line(points={{60,0},{100,0}}, color={127,0,127}));
-          annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+          annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
                              graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-40,40},{40,80}}, 
-              textString="&"), 
+              extent={{-40,40},{40,80}},
+              textString="&"),
             Text(
-              extent={{-50,-64},{50,-86}}, 
-              textString="Gate"), 
+              extent={{-50,-64},{50,-86}},
+              textString="Gate"),
             Ellipse(
-              extent={{50,6},{62,-6}}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid)}), 
+              extent={{50,6},{62,-6}},
+              lineThickness=0.5,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid)}),
             Documentation(revisions="<html>
 <ul>
 <li><em>September 15, 2004</em> vector approach used for all fixed numbers of inputs
@@ -3330,8 +3330,8 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
           D.Basic.Or G1(final n=n) annotation (Placement(transformation(extent={{
                     -40,-20},{0,20}})));
           D.Delay.InertialDelaySensitive G2(
-            tLH=tLH, 
-            tHL=tHL, 
+            tLH=tLH,
+            tHL=tHL,
             y0=y0) annotation (Placement(transformation(extent={{20,-20},{60,20}})));
         equation
           connect(G1.y, G2.x) 
@@ -3352,22 +3352,22 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by Teresa Schlegel<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-50,80},{50,40}}, 
-              textString=">=1"), 
+              extent={{-50,80},{50,40}},
+              textString=">=1"),
             Text(
-              extent={{-20,-60},{20,-100}}, 
+              extent={{-20,-60},{20,-100}},
               textString="Gate")}));
         end OrGate;
 
@@ -3378,8 +3378,8 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
           D.Basic.Nor G1(final n=n) annotation (Placement(transformation(extent={
                     {-40,-20},{0,20}})));
           D.Delay.InertialDelaySensitive G2(
-            tLH=tLH, 
-            tHL=tHL, 
+            tLH=tLH,
+            tHL=tHL,
             y0=y0) annotation (Placement(transformation(extent={{20,-20},{60,20}})));
         equation
           connect(G1.y, G2.x) 
@@ -3400,27 +3400,27 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by Liane Jacobi<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-50,80},{50,40}}, 
-              textString=">=1"), 
+              extent={{-50,80},{50,40}},
+              textString=">=1"),
             Text(
-              extent={{-20,-60},{20,-100}}, 
-              textString="Gate"), 
+              extent={{-20,-60},{20,-100}},
+              textString="Gate"),
             Ellipse(
-              extent={{50,6},{62,-6}}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
+              extent={{50,6},{62,-6}},
+              lineThickness=0.5,
+              fillColor={255,255,255},
               fillPattern=FillPattern.Solid)}));
         end NorGate;
 
@@ -3431,8 +3431,8 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
           D.Basic.Xor G1(final n=n) annotation (Placement(transformation(extent={
                     {-40,-20},{0,20}})));
           D.Delay.InertialDelaySensitive G2(
-            tLH=tLH, 
-            tHL=tHL, 
+            tLH=tLH,
+            tHL=tHL,
             y0=y0) annotation (Placement(transformation(extent={{20,-20},{60,20}})));
         equation
           connect(x, G1.x) 
@@ -3453,22 +3453,22 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by Liane Jacobi<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-50,80},{50,40}}, 
-              textString="=1"), 
+              extent={{-50,80},{50,40}},
+              textString="=1"),
             Text(
-              extent={{-20,-60},{20,-100}}, 
+              extent={{-20,-60},{20,-100}},
               textString="Gate")}));
         end XorGate;
 
@@ -3476,11 +3476,11 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
       import D = Modelica.Electrical.Digital;
           extends D.Delay.DelayParams;
           extends D.Interfaces.MISO;
-          D.Basic.Xnor G1(final n=n) annotation (Placement(transformation(extent= 
+          D.Basic.Xnor G1(final n=n) annotation (Placement(transformation(extent=
                    {{-40,-20},{0,20}})));
           D.Delay.InertialDelaySensitive G2(
-            tLH=tLH, 
-            tHL=tHL, 
+            tLH=tLH,
+            tHL=tHL,
             y0=y0) annotation (Placement(transformation(extent={{20,-20},{60,20}})));
         equation
           connect(x, G1.x) 
@@ -3501,22 +3501,22 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
        by Liane Jacobi<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-40,80},{40,40}}, 
-              textString="="), 
+              extent={{-40,80},{40,40}},
+              textString="="),
             Text(
-              extent={{-20,-60},{20,-100}}, 
+              extent={{-20,-60},{20,-100}},
               textString="Gate")}));
         end XnorGate;
 
@@ -3529,7 +3529,7 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
         equation
           connect(G1.y, y) annotation (Line(points={{10,0},{
                   100,0}}, color={127,0,127}));
-          connect(G1.x, x) annotation (Line(points={{-22,0},{-60,0}}, color={127,0, 
+          connect(G1.x, x) annotation (Line(points={{-22,0},{-60,0}}, color={127,0,
                   127}));
           annotation (
             Documentation(info="<html>
@@ -3539,22 +3539,22 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
 <dt><em>September 21, 2004</em></dt>
 <dd>by Andre Schneider initially modelled.</dd>
 </dl>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-18,-60},{20,-100}}, 
-              textString="Gate"), 
+              extent={{-18,-60},{20,-100}},
+              textString="Gate"),
             Text(
-              extent={{-50,80},{50,40}}, 
+              extent={{-50,80},{50,40}},
               textString="1")}));
         end BufGate;
         annotation (Documentation(info="<html>
@@ -3570,7 +3570,7 @@ The parameters <em>tLH</em> and <em>tHL</em> are valid for each of the n signals
           import L = Modelica.Electrical.Digital.Interfaces.Logic;
           parameter D.Interfaces.Logic x(start=L.'1') "Logic value to be set";
           D.Interfaces.DigitalOutput y 
-                        annotation (Placement(transformation(extent={{90,-10},{110, 
+                        annotation (Placement(transformation(extent={{90,-10},{110,
                     10}})));
         algorithm
           y := x;
@@ -3609,34 +3609,34 @@ they can be used to specify the parameter, e.g., <strong>L.'0'</strong> for forc
 <dt><em>August 20, 2003</em></dt>
 <dd>by Teresa Schlegel initially modelled.</dd>
 </dl>
-</html>"), 
+</html>"),
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,255,170}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,255,170},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-50,40},{50,80}}, 
-              textString="SET"), 
+              extent={{-50,40},{50,80}},
+              textString="SET"),
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
             Line(points={{50,0},{90,0}}, color={127,0,127})}));
         end Set;
 
         block Step "Digital Step Source"
           import D = Modelica.Electrical.Digital;
           import L = Modelica.Electrical.Digital.Interfaces.Logic;
-          parameter D.Interfaces.Logic before(start=L.'0') 
+          parameter D.Interfaces.Logic before(start=L.'0')
         "Logic value before step";
-          parameter D.Interfaces.Logic after(start=L.'1') 
+          parameter D.Interfaces.Logic after(start=L.'1')
         "Logic value after step";
           parameter Real stepTime(start=1) "Step time";
           D.Interfaces.DigitalOutput y 
-                        annotation (Placement(transformation(extent={{90,-10},{110, 
+                        annotation (Placement(transformation(extent={{90,-10},{110,
                     10}})));
         algorithm
           // assert(before >= L.min and before <= L.max, "Parameter is no logic value");
@@ -3681,18 +3681,18 @@ they can be used to specify the parameter, e.g., <strong>L.'0'</strong> for forc
 <dt><em>August 20, 2003</em></dt>
 <dd>by Teresa Schlegel initially modelled.</dd>
 </dl>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,255,170}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,255,170},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
-            Line(points={{-30,40},{0,40},{0,80},{30,80}}), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
+            Line(points={{-30,40},{0,40},{0,80},{30,80}}),
             Line(points={{50,0},{90,0}}, color={127,0,127})}));
         end Step;
 
@@ -3700,12 +3700,12 @@ they can be used to specify the parameter, e.g., <strong>L.'0'</strong> for forc
           import D = Modelica.Electrical.Digital;
           import L = Modelica.Electrical.Digital.Interfaces.Logic;
           parameter D.Interfaces.Logic x[:]={L.'1'} "Vector of values";
-          parameter Real t[size(x, 1)]={1} 
+          parameter Real t[size(x, 1)]={1}
         "Vector of corresponding time points";
           parameter D.Interfaces.Logic y0=L.'U' "Initial output value";
           final parameter Integer n=size(x, 1) "Table size";
           D.Interfaces.DigitalOutput y 
-                        annotation (Placement(transformation(extent={{90,-10},{110, 
+                        annotation (Placement(transformation(extent={{90,-10},{110,
                     10}})));
         algorithm
           if initial() then
@@ -3756,28 +3756,28 @@ they can be used to specify the parameter, e.g., <strong>L.'0'</strong> for forc
 <dt><em>August 20, 2003</em></dt>
 <dd>by Teresa Schlegel initially modelled.</dd>
 </dl>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,255,170}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,255,170},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
-            Line(points={{50,0},{90,0}}, color={127,0,127}), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
+            Line(points={{50,0},{90,0}}, color={127,0,127}),
             Rectangle(
-              extent={{-30,80},{32,70}}, 
-              fillColor={215,215,215}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-30,80},{32,70}},
+              fillColor={215,215,215},
+              fillPattern=FillPattern.Solid),
             Rectangle(
-              extent={{-30,70},{32,40}}, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
-            Line(points={{0,80},{0,40}}), 
-            Line(points={{-30,60},{32,60}}), 
+              extent={{-30,70},{32,40}},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
+            Line(points={{0,80},{0,40}}),
+            Line(points={{-30,60},{32,60}}),
             Line(points={{-30,50},{32,50}})}));
         end Table;
 
@@ -3785,21 +3785,21 @@ they can be used to specify the parameter, e.g., <strong>L.'0'</strong> for forc
           import D = Modelica.Electrical.Digital;
           import L = Modelica.Electrical.Digital.Interfaces.Logic;
           parameter Real width(
-            final min=Modelica.Constants.small, 
+            final min=Modelica.Constants.small,
             final max=100, start=50) "Widths of pulses in % of periods";
-          parameter SI.Time period(final min=Modelica.Constants.small, start=1) 
+          parameter SI.Time period(final min=Modelica.Constants.small, start=1)
         "Time for one period";
-          parameter SI.Time startTime(start=0) 
+          parameter SI.Time startTime(start=0)
         "Output = quiet for time < startTime";
           parameter D.Interfaces.Logic pulse(start=L.'0') "Pulsed value";
           parameter D.Interfaces.Logic quiet(start=L.'1') "Quiet value";
-          SI.Time T0(final start=startTime, fixed=true) 
+          SI.Time T0(final start=startTime, fixed=true)
         "Start time of current period";
-          parameter Integer nperiod(start=-1) 
+          parameter Integer nperiod(start=-1)
         "Number of periods (< 0 means infinite number of periods)";
           Integer np(start=0, fixed=true);
           D.Interfaces.DigitalOutput y 
-                        annotation (Placement(transformation(extent={{90,-10},{110, 
+                        annotation (Placement(transformation(extent={{90,-10},{110,
                     10}})));
     protected
           Boolean sampling;
@@ -3853,39 +3853,39 @@ they can be used to specify the parameter, e.g., <strong>L.'0'</strong> for forc
 <dt><em>September 2, 2003</em></dt>
 <dd>by Christoph Clauss initially modelled.</dd>
 </dl>
-</html>"), 
+</html>"),
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,255,170}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,255,170},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
-            Line(points={{50,0},{90,0}}, color={127,0,127}), 
-            Line(points={{-36,40},{-30,40},{-30,40},{-18,40},{-18,40},{-14,40}, 
-                  {-14,80},{14,80},{14,40},{14,40},{14,40},{28,40},{30,40},{36, 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
+            Line(points={{50,0},{90,0}}, color={127,0,127}),
+            Line(points={{-36,40},{-30,40},{-30,40},{-18,40},{-18,40},{-14,40},
+                  {-14,80},{14,80},{14,40},{14,40},{14,40},{28,40},{30,40},{36,
                   40}})}));
         end Pulse;
 
         model DigitalClock "Digital Clock Source"
           import D = Modelica.Electrical.Digital;
           import L = Modelica.Electrical.Digital.Interfaces.Logic;
-          parameter SI.Time startTime(start=0) 
+          parameter SI.Time startTime(start=0)
         "Output = offset for time < startTime";
           parameter SI.Time period(
             final min=Modelica.Constants.small, start=1) "Time for one period";
           parameter Real width(
-            final min=Modelica.Constants.small, 
+            final min=Modelica.Constants.small,
             final max=100, start=50) "Width of pulses in % of period";
           D.Interfaces.DigitalOutput y "Connector of Digital output signal" 
-                        annotation (Placement(transformation(extent={{90,-10},{110, 
+                        annotation (Placement(transformation(extent={{90,-10},{110,
                     10}})));
     protected
-          SI.Time t_i(final start=startTime, fixed=true) 
+          SI.Time t_i(final start=startTime, fixed=true)
         "Start time of current period";
           SI.Time t_width=period*width/100;
         equation
@@ -3906,19 +3906,19 @@ The number of periods is unlimited. The first pulse starts at startTime.
 <dt><em>September 18, 2004</em></dt>
 <dd>by Andre Schneider initially modelled.</dd>
 </dl>
-</html>"), 
+</html>"),
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={
             Rectangle(
-              extent={{-50,100},{50,-100}}, 
-              lineThickness=0.5, 
-              fillColor={213,255,170}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,100},{50,-100}},
+              lineThickness=0.5,
+              fillColor={213,255,170},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
-            Line(points={{50,0},{90,0}}, color={127,0,127}), 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
+              textString="%name"),
+            Line(points={{50,0},{90,0}}, color={127,0,127}),
             Line(points={{-36,40},{-30,40},{-30,80},{-18,80},{-18,40},{-6,40},{
                   -6,80},{6,80},{6,40},{18,40},{18,80},{30,80},{30,40},{36,40}})}));
         end DigitalClock;
@@ -3934,10 +3934,10 @@ The number of periods is unlimited. The first pulse starts at startTime.
           import D = Modelica.Electrical.Digital;
           import T = Modelica.Electrical.Digital.Tables;
           D.Interfaces.DigitalInput x[n] 
-                            annotation (Placement(transformation(extent={{-60,-10}, 
+                            annotation (Placement(transformation(extent={{-60,-10},
                     {-40,10}})));
           D.Interfaces.DigitalOutput y[n] 
-                             annotation (Placement(transformation(extent={{40,-10}, 
+                             annotation (Placement(transformation(extent={{40,-10},
                     {60,10}})));
           parameter Integer n(final min=1, start=1) "Signal width";
         algorithm
@@ -3975,28 +3975,28 @@ If the signal width is greater than 1 this conversion is done for each signal.
        by Christoph Clauss<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-100},{-148,-40}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-100},{-148,-40}},
+              textColor={0,0,255},
+              textString="%name"),
             Polygon(
-              points={{-40,-40},{-40,40},{40,40},{-40,-40}}, 
-              lineColor={127,0,127}, 
-              fillColor={127,0,127}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,-40},{-40,40},{40,40},{-40,-40}},
+              lineColor={127,0,127},
+              fillColor={127,0,127},
+              fillPattern=FillPattern.Solid),
             Polygon(
-              points={{-40,-40},{40,-40},{40,40},{-40,-40}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,-40},{40,-40},{40,40},{-40,-40}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{0,-20},{40,-40}}, 
-              textString="X01"), 
+              extent={{0,-20},{40,-40}},
+              textString="X01"),
             Rectangle(
-              extent={{-40,40},{40,-40}}, 
+              extent={{-40,40},{40,-40}},
               lineThickness=0.5)}));
         end LogicToX01;
 
@@ -4004,10 +4004,10 @@ If the signal width is greater than 1 this conversion is done for each signal.
           import D = Modelica.Electrical.Digital;
           import T = Modelica.Electrical.Digital.Tables;
           D.Interfaces.DigitalInput x[n] 
-                            annotation (Placement(transformation(extent={{-60,-10}, 
+                            annotation (Placement(transformation(extent={{-60,-10},
                     {-40,10}})));
           D.Interfaces.DigitalOutput y[n] 
-                             annotation (Placement(transformation(extent={{40,-10}, 
+                             annotation (Placement(transformation(extent={{40,-10},
                     {60,10}})));
           parameter Integer n(final min=1, start=1) "Signal width";
         algorithm
@@ -4045,28 +4045,28 @@ If the signal width is greater than 1 this conversion is done for each signal.
        by Christoph Clauss<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-100},{-148,-40}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-100},{-148,-40}},
+              textColor={0,0,255},
+              textString="%name"),
             Polygon(
-              points={{-40,-40},{-40,40},{40,40},{-40,-40}}, 
-              lineColor={127,0,127}, 
-              fillColor={127,0,127}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,-40},{-40,40},{40,40},{-40,-40}},
+              lineColor={127,0,127},
+              fillColor={127,0,127},
+              fillPattern=FillPattern.Solid),
             Polygon(
-              points={{-40,-40},{40,-40},{40,40},{-40,-40}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,-40},{40,-40},{40,40},{-40,-40}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{0,-20},{40,-40}}, 
-              textString="X01Z"), 
+              extent={{0,-20},{40,-40}},
+              textString="X01Z"),
             Rectangle(
-              extent={{-40,40},{40,-40}}, 
+              extent={{-40,40},{40,-40}},
               lineThickness=0.5)}));
         end LogicToX01Z;
 
@@ -4074,10 +4074,10 @@ If the signal width is greater than 1 this conversion is done for each signal.
           import D = Modelica.Electrical.Digital;
           import T = Modelica.Electrical.Digital.Tables;
           D.Interfaces.DigitalInput x[n] 
-                            annotation (Placement(transformation(extent={{-60,-10}, 
+                            annotation (Placement(transformation(extent={{-60,-10},
                     {-40,10}})));
           D.Interfaces.DigitalOutput y[n] 
-                             annotation (Placement(transformation(extent={{40,-10}, 
+                             annotation (Placement(transformation(extent={{40,-10},
                     {60,10}})));
           parameter Integer n(final min=1, start=1) "Signal width";
         algorithm
@@ -4115,28 +4115,28 @@ If the signal width is greater than 1 this conversion is done for each signal.
        by Christoph Clauss<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Text(
-              extent={{152,-100},{-148,-40}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-100},{-148,-40}},
+              textColor={0,0,255},
+              textString="%name"),
             Polygon(
-              points={{-40,-40},{-40,40},{40,40},{-40,-40}}, 
-              lineColor={127,0,127}, 
-              fillColor={127,0,127}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,-40},{-40,40},{40,40},{-40,-40}},
+              lineColor={127,0,127},
+              fillColor={127,0,127},
+              fillPattern=FillPattern.Solid),
             Polygon(
-              points={{-40,-40},{40,-40},{40,40},{-40,-40}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,-40},{40,-40},{40,40},{-40,-40}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{0,-20},{40,-40}}, 
-              textString="UX01"), 
+              extent={{0,-20},{40,-40}},
+              textString="UX01"),
             Rectangle(
-              extent={{-40,40},{40,-40}}, 
+              extent={{-40,40},{40,-40}},
               lineThickness=0.5)}));
         end LogicToUX01;
 
@@ -4173,24 +4173,24 @@ If the signal width is greater than 1 this conversion is done for each signal.
        by Christoph Clauss<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Polygon(
-              points={{-40,-40},{40,40},{40,-40},{-40,-40}}, 
-              lineColor={127,0,127}, 
-              fillColor={127,0,127}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,-40},{40,40},{40,-40},{-40,-40}},
+              lineColor={127,0,127},
+              fillColor={127,0,127},
+              fillPattern=FillPattern.Solid),
             Polygon(
-              points={{-40,40},{40,40},{-40,-40},{-40,40}}, 
-              lineColor={255,0,255}, 
-              fillColor={255,0,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,40},{40,40},{-40,-40},{-40,40}},
+              lineColor={255,0,255},
+              fillColor={255,0,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{152,-100},{-148,-40}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-100},{-148,-40}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-40,40},{40,-40}}, 
+              extent={{-40,40},{40,-40}},
               lineThickness=0.5)}));
         end BooleanToLogic;
 
@@ -4233,25 +4233,25 @@ If the signal width is greater than 1 this conversion is done for each signal.
        by Christoph Clauss<br>
        initially modelled.</li>
 </ul>
-</html>"), 
+</html>"),
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={
             Polygon(
-              points={{-40,40},{40,40},{-40,-40},{-40,40}}, 
-              lineColor={127,0,127}, 
-              fillColor={127,0,127}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,40},{40,40},{-40,-40},{-40,40}},
+              lineColor={127,0,127},
+              fillColor={127,0,127},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{152,-100},{-148,-40}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-100},{-148,-40}},
+              textColor={0,0,255},
+              textString="%name"),
             Polygon(
-              points={{-40,-40},{40,-40},{40,40},{-40,-40}}, 
-              lineColor={255,0,255}, 
-              fillColor={255,0,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,-40},{40,-40},{40,40},{-40,-40}},
+              lineColor={255,0,255},
+              fillColor={255,0,255},
+              fillPattern=FillPattern.Solid),
             Rectangle(
-              extent={{-40,40},{40,-40}}, 
+              extent={{-40,40},{40,-40}},
               lineThickness=0.5)}));
         end LogicToBoolean;
 
@@ -4295,21 +4295,21 @@ If the signal width is greater than 1 this conversion is done for each signal.
        by Christoph Clauss<br>
        initially modelled.</li>
 </ul>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
                 {100,100}}), graphics={
             Polygon(
-              points={{-40,-40},{40,40},{40,-40},{-40,-40}}, 
-              lineColor={127,0,127}, 
-              fillColor={127,0,127}, 
-              fillPattern=FillPattern.Solid), 
-            Polygon(points={{-40,40},{40,40},{-40,-40},{-40,40}}, lineColor={0, 
-                  0,255}), 
+              points={{-40,-40},{40,40},{40,-40},{-40,-40}},
+              lineColor={127,0,127},
+              fillColor={127,0,127},
+              fillPattern=FillPattern.Solid),
+            Polygon(points={{-40,40},{40,40},{-40,-40},{-40,40}}, lineColor={0,
+                  0,255}),
             Text(
-              extent={{148,-100},{-152,-40}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{148,-100},{-152,-40}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-40,40},{40,-40}}, 
+              extent={{-40,40},{40,-40}},
               lineThickness=0.5)}));
         end RealToLogic;
 
@@ -4320,15 +4320,15 @@ If the signal width is greater than 1 this conversion is done for each signal.
           Modelica.Blocks.Interfaces.RealOutput y[n] 
             annotation (Placement(transformation(extent={{40,-10},{60,10}})));
           parameter Integer n(final min=1, start=1) "Signal width";
-          parameter Real value_U(start=0.5) 
+          parameter Real value_U(start=0.5)
         "Value for digital U (uninitialized)";
-          parameter Real value_X(start=0.5) 
+          parameter Real value_X(start=0.5)
         "Value for digital X (Forcing Unknown)";
           parameter Real value_0(start=0) "Value for digital 0 (Forcing 0)";
           parameter Real value_1(start=1) "Value for digital 1 (Forcing 1)";
-          parameter Real value_Z(start=0.5) 
+          parameter Real value_Z(start=0.5)
         "Value for digital Z (High Impedance)";
-          parameter Real value_W(start=0.5) 
+          parameter Real value_W(start=0.5)
         "Value for digital W (Weak    Unknown)";
           parameter Real value_L(start=0) "Value for digital L (Weak 0)";
           parameter Real value_H(start=1) "Value for digital H (Weak 1)";
@@ -4372,22 +4372,22 @@ The values val... are given by parameters.</p>
        by Christoph Clauss<br>
        initially modelled.</li>
 </ul>
-</html>"), 
+</html>"),
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={
             Polygon(
-              points={{-40,40},{40,40},{-40,-40},{-40,40}}, 
-              lineColor={127,0,127}, 
-              fillColor={127,0,127}, 
-              fillPattern=FillPattern.Solid), 
-            Polygon(points={{-40,-40},{40,-40},{40,40},{-40,-40}}, lineColor={0, 
-                  0,255}), 
+              points={{-40,40},{40,40},{-40,-40},{-40,40}},
+              lineColor={127,0,127},
+              fillColor={127,0,127},
+              fillPattern=FillPattern.Solid),
+            Polygon(points={{-40,-40},{40,-40},{40,40},{-40,-40}}, lineColor={0,
+                  0,255}),
             Text(
-              extent={{152,-100},{-148,-40}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{152,-100},{-148,-40}},
+              textColor={0,0,255},
+              textString="%name"),
             Rectangle(
-              extent={{-40,40},{40,-40}}, 
+              extent={{-40,40},{40,-40}},
               lineThickness=0.5)}));
         end LogicToReal;
         annotation (Documentation(info="<html>
@@ -4403,20 +4403,20 @@ The values val... are given by parameters.</p>
           import L = Modelica.Electrical.Digital.Interfaces.Logic;
           import S = Modelica.Electrical.Digital.Interfaces.Strength;
           import T = Modelica.Electrical.Digital.Tables;
-          parameter Integer ResetMap[L] = {1, 4, 3, 2, 4, 4, 3, 2, 4} 
+          parameter Integer ResetMap[L] = {1, 4, 3, 2, 4, 4, 3, 2, 4}
         "Function selection, defaults for high active reset";
-          parameter D.Interfaces.Strength strength = S.'S_X01' 
+          parameter D.Interfaces.Strength strength = S.'S_X01'
         "Output strength";
           parameter Integer n(min=1) = 1 "Data width";
 
           D.Interfaces.DigitalInput reset 
-            annotation (Placement(transformation(extent={{-10,-100},{10,-80}}), 
+            annotation (Placement(transformation(extent={{-10,-100},{10,-80}}),
                 iconTransformation(extent={{-10,-100},{10,-80}})));
           D.Interfaces.DigitalInput clock annotation (Placement(transformation(
                   extent={{-90,-30},{-70,-10}}),iconTransformation(extent={{-90,-30},{
                     -70,-10}})));
           D.Interfaces.DigitalInput dataIn[n] annotation (Placement(transformation(
-                  extent={{-90,20},{-70,40}}), iconTransformation(extent={{-90,20},{-70, 
+                  extent={{-90,20},{-70,40}}), iconTransformation(extent={{-90,20},{-70,
                     40}})));
           D.Interfaces.DigitalOutput dataOut[n] annotation (Placement(
                 transformation(extent={{64,26},{84,46}}),  iconTransformation(
@@ -4486,43 +4486,43 @@ The values val... are given by parameters.</p>
         next_assign_val := nextstate;
         dataOut := nextstate;
           annotation (Icon(coordinateSystem(
-                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
             graphics={
             Rectangle(
-              extent={{-50,60},{50,-60}}, 
-              lineColor={127,33,107}, 
-              lineThickness=0.5, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={255,255,255}), 
+              extent={{-50,60},{50,-60}},
+              lineColor={127,33,107},
+              lineThickness=0.5,
+              fillPattern=FillPattern.Solid,
+              fillColor={255,255,255}),
             Line(
-              points={{-70,30},{-50,30}}, 
-              color={127,33,107}, 
-              thickness=1), 
+              points={{-70,30},{-50,30}},
+              color={127,33,107},
+              thickness=1),
             Line(
-              points={{50,30},{76,30}}, 
-              color={127,33,107}, 
-              thickness=1), 
+              points={{50,30},{76,30}},
+              color={127,33,107},
+              thickness=1),
             Line(
-              points={{-80,-20},{-50,-20}}, 
-              color={127,33,107}), 
+              points={{-80,-20},{-50,-20}},
+              color={127,33,107}),
             Line(
-              points={{0,-84},{0,-60}}, 
-              color={127,33,107}), 
+              points={{0,-84},{0,-60}},
+              color={127,33,107}),
             Line(
-              points={{-50,-8},{-34,-20},{-50,-32}}, 
-              color={127,33,107}), 
+              points={{-50,-8},{-34,-20},{-50,-32}},
+              color={127,33,107}),
             Text(
-              extent={{-30,54},{20,8}}, 
-              textColor={127,33,107}, 
-              textString="DFFR"), 
+              extent={{-30,54},{20,8}},
+              textColor={127,33,107},
+              textString="DFFR"),
             Text(
-              extent={{-32,-14},{-6,-26}}, 
-              textColor={127,33,107}, 
-              textString="clock"), 
+              extent={{-32,-14},{-6,-26}},
+              textColor={127,33,107},
+              textString="clock"),
             Text(
-              extent={{-14,-44},{12,-56}}, 
-              textColor={127,33,107}, 
-              textString="reset")}), 
+              extent={{-14,-44},{12,-56}},
+              textColor={127,33,107},
+              textString="reset")}),
             Documentation(info="<html>
 <p>Description in VHDL is given by http://www.cs.sfu.ca/~ggbaker/reference/std_logic/src/std_logic_entities</p>
 <p><strong>Truth Table for high active reset:</strong></p>
@@ -4589,7 +4589,7 @@ Clock transition definitions:
           import T = Modelica.Electrical.Digital.Tables;
           parameter SI.Time tHL=0 "High->Low delay";
           parameter SI.Time tLH=0 "Low->High delay";
-          parameter D.Interfaces.Strength strength = S.'S_X01' 
+          parameter D.Interfaces.Strength strength = S.'S_X01'
         "Output strength";
           parameter Integer n(min=1) = 1 "Data width";
     protected
@@ -4602,84 +4602,84 @@ Clock transition definitions:
 
     public
           Modelica.Electrical.Digital.Delay.InertialDelaySensitiveVector delay(
-            tHL=tHL, 
-            tLH=tLH, 
+            tHL=tHL,
+            tLH=tLH,
             n=n) 
             annotation (Placement(transformation(extent={{22,11},{79,69}})));
           D.Interfaces.DigitalInput reset 
-            annotation (Placement(transformation(extent={{-100,-68},{-84,-52}}), 
+            annotation (Placement(transformation(extent={{-100,-68},{-84,-52}}),
                 iconTransformation(extent={{-100,-68},{-84,-52}})));
           D.Interfaces.DigitalInput clock 
             annotation (Placement(transformation(extent={{-100,-28},{-84,-12}})));
           D.Interfaces.DigitalInput dataIn[n] 
             annotation (Placement(transformation(extent={{-100,32},{-84,48}})));
           D.Interfaces.DigitalOutput dataOut[n] 
-            annotation (Placement(transformation(extent={{84,32},{100,48}}), 
+            annotation (Placement(transformation(extent={{84,32},{100,48}}),
                 iconTransformation(extent={{84,32},{100,48}})));
 
-          D.Registers.DFFR dFFR(n=n, 
-            ResetMap=ResetMap, 
+          D.Registers.DFFR dFFR(n=n,
+            ResetMap=ResetMap,
             strength=strength) 
             annotation (Placement(transformation(extent={{-78,-23},{18,74}})));
         equation
           connect(delay.y, dataOut) annotation (Line(
-              points={{75.01,40},{92,40}}, 
-              color={127,0,127}, 
+              points={{75.01,40},{92,40}},
+              color={127,0,127},
               thickness=1));
           connect(dataIn, dFFR.dataIn) annotation (Line(
-              points={{-92,40},{-68.4,40},{-68.4,40.05}}, 
-              color={127,0,127}, 
+              points={{-92,40},{-68.4,40},{-68.4,40.05}},
+              color={127,0,127},
               thickness=1));
           connect(dFFR.dataOut, delay.x) annotation (Line(
-              points={{7.92,40.05},{25.99,39.855}}, 
-              color={127,0,127}, 
+              points={{7.92,40.05},{25.99,39.855}},
+              color={127,0,127},
               thickness=1));
           connect(clock, dFFR.clock) annotation (Line(
               points={{-92,-20},{-68.4,-20},{-68.4,15.8}}, color={127,0,127}));
           connect(reset, dFFR.reset) annotation (Line(
               points={{-92,-60},{-30,-60},{-30,-18.15}}, color={127,0,127}));
           annotation (Icon(coordinateSystem(
-                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
             graphics={
             Rectangle(
-              extent={{-50,70},{50,-50}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={255,255,255}), 
+              extent={{-50,70},{50,-50}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillPattern=FillPattern.Solid,
+              fillColor={255,255,255}),
             Line(
-              points={{-86,40},{-50,40}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-86,40},{-50,40}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-84,-20},{-50,-20}}, 
-              color={127,0,127}), 
+              points={{-84,-20},{-50,-20}},
+              color={127,0,127}),
             Line(
-              points={{-84,-60},{0,-60},{0,-50}}, 
-              color={127,0,127}), 
+              points={{-84,-60},{0,-60},{0,-50}},
+              color={127,0,127}),
             Line(
-              points={{50,40},{84,40}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{50,40},{84,40}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-50,-10},{-36,-20},{-50,-30}}, 
-              color={127,0,127}), 
+              points={{-50,-10},{-36,-20},{-50,-30}},
+              color={127,0,127}),
             Text(
-              extent={{-32,70},{30,10}}, 
-              textColor={127,33,107}, 
-              textString="DFFREG"), 
+              extent={{-32,70},{30,10}},
+              textColor={127,33,107},
+              textString="DFFREG"),
             Text(
-              extent={{-14,-34},{12,-46}}, 
-              textColor={127,33,107}, 
-              textString="reset"), 
+              extent={{-14,-34},{12,-46}},
+              textColor={127,33,107},
+              textString="reset"),
             Text(
-              extent={{-28,-14},{-2,-26}}, 
-              textColor={127,33,107}, 
-              textString="clock"), 
+              extent={{-28,-14},{-2,-26}},
+              textColor={127,33,107},
+              textString="clock"),
             Text(
-              extent={{-26,44},{26,2}}, 
-              textColor={127,33,107}, 
-              textString="high active")}), 
+              extent={{-26,44},{26,2}},
+              textColor={127,33,107},
+              textString="high active")}),
             Documentation(info="<html>
 <p>Description in VHDL is given by http://www.cs.sfu.ca/~ggbaker/reference/std_logic/src/std_logic_entities.vhd</p>
 <p><strong>Truth Table</strong></p>
@@ -4765,12 +4765,12 @@ Clock transition definitions:
        </li>
 </ul>
 </html>"), Icon(graphics={Rectangle(
-              extent={{-30,30},{28,16}}, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid, 
+              extent={{-30,30},{28,16}},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid,
               pattern=LinePattern.None), Text(
-              extent={{-28,48},{24,-1}}, 
-              textColor={127,33,107}, 
+              extent={{-28,48},{24,-1}},
+              textColor={127,33,107},
               textString="low active")}));
         end DFFREGL;
 
@@ -4788,23 +4788,23 @@ Clock transition definitions:
                      1,  4,  7,  2,  4,  4,  7,  2,  4;
                      1,  5,  8,  2,  5,  5,  8,  2,  5;
                      1,  6,  3,  2,  6,  6,  3,  2,  6;
-                     1,  4,  7,  2,  4,  4,  7,  2,  4] 
+                     1,  4,  7,  2,  4,  4,  7,  2,  4]
         "Function selection by [reset, set] reading";
             /* Defaults for set and reset are active high */
-          parameter D.Interfaces.Strength strength = S.'S_X01' 
+          parameter D.Interfaces.Strength strength = S.'S_X01'
         "Output strength";
           parameter Integer n(min=1) = 1 "Data width";
 
           D.Interfaces.DigitalInput set 
             annotation (Placement(transformation(extent={{-10,100},{10,80}})));
           D.Interfaces.DigitalInput reset 
-            annotation (Placement(transformation(extent={{-10,-100},{10,-80}}), 
+            annotation (Placement(transformation(extent={{-10,-100},{10,-80}}),
                 iconTransformation(extent={{-10,-100},{10,-80}})));
           D.Interfaces.DigitalInput clock annotation (Placement(transformation(
-                  extent={{-90,-20},{-70,0}}),  iconTransformation(extent={{-90,-30}, 
+                  extent={{-90,-20},{-70,0}}),  iconTransformation(extent={{-90,-30},
                     {-70,-10}})));
           D.Interfaces.DigitalInput dataIn[n] annotation (Placement(transformation(
-                  extent={{-90,20},{-70,40}}), iconTransformation(extent={{-90,20}, 
+                  extent={{-90,20},{-70,40}}), iconTransformation(extent={{-90,20},
                     {-70,40}})));
           D.Interfaces.DigitalOutput dataOut[n] annotation (Placement(
                 transformation(extent={{68,20},{88,40}}),  iconTransformation(
@@ -4903,50 +4903,50 @@ Clock transition definitions:
         next_assign_val := nextstate;
         dataOut := nextstate;
           annotation (Icon(coordinateSystem(
-                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
             graphics={
             Rectangle(
-              extent={{-50,60},{50,-60}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={255,255,255}), 
+              extent={{-50,60},{50,-60}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillPattern=FillPattern.Solid,
+              fillColor={255,255,255}),
             Line(
-              points={{-80,30},{-50,30}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,30},{-50,30}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{50,30},{80,30}}, 
-              color={127,33,107}, 
-              thickness=1), 
+              points={{50,30},{80,30}},
+              color={127,33,107},
+              thickness=1),
             Line(
-              points={{-80,-20},{-50,-20}}, 
-              color={127,33,107}), 
+              points={{-80,-20},{-50,-20}},
+              color={127,33,107}),
             Line(
-              points={{0,-84},{0,-60}}, 
-              color={127,33,107}), 
+              points={{0,-84},{0,-60}},
+              color={127,33,107}),
             Line(
-              points={{-50,-8},{-34,-20},{-50,-32}}, 
-              color={127,33,107}), 
+              points={{-50,-8},{-34,-20},{-50,-32}},
+              color={127,33,107}),
             Text(
-              extent={{-36,66},{34,-8}}, 
-              textColor={127,33,107}, 
-              textString="DFFSR"), 
+              extent={{-36,66},{34,-8}},
+              textColor={127,33,107},
+              textString="DFFSR"),
             Text(
-              extent={{-28,-14},{-2,-26}}, 
-              textColor={127,33,107}, 
-              textString="clock"), 
+              extent={{-28,-14},{-2,-26}},
+              textColor={127,33,107},
+              textString="clock"),
             Text(
-              extent={{-14,-44},{12,-56}}, 
-              textColor={127,33,107}, 
-              textString="reset"), 
+              extent={{-14,-44},{12,-56}},
+              textColor={127,33,107},
+              textString="reset"),
             Line(
-              points={{0,80},{0,60}}, 
-              color={127,0,127}), 
+              points={{0,80},{0,60}},
+              color={127,0,127}),
             Text(
-              extent={{-13,56},{13,44}}, 
-              textColor={127,33,107}, 
-              textString="set")}), 
+              extent={{-13,56},{13,44}},
+              textColor={127,33,107},
+              textString="set")}),
             Documentation(info="<html>
 <p>Description in VHDL is given by http://www.cs.sfu.ca/~ggbaker/reference/std_logic/src/std_logic_entities.vhd</p>
 <p><strong>Truth Table for high active set and reset</strong></p>
@@ -5027,7 +5027,7 @@ Clock transition definitions:
           import T = Modelica.Electrical.Digital.Tables;
           parameter SI.Time tHL=0 "High->Low delay";
           parameter SI.Time tLH=0 "Low->High delay";
-          parameter D.Interfaces.Strength strength = S.'S_X01' 
+          parameter D.Interfaces.Strength strength = S.'S_X01'
         "Output strength";
           parameter Integer n(min=1) = 1 "Data width";
 
@@ -5046,14 +5046,14 @@ Clock transition definitions:
 
     protected
           D.Delay.InertialDelaySensitiveVector delay(
-            tHL=tHL, 
-            tLH=tLH, 
+            tHL=tHL,
+            tLH=tLH,
             n=n,inertialDelaySensitive(each y(start=L.'U', fixed= true))) 
           annotation (Placement(transformation(extent={{23,12},{79,68}})));
 
           D.Registers.DFFSR dFFSR(
-            strength=strength, 
-            n=n, 
+            strength=strength,
+            n=n,
             ResetSetMap=ResetSetMap, clock( start=L.'U', fixed=true), reset( start=L.'U', fixed=true), set( start=L.'U', fixed=true)) 
             annotation (Placement(transformation(extent={{-80,-25},{20,75}})));
     public
@@ -5069,8 +5069,8 @@ Clock transition definitions:
             annotation (Placement(transformation(extent={{84,32},{100,48}})));
         equation
           connect(dFFSR.dataOut, delay.x) annotation (Line(
-              points={{9.5,40},{26.92,40},{26.92,39.86}}, 
-              color={127,0,127}, 
+              points={{9.5,40},{26.92,40},{26.92,39.86}},
+              color={127,0,127},
               thickness=1));
           connect(set, dFFSR.set) annotation (Line(
               points={{-92,80},{-30,80},{-30,70}}, color={127,0,127}));
@@ -5079,62 +5079,62 @@ Clock transition definitions:
           connect(clock, dFFSR.clock) annotation (Line(
               points={{-92,-20},{-70,-20},{-70,15}}, color={127,0,127}));
           connect(dataIn, dFFSR.dataIn) annotation (Line(
-              points={{-92,40},{-70,40}}, 
-              color={127,0,127}, 
+              points={{-92,40},{-70,40}},
+              color={127,0,127},
               thickness=1));
           connect(delay.y, dataOut) annotation (Line(
-              points={{75.08,40},{92,40}}, 
-              color={127,0,127}, 
+              points={{75.08,40},{92,40}},
+              color={127,0,127},
               thickness=1));
           annotation (Icon(coordinateSystem(
-                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
             graphics={
             Rectangle(
-              extent={{-50,70},{52,-50}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-50,70},{52,-50}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Line(
-              points={{-86,40},{-50,40}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-86,40},{-50,40}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-84,-20},{-50,-20}}, 
-              color={127,0,127}), 
+              points={{-84,-20},{-50,-20}},
+              color={127,0,127}),
             Line(
-              points={{52,40},{84,40}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{52,40},{84,40}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-50,-10},{-36,-20},{-50,-30}}, 
-              color={127,0,127}), 
+              points={{-50,-10},{-36,-20},{-50,-30}},
+              color={127,0,127}),
             Text(
-              extent={{-44,94},{38,-14}}, 
-              textColor={127,33,107}, 
-              textString="DFFREGSR"), 
+              extent={{-44,94},{38,-14}},
+              textColor={127,33,107},
+              textString="DFFREGSR"),
             Text(
-              extent={{-14,-32},{12,-44}}, 
-              textColor={127,33,107}, 
-              textString="reset"), 
+              extent={{-14,-32},{12,-44}},
+              textColor={127,33,107},
+              textString="reset"),
             Text(
-              extent={{-33,-13},{-7,-25}}, 
-              textColor={127,33,107}, 
-              textString="clock"), 
+              extent={{-33,-13},{-7,-25}},
+              textColor={127,33,107},
+              textString="clock"),
             Line(
-              points={{-84,80},{0,80},{0,70}}, 
-              color={127,0,127}), 
+              points={{-84,80},{0,80},{0,70}},
+              color={127,0,127}),
             Line(
-              points={{-84,-60},{0,-60},{0,-50}}, 
-              color={127,0,127}), 
+              points={{-84,-60},{0,-60},{0,-50}},
+              color={127,0,127}),
             Text(
-              extent={{-14,66},{12,54}}, 
-              textColor={127,33,107}, 
-              textString="set"), 
+              extent={{-14,66},{12,54}},
+              textColor={127,33,107},
+              textString="set"),
             Text(
-              extent={{-32,38},{26,10}}, 
-              textColor={127,0,127}, 
-              textString="high active")}), 
+              extent={{-32,38},{26,10}},
+              textColor={127,0,127},
+              textString="high active")}),
             Documentation(info="<html>
 <p>Description in VHDL is given by http://www.cs.sfu.ca/~ggbaker/reference/std_logic/src/std_logic_entities.vhd</p>
 <p><strong>Truth Table</strong></p>
@@ -5189,12 +5189,12 @@ Clock transition definitions:
                 4,2,7,4,4,2,7,4]);
                    // Function selection by [reset, set] reading;
           annotation (Icon(graphics={Rectangle(
-              extent={{-36,30},{28,16}}, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid, 
+              extent={{-36,30},{28,16}},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid,
               pattern=LinePattern.None), Text(
-              extent={{-30,38},{24,12}}, 
-              textColor={127,0,127}, 
+              extent={{-30,38},{24,12}},
+              textColor={127,0,127},
               textString="low active")}), Documentation(info="<html>
 <p>Description in VHDL is given by http://www.cs.sfu.ca/~ggbaker/reference/std_logic/src/std_logic_entities.vhd</p>
 
@@ -5249,21 +5249,21 @@ Clock transition definitions:
           import L = Modelica.Electrical.Digital.Interfaces.Logic;
           import S = Modelica.Electrical.Digital.Interfaces.Strength;
           import T = Modelica.Electrical.Digital.Tables;
-          parameter Integer ResetMap[L] = {1, 4, 3, 2, 4, 4, 3, 2, 4} 
+          parameter Integer ResetMap[L] = {1, 4, 3, 2, 4, 4, 3, 2, 4}
         "Function selection, defaults for high active reset";
-          parameter D.Interfaces.Strength strength = S.'S_X01' 
+          parameter D.Interfaces.Strength strength = S.'S_X01'
         "Output strength";
           parameter Integer n(min=1) = 1 "Data width";
 
           D.Interfaces.DigitalInput reset 
-            annotation (Placement(transformation(extent={{-10,-100},{10,-80}}), 
+            annotation (Placement(transformation(extent={{-10,-100},{10,-80}}),
                 iconTransformation(extent={{-10,-100},{10,-80}})));
           D.Interfaces.DigitalInput enable 
                                           annotation (Placement(transformation(
-                  extent={{-90,-20},{-70,0}}),  iconTransformation(extent={{-90,-30}, 
+                  extent={{-90,-20},{-70,0}}),  iconTransformation(extent={{-90,-30},
                     {-70,-10}})));
           D.Interfaces.DigitalInput dataIn[n] annotation (Placement(transformation(
-                  extent={{-90,20},{-70,40}}), iconTransformation(extent={{-90,20}, 
+                  extent={{-90,20},{-70,40}}), iconTransformation(extent={{-90,20},
                     {-70,40}})));
           D.Interfaces.DigitalOutput dataOut[n] annotation (Placement(
                 transformation(extent={{66,24},{86,44}}),  iconTransformation(
@@ -5392,42 +5392,42 @@ NC = no change
        </li>
 </ul>
 </html>"), Icon(coordinateSystem(
-                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
             graphics={
             Rectangle(
-              extent={{-50,60},{50,-60}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={255,255,255}), 
+              extent={{-50,60},{50,-60}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillPattern=FillPattern.Solid,
+              fillColor={255,255,255}),
             Line(
-              points={{-80,30},{-50,30}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,30},{-50,30}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{50,30},{80,30}}, 
-              color={127,33,107}, 
-              thickness=1), 
+              points={{50,30},{80,30}},
+              color={127,33,107},
+              thickness=1),
             Line(
-              points={{-80,-20},{-50,-20}}, 
-              color={127,33,107}), 
+              points={{-80,-20},{-50,-20}},
+              color={127,33,107}),
             Line(
-              points={{0,-84},{0,-60}}, 
-              color={127,33,107}), 
+              points={{0,-84},{0,-60}},
+              color={127,33,107}),
             Line(
-              points={{-50,-8},{-34,-20},{-50,-32}}, 
-              color={127,33,107}), 
+              points={{-50,-8},{-34,-20},{-50,-32}},
+              color={127,33,107}),
             Text(
-              extent={{-30,58},{26,2}}, 
-              textColor={127,33,107}, 
-              textString="DLATR"), 
+              extent={{-30,58},{26,2}},
+              textColor={127,33,107},
+              textString="DLATR"),
             Text(
-              extent={{-29,-8},{6,-32}}, 
-              textColor={127,33,107}, 
-              textString="enable"), 
+              extent={{-29,-8},{6,-32}},
+              textColor={127,33,107},
+              textString="enable"),
             Text(
-              extent={{-14,-44},{12,-56}}, 
-              textColor={127,33,107}, 
+              extent={{-14,-44},{12,-56}},
+              textColor={127,33,107},
               textString="reset")}));
         end DLATR;
 
@@ -5439,7 +5439,7 @@ NC = no change
           import T = Modelica.Electrical.Digital.Tables;
           parameter SI.Time tHL=0 "High->Low delay";
           parameter SI.Time tLH=0 "Low->High delay";
-          parameter D.Interfaces.Strength strength = S.'S_X01' 
+          parameter D.Interfaces.Strength strength = S.'S_X01'
         "Output strength";
           parameter Integer n(min=1) = 1 "Data width";
 
@@ -5453,8 +5453,8 @@ NC = no change
 
     public
           D.Delay.InertialDelaySensitiveVector delay(
-            tHL=tHL, 
-            tLH=tLH, 
+            tHL=tHL,
+            tLH=tLH,
             n=n) 
           annotation (Placement(transformation(extent={{20,12},{76,68}})));
           D.Interfaces.DigitalInput reset 
@@ -5464,25 +5464,25 @@ NC = no change
           D.Interfaces.DigitalInput dataIn[n] 
             annotation (Placement(transformation(extent={{-100,32},{-84,48}})));
           D.Interfaces.DigitalOutput dataOut[n] 
-            annotation (Placement(transformation(extent={{84,32},{100,48}}), 
+            annotation (Placement(transformation(extent={{84,32},{100,48}}),
                 iconTransformation(extent={{84,32},{100,48}})));
-          D.Registers.DLATR dLATR(n=n, 
-            strength=strength, 
+          D.Registers.DLATR dLATR(n=n,
+            strength=strength,
             ResetMap=ResetMap) 
             annotation (Placement(transformation(extent={{-78,-23},{18,74}})));
         equation
 
           connect(delay.y, dataOut) annotation (Line(
-              points={{72.08,40},{92,40}}, 
-              color={127,0,127}, 
+              points={{72.08,40},{92,40}},
+              color={127,0,127},
               thickness=1));
           connect(dLATR.dataOut, delay.x) annotation (Line(
-              points={{7.92,40.05},{15.96,39.86},{23.92,39.86}}, 
-              color={127,0,127}, 
+              points={{7.92,40.05},{15.96,39.86},{23.92,39.86}},
+              color={127,0,127},
               thickness=1));
           connect(dataIn, dLATR.dataIn) annotation (Line(
-              points={{-92,40},{-80.2,40},{-80.2,40.05},{-68.4,40.05}}, 
-              color={127,0,127}, 
+              points={{-92,40},{-80.2,40},{-80.2,40.05},{-68.4,40.05}},
+              color={127,0,127},
               thickness=1));
           connect(enable, dLATR.enable) annotation (Line(
               points={{-92,-20},{-68.4,-20},{-68.4,15.8}}, color={127,0,127}));
@@ -5524,46 +5524,46 @@ NC = no change
        </li>
 </ul>
 </html>"), Icon(coordinateSystem(
-                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
             graphics={
             Rectangle(
-              extent={{-50,70},{52,-50}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={255,255,255}), 
+              extent={{-50,70},{52,-50}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillPattern=FillPattern.Solid,
+              fillColor={255,255,255}),
             Line(
-              points={{-86,40},{-50,40}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-86,40},{-50,40}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-84,-20},{-50,-20}}, 
-              color={127,0,127}), 
+              points={{-84,-20},{-50,-20}},
+              color={127,0,127}),
             Line(
-              points={{52,40},{84,40}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{52,40},{84,40}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-50,-10},{-36,-20},{-50,-30}}, 
-              color={127,0,127}), 
+              points={{-50,-10},{-36,-20},{-50,-30}},
+              color={127,0,127}),
             Text(
-              extent={{-32,82},{32,-2}}, 
-              textColor={127,0,127}, 
-              textString="DLATREG"), 
+              extent={{-32,82},{32,-2}},
+              textColor={127,0,127},
+              textString="DLATREG"),
             Text(
-              extent={{-14,-33},{12,-45}}, 
-              textColor={127,33,107}, 
-              textString="reset"), 
+              extent={{-14,-33},{12,-45}},
+              textColor={127,33,107},
+              textString="reset"),
             Text(
-              extent={{-33,-7},{-1,-32}}, 
-              textColor={127,33,107}, 
-              textString="enable"), 
+              extent={{-33,-7},{-1,-32}},
+              textColor={127,33,107},
+              textString="enable"),
             Line(
-              points={{-84,-60},{0,-60},{0,-50}}, 
-              color={127,0,127}), 
+              points={{-84,-60},{0,-60},{0,-50}},
+              color={127,0,127}),
             Text(
-              extent={{-26,44},{26,2}}, 
-              textColor={127,33,107}, 
+              extent={{-26,44},{26,2}},
+              textColor={127,33,107},
               textString="high active")}));
         end DLATREG;
 
@@ -5612,12 +5612,12 @@ NC = no change
        </li>
 </ul>
 </html>"), Icon(graphics={Rectangle(
-              extent={{-28,30},{30,18}}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
+              extent={{-28,30},{30,18}},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
               fillPattern=FillPattern.Solid), Text(
-              extent={{-26,48},{26,-1}}, 
-              textColor={127,33,107}, 
+              extent={{-26,48},{26,-1}},
+              textColor={127,33,107},
               textString="low active")}));
         end DLATREGL;
 
@@ -5636,24 +5636,24 @@ NC = no change
                      1,  4,  7,  2,  4,  4,  7,  2,  4;
                      1,  5,  8,  2,  5,  5,  8,  2,  5;
                      1,  6,  3,  2,  6,  6,  3,  2,  6;
-                     1,  4,  7,  2,  4,  4,  7,  2,  4] 
+                     1,  4,  7,  2,  4,  4,  7,  2,  4]
         "Function selection by [reset, set] reading";
             /* Defaults for set and reset are active high */
-          parameter D.Interfaces.Strength strength = S.'S_X01' 
+          parameter D.Interfaces.Strength strength = S.'S_X01'
         "Output strength";
           parameter Integer n(min=1) = 1 "Data width";
 
           D.Interfaces.DigitalInput set 
             annotation (Placement(transformation(extent={{-10,100},{10,80}})));
           D.Interfaces.DigitalInput reset 
-            annotation (Placement(transformation(extent={{-10,-100},{10,-80}}), 
+            annotation (Placement(transformation(extent={{-10,-100},{10,-80}}),
                 iconTransformation(extent={{-10,-100},{10,-80}})));
           D.Interfaces.DigitalInput enable 
                                           annotation (Placement(transformation(
-                  extent={{-90,-20},{-70,0}}),  iconTransformation(extent={{-90,-30}, 
+                  extent={{-90,-20},{-70,0}}),  iconTransformation(extent={{-90,-30},
                     {-70,-10}})));
           D.Interfaces.DigitalInput dataIn[n] annotation (Placement(transformation(
-                  extent={{-90,20},{-70,40}}), iconTransformation(extent={{-90,20}, 
+                  extent={{-90,20},{-70,40}}), iconTransformation(extent={{-90,20},
                     {-70,40}})));
           D.Interfaces.DigitalOutput dataOut[n] annotation (Placement(
                 transformation(extent={{68,20},{88,40}}),  iconTransformation(
@@ -5825,49 +5825,49 @@ NC = no change
        </li>
 </ul>
 </html>"), Icon(coordinateSystem(
-                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
             graphics={
             Rectangle(
-              extent={{-50,60},{50,-60}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={255,255,255}), 
+              extent={{-50,60},{50,-60}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillPattern=FillPattern.Solid,
+              fillColor={255,255,255}),
             Line(
-              points={{-80,30},{-50,30}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,30},{-50,30}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{50,30},{80,30}}, 
-              color={127,33,107}, 
-              thickness=1), 
+              points={{50,30},{80,30}},
+              color={127,33,107},
+              thickness=1),
             Line(
-              points={{-80,-20},{-50,-20}}, 
-              color={127,33,107}), 
+              points={{-80,-20},{-50,-20}},
+              color={127,33,107}),
             Line(
-              points={{0,-84},{0,-60}}, 
-              color={127,33,107}), 
+              points={{0,-84},{0,-60}},
+              color={127,33,107}),
             Line(
-              points={{-50,-8},{-34,-20},{-50,-32}}, 
-              color={127,33,107}), 
+              points={{-50,-8},{-34,-20},{-50,-32}},
+              color={127,33,107}),
             Text(
-              extent={{-34,60},{32,-6}}, 
-              textColor={127,33,107}, 
-              textString="DLATSR"), 
+              extent={{-34,60},{32,-6}},
+              textColor={127,33,107},
+              textString="DLATSR"),
             Text(
-              extent={{-29,-8},{5,-30}}, 
-              textColor={127,33,107}, 
-              textString="enable"), 
+              extent={{-29,-8},{5,-30}},
+              textColor={127,33,107},
+              textString="enable"),
             Text(
-              extent={{-14,-44},{12,-56}}, 
-              textColor={127,33,107}, 
-              textString="reset"), 
+              extent={{-14,-44},{12,-56}},
+              textColor={127,33,107},
+              textString="reset"),
             Line(
-              points={{0,80},{0,60}}, 
-              color={127,0,127}), 
+              points={{0,80},{0,60}},
+              color={127,0,127}),
             Text(
-              extent={{-13,56},{13,44}}, 
-              textColor={127,33,107}, 
+              extent={{-13,56},{13,44}},
+              textColor={127,33,107},
               textString="set")}));
         end DLATSR;
 
@@ -5879,7 +5879,7 @@ NC = no change
           import T = Modelica.Electrical.Digital.Tables;
           parameter SI.Time tHL=0 "High->Low delay";
           parameter SI.Time tLH=0 "Low->High delay";
-          parameter D.Interfaces.Strength strength = S.'S_X01' 
+          parameter D.Interfaces.Strength strength = S.'S_X01'
         "Output strength";
           parameter Integer n(min=1) = 1 "Data width";
 
@@ -5898,8 +5898,8 @@ NC = no change
 
     public
           D.Delay.InertialDelaySensitiveVector delay(
-            tHL=tHL, 
-            tLH=tLH, 
+            tHL=tHL,
+            tLH=tLH,
             n=n) 
           annotation (Placement(transformation(extent={{20,12},{76,68}})));
           D.Interfaces.DigitalInput set 
@@ -5911,17 +5911,17 @@ NC = no change
           D.Interfaces.DigitalInput dataIn[n] 
             annotation (Placement(transformation(extent={{-100,32},{-84,48}})));
           D.Interfaces.DigitalOutput dataOut[n] 
-            annotation (Placement(transformation(extent={{84,32},{100,48}}), 
+            annotation (Placement(transformation(extent={{84,32},{100,48}}),
                 iconTransformation(extent={{84,32},{100,48}})));
-          D.Registers.DLATSR dLATSR(n=n, 
-            ResetSetMap=ResetSetMap, 
+          D.Registers.DLATSR dLATSR(n=n,
+            ResetSetMap=ResetSetMap,
             strength=strength) 
             annotation (Placement(transformation(extent={{-78,-23},{18,74}})));
         equation
 
           connect(delay.y, dataOut) annotation (Line(
-              points={{72.08,40},{92,40}}, 
-              color={127,0,127}, 
+              points={{72.08,40},{92,40}},
+              color={127,0,127},
               thickness=1));
           connect(set, dLATSR.set) annotation (Line(
               points={{-92,80},{-30,80},{-30,69.15}}, color={127,0,127}));
@@ -5930,12 +5930,12 @@ NC = no change
           connect(enable, dLATSR.enable) annotation (Line(
               points={{-92,-20},{-68.4,-20},{-68.4,15.8}}, color={127,0,127}));
           connect(dataIn, dLATSR.dataIn) annotation (Line(
-              points={{-92,40},{-80.2,40},{-80.2,40.05},{-68.4,40.05}}, 
-              color={127,0,127}, 
+              points={{-92,40},{-80.2,40},{-80.2,40.05},{-68.4,40.05}},
+              color={127,0,127},
               thickness=1));
           connect(dLATSR.dataOut, delay.x) annotation (Line(
-              points={{7.92,40.05},{23.92,40.05},{23.92,39.86}}, 
-              color={127,0,127}, 
+              points={{7.92,40.05},{23.92,40.05},{23.92,39.86}},
+              color={127,0,127},
               thickness=1));
            annotation (
             Documentation(info="<html>
@@ -5980,53 +5980,53 @@ NC = no change
        </li>
 </ul>
 </html>"), Icon(coordinateSystem(
-                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+                  preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
             graphics={
             Rectangle(
-              extent={{-50,70},{52,-50}}, 
-              lineColor={127,0,127}, 
-              lineThickness=0.5, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={255,255,255}), 
+              extent={{-50,70},{52,-50}},
+              lineColor={127,0,127},
+              lineThickness=0.5,
+              fillPattern=FillPattern.Solid,
+              fillColor={255,255,255}),
             Line(
-              points={{-86,40},{-50,40}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-86,40},{-50,40}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-84,-20},{-50,-20}}, 
-              color={127,0,127}), 
+              points={{-84,-20},{-50,-20}},
+              color={127,0,127}),
             Line(
-              points={{52,40},{84,40}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{52,40},{84,40}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-50,-10},{-36,-20},{-50,-30}}, 
-              color={127,0,127}), 
+              points={{-50,-10},{-36,-20},{-50,-30}},
+              color={127,0,127}),
             Text(
-              extent={{-46,96},{46,-18}}, 
-              textColor={127,0,127}, 
-              textString="DLATREGSR"), 
+              extent={{-46,96},{46,-18}},
+              textColor={127,0,127},
+              textString="DLATREGSR"),
             Text(
-              extent={{-14,-32},{14,-45}}, 
-              textColor={127,33,107}, 
-              textString="reset"), 
+              extent={{-14,-32},{14,-45}},
+              textColor={127,33,107},
+              textString="reset"),
             Text(
-              extent={{-33,-7},{-1,-32}}, 
-              textColor={127,33,107}, 
-              textString="enable"), 
+              extent={{-33,-7},{-1,-32}},
+              textColor={127,33,107},
+              textString="enable"),
             Line(
-              points={{-84,80},{0,80},{0,70}}, 
-              color={127,0,127}), 
+              points={{-84,80},{0,80},{0,70}},
+              color={127,0,127}),
             Line(
-              points={{-84,-60},{0,-60},{0,-50}}, 
-              color={127,0,127}), 
+              points={{-84,-60},{0,-60},{0,-50}},
+              color={127,0,127}),
             Text(
-              extent={{-14,67},{12,53}}, 
-              textColor={127,33,107}, 
-              textString="set"), 
+              extent={{-14,67},{12,53}},
+              textColor={127,33,107},
+              textString="set"),
             Text(
-              extent={{-28,38},{30,10}}, 
-              textColor={127,0,127}, 
+              extent={{-28,38},{30,10}},
+              textColor={127,0,127},
               textString="high active")}));
         end DLATREGSRH;
 
@@ -6079,16 +6079,16 @@ NC = no change
        </li>
 </ul>
 </html>"), Icon(graphics={Rectangle(
-              extent={{-40,30},{40,16}}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
+              extent={{-40,30},{40,16}},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
               fillPattern=FillPattern.Solid), Text(
-              extent={{-30,30},{30,16}}, 
-              textColor={127,0,127}, 
+              extent={{-30,30},{30,16}},
+              textColor={127,0,127},
               textString="low active")}));
         end DLATREGSRL;
 
-        annotation (Documentation(info= 
+        annotation (Documentation(info=
                                    "<html>
 <p>Registers is a collection of flipflops and latches. In the opposite to the Examples.Utilities models the Register models are a series of assignments in the algorithm part of the model. The model text is taken nearly identical from the standard logic text.</p>
 </html>"));
@@ -6105,13 +6105,13 @@ NC = no change
       parameter SI.Time tHL=0 "High->Low delay";
       parameter SI.Time tLH=0 "Low->High delay";
       D.Interfaces.DigitalInput enable 
-        annotation (Placement(transformation(extent={{-100,60},{-80,80}}), 
+        annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
             iconTransformation(extent={{-100,60},{-80,80}})));
       D.Interfaces.DigitalInput x 
-        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}), 
+        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
             iconTransformation(extent={{-100,-20},{-80,0}})));
       D.Interfaces.DigitalOutput y 
-        annotation (Placement(transformation(extent={{80,-20},{100,0}}), 
+        annotation (Placement(transformation(extent={{80,-20},{100,0}}),
             iconTransformation(extent={{80,-20},{100,0}})));
     protected
               D.Interfaces.Logic nextstate(start=L.'U');
@@ -6123,34 +6123,34 @@ NC = no change
     equation
       connect(yy, inertialDelaySensitive.x);
       connect(inertialDelaySensitive.y, y);
-      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Rectangle(
-              extent={{-60,60},{60,-20}}, 
-              lineColor={127,0,127}, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={213,170,255}, 
-              lineThickness=0.5), 
+              extent={{-60,60},{60,-20}},
+              lineColor={127,0,127},
+              fillPattern=FillPattern.Solid,
+              fillColor={213,170,255},
+              lineThickness=0.5),
             Line(
-              points={{-33,16},{31,16}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-33,16},{31,16}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-80,-10},{-32,-10},{-32,10},{30,10},{30,-10},{80,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,-10},{-32,-10},{-32,10},{30,10},{30,-10},{80,-10}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-7,46},{39,18}}, 
-              textColor={127,0,127}, 
-              textString="N"), 
+              extent={{-7,46},{39,18}},
+              textColor={127,0,127},
+              textString="N"),
             Line(
-              points={{-82,70},{0,70},{0,16}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-82,70},{0,70},{0,16}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-44,-24},{30,-46}}, 
-              textColor={0,0,255}, 
-              textString="%name")}), 
+              extent={{-44,-24},{30,-46}},
+              textColor={0,0,255},
+              textString="%name")}),
         Documentation(revisions="<html>
 <ul>
 <li><em>January 15, 2010</em> created by Ulrich Donath<br>
@@ -6182,18 +6182,18 @@ UX: if dataIn == U then U else X
 </html>"));
     end NXFERGATE;
 
-    model NRXFERGATE 
+    model NRXFERGATE
       "Transfergate with enable active high. Output strength reduced."
       parameter SI.Time tHL=0 "High->Low delay";
       parameter SI.Time tLH=0 "Low->High delay";
       D.Interfaces.DigitalInput enable 
-        annotation (Placement(transformation(extent={{-100,60},{-80,80}}), 
+        annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
             iconTransformation(extent={{-100,60},{-80,80}})));
       D.Interfaces.DigitalInput x 
-        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}), 
+        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
             iconTransformation(extent={{-100,-20},{-80,0}})));
       D.Interfaces.DigitalOutput y 
-        annotation (Placement(transformation(extent={{80,-20},{100,0}}), 
+        annotation (Placement(transformation(extent={{80,-20},{100,0}}),
             iconTransformation(extent={{80,-20},{100,0}})));
     protected
               D.Interfaces.Logic nextstate(start=L.'U');
@@ -6205,34 +6205,34 @@ UX: if dataIn == U then U else X
     equation
       connect(yy, inertialDelaySensitive.x);
       connect(inertialDelaySensitive.y, y);
-      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Rectangle(
-              extent={{-60,60},{60,-20}}, 
-              lineColor={127,0,127}, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={213,170,255}, 
-              lineThickness=0.5), 
+              extent={{-60,60},{60,-20}},
+              lineColor={127,0,127},
+              fillPattern=FillPattern.Solid,
+              fillColor={213,170,255},
+              lineThickness=0.5),
             Line(
-              points={{-33,16},{31,16}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-33,16},{31,16}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-80,-10},{-32,-10},{-32,10},{30,10},{30,-10},{80,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,-10},{-32,-10},{-32,10},{30,10},{30,-10},{80,-10}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-2,46},{44,18}}, 
-              textColor={127,0,127}, 
-              textString="NR"), 
+              extent={{-2,46},{44,18}},
+              textColor={127,0,127},
+              textString="NR"),
             Line(
-              points={{-82,70},{0,70},{0,16}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-82,70},{0,70},{0,16}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-36,-24},{38,-46}}, 
-              textColor={0,0,255}, 
-              textString="%name")}), 
+              extent={{-36,-24},{38,-46}},
+              textColor={0,0,255},
+              textString="%name")}),
         Documentation(revisions="<html>
 <ul>
 <li><em>January 15, 2010</em> created by Ulrich Donath<br>
@@ -6269,13 +6269,13 @@ Strength Reduced: 0 -> L, 1 -> H, X -> W
       parameter SI.Time tHL=0 "High->Low delay";
       parameter SI.Time tLH=0 "Low->High delay";
       D.Interfaces.DigitalInput enable 
-        annotation (Placement(transformation(extent={{-100,60},{-80,80}}), 
+        annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
             iconTransformation(extent={{-100,60},{-80,80}})));
       D.Interfaces.DigitalInput x 
-        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}), 
+        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
             iconTransformation(extent={{-100,-20},{-80,0}})));
       D.Interfaces.DigitalOutput y 
-        annotation (Placement(transformation(extent={{80,-20},{100,0}}), 
+        annotation (Placement(transformation(extent={{80,-20},{100,0}}),
             iconTransformation(extent={{80,-20},{100,0}})));
     protected
               D.Interfaces.Logic nextstate(start=L.'U');
@@ -6287,34 +6287,34 @@ Strength Reduced: 0 -> L, 1 -> H, X -> W
     equation
       connect(yy, inertialDelaySensitive.x);
       connect(inertialDelaySensitive.y, y);
-      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Rectangle(
-              extent={{-60,60},{60,-20}}, 
-              lineColor={127,0,127}, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={213,170,255}, 
-              lineThickness=0.5), 
+              extent={{-60,60},{60,-20}},
+              lineColor={127,0,127},
+              fillPattern=FillPattern.Solid,
+              fillColor={213,170,255},
+              lineThickness=0.5),
             Line(
-              points={{-33,16},{31,16}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-33,16},{31,16}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-80,-10},{-32,-10},{-32,10},{30,10},{30,-10},{80,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,-10},{-32,-10},{-32,10},{30,10},{30,-10},{80,-10}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-7,46},{39,18}}, 
-              textColor={127,0,127}, 
-              textString="P"), 
+              extent={{-7,46},{39,18}},
+              textColor={127,0,127},
+              textString="P"),
             Line(
-              points={{-82,70},{0,70},{0,16}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-82,70},{0,70},{0,16}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-36,-24},{38,-46}}, 
-              textColor={0,0,255}, 
-              textString="%name")}), 
+              extent={{-36,-24},{38,-46}},
+              textColor={0,0,255},
+              textString="%name")}),
         Documentation(revisions="<html>
 <ul>
 <li><em>January 15, 2010</em> created by Ulrich Donath<br>
@@ -6346,18 +6346,18 @@ UX: if dataIn == U then U else X
 </html>"));
     end PXFERGATE;
 
-    model PRXFERGATE 
+    model PRXFERGATE
       "Transfergate with enable active low. Output strength reduced."
       parameter SI.Time tHL=0 "High->Low delay";
       parameter SI.Time tLH=0 "Low->High delay";
       D.Interfaces.DigitalInput enable 
-        annotation (Placement(transformation(extent={{-100,60},{-80,80}}), 
+        annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
             iconTransformation(extent={{-100,60},{-80,80}})));
       D.Interfaces.DigitalInput x 
-        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}), 
+        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
             iconTransformation(extent={{-100,-20},{-80,0}})));
       D.Interfaces.DigitalOutput y 
-        annotation (Placement(transformation(extent={{80,-20},{100,0}}), 
+        annotation (Placement(transformation(extent={{80,-20},{100,0}}),
             iconTransformation(extent={{80,-20},{100,0}})));
     protected
               D.Interfaces.Logic nextstate(start=L.'U');
@@ -6369,34 +6369,34 @@ UX: if dataIn == U then U else X
     equation
       connect(yy, inertialDelaySensitive.x);
       connect(inertialDelaySensitive.y, y);
-      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Rectangle(
-              extent={{-60,60},{60,-20}}, 
-              lineColor={127,0,127}, 
-              fillPattern=FillPattern.Solid, 
-              fillColor={213,170,255}, 
-              lineThickness=0.5), 
+              extent={{-60,60},{60,-20}},
+              lineColor={127,0,127},
+              fillPattern=FillPattern.Solid,
+              fillColor={213,170,255},
+              lineThickness=0.5),
             Line(
-              points={{-33,16},{31,16}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-33,16},{31,16}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-80,-10},{-32,-10},{-32,10},{30,10},{30,-10},{80,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,-10},{-32,-10},{-32,10},{30,10},{30,-10},{80,-10}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-2,46},{44,18}}, 
-              textColor={127,0,127}, 
-              textString="PR"), 
+              extent={{-2,46},{44,18}},
+              textColor={127,0,127},
+              textString="PR"),
             Line(
-              points={{-82,70},{0,70},{0,16}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-82,70},{0,70},{0,16}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-40,-24},{34,-46}}, 
-              textColor={0,0,255}, 
-              textString="%name")}), 
+              extent={{-40,-24},{34,-46}},
+              textColor={0,0,255},
+              textString="%name")}),
         Documentation(revisions="<html>
 <ul>
 <li><em>January 15, 2010</em> created by Ulrich Donath<br>
@@ -6433,13 +6433,13 @@ UX: if dataIn == U then U else X
       parameter SI.Time tLH=0 "Low->High delay";
       parameter D.Interfaces.Strength strength = S.'S_X01' "Output strength";
       D.Interfaces.DigitalInput enable 
-        annotation (Placement(transformation(extent={{-100,60},{-80,80}}), 
+        annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
             iconTransformation(extent={{-100,60},{-80,80}})));
       D.Interfaces.DigitalInput x 
-        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}), 
+        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
             iconTransformation(extent={{-100,-20},{-80,0}})));
       D.Interfaces.DigitalOutput y 
-        annotation (Placement(transformation(extent={{80,-20},{100,0}}), 
+        annotation (Placement(transformation(extent={{80,-20},{100,0}}),
             iconTransformation(extent={{80,-20},{100,0}})));
     protected
               D.Interfaces.Logic nextstate(start=L.'U');
@@ -6451,29 +6451,29 @@ UX: if dataIn == U then U else X
     equation
       connect(yy, inertialDelaySensitive.x);
       connect(inertialDelaySensitive.y, y);
-      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Line(
-              points={{-80,70},{0,70},{0,14}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,70},{0,70},{0,14}},
+              color={127,0,127},
+              thickness=1),
             Polygon(
-              points={{-40,40},{-40,-60},{40,-10},{-40,40}}, 
-              lineColor={127,0,127}, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,40},{-40,-60},{40,-10},{-40,40}},
+              lineColor={127,0,127},
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Line(
-              points={{-80,-10},{-40,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,-10},{-40,-10}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{40,-10},{82,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{40,-10},{82,-10}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-54,-62},{20,-84}}, 
-              textColor={0,0,255}, 
-              textString="%name")}), 
+              extent={{-54,-62},{20,-84}},
+              textColor={0,0,255},
+              textString="%name")}),
         Documentation(revisions="<html>
 <ul>
 <li><em>January 22, 2010</em> created by Ulrich Donath<br>
@@ -6512,13 +6512,13 @@ DataOut*: Strength map for DataOut according to tristate table Buf3sTable
       parameter SI.Time tLH=0 "Low->High delay";
       parameter D.Interfaces.Strength strength = S.'S_X01' "Output strength";
       D.Interfaces.DigitalInput enable 
-        annotation (Placement(transformation(extent={{-100,60},{-80,80}}), 
+        annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
             iconTransformation(extent={{-100,60},{-80,80}})));
       D.Interfaces.DigitalInput x 
-        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}), 
+        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
             iconTransformation(extent={{-100,-20},{-80,0}})));
       D.Interfaces.DigitalOutput y 
-        annotation (Placement(transformation(extent={{80,-20},{100,0}}), 
+        annotation (Placement(transformation(extent={{80,-20},{100,0}}),
             iconTransformation(extent={{80,-20},{100,0}})));
     protected
               D.Interfaces.Logic nextstate(start=L.'U');
@@ -6530,29 +6530,29 @@ DataOut*: Strength map for DataOut according to tristate table Buf3sTable
     equation
       connect(yy, inertialDelaySensitive.x);
       connect(inertialDelaySensitive.y, y);
-      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Line(
-              points={{-80,70},{0,70},{0,14}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,70},{0,70},{0,14}},
+              color={127,0,127},
+              thickness=1),
             Polygon(
-              points={{-40,40},{-40,-60},{40,-10},{-40,40}}, 
-              lineColor={127,0,127}, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,40},{-40,-60},{40,-10},{-40,40}},
+              lineColor={127,0,127},
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Line(
-              points={{-80,-10},{-40,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,-10},{-40,-10}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{40,-10},{82,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{40,-10},{82,-10}},
+              color={127,0,127},
+              thickness=1),
             Text(
-              extent={{-54,-62},{20,-84}}, 
-              textColor={0,0,255}, 
-              textString="%name")}), 
+              extent={{-54,-62},{20,-84}},
+              textColor={0,0,255},
+              textString="%name")}),
         Documentation(revisions="<html>
 <ul>
 <li><em>January 22, 2010</em> created by Ulrich Donath<br>
@@ -6591,13 +6591,13 @@ DataOut*: Strength map for DataOut according to tristate table Buf3slTable
       parameter SI.Time tLH=0 "Low->High delay";
       parameter D.Interfaces.Strength strength = S.'S_X01' "Output strength";
       D.Interfaces.DigitalInput enable 
-        annotation (Placement(transformation(extent={{-100,60},{-80,80}}), 
+        annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
             iconTransformation(extent={{-100,60},{-80,80}})));
       D.Interfaces.DigitalInput x 
-        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}), 
+        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
             iconTransformation(extent={{-100,-20},{-80,0}})));
       D.Interfaces.DigitalOutput y 
-        annotation (Placement(transformation(extent={{80,-20},{100,0}}), 
+        annotation (Placement(transformation(extent={{80,-20},{100,0}}),
             iconTransformation(extent={{80,-20},{100,0}})));
     protected
               D.Interfaces.Logic nextstate(start=L.'U');
@@ -6609,34 +6609,34 @@ DataOut*: Strength map for DataOut according to tristate table Buf3slTable
     equation
       connect(yy, inertialDelaySensitive.x);
       connect(inertialDelaySensitive.y, y);
-      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Line(
-              points={{-80,70},{0,70},{0,14}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,70},{0,70},{0,14}},
+              color={127,0,127},
+              thickness=1),
             Polygon(
-              points={{-40,40},{-40,-60},{40,-10},{-40,40}}, 
-              lineColor={127,0,127}, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,40},{-40,-60},{40,-10},{-40,40}},
+              lineColor={127,0,127},
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Line(
-              points={{-80,-10},{-40,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,-10},{-40,-10}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{40,-10},{82,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{40,-10},{82,-10}},
+              color={127,0,127},
+              thickness=1),
             Ellipse(
-              extent={{40,-3},{54,-17}}, 
-              lineColor={127,0,127}, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{40,-3},{54,-17}},
+              lineColor={127,0,127},
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-54,-62},{20,-84}}, 
-              textColor={0,0,255}, 
-              textString="%name")}), 
+              extent={{-54,-62},{20,-84}},
+              textColor={0,0,255},
+              textString="%name")}),
         Documentation(revisions="<html>
 <ul>
 <li><em>January 22, 2010</em> created by Ulrich Donath<br>
@@ -6675,13 +6675,13 @@ DataOut*: Strength map for DataOut according to tristate table Buf3sTable
       parameter SI.Time tLH=0 "Low->High delay";
       parameter D.Interfaces.Strength strength = S.'S_X01' "Output strength";
       D.Interfaces.DigitalInput enable 
-        annotation (Placement(transformation(extent={{-100,60},{-80,80}}), 
+        annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
             iconTransformation(extent={{-100,60},{-80,80}})));
       D.Interfaces.DigitalInput x 
-        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}), 
+        annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
             iconTransformation(extent={{-100,-20},{-80,0}})));
       D.Interfaces.DigitalOutput y 
-        annotation (Placement(transformation(extent={{80,-20},{100,0}}), 
+        annotation (Placement(transformation(extent={{80,-20},{100,0}}),
             iconTransformation(extent={{80,-20},{100,0}})));
     protected
               D.Interfaces.Logic nextstate(start=L.'U');
@@ -6693,34 +6693,34 @@ DataOut*: Strength map for DataOut according to tristate table Buf3sTable
     equation
       connect(yy, inertialDelaySensitive.x);
       connect(inertialDelaySensitive.y, y);
-      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+      annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Polygon(
-              points={{-40,40},{-40,-60},{40,-10},{-40,40}}, 
-              lineColor={127,0,127}, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,40},{-40,-60},{40,-10},{-40,40}},
+              lineColor={127,0,127},
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Line(
-              points={{-80,70},{0,70},{0,14}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,70},{0,70},{0,14}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-80,-10},{-40,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,-10},{-40,-10}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{40,-10},{82,-10}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{40,-10},{82,-10}},
+              color={127,0,127},
+              thickness=1),
             Ellipse(
-              extent={{40,-3},{54,-17}}, 
-              lineColor={127,0,127}, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{40,-3},{54,-17}},
+              lineColor={127,0,127},
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-54,-62},{20,-84}}, 
-              textColor={0,0,255}, 
-              textString="%name")}), 
+              extent={{-54,-62},{20,-84}},
+              textColor={0,0,255},
+              textString="%name")}),
         Documentation(revisions="<html>
 <ul>
 <li><em>January 22, 2010</em> created by Ulrich Donath<br>
@@ -6775,13 +6775,13 @@ Wires n input signals in one output signal, without delay.
 <li><em>January 22, 2010</em> created by Ulrich Donath<br>
        </li>
 </ul>
-</html>"), 
+</html>"),
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={Text(
-              extent={{-50,40},{50,80}}, 
+              extent={{-50,40},{50,80}},
               textString="Wire"), Text(
-              extent={{152,-160},{-148,-100}}, 
-              textColor={0,0,255}, 
+              extent={{152,-160},{-148,-100}},
+              textColor={0,0,255},
               textString="%name")}));
     end WiredX;
   end Tristates;
@@ -6888,26 +6888,26 @@ Firstly Write is carried out, then Read.</strong></p>
 <dt><em>November 9, 2010</em></dt>
 <dd>created by Ulrich Donath</dd>
 </dl>
-</html>"), 
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+</html>"),
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
         graphics={
           Text(
-            extent={{-50,70},{50,30}}, 
-            textColor={127,33,107}, 
-            textString="DLATRAM"), 
+            extent={{-50,70},{50,30}},
+            textColor={127,33,107},
+            textString="DLATRAM"),
           Line(
-            points={{-60,-40},{-46,-50},{-60,-60}}, 
-            color={127,0,127}), 
+            points={{-60,-40},{-46,-50},{-60,-60}},
+            color={127,0,127}),
           Text(
-            extent={{-41,-35},{-24,-62}}, 
-            textColor={127,33,107}, 
-            textString="WE"), 
+            extent={{-41,-35},{-24,-62}},
+            textColor={127,33,107},
+            textString="WE"),
           Line(
-            points={{-84,-50},{-60,-50}}, 
-            color={127,0,127}), 
+            points={{-84,-50},{-60,-50}},
+            color={127,0,127}),
           Line(
-            points={{-80,20},{-60,20}}, 
-            color={127,0,127}, 
+            points={{-80,20},{-60,20}},
+            color={127,0,127},
             thickness=1)}));
     end DLATRAM;
 
@@ -6971,12 +6971,12 @@ Z  = L.'Z'
 <dt><em>October 19, 2010</em></dt>
 <dd>created by Ulrich Donath</dd>
 </dl>
-</html>"), 
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+</html>"),
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
         graphics={
           Text(
-            extent={{-50,70},{50,30}}, 
-            textColor={127,33,107}, 
+            extent={{-50,70},{50,30}},
+            textColor={127,33,107},
             textString="DLATROM")}));
     end DLATROM;
   end Memories;
@@ -6993,16 +6993,16 @@ Z  = L.'Z'
       parameter SI.Time tLH=0 "Low->High delay";
       parameter D.Interfaces.Strength strength = S.'S_X01' "Output strength";
       D.Interfaces.DigitalInput in1 "Data input 1" 
-        annotation (Placement(transformation(extent={{-100,40},{-80,60}}), 
+        annotation (Placement(transformation(extent={{-100,40},{-80,60}}),
             iconTransformation(extent={{-100,40},{-80,60}})));
       D.Interfaces.DigitalInput in0 "Data input 0" 
-        annotation (Placement(transformation(extent={{-100,-60},{-80,-40}}), 
+        annotation (Placement(transformation(extent={{-100,-60},{-80,-40}}),
             iconTransformation(extent={{-100,-60},{-80,-40}})));
       D.Interfaces.DigitalInput sel "Select input" 
-      annotation (Placement(transformation(extent={{-10,80},{10,100}}), 
+      annotation (Placement(transformation(extent={{-10,80},{10,100}}),
             iconTransformation(extent={{-10,80},{10,100}})));
       D.Interfaces.DigitalOutput out "Output" 
-        annotation (Placement(transformation(extent={{80,-10},{100,10}}), 
+        annotation (Placement(transformation(extent={{80,-10},{100,10}}),
             iconTransformation(extent={{80,-10},{100,10}})));
 
     protected
@@ -7022,39 +7022,39 @@ Z  = L.'Z'
 
       annotation (Icon(graphics={
             Line(
-              points={{-80,50},{-40,50}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,50},{-40,50}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-62,-50},{-62,-50}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-62,-50},{-62,-50}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{-80,-50},{-40,-50}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{-80,-50},{-40,-50}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{0,60},{0,80}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{0,60},{0,80}},
+              color={127,0,127},
+              thickness=1),
             Line(
-              points={{40,0},{80,0}}, 
-              color={127,0,127}, 
-              thickness=1), 
+              points={{40,0},{80,0}},
+              color={127,0,127},
+              thickness=1),
             Polygon(
-              points={{-40,80},{-40,-80},{40,-40},{40,40},{-40,80}}, 
-              lineColor={213,170,255}, 
-              lineThickness=1, 
-              fillColor={213,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-40,80},{-40,-80},{40,-40},{40,40},{-40,80}},
+              lineColor={213,170,255},
+              lineThickness=1,
+              fillColor={213,170,255},
+              fillPattern=FillPattern.Solid),
             Text(
-              extent={{-36,-70},{38,-92}}, 
-              textColor={0,0,255}, 
-              textString="%name"), 
+              extent={{-36,-70},{38,-92}},
+              textColor={0,0,255},
+              textString="%name"),
             Text(
-              extent={{-38,10},{38,-10}}, 
-              textColor={127,0,127}, 
-              textString="MUX2x1")}), 
+              extent={{-38,10},{38,-10}},
+              textColor={127,0,127},
+              textString="MUX2x1")}),
         Documentation(info="<html>
 <p>Description in VHDL is given by <a href=\"http://www.cs.sfu.ca/~ggbaker/reference/std_logic/src/std_logic_entities.vhd\">http://www.cs.sfu.ca/~ggbaker/reference/std_logic/src/std_logic_entities.vhd</a></p>
 <p>and for Multiplexer table <a href=\"http://www.cs.sfu.ca/~ggbaker/reference/std_logic/src/std_logic_misc.vhd\">http://www.cs.sfu.ca/~ggbaker/reference/std_logic/src/std_logic_misc.vhd</a></p>
@@ -7173,27 +7173,27 @@ the library is implemented and released for public use.
 <p>
 Copyright &copy; 1998-2020, Modelica Association and contributors
 </p>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=false, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=false,
                 extent={{-100,-100},{100,100}}), graphics={
           Line(
-            origin={7,47}, 
-            points={{-84,-6},{-52,-6}}), 
+            origin={7,47},
+            points={{-84,-6},{-52,-6}}),
           Rectangle(
-            origin={59,53}, 
-            fillColor = {255,255,255}, 
-            fillPattern = FillPattern.Solid, 
-            extent={{-104,-63},{-64,7}}), 
+            origin={59,53},
+            fillColor = {255,255,255},
+            fillPattern = FillPattern.Solid,
+            extent={{-104,-63},{-64,7}}),
           Rectangle(
-            origin={146,34}, 
-            fillColor = {255,255,255}, 
-            fillPattern = FillPattern.Solid, 
-            extent={{-104,-63},{-64,7}}), 
+            origin={146,34},
+            fillColor = {255,255,255},
+            fillPattern = FillPattern.Solid,
+            extent={{-104,-63},{-64,7}}),
           Line(
-            origin={7,15}, 
-            points={{-84,-6},{-52,-6}}), 
+            origin={7,15},
+            points={{-84,-6},{-52,-6}}),
           Line(
-            origin={79,30}, 
-            points={{-84,-6},{-37,-6}}), 
+            origin={79,30},
+            points={{-84,-6},{-37,-6}}),
         Line(
           points={{42,-12},{17,-12},{17,-54},{-71,-54}})}));
 end Digital;

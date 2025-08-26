@@ -1,27 +1,27 @@
 ﻿within Modelica.Mechanics.MultiBody.Forces.Internal;
-model BasicTorque 
+model BasicTorque
   "Torque acting between two frames, defined by 3 input signals"
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB;
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;
-  Interfaces.Frame_resolve frame_resolve 
+  Interfaces.Frame_resolve frame_resolve
     "The input signals are optionally resolved in this frame" 
     annotation (Placement(transformation(
-        origin={40,100}, 
-        extent={{-16,-16},{16,16}}, 
+        origin={40,100},
+        extent={{-16,-16},{16,16}},
         rotation=90)));
 
-  Modelica.Blocks.Interfaces.RealInput torque[3](each final quantity="Torque", each final unit="N.m") 
+  Modelica.Blocks.Interfaces.RealInput torque[3](each final quantity="Torque", each final unit="N.m")
     "x-, y-, z-coordinates of torque resolved in frame defined by resolveInFrame" 
     annotation (Placement(transformation(
-        origin={-60,120}, 
-        extent={{-20,-20},{20,20}}, 
+        origin={-60,120},
+        extent={{-20,-20},{20,20}},
         rotation=270)));
   parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB 
-    resolveInFrame= 
-    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_b 
+    resolveInFrame=
+    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_b
     "Frame in which torque is resolved (1: world, 2: frame_a, 3: frame_b, 4: frame_resolve)";
 
-  SI.Position r_0[3] 
+  SI.Position r_0[3]
     "Position vector from origin of frame_a to origin of frame_b resolved in world frame";
   SI.Torque t_b_0[3] "frame_b.t resolved in world frame";
 
@@ -58,34 +58,34 @@ equation
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={
         Rectangle(
-          extent={{-98,99},{99,-98}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-98,99},{99,-98}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-59,55},{72,30}}, 
-          textColor={192,192,192}, 
-          textString="resolve"), 
+          extent={{-59,55},{72,30}},
+          textColor={192,192,192},
+          textString="resolve"),
         Text(
-          extent={{-139,-27},{146,-88}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-139,-27},{146,-88}},
+          textString="%name",
+          textColor={0,0,255}),
         Polygon(
-          points={{100,20},{84,52},{69,39},{100,20}}, 
-          fillPattern=FillPattern.Solid), 
+          points={{100,20},{84,52},{69,39},{100,20}},
+          fillPattern=FillPattern.Solid),
         Line(
-          points={{40,100},{76,46}}, 
-          color={95,95,95}, 
-          pattern=LinePattern.Dot), 
+          points={{40,100},{76,46}},
+          color={95,95,95},
+          pattern=LinePattern.Dot),
         Polygon(
-          points={{-99,20},{-86,53},{-70,42},{-99,20}}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-99,20},{-86,53},{-70,42},{-99,20}},
+          fillPattern=FillPattern.Solid),
         Line(
-          points={{-60,100},{40,100}}, 
-          color={95,95,95}, 
-          pattern=LinePattern.Dot), 
-        Line(points={{-79,47},{-70,61},{-59,72},{-45,81},{-32,84},{-20,85}}), 
-        Line(points={{77,45},{66,60},{55,69},{49,74},{41,80},{31,84},{20,85}})}), 
+          points={{-60,100},{40,100}},
+          color={95,95,95},
+          pattern=LinePattern.Dot),
+        Line(points={{-79,47},{-70,61},{-59,72},{-45,81},{-32,84},{-20,85}}),
+        Line(points={{77,45},{66,60},{55,69},{49,74},{41,80},{31,84},{20,85}})}),
     Documentation(info="<html>
 <p>
 The <strong>3</strong> signals of the <strong>torque</strong> connector are interpreted

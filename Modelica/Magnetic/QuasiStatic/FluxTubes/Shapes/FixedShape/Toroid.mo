@@ -5,7 +5,7 @@ model Toroid "Toroid with circular cross section; fixed shape"
   extends Modelica.Magnetic.QuasiStatic.FluxTubes.Icons.Toroid;
   import Modelica.Constants.pi;
   parameter SI.Radius r=0.1 "Radius of toroid (middle)" 
-    annotation (Dialog(group="Fixed geometry", groupImage= 
+    annotation (Dialog(group="Fixed geometry", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/Toroid.png"));
   parameter SI.Radius d=0.01 "Diameter of cylindrical core" 
     annotation (Dialog(group="Fixed geometry"));

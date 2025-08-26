@@ -2,38 +2,38 @@
 model IdealTriac "Ideal triac, based on ideal thyristors"
 
   parameter SI.Resistance Ron(final min=0) = 1e-5 "Closed triac resistance";
-  parameter SI.Conductance Goff(final min=0) = 1e-5 
+  parameter SI.Conductance Goff(final min=0) = 1e-5
     "Opened triac conductance";
   parameter SI.Voltage Vknee(
-    final min=0, 
+    final min=0,
     start=0) = 0.8 "Threshold voltage for positive and negative phase";
 
   parameter SI.Resistance Rdis=100 "Resistance of disturbance elimination";
   parameter SI.Capacitance Cdis=0.005 "Capacity of disturbance elimination";
 
   Modelica.Electrical.Analog.Ideal.IdealThyristor idealThyristor(
-    Ron=Ron, 
-    Goff=Goff, 
+    Ron=Ron,
+    Goff=Goff,
     Vknee=Vknee) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={-10,32})));
   Modelica.Electrical.Analog.Ideal.IdealThyristor idealThyristor1(
-    Ron=Ron, 
-    Goff=Goff, 
+    Ron=Ron,
+    Goff=Goff,
     Vknee=Vknee) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=180, 
+        extent={{-10,-10},{10,10}},
+        rotation=180,
         origin={-10,-32})));
   Modelica.Electrical.Analog.Basic.Resistor resistor(R=Rdis) 
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Modelica.Electrical.Analog.Basic.Capacitor capacitor(C=Cdis) 
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   Modelica.Blocks.Interfaces.BooleanInput fire1 "Gate" 
-    annotation (Placement(transformation(extent={{-14,-14},{14,14}}, 
-        rotation=90, 
+    annotation (Placement(transformation(extent={{-14,-14},{14,14}},
+        rotation=90,
         origin={-100,-114}), iconTransformation(
-        extent={{-14,-14},{14,14}}, 
-        rotation=90, 
+        extent={{-14,-14},{14,14}},
+        rotation=90,
         origin={-100,-114})));
   Modelica.Electrical.Analog.Interfaces.NegativePin n "Cathode" 
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
@@ -59,32 +59,32 @@ equation
       points={{-100,0},{-90,0},{-90,40},{-20,40},{-20,32}}, color={0,0,255}));
   connect(idealThyristor1.p, p) annotation (Line(
       points={{0,-32},{0,-40},{80,-40},{80,0},{100,0}}, color={0,0,255}));
-  annotation (defaultComponentName="triac", 
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+  annotation (defaultComponentName="triac",
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
         Text(
-          extent={{-150,130},{150,90}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,130},{150,90}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
-          points={{-100,-100},{-100,-80}}, 
-          color={255,0,255}, 
-          pattern=LinePattern.Dash), 
-        Line(points={{-40,-70},{-40,70}}, color={0,0,255}), 
-        Line(points={{40,-72},{40,70}}, color={0,0,255}), 
-        Polygon(points={{-40,-70},{40,-30},{-40,10},{-40,-70}}, 
-                                                             lineColor={0,0, 
-              255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
-        Polygon(points={{40,-10},{-40,30},{40,70},{40,-10}}, lineColor={0,0, 
-              255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-40,0},{-90,0}}, color={0,0,255}), 
-        Line(points={{100,0},{40,0}},color={0,0,255}), 
-        Line(points={{-100,-100},{-100,-60},{-40,-30}}, 
-                                                    color={255,0,255})}), 
+          points={{-100,-100},{-100,-80}},
+          color={255,0,255},
+          pattern=LinePattern.Dash),
+        Line(points={{-40,-70},{-40,70}}, color={0,0,255}),
+        Line(points={{40,-72},{40,70}}, color={0,0,255}),
+        Polygon(points={{-40,-70},{40,-30},{-40,10},{-40,-70}},
+                                                             lineColor={0,0,
+              255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Polygon(points={{40,-10},{-40,30},{40,70},{40,-10}}, lineColor={0,0,
+              255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-40,0},{-90,0}}, color={0,0,255}),
+        Line(points={{100,0},{40,0}},color={0,0,255}),
+        Line(points={{-100,-100},{-100,-60},{-40,-30}},
+                                                    color={255,0,255})}),
                                   Documentation(info="<html>
 <p>This is an ideal triac model based on an ideal thyristor model.</p>
 
@@ -110,7 +110,7 @@ equation
 <li>power packs</li>
 </ul>
 <p>As an additional information: this model is based on the Modelica.Electrical.Analog.Ideal.IdealThyristor.</p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>November 25, 2009   </em><br>

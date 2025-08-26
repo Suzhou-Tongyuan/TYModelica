@@ -2,7 +2,7 @@
 model OpAmpDetailed "Detailed model of an operational amplifier"
   // literature: Conelly, J.A.; Choi, P.: Macromodelling with SPICE. Englewood Cliffs: Prentice-Hall, 1992
   import Modelica.Constants.pi;
-  parameter SI.Resistance Rdm=2.0e6 
+  parameter SI.Resistance Rdm=2.0e6
     "Input resistance (differential input mode)";
   parameter SI.Resistance Rcm=2.0e9 "Input resistance (common mode)";
   parameter SI.Capacitance Cin=1.4e-12 "Input capacitance";
@@ -21,7 +21,7 @@ model OpAmpDetailed "Detailed model of an operational amplifier"
   parameter SI.VoltageSlope sr_p=0.5e6 "Slew rate for increase";
   parameter SI.VoltageSlope sr_m=0.5e6 "Slew rate for decrease";
   parameter SI.Resistance Rout=75.0 "Output resistance";
-  parameter SI.Current Imaxso=25.0e-3 
+  parameter SI.Current Imaxso=25.0e-3
     "Maximal output current (source current)";
   parameter SI.Current Imaxsi=25.0e-3 "Maximal output current (sink current)";
 
@@ -29,9 +29,9 @@ model OpAmpDetailed "Detailed model of an operational amplifier"
   parameter SI.Time Ts=0.0000012 "Sampling time";
 
   // power supply
-  final parameter SI.Voltage vcp_abs=abs(vcp) 
+  final parameter SI.Voltage vcp_abs=abs(vcp)
     "Positive correction value for limiting by p_supply";
-  final parameter SI.Voltage vcm_abs=abs(vcm) 
+  final parameter SI.Voltage vcm_abs=abs(vcm)
     "Positive correction value for limiting by msupply";
 
   // input stage
@@ -42,31 +42,31 @@ model OpAmpDetailed "Detailed model of an operational amplifier"
 
   // gain stage (difference and common mode)
   final parameter Real Avd0_val=10.0^(Avd0/20.0) "Differential mode gain";
-  final parameter Real Avcm_val=(Avd0_val/(10.0^(CMRR/20.0)))/2.0 
+  final parameter Real Avcm_val=(Avd0_val/(10.0^(CMRR/20.0)))/2.0
     "Common mode gain";
 
   // slew rate stage
-  final parameter SI.VoltageSlope sr_p_val=abs(sr_p) 
+  final parameter SI.VoltageSlope sr_p_val=abs(sr_p)
     "Value of slew rate for increase";
-  final parameter SI.VoltageSlope sr_m_val=-abs(sr_m) 
+  final parameter SI.VoltageSlope sr_m_val=-abs(sr_m)
     "Negative value of slew rate for increase";
 
   // output stage
   final parameter SI.Current Imaxso_val=abs(Imaxso) "Orientation out outp";
   final parameter SI.Current Imaxsi_val=abs(Imaxsi) "Orientation into outp";
 
-  Modelica.Electrical.Analog.Interfaces.PositivePin p 
+  Modelica.Electrical.Analog.Interfaces.PositivePin p
     "Positive pin of the input port" annotation (Placement(transformation(
           extent={{-110,-70},{-90,-50}}), iconTransformation(extent={{-110,-70},{-90,-50}})));
-  Modelica.Electrical.Analog.Interfaces.NegativePin m 
+  Modelica.Electrical.Analog.Interfaces.NegativePin m
     "Negative pin of the input port" annotation (Placement(transformation(
           extent={{-90,50},{-110,70}}), iconTransformation(extent={{-90,50},{-110,70}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin outp "Output pin" 
     annotation (Placement(transformation(extent={{110,-10},{90,10}}), iconTransformation(extent={{110,-10},{90,10}})));
-  Modelica.Electrical.Analog.Interfaces.PositivePin p_supply 
+  Modelica.Electrical.Analog.Interfaces.PositivePin p_supply
     "Positive output voltage limitation" annotation (Placement(transformation(
           extent={{-10,90},{10,110}}), iconTransformation(extent={{-10,90},{10,110}})));
-  Modelica.Electrical.Analog.Interfaces.NegativePin m_supply 
+  Modelica.Electrical.Analog.Interfaces.NegativePin m_supply
     "Negative output voltage limitation" annotation (Placement(transformation(
           extent={{-10,-110},{10,-90}}), iconTransformation(extent={{-10,-110},{10,-90}})));
 
@@ -187,11 +187,11 @@ equation
   // Laplace transformation
   q_sum = Avd0_val*q_fr3 + Avcm_val*(v_3 + v_4);
   q_sum_help = FCNq_sum_limit(
-      q_sum, 
-      q_fp1, 
-      v_pos, 
-      v_neg, 
-      vcp_abs, 
+      q_sum,
+      q_fp1,
+      v_pos,
+      v_neg,
+      vcp_abs,
       vcm_abs);
   der(q_fp1) = 2.0*pi*fp1*(q_sum_help - q_fp1);
 
@@ -204,16 +204,16 @@ equation
   v_out = outp.v;
   i_out = outp.i;
   i_out = FCNiout_limit(
-      v_source, 
-      v_out, 
-      Rout, 
-      Imaxsi_val, 
+      v_source,
+      v_out,
+      Rout,
+      Imaxsi_val,
       Imaxso_val);
 
   p_supply.i = 0;
   m_supply.i = 0;
 
-  annotation (defaultComponentName="opAmp", 
+  annotation (defaultComponentName="opAmp",
     Documentation(info="<html>
 <p>The OpAmpDetailed model is a general operational amplifier model. The emphasis is on separating each important data sheet parameter into a sub-circuit independent of the other parameters. The model is broken down into five functional stages <strong>input</strong>, <strong>frequency response</strong>, <strong>gain</strong>, <strong>slew rate</strong> and an <strong>output</strong> stage. Each stage contains data sheet parameters to be modeled. This partitioning and the modelling of the separate submodels are based on the description in [<a href=\"modelica://Modelica.Electrical.Analog.UsersGuide.References\">Conelly1992</a>].</p>
 <p>Using [<a href=\"modelica://Modelica.Electrical.Analog.UsersGuide.References\">Conelly1992</a>] Joachim Haase (Fraunhofer Institute for Integrated Circuits, Design Automation Division) transferred 2001 operational amplifier models into VHDL-AMS. Now one of these models, the model &quot;amp(macro)&quot; was transferred into Modelica.</p>
@@ -222,24 +222,24 @@ equation
 <dt><em>June 17, 2009</em></dt>
 <dd>by Susann Wolf initially implemented</dd>
 </dl>
-</html>"), 
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+</html>"),
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics={
         Text(
-          extent={{-150,150},{150,110}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,150},{150,110}},
+          textString="%name",
+          textColor={0,0,255}),
         Polygon(
-          points={{70,0},{-70,80},{-70,-80},{70,0}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
-        Line(points={{0,40},{0,110}}, color={0,0,255}), 
-        Line(points={{0,-40},{0,-90}}, color={0,0,255}), 
-        Line(points={{-90,60},{-70,60}}, color={0,0,255}), 
-        Line(points={{-90,-60},{-70,-60}}, color={0,0,255}), 
-        Line(points={{70,0},{90,0}}, color={0,0,255}), 
-        Line(points={{-58,50},{-38,50}}, color={0,0,255}), 
-        Line(points={{-60,-51},{-38,-51}}, color={0,0,255}), 
+          points={{70,0},{-70,80},{-70,-80},{70,0}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
+        Line(points={{0,40},{0,110}}, color={0,0,255}),
+        Line(points={{0,-40},{0,-90}}, color={0,0,255}),
+        Line(points={{-90,60},{-70,60}}, color={0,0,255}),
+        Line(points={{-90,-60},{-70,-60}}, color={0,0,255}),
+        Line(points={{70,0},{90,0}}, color={0,0,255}),
+        Line(points={{-58,50},{-38,50}}, color={0,0,255}),
+        Line(points={{-60,-51},{-38,-51}}, color={0,0,255}),
         Line(points={{-49,-40},{-49,-61}}, color={0,0,255})}));
 end OpAmpDetailed;

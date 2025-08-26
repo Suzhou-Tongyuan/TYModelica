@@ -3,7 +3,7 @@ block StateSpace "Discrete-time State Space block"
   parameter Real A[:, size(A, 1)] "Matrix A of state space model";
   parameter Real B[size(A, 1), :] "Matrix B of state space model";
   parameter Real C[:, size(A, 1)] "Matrix C of state space model";
-  parameter Real D[size(C, 1), size(B, 2)]=zeros(size(C, 1), size(B, 2)) 
+  parameter Real D[size(C, 1), size(B, 2)]=zeros(size(C, 1), size(B, 2))
     "Matrix D of state space model";
   extends Clocked.RealSignals.Interfaces.PartialClockedMIMO(final nin=size(
         B, 2), final nout=size(C, 1));
@@ -62,40 +62,40 @@ results in the following equations:
     Used the code from Blocks.Discrete.StateSpace and converted it into
     the Modelica 3.3 clocked equation style.</li>
 </ul>
-</html>"), 
+</html>"),
 Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Text(
-          extent={{-90,15},{-15,90}}, 
-          textString="A", 
-          textColor={0,0,127}), 
+          extent={{-90,15},{-15,90}},
+          textString="A",
+          textColor={0,0,127}),
         Text(
-          extent={{15,15},{90,90}}, 
-          textString="B", 
-          textColor={0,0,127}), 
+          extent={{15,15},{90,90}},
+          textString="B",
+          textColor={0,0,127}),
         Text(
-          extent={{-52,28},{54,-20}}, 
-          textString="z", 
-          textColor={0,0,127}), 
+          extent={{-52,28},{54,-20}},
+          textString="z",
+          textColor={0,0,127}),
         Text(
-          extent={{-90,-15},{-15,-90}}, 
-          textString="C", 
-          textColor={0,0,127}), 
+          extent={{-90,-15},{-15,-90}},
+          textString="C",
+          textColor={0,0,127}),
         Text(
-          extent={{15,-15},{90,-90}}, 
-          textString="D", 
-          textColor={0,0,127})}), 
+          extent={{15,-15},{90,-90}},
+          textString="D",
+          textColor={0,0,127})}),
     Diagram(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
-        Rectangle(extent={{-60,60},{60,-60}}, lineColor={0,0,255}), 
+        Rectangle(extent={{-60,60},{60,-60}}, lineColor={0,0,255}),
         Text(
-          extent={{-54,50},{52,-10}}, 
-          textString="zx=Ax+Bu"), 
+          extent={{-54,50},{52,-10}},
+          textString="zx=Ax+Bu"),
         Text(
-          extent={{-56,14},{54,-50}}, 
-          textString="  y=Cx+Du"), 
-        Line(points={{-102,0},{-60,0}}, color={0,0,255}), 
+          extent={{-56,14},{54,-50}},
+          textString="  y=Cx+Du"),
+        Line(points={{-102,0},{-60,0}}, color={0,0,255}),
         Line(points={{60,0},{100,0}}, color={0,0,255})}));
 end StateSpace;

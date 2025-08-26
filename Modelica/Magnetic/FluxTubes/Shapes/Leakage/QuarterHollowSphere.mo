@@ -1,11 +1,11 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.Leakage;
-model QuarterHollowSphere 
+model QuarterHollowSphere
   "Leakage flux through the edges of a quarter hollow sphere"
 
   extends BaseClasses.Leakage;
 
   parameter SI.Length t(start=0.01) "Thickness of spherical shell" 
-    annotation (Dialog(group="Parameters", groupImage= 
+    annotation (Dialog(group="Parameters", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/Leakage/QuarterHollowSphere.png"));
 
 equation

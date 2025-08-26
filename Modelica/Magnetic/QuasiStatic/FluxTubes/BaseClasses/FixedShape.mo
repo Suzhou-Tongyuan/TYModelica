@@ -7,18 +7,18 @@ partial model FixedShape "Base class for flux tubes with fixed shape during simu
 
   SI.Reluctance R_m "Magnetic reluctance";
   SI.Permeance G_m "Magnetic permeance";
-  SI.ComplexMagneticFluxDensity B 
+  SI.ComplexMagneticFluxDensity B
   "Magnetic flux density (normal component)";
-  SI.MagneticFluxDensity abs_B = Modelica.ComplexMath.abs(B) 
+  SI.MagneticFluxDensity abs_B = Modelica.ComplexMath.abs(B)
   "Magnitude of complex magnetic flux density";
-  SI.Angle arg_B = Modelica.ComplexMath.arg(B) 
+  SI.Angle arg_B = Modelica.ComplexMath.arg(B)
   "Argument of complex magnetic flux density";
   SI.CrossSection A "Area of cross section penetrated by magnetic flux";
-  SI.ComplexMagneticFieldStrength H 
+  SI.ComplexMagneticFieldStrength H
   "Magnetic field strength (normal component)";
-  SI.MagneticFieldStrength abs_H = Modelica.ComplexMath.abs(H) 
+  SI.MagneticFieldStrength abs_H = Modelica.ComplexMath.abs(H)
   "Magnitude of complex magnetic field strength";
-  SI.Angle arg_H = Modelica.ComplexMath.arg(H) 
+  SI.Angle arg_H = Modelica.ComplexMath.arg(H)
   "Argument of complex magnetic field strength";
 
   SI.RelativePermeability mu_r "Relative magnetic permeability";

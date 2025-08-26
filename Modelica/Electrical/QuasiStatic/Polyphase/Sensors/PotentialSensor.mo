@@ -7,9 +7,9 @@ model PotentialSensor "Potential sensor"
         transformation(extent={{-80,-10},{-60,10}})));
   Modelica.ComplexBlocks.Interfaces.ComplexOutput v[m] "Potential as complex output signal" 
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-  SI.Voltage abs_v[m]=Modelica.ComplexMath.abs(v) 
+  SI.Voltage abs_v[m]=Modelica.ComplexMath.abs(v)
     "Magnitude of complex potential";
-  SI.Angle arg_v[m]=Modelica.ComplexMath.arg(v) 
+  SI.Angle arg_v[m]=Modelica.ComplexMath.arg(v)
     "Argument of complex potential";
 
 equation
@@ -40,10 +40,10 @@ This sensor can be used to measure <em>m</em> complex potentials, using <em>m</e
 <a href=\"modelica://Modelica.Electrical.QuasiStatic.Polyphase.Sensors.MultiSensor\">MultiSensor</a>
 </p>
 
-</html>"), 
+</html>"),
        Icon(graphics={
         Text(
-          extent={{-30,-10},{30,-70}}, 
-          textColor={64,64,64}, 
+          extent={{-30,-10},{30,-70}},
+          textColor={64,64,64},
           textString="V"), Line(points={{70,0},{100,0}}, color={85,170,255})}));
 end PotentialSensor;

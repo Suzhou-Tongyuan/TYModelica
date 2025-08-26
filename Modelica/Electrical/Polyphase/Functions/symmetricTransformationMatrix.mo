@@ -1,10 +1,10 @@
 ﻿within Modelica.Electrical.Polyphase.Functions;
-function symmetricTransformationMatrix 
+function symmetricTransformationMatrix
   "Transformation matrix for symmetrical components"
   extends Modelica.Icons.Function;
   import Modelica.ComplexMath.fromPolar;
   input Integer m "Number of phases";
-  output Complex tM[m, m] 
+  output Complex tM[m, m]
     "Transformation matrix for m phase symmetrical components";
 protected
   Integer nBase=numberOfSymmetricBaseSystems(m);

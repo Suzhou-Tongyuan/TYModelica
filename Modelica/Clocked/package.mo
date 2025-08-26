@@ -2,7 +2,7 @@
 package Clocked "Clock triggered blocks for describing synchronous behavior suited for implementation of control systems"
 extends Modelica.Icons.Package;
 
-  annotation (preferredView="info", 
+  annotation (preferredView="info",
   Documentation(info="<html>
 <p>
 Library <strong>Modelica.Clocked</strong> is a Modelica package
@@ -48,7 +48,7 @@ Furthermore:
 <p>
 <em>Copyright &copy; 2012-2020, Modelica Association and contributors.</em>
 </p>
-</html>", 
+</html>",
 revisions="<html>
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
@@ -72,26 +72,26 @@ revisions="<html>
 <tr><td></td><td>see <a href=\"modelica://Modelica.Clocked.UsersGuide.ReleaseNotes\">Release Notes</a>.</td></tr>
 
 </table>
-</html>"), 
+</html>"),
     Icon(
       coordinateSystem(
-        extent = {{-100, -100}, {100, 100}}, 
-        preserveAspectRatio = true), 
+        extent = {{-100, -100}, {100, 100}},
+        preserveAspectRatio = true),
       graphics={
-        Ellipse(extent = {{-80, -80}, {80, 80}}), 
-        Line(points = {{80, 0}, {60, 0}}), 
-        Line(points = {{69.282, 40}, {51.962, 30}}), 
-        Line(points = {{40, 69.282}, {30, 51.962}}), 
-        Line(points = {{0, 80}, {0, 60}}), 
-        Line(points = {{-40, 69.282}, {-30, 51.962}}), 
-        Line(points = {{-69.282, 40}, {-51.962, 30}}), 
-        Line(points = {{-80, 0}, {-60, 0}}), 
-        Line(points = {{-69.282, -40}, {-51.962, -30}}), 
-        Line(points = {{-40, -69.282}, {-30, -51.962}}), 
-        Line(points = {{0, -80}, {0, -60}}), 
-        Line(points = {{40, -69.282}, {30, -51.962}}), 
-        Line(points = {{69.282, -40}, {51.962, -30}}), 
-        Line(points = {{80, 0}, {60, 0}}), 
-        Line(points = {{0, 0}, {-50, 50}}), 
+        Ellipse(extent = {{-80, -80}, {80, 80}}),
+        Line(points = {{80, 0}, {60, 0}}),
+        Line(points = {{69.282, 40}, {51.962, 30}}),
+        Line(points = {{40, 69.282}, {30, 51.962}}),
+        Line(points = {{0, 80}, {0, 60}}),
+        Line(points = {{-40, 69.282}, {-30, 51.962}}),
+        Line(points = {{-69.282, 40}, {-51.962, 30}}),
+        Line(points = {{-80, 0}, {-60, 0}}),
+        Line(points = {{-69.282, -40}, {-51.962, -30}}),
+        Line(points = {{-40, -69.282}, {-30, -51.962}}),
+        Line(points = {{0, -80}, {0, -60}}),
+        Line(points = {{40, -69.282}, {30, -51.962}}),
+        Line(points = {{69.282, -40}, {51.962, -30}}),
+        Line(points = {{80, 0}, {60, 0}}),
+        Line(points = {{0, 0}, {-50, 50}}),
         Line(points = {{0, 0}, {40, 0}})}));
 end Clocked;

@@ -19,6 +19,6 @@ Demonstrate usage of component
 <a href=\"modelica://Modelica.Mechanics.Translational.Sources.Accelerate\">Sources.Accelerate</a>
 by moving a mass with a predefined acceleration.
 </p>
-</html>"), 
+</html>"),
        experiment(StopTime=1.0, Interval=0.001));
 end Accelerate;

@@ -1,60 +1,60 @@
 ﻿within Modelica.Electrical.Machines.BasicMachines.InductionMachines;
-model IM_SquirrelCage 
+model IM_SquirrelCage
   "Induction machine with squirrel cage rotor"
   extends Machines.Interfaces.PartialBasicInductionMachine(
-    final idq_ss=airGap.i_ss, 
-    final idq_sr(stateSelect=stateSelect_sr)=airGap.i_sr, 
-    final idq_rs=airGap.i_rs, 
-    final idq_rr(stateSelect=stateSelect_rr)=airGap.i_rr, 
+    final idq_ss=airGap.i_ss,
+    final idq_sr(stateSelect=stateSelect_sr)=airGap.i_sr,
+    final idq_rs=airGap.i_rs,
+    final idq_rr(stateSelect=stateSelect_rr)=airGap.i_rr,
     redeclare final Machines.Thermal.InductionMachines.ThermalAmbientIMC 
-      thermalAmbient(final Tr=TrOperational), 
+      thermalAmbient(final Tr=TrOperational),
     redeclare final Machines.Interfaces.InductionMachines.ThermalPortIMC 
-      thermalPort, 
+      thermalPort,
     redeclare final Machines.Interfaces.InductionMachines.ThermalPortIMC 
-      internalThermalPort, 
+      internalThermalPort,
     redeclare final Machines.Interfaces.InductionMachines.PowerBalanceIMC 
       powerBalance(final lossPowerRotorWinding=squirrelCageR.LossPower, final
-        lossPowerRotorCore=0), 
+        lossPowerRotorCore=0),
     statorCore(final w=statorCoreParameters.wRef));
-  output SI.Current ir[2]=squirrelCageR.i 
+  output SI.Current ir[2]=squirrelCageR.i
     "Rotor cage currents";
   Machines.BasicMachines.Components.AirGapS airGap(
-    final p=p, 
-    final Lm=Lm, 
-    final m=m) annotation (Placement(transformation(extent={{-10,-10},{10,10}}, 
+    final p=p,
+    final Lm=Lm,
+    final m=m) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
           rotation=270)));
   parameter StateSelect stateSelect_ss = StateSelect.prefer;
   parameter StateSelect stateSelect_sr = StateSelect.prefer;
   parameter StateSelect stateSelect_rs = StateSelect.prefer;
   parameter StateSelect stateSelect_rr = StateSelect.prefer;
-  parameter SI.Inductance Lm(start=3*sqrt(1 - 0.0667)/(2*pi 
+  parameter SI.Inductance Lm(start=3*sqrt(1 - 0.0667)/(2*pi
         *fsNominal)) "Stator main field inductance per phase" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter SI.Inductance Lrsigma(start=3*(1 - sqrt(1 - 
-        0.0667))/(2*pi*fsNominal)) 
+  parameter SI.Inductance Lrsigma(start=3*(1 - sqrt(1 -
+        0.0667))/(2*pi*fsNominal))
     "Rotor stray inductance per phase (equivalent three-phase winding)" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter SI.Resistance Rr(start=0.04) 
+  parameter SI.Resistance Rr(start=0.04)
     "Rotor resistance per phase (equivalent three-phase winding) at TRef" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter SI.Temperature TrRef(start=293.15) 
+  parameter SI.Temperature TrRef(start=293.15)
     "Reference temperature of rotor resistance" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter Machines.Thermal.LinearTemperatureCoefficient20 alpha20r(start=0) 
+  parameter Machines.Thermal.LinearTemperatureCoefficient20 alpha20r(start=0)
     "Temperature coefficient of rotor resistance at 20 degC" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter SI.Temperature TrOperational(start=293.15) 
+  parameter SI.Temperature TrOperational(start=293.15)
     "Operational temperature of rotor resistance" annotation (Dialog(
         group="Operational temperatures", enable=not useThermalPort));
   Machines.BasicMachines.Components.SquirrelCage squirrelCageR(
-    final Lrsigma=Lrsigma, 
-    final Rr=Rr, 
-    final useHeatPort=true, 
-    final T_ref=TrRef, 
+    final Lrsigma=Lrsigma,
+    final Rr=Rr,
+    final useHeatPort=true,
+    final T_ref=TrRef,
     final alpha=Machines.Thermal.convertAlpha(alpha20r, TrRef)) annotation (
       Placement(transformation(
-        origin={0,-40}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={0,-40},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
 equation
   connect(airGap.spacePhasor_r, squirrelCageR.spacePhasor_r) 

@@ -1,92 +1,92 @@
 ﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2mPulse;
-model ThyristorBridge2mPulse_DC_Drive 
+model ThyristorBridge2mPulse_DC_Drive
   "2*m pulse thyristor bridge feeding a DC drive"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;
   parameter Integer m(final min=3) = 3 "Number of phases" annotation(Evaluate=true);
-  parameter SI.Voltage Vrms=dcpmData.VaNominal/ 
-      Modelica.Electrical.Polyphase.Functions.factorY2DC(m) 
+  parameter SI.Voltage Vrms=dcpmData.VaNominal/
+      Modelica.Electrical.Polyphase.Functions.factorY2DC(m)
     "RMS supply voltage";
   parameter SI.Frequency f=50 "Frequency";
-  parameter SI.ApparentPower SMains=250E3 
+  parameter SI.ApparentPower SMains=250E3
     "Mains short circuit apparent power";
   parameter Real lamdaMains=0.1 "Mains short circuit power factor";
-  final parameter SI.Impedance ZMains=Vrms^2/SMains*m 
+  final parameter SI.Impedance ZMains=Vrms^2/SMains*m
     "Mains short circuit impedance";
-  final parameter SI.Resistance RMains=ZMains*lamdaMains 
+  final parameter SI.Resistance RMains=ZMains*lamdaMains
     "Mains resistance" annotation (Evaluate=true);
-  final parameter SI.Inductance LMains=ZMains*sqrt(1 - 
+  final parameter SI.Inductance LMains=ZMains*sqrt(1 -
       lamdaMains^2)/(2*pi*f) "Mains inductance" 
     annotation (Evaluate=true);
-  parameter SI.Inductance Ld=3*dcpmData.La 
+  parameter SI.Inductance Ld=3*dcpmData.La
     "Smoothing inductance" annotation (Evaluate=true);
-  final parameter SI.Torque tauNominal=dcpmData.ViNominal 
+  final parameter SI.Torque tauNominal=dcpmData.ViNominal
       *dcpmData.IaNominal/dcpmData.wNominal "Nominal torque";
   output SI.AngularVelocity w(displayUnit="rpm") = dcpm.wMechanical;
   output SI.Torque tau=dcpm.tauShaft;
   Modelica.Electrical.Polyphase.Sources.SineVoltage sinevoltage(
-    m=m, 
-    final V=fill(sqrt(2)*Vrms, m), 
+    m=m,
+    final V=fill(sqrt(2)*Vrms, m),
     f=fill(f, m)) annotation (Placement(transformation(
-        origin={-80,0}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-80,0},
+        extent={{-10,-10},{10,10}},
         rotation=-90)));
   PowerConverters.ACDC.ThyristorBridge2mPulse rectifier(useHeatPort=false, m=m) 
     annotation (Placement(transformation(extent={{-48,-10},{-28,10}})));
   Modelica.Electrical.Analog.Sensors.VoltageSensor voltagesensor 
     annotation (Placement(transformation(
-        origin={50,10}, 
-        extent={{10,-10},{-10,10}}, 
+        origin={50,10},
+        extent={{10,-10},{-10,10}},
         rotation=90)));
   Modelica.Blocks.Math.Mean meanVoltage(f=2*m*f) annotation (Placement(
         transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={80,40})));
   Modelica.Blocks.Math.RootMeanSquare rootMeanSquareVoltage(f=2*m*f) 
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={80,10})));
   Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor 
     annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=180, 
+        extent={{-10,10},{10,-10}},
+        rotation=180,
         origin={0,-40})));
   Modelica.Blocks.Math.Mean meanCurrent(f=2*m*f) annotation (Placement(
         transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={80,-60})));
   PowerConverters.ACDC.Control.VoltageBridge2mPulse pulse2(
-    useConstantFiringAngle=false, 
-    useFilter=true, 
+    useConstantFiringAngle=false,
+    useFilter=true,
     m=m) annotation (Placement(transformation(
-        extent={{10,10},{-10,-10}}, 
-        rotation=180, 
+        extent={{10,10},{-10,-10}},
+        rotation=180,
         origin={-38,-40})));
   Modelica.Electrical.Analog.Basic.Inductor inductor(L=Ld) annotation (
       Placement(transformation(
-        origin={30,-10}, 
-        extent={{10,-10},{-10,10}}, 
+        origin={30,-10},
+        extent={{10,-10},{-10,10}},
         rotation=90)));
   Modelica.Electrical.Machines.BasicMachines.DCMachines.DC_PermanentMagnet 
     dcpm(
-    VaNominal=dcpmData.VaNominal, 
-    IaNominal=dcpmData.IaNominal, 
-    wNominal=dcpmData.wNominal, 
-    TaNominal=dcpmData.TaNominal, 
-    Ra=dcpmData.Ra, 
-    TaRef=dcpmData.TaRef, 
-    La=dcpmData.La, 
-    Jr=dcpmData.Jr, 
-    useSupport=false, 
-    Js=dcpmData.Js, 
-    frictionParameters=dcpmData.frictionParameters, 
-    coreParameters=dcpmData.coreParameters, 
-    strayLoadParameters=dcpmData.strayLoadParameters, 
-    brushParameters=dcpmData.brushParameters, 
-    phiMechanical(fixed=true), 
-    wMechanical(fixed=true, start=dcpmData.wNominal), 
-    TaOperational=293.15, 
-    alpha20a=dcpmData.alpha20a, 
+    VaNominal=dcpmData.VaNominal,
+    IaNominal=dcpmData.IaNominal,
+    wNominal=dcpmData.wNominal,
+    TaNominal=dcpmData.TaNominal,
+    Ra=dcpmData.Ra,
+    TaRef=dcpmData.TaRef,
+    La=dcpmData.La,
+    Jr=dcpmData.Jr,
+    useSupport=false,
+    Js=dcpmData.Js,
+    frictionParameters=dcpmData.frictionParameters,
+    coreParameters=dcpmData.coreParameters,
+    strayLoadParameters=dcpmData.strayLoadParameters,
+    brushParameters=dcpmData.brushParameters,
+    phiMechanical(fixed=true),
+    wMechanical(fixed=true, start=dcpmData.wNominal),
+    TaOperational=293.15,
+    alpha20a=dcpmData.alpha20a,
     ia(start=0, fixed=true)) annotation (Placement(transformation(
           extent={{10,-90},{30,-70}})));
   parameter
@@ -96,30 +96,30 @@ model ThyristorBridge2mPulse_DC_Drive
   Modelica.Mechanics.Rotational.Sources.Torque torque 
     annotation (Placement(transformation(extent={{60,-90},{40,-70}})));
   Modelica.Blocks.Sources.Ramp ramp(
-    duration=10, 
-    startTime=5, 
-    height=tauNominal, 
+    duration=10,
+    startTime=5,
+    height=tauNominal,
     offset=-tauNominal) 
     annotation (Placement(transformation(extent={{90,-90},{70,-70}})));
   Modelica.Blocks.Sources.Constant const(k=0) annotation (Placement(
         transformation(
-        extent={{10,-10},{-10,10}}, 
-        rotation=270, 
+        extent={{10,-10},{-10,10}},
+        rotation=270,
         origin={-38,-70})));
   Modelica.Electrical.Polyphase.Basic.Resistor rMains(m=m, R=fill(
         RMains, m)) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=90, 
+        extent={{-10,-10},{10,10}},
+        rotation=90,
         origin={-80,30})));
   Modelica.Electrical.Polyphase.Basic.Inductor lMains(m=m, L=fill(
         LMains, m)) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=90, 
+        extent={{-10,-10},{10,10}},
+        rotation=90,
         origin={-80,60})));
   Modelica.Electrical.Polyphase.Basic.MultiStarResistance earthing(m=m) 
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-80,-30})));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
         transformation(extent={{-30,-60},{-10,-40}})));
@@ -169,9 +169,9 @@ equation
       points={{-28,-6},{-20,-6},{-20,-40}}, color={0,0,255}));
   annotation (
     experiment(
-      StopTime=15, 
-      Interval=0.0002, 
-      Tolerance=1e-006), 
+      StopTime=15,
+      Interval=0.0002,
+      Tolerance=1e-006),
     Documentation(info="<html>
 <p>
 In this example a PM excited DC machine is started with nominal torque at nominal speed. After 5 seconds, load torque is reduced to zero over a period of additional 10 seconds. At 15 seconds, the machine is operating at no load.

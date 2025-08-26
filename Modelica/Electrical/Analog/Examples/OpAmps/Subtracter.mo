@@ -7,18 +7,18 @@ model Subtracter "Inverting subtracter"
     annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
   Sources.SineVoltage vIn1(V=Vin, f=f) annotation (Placement(
         transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-60,0})));
   Sources.ConstantVoltage vIn2(V=Vin) annotation (Placement(
         transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-40,-10})));
   Modelica.Electrical.Analog.Sensors.VoltageSensor vOut annotation (Placement(
         transformation(
-        extent={{10,10},{-10,-10}}, 
-        rotation=270, 
+        extent={{10,10},{-10,-10}},
+        rotation=270,
         origin={40,0})));
   OpAmpCircuits.Feedback feedback(p1_2(i(start=0))) 
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
@@ -40,10 +40,10 @@ equation
   annotation (Documentation(info="<html>
 <p>This is an inverting subtracter.</p>
 <p>Note: <code>vOut</code> measure the negative output voltage.</p>
-</html>"), 
+</html>"),
     experiment(
-      StartTime=0, 
-      StopTime=1, 
-      Tolerance=1e-006, 
+      StartTime=0,
+      StopTime=1,
+      Tolerance=1e-006,
       Interval=0.001));
 end Subtracter;

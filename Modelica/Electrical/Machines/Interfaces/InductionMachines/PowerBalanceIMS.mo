@@ -1,10 +1,10 @@
 ﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
-record PowerBalanceIMS 
+record PowerBalanceIMS
   "Power balance of induction machines with slipring"
   extends 
     Machines.Interfaces.InductionMachines.PartialPowerBalanceInductionMachines(
-      final lossPowerTotal=lossPowerStatorWinding + lossPowerStatorCore + 
-        lossPowerRotorCore + lossPowerStrayLoad + lossPowerFriction + 
+      final lossPowerTotal=lossPowerStatorWinding + lossPowerStatorCore +
+        lossPowerRotorCore + lossPowerStrayLoad + lossPowerFriction +
         lossPowerRotorWinding + lossPowerBrush);
   SI.Power lossPowerRotorWinding "Rotor copper losses";
   SI.Power lossPowerBrush "Brush losses";

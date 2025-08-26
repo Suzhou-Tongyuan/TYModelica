@@ -1,28 +1,28 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames;
-record Orientation 
+record Orientation
   "Orientation object defining rotation from a frame 1 into a frame 2"
 
   extends Modelica.Icons.Record;
   Real T[3, 3] "Transformation matrix from world frame to local frame";
-  SI.AngularVelocity w[3] 
+  SI.AngularVelocity w[3]
     "Absolute angular velocity of local frame, resolved in local frame";
 
-  encapsulated function equalityConstraint 
+  encapsulated function equalityConstraint
     "Return the constraint residues to express that two frames have the same orientation"
 
     import Modelica;
     import Modelica.Mechanics.MultiBody.Frames;
     extends Modelica.Icons.Function;
-    input Frames.Orientation R1 
+    input Frames.Orientation R1
       "Orientation object to rotate frame 0 into frame 1";
-    input Frames.Orientation R2 
+    input Frames.Orientation R2
       "Orientation object to rotate frame 0 into frame 2";
-    output Real residue[3] 
+    output Real residue[3]
       "The rotation angles around x-, y-, and z-axis of frame 1 to rotate frame 1 into frame 2 for a small rotation (should be zero)";
   algorithm
     residue := {
-       Modelica.Math.atan2(cross(R1.T[1, :], R1.T[2, :])*R2.T[2, :],R1.T[1,:]*R2.T[1,:]), 
-       Modelica.Math.atan2(-cross(R1.T[1, :],R1.T[2, :])*R2.T[1, :],R1.T[2,:]*R2.T[2,:]), 
+       Modelica.Math.atan2(cross(R1.T[1, :], R1.T[2, :])*R2.T[2, :],R1.T[1,:]*R2.T[1,:]),
+       Modelica.Math.atan2(-cross(R1.T[1, :],R1.T[2, :])*R2.T[1, :],R1.T[2,:]*R2.T[2,:]),
        Modelica.Math.atan2(R1.T[2, :]*R2.T[1, :],R1.T[3,:]*R2.T[3,:])};
     annotation(Inline=true, Documentation(info="<html>
 <h4>Syntax</h4>

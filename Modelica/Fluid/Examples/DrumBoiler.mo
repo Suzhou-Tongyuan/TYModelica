@@ -1,60 +1,60 @@
 ﻿within Modelica.Fluid.Examples;
-package DrumBoiler 
+package DrumBoiler
   "Drum boiler example, see Franke, Rode, Krüger: On-line Optimization of Drum Boiler Startup, 3rd International Modelica Conference, Linköping, 2003"
 
   extends Modelica.Icons.ExamplesPackage;
-  model DrumBoiler 
+  model DrumBoiler
     "Complete drum boiler model, including evaporator and supplementary components"
     extends Modelica.Icons.Example;
 
-    parameter Boolean use_inputs = false 
+    parameter Boolean use_inputs = false
       "= true, if external inputs are used, otherwise use test data contained internally";
 
     Modelica.Fluid.Examples.DrumBoiler.BaseClasses.EquilibriumDrumBoiler 
       evaporator(
-      m_D=300e3, 
-      cp_D=500, 
-      V_t=100, 
-      V_l_start=67, 
-      redeclare package Medium = Modelica.Media.Water.StandardWater, 
-      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial, 
-      massDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial, 
-      p_start=100000) annotation (Placement(transformation(extent={{-46,-30}, 
+      m_D=300e3,
+      cp_D=500,
+      V_t=100,
+      V_l_start=67,
+      redeclare package Medium = Modelica.Media.Water.StandardWater,
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
+      massDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
+      p_start=100000) annotation (Placement(transformation(extent={{-46,-30},
               {-26,-10}})));
     Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow furnace 
       annotation (Placement(transformation(
-          origin={-36,-53}, 
-          extent={{-10,-10},{10,10}}, 
+          origin={-36,-53},
+          extent={{-10,-10},{10,10}},
           rotation=90)));
-    Modelica.Fluid.Sources.FixedBoundary sink(nPorts=1, p=Cv.from_bar(0.5), 
-      redeclare package Medium = Modelica.Media.Water.StandardWaterOnePhase, 
+    Modelica.Fluid.Sources.FixedBoundary sink(nPorts=1, p=Cv.from_bar(0.5),
+      redeclare package Medium = Modelica.Media.Water.StandardWaterOnePhase,
       T=500) 
       annotation (Placement(transformation(
-          origin={90,-20}, 
-          extent={{-10,-10},{10,10}}, 
+          origin={90,-20},
+          extent={{-10,-10},{10,10}},
           rotation=180)));
     Modelica.Fluid.Sensors.MassFlowRate massFlowRate(redeclare
-        package Medium = 
+        package Medium =
           Modelica.Media.Water.StandardWater) 
       annotation (Placement(transformation(
-          origin={30,-20}, 
-          extent={{10,10},{-10,-10}}, 
+          origin={30,-20},
+          extent={{10,10},{-10,-10}},
           rotation=180)));
-    Modelica.Fluid.Sensors.Temperature temperature(redeclare package Medium 
+    Modelica.Fluid.Sensors.Temperature temperature(redeclare package Medium
         = Modelica.Media.Water.StandardWater) 
       annotation (Placement(transformation(
-          origin={-3,-1}, 
-          extent={{10,10},{-10,-10}}, 
+          origin={-3,-1},
+          extent={{10,10},{-10,-10}},
           rotation=180)));
     Modelica.Fluid.Sensors.Pressure pressure(redeclare package
-        Medium = 
+        Medium =
           Modelica.Media.Water.StandardWater) 
       annotation (Placement(transformation(extent={{10,18},{30,38}})));
     Modelica.Blocks.Continuous.PI controller(T=120, k=10, initType=Modelica.Blocks.Types.Init.InitialState) 
       annotation (Placement(transformation(extent={{-49,23},{-63,37}})));
-    Modelica.Fluid.Sources.MassFlowSource_h pump(nPorts=1, 
-                                             h=5e5, redeclare package Medium = 
-          Modelica.Media.Water.StandardWater, 
+    Modelica.Fluid.Sources.MassFlowSource_h pump(nPorts=1,
+                                             h=5e5, redeclare package Medium =
+          Modelica.Media.Water.StandardWater,
       use_m_flow_in=true) 
       annotation (Placement(transformation(extent={{-80,-30},{-60,-10}})));
     Modelica.Blocks.Math.Feedback feedback 
@@ -78,13 +78,13 @@ package DrumBoiler
       annotation (Placement(transformation(extent={{38,49},{48,59}})));
     Modelica.Blocks.Nonlinear.Limiter limiter(uMin=0, uMax=500) 
       annotation (Placement(transformation(
-          origin={-78,30}, 
-          extent={{-7,7},{7,-7}}, 
+          origin={-78,30},
+          extent={{-7,7},{7,-7}},
           rotation=180)));
     Modelica.Fluid.Valves.ValveLinear SteamValve(redeclare
-        package Medium = 
-          Modelica.Media.Water.StandardWater, 
-      dp_nominal=9000000, 
+        package Medium =
+          Modelica.Media.Water.StandardWater,
+      dp_nominal=9000000,
       m_flow_nominal=180) 
       annotation (Placement(transformation(extent={{50,-10},{70,-30}})));
 
@@ -108,26 +108,26 @@ package DrumBoiler
       annotation (Line(points={{30,-9},{30,4},{106,4}}, color={0,0,127}));
     connect(evaporator.V, V_l) 
       annotation (Line(points={{-32,-9},{-32,16},{-4,16},{-4,80},{106,80}}, color={0,0,127}));
-    connect(MW2W.y,furnace.Q_flow) annotation (Line(points={{-43.5,-70},{-36, 
+    connect(MW2W.y,furnace.Q_flow) annotation (Line(points={{-43.5,-70},{-36,
             -70},{-36,-63}}, color={0,0,127}));
     connect(pressure.p, Pa2bar.u) 
       annotation (Line(points={{31,28},{36,28}}, color={0,0,127}));
     connect(Pa2bar.y, p_S) 
       annotation (Line(points={{47.5,28},{106,28}}, color={0,0,127}));
     connect(K2degC.Celsius, T_S) annotation (Line(points={{48.5,54},{106,54}}, color={0,0,127}));
-    connect(controller.y, limiter.u) annotation (Line(points={{-63.7,30},{-69.6, 
+    connect(controller.y, limiter.u) annotation (Line(points={{-63.7,30},{-69.6,
             30}}, color={0,0,127}));
-    connect(limiter.y, pump.m_flow_in) annotation (Line(points={{-85.7,30},{-90, 
+    connect(limiter.y, pump.m_flow_in) annotation (Line(points={{-85.7,30},{-90,
             30},{-90,-12},{-80,-12}}, color={0,0,127}));
-    connect(temperature.T, K2degC.Kelvin) annotation (Line(points={{4,-1},{4,-1}, 
+    connect(temperature.T, K2degC.Kelvin) annotation (Line(points={{4,-1},{4,-1},
             {8,-1},{8,54},{37,54}}, color={0,0,127}));
     connect(pressure.port, massFlowRate.port_a) annotation (Line(points={{20,18},{
             20,-20}}, color={0,127,255}));
-    connect(pump.ports[1], evaporator.port_a) annotation (Line(points={{-60,-20}, 
+    connect(pump.ports[1], evaporator.port_a) annotation (Line(points={{-60,-20},
             {-46,-20}}, color={0,127,255}));
     connect(massFlowRate.port_b, SteamValve.port_a) annotation (Line(points={{
             40,-20},{50,-20}}, color={0,127,255}));
-    connect(SteamValve.port_b, sink.ports[1]) annotation (Line(points={{70,-20},{75, 
+    connect(SteamValve.port_b, sink.ports[1]) annotation (Line(points={{70,-20},{75,
             -20},{80,-20}}, color={0,127,255}));
     connect(evaporator.port_b, massFlowRate.port_a) annotation (Line(points={{
             -26,-20},{20,-20}}, color={0,127,255}));
@@ -147,19 +147,19 @@ package DrumBoiler
         points={{-23.3,55},{-16,55},{-16,30},{-24,30}}, color={0,0,127}));
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=false, 
+          preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
           Text(
-            extent={{-151,165},{138,102}}, 
-            textColor={0,0,255}, 
-            textString="%name"), 
+            extent={{-151,165},{138,102}},
+            textColor={0,0,255},
+            textString="%name"),
           Text(
-            extent={{-79,67},{67,21}}, 
-            textString="drum"), 
+            extent={{-79,67},{67,21}},
+            textString="drum"),
           Text(
-            extent={{-90,-14},{88,-64}}, 
-            textString="boiler")}), 
-      experiment(StopTime=5400), 
+            extent={{-90,-14},{88,-64}},
+            textString="boiler")}),
+      experiment(StopTime=5400),
       Documentation(info="<html>
 
 <img src=\"modelica://Modelica/Resources/Images/Fluid/Examples/DrumBoiler/DrumBoiler.png\" border=\"1\"
@@ -170,36 +170,36 @@ package DrumBoiler
   package BaseClasses "Additional components for drum boiler example"
     extends Modelica.Icons.BasesPackage;
 
-    model EquilibriumDrumBoiler 
+    model EquilibriumDrumBoiler
       "Simple Evaporator with two states, see Åström, Bell: Drum-boiler dynamics, Automatica 36, 2000, pp.363-378"
       extends Modelica.Fluid.Interfaces.PartialTwoPort(
-        final port_a_exposesState=true, 
-        final port_b_exposesState=true, 
-        redeclare replaceable package Medium = 
+        final port_a_exposesState=true,
+        final port_b_exposesState=true,
+        redeclare replaceable package Medium =
             Modelica.Media.Water.StandardWater 
             constrainedby Modelica.Media.Interfaces.PartialTwoPhaseMedium);
       import Modelica.Constants;
       import Modelica.Fluid.Types;
 
       parameter SI.Mass m_D "Mass of surrounding drum metal";
-      parameter Medium.SpecificHeatCapacity cp_D 
+      parameter Medium.SpecificHeatCapacity cp_D
         "Specific heat capacity of drum metal";
       parameter SI.Volume V_t "Total volume inside drum";
-      parameter Medium.AbsolutePressure p_start=system.p_start 
+      parameter Medium.AbsolutePressure p_start=system.p_start
         "Start value of pressure" 
       annotation(Dialog(tab = "Initialization"));
-      parameter SI.Volume V_l_start=V_t/2 
+      parameter SI.Volume V_l_start=V_t/2
         "Start value of liquid volumeStart value of volume" 
       annotation(Dialog(tab = "Initialization"));
 
       // Assumptions
-      parameter Boolean allowFlowReversal = system.allowFlowReversal 
+      parameter Boolean allowFlowReversal = system.allowFlowReversal
         "= true, if flow reversal is enabled, otherwise restrict flow to design direction (port_a -> port_b)" 
         annotation(Dialog(tab="Assumptions"), Evaluate=true);
-      parameter Types.Dynamics energyDynamics=system.energyDynamics 
+      parameter Types.Dynamics energyDynamics=system.energyDynamics
         "Formulation of energy balance" 
         annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-      parameter Types.Dynamics massDynamics=system.massDynamics 
+      parameter Types.Dynamics massDynamics=system.massDynamics
         "Formulation of mass balance" 
         annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
 
@@ -207,21 +207,21 @@ package DrumBoiler
       annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
       Modelica.Blocks.Interfaces.RealOutput V(unit="m3") "Liquid volume" 
       annotation (Placement(transformation(
-            origin={40,110}, 
-            extent={{-10,-10},{10,10}}, 
+            origin={40,110},
+            extent={{-10,-10},{10,10}},
             rotation=90)));
 
-      Medium.SaturationProperties sat 
+      Medium.SaturationProperties sat
         "State vector to compute saturation properties";
-      Medium.AbsolutePressure p(start=p_start, stateSelect=StateSelect.prefer) 
+      Medium.AbsolutePressure p(start=p_start, stateSelect=StateSelect.prefer)
         "Pressure inside drum boiler";
       Medium.Temperature T "Temperature inside drum boiler";
       SI.Volume V_v "Volume of vapour phase";
-      SI.Volume V_l(start=V_l_start, stateSelect=StateSelect.prefer) 
+      SI.Volume V_l(start=V_l_start, stateSelect=StateSelect.prefer)
         "Volumes of liquid phase";
-      Medium.SpecificEnthalpy h_v=Medium.dewEnthalpy(sat) 
+      Medium.SpecificEnthalpy h_v=Medium.dewEnthalpy(sat)
         "Specific enthalpy of vapour";
-      Medium.SpecificEnthalpy h_l=Medium.bubbleEnthalpy(sat) 
+      Medium.SpecificEnthalpy h_l=Medium.bubbleEnthalpy(sat)
         "Specific enthalpy of liquid";
       Medium.Density rho_v=Medium.dewDensity(sat) "Density in vapour phase";
       Medium.Density rho_l=Medium.bubbleDensity(sat) "Density in liquid phase";
@@ -229,9 +229,9 @@ package DrumBoiler
       SI.Energy U "Internal energy";
       Medium.Temperature T_D=heatPort.T "Temperature of drum";
       SI.HeatFlowRate q_F=heatPort.Q_flow "Heat flow rate from furnace";
-      Medium.SpecificEnthalpy h_W=inStream(port_a.h_outflow) 
+      Medium.SpecificEnthalpy h_W=inStream(port_a.h_outflow)
         "Feed water enthalpy (specific enthalpy close to feedwater port when mass flows in to the boiler)";
-      Medium.SpecificEnthalpy h_S=inStream(port_b.h_outflow) 
+      Medium.SpecificEnthalpy h_S=inStream(port_b.h_outflow)
         "Steam enthalpy (specific enthalpy close to steam port when mass flows in to the boiler)";
       SI.MassFlowRate qm_W=port_a.m_flow "Feed water mass flow rate";
       SI.MassFlowRate qm_S=port_b.m_flow "Steam mass flow rate";
@@ -247,13 +247,13 @@ package DrumBoiler
         der(m) = qm_W + qm_S "Dynamic mass balance";
       end if;
       if energyDynamics == Types.Dynamics.SteadyState then
-        0 = q_F + port_a.m_flow*actualStream(port_a.h_outflow) 
-                + port_b.m_flow*actualStream(port_b.h_outflow) 
+        0 = q_F + port_a.m_flow*actualStream(port_a.h_outflow)
+                + port_b.m_flow*actualStream(port_b.h_outflow)
           "Steady state energy balance";
       else
-        der(U) = q_F 
-                + port_a.m_flow*actualStream(port_a.h_outflow) 
-                + port_b.m_flow*actualStream(port_b.h_outflow) 
+        der(U) = q_F
+                + port_a.m_flow*actualStream(port_a.h_outflow)
+                + port_b.m_flow*actualStream(port_b.h_outflow)
           "Dynamic energy balance";
       end if;
       V_t = V_l + V_v;
@@ -276,7 +276,7 @@ package DrumBoiler
       V = V_l;
 
     // Check that two-phase equilibrium is actually possible
-      assert(p < Medium.fluidConstants[1].criticalPressure - 10000, 
+      assert(p < Medium.fluidConstants[1].criticalPressure - 10000,
         "Evaporator model requires subcritical pressure");
     initial equation
     // Initial conditions
@@ -295,89 +295,89 @@ package DrumBoiler
 
       annotation (
         Icon(coordinateSystem(
-            preserveAspectRatio=false, 
+            preserveAspectRatio=false,
             extent={{-100,-100},{100,100}}), graphics={
             Rectangle(
-              extent={{-100,64},{100,-64}}, 
-              fillPattern=FillPattern.Backward, 
-              fillColor={135,135,135}), 
+              extent={{-100,64},{100,-64}},
+              fillPattern=FillPattern.Backward,
+              fillColor={135,135,135}),
             Rectangle(
-              extent={{-100,-44},{100,44}}, 
-              fillPattern=FillPattern.HorizontalCylinder, 
-              fillColor={255,255,255}), 
+              extent={{-100,-44},{100,44}},
+              fillPattern=FillPattern.HorizontalCylinder,
+              fillColor={255,255,255}),
             Rectangle(
-              extent=DynamicSelect({{-100,-44},{100,44}}, 
-                                   {{-100,-44},{(-100 + 200*V_l/V_t),44}}), 
-              fillPattern=FillPattern.HorizontalCylinder, 
-              fillColor={0,127,255}), 
+              extent=DynamicSelect({{-100,-44},{100,44}},
+                                   {{-100,-44},{(-100 + 200*V_l/V_t),44}}),
+              fillPattern=FillPattern.HorizontalCylinder,
+              fillColor={0,127,255}),
             Ellipse(
-              extent={{18,0},{48,-29}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{18,0},{48,-29}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Ellipse(
-              extent={{-1,29},{29,0}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-1,29},{29,0}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Ellipse(
-              extent={{43,31},{73,2}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{43,31},{73,2}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Ellipse(
-              extent={{-31,1},{-1,-28}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-31,1},{-1,-28}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Ellipse(
-              extent={{50,15},{80,-14}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{50,15},{80,-14}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Ellipse(
-              extent={{-72,25},{-42,-4}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-72,25},{-42,-4}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Ellipse(
-              extent={{71,-11},{101,-40}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{71,-11},{101,-40}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Ellipse(
-              extent={{72,28},{102,-1}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{72,28},{102,-1}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Ellipse(
-              extent={{71,40},{101,11}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
-            Line(points={{0,-64},{0,-100}}, color={191,0,0}), 
-            Line(points={{40,100},{40,64}}, color={0,0,127}), 
+              extent={{71,40},{101,11}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
+            Line(points={{0,-64},{0,-100}}, color={191,0,0}),
+            Line(points={{40,100},{40,64}}, color={0,0,127}),
             Ellipse(
-              extent={{58,-11},{88,-40}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{58,-11},{88,-40}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Ellipse(
-              extent={{71,1},{101,-28}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid)}), 
+              extent={{71,1},{101,-28}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid)}),
         Documentation(revisions="<html>
 <ul>
 <li><em>Dec 2008</em>

@@ -3,8 +3,8 @@ package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 
   annotation (
-    preferredView="info", 
-    DocumentationClass=true, 
+    preferredView="info",
+    DocumentationClass=true,
     Documentation(info="<html>
 <p>
 This package contains components to model <strong>1-dimensional heat transfer</strong>

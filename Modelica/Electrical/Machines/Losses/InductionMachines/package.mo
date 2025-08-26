@@ -4,7 +4,7 @@ package InductionMachines "Loss models for induction machines"
 
   annotation (Documentation(info="<html>
 This package contains loss models used for induction machine models.
-</html>", 
+</html>",
       revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

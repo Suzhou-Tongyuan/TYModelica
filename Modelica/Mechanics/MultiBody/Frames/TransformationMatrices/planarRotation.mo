@@ -2,11 +2,11 @@
 function planarRotation "Return orientation object of a planar rotation"
   import Modelica.Math;
   extends Modelica.Icons.Function;
-  input Real e[3](each final unit="1") 
+  input Real e[3](each final unit="1")
     "Normalized axis of rotation (must have length=1)";
-  input SI.Angle angle 
+  input SI.Angle angle
     "Rotation angle to rotate frame 1 into frame 2 along axis e";
-  output TransformationMatrices.Orientation T 
+  output TransformationMatrices.Orientation T
     "Orientation object to rotate frame 1 into frame 2";
 algorithm
   T := outerProduct(e,e) + (identity(3) - outerProduct(e,e))*Math.cos(

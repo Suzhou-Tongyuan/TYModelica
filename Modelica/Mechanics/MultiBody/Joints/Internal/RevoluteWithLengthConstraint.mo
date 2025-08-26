@@ -1,61 +1,61 @@
 ﻿within Modelica.Mechanics.MultiBody.Joints.Internal;
-model RevoluteWithLengthConstraint 
+model RevoluteWithLengthConstraint
   "Revolute joint where the rotation angle is computed from a length constraint (1 degree-of-freedom, no potential state)"
 
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;
-  Modelica.Mechanics.Rotational.Interfaces.Flange_a axis 
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a axis
     "1-dim. rotational flange that drives the joint" 
     annotation (Placement(transformation(extent={{10,90},{-10,110}})));
-  Modelica.Mechanics.Rotational.Interfaces.Flange_b bearing 
+  Modelica.Mechanics.Rotational.Interfaces.Flange_b bearing
     "1-dim. rotational flange of the drive bearing" 
     annotation (Placement(transformation(extent={{-50,90},{-70,110}})));
 
-  Modelica.Blocks.Interfaces.RealInput position_a[3](each final quantity="Length", each final unit="m") 
+  Modelica.Blocks.Interfaces.RealInput position_a[3](each final quantity="Length", each final unit="m")
     "Position vector from frame_a to frame_a side of length constraint, resolved in frame_a of revolute joint" 
     annotation (Placement(transformation(extent={{-140,-80},{-100,-40}})));
-  Modelica.Blocks.Interfaces.RealInput position_b[3](each final quantity="Length", each final unit="m") 
+  Modelica.Blocks.Interfaces.RealInput position_b[3](each final quantity="Length", each final unit="m")
     "Position vector from frame_b to frame_b side of length constraint, resolved in frame_b of revolute joint" 
     annotation (Placement(transformation(extent={{140,-80},{100,-40}})));
 
   parameter Boolean animation=true "= true, if animation shall be enabled";
-  parameter SI.Position lengthConstraint(start=1) 
+  parameter SI.Position lengthConstraint(start=1)
     "Fixed length of length constraint";
-  parameter Modelica.Mechanics.MultiBody.Types.Axis n={0,0,1} 
+  parameter Modelica.Mechanics.MultiBody.Types.Axis n={0,0,1}
     "Axis of rotation resolved in frame_a (= same as in frame_b)" 
     annotation (Evaluate=true);
-  parameter Modelica.Units.NonSI.Angle_deg phi_offset=0 
+  parameter Modelica.Units.NonSI.Angle_deg phi_offset=0
     "Relative angle offset (angle = phi + from_deg(phi_offset))";
-  parameter Modelica.Units.NonSI.Angle_deg phi_guess=0 
+  parameter Modelica.Units.NonSI.Angle_deg phi_guess=0
     "Select the configuration such that at initial time |phi - from_deg(phi_guess)| is minimal";
-  parameter SI.Distance cylinderLength=world.defaultJointLength 
+  parameter SI.Distance cylinderLength=world.defaultJointLength
     "Length of cylinder representing the joint axis" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  parameter SI.Distance cylinderDiameter=world.defaultJointWidth 
+  parameter SI.Distance cylinderDiameter=world.defaultJointWidth
     "Diameter of cylinder representing the joint axis" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  input Types.Color cylinderColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor 
+  input Types.Color cylinderColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor
     "Color of cylinder representing the joint axis" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
 
-  final parameter Boolean positiveBranch(fixed=false) 
+  final parameter Boolean positiveBranch(fixed=false)
     "Based on phi_guess, selection of one of the two solutions of the non-linear constraint equation";
-  final parameter Real e[3](each final unit="1")=Modelica.Math.Vectors.normalizeWithAssert(n) 
+  final parameter Real e[3](each final unit="1")=Modelica.Math.Vectors.normalizeWithAssert(n)
     "Unit vector in direction of rotation axis, resolved in frame_a";
 
   SI.Angle phi "Rotation angle of revolute joint";
-  Frames.Orientation R_rel 
+  Frames.Orientation R_rel
     "Relative orientation object from frame_a to frame_b";
-  SI.Angle angle 
+  SI.Angle angle
     "= phi + from_deg(phi_offset) (relative rotation angle between frame_a and frame_b)";
   SI.Torque tau "= axis.tau (driving torque in the axis)";
 
 protected
-  SI.Position r_a[3]=position_a 
+  SI.Position r_a[3]=position_a
     "Position vector from frame_a to frame_a side of length constraint, resolved in frame_a of revolute joint";
-  SI.Position r_b[3]=position_b 
+  SI.Position r_b[3]=position_b
     "Position vector from frame_b to frame_b side of length constraint, resolved in frame_b of revolute joint";
   Real e_r_a "Projection of r_a on e";
   Real e_r_b "Projection of r_b on e";
@@ -70,29 +70,29 @@ protected
   Real ksin_angle "= k1*sin(angle)";
 
   Visualizers.Advanced.Shape cylinder(
-    shapeType="cylinder", 
-    color=cylinderColor, 
-    specularCoefficient=specularCoefficient, 
-    length=cylinderLength, 
-    width=cylinderDiameter, 
-    height=cylinderDiameter, 
-    lengthDirection=e, 
-    widthDirection={0,1,0}, 
-    r_shape=-e*(cylinderLength/2), 
-    r=frame_a.r_0, 
+    shapeType="cylinder",
+    color=cylinderColor,
+    specularCoefficient=specularCoefficient,
+    length=cylinderLength,
+    width=cylinderDiameter,
+    height=cylinderDiameter,
+    lengthDirection=e,
+    widthDirection={0,1,0},
+    r_shape=-e*(cylinderLength/2),
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
 
-  function selectBranch 
+  function selectBranch
     "Determine branch which is closest to initial angle=0"
     extends Modelica.Icons.Function;
     input SI.Length L "Length of length constraint";
-    input Real e[3](each final unit="1") 
+    input Real e[3](each final unit="1")
       "Unit vector along axis of rotation, resolved in frame_a (= same in frame_b)";
-    input SI.Angle angle_guess 
+    input SI.Angle angle_guess
       "Select the configuration such that at initial time |angle-angle_guess| is minimal (angle=0: frame_a and frame_b coincide)";
-    input SI.Position r_a[3] 
+    input SI.Position r_a[3]
       "Position vector from frame_a to frame_a side of length constraint, resolved in frame_a of revolute joint";
-    input SI.Position r_b[3] 
+    input SI.Position r_b[3]
       "Position vector from frame_b to frame_b side of length constraint, resolved in frame_b of revolute joint";
     output Boolean positiveBranch "Branch of the initial solution";
   protected
@@ -187,7 +187,7 @@ position a degree of freedom is lost.
     end if;
   end selectBranch;
 initial equation
-  positiveBranch = selectBranch(lengthConstraint, e, Cv.from_deg(phi_offset 
+  positiveBranch = selectBranch(lengthConstraint, e, Cv.from_deg(phi_offset
      + phi_guess), r_a, r_b);
 equation
   Connections.branch(frame_a.R, frame_b.R);
@@ -238,54 +238,54 @@ position a degree of freedom is lost.
   angle = Modelica.Math.atan2(ksin_angle, kcos_angle);
   annotation (
     Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
-          extent={{-30,10},{10,-10}}, 
-          lineColor={64,64,64}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-30,10},{10,-10}},
+          lineColor={64,64,64},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-100,-60},{-30,60}}, 
-          lineColor={64,64,64}, 
-          fillPattern=FillPattern.HorizontalCylinder, 
-          fillColor={255,255,255}, 
-          radius=10), 
+          extent={{-100,-60},{-30,60}},
+          lineColor={64,64,64},
+          fillPattern=FillPattern.HorizontalCylinder,
+          fillColor={255,255,255},
+          radius=10),
         Rectangle(
-          extent={{30,-60},{100,60}}, 
-          lineColor={64,64,64}, 
-          fillPattern=FillPattern.HorizontalCylinder, 
-          fillColor={255,255,255}, 
-          radius=10), 
+          extent={{30,-60},{100,60}},
+          lineColor={64,64,64},
+          fillPattern=FillPattern.HorizontalCylinder,
+          fillColor={255,255,255},
+          radius=10),
         Text(
-          extent={{-139,-168},{137,-111}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
-        Rectangle(extent={{-100,60},{-30,-60}}, lineColor={64,64,64}, radius=10), 
-        Rectangle(extent={{30,60},{100,-60}}, lineColor={64,64,64}, radius=10), 
+          extent={{-139,-168},{137,-111}},
+          textString="%name",
+          textColor={0,0,255}),
+        Rectangle(extent={{-100,60},{-30,-60}}, lineColor={64,64,64}, radius=10),
+        Rectangle(extent={{30,60},{100,-60}}, lineColor={64,64,64}, radius=10),
         Text(
-          extent={{-142,-108},{147,-69}}, 
-          textString="n=%n"), 
-        Line(points={{-60,60},{-60,90}}), 
-        Line(points={{-20,70},{-60,70}}), 
-        Line(points={{-20,80},{-20,60}}), 
-        Line(points={{20,80},{20,60}}), 
-        Line(points={{20,70},{41,70}}), 
+          extent={{-142,-108},{147,-69}},
+          textString="n=%n"),
+        Line(points={{-60,60},{-60,90}}),
+        Line(points={{-20,70},{-60,70}}),
+        Line(points={{-20,80},{-20,60}}),
+        Line(points={{20,80},{20,60}}),
+        Line(points={{20,70},{41,70}}),
         Polygon(
-          points={{-9,30},{10,30},{30,50},{-29,50},{-9,30}}, 
-          lineColor={64,64,64}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-9,30},{10,30},{30,50},{-29,50},{-9,30}},
+          lineColor={64,64,64},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{10,30},{30,50},{30,-51},{10,-31},{10,30}}, 
-          lineColor={64,64,64}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
+          points={{10,30},{30,50},{30,-51},{10,-31},{10,30}},
+          lineColor={64,64,64},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-10,90},{10,50}}, 
-          lineColor={64,64,64}, 
-          fillPattern=FillPattern.VerticalCylinder, 
-          fillColor={192,192,192})}), 
+          extent={{-10,90},{10,50}},
+          lineColor={64,64,64},
+          fillPattern=FillPattern.VerticalCylinder,
+          fillColor={192,192,192})}),
     Documentation(info="<html>
 <p>
 Joint where frame_b rotates around axis n which is fixed in frame_a.

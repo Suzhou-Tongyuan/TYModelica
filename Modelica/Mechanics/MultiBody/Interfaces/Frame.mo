@@ -1,10 +1,10 @@
 ﻿within Modelica.Mechanics.MultiBody.Interfaces;
-connector Frame 
+connector Frame
   "Coordinate system fixed to the component with one cut-force and cut-torque (no icon)"
 
-  SI.Position r_0[3] 
+  SI.Position r_0[3]
     "Position vector from world frame to the connector frame origin, resolved in world frame";
-  Frames.Orientation R 
+  Frames.Orientation R
     "Orientation object to rotate the world frame into the connector frame";
   flow SI.Force f[3] "Cut-force resolved in connector frame" annotation (
       unassignedMessage="All Forces cannot be uniquely calculated.

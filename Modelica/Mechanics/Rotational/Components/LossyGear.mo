@@ -1,37 +1,37 @@
 ﻿within Modelica.Mechanics.Rotational.Components;
-model LossyGear 
+model LossyGear
   "Gear with mesh efficiency and bearing friction (stuck/rolling possible)"
 
   extends Modelica.Mechanics.Rotational.Icons.Gear;
   extends Modelica.Mechanics.Rotational.Interfaces.PartialElementaryTwoFlangesAndSupport2;
 
-  parameter Real ratio(start=1) 
+  parameter Real ratio(start=1)
     "Transmission ratio (flange_a.phi/flange_b.phi)";
-  parameter Real lossTable[:, 5]=[0, 1, 1, 0, 0] 
+  parameter Real lossTable[:, 5]=[0, 1, 1, 0, 0]
     "Array for mesh efficiencies and bearing friction depending on speed";
   extends Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPortWithoutT;
-  SI.Angle phi_a 
+  SI.Angle phi_a
     "Angle between left shaft flange and support";
-  SI.Angle phi_b 
+  SI.Angle phi_b
     "Angle between right shaft flange and support";
 
   Real sa(final unit="1") "Path parameter for acceleration and torque loss";
-  SI.AngularVelocity w_a 
+  SI.AngularVelocity w_a
     "Angular velocity of flange_a with respect to support";
-  SI.AngularAcceleration a_a 
+  SI.AngularAcceleration a_a
     "Angular acceleration of flange_a with respect to support";
 
-  Real interpolation_result[1, 4] 
+  Real interpolation_result[1, 4]
     "Result of interpolation in lossTable (= [eta_mf1, eta_mf2, tau_bf1, tau_bf2])";
   Real eta_mf1(unit="1") "Mesh efficiency in case that flange_a is driving";
   Real eta_mf2(unit="1") "Mesh efficiency in case that flange_b is driving";
   SI.Torque tau_bf_a "Bearing friction torque on flange_a side";
-  SI.Torque tau_eta 
+  SI.Torque tau_eta
     "Torque that determines the driving side (= if forwardSliding then flange_a.tau-tau_bf_a else if backwardSliding then flange_a.tau+tau_bf_a else flange_a.tau)";
 
-  SI.Torque tau_bf1 
+  SI.Torque tau_bf1
     "Absolute resultant bearing friction torque with respect to flange_a in case that flange_a is driving (= |tau_bf_a*eta_mf1 + tau_bf_b/i|)";
-  SI.Torque tau_bf2 
+  SI.Torque tau_bf2
     "Absolute resultant bearing friction torque with respect to flange_a in case that flange_b is driving (= |tau_bf_a/eta_mf2 + tau_bf_b/i|)";
 
   SI.Torque quadrant1 "Torque loss if w_a > 0 and flange_a.tau >= 0";
@@ -40,16 +40,16 @@ model LossyGear
   SI.Torque quadrant4 "Torque loss if w_a < 0 and flange_a.tau < 0";
 
   // Resultant friction torques at quadrant values for angular velocities near zero
-  SI.Torque quadrant1_p 
+  SI.Torque quadrant1_p
     "Torque loss at w_a = 0+ to determine driving side (flange_a.tau >= 0)";
-  SI.Torque quadrant2_p 
+  SI.Torque quadrant2_p
     "Torque loss at w_a = 0+ to determine driving side (flange_a.tau < 0)";
-  SI.Torque quadrant3_m 
+  SI.Torque quadrant3_m
     "Torque loss at w_a = 0- to determine driving side (flange_a.tau >=0)";
-  SI.Torque quadrant4_m 
+  SI.Torque quadrant4_m
     "Torque loss at w_a = 0- to determine driving side (flange_a.tau < 0)";
 
-  SI.Torque tauLoss 
+  SI.Torque tauLoss
     "Torque loss due to friction in the gear teeth and in the bearings";
   SI.Torque tauLossMax "Torque loss for positive speed";
   SI.Torque tauLossMin "Torque loss for negative speed";
@@ -57,27 +57,27 @@ model LossyGear
   SI.Torque tauLossMax_p "Torque loss for positive speed";
   SI.Torque tauLossMin_m "Torque loss for negative speed";
 
-  Boolean tau_aPos(start=true) 
+  Boolean tau_aPos(start=true)
     "Only for backwards compatibility (was previously: true, if torque of flange_a is not negative)";
   Boolean tau_etaPos(start=true) "= true, if torque tau_eta is not negative";
   Boolean startForward(start=false) "= true, if starting to roll forward";
   Boolean startBackward(start=false) "= true, if starting to roll backward";
   Boolean locked(start=false) "= true, if gear is locked";
 
-  Boolean ideal 
+  Boolean ideal
     "= true, if losses are neglected (that is lossTable = [0, 1, 1, 0, 0])";
 
   constant Integer Unknown=3 "Value of mode is not known";
   constant Integer Free=2 "Element is not active";
   constant Integer Forward=1 "w_a > 0 (forward rolling)";
-  constant Integer Stuck=0 
+  constant Integer Stuck=0
     "w_a = 0 (forward rolling, locked or backward rolling)";
   constant Integer Backward=-1 "w_a < 0 (backward rolling)";
   Integer mode(
-    final min=Backward, 
-    final max=Unknown, 
-    start=Free, 
-    fixed=true) 
+    final min=Backward,
+    final max=Unknown,
+    start=Free,
+    fixed=true)
     "Mode of friction element (unknown, not active, forward/backward rolling, stuck)";
 
   SI.Torque tau_eta_p "tau_eta assuming positive omega";
@@ -92,12 +92,12 @@ protected
   parameter SI.Torque tau_bf1_0=abs(Modelica.Math.Vectors.interpolate(lossTable[:,1], lossTable[:,4], 0, 1));
   parameter SI.Torque tau_bf2_0=abs(Modelica.Math.Vectors.interpolate(lossTable[:,1], lossTable[:,5], 0, 1));
   parameter SI.Torque tau_bf_a_0=if Modelica.Math.isEqual(
-          eta_mf1_0, 
-          1.0, 
+          eta_mf1_0,
+          1.0,
           Modelica.Constants.eps) and Modelica.Math.isEqual(
-          eta_mf2_0, 
-          1.0, 
-          Modelica.Constants.eps) then tau_bf1_0/2 else (tau_bf1_0 - 
+          eta_mf2_0,
+          1.0,
+          Modelica.Constants.eps) then tau_bf1_0/2 else (tau_bf1_0 -
       tau_bf2_0)/(eta_mf1_0 - 1.0/eta_mf2_0);
   // For eta_mf1_0=eta_mf2_0=1 the given bearing
   // friction can not be separated into a part
@@ -106,12 +106,12 @@ protected
   //  tau_bf1_0=eta_mf1_0*tau_bf_a_0 + 1/ratio a_0
   //  tau_bf2_0=1/eta_mf2*tau_bf_a_0 + 1/ratio tau_bf_a_0
 equation
-  assert(abs(ratio) > 0, 
+  assert(abs(ratio) > 0,
     "Error in initialization of LossyGear: ratio may not be zero");
 
   ideal = Modelica.Math.Matrices.isEqual(
-        lossTable, 
-        [0, 1, 1, 0, 0], 
+        lossTable,
+        [0, 1, 1, 0, 0],
         Modelica.Constants.eps);
 
   if ideal then
@@ -133,11 +133,11 @@ equation
   end if;
 
   if Modelica.Math.isEqual(
-          eta_mf1, 
-          1.0, 
+          eta_mf1,
+          1.0,
           Modelica.Constants.eps) and Modelica.Math.isEqual(
-          eta_mf2, 
-          1.0, 
+          eta_mf2,
+          1.0,
           Modelica.Constants.eps) then
     // For eta_mf1=eta_mf2=1 the given bearing friction can not be
     // separated into a part on side A or B, so it is done arbitrarily.
@@ -185,7 +185,7 @@ equation
 
   //tau eta: only for determination of driving side for calculation of tauloss
   tau_eta = if ideal then flange_a.tau else (if locked then flange_a.tau 
-     else (if (startForward or pre(mode) == Forward) then flange_a.tau - 
+     else (if (startForward or pre(mode) == Forward) then flange_a.tau -
     tau_bf_a else flange_a.tau + tau_bf_a));
 
   // Torque Losses
@@ -199,7 +199,7 @@ equation
     initial() and w_a > 0;
   startBackward = pre(mode) == Stuck and sa < tauLossMin_m/unitTorque or 
     initial() and w_a < 0;
-  locked = not (ideal or pre(mode) == Forward or startForward or pre(mode) 
+  locked = not (ideal or pre(mode) == Forward or startForward or pre(mode)
      == Backward or startBackward);
 
   /* Parameterized curve description a_a = f1(sa), tauLoss = f2(sa)
@@ -209,7 +209,7 @@ equation
   tauLoss = if ideal then 0 else (if locked then sa*unitTorque else (if (
     startForward or pre(mode) == Forward) then tauLossMax else tauLossMin));
 
-  a_a = unitAngularAcceleration*(if locked then 0 else sa - tauLoss/ 
+  a_a = unitAngularAcceleration*(if locked then 0 else sa - tauLoss/
     unitTorque);
 
   /* Finite state machine to fix configuration after the computation above
@@ -383,23 +383,23 @@ Ticket <a href=\"https://github.com/modelica/ModelicaStandardLibrary/issues/108\
 Sept. 11, 2009.</li>
 </ul>
 
-</html>"), 
+</html>"),
        Icon(
-    coordinateSystem(preserveAspectRatio=true, 
-        extent={{-100.0,-100.0},{100.0,100.0}}), 
+    coordinateSystem(preserveAspectRatio=true,
+        extent={{-100.0,-100.0},{100.0,100.0}}),
     graphics={
-    Polygon(fillColor={161,35,41}, 
-      pattern=LinePattern.None, 
-      fillPattern=FillPattern.Solid, 
-      points={{-110,50},{-80,50},{-80,80},{-90,80},{-70,100},{-50,80},{-60,80},{-60,30},{-110,30},{-110,50}}), 
-    Line(points={{-80.0,20.0},{-60.0,20.0}}), 
-    Text(textColor={0,0,255}, 
-      extent={{-148.0,105.0},{152.0,145.0}}, 
-      textString="%name"), 
-    Text(extent={{-145.0,-79.0},{155.0,-49.0}}, 
-      textString="ratio=%ratio"), 
-    Line(visible=useHeatPort, 
-      points={{-100.0,-100.0},{-100.0,-30.0},{0.0,-30.0},{0.0,0.0}}, 
-      color={191,0,0}, 
+    Polygon(fillColor={161,35,41},
+      pattern=LinePattern.None,
+      fillPattern=FillPattern.Solid,
+      points={{-110,50},{-80,50},{-80,80},{-90,80},{-70,100},{-50,80},{-60,80},{-60,30},{-110,30},{-110,50}}),
+    Line(points={{-80.0,20.0},{-60.0,20.0}}),
+    Text(textColor={0,0,255},
+      extent={{-148.0,105.0},{152.0,145.0}},
+      textString="%name"),
+    Text(extent={{-145.0,-79.0},{155.0,-49.0}},
+      textString="ratio=%ratio"),
+    Line(visible=useHeatPort,
+      points={{-100.0,-100.0},{-100.0,-30.0},{0.0,-30.0},{0.0,0.0}},
+      color={191,0,0},
       pattern=LinePattern.Dot)}));
 end LossyGear;

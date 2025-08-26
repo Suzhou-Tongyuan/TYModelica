@@ -1,22 +1,22 @@
 ﻿within Modelica.Mechanics.MultiBody.Sensors;
 model CutForce "Measure cut force vector"
 
-  Modelica.Blocks.Interfaces.RealOutput force[3](each final quantity="Force", each final unit="N") 
+  Modelica.Blocks.Interfaces.RealOutput force[3](each final quantity="Force", each final unit="N")
     "Cut force resolved in frame defined by resolveInFrame" 
        annotation (Placement(transformation(
-        origin={-80,-110}, 
-        extent={{10,-10},{-10,10}}, 
+        origin={-80,-110},
+        extent={{10,-10},{-10,10}},
         rotation=90)));
 
-  parameter Boolean animation=true 
+  parameter Boolean animation=true
     "= true, if animation shall be enabled (show arrow)";
-  parameter Boolean positiveSign=true 
+  parameter Boolean positiveSign=true
     "= true, if force with positive sign is returned (= frame_a.f), otherwise with negative sign (= frame_b.f)";
 
   input Types.Color forceColor=Modelica.Mechanics.MultiBody.Types.Defaults.
       ForceColor "Color of force arrow" 
     annotation (Dialog(colorSelector=true, group="if animation = true", enable=animation));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(group="if animation = true", enable=animation));
 
@@ -24,15 +24,15 @@ model CutForce "Measure cut force vector"
 
 protected
   Visualizers.Advanced.Arrow forceArrow(
-    color=forceColor, 
-    specularCoefficient=specularCoefficient, 
-    R=frame_b.R, 
-    r=frame_b.r_0, 
-    headAtOrigin=true, 
-    quantity=Modelica.Mechanics.MultiBody.Types.VectorQuantity.Force, 
+    color=forceColor,
+    specularCoefficient=specularCoefficient,
+    R=frame_b.R,
+    r=frame_b.r_0,
+    headAtOrigin=true,
+    quantity=Modelica.Mechanics.MultiBody.Types.VectorQuantity.Force,
     r_head=-frame_a.f*(if positiveSign then +1 else -1)) if world.enableAnimation and animation;
 
-  Internal.BasicCutForce cutForce(resolveInFrame=resolveInFrame, positiveSign= 
+  Internal.BasicCutForce cutForce(resolveInFrame=resolveInFrame, positiveSign=
         positiveSign) 
     annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
   Modelica.Mechanics.MultiBody.Interfaces.ZeroPosition zeroPosition if 
@@ -40,32 +40,32 @@ protected
     annotation (Placement(transformation(extent={{0,-40},{20,-20}})));
 equation
   connect(cutForce.frame_a, frame_a) annotation (Line(
-      points={{-50,0},{-100,0}}, 
-      color={95,95,95}, 
+      points={{-50,0},{-100,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(cutForce.frame_b, frame_b) annotation (Line(
-      points={{-30,0},{100,0}}, 
-      color={95,95,95}, 
+      points={{-30,0},{100,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(cutForce.frame_resolve, frame_resolve) annotation (Line(
-      points={{-32,-10},{-32,-60},{80,-60},{80,-100}}, 
-      color={95,95,95}, 
+      points={{-32,-10},{-32,-60},{80,-60},{80,-100}},
+      color={95,95,95},
       pattern=LinePattern.Dot));
   connect(cutForce.force, force) annotation (Line(
       points={{-48,-11},{-48,-60},{-80,-60},{-80,-110}}, color={0,0,127}));
   connect(zeroPosition.frame_resolve, cutForce.frame_resolve) annotation (
       Line(
-      points={{0,-30},{-32,-30},{-32,-10}}, 
-      color={95,95,95}, 
+      points={{0,-30},{-32,-30},{-32,-10}},
+      color={95,95,95},
       pattern=LinePattern.Dot));
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
       graphics={
-        Line(points={{-80,-100},{-80,0}}, color={0,0,127}), 
+        Line(points={{-80,-100},{-80,0}}, color={0,0,127}),
         Text(
-          extent={{-50,-14},{50,-54}}, 
-          textColor={64,64,64}, 
-          textString="N")}), 
+          extent={{-50,-14},{50,-54}},
+          textColor={64,64,64},
+          textString="N")}),
     Documentation(info="<html>
 <p>
 The cut-force acting between the two frames to which this

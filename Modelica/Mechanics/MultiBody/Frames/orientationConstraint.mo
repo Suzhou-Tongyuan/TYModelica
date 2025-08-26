@@ -1,9 +1,9 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames;
-function orientationConstraint 
+function orientationConstraint
   "Return residues of orientation constraints (shall be zero)"
   extends Modelica.Icons.Function;
   input Orientation R "Orientation object to rotate frame 1 into frame 2";
-  output Real residue[6] 
+  output Real residue[6]
     "Residues of constraints between elements of orientation object (shall be zero)";
 algorithm
   residue := {R.T[:, 1]*R.T[:, 1] - 1,R.T[:, 2]*R.T[:, 2] - 1,R.T[:, 3]*R.T[:,

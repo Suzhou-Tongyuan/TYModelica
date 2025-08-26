@@ -1,21 +1,21 @@
 ﻿within Modelica.Mechanics.MultiBody.Forces.Internal;
-model BasicWorldForce 
+model BasicWorldForce
   "External force acting at frame_b, defined by 3 input signals"
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameB;
   extends Interfaces.PartialOneFrame_b;
-  Interfaces.Frame_resolve frame_resolve 
+  Interfaces.Frame_resolve frame_resolve
     "The input signals are optionally resolved in this frame" 
     annotation (Placement(transformation(
-        origin={0,-100}, 
-        extent={{-16,-16},{16,16}}, 
+        origin={0,-100},
+        extent={{-16,-16},{16,16}},
         rotation=270)));
 
-  Modelica.Blocks.Interfaces.RealInput force[3](each final quantity="Force", each final unit="N") 
+  Modelica.Blocks.Interfaces.RealInput force[3](each final quantity="Force", each final unit="N")
     "x-, y-, z-coordinates of force resolved in frame defined by resolveInFrame" 
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
   parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameB 
-    resolveInFrame= 
-    Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.world 
+    resolveInFrame=
+    Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.world
     "Frame in which force is resolved (1: world, 2: frame_b, 3: frame_resolve)";
 
 equation
@@ -38,21 +38,21 @@ equation
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={
         Text(
-          extent={{-100,-40},{100,-70}}, 
-          textColor={192,192,192}, 
-          textString="resolve"), 
+          extent={{-100,-40},{100,-70}},
+          textColor={192,192,192},
+          textString="resolve"),
         Polygon(
-          points={{-100,10},{50,10},{50,31},{94,0},{50,-31},{50,-10},{-100, 
-              -10},{-100,10}}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-100,10},{50,10},{50,31},{94,0},{50,-31},{50,-10},{-100,
+              -10},{-100,10}},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,80},{150,40}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,80},{150,40}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
-          points={{0,-10},{0,-95}}, 
-          color={95,95,95}, 
-          pattern=LinePattern.Dot)}), 
+          points={{0,-10},{0,-95}},
+          color={95,95,95},
+          pattern=LinePattern.Dot)}),
     Documentation(info="<html>
 <p>
 The 3 signals of the <strong>force</strong> connector are interpreted

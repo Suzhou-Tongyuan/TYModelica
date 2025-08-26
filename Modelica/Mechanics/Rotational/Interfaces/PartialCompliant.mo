@@ -1,8 +1,8 @@
 ﻿within Modelica.Mechanics.Rotational.Interfaces;
-partial model PartialCompliant 
+partial model PartialCompliant
   "Partial model for the compliant connection of two rotational 1-dim. shaft flanges"
 
-  SI.Angle phi_rel(start=0) 
+  SI.Angle phi_rel(start=0)
     "Relative rotation angle (= flange_b.phi - flange_a.phi)";
   SI.Torque tau "Torque between flanges (= flange_b.tau)";
   Flange_a flange_a "Left flange of compliant 1-dim. rotational component" 

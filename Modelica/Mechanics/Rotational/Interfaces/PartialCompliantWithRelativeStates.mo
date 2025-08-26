@@ -1,15 +1,15 @@
 ﻿within Modelica.Mechanics.Rotational.Interfaces;
-partial model PartialCompliantWithRelativeStates 
+partial model PartialCompliantWithRelativeStates
   "Partial model for the compliant connection of two rotational 1-dim. shaft flanges where the relative angle and speed are used as preferred states"
 
   SI.Angle phi_rel(
-    start=0, 
-    stateSelect=stateSelect, 
+    start=0,
+    stateSelect=stateSelect,
     nominal=if phi_nominal >= Modelica.Constants.eps then phi_nominal else 
         1) "Relative rotation angle (= flange_b.phi - flange_a.phi)";
-  SI.AngularVelocity w_rel(start=0, stateSelect=stateSelect) 
+  SI.AngularVelocity w_rel(start=0, stateSelect=stateSelect)
     "Relative angular velocity (= der(phi_rel))";
-  SI.AngularAcceleration a_rel(start=0) 
+  SI.AngularAcceleration a_rel(start=0)
     "Relative angular acceleration (= der(w_rel))";
   SI.Torque tau "Torque between flanges (= flange_b.tau)";
   Flange_a flange_a "Left flange of compliant 1-dim. rotational component" 
@@ -18,10 +18,10 @@ partial model PartialCompliantWithRelativeStates
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
 
   parameter SI.Angle phi_nominal(
-    displayUnit="rad", 
+    displayUnit="rad",
     min=0.0) = 1e-4 "Nominal value of phi_rel (used for scaling)" 
     annotation (Dialog(tab="Advanced"));
-  parameter StateSelect stateSelect=StateSelect.prefer 
+  parameter StateSelect stateSelect=StateSelect.prefer
     "Priority to use phi_rel and w_rel as states" 
     annotation (HideResult=true, Dialog(tab="Advanced"));
 

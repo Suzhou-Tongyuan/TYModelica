@@ -1,11 +1,11 @@
 ﻿within Modelica.Mechanics.Rotational.Interfaces;
-partial model PartialElementaryTwoFlangesAndSupport2 
+partial model PartialElementaryTwoFlangesAndSupport2
   "Partial model for a component with two rotational 1-dim. shaft flanges and a support used for textual modeling, i.e., for elementary models"
-  parameter Boolean useSupport=false 
+  parameter Boolean useSupport=false
     "= true, if support flange enabled, otherwise implicitly grounded" 
     annotation (
-    Evaluate=true, 
-    HideResult=true, 
+    Evaluate=true,
+    HideResult=true,
     choices(checkBox=true));
   Flange_a flange_a "Flange of left shaft" annotation (Placement(
         transformation(extent={{-110,-10},{-90,10}})));
@@ -34,17 +34,17 @@ and needs to be connected.<br>
 If <em>useSupport=false</em>, the support connector is conditionally disabled
 and instead the component is internally fixed to ground.
 </p>
-</html>"), 
-       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}),graphics={Line(
-              visible=not useSupport, 
+              visible=not useSupport,
               points={{-50,-120},{-30,-100}}),Line(
-              visible=not useSupport, 
+              visible=not useSupport,
               points={{-30,-120},{-10,-100}}),Line(
-              visible=not useSupport, 
+              visible=not useSupport,
               points={{-10,-120},{10,-100}}),Line(
-              visible=not useSupport, 
+              visible=not useSupport,
               points={{10,-120},{30,-100}}),Line(
-              visible=not useSupport, 
+              visible=not useSupport,
               points={{-30,-100},{30,-100}})}));
 end PartialElementaryTwoFlangesAndSupport2;

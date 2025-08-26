@@ -10,15 +10,15 @@ equation
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
         Text(
-          extent={{-150,-90},{150,-130}}, 
-          textColor={0,0,255}, 
-          textString="%name"), 
-        Line(points={{-80,-40},{80,-40}}), 
-        Line(points={{80,-40},{40,-80}}), 
-        Line(points={{40,-40},{0,-80}}), 
-        Line(points={{0,-40},{-40,-80}}), 
-        Line(points={{-40,-40},{-80,-80}}), 
-        Line(points={{0,-40},{0,-10}})}), 
+          extent={{-150,-90},{150,-130}},
+          textColor={0,0,255},
+          textString="%name"),
+        Line(points={{-80,-40},{80,-40}}),
+        Line(points={{80,-40},{40,-80}}),
+        Line(points={{40,-40},{0,-80}}),
+        Line(points={{0,-40},{-40,-80}}),
+        Line(points={{-40,-40},{-80,-80}}),
+        Line(points={{0,-40},{0,-10}})}),
     Documentation(info="<html>
 <p>
 The <strong>flange</strong> of a 1D rotational mechanical system is <strong>fixed</strong>

@@ -3,9 +3,9 @@ package TraceSubstances "Library demonstrating the usage of trace substances"
   extends Modelica.Icons.ExamplesPackage;
   model RoomCO2 "Demonstrates a room volume with CO2 accumulation"
     extends Modelica.Icons.Example;
-    package Medium=Modelica.Media.Air.MoistAir(extraPropertiesNames={"CO2"}, 
+    package Medium=Modelica.Media.Air.MoistAir(extraPropertiesNames={"CO2"},
                                                C_nominal={1.519E-3});
-    Modelica.Blocks.Sources.Constant C(k=0.3*1.519E-3) 
+    Modelica.Blocks.Sources.Constant C(k=0.3*1.519E-3)
       "Substance concentration, raising to 1000 PPM CO2" 
       annotation (Placement(transformation(extent={{-94,-28},{-74,-8}})));
     Sources.FixedBoundary boundary4(nPorts=1,redeclare package Medium = Medium) 
@@ -13,29 +13,29 @@ package TraceSubstances "Library demonstrating the usage of trace substances"
     Sensors.TraceSubstances traceVolume(redeclare package Medium = Medium) 
       annotation (Placement(transformation(extent={{0,20},{20,40}})));
     inner System system(energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial) 
-                                     annotation (Placement(transformation(extent={{52,36}, 
+                                     annotation (Placement(transformation(extent={{52,36},
               {72,56}})));
     Sources.MassFlowSource_T boundary1(
-      use_C_in=true, 
-      m_flow=100/1.2/3600*5, 
-      redeclare package Medium = Medium, 
-      nPorts=2, 
+      use_C_in=true,
+      m_flow=100/1.2/3600*5,
+      redeclare package Medium = Medium,
+      nPorts=2,
       X=Medium.X_default) 
       annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
     Modelica.Fluid.Vessels.ClosedVolume volume(
-      C_start={1.519E-3}, 
-      V=100, 
-      redeclare package Medium = Medium, 
-      nPorts=2, 
-      X_start={0.015,0.085}, 
-      massDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial, 
+      C_start={1.519E-3},
+      V=100,
+      redeclare package Medium = Medium,
+      nPorts=2,
+      X_start={0.015,0.085},
+      massDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       use_portsData=false) 
                 annotation (Placement(transformation(extent={{-20,0},{0,20}})));
     Modelica.Fluid.Pipes.StaticPipe pipe(
-      redeclare package Medium = Medium, 
-      length=1, 
-      diameter=0.15, 
-      redeclare model FlowModel = 
+      redeclare package Medium = Medium,
+      length=1,
+      diameter=0.15,
+      redeclare model FlowModel =
           Modelica.Fluid.Pipes.BaseClasses.FlowModels.DetailedPipeFlow (
            show_Res=true)) 
       annotation (Placement(transformation(extent={{20,-20},{40,0}})));
@@ -55,7 +55,7 @@ package TraceSubstances "Library demonstrating the usage of trace substances"
     connect(boundary1.ports[1], traceSource.port) annotation (Line(
         points={{-40,-9.5},{-30,-9.5},{-30,20}}, color={0,127,255}));
     annotation (
-      experiment(StopTime=3600), 
+      experiment(StopTime=3600),
       Documentation(info="<html>
 <p>
 This example consists of a volume with a carbon dioxide concentration that corresponds to
@@ -74,102 +74,102 @@ of magnitude.
 <img src=\"modelica://Modelica/Resources/Images/Fluid/Examples/TraceSubstances/RoomCO2.png\" border=\"1\"
      alt=\"RoomCO2.png\">
 </div>
-</html>"), 
-      __Dymola_Commands(file(ensureSimulated=true)= 
-          "modelica://Modelica/Resources/Scripts/Dymola/Fluid/RoomCO2/plotConcentrations.mos" 
+</html>"),
+      __Dymola_Commands(file(ensureSimulated=true)=
+          "modelica://Modelica/Resources/Scripts/Dymola/Fluid/RoomCO2/plotConcentrations.mos"
           "plot concentrations"));
   end RoomCO2;
 
   model RoomCO2WithControls "Demonstrates a room volume with CO2 controls"
     extends Modelica.Icons.Example;
-    package Medium=Modelica.Media.Air.MoistAir(extraPropertiesNames={"CO2"}, 
+    package Medium=Modelica.Media.Air.MoistAir(extraPropertiesNames={"CO2"},
                                                C_nominal={1.519E-1});
-    Modelica.Blocks.Sources.Constant CAtm(k=0.3*1.519E-3) 
+    Modelica.Blocks.Sources.Constant CAtm(k=0.3*1.519E-3)
       "Atmospheric trace substance concentration, corresponding to 300 PPM CO2" 
       annotation (Placement(transformation(extent={{-100,-48},{-80,-28}})));
     Sources.FixedBoundary boundary4(nPorts=1,redeclare package Medium = Medium) 
       annotation (Placement(transformation(extent={{92,-40},{72,-20}})));
     Sensors.TraceSubstances traceVolume(redeclare package Medium = Medium) 
       annotation (Placement(transformation(extent={{20,0},{40,20}})));
-    inner System system(energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial, 
-      use_eps_Re=true, 
-      m_flow_nominal=0.1, 
-      eps_m_flow=1e-2) annotation (Placement(transformation(extent={{70,70}, 
+    inner System system(energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
+      use_eps_Re=true,
+      m_flow_nominal=0.1,
+      eps_m_flow=1e-2) annotation (Placement(transformation(extent={{70,70},
               {90,90}})));
     Sources.MassFlowSource_T freshAir(
-      use_C_in=true, 
-      redeclare package Medium = Medium, 
-      use_m_flow_in=true, 
+      use_C_in=true,
+      redeclare package Medium = Medium,
+      use_m_flow_in=true,
       nPorts=2) 
       annotation (Placement(transformation(extent={{-70,-40},{-50,-20}})));
     Modelica.Fluid.Vessels.ClosedVolume volume(
-      medium(Xi(each nominal=0.01)), 
-      C_start={1.519E-3}, 
-      V=100, 
-      redeclare package Medium = Medium, 
-      massDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial, 
-      use_portsData=false, 
+      medium(Xi(each nominal=0.01)),
+      C_start={1.519E-3},
+      V=100,
+      redeclare package Medium = Medium,
+      massDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
+      use_portsData=false,
       nPorts=4) annotation (Placement(transformation(extent={{0,-20},{20,0}})));
 
     Pipes.DynamicPipe ductOut(
-      mCs_scaled(each nominal = 0.01), 
-      mediums(each Xi(each nominal = 0.01)), 
-      redeclare package Medium = Medium, 
-      diameter=0.15, 
-      redeclare model FlowModel = 
+      mCs_scaled(each nominal = 0.01),
+      mediums(each Xi(each nominal = 0.01)),
+      redeclare package Medium = Medium,
+      diameter=0.15,
+      redeclare model FlowModel =
           Modelica.Fluid.Pipes.BaseClasses.FlowModels.DetailedPipeFlow (
-            show_Res=true), 
-      modelStructure=Modelica.Fluid.Types.ModelStructure.a_v_b, 
+            show_Res=true),
+      modelStructure=Modelica.Fluid.Types.ModelStructure.a_v_b,
       length=5) "Outlet duct" 
       annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
 
-    Sensors.TraceSubstances traceDuctIn(redeclare package Medium = Medium) 
+    Sensors.TraceSubstances traceDuctIn(redeclare package Medium = Medium)
       "Trace substance at duct inlet" 
       annotation (Placement(transformation(extent={{-54,0},{-34,20}})));
     Sources.MassFlowSource_T peopleSource(
-      m_flow=100/1.2/3600*5, 
-      redeclare package Medium = Medium, 
-      use_m_flow_in=true, 
-      use_C_in=false, 
-      C={100}, 
+      m_flow=100/1.2/3600*5,
+      redeclare package Medium = Medium,
+      use_m_flow_in=true,
+      use_C_in=false,
+      C={100},
       nPorts=1) "CO2 emitted by room occupants." 
       annotation (Placement(transformation(extent={{-38,-98},{-18,-78}})));
     Modelica.Blocks.Sources.CombiTimeTable numberOfPeople(
-      table=[0,0; 9,10; 11,2; 13,15; 15,5; 18,0; 24,0], 
-      smoothness=Modelica.Blocks.Types.Smoothness.ConstantSegments, 
+      table=[0,0; 9,10; 11,2; 13,15; 15,5; 18,0; 24,0],
+      smoothness=Modelica.Blocks.Types.Smoothness.ConstantSegments,
       timeScale=3600) "Time table for number of people in the room" 
       annotation (Placement(transformation(extent={{-100,-90},{-80,-70}})));
-    Modelica.Blocks.Math.Gain gain(k=8.18E-6/100) 
+    Modelica.Blocks.Math.Gain gain(k=8.18E-6/100)
       "CO2 mass flow rate, released per 100 person (there is another 100 factor in peopleSource)" 
       annotation (Placement(transformation(extent={{-68,-90},{-48,-70}})));
-    Modelica.Blocks.Math.Gain gain1(k=-100*1.2/3600*5) 
+    Modelica.Blocks.Math.Gain gain1(k=-100*1.2/3600*5)
       "Nominal fresh air flow rate (for u=1)" 
       annotation (Placement(transformation(extent={{0,40},{20,60}})));
-    Modelica.Blocks.Math.Gain gainSensor(k=1/1.519E-3) 
+    Modelica.Blocks.Math.Gain gainSensor(k=1/1.519E-3)
       "Gain to normalize CO2 measurement signal. y=1 corresponds to 1000 PPM" 
       annotation (Placement(transformation(extent={{60,0},{80,20}})));
     Modelica.Blocks.Sources.Constant CO2Set(k=1) "Normalized CO2 set point" 
       annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
     Modelica.Blocks.Continuous.LimPID PID(
-      controllerType=Modelica.Blocks.Types.SimpleController.PI, 
-      yMax=0, 
-      yMin=-1, 
-      Ti=10, 
+      controllerType=Modelica.Blocks.Types.SimpleController.PI,
+      yMax=0,
+      yMin=-1,
+      Ti=10,
       k=10) annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
 
     Pipes.DynamicPipe ductIn(
-      mCs_scaled(each nominal = 0.01), 
-      mediums(each Xi(each nominal = 0.01)), 
-      redeclare package Medium = Medium, 
-      diameter=0.15, 
-      redeclare model FlowModel = 
+      mCs_scaled(each nominal = 0.01),
+      mediums(each Xi(each nominal = 0.01)),
+      redeclare package Medium = Medium,
+      diameter=0.15,
+      redeclare model FlowModel =
           Modelica.Fluid.Pipes.BaseClasses.FlowModels.DetailedPipeFlow (
-            show_Res=true), 
-      modelStructure=Modelica.Fluid.Types.ModelStructure.a_v_b, 
+            show_Res=true),
+      modelStructure=Modelica.Fluid.Types.ModelStructure.a_v_b,
       length=5) "Inlet duct" 
       annotation (Placement(transformation(extent={{-38,-40},{-18,-20}})));
 
-    Sensors.TraceSubstances traceDuctOut(redeclare package Medium = Medium) 
+    Sensors.TraceSubstances traceDuctOut(redeclare package Medium = Medium)
       "Trace substance at duct outlet" 
       annotation (Placement(transformation(extent={{-20,0},{0,20}})));
   equation
@@ -206,9 +206,9 @@ of magnitude.
     connect(traceDuctOut.port, ductIn.port_b) annotation (Line(
         points={{-10,0},{-10,-30},{-18,-30}}, color={0,127,255}));
     annotation (
-      experiment(StopTime=86400, Tolerance=1e-006), 
-      __Dymola_Commands(file(ensureSimulated=true)="modelica://Modelica/Resources/Scripts/Dymola/Fluid/RoomCO2WithControls/plotStatesWithControl.mos" 
-          "plot states and controls"), 
+      experiment(StopTime=86400, Tolerance=1e-006),
+      __Dymola_Commands(file(ensureSimulated=true)="modelica://Modelica/Resources/Scripts/Dymola/Fluid/RoomCO2WithControls/plotStatesWithControl.mos"
+          "plot states and controls"),
       Documentation(info="<html>
 <p>
 This example illustrates a room volume with a CO2 source and a fresh air supply with feedback

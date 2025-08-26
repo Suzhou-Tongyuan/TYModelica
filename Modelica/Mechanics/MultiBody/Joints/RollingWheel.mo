@@ -1,30 +1,30 @@
 ﻿within Modelica.Mechanics.MultiBody.Joints;
-model RollingWheel 
+model RollingWheel
   "Joint (no mass, no inertia) that describes an ideal rolling wheel (rolling on the plane z=0)"
 
   import Modelica.Mechanics.MultiBody.Frames;
 
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a 
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a
     "Frame fixed in wheel center point. x-Axis: upwards, y-axis: along wheel axis" 
     annotation (Placement(transformation(extent={{-16,-16},{16,16}})));
 
   parameter SI.Radius radius "Wheel radius";
-  parameter StateSelect stateSelect=StateSelect.always 
+  parameter StateSelect stateSelect=StateSelect.always
     "Priority to use generalized coordinates as states" annotation(HideResult=true,Evaluate=true);
 
   SI.Position x(start=0, stateSelect=stateSelect) "x-coordinate of wheel axis";
   SI.Position y(start=0, stateSelect=stateSelect) "y-coordinate of wheel axis";
   SI.Position z;
 
-  SI.Angle angles[3](start={0,0,0}, each stateSelect=stateSelect) 
+  SI.Angle angles[3](start={0,0,0}, each stateSelect=stateSelect)
     "Angles to rotate world-frame into frame_a around z-, y-, x-axis" 
     annotation(Dialog(group="Initialization", showStartAttribute=true));
 
-  SI.AngularVelocity der_angles[3](start={0,0,0}, each stateSelect=stateSelect) 
+  SI.AngularVelocity der_angles[3](start={0,0,0}, each stateSelect=stateSelect)
     "Derivative of angles" 
     annotation(Dialog(group="Initialization", showStartAttribute=true));
 
-  SI.Position r_road_0[3] 
+  SI.Position r_road_0[3]
     "Position vector from world frame to contact point on road, resolved in world frame";
 
   // Contact force
@@ -38,11 +38,11 @@ protected
   SI.Position delta_0[3](start={0,0,-radius}) "Distance vector from wheel center to contact point";
 
    // Coordinate system at contact point
-  Real e_n_0[3] 
+  Real e_n_0[3]
     "Unit vector in normal direction of road at contact point, resolved in world frame";
-  Real e_lat_0[3] 
+  Real e_lat_0[3]
     "Unit vector in lateral direction of wheel at contact point, resolved in world frame";
-  Real e_long_0[3] 
+  Real e_long_0[3]
     "Unit vector in longitudinal direction of wheel at contact point, resolved in world frame";
 
   // Road description
@@ -107,19 +107,19 @@ equation
   assert(abs(e_n_0*e_axis_0) < 0.99, "Wheel lays nearly on the ground (which is a singularity)");
 
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{100,100}}), graphics={
         Rectangle(
-          extent={{-100,-80},{100,-100}}, 
-          fillColor={175,175,175}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-100,-80},{100,-100}},
+          fillColor={175,175,175},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,120},{150,80}}, 
-          textColor={0,0,255}, 
-          textString="%name"), 
+          extent={{-150,120},{150,80}},
+          textColor={0,0,255},
+          textString="%name"),
         Ellipse(
-          extent={{-80,80},{80,-80}}, 
-          fillColor={255,255,255}, 
+          extent={{-80,80},{80,-80}},
+          fillColor={255,255,255},
           fillPattern=FillPattern.Solid)}), Documentation(info="<html>
 <p>
 A joint for a wheel rolling on the x-y plane of the world frame.

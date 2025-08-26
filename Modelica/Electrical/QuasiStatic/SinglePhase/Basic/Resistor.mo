@@ -9,24 +9,24 @@ model Resistor "Single-phase linear resistor"
   extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(T=T_ref);
   SI.Resistance R_actual "Resistance = R_ref*(1 + alpha_ref*(heatPort.T - T_ref))";
 equation
-  assert((1 + alpha_ref*(T_heatPort - T_ref)) >= Modelica.Constants.eps, 
+  assert((1 + alpha_ref*(T_heatPort - T_ref)) >= Modelica.Constants.eps,
     "Temperature outside scope of model!");
   R_actual = R_ref*(1 + alpha_ref*(T_heatPort - T_ref));
   v = R_actual*i;
   LossPower = real(v*conj(i));
   annotation (Icon(graphics={
-        Line(points={{60,0},{90,0}}, color={85,170,255}), 
-        Line(points={{-90,0},{-60,0}}, color={85,170,255}), 
+        Line(points={{60,0},{90,0}}, color={85,170,255}),
+        Line(points={{-90,0},{-60,0}}, color={85,170,255}),
         Rectangle(
-          extent={{-70,30},{70,-30}}, 
-          lineColor={85,170,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
-        Text(extent={{150,-40},{-150,-80}}, textString="R=%R_ref"), 
+          extent={{-70,30},{70,-30}},
+          lineColor={85,170,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Text(extent={{150,-40},{-150,-80}}, textString="R=%R_ref"),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
+          extent={{-150,90},{150,50}},
+          textString="%name",
+          textColor={0,0,255})}),
       Documentation(info="<html>
 <p>
 The linear resistor connects the complex voltage <code><u>v</u></code> with the complex

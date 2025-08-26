@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.MultiBody.Examples.Elementary.Utilities;
-function sineSurface 
+function sineSurface
   "Function defining the characteristic of a moving sine in three dimensions"
    extends Modelica.Mechanics.MultiBody.Interfaces.partialSurfaceCharacteristic;
    input Real x_min "Minimum value of x";

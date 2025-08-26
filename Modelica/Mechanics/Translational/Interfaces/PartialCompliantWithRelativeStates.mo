@@ -1,19 +1,19 @@
 ﻿within Modelica.Mechanics.Translational.Interfaces;
-partial model PartialCompliantWithRelativeStates 
+partial model PartialCompliantWithRelativeStates
   "Base model for the compliant connection of two translational 1-dim. shaft flanges where the relative position and relative velocities are used as states"
 
-  parameter StateSelect stateSelect=StateSelect.prefer 
+  parameter StateSelect stateSelect=StateSelect.prefer
     "Priority to use s_rel and v_rel as states" 
     annotation (HideResult=true, Dialog(tab="Advanced"));
-  parameter SI.Distance s_nominal=1e-4 
+  parameter SI.Distance s_nominal=1e-4
     "Nominal value of s_rel (used for scaling)" 
     annotation (Dialog(tab="Advanced"));
 
   SI.Position s_rel(
-    start=0, 
-    stateSelect=stateSelect, 
+    start=0,
+    stateSelect=stateSelect,
     nominal=s_nominal) "Relative distance (= flange_b.s - flange_a.s)";
-  SI.Velocity v_rel(start=0, stateSelect=stateSelect) 
+  SI.Velocity v_rel(start=0, stateSelect=stateSelect)
     "Relative velocity (= der(s_rel))";
 
   SI.Force f "Forces between flanges (= flange_b.f)";

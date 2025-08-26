@@ -1,12 +1,12 @@
 ﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic;
-record BaseData 
+record BaseData
   "Coefficients for approximation of soft magnetic materials"
 
   extends Modelica.Icons.Record;
 
-  parameter SI.RelativePermeability mu_i=1 
+  parameter SI.RelativePermeability mu_i=1
     "Initial relative permeability at B=0";
-  parameter SI.MagneticFluxDensity B_myMax=1 
+  parameter SI.MagneticFluxDensity B_myMax=1
     "Flux density at maximum relative permeability";
   parameter Real c_a=1 "Coefficient of approximation function";
   parameter Real c_b=1 "Coefficient of approximation function";

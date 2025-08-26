@@ -1,11 +1,11 @@
 ﻿within Modelica.Mechanics.Rotational.Interfaces;
-partial model PartialTwoFlangesAndSupport 
+partial model PartialTwoFlangesAndSupport
   "Partial model for a component with two rotational 1-dim. shaft flanges and a support used for graphical modeling, i.e., the model is build up by drag-and-drop from elementary components"
-  parameter Boolean useSupport=false 
+  parameter Boolean useSupport=false
     "= true, if support flange enabled, otherwise implicitly grounded" 
     annotation (
-    Evaluate=true, 
-    HideResult=true, 
+    Evaluate=true,
+    HideResult=true,
     choices(checkBox=true));
   Flange_a flange_a "Flange of left shaft" annotation (Placement(
         transformation(extent={{-110,-10},{-90,10}})));
@@ -14,10 +14,10 @@ partial model PartialTwoFlangesAndSupport
   Support support if useSupport "Support/housing of component" 
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 protected
-  Support internalSupport 
+  Support internalSupport
     "Internal support/housing of component (either connected to support, if useSupport=true, or connected to fixed, if useSupport=false)" 
     annotation (Placement(transformation(extent={{-3,-83},{3,-77}})));
-  Components.Fixed fixed if not useSupport 
+  Components.Fixed fixed if not useSupport
     "Fixed support/housing, if not useSupport" 
     annotation (Placement(transformation(extent={{10,-94},{30,-74}})));
 equation
@@ -39,26 +39,26 @@ and needs to be connected.<br>
 If <em>useSupport=false</em>, the support connector is conditionally disabled
 and instead the component is internally fixed to ground.
 </p>
-</html>"), 
+</html>"),
     Diagram(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={Text(
-              extent={{-38,-98},{-6,-96}}, 
-              textColor={95,95,95}, 
+              extent={{-38,-98},{-6,-96}},
+              textColor={95,95,95},
               textString="(if useSupport)"),Text(
-              extent={{24,-97},{64,-98}}, 
-              textColor={95,95,95}, 
-              textString="(if not useSupport)")}), 
+              extent={{24,-97},{64,-98}},
+              textColor={95,95,95},
+              textString="(if not useSupport)")}),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={Line(
-              visible=not useSupport, 
+              visible=not useSupport,
               points={{-50,-120},{-30,-100}}),Line(
-              visible=not useSupport, 
+              visible=not useSupport,
               points={{-30,-120},{-10,-100}}),Line(
-              visible=not useSupport, 
+              visible=not useSupport,
               points={{-10,-120},{10,-100}}),Line(
-              visible=not useSupport, 
+              visible=not useSupport,
               points={{10,-120},{30,-100}}),Line(
-              visible=not useSupport, 
+              visible=not useSupport,
               points={{-30,-100},{30,-100}})}));
 end PartialTwoFlangesAndSupport;

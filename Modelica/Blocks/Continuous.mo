@@ -16,21 +16,21 @@ package Continuous "Library of continuous control blocks with internal states"
     /* InitialState is the default, because it was the default in Modelica 2.2
      and therefore this setting is backward compatible
   */
-    parameter Init initType=Init.InitialState 
-      "Type of initialization (1: no init, 2: steady state, 3,4: initial output)" annotation(Evaluate=true, 
+    parameter Init initType=Init.InitialState
+      "Type of initialization (1: no init, 2: steady state, 3,4: initial output)" annotation(Evaluate=true,
         Dialog(group="Initialization"));
     parameter Real y_start=0 "Initial or guess value of output (= state)" 
       annotation (Dialog(group="Initialization"));
     extends Interfaces.SISO(y(start=y_start));
     Modelica.Blocks.Interfaces.BooleanInput reset if use_reset "Optional connector of reset signal" annotation(Placement(
       transformation(
-        extent={{-20,-20},{20,20}}, 
-        rotation=90, 
+        extent={{-20,-20},{20,20}},
+        rotation=90,
         origin={60,-120})));
     Modelica.Blocks.Interfaces.RealInput set if use_reset and use_set "Optional connector of set signal" annotation(Placement(
       transformation(
-        extent={{-20,-20},{20,20}}, 
-        rotation=270, 
+        extent={{-20,-20},{20,20}},
+        rotation=270,
         origin={60,120})));
   protected
     Modelica.Blocks.Interfaces.BooleanOutput local_reset annotation(HideResult=true);
@@ -84,43 +84,43 @@ or to <em>y_start</em> (if the <em>set</em> port is not enabled), whenever the <
 port has a rising edge.
 </p>
 </html>"), Icon(coordinateSystem(
-            preserveAspectRatio=true, 
-            extent={{-100.0,-100.0},{100.0,100.0}}), 
+            preserveAspectRatio=true,
+            extent={{-100.0,-100.0},{100.0,100.0}}),
           graphics={
             Line(
-              points={{-80.0,78.0},{-80.0,-90.0}}, 
-              color={192,192,192}), 
+              points={{-80.0,78.0},{-80.0,-90.0}},
+              color={192,192,192}),
             Polygon(
-              lineColor={192,192,192}, 
-              fillColor={192,192,192}, 
-              fillPattern=FillPattern.Solid, 
-              points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}), 
+              lineColor={192,192,192},
+              fillColor={192,192,192},
+              fillPattern=FillPattern.Solid,
+              points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}),
             Line(
-              points={{-90.0,-80.0},{82.0,-80.0}}, 
-              color={192,192,192}), 
+              points={{-90.0,-80.0},{82.0,-80.0}},
+              color={192,192,192}),
             Polygon(
-              lineColor={192,192,192}, 
-              fillColor={192,192,192}, 
-              fillPattern=FillPattern.Solid, 
-              points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}), 
+              lineColor={192,192,192},
+              fillColor={192,192,192},
+              fillPattern=FillPattern.Solid,
+              points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}),
             Text(
-              textColor={192,192,192}, 
-              extent={{0.0,-70.0},{60.0,-10.0}}, 
-              textString="I"), 
+              textColor={192,192,192},
+              extent={{0.0,-70.0},{60.0,-10.0}},
+              textString="I"),
             Text(
-              extent={{-150.0,-150.0},{150.0,-110.0}}, 
-              textString="k=%k"), 
+              extent={{-150.0,-150.0},{150.0,-110.0}},
+              textString="k=%k"),
             Line(
-              points=DynamicSelect({{-80.0,-80.0},{80.0,80.0}}, if use_reset then {{-80.0,-80.0},{60.0,60.0},{60.0,-80.0},{80.0,-60.0}} else {{-80.0,-80.0},{80.0,80.0}}), 
-              color={0,0,127}), 
+              points=DynamicSelect({{-80.0,-80.0},{80.0,80.0}}, if use_reset then {{-80.0,-80.0},{60.0,60.0},{60.0,-80.0},{80.0,-60.0}} else {{-80.0,-80.0},{80.0,80.0}}),
+              color={0,0,127}),
             Line(
-              visible=use_reset, 
-              points={{60,-100},{60,-80}}, 
-              color={255,0,255}, 
-              pattern=LinePattern.Dot), 
+              visible=use_reset,
+              points={{60,-100},{60,-80}},
+              color={255,0,255},
+              pattern=LinePattern.Dot),
             Text(
-              visible=use_reset, 
-              extent={{-28,-62},{94,-86}}, 
+              visible=use_reset,
+              extent={{-28,-62},{94,-86}},
               textString="reset")}));
   end Integrator;
 
@@ -133,13 +133,13 @@ port has a rising edge.
       annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
     parameter Boolean use_set = false "= true, if set port enabled and used as reinitialization value when reset" 
       annotation(Dialog(enable=use_reset), Evaluate=true, HideResult=true, choices(checkBox=true));
-    parameter Init initType=Init.InitialState 
+    parameter Init initType=Init.InitialState
       "Type of initialization (1: no init, 2: steady state, 3/4: initial output)" 
       annotation(Evaluate=true, Dialog(group="Initialization"));
-    parameter Boolean limitsAtInit = true 
+    parameter Boolean limitsAtInit = true
       "= false, if limits are ignored during initialization (i.e., der(y)=k*u)" 
       annotation(Evaluate=true, Dialog(group="Initialization"));
-    parameter Real y_start=0 
+    parameter Real y_start=0
       "Initial or guess value of output (must be in the limits outMin .. outMax)" 
       annotation (Dialog(group="Initialization"));
     parameter Boolean strict=false "= true, if strict limits with noEvent(..)" 
@@ -147,13 +147,13 @@ port has a rising edge.
     extends Interfaces.SISO(y(start=y_start));
     Modelica.Blocks.Interfaces.BooleanInput reset if use_reset "Optional connector of reset signal" annotation(Placement(
       transformation(
-        extent={{-20,-20},{20,20}}, 
-        rotation=90, 
+        extent={{-20,-20},{20,20}},
+        rotation=90,
         origin={60,-120})));
     Modelica.Blocks.Interfaces.RealInput set if use_reset and use_set "Optional connector of set signal" annotation(Placement(
       transformation(
-        extent={{-20,-20},{20,20}}, 
-        rotation=270, 
+        extent={{-20,-20},{20,20}},
+        rotation=270,
         origin={60,120})));
   protected
     Modelica.Blocks.Interfaces.BooleanOutput local_reset annotation(HideResult=true);
@@ -175,7 +175,7 @@ port has a rising edge.
         local_set = y_start;
       end if;
       when local_reset then
-        reinit(y, if local_set < outMin then outMin elseif local_set > outMax then outMax else local_set);
+        reinit(y, if local_set < outMin then outMin else if local_set > outMax then outMax else local_set);
       end when;
     else
       local_reset = false;
@@ -183,9 +183,9 @@ port has a rising edge.
     end if;
     if initial() and not limitsAtInit then
        der(y) = k*u;
-       assert(y >= outMin - 0.001*abs(outMax-outMin) and y <= outMax + 0.001*abs(outMax-outMin), 
-            "LimIntegrator: During initialization the limits have been ignored.\n" 
-          + "However, the result is that the output y is not within the required limits:\n" 
+       assert(y >= outMin - 0.001*abs(outMax-outMin) and y <= outMax + 0.001*abs(outMax-outMin),
+            "LimIntegrator: During initialization the limits have been ignored.\n"
+          + "However, the result is that the output y is not within the required limits:\n"
           + "  y = " + String(y) + ", outMin = " + String(outMin) + ", outMax = " + String(outMax));
     elseif strict then
        der(y) = noEvent(if y < outMin and k*u < 0 or y > outMax and k*u > 0 then 0 else k*u);
@@ -224,58 +224,58 @@ or to <em>y_start</em> (if the <em>set</em> port is not enabled), whenever the <
 port has a rising edge.
 </p>
 </html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,78},{-80,-90}}, color={192,192,192}), 
+          Line(points={{-80,78},{-80,-90}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-80},{82,-80}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-80},{82,-80}}, color={192,192,192}),
           Polygon(
-            points={{90,-80},{68,-72},{68,-88},{90,-80}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
+            points={{90,-80},{68,-72},{68,-88},{90,-80}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
           Line(
-            points=DynamicSelect({{-80,-80},{20,20},{80,20}}, if use_reset then {{-80,-80},{20,20},{60,20},{60,-80},{80,-60}} else {{-80,-80},{20,20},{80,20}}), 
-            color={0,0,127}), 
+            points=DynamicSelect({{-80,-80},{20,20},{80,20}}, if use_reset then {{-80,-80},{20,20},{60,20},{60,-80},{80,-60}} else {{-80,-80},{20,20},{80,20}}),
+            color={0,0,127}),
           Text(
-            extent={{0,-10},{60,-70}}, 
-            textColor={192,192,192}, 
-            textString="I"), 
+            extent={{0,-10},{60,-70}},
+            textColor={192,192,192},
+            textString="I"),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="k=%k"), 
+            extent={{-150,-150},{150,-110}},
+            textString="k=%k"),
           Line(
-            visible=strict, 
-            points=DynamicSelect({{20,20},{80,20}}, if use_reset then {{20,20},{60,20}} else {{20,20},{80,20}}), 
-            color={255,0,0}), 
+            visible=strict,
+            points=DynamicSelect({{20,20},{80,20}}, if use_reset then {{20,20},{60,20}} else {{20,20},{80,20}}),
+            color={255,0,0}),
           Line(
-            visible=use_reset, 
-            points={{60,-100},{60,-80}}, 
-            color={255,0,255}, 
-            pattern=LinePattern.Dot), 
+            visible=use_reset,
+            points={{60,-100},{60,-80}},
+            color={255,0,255},
+            pattern=LinePattern.Dot),
           Text(
-            visible=use_reset, 
-            extent={{-28,-62},{94,-86}}, 
+            visible=use_reset,
+            extent={{-28,-62},{94,-86}},
             textString="reset")}));
   end LimIntegrator;
 
   block Derivative "Approximated derivative block"
     import Modelica.Blocks.Types.Init;
     parameter Real k(unit="1")=1 "Gains";
-    parameter SI.Time T(min=Modelica.Constants.small) = 0.01 
+    parameter SI.Time T(min=Modelica.Constants.small) = 0.01
       "Time constants (T>0 required; T=0 is ideal derivative block)";
-    parameter Init initType=Init.NoInit 
+    parameter Init initType=Init.NoInit
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-                                                                                      annotation(Evaluate=true, 
+                                                                                      annotation(Evaluate=true,
         Dialog(group="Initialization"));
     parameter Real x_start=0 "Initial or guess value of state" 
       annotation (Dialog(group="Initialization"));
     parameter Real y_start=0 "Initial value of output (= state)" 
-      annotation(Dialog(enable=initType == Init.InitialOutput, group= 
+      annotation(Dialog(enable=initType == Init.InitialOutput, group=
             "Initialization"));
     extends Interfaces.SISO;
 
@@ -322,29 +322,29 @@ b = {k,0}, a = {T, 1}.
 If k=0, the block reduces to y=0.
 </p>
 </html>"), Icon(
-      coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100.0,-100.0},{100.0,100.0}}), 
+      coordinateSystem(preserveAspectRatio=true,
+          extent={{-100.0,-100.0},{100.0,100.0}}),
         graphics={
-      Line(points={{-80.0,78.0},{-80.0,-90.0}}, 
-        color={192,192,192}), 
-    Polygon(lineColor={192,192,192}, 
-      fillColor={192,192,192}, 
-      fillPattern=FillPattern.Solid, 
-      points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}), 
-    Line(points={{-90.0,-80.0},{82.0,-80.0}}, 
-      color={192,192,192}), 
-    Polygon(lineColor={192,192,192}, 
-      fillColor={192,192,192}, 
-      fillPattern=FillPattern.Solid, 
-      points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}), 
-    Line(origin = {-24.667,-27.333}, 
-      points = {{-55.333,87.333},{-19.333,-40.667},{86.667,-52.667}}, 
-      color = {0,0,127}, 
-      smooth = Smooth.Bezier), 
-    Text(textColor={192,192,192}, 
-      extent={{-30.0,14.0},{86.0,60.0}}, 
-      textString="DT1"), 
-    Text(extent={{-150.0,-150.0},{150.0,-110.0}}, 
+      Line(points={{-80.0,78.0},{-80.0,-90.0}},
+        color={192,192,192}),
+    Polygon(lineColor={192,192,192},
+      fillColor={192,192,192},
+      fillPattern=FillPattern.Solid,
+      points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}),
+    Line(points={{-90.0,-80.0},{82.0,-80.0}},
+      color={192,192,192}),
+    Polygon(lineColor={192,192,192},
+      fillColor={192,192,192},
+      fillPattern=FillPattern.Solid,
+      points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}),
+    Line(origin = {-24.667,-27.333},
+      points = {{-55.333,87.333},{-19.333,-40.667},{86.667,-52.667}},
+      color = {0,0,127},
+      smooth = Smooth.Bezier),
+    Text(textColor={192,192,192},
+      extent={{-30.0,14.0},{86.0,60.0}},
+      textString="DT1"),
+    Text(extent={{-150.0,-150.0},{150.0,-110.0}},
       textString="k=%k")}));
   end Derivative;
 
@@ -352,8 +352,8 @@ If k=0, the block reduces to y=0.
     import Modelica.Blocks.Types.Init;
     parameter Real k(unit="1")=1 "Gain";
     parameter SI.Time T(start=1) "Time Constant";
-    parameter Init initType=Init.NoInit 
-      "Type of initialization (1: no init, 2: steady state, 3/4: initial output)" annotation(Evaluate=true, 
+    parameter Init initType=Init.NoInit
+      "Type of initialization (1: no init, 2: steady state, 3/4: initial output)" annotation(Evaluate=true,
         Dialog(group="Initialization"));
     parameter Real y_start=0 "Initial or guess value of output (= state)" 
       annotation (Dialog(group="Initialization"));
@@ -396,29 +396,29 @@ Example:
 </pre></blockquote>
 
 </html>"), Icon(
-    coordinateSystem(preserveAspectRatio=true, 
-        extent={{-100.0,-100.0},{100.0,100.0}}), 
+    coordinateSystem(preserveAspectRatio=true,
+        extent={{-100.0,-100.0},{100.0,100.0}}),
       graphics={
-    Line(points={{-80.0,78.0},{-80.0,-90.0}}, 
-      color={192,192,192}), 
-    Polygon(lineColor={192,192,192}, 
-      fillColor={192,192,192}, 
-      fillPattern=FillPattern.Solid, 
-      points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}), 
-    Line(points={{-90.0,-80.0},{82.0,-80.0}}, 
-      color={192,192,192}), 
-    Polygon(lineColor={192,192,192}, 
-      fillColor={192,192,192}, 
-      fillPattern=FillPattern.Solid, 
-      points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}), 
-    Line(origin = {-26.667,6.667}, 
-        points = {{106.667,43.333},{-13.333,29.333},{-53.333,-86.667}}, 
-        color = {0,0,127}, 
-        smooth = Smooth.Bezier), 
-    Text(textColor={192,192,192}, 
-      extent={{0.0,-60.0},{60.0,0.0}}, 
-      textString="PT1"), 
-    Text(extent={{-150.0,-150.0},{150.0,-110.0}}, 
+    Line(points={{-80.0,78.0},{-80.0,-90.0}},
+      color={192,192,192}),
+    Polygon(lineColor={192,192,192},
+      fillColor={192,192,192},
+      fillPattern=FillPattern.Solid,
+      points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}),
+    Line(points={{-90.0,-80.0},{82.0,-80.0}},
+      color={192,192,192}),
+    Polygon(lineColor={192,192,192},
+      fillColor={192,192,192},
+      fillPattern=FillPattern.Solid,
+      points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}),
+    Line(origin = {-26.667,6.667},
+        points = {{106.667,43.333},{-13.333,29.333},{-53.333,-86.667}},
+        color = {0,0,127},
+        smooth = Smooth.Bezier),
+    Text(textColor={192,192,192},
+      extent={{0.0,-60.0},{60.0,0.0}},
+      textString="PT1"),
+    Text(extent={{-150.0,-150.0},{150.0,-110.0}},
       textString="T=%T")}));
   end FirstOrder;
 
@@ -427,12 +427,12 @@ Example:
     parameter Real k(unit="1")=1 "Gain";
     parameter Real w(start=1) "Angular frequency";
     parameter Real D(start=1) "Damping";
-    parameter Init initType=Init.NoInit 
-      "Type of initialization (1: no init, 2: steady state, 3/4: initial output)" annotation(Evaluate=true, 
+    parameter Init initType=Init.NoInit
+      "Type of initialization (1: no init, 2: steady state, 3/4: initial output)" annotation(Evaluate=true,
         Dialog(group="Initialization"));
     parameter Real y_start=0 "Initial or guess value of output (= state)" 
       annotation (Dialog(group="Initialization"));
-    parameter Real yd_start=0 
+    parameter Real yd_start=0
       "Initial or guess value of derivative of output (= state)" 
       annotation (Dialog(group="Initialization"));
 
@@ -479,45 +479,45 @@ Example:
 </pre></blockquote>
 
 </html>"), Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-              extent={{-100.0,-100.0},{100.0,100.0}}), 
+        coordinateSystem(preserveAspectRatio=true,
+              extent={{-100.0,-100.0},{100.0,100.0}}),
             graphics={
-        Line(points={{-80.0,78.0},{-80.0,-90.0}}, 
-            color={192,192,192}), 
-      Polygon(lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}), 
-      Line(points={{-90.0,-80.0},{82.0,-80.0}}, 
-          color={192,192,192}), 
-      Polygon(lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}), 
-      Line(origin = {-1.939,-1.816}, 
-          points = {{81.939,36.056},{65.362,36.056},{14.39,-26.199},{-29.966,113.485},{-65.374,-61.217},{-78.061,-78.184}}, 
-          color = {0,0,127}, 
-          smooth = Smooth.Bezier), 
-      Text(textColor={192,192,192}, 
-          extent={{0.0,-70.0},{60.0,-10.0}}, 
-          textString="PT2"), 
-      Text(extent={{-150.0,-150.0},{150.0,-110.0}}, 
+        Line(points={{-80.0,78.0},{-80.0,-90.0}},
+            color={192,192,192}),
+      Polygon(lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}),
+      Line(points={{-90.0,-80.0},{82.0,-80.0}},
+          color={192,192,192}),
+      Polygon(lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}),
+      Line(origin = {-1.939,-1.816},
+          points = {{81.939,36.056},{65.362,36.056},{14.39,-26.199},{-29.966,113.485},{-65.374,-61.217},{-78.061,-78.184}},
+          color = {0,0,127},
+          smooth = Smooth.Bezier),
+      Text(textColor={192,192,192},
+          extent={{0.0,-70.0},{60.0,-10.0}},
+          textString="PT2"),
+      Text(extent={{-150.0,-150.0},{150.0,-110.0}},
           textString="w=%w")}));
   end SecondOrder;
 
   block PI "Proportional-Integral controller"
     import Modelica.Blocks.Types.Init;
     parameter Real k(unit="1")=1 "Gain";
-    parameter SI.Time T(start=1,min=Modelica.Constants.small) 
+    parameter SI.Time T(start=1,min=Modelica.Constants.small)
       "Time Constant (T>0 required)";
-    parameter Init initType=Init.NoInit 
+    parameter Init initType=Init.NoInit
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-                                                                              annotation(Evaluate=true, 
+                                                                              annotation(Evaluate=true,
         Dialog(group="Initialization"));
     parameter Real x_start=0 "Initial or guess value of state" 
       annotation (Dialog(group="Initialization"));
     parameter Real y_start=0 "Initial value of output" 
-      annotation(Dialog(enable=initType == Init.SteadyState or initType == Init.InitialOutput, group= 
+      annotation(Dialog(enable=initType == Init.SteadyState or initType == Init.InitialOutput, group=
             "Initialization"));
 
     extends Interfaces.SISO;
@@ -534,7 +534,7 @@ Example:
   equation
     der(x) = u/T;
     y = k*(x + u);
-    annotation (defaultComponentName="PI", 
+    annotation (defaultComponentName="PI",
       Documentation(info="<html>
 <p>
 This blocks defines the transfer function between the input u and
@@ -574,27 +574,27 @@ This is discussed in the description of package
 </p>
 
 </html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,78},{-80,-90}}, color={192,192,192}), 
+          Line(points={{-80,78},{-80,-90}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-80},{82,-80}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-80},{82,-80}}, color={192,192,192}),
           Polygon(
-            points={{90,-80},{68,-72},{68,-88},{90,-80}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points = {{-80.0,-80.0},{-80.0,-20.0},{60.0,80.0}}, color = {0,0,127}), 
+            points={{90,-80},{68,-72},{68,-88},{90,-80}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points = {{-80.0,-80.0},{-80.0,-20.0},{60.0,80.0}}, color = {0,0,127}),
           Text(
-            extent={{0,6},{60,-56}}, 
-            textColor={192,192,192}, 
-            textString="PI"), 
+            extent={{0,6},{60,-56}},
+            textColor={192,192,192},
+            textString="PI"),
           Text(
-            extent={{-150,-150},{150,-110}}, 
+            extent={{-150,-150},{150,-110}},
             textString="T=%T")}));
   end PI;
 
@@ -603,38 +603,38 @@ This is discussed in the description of package
     extends Interfaces.SISO;
 
     parameter Real k(unit="1")=1 "Gain";
-    parameter SI.Time Ti(min=Modelica.Constants.small, start=0.5) 
+    parameter SI.Time Ti(min=Modelica.Constants.small, start=0.5)
       "Time Constant of Integrator";
-    parameter SI.Time Td(min=0, start=0.1) 
+    parameter SI.Time Td(min=0, start=0.1)
       "Time Constant of Derivative block";
-    parameter Real Nd(min=Modelica.Constants.small) = 10 
+    parameter Real Nd(min=Modelica.Constants.small) = 10
       "The higher Nd, the more ideal the derivative block";
-    parameter Init initType= Init.InitialState 
+    parameter Init initType= Init.InitialState
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-                                       annotation(Evaluate=true, 
+                                       annotation(Evaluate=true,
         Dialog(group="Initialization"));
-    parameter Real xi_start=0 
+    parameter Real xi_start=0
       "Initial or guess value for integrator output (= integrator state)" 
       annotation (Dialog(group="Initialization"));
-    parameter Real xd_start=0 
+    parameter Real xd_start=0
       "Initial or guess value for state of derivative block" 
       annotation (Dialog(group="Initialization"));
     parameter Real y_start=0 "Initial value of output" 
-      annotation(Dialog(enable=initType == Init.InitialOutput, group= 
+      annotation(Dialog(enable=initType == Init.InitialOutput, group=
             "Initialization"));
     constant SI.Time unitTime=1 annotation(HideResult=true);
 
     Blocks.Math.Gain P(k=1) "Proportional part of PID controller" 
       annotation (Placement(transformation(extent={{-60,60},{-20,100}})));
-    Blocks.Continuous.Integrator I(k=unitTime/Ti, y_start=xi_start, 
+    Blocks.Continuous.Integrator I(k=unitTime/Ti, y_start=xi_start,
       initType=if initType==Init.SteadyState then 
                   Init.SteadyState else 
                if initType==Init.InitialState then 
-                  Init.InitialState else Init.NoInit) 
+                  Init.InitialState else Init.NoInit)
       "Integral part of PID controller" 
       annotation (Placement(transformation(extent={{-60,-20},{-20,20}})));
     Blocks.Continuous.Derivative D(k=Td/unitTime, T=max([Td/Nd, 100*Modelica.
-          Constants.eps]), x_start=xd_start, 
+          Constants.eps]), x_start=xd_start,
       initType=if initType==Init.SteadyState or 
                   initType==Init.InitialOutput then Init.SteadyState else 
                if initType==Init.InitialState then Init.InitialState else 
@@ -642,7 +642,7 @@ This is discussed in the description of package
       annotation (Placement(transformation(extent={{-60,-100},{-20,-60}})));
     Blocks.Math.Gain Gain(k=k) "Gain of PID controller" 
       annotation (Placement(transformation(extent={{60,-10},{80,10}})));
-    Blocks.Math.Add3 Add annotation (Placement(transformation(extent={{20,-10}, 
+    Blocks.Math.Add3 Add annotation (Placement(transformation(extent={{20,-10},
               {40,10}})));
   initial equation
     if initType==Init.InitialOutput then
@@ -653,40 +653,40 @@ This is discussed in the description of package
     connect(u, P.u) annotation (Line(points={{-120,0},{-80,0},{-80,80},{-64,80}}, color={0,0,127}));
     connect(u, I.u) 
       annotation (Line(points={{-120,0},{-64,0}}, color={0,0,127}));
-    connect(u, D.u) annotation (Line(points={{-120,0},{-80,0},{-80,-80},{-64,-80}}, 
+    connect(u, D.u) annotation (Line(points={{-120,0},{-80,0},{-80,-80},{-64,-80}},
                    color={0,0,127}));
     connect(P.y, Add.u1) annotation (Line(points={{-18,80},{0,80},{0,8},{18,8}}, color={0,0,127}));
     connect(I.y, Add.u2) 
       annotation (Line(points={{-18,0},{18,0}}, color={0,0,127}));
-    connect(D.y, Add.u3) annotation (Line(points={{-18,-80},{0,-80},{0,-8},{18,-8}}, 
+    connect(D.y, Add.u3) annotation (Line(points={{-18,-80},{0,-80},{0,-8},{18,-8}},
                   color={0,0,127}));
     connect(Add.y, Gain.u) 
       annotation (Line(points={{41,0},{58,0}}, color={0,0,127}));
     connect(Gain.y, y) 
       annotation (Line(points={{81,0},{110,0}}, color={0,0,127}));
-    annotation (defaultComponentName="PID", 
+    annotation (defaultComponentName="PID",
       Icon(
-          coordinateSystem(preserveAspectRatio=true, 
-              extent={{-100.0,-100.0},{100.0,100.0}}), 
+          coordinateSystem(preserveAspectRatio=true,
+              extent={{-100.0,-100.0},{100.0,100.0}}),
               graphics={
-          Line(points={{-80.0,78.0},{-80.0,-90.0}}, 
-              color={192,192,192}), 
-        Polygon(lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid, 
-            points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}), 
-        Line(points={{-90.0,-80.0},{82.0,-80.0}}, 
-            color={192,192,192}), 
-        Polygon(lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid, 
-            points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}), 
-        Line(points = {{-80,-80},{-80,-20},{60,80}}, color = {0,0,127}), 
-        Text(textColor={192,192,192}, 
-            extent={{-20.0,-60.0},{80.0,-20.0}}, 
-            textString="PID"), 
-        Text(extent={{-150.0,-150.0},{150.0,-110.0}}, 
-            textString="Ti=%Ti")}), 
+          Line(points={{-80.0,78.0},{-80.0,-90.0}},
+              color={192,192,192}),
+        Polygon(lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid,
+            points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}),
+        Line(points={{-90.0,-80.0},{82.0,-80.0}},
+            color={192,192,192}),
+        Polygon(lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid,
+            points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}),
+        Line(points = {{-80,-80},{-80,-20},{60,80}}, color = {0,0,127}),
+        Text(textColor={192,192,192},
+            extent={{-20.0,-60.0},{80.0,-20.0}},
+            textString="PID"),
+        Text(extent={{-150.0,-150.0},{150.0,-110.0}},
+            textString="Ti=%Ti")}),
       Documentation(info="<html>
 <p>
 This is the text-book version of a PID-controller.
@@ -760,38 +760,38 @@ to compute u by an algebraic equation.
     extends Modelica.Blocks.Interfaces.SISO;
 
     parameter Real k(unit="1")=1 "Gain";
-    parameter SI.Time Ti(min=Modelica.Constants.small, start=0.5) 
+    parameter SI.Time Ti(min=Modelica.Constants.small, start=0.5)
       "Time Constant of Integrator";
-    parameter SI.Time Td(min=0, start=0.1) 
+    parameter SI.Time Td(min=0, start=0.1)
       "Time Constant of Derivative block";
-    parameter Real Nd(min=Modelica.Constants.small) = 10 
+    parameter Real Nd(min=Modelica.Constants.small) = 10
       "The higher Nd, the more ideal the derivative block";
-    parameter Init initType= Init.InitialState 
+    parameter Init initType= Init.InitialState
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-                                       annotation(Evaluate=true, 
+                                       annotation(Evaluate=true,
         Dialog(group="Initialization"));
-    parameter Real xi_start=0 
+    parameter Real xi_start=0
       "Initial or guess value for integrator output (= integrator state)" 
       annotation (Dialog(group="Initialization"));
-    parameter Real xd_start=0 
+    parameter Real xd_start=0
       "Initial or guess value for state of derivative block" 
       annotation (Dialog(group="Initialization"));
     parameter Real y_start=0 "Initial value of output" 
-      annotation(Dialog(enable=initType == Init.InitialOutput, group= 
+      annotation(Dialog(enable=initType == Init.InitialOutput, group=
             "Initialization"));
     constant SI.Time unitTime=1 annotation(HideResult=true);
 
     Modelica.Blocks.Math.Gain P(k=k) "Proportional part of PID controller" 
       annotation (Placement(transformation(extent={{-60,60},{-20,100}})));
-    Modelica.Blocks.Continuous.Integrator I(k=unitTime/Ti, y_start=xi_start, 
+    Modelica.Blocks.Continuous.Integrator I(k=unitTime/Ti, y_start=xi_start,
       initType=if initType==Init.SteadyState then 
                   Init.SteadyState else 
                if initType==Init.InitialState then 
-                  Init.InitialState else Init.NoInit) 
+                  Init.InitialState else Init.NoInit)
       "Integral part of PID controller" 
       annotation (Placement(transformation(extent={{-60,-20},{-20,20}})));
     Modelica.Blocks.Continuous.Derivative D(k=Td/unitTime, T=max([Td/Nd, 100*Modelica.
-          Constants.eps]), x_start=xd_start, 
+          Constants.eps]), x_start=xd_start,
       initType=if initType==Init.SteadyState or 
                   initType==Init.InitialOutput then Init.SteadyState else 
                if initType==Init.InitialState then Init.InitialState else 
@@ -799,7 +799,7 @@ to compute u by an algebraic equation.
       annotation (Placement(transformation(extent={{-60,-100},{-20,-60}})));
     Modelica.Blocks.Math.Gain Gain(k=1) "Gain of PID controller" 
       annotation (Placement(transformation(extent={{60,-10},{80,10}})));
-    Modelica.Blocks.Math.Add3 Add annotation (Placement(transformation(extent={{20,-10}, 
+    Modelica.Blocks.Math.Add3 Add annotation (Placement(transformation(extent={{20,-10},
               {40,10}})));
   initial equation
     if initType==Init.InitialOutput then
@@ -810,40 +810,40 @@ to compute u by an algebraic equation.
     connect(u, P.u) annotation (Line(points={{-120,0},{-80,0},{-80,80},{-64,80}}, color={0,0,127}));
     connect(u, I.u) 
       annotation (Line(points={{-120,0},{-64,0}}, color={0,0,127}));
-    connect(u, D.u) annotation (Line(points={{-120,0},{-80,0},{-80,-80},{-64,-80}}, 
+    connect(u, D.u) annotation (Line(points={{-120,0},{-80,0},{-80,-80},{-64,-80}},
                    color={0,0,127}));
     connect(P.y, Add.u1) annotation (Line(points={{-18,80},{0,80},{0,8},{18,8}}, color={0,0,127}));
     connect(I.y, Add.u2) 
       annotation (Line(points={{-18,0},{18,0}}, color={0,0,127}));
-    connect(D.y, Add.u3) annotation (Line(points={{-18,-80},{0,-80},{0,-8},{18,-8}}, 
+    connect(D.y, Add.u3) annotation (Line(points={{-18,-80},{0,-80},{0,-8},{18,-8}},
                   color={0,0,127}));
     connect(Add.y, Gain.u) 
       annotation (Line(points={{41,0},{58,0}}, color={0,0,127}));
     connect(Gain.y, y) 
       annotation (Line(points={{81,0},{110,0}}, color={0,0,127}));
-    annotation (defaultComponentName="PID_Parallel", 
+    annotation (defaultComponentName="PID_Parallel",
       Icon(
-          coordinateSystem(preserveAspectRatio=true, 
-              extent={{-100.0,-100.0},{100.0,100.0}}), 
+          coordinateSystem(preserveAspectRatio=true,
+              extent={{-100.0,-100.0},{100.0,100.0}}),
               graphics={
-          Line(points={{-80.0,78.0},{-80.0,-90.0}}, 
-              color={192,192,192}), 
-        Polygon(lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid, 
-            points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}), 
-        Line(points={{-90.0,-80.0},{82.0,-80.0}}, 
-            color={192,192,192}), 
-        Polygon(lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid, 
-            points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}), 
-        Line(points = {{-80,-80},{-80,-20},{60,80}}, color = {0,0,127}), 
-        Text(textColor={192,192,192}, 
-            extent={{-20.0,-60.0},{80.0,-20.0}}, 
-            textString="PID"), 
-        Text(extent={{-150.0,-150.0},{150.0,-110.0}}, 
-            textString="Ti=%Ti")}), 
+          Line(points={{-80.0,78.0},{-80.0,-90.0}},
+              color={192,192,192}),
+        Polygon(lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid,
+            points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}),
+        Line(points={{-90.0,-80.0},{82.0,-80.0}},
+            color={192,192,192}),
+        Polygon(lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid,
+            points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}),
+        Line(points = {{-80,-80},{-80,-20},{60,80}}, color = {0,0,127}),
+        Text(textColor={192,192,192},
+            extent={{-20.0,-60.0},{80.0,-20.0}},
+            textString="PID"),
+        Text(extent={{-150.0,-150.0},{150.0,-110.0}},
+            textString="Ti=%Ti")}),
       Documentation(info="<html>
 <p>
 This is the text-book version of a PID-controller.
@@ -917,81 +917,81 @@ to compute u by an algebraic equation.
     extends Modelica.Blocks.Interfaces.SISO;
     parameter String Type = "Parallel" "PID Type" 
       annotation(choices(
-      choice = "Ideal", 
+      choice = "Ideal",
       choice = "Parallel"));
 
     parameter String Mode = "k,Ti,Td,Nd" "Parameter setting mode" 
       annotation(choices(
-      choice = "k,Ti,Td,Nd", 
+      choice = "k,Ti,Td,Nd",
       choice = "P,I,D,N"));
     //mode1
     parameter Real k(unit = "1") = 1 "Gain" 
       annotation(Dialog(enable = Mode == "k,Ti,Td,Nd", group = "k,Ti,Td,Nd"));
-    parameter SI.Time Ti(min = Modelica.Constants.small, start = 0.5) 
+    parameter SI.Time Ti(min = Modelica.Constants.small, start = 0.5)
       "Time Constant of Integrator" annotation(Dialog(enable = Mode == "k,Ti,Td,Nd", group = "k,Ti,Td,Nd"));
-    parameter SI.Time Td(min = 0, start = 0.1) 
+    parameter SI.Time Td(min = 0, start = 0.1)
       "Time Constant of Derivative block" annotation(Dialog(enable = Mode == "k,Ti,Td,Nd", group = "k,Ti,Td,Nd"));
-    parameter Real Nd(min = Modelica.Constants.small) = 10 
+    parameter Real Nd(min = Modelica.Constants.small) = 10
       "The higher Nd, the more ideal the derivative block" annotation(Dialog(enable = Mode == "k,Ti,Td,Nd", group = "k,Ti,Td,Nd"));
     //mode2  
     parameter Real P(unit = "1") = 1 "Gain" 
       annotation(Dialog(enable = Mode == "P,I,D,N", group = "P,I,D,N"));
-    parameter Real I(unit = "1", min = Modelica.Constants.small, start = 1) 
+    parameter Real I(unit = "1", min = Modelica.Constants.small, start = 1)
       "Integrator" annotation(Dialog(enable = Mode == "P,I,D,N", group = "P,I,D,N"));
-    parameter Real D(unit = "1", min = 0, start = 0) 
+    parameter Real D(unit = "1", min = 0, start = 0)
       "Derivative" annotation(Dialog(enable = Mode == "P,I,D,N", group = "P,I,D,N"));
-    parameter Real N(min = Modelica.Constants.small) = 100 
+    parameter Real N(min = Modelica.Constants.small) = 100
       "Filter coefficient" annotation(Dialog(enable = Mode == "P,I,D,N", group = "P,I,D,N"));
 
-    parameter Init initType = Init.InitialState 
+    parameter Init initType = Init.InitialState
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-      annotation(Evaluate = true, 
+      annotation(Evaluate = true,
       Dialog(group = "Initialization"));
-    parameter Real xi_start = 0 
+    parameter Real xi_start = 0
       "Initial or guess value for integrator output (= integrator state)" 
       annotation(Dialog(group = "Initialization"));
-    parameter Real xd_start = 0 
+    parameter Real xd_start = 0
       "Initial or guess value for state of derivative block" 
       annotation(Dialog(group = "Initialization"));
     parameter Real y_start = 0 "Initial value of output" 
-      annotation(Dialog(enable = initType == Init.InitialOutput, group = 
+      annotation(Dialog(enable = initType == Init.InitialOutput, group =
       "Initialization"));
     constant SI.Time unitTime = 1 annotation(HideResult = true);
     Modelica.Blocks.Continuous.PID_Parallel PID_Parallel1(k = k, Ti = Ti, Td = Td, Nd = Nd, initType = initType, xi_start = xi_start, xd_start = xi_start, y_start = y_start) if Type == "Parallel" and Mode == "k,Ti,Td,Nd" 
-      annotation(Placement(transformation(origin = {0, 40}, 
+      annotation(Placement(transformation(origin = {0, 40},
       extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Continuous.PID PID1(k = k, Ti = Ti, Td = Td, Nd = Nd, initType = initType, xi_start = xi_start, xd_start = xi_start, y_start = y_start) if Type == "Ideal" and Mode == "k,Ti,Td,Nd" 
-      annotation(Placement(transformation(origin = {0, 80}, 
+      annotation(Placement(transformation(origin = {0, 80},
       extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Continuous.PID_Parallel PID_Parallel2(k = P, Ti = unitTime / I, Td = D * unitTime, Nd = D * unitTime * N + Modelica.Constants.eps, initType = initType, xi_start = xi_start, xd_start = xi_start, y_start = y_start) if Type == "Parallel" and Mode == "P,I,D,N" 
-      annotation(Placement(transformation(origin = {0, -76}, 
+      annotation(Placement(transformation(origin = {0, -76},
       extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Continuous.PID PID2(k = P, Ti = unitTime / I, Td = D * unitTime, Nd = D * unitTime * N + Modelica.Constants.eps, initType = initType, xi_start = xi_start, xd_start = xi_start, y_start = y_start) if Type == "Ideal" and Mode == "P,I,D,N" 
-      annotation(Placement(transformation(origin = {4.44089e-16, -40}, 
+      annotation(Placement(transformation(origin = {4.44089e-16, -40},
       extent = {{-10, -10}, {10, 10}})));
-    annotation(defaultComponentName = "PIDs", 
+    annotation(defaultComponentName = "PIDs",
       Icon(
-      coordinateSystem(preserveAspectRatio = true, 
-      extent = {{-100.0, -100.0}, {100.0, 100.0}}), 
+      coordinateSystem(preserveAspectRatio = true,
+      extent = {{-100.0, -100.0}, {100.0, 100.0}}),
       graphics = {
-      Line(points = {{-80.0, 78.0}, {-80.0, -90.0}}, 
-      color = {192, 192, 192}), 
-      Polygon(lineColor = {192, 192, 192}, 
-      fillColor = {192, 192, 192}, 
-      fillPattern = FillPattern.Solid, 
-      points = {{-80.0, 90.0}, {-88.0, 68.0}, {-72.0, 68.0}, {-80.0, 90.0}}), 
-      Line(points = {{-90.0, -80.0}, {82.0, -80.0}}, 
-      color = {192, 192, 192}), 
-      Polygon(lineColor = {192, 192, 192}, 
-      fillColor = {192, 192, 192}, 
-      fillPattern = FillPattern.Solid, 
-      points = {{90.0, -80.0}, {68.0, -72.0}, {68.0, -88.0}, {90.0, -80.0}}), 
-      Line(points = {{-80, -80}, {-80, -20}, {60, 80}}, color = {0, 0, 127}), 
-      Text(textColor = {192, 192, 192}, 
-      extent = {{-20.0, -60.0}, {80.0, -20.0}}, 
-      textString = "PID"), 
-      Text(extent = {{-150.0, -150.0}, {150.0, -110.0}}, 
-      textString = "Ti=%Ti")}), 
+      Line(points = {{-80.0, 78.0}, {-80.0, -90.0}},
+      color = {192, 192, 192}),
+      Polygon(lineColor = {192, 192, 192},
+      fillColor = {192, 192, 192},
+      fillPattern = FillPattern.Solid,
+      points = {{-80.0, 90.0}, {-88.0, 68.0}, {-72.0, 68.0}, {-80.0, 90.0}}),
+      Line(points = {{-90.0, -80.0}, {82.0, -80.0}},
+      color = {192, 192, 192}),
+      Polygon(lineColor = {192, 192, 192},
+      fillColor = {192, 192, 192},
+      fillPattern = FillPattern.Solid,
+      points = {{90.0, -80.0}, {68.0, -72.0}, {68.0, -88.0}, {90.0, -80.0}}),
+      Line(points = {{-80, -80}, {-80, -20}, {60, 80}}, color = {0, 0, 127}),
+      Text(textColor = {192, 192, 192},
+      extent = {{-20.0, -60.0}, {80.0, -20.0}},
+      textString = "PID"),
+      Text(extent = {{-150.0, -150.0}, {150.0, -110.0}},
+      textString = "Ti=%Ti")}),
       Documentation(info = "<html>
 <p>
 This is the text-book version of a PID-controller.
@@ -1058,93 +1058,93 @@ The solution is to not initialize u or the variable that is used
 to compute u by an algebraic equation.
 </p>
 
-</html>"  ), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, 
-      grid = {2, 2}), graphics = {Rectangle(origin = {3, 55}, 
-      fillColor = {255, 255, 255}, 
-      pattern = LinePattern.Dash, 
-      fillPattern = FillPattern.Solid, 
-      extent = {{-85, 41}, {85, -41}}), Text(origin = {45, 21}, 
-      lineColor = {0, 0, 0}, 
-      extent = {{-43, 7}, {43, -7}}, 
-      textString = "k、Ti、Td、Nd", 
-      textStyle = {TextStyle.None}, 
-      textColor = {0, 0, 0}, 
-      horizontalAlignment = LinePattern.None), Rectangle(origin = {3, -59}, 
-      fillColor = {255, 255, 255}, 
-      pattern = LinePattern.Dash, 
-      fillPattern = FillPattern.Solid, 
-      extent = {{-85, 41}, {85, -41}}), Text(origin = {50, -93}, 
-      lineColor = {0, 0, 0}, 
-      extent = {{-38, 7}, {38, -7}}, 
-      textString = "P、I、D、N", 
-      textStyle = {TextStyle.None}, 
-      textColor = {0, 0, 0}, 
+</html>"  ), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
+      grid = {2, 2}), graphics = {Rectangle(origin = {3, 55},
+      fillColor = {255, 255, 255},
+      pattern = LinePattern.Dash,
+      fillPattern = FillPattern.Solid,
+      extent = {{-85, 41}, {85, -41}}), Text(origin = {45, 21},
+      lineColor = {0, 0, 0},
+      extent = {{-43, 7}, {43, -7}},
+      textString = "k、Ti、Td、Nd",
+      textStyle = {TextStyle.None},
+      textColor = {0, 0, 0},
+      horizontalAlignment = LinePattern.None), Rectangle(origin = {3, -59},
+      fillColor = {255, 255, 255},
+      pattern = LinePattern.Dash,
+      fillPattern = FillPattern.Solid,
+      extent = {{-85, 41}, {85, -41}}), Text(origin = {50, -93},
+      lineColor = {0, 0, 0},
+      extent = {{-38, 7}, {38, -7}},
+      textString = "P、I、D、N",
+      textStyle = {TextStyle.None},
+      textColor = {0, 0, 0},
       horizontalAlignment = LinePattern.None)}));
   equation
     connect(u, PID1.u) 
-      annotation(Line(origin = {-71, 15}, 
-      points = {{-49, -15}, {11, -15}, {11, 65}, {59, 65}}, 
+      annotation(Line(origin = {-71, 15},
+      points = {{-49, -15}, {11, -15}, {11, 65}, {59, 65}},
       color = {0, 0, 127}));
     connect(PID1.y, y) 
-      annotation(Line(origin = {56, 15}, 
-      points = {{-45, 65}, {4, 65}, {4, -15}, {54, -15}}, 
+      annotation(Line(origin = {56, 15},
+      points = {{-45, 65}, {4, 65}, {4, -15}, {54, -15}},
       color = {0, 0, 127}));
     connect(PID_Parallel1.u, u) 
-      annotation(Line(origin = {-71, -15}, 
-      points = {{59, 55}, {11, 55}, {11, 15}, {-49, 15}}, 
+      annotation(Line(origin = {-71, -15},
+      points = {{59, 55}, {11, 55}, {11, 15}, {-49, 15}},
       color = {0, 0, 127}), __MWORKS(BlockSystem(NamedSignal)));
     connect(PID_Parallel1.y, y) 
-      annotation(Line(origin = {56, -15}, 
-      points = {{-45, 55}, {4, 55}, {4, 15}, {54, 15}}, 
+      annotation(Line(origin = {56, -15},
+      points = {{-45, 55}, {4, 55}, {4, 15}, {54, 15}},
       color = {0, 0, 127}));
     connect(u, PID2.u) 
-      annotation(Line(origin = {-66, -20}, 
-      points = {{-54, 20}, {6, 20}, {6, -20}, {54, -20}}, 
+      annotation(Line(origin = {-66, -20},
+      points = {{-54, 20}, {6, 20}, {6, -20}, {54, -20}},
       color = {0, 0, 127}), __MWORKS(BlockSystem(NamedSignal)));
     connect(PID2.y, y) 
-      annotation(Line(origin = {61, -20}, 
-      points = {{-50, -20}, {-1, -20}, {-1, 20}, {49, 20}}, 
+      annotation(Line(origin = {61, -20},
+      points = {{-50, -20}, {-1, -20}, {-1, 20}, {49, 20}},
       color = {0, 0, 127}));
     connect(u, PID_Parallel2.u) 
-      annotation(Line(origin = {-66, -40}, 
-      points = {{-54, 40}, {6, 40}, {6, -36}, {54, -36}}, 
+      annotation(Line(origin = {-66, -40},
+      points = {{-54, 40}, {6, 40}, {6, -36}, {54, -36}},
       color = {0, 0, 127}), __MWORKS(BlockSystem(NamedSignal)));
     connect(PID_Parallel2.y, y) 
-      annotation(Line(origin = {61, -38}, 
-      points = {{-50, -38}, {-1, -38}, {-1, 38}, {49, 38}}, 
+      annotation(Line(origin = {61, -38},
+      points = {{-50, -38}, {-1, -38}, {-1, 38}, {49, 38}},
       color = {0, 0, 127}));
   end PIDs;
 
-  block LimPID 
+  block LimPID
     "P, PI, PD, and PID controller with limited output, anti-windup compensation, setpoint weighting and optional feed-forward"
     import Modelica.Blocks.Types.Init;
     import Modelica.Blocks.Types.SimpleController;
     extends Modelica.Blocks.Interfaces.SVcontrol;
-    output Real controlError = u_s - u_m 
+    output Real controlError = u_s - u_m
       "Control error (set point - measurement)";
-    parameter .Modelica.Blocks.Types.SimpleController controllerType= 
+    parameter .Modelica.Blocks.Types.SimpleController controllerType=
            .Modelica.Blocks.Types.SimpleController.PID "Type of controller";
     parameter Real k(min=0, unit="1") = 1 "Gain of controller";
-    parameter SI.Time Ti(min=Modelica.Constants.small)=0.5 
-      "Time constant of Integrator block" annotation (Dialog(enable= 
+    parameter SI.Time Ti(min=Modelica.Constants.small)=0.5
+      "Time constant of Integrator block" annotation (Dialog(enable=
             controllerType == .Modelica.Blocks.Types.SimpleController.PI or 
             controllerType == .Modelica.Blocks.Types.SimpleController.PID));
-    parameter SI.Time Td(min=0)=0.1 
-      "Time constant of Derivative block" annotation (Dialog(enable= 
+    parameter SI.Time Td(min=0)=0.1
+      "Time constant of Derivative block" annotation (Dialog(enable=
             controllerType == .Modelica.Blocks.Types.SimpleController.PD or 
             controllerType == .Modelica.Blocks.Types.SimpleController.PID));
     parameter Real yMax(start=1) "Upper limit of output";
     parameter Real yMin=-yMax "Lower limit of output";
-    parameter Real wp(min=0) = 1 
+    parameter Real wp(min=0) = 1
       "Set-point weight for Proportional block (0..1)";
     parameter Real wd(min=0) = 0 "Set-point weight for Derivative block (0..1)" 
        annotation(Dialog(enable=controllerType==.Modelica.Blocks.Types.SimpleController.PD or 
                                   controllerType==.Modelica.Blocks.Types.SimpleController.PID));
-    parameter Real Ni(min=100*Modelica.Constants.eps) = 0.9 
+    parameter Real Ni(min=100*Modelica.Constants.eps) = 0.9
       "Ni*Ti is time constant of anti-windup compensation" 
        annotation(Dialog(enable=controllerType==.Modelica.Blocks.Types.SimpleController.PI or 
                                 controllerType==.Modelica.Blocks.Types.SimpleController.PID));
-    parameter Real Nd(min=100*Modelica.Constants.eps) = 10 
+    parameter Real Nd(min=100*Modelica.Constants.eps) = 10
       "The higher Nd, the more ideal the derivative block" 
        annotation(Dialog(enable=controllerType==.Modelica.Blocks.Types.SimpleController.PD or 
                                   controllerType==.Modelica.Blocks.Types.SimpleController.PID));
@@ -1152,34 +1152,34 @@ to compute u by an algebraic equation.
       annotation(Evaluate=true, choices(checkBox=true));
     parameter Real kFF=1 "Gain of feed-forward input" 
       annotation(Dialog(enable=withFeedForward));
-    parameter Init initType = Init.InitialState 
+    parameter Init initType = Init.InitialState
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
       annotation(Evaluate=true, Dialog(group="Initialization"));
-    parameter Real xi_start=0 
+    parameter Real xi_start=0
       "Initial or guess value for integrator output (= integrator state)" 
-      annotation (Dialog(group="Initialization", 
+      annotation (Dialog(group="Initialization",
                   enable=controllerType==.Modelica.Blocks.Types.SimpleController.PI or 
                          controllerType==.Modelica.Blocks.Types.SimpleController.PID));
-    parameter Real xd_start=0 
+    parameter Real xd_start=0
       "Initial or guess value for state of derivative block" 
-      annotation (Dialog(group="Initialization", 
+      annotation (Dialog(group="Initialization",
                            enable=controllerType==.Modelica.Blocks.Types.SimpleController.PD or 
                                   controllerType==.Modelica.Blocks.Types.SimpleController.PID));
     parameter Real y_start=0 "Initial value of output" 
-      annotation(Dialog(enable=initType == Init.InitialOutput, group= 
+      annotation(Dialog(enable=initType == Init.InitialOutput, group=
             "Initialization"));
-    parameter Modelica.Blocks.Types.LimiterHomotopy homotopyType = Modelica.Blocks.Types.LimiterHomotopy.Linear 
+    parameter Modelica.Blocks.Types.LimiterHomotopy homotopyType = Modelica.Blocks.Types.LimiterHomotopy.Linear
       "Simplified model for homotopy-based initialization" 
       annotation (Evaluate=true, Dialog(group="Initialization"));
     parameter Boolean strict=false "= true, if strict limits with noEvent(..)" 
       annotation (Evaluate=true, choices(checkBox=true), Dialog(tab="Advanced"));
     constant SI.Time unitTime=1 annotation (HideResult=true);
-    Modelica.Blocks.Interfaces.RealInput u_ff if withFeedForward 
+    Modelica.Blocks.Interfaces.RealInput u_ff if withFeedForward
       "Optional connector of feed-forward input signal" 
      annotation (Placement(
           transformation(
-          origin={60,-120}, 
-          extent={{20,-20},{-20,20}}, 
+          origin={60,-120},
+          extent={{20,-20},{-20,20}},
           rotation=270)));
     Modelica.Blocks.Math.Add addP(k1=wp, k2=-1) 
       annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
@@ -1188,16 +1188,16 @@ to compute u by an algebraic equation.
     Modelica.Blocks.Math.Gain P(k=1) 
       annotation (Placement(transformation(extent={{-50,40},{-30,60}})));
     Modelica.Blocks.Continuous.Integrator I(
-      k=unitTime/Ti, 
-      y_start=xi_start, 
+      k=unitTime/Ti,
+      y_start=xi_start,
       initType=if initType == Init.SteadyState then Init.SteadyState else if 
           initType == Init.InitialState 
            then Init.InitialState else Init.NoInit) if with_I 
       annotation (Placement(transformation(extent={{-50,-60},{-30,-40}})));
     Modelica.Blocks.Continuous.Derivative D(
-      k=Td/unitTime, 
-      T=max([Td/Nd,1.e-14]), 
-      x_start=xd_start, 
+      k=Td/unitTime,
+      T=max([Td/Nd,1.e-14]),
+      x_start=xd_start,
       initType=if initType == Init.SteadyState or initType == Init.InitialOutput 
            then Init.SteadyState else if initType == Init.InitialState then 
           Init.InitialState else Init.NoInit) if with_D 
@@ -1210,15 +1210,15 @@ to compute u by an algebraic equation.
       annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
     Modelica.Blocks.Math.Add addSat(k1=+1, k2=-1) if with_I annotation (Placement(
           transformation(
-          origin={80,-50}, 
-          extent={{-10,-10},{10,10}}, 
+          origin={80,-50},
+          extent={{-10,-10},{10,10}},
           rotation=270)));
     Modelica.Blocks.Math.Gain gainTrack(k=1/(k*Ni)) if with_I 
       annotation (Placement(transformation(extent={{0,-80},{-20,-60}})));
     Modelica.Blocks.Nonlinear.Limiter limiter(
-      uMax=yMax, 
-      uMin=yMin, 
-      strict=strict, 
+      uMax=yMax,
+      uMin=yMin,
+      strict=strict,
       homotopyType=homotopyType) 
       annotation (Placement(transformation(extent={{70,-10},{90,10}})));
   protected
@@ -1241,7 +1241,7 @@ to compute u by an algebraic equation.
     end if;
   equation
     if initType == Init.InitialOutput and (y_start < yMin or y_start > yMax) then
-        Modelica.Utilities.Streams.error("LimPID: Start value y_start (=" + String(y_start) + 
+        Modelica.Utilities.Streams.error("LimPID: Start value y_start (=" + String(y_start) +
            ") is outside of the limits of yMin (=" + String(yMin) +") and yMax (=" + String(yMax) + ")");
     end if;
 
@@ -1251,76 +1251,76 @@ to compute u by an algebraic equation.
             -82,6}}, color={0,0,127}));
     connect(u_s, addI.u1) annotation (Line(points={{-120,0},{-96,0},{-96,-42},{
             -82,-42}}, color={0,0,127}));
-    connect(addP.y, P.u) annotation (Line(points={{-59,50},{-52,50}}, color={0, 
+    connect(addP.y, P.u) annotation (Line(points={{-59,50},{-52,50}}, color={0,
             0,127}));
     connect(addD.y, D.u) 
       annotation (Line(points={{-59,0},{-52,0}}, color={0,0,127}));
     connect(addI.y, I.u) annotation (Line(points={{-59,-50},{-52,-50}}, color={
             0,0,127}));
-    connect(P.y, addPID.u1) annotation (Line(points={{-29,50},{-20,50},{-20,8},{-12, 
+    connect(P.y, addPID.u1) annotation (Line(points={{-29,50},{-20,50},{-20,8},{-12,
             8}},     color={0,0,127}));
     connect(D.y, addPID.u2) 
       annotation (Line(points={{-29,0},{-12,0}},color={0,0,127}));
-    connect(I.y, addPID.u3) annotation (Line(points={{-29,-50},{-20,-50},{-20,-8}, 
+    connect(I.y, addPID.u3) annotation (Line(points={{-29,-50},{-20,-50},{-20,-8},
             {-12,-8}},    color={0,0,127}));
-    connect(limiter.y, addSat.u1) annotation (Line(points={{91,0},{94,0},{94, 
+    connect(limiter.y, addSat.u1) annotation (Line(points={{91,0},{94,0},{94,
             -20},{86,-20},{86,-38}}, color={0,0,127}));
     connect(limiter.y, y) 
       annotation (Line(points={{91,0},{110,0}}, color={0,0,127}));
-    connect(addSat.y, gainTrack.u) annotation (Line(points={{80,-61},{80,-70},{2,-70}}, 
+    connect(addSat.y, gainTrack.u) annotation (Line(points={{80,-61},{80,-70},{2,-70}},
                       color={0,0,127}));
-    connect(gainTrack.y, addI.u3) annotation (Line(points={{-21,-70},{-88,-70},{-88, 
+    connect(gainTrack.y, addI.u3) annotation (Line(points={{-21,-70},{-88,-70},{-88,
             -58},{-82,-58}},     color={0,0,127}));
     connect(u_m, addP.u2) annotation (Line(points={{0,-120},{0,-92},{-92,-92},{-92,44},{-82,44}}, color={0,0,127}));
     connect(u_m, addD.u2) annotation (Line(points={{0,-120},{0,-92},{-92,-92},{-92,-6},{-82,-6}}, color={0,0,127}));
     connect(u_m, addI.u2) annotation (Line(points={{0,-120},{0,-92},{-92,-92},{-92,-50},{-82,-50}}, color={0,0,127}));
-    connect(Dzero.y, addPID.u2) annotation (Line(points={{-29.5,25},{-24,25},{-24, 
+    connect(Dzero.y, addPID.u2) annotation (Line(points={{-29.5,25},{-24,25},{-24,
             0},{-12,0}},    color={0,0,127}));
-    connect(Izero.y, addPID.u3) annotation (Line(points={{-10.5,-50},{-20,-50},{-20, 
+    connect(Izero.y, addPID.u3) annotation (Line(points={{-10.5,-50},{-20,-50},{-20,
             -8},{-12,-8}},    color={0,0,127}));
     connect(addPID.y, gainPID.u) 
       annotation (Line(points={{11,0},{18,0}}, color={0,0,127}));
     connect(addFF.y, limiter.u) 
       annotation (Line(points={{60.6,0},{68,0}}, color={0,0,127}));
-    connect(gainPID.y, addFF.u1) annotation (Line(points={{41,0},{44,0},{44,3.6}, 
+    connect(gainPID.y, addFF.u1) annotation (Line(points={{41,0},{44,0},{44,3.6},
             {46.8,3.6}},color={0,0,127}));
-    connect(FFzero.y, addFF.u2) annotation (Line(points={{40.5,-30},{44,-30},{44, 
-            -3.6},{46.8,-3.6}}, 
+    connect(FFzero.y, addFF.u2) annotation (Line(points={{40.5,-30},{44,-30},{44,
+            -3.6},{46.8,-3.6}},
                           color={0,0,127}));
-    connect(addFF.u2, u_ff) annotation (Line(points={{46.8,-3.6},{44,-3.6},{44, 
-            -92},{60,-92},{60,-120}}, 
+    connect(addFF.u2, u_ff) annotation (Line(points={{46.8,-3.6},{44,-3.6},{44,
+            -92},{60,-92},{60,-120}},
                                  color={0,0,127}));
-    connect(addFF.y, addSat.u2) annotation (Line(points={{60.6,0},{64,0},{64,-20}, 
+    connect(addFF.y, addSat.u2) annotation (Line(points={{60.6,0},{64,0},{64,-20},
             {74,-20},{74,-38}}, color={0,0,127}));
-    annotation (defaultComponentName="PID", 
+    annotation (defaultComponentName="PID",
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,78},{-80,-90}}, color={192,192,192}), 
+          Line(points={{-80,78},{-80,-90}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-80},{82,-80}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-80},{82,-80}}, color={192,192,192}),
           Polygon(
-            points={{90,-80},{68,-72},{68,-88},{90,-80}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,-80},{-80,-20},{30,60},{80,60}}, color={0,0,127}), 
+            points={{90,-80},{68,-72},{68,-88},{90,-80}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,-80},{-80,-20},{30,60},{80,60}}, color={0,0,127}),
           Text(
-            extent={{-20,-20},{80,-60}}, 
-            textColor={192,192,192}, 
-            textString="%controllerType"), 
+            extent={{-20,-20},{80,-60}},
+            textColor={192,192,192},
+            textString="%controllerType"),
           Line(
-            visible=strict, 
-            points={{30,60},{81,60}}, 
-            color={255,0,0})}), 
+            visible=strict,
+            points={{30,60},{81,60}},
+            color={255,0,0})}),
       Diagram(graphics={Text(
-              extent={{79,-112},{129,-102}}, 
-              textColor={0,0,255}, 
-            textString=" (feed-forward)")}), 
+              extent={{79,-112},{129,-102}},
+              textColor={0,0,255},
+            textString=" (feed-forward)")}),
       Documentation(info="<html>
 <p>
 Via parameter <strong>controllerType</strong> either <strong>P</strong>, <strong>PI</strong>, <strong>PD</strong>,
@@ -1479,22 +1479,22 @@ the entire homotopy transformation.</li>
     import Modelica.Blocks.Types.Init;
     extends Interfaces.SISO;
 
-    parameter Real b[:]={1} 
+    parameter Real b[:]={1}
       "Numerator coefficients of transfer function (e.g., 2*s+3 is specified as {2,3})";
-    parameter Real a[:]={1} 
+    parameter Real a[:]={1}
       "Denominator coefficients of transfer function (e.g., 5*s+6 is specified as {5,6})";
-    parameter Modelica.Blocks.Types.Init initType=Modelica.Blocks.Types.Init.NoInit 
+    parameter Modelica.Blocks.Types.Init initType=Modelica.Blocks.Types.Init.NoInit
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-                                       annotation(Evaluate=true, Dialog(group= 
+                                       annotation(Evaluate=true, Dialog(group=
             "Initialization"));
-    parameter Real x_start[size(a, 1) - 1]=zeros(nx) 
+    parameter Real x_start[size(a, 1) - 1]=zeros(nx)
       "Initial or guess values of states" 
       annotation (Dialog(group="Initialization"));
-    parameter Real y_start=0 
+    parameter Real y_start=0
       "Initial value of output (derivatives of y are zero up to nx-1-th derivative)" 
-      annotation(Dialog(enable=initType == Init.InitialOutput, group= 
+      annotation(Dialog(enable=initType == Init.InitialOutput, group=
             "Initialization"));
-    output Real x[size(a, 1) - 1](start=x_start) 
+    output Real x[size(a, 1) - 1](start=x_start)
       "State of transfer function from controller canonical form";
   protected
     parameter Integer na=size(a, 1) "Size of Denominator of transfer function.";
@@ -1559,40 +1559,40 @@ results in the following transfer function:
 y = --------- * u
       s + 3
 </pre></blockquote>
-</html>"), 
+</html>"),
       Icon(
-          coordinateSystem(preserveAspectRatio=true, 
-            extent={{-100.0,-100.0},{100.0,100.0}}), 
+          coordinateSystem(preserveAspectRatio=true,
+            extent={{-100.0,-100.0},{100.0,100.0}}),
             graphics={
-          Line(points={{-80.0,0.0},{80.0,0.0}}, 
-            color={0,0,127}), 
-        Text(textColor={0,0,127}, 
-          extent={{-90.0,10.0},{90.0,90.0}}, 
-          textString="b(s)"), 
-        Text(textColor={0,0,127}, 
-          extent={{-90.0,-90.0},{90.0,-10.0}}, 
+          Line(points={{-80.0,0.0},{80.0,0.0}},
+            color={0,0,127}),
+        Text(textColor={0,0,127},
+          extent={{-90.0,10.0},{90.0,90.0}},
+          textString="b(s)"),
+        Text(textColor={0,0,127},
+          extent={{-90.0,-90.0},{90.0,-10.0}},
           textString="a(s)")}));
   end TransferFunction;
   block TransferFunctionDia "Linear transfer function,Dynamic icon display"
     import Modelica.Blocks.Types.Init;
     extends Modelica.Blocks.Interfaces.SISO;
 
-    parameter Real b[:] = {1} 
+    parameter Real b[:] = {1}
       "Numerator coefficients of transfer function (e.g., 2*s+3 is specified as {2,3})";
-    parameter Real a[:] = {1} 
+    parameter Real a[:] = {1}
       "Denominator coefficients of transfer function (e.g., 5*s+6 is specified as {5,6})";
-    parameter Modelica.Blocks.Types.Init initType = Modelica.Blocks.Types.Init.NoInit 
+    parameter Modelica.Blocks.Types.Init initType = Modelica.Blocks.Types.Init.NoInit
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-      annotation(Evaluate = true, Dialog(group = 
+      annotation(Evaluate = true, Dialog(group =
       "Initialization"));
-    parameter Real x_start[size(a, 1) - 1] = zeros(nx) 
+    parameter Real x_start[size(a, 1) - 1] = zeros(nx)
       "Initial or guess values of states" 
       annotation(Dialog(group = "Initialization"));
-    parameter Real y_start = 0 
+    parameter Real y_start = 0
       "Initial value of output (derivatives of y are zero up to nx-1-th derivative)" 
-      annotation(Dialog(enable = initType == Init.InitialOutput, group = 
+      annotation(Dialog(enable = initType == Init.InitialOutput, group =
       "Initialization"));
-    output Real x[size(a, 1) - 1](start = x_start) 
+    output Real x[size(a, 1) - 1](start = x_start)
       "State of transfer function from controller canonical form";
   protected
     parameter Integer na = size(a, 1) "Size of Denominator of transfer function.";
@@ -1645,43 +1645,43 @@ s + 3
 </code></pre><p>
 @TY develop
 </p>
-</html>"  ), 
-      Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-  grid={2,2}),graphics = {Line(origin={0,0}, 
-  points={{-80,0},{80,0}}, 
-  color={0,0,127}), Text(origin={0,30}, 
-  lineColor={0,0,127}, 
-  extent={{-90,-20},{90,20}}, 
-  textString="%{b(polynomial)}", 
-  textStyle={TextStyle.None}, 
-  textColor={0,0,127}), Text(origin={0,-30}, 
-  lineColor={0,0,127}, 
-  extent={{-90,-20},{90,20}}, 
-  textString="%{a(polynomial)}", 
-  textStyle={TextStyle.None}, 
-  textColor={0,0,127})}), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, 
+</html>"  ),
+      Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+  grid={2,2}),graphics = {Line(origin={0,0},
+  points={{-80,0},{80,0}},
+  color={0,0,127}), Text(origin={0,30},
+  lineColor={0,0,127},
+  extent={{-90,-20},{90,20}},
+  textString="%{b(polynomial)}",
+  textStyle={TextStyle.None},
+  textColor={0,0,127}), Text(origin={0,-30},
+  lineColor={0,0,127},
+  extent={{-90,-20},{90,20}},
+  textString="%{a(polynomial)}",
+  textStyle={TextStyle.None},
+  textColor={0,0,127})}), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
       grid = {2, 2})));
   end TransferFunctionDia;
 
   block StateSpace "Linear state space system"
     import Modelica.Blocks.Types.Init;
-    parameter Real A[:, size(A, 1)]=[1, 0; 0, 1] 
+    parameter Real A[:, size(A, 1)]=[1, 0; 0, 1]
       "Matrix A of state space model (e.g., A=[1, 0; 0, 1])";
-    parameter Real B[size(A, 1), :]=[1; 1] 
+    parameter Real B[size(A, 1), :]=[1; 1]
       "Matrix B of state space model (e.g., B=[1; 1])";
-    parameter Real C[:, size(A, 1)]=[1, 1] 
+    parameter Real C[:, size(A, 1)]=[1, 1]
       "Matrix C of state space model (e.g., C=[1, 1])";
-    parameter Real D[size(C, 1), size(B, 2)]=zeros(size(C, 1), size(B, 2)) 
+    parameter Real D[size(C, 1), size(B, 2)]=zeros(size(C, 1), size(B, 2))
       "Matrix D of state space model";
-    parameter Modelica.Blocks.Types.Init initType=Modelica.Blocks.Types.Init.NoInit 
+    parameter Modelica.Blocks.Types.Init initType=Modelica.Blocks.Types.Init.NoInit
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-                                                                                      annotation(Evaluate=true, 
+                                                                                      annotation(Evaluate=true,
         Dialog(group="Initialization"));
     parameter Real x_start[nx]=zeros(nx) "Initial or guess values of states" 
       annotation (Dialog(group="Initialization"));
-    parameter Real y_start[ny]=zeros(ny) 
+    parameter Real y_start[ny]=zeros(ny)
       "Initial values of outputs (remaining states are in steady state if possible)" 
-      annotation(Dialog(enable=initType == Init.InitialOutput, group= 
+      annotation(Dialog(enable=initType == Init.InitialOutput, group=
             "Initialization"));
 
     extends Interfaces.MIMO(final nin=size(B, 2), final nout=size(C, 1));
@@ -1740,45 +1740,45 @@ results in the following equations:
                              [x[2]]            [u[2]]
 </pre></blockquote>
 </html>"), Icon(
-      coordinateSystem(preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}), 
+      coordinateSystem(preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}}),
         graphics={
-      Text(extent={{-90,10},{-10,90}}, 
-        textString="A", 
-        textColor={0,0,127}), 
-      Text(extent={{10,10},{90,90}}, 
-        textString="B", 
-        textColor={0,0,127}), 
-      Text(extent={{-90,-10},{-10,-90}}, 
-        textString="C", 
-        textColor={0,0,127}), 
-      Text(extent={{10,-10},{90,-90}}, 
-        textString="D", 
-        textColor={0,0,127}), 
-      Line(points={{0,-90},{0,90}}, 
-        color={192,192,192}), 
-      Line(points={{-90,0},{90,0}}, 
+      Text(extent={{-90,10},{-10,90}},
+        textString="A",
+        textColor={0,0,127}),
+      Text(extent={{10,10},{90,90}},
+        textString="B",
+        textColor={0,0,127}),
+      Text(extent={{-90,-10},{-10,-90}},
+        textString="C",
+        textColor={0,0,127}),
+      Text(extent={{10,-10},{90,-90}},
+        textString="D",
+        textColor={0,0,127}),
+      Line(points={{0,-90},{0,90}},
+        color={192,192,192}),
+      Line(points={{-90,0},{90,0}},
         color={192,192,192})}));
   end StateSpace;
   block StateSpaceAlg "Linear state space system algorithm version"
     import Modelica.Blocks.Types.Init;
-    parameter Real A[:,size(A, 1)] = [1, 0; 0, 1] 
+    parameter Real A[:,size(A, 1)] = [1, 0; 0, 1]
       "Matrix A of state space model (e.g., A=[1, 0; 0, 1])";
-    parameter Real B[size(A, 1),:] = [1; 1] 
+    parameter Real B[size(A, 1),:] = [1; 1]
       "Matrix B of state space model (e.g., B=[1; 1])";
-    parameter Real C[:,size(A, 1)] = [1, 1] 
+    parameter Real C[:,size(A, 1)] = [1, 1]
       "Matrix C of state space model (e.g., C=[1, 1])";
-    parameter Real D[size(C, 1),size(B, 2)] = zeros(size(C, 1), size(B, 2)) 
+    parameter Real D[size(C, 1),size(B, 2)] = zeros(size(C, 1), size(B, 2))
       "Matrix D of state space model";
-    parameter Modelica.Blocks.Types.Init initType = Modelica.Blocks.Types.Init.NoInit 
+    parameter Modelica.Blocks.Types.Init initType = Modelica.Blocks.Types.Init.NoInit
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-      annotation(Evaluate = true, 
+      annotation(Evaluate = true,
       Dialog(group = "Initialization"));
     parameter Real x_start[nx] = zeros(nx) "Initial or guess values of states" 
       annotation(Dialog(group = "Initialization"));
-    parameter Real y_start[ny] = zeros(ny) 
+    parameter Real y_start[ny] = zeros(ny)
       "Initial values of outputs (remaining states are in steady state if possible)" 
-      annotation(Dialog(enable = initType == Init.InitialOutput, group = 
+      annotation(Dialog(enable = initType == Init.InitialOutput, group =
       "Initialization"));
     extends Modelica.Blocks.Interfaces.MIMO(final nin = size(B, 2), final nout = size(C, 1));
     output Real x[size(A, 1)](start = x_start) "State vector";
@@ -1843,24 +1843,24 @@ results in the following equations:
                        [x[2]]            [u[2]]
 </pre></blockquote>
 </html>"  ), Icon(
-      coordinateSystem(preserveAspectRatio = true, 
-      extent = {{-100, -100}, {100, 100}}), 
+      coordinateSystem(preserveAspectRatio = true,
+      extent = {{-100, -100}, {100, 100}}),
       graphics = {
-      Text(extent = {{-90, 10}, {-10, 90}}, 
-      textString = "A", 
-      textColor = {0, 0, 127}), 
-      Text(extent = {{10, 10}, {90, 90}}, 
-      textString = "B", 
-      textColor = {0, 0, 127}), 
-      Text(extent = {{-90, -10}, {-10, -90}}, 
-      textString = "C", 
-      textColor = {0, 0, 127}), 
-      Text(extent = {{10, -10}, {90, -90}}, 
-      textString = "D", 
-      textColor = {0, 0, 127}), 
-      Line(points = {{0, -90}, {0, 90}}, 
-      color = {192, 192, 192}), 
-      Line(points = {{-90, 0}, {90, 0}}, 
+      Text(extent = {{-90, 10}, {-10, 90}},
+      textString = "A",
+      textColor = {0, 0, 127}),
+      Text(extent = {{10, 10}, {90, 90}},
+      textString = "B",
+      textColor = {0, 0, 127}),
+      Text(extent = {{-90, -10}, {-10, -90}},
+      textString = "C",
+      textColor = {0, 0, 127}),
+      Text(extent = {{10, -10}, {90, -90}},
+      textString = "D",
+      textColor = {0, 0, 127}),
+      Line(points = {{0, -90}, {0, 90}},
+      color = {192, 192, 192}),
+      Line(points = {{-90, 0}, {90, 0}},
       color = {192, 192, 192})}));
   end StateSpaceAlg;
 
@@ -1869,12 +1869,12 @@ results in the following equations:
 
   equation
     y = der(u);
-      annotation (defaultComponentName="der1", 
-   Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+      annotation (defaultComponentName="der1",
+   Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
           graphics={Text(
-            extent={{-96,28},{94,-24}}, 
-            textString="der()", 
-            textColor={0,0,127})}), 
+            extent={{-96,28},{94,-24}},
+            textString="der()",
+            textColor={0,0,127})}),
           Documentation(info="<html>
 <p>
 Defines that the output y is the <em>derivative</em>
@@ -1887,7 +1887,7 @@ the model.
 </html>"));
   end Der;
 
-  block LowpassButterworth 
+  block LowpassButterworth
     "Output the input signal filtered with a low pass Butterworth filter of any order"
 
     import Modelica.Blocks.Types.Init;
@@ -1897,27 +1897,27 @@ the model.
 
     parameter Integer n(min=1) = 2 "Order of filter";
     parameter SI.Frequency f(start=1) "Cut-off frequency";
-    parameter Modelica.Blocks.Types.Init initType=Modelica.Blocks.Types.Init.NoInit 
+    parameter Modelica.Blocks.Types.Init initType=Modelica.Blocks.Types.Init.NoInit
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-                                                                                      annotation(Evaluate=true, 
+                                                                                      annotation(Evaluate=true,
         Dialog(group="Initialization"));
-    parameter Real x1_start[m]=zeros(m) 
+    parameter Real x1_start[m]=zeros(m)
       "Initial or guess values of states 1 (der(x1)=x2)" 
       annotation (Dialog(group="Initialization"));
     parameter Real x2_start[m]=zeros(m) "Initial or guess values of states 2" 
       annotation (Dialog(group="Initialization"));
-    parameter Real xr_start=0.0 
+    parameter Real xr_start=0.0
       "Initial or guess value of real pole for uneven order otherwise dummy" 
       annotation (Dialog(group="Initialization"));
-    parameter Real y_start=0.0 
+    parameter Real y_start=0.0
       "Initial value of output (states are initialized in steady state if possible)" 
-       annotation(Dialog(enable=initType == Init.InitialOutput, group= 
+       annotation(Dialog(enable=initType == Init.InitialOutput, group=
             "Initialization"));
 
-    output Real x1[m](start=x1_start) 
+    output Real x1[m](start=x1_start)
       "States 1 of second order filters (der(x1) = x2)";
     output Real x2[m](start=x2_start) "States 2 of second order filters";
-    output Real xr(start=xr_start) 
+    output Real xr(start=xr_start)
       "State of real pole for uneven order otherwise dummy";
   protected
     parameter Integer m=integer(n/2);
@@ -1992,33 +1992,33 @@ the model.
     end if;
     annotation (
       Icon(
-          coordinateSystem(preserveAspectRatio=true, 
-              extent={{-100.0,-100.0},{100.0,100.0}}), 
+          coordinateSystem(preserveAspectRatio=true,
+              extent={{-100.0,-100.0},{100.0,100.0}}),
               graphics={
-          Line(points={{-80.0,78.0},{-80.0,-90.0}}, 
-              color={192,192,192}), 
-          Polygon(lineColor={192,192,192}, 
-              fillColor={192,192,192}, 
-              fillPattern=FillPattern.Solid, 
-              points={{-79.5584,91.817},{-87.5584,69.817},{-71.5584,69.817},{-79.5584,91.817}}), 
-          Line(origin = {-1.939,-1.816}, 
-              points = {{81.939,36.056},{65.362,36.056},{14.39,-26.199},{-29.966,113.485},{-65.374,-61.217},{-78.061,-78.184}}, 
-              color = {0,0,127}, 
-              smooth = Smooth.Bezier), 
-          Line(points={{-90.9779,-80.7697},{81.0221,-80.7697}}, 
-              color={192,192,192}), 
-          Polygon(lineColor={192,192,192}, 
-              fillColor={192,192,192}, 
-              fillPattern=FillPattern.Solid, 
-              points={{91.3375,-79.8233},{69.3375,-71.8233},{69.3375,-87.8233},{91.3375,-79.8233}}), 
-          Text(textColor={192,192,192}, 
-              extent={{-45.1735,-68.0},{92.0,-11.47}}, 
-              textString="LowpassButterworthFilter"), 
-          Text(extent={{8.0,-146.0},{8.0,-106.0}}, 
-              textString="f=%f"), 
-          Text(textColor={192,192,192}, 
-              extent={{-2.0,48.0},{94.0,94.0}}, 
-              textString="%n")}), 
+          Line(points={{-80.0,78.0},{-80.0,-90.0}},
+              color={192,192,192}),
+          Polygon(lineColor={192,192,192},
+              fillColor={192,192,192},
+              fillPattern=FillPattern.Solid,
+              points={{-79.5584,91.817},{-87.5584,69.817},{-71.5584,69.817},{-79.5584,91.817}}),
+          Line(origin = {-1.939,-1.816},
+              points = {{81.939,36.056},{65.362,36.056},{14.39,-26.199},{-29.966,113.485},{-65.374,-61.217},{-78.061,-78.184}},
+              color = {0,0,127},
+              smooth = Smooth.Bezier),
+          Line(points={{-90.9779,-80.7697},{81.0221,-80.7697}},
+              color={192,192,192}),
+          Polygon(lineColor={192,192,192},
+              fillColor={192,192,192},
+              fillPattern=FillPattern.Solid,
+              points={{91.3375,-79.8233},{69.3375,-71.8233},{69.3375,-87.8233},{91.3375,-79.8233}}),
+          Text(textColor={192,192,192},
+              extent={{-45.1735,-68.0},{92.0,-11.47}},
+              textString="LowpassButterworthFilter"),
+          Text(extent={{8.0,-146.0},{8.0,-106.0}},
+              textString="f=%f"),
+          Text(textColor={192,192,192},
+              extent={{-2.0,48.0},{94.0,94.0}},
+              textString="%n")}),
       Documentation(info="<html>
 <p>
 This block defines the transfer function between the input u
@@ -2045,7 +2045,7 @@ initType=Modelica.Blocks.Types.Init.SteadyState).
 </html>"));
   end LowpassButterworth;
 
-  block CriticalDamping 
+  block CriticalDamping
     "Output the input signal filtered with an n-th order filter with critical damping"
 
     import Modelica.Blocks.Types.Init;
@@ -2053,22 +2053,22 @@ initType=Modelica.Blocks.Types.Init.SteadyState).
 
     parameter Integer n=2 "Order of filter";
     parameter SI.Frequency f(start=1) "Cut-off frequency";
-    parameter Boolean normalized = true 
+    parameter Boolean normalized = true
       "= true, if amplitude at f_cut is 3 dB, otherwise unmodified filter";
-    parameter Modelica.Blocks.Types.Init initType=Modelica.Blocks.Types.Init.NoInit 
+    parameter Modelica.Blocks.Types.Init initType=Modelica.Blocks.Types.Init.NoInit
       "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)" 
-                                                                                      annotation(Evaluate=true, 
+                                                                                      annotation(Evaluate=true,
         Dialog(group="Initialization"));
     parameter Real x_start[n]=zeros(n) "Initial or guess values of states" 
       annotation (Dialog(group="Initialization"));
-    parameter Real y_start=0.0 
+    parameter Real y_start=0.0
       "Initial value of output (remaining states are in steady state)" 
-      annotation(Dialog(enable=initType == Init.InitialOutput, group= 
+      annotation(Dialog(enable=initType == Init.InitialOutput, group=
             "Initialization"));
 
     output Real x[n](start=x_start) "Filter states";
   protected
-    parameter Real alpha=if normalized then sqrt(2^(1/n) - 1) else 1.0 
+    parameter Real alpha=if normalized then sqrt(2^(1/n) - 1) else 1.0
       "Frequency correction factor for normalized filter";
     parameter Real w=2*Modelica.Constants.pi*f/alpha;
   initial equation
@@ -2088,33 +2088,33 @@ initType=Modelica.Blocks.Types.Init.SteadyState).
     y = x[n];
     annotation (
       Icon(
-          coordinateSystem(preserveAspectRatio=true, 
-            extent={{-100.0,-100.0},{100.0,100.0}}), 
+          coordinateSystem(preserveAspectRatio=true,
+            extent={{-100.0,-100.0},{100.0,100.0}}),
             graphics={
-          Line(points={{-80.6897,77.6256},{-80.6897,-90.3744}}, 
-            color={192,192,192}), 
-          Polygon(lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid, 
-            points={{-79.7044,90.6305},{-87.7044,68.6305},{-71.7044,68.6305},{-79.7044,90.6305}}), 
-          Line(points={{-90.0,-80.0},{82.0,-80.0}}, 
-            color={192,192,192}), 
-          Polygon(lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid, 
-            points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}), 
-          Text(textColor={192,192,192}, 
-            extent={{0.0,-60.0},{60.0,0.0}}, 
-            textString="PTn"), 
-          Line(origin = {-17.976,-6.521}, 
-            points = {{96.962,55.158},{16.42,50.489},{-18.988,18.583},{-32.024,-53.479},{-62.024,-73.479}}, 
-            color = {0,0,127}, 
-            smooth = Smooth.Bezier), 
-          Text(textColor={192,192,192}, 
-            extent={{-70.0,48.0},{26.0,94.0}}, 
-            textString="%n"), 
-          Text(extent={{8.0,-146.0},{8.0,-106.0}}, 
-            textString="f=%f")}), 
+          Line(points={{-80.6897,77.6256},{-80.6897,-90.3744}},
+            color={192,192,192}),
+          Polygon(lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid,
+            points={{-79.7044,90.6305},{-87.7044,68.6305},{-71.7044,68.6305},{-79.7044,90.6305}}),
+          Line(points={{-90.0,-80.0},{82.0,-80.0}},
+            color={192,192,192}),
+          Polygon(lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid,
+            points={{90.0,-80.0},{68.0,-72.0},{68.0,-88.0},{90.0,-80.0}}),
+          Text(textColor={192,192,192},
+            extent={{0.0,-60.0},{60.0,0.0}},
+            textString="PTn"),
+          Line(origin = {-17.976,-6.521},
+            points = {{96.962,55.158},{16.42,50.489},{-18.988,18.583},{-32.024,-53.479},{-62.024,-73.479}},
+            color = {0,0,127},
+            smooth = Smooth.Bezier),
+          Text(textColor={192,192,192},
+            extent={{-70.0,48.0},{26.0,94.0}},
+            textString="%n"),
+          Text(extent={{8.0,-146.0},{8.0,-106.0}},
+            textString="f=%f")}),
       Documentation(info="<html>
 <p>This block defines the transfer function between the
 input u and the output y
@@ -2169,30 +2169,30 @@ y = ------------- * u
 </html>"));
   end CriticalDamping;
 
-  block Filter 
+  block Filter
     "Continuous low pass, high pass, band pass or band stop IIR-filter of type CriticalDamping, Bessel, Butterworth or ChebyshevI"
     import Modelica.Blocks.Continuous.Internal;
 
     extends Modelica.Blocks.Interfaces.SISO;
 
-    parameter Modelica.Blocks.Types.AnalogFilter analogFilter=Modelica.Blocks.Types.AnalogFilter.CriticalDamping 
+    parameter Modelica.Blocks.Types.AnalogFilter analogFilter=Modelica.Blocks.Types.AnalogFilter.CriticalDamping
       "Analog filter characteristics (CriticalDamping/Bessel/Butterworth/ChebyshevI)";
-    parameter Modelica.Blocks.Types.FilterType filterType=Modelica.Blocks.Types.FilterType.LowPass 
+    parameter Modelica.Blocks.Types.FilterType filterType=Modelica.Blocks.Types.FilterType.LowPass
       "Type of filter (LowPass/HighPass/BandPass/BandStop)";
     parameter Integer order(min=1) = 2 "Order of filter";
     parameter SI.Frequency f_cut "Cut-off frequency";
-    parameter Real gain=1.0 
+    parameter Real gain=1.0
       "Gain (= amplitude of frequency response at zero frequency)";
-    parameter Real A_ripple(unit="dB") = 0.5 
+    parameter Real A_ripple(unit="dB") = 0.5
       "Pass band ripple for Chebyshev filter (otherwise not used); > 0 required" 
       annotation(Dialog(enable=analogFilter==Modelica.Blocks.Types.AnalogFilter.ChebyshevI));
-    parameter SI.Frequency f_min=0 
+    parameter SI.Frequency f_min=0
       "Band of band pass/stop filter is f_min (A=-3db*gain) .. f_cut (A=-3db*gain)" 
       annotation(Dialog(enable=filterType == Modelica.Blocks.Types.FilterType.BandPass or 
                                filterType == Modelica.Blocks.Types.FilterType.BandStop));
-    parameter Boolean normalized=true 
+    parameter Boolean normalized=true
       "= true, if amplitude at f_cut = -3db, otherwise unmodified filter";
-    parameter Modelica.Blocks.Types.Init init=Modelica.Blocks.Types.Init.SteadyState 
+    parameter Modelica.Blocks.Types.Init init=Modelica.Blocks.Types.Init.SteadyState
       "Type of initialization (no init/steady state/initial state/initial output)" 
       annotation(Evaluate=true, Dialog(tab="Advanced"));
     final parameter Integer nx = if filterType == Modelica.Blocks.Types.FilterType.LowPass or 
@@ -2202,7 +2202,7 @@ y = ------------- * u
       annotation(Dialog(tab="Advanced"));
     parameter Real y_start = 0 "Initial value of output" 
       annotation(Dialog(tab="Advanced"));
-    parameter Real u_nominal = 1.0 
+    parameter Real u_nominal = 1.0
       "Nominal value of input (used for scaling the states)" 
     annotation(Dialog(tab="Advanced"));
     Modelica.Blocks.Interfaces.RealOutput x[nx] "Filter states";
@@ -2345,32 +2345,32 @@ y = ------------- * u
 
     annotation (
       Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100.0,-100.0},{100.0,100.0}}), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-100.0,-100.0},{100.0,100.0}}),
           graphics={
-        Line(points={{-80.0,80.0},{-80.0,-88.0}}, 
-          color={192,192,192}), 
-        Polygon(lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          points={{-80.0,92.0},{-88.0,70.0},{-72.0,70.0},{-80.0,92.0}}), 
-        Line(points={{-90.0,-78.0},{82.0,-78.0}}, 
-          color={192,192,192}), 
-        Polygon(lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          points={{90.0,-78.0},{68.0,-70.0},{68.0,-86.0},{90.0,-78.0}}), 
-        Text(textColor={192,192,192}, 
-          extent={{-66.0,52.0},{88.0,90.0}}, 
-          textString="%order"), 
+        Line(points={{-80.0,80.0},{-80.0,-88.0}},
+          color={192,192,192}),
+        Polygon(lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          points={{-80.0,92.0},{-88.0,70.0},{-72.0,70.0},{-80.0,92.0}}),
+        Line(points={{-90.0,-78.0},{82.0,-78.0}},
+          color={192,192,192}),
+        Polygon(lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          points={{90.0,-78.0},{68.0,-70.0},{68.0,-86.0},{90.0,-78.0}}),
+        Text(textColor={192,192,192},
+          extent={{-66.0,52.0},{88.0,90.0}},
+          textString="%order"),
         Text(
-          extent={{-138.0,-140.0},{162.0,-110.0}}, 
-          textString="f_cut=%f_cut"), 
-        Rectangle(lineColor={160,160,164}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Backward, 
-          extent={{-80.0,-78.0},{22.0,10.0}}), 
-        Line(origin = {3.333,-6.667}, points = {{-83.333,34.667},{24.667,34.667},{42.667,-71.333}}, color = {0,0,127}, smooth = Smooth.Bezier)}), 
+          extent={{-138.0,-140.0},{162.0,-110.0}},
+          textString="f_cut=%f_cut"),
+        Rectangle(lineColor={160,160,164},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Backward,
+          extent={{-80.0,-78.0},{22.0,10.0}}),
+        Line(origin = {3.333,-6.667}, points = {{-83.333,34.667},{24.667,34.667},{42.667,-71.333}}, color = {0,0,127}, smooth = Smooth.Bezier)}),
       Documentation(info="<html>
 
 <p>
@@ -2534,8 +2534,8 @@ The development of this block was partially funded by BMBF within the
   parameter Boolean useSupport(start=false)=false "= true, if use logical result which is given external" annotation(Evaluate=true, choices(checkBox=true));
 
   Modelica.Blocks.Interfaces.BooleanInput sampleSupport if useSupport 
-      annotation (Placement(transformation(origin={0.378379,-120.703}, 
-  extent={{-20,-20},{20,20}}, 
+      annotation (Placement(transformation(origin={0.378379,-120.703},
+  extent={{-20,-20},{20,20}},
   rotation=90)));
 
   protected
@@ -2553,50 +2553,50 @@ The development of this block was partially funded by BMBF within the
 
     annotation (
       Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100.0,-100.0},{100.0,100.0}}), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-100.0,-100.0},{100.0,100.0}}),
           graphics={
-        Ellipse(lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          extent={{25.0,-10.0},{45.0,10.0}}), 
-        Line(points={{-100.0,0.0},{-45.0,0.0}}, 
-          color={0,0,127}), 
-        Line(points={{45.0,0.0},{100.0,0.0}}, 
-          color={0,0,127}), 
-        Line(points={{-35.0,0.0},{30.0,35.0}}, 
-          color={0,0,127}), 
-        Ellipse(lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
+        Ellipse(lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          extent={{25.0,-10.0},{45.0,10.0}}),
+        Line(points={{-100.0,0.0},{-45.0,0.0}},
+          color={0,0,127}),
+        Line(points={{45.0,0.0},{100.0,0.0}},
+          color={0,0,127}),
+        Line(points={{-35.0,0.0},{30.0,35.0}},
+          color={0,0,127}),
+        Ellipse(lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
           extent={{-45.0,-10.0},{-25.0,10.0}})}));
 
   end TimeSampler;
 
-  package Internal 
+  package Internal
     "Internal utility functions and blocks that should not be directly utilized by the user"
       extends Modelica.Icons.InternalPackage;
-    package Filter 
+    package Filter
       "Internal utility functions for filters that should not be directly used"
         extends Modelica.Icons.InternalPackage;
-      package base 
+      package base
         "Prototype low pass filters with cut-off frequency of 1 rad/s (other filters are derived by transformation from these base filters)"
           extends Modelica.Icons.InternalPackage;
-      function CriticalDamping 
+      function CriticalDamping
           "Return base filter coefficients of CriticalDamping filter (= low pass filter with w_cut = 1 rad/s)"
         extends Modelica.Icons.Function;
 
         input Integer order(min=1) "Order of filter";
-        input Boolean normalized=true 
+        input Boolean normalized=true
             "= true, if amplitude at f_cut = -3db, otherwise unmodified filter";
 
         output Real cr[order] "Coefficients of real poles";
         protected
         Real alpha=1.0 "Frequency correction factor";
         Real alpha2 "= alpha*alpha";
-        Real den1[order] 
+        Real den1[order]
             "[p] coefficients of denominator first order polynomials (a*p + 1)";
-        Real den2[0,2] 
+        Real den2[0,2]
             "[p^2, p] coefficients of denominator second order polynomials (b*p^2 + a*p + 1)";
         Real c0[0] "Coefficients of s^0 term if conjugate complex pole";
         Real c1[0] "Coefficients of s^1 term if conjugate complex pole";
@@ -2613,33 +2613,33 @@ The development of this block was partially funded by BMBF within the
         end for;
 
         // Determine polynomials with highest power of s equal to one
-          (cr,c0,c1) := 
+          (cr,c0,c1) :=
             Modelica.Blocks.Continuous.Internal.Filter.Utilities.toHighestPowerOne(
             den1, den2);
       end CriticalDamping;
 
-      function Bessel 
+      function Bessel
           "Return base filter coefficients of Bessel filter (= low pass filter with w_cut = 1 rad/s)"
         extends Modelica.Icons.Function;
 
         input Integer order(min=1) "Order of filter";
-        input Boolean normalized=true 
+        input Boolean normalized=true
             "= true, if amplitude at f_cut = -3db, otherwise unmodified filter";
 
         output Real cr[mod(order, 2)] "Coefficient of real pole";
-        output Real c0[integer(order/2)] 
+        output Real c0[integer(order/2)]
             "Coefficients of s^0 term if conjugate complex pole";
-        output Real c1[integer(order/2)] 
+        output Real c1[integer(order/2)]
             "Coefficients of s^1 term if conjugate complex pole";
         protected
         Real alpha=1.0 "Frequency correction factor";
         Real alpha2 "= alpha*alpha";
-        Real den1[size(cr,1)] 
+        Real den1[size(cr,1)]
             "[p] coefficients of denominator first order polynomials (a*p + 1)";
-        Real den2[size(c0, 1),2] 
+        Real den2[size(c0, 1),2]
             "[p^2, p] coefficients of denominator second order polynomials (b*p^2 + a*p + 1)";
       algorithm
-          (den1,den2,alpha) := 
+          (den1,den2,alpha) :=
             Modelica.Blocks.Continuous.Internal.Filter.Utilities.BesselBaseCoefficients(
             order);
         if not normalized then
@@ -2654,31 +2654,31 @@ The development of this block was partially funded by BMBF within the
            end if;
 
         // Determine polynomials with highest power of s equal to one
-          (cr,c0,c1) := 
+          (cr,c0,c1) :=
             Modelica.Blocks.Continuous.Internal.Filter.Utilities.toHighestPowerOne(
             den1, den2);
       end Bessel;
 
-      function Butterworth 
+      function Butterworth
           "Return base filter coefficients of Butterworth filter (= low pass filter with w_cut = 1 rad/s)"
         import Modelica.Constants.pi;
         extends Modelica.Icons.Function;
 
         input Integer order(min=1) "Order of filter";
-        input Boolean normalized=true 
+        input Boolean normalized=true
             "= true, if amplitude at f_cut = -3db, otherwise unmodified filter";
 
         output Real cr[mod(order, 2)] "Coefficient of real pole";
-        output Real c0[integer(order/2)] 
+        output Real c0[integer(order/2)]
             "Coefficients of s^0 term if conjugate complex pole";
-        output Real c1[integer(order/2)] 
+        output Real c1[integer(order/2)]
             "Coefficients of s^1 term if conjugate complex pole";
         protected
         Real alpha=1.0 "Frequency correction factor";
         Real alpha2 "= alpha*alpha";
-        Real den1[size(cr,1)] 
+        Real den1[size(cr,1)]
             "[p] coefficients of denominator first order polynomials (a*p + 1)";
-        Real den2[size(c0, 1),2] 
+        Real den2[size(c0, 1),2]
             "[p^2, p] coefficients of denominator second order polynomials (b*p^2 + a*p + 1)";
       algorithm
         for i in 1:size(c0, 1) loop
@@ -2708,12 +2708,12 @@ The development of this block was partially funded by BMBF within the
   */
 
         // Determine polynomials with highest power of s equal to one
-          (cr,c0,c1) := 
+          (cr,c0,c1) :=
             Modelica.Blocks.Continuous.Internal.Filter.Utilities.toHighestPowerOne(
             den1, den2);
       end Butterworth;
 
-      function ChebyshevI 
+      function ChebyshevI
           "Return base filter coefficients of Chebyshev I filter (= low pass filter with w_cut = 1 rad/s)"
         import Modelica.Math.asinh;
         import Modelica.Constants.pi;
@@ -2722,22 +2722,22 @@ The development of this block was partially funded by BMBF within the
 
         input Integer order(min=1) "Order of filter";
         input Real A_ripple = 0.5 "Pass band ripple in [dB]";
-        input Boolean normalized=true 
+        input Boolean normalized=true
             "= true, if amplitude at f_cut = -3db, otherwise unmodified filter";
 
         output Real cr[mod(order, 2)] "Coefficient of real pole";
-        output Real c0[integer(order/2)] 
+        output Real c0[integer(order/2)]
             "Coefficients of s^0 term if conjugate complex pole";
-        output Real c1[integer(order/2)] 
+        output Real c1[integer(order/2)]
             "Coefficients of s^1 term if conjugate complex pole";
         protected
         Real epsilon;
         Real fac;
         Real alpha=1.0 "Frequency correction factor";
         Real alpha2 "= alpha*alpha";
-        Real den1[size(cr,1)] 
+        Real den1[size(cr,1)]
             "[p] coefficients of denominator first order polynomials (a*p + 1)";
-        Real den2[size(c0, 1),2] 
+        Real den2[size(c0, 1),2]
             "[p^2, p] coefficients of denominator second order polynomials (b*p^2 + a*p + 1)";
       algorithm
           epsilon := sqrt(10^(A_ripple/10) - 1);
@@ -2761,7 +2761,7 @@ The development of this block was partially funded by BMBF within the
        -3 db at the cutoff frequency
     */
           if normalized then
-            alpha := 
+            alpha :=
               Modelica.Blocks.Continuous.Internal.Filter.Utilities.normalizationFactor(
               den1, den2);
             alpha2 := alpha*alpha;
@@ -2773,7 +2773,7 @@ The development of this block was partially funded by BMBF within the
           end if;
 
         // Determine polynomials with highest power of s equal to one
-          (cr,c0,c1) := 
+          (cr,c0,c1) :=
             Modelica.Blocks.Continuous.Internal.Filter.Utilities.toHighestPowerOne(
             den1, den2);
       end ChebyshevI;
@@ -2781,26 +2781,26 @@ The development of this block was partially funded by BMBF within the
 
       package coefficients "Filter coefficients"
           extends Modelica.Icons.InternalPackage;
-      function lowPass 
+      function lowPass
           "Return low pass filter coefficients at given cut-off frequency"
         import Modelica.Constants.pi;
         extends Modelica.Icons.Function;
 
         input Real cr_in[:] "Coefficients of real poles";
-        input Real c0_in[:] 
+        input Real c0_in[:]
             "Coefficients of s^0 term if conjugate complex pole";
-        input Real c1_in[size(c0_in,1)] 
+        input Real c1_in[size(c0_in,1)]
             "Coefficients of s^1 term if conjugate complex pole";
         input SI.Frequency f_cut "Cut-off frequency";
 
         output Real cr[size(cr_in,1)] "Coefficient of real pole";
-        output Real c0[size(c0_in,1)] 
+        output Real c0[size(c0_in,1)]
             "Coefficients of s^0 term if conjugate complex pole";
-        output Real c1[size(c0_in,1)] 
+        output Real c1[size(c0_in,1)]
             "Coefficients of s^1 term if conjugate complex pole";
 
         protected
-        SI.AngularVelocity w_cut=2*pi*f_cut 
+        SI.AngularVelocity w_cut=2*pi*f_cut
             "Cut-off angular frequency";
         Real w_cut2=w_cut*w_cut;
 
@@ -2817,26 +2817,26 @@ The development of this block was partially funded by BMBF within the
 
       end lowPass;
 
-      function highPass 
+      function highPass
           "Return high pass filter coefficients at given cut-off frequency"
         import Modelica.Constants.pi;
         extends Modelica.Icons.Function;
 
         input Real cr_in[:] "Coefficients of real poles";
-        input Real c0_in[:] 
+        input Real c0_in[:]
             "Coefficients of s^0 term if conjugate complex pole";
-        input Real c1_in[size(c0_in,1)] 
+        input Real c1_in[size(c0_in,1)]
             "Coefficients of s^1 term if conjugate complex pole";
         input SI.Frequency f_cut "Cut-off frequency";
 
         output Real cr[size(cr_in,1)] "Coefficient of real pole";
-        output Real c0[size(c0_in,1)] 
+        output Real c0[size(c0_in,1)]
             "Coefficients of s^0 term if conjugate complex pole";
-        output Real c1[size(c0_in,1)] 
+        output Real c1[size(c0_in,1)]
             "Coefficients of s^1 term if conjugate complex pole";
 
         protected
-        SI.AngularVelocity w_cut=2*pi*f_cut 
+        SI.AngularVelocity w_cut=2*pi*f_cut
             "Cut-off angular frequency";
         Real w_cut2=w_cut*w_cut;
 
@@ -2867,29 +2867,29 @@ The development of this block was partially funded by BMBF within the
 
       end highPass;
 
-      function bandPass 
+      function bandPass
           "Return band pass filter coefficients at given cut-off frequency"
         import Modelica.Constants.pi;
         extends Modelica.Icons.Function;
 
         input Real cr_in[:] "Coefficients of real poles";
-        input Real c0_in[:] 
+        input Real c0_in[:]
             "Coefficients of s^0 term if conjugate complex pole";
-        input Real c1_in[size(c0_in,1)] 
+        input Real c1_in[size(c0_in,1)]
             "Coefficients of s^1 term if conjugate complex pole";
-        input SI.Frequency f_min 
+        input SI.Frequency f_min
             "Band of band pass filter is f_min (A=-3db) .. f_max (A=-3db)";
         input SI.Frequency f_max "Upper band frequency";
 
         output Real cr[0] "Coefficient of real pole";
-        output Real c0[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real c0[size(cr_in,1) + 2*size(c0_in,1)]
             "Coefficients of s^0 term if conjugate complex pole";
-        output Real c1[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real c1[size(cr_in,1) + 2*size(c0_in,1)]
             "Coefficients of s^1 term if conjugate complex pole";
         output Real cn "Numerator coefficient of the PT2 terms";
         protected
         SI.Frequency f0 = sqrt(f_min*f_max);
-        SI.AngularVelocity w_cut=2*pi*f0 
+        SI.AngularVelocity w_cut=2*pi*f0
             "Cut-off angular frequency";
         Real w_band = (f_max - f_min) / f0;
         Real w_cut2=w_cut*w_cut;
@@ -2940,10 +2940,10 @@ The development of this block was partially funded by BMBF within the
           end for;
 
           for i in 1:size(c1_in,1) loop
-            alpha := 
+            alpha :=
               Modelica.Blocks.Continuous.Internal.Filter.Utilities.bandPassAlpha(
-                    c1_in[i], 
-                    c0_in[i], 
+                    c1_in[i],
+                    c0_in[i],
                     w_band);
              c       := c1_in[i]*w_band / (alpha + 1/alpha);
              j       := size(cr_in,1) + 2*i - 1;
@@ -2957,28 +2957,28 @@ The development of this block was partially funded by BMBF within the
 
       end bandPass;
 
-      function bandStop 
+      function bandStop
           "Return band stop filter coefficients at given cut-off frequency"
         import Modelica.Constants.pi;
         extends Modelica.Icons.Function;
 
         input Real cr_in[:] "Coefficients of real poles";
-        input Real c0_in[:] 
+        input Real c0_in[:]
             "Coefficients of s^0 term if conjugate complex pole";
-        input Real c1_in[size(c0_in,1)] 
+        input Real c1_in[size(c0_in,1)]
             "Coefficients of s^1 term if conjugate complex pole";
-        input SI.Frequency f_min 
+        input SI.Frequency f_min
             "Band of band stop filter is f_min (A=-3db) .. f_max (A=-3db)";
         input SI.Frequency f_max "Upper band frequency";
 
         output Real cr[0] "Coefficient of real pole";
-        output Real c0[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real c0[size(cr_in,1) + 2*size(c0_in,1)]
             "Coefficients of s^0 term if conjugate complex pole";
-        output Real c1[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real c1[size(cr_in,1) + 2*size(c0_in,1)]
             "Coefficients of s^1 term if conjugate complex pole";
         protected
         SI.Frequency f0 = sqrt(f_min*f_max);
-        SI.AngularVelocity w_cut=2*pi*f0 
+        SI.AngularVelocity w_cut=2*pi*f0
             "Cut-off angular frequency";
         Real w_band = (f_max - f_min) / f0;
         Real w_cut2=w_cut*w_cut;
@@ -3053,10 +3053,10 @@ The development of this block was partially funded by BMBF within the
 
           for i in 1:size(c1_in,1) loop
              ww      := w_band/c0_in[i];
-            alpha := 
+            alpha :=
               Modelica.Blocks.Continuous.Internal.Filter.Utilities.bandPassAlpha(
-                    c1_in[i], 
-                    c0_in[i], 
+                    c1_in[i],
+                    c0_in[i],
                     ww);
              c       := c1_in[i]*ww / (alpha + 1/alpha);
              j       := size(cr_in,1) + 2*i - 1;
@@ -3071,21 +3071,21 @@ The development of this block was partially funded by BMBF within the
 
       package roots "Filter roots and gain as needed for block implementations"
           extends Modelica.Icons.InternalPackage;
-      function lowPass 
+      function lowPass
           "Return low pass filter roots as needed for block for given cut-off frequency"
         extends Modelica.Icons.Function;
 
         input Real cr_in[:] "Coefficients of real poles of base filter";
-        input Real c0_in[:] 
+        input Real c0_in[:]
             "Coefficients of s^0 term of base filter if conjugate complex pole";
-        input Real c1_in[size(c0_in,1)] 
+        input Real c1_in[size(c0_in,1)]
             "Coefficients of s^1 term of base filter if conjugate complex pole";
         input SI.Frequency f_cut "Cut-off frequency";
 
         output Real r[size(cr_in,1)] "Real eigenvalues";
-        output Real a[size(c0_in,1)] 
+        output Real a[size(c0_in,1)]
             "Real parts of complex conjugate eigenvalues";
-        output Real b[size(c0_in,1)] 
+        output Real b[size(c0_in,1)]
             "Imaginary parts of complex conjugate eigenvalues";
         output Real ku[size(c0_in,1)] "Input gain";
         protected
@@ -3173,21 +3173,21 @@ This representation has the following transfer function:
 </html>"));
       end lowPass;
 
-      function highPass 
+      function highPass
           "Return high pass filter roots as needed for block for given cut-off frequency"
         extends Modelica.Icons.Function;
 
         input Real cr_in[:] "Coefficients of real poles of base filter";
-        input Real c0_in[:] 
+        input Real c0_in[:]
             "Coefficients of s^0 term of base filter if conjugate complex pole";
-        input Real c1_in[size(c0_in,1)] 
+        input Real c1_in[size(c0_in,1)]
             "Coefficients of s^1 term of base filter if conjugate complex pole";
         input SI.Frequency f_cut "Cut-off frequency";
 
         output Real r[size(cr_in,1)] "Real eigenvalues";
-        output Real a[size(c0_in,1)] 
+        output Real a[size(c0_in,1)]
             "Real parts of complex conjugate eigenvalues";
-        output Real b[size(c0_in,1)] 
+        output Real b[size(c0_in,1)]
             "Imaginary parts of complex conjugate eigenvalues";
         output Real ku[size(c0_in,1)] "Gains of input terms";
         output Real k1[size(c0_in,1)] "Gains of y = k1*x1 + k2*x + u";
@@ -3287,27 +3287,27 @@ This representation has the following transfer function:
 </html>"));
       end highPass;
 
-      function bandPass 
+      function bandPass
           "Return band pass filter roots as needed for block for given cut-off frequency"
         extends Modelica.Icons.Function;
 
         input Real cr_in[:] "Coefficients of real poles of base filter";
-        input Real c0_in[:] 
+        input Real c0_in[:]
             "Coefficients of s^0 term of base filter if conjugate complex pole";
-        input Real c1_in[size(c0_in,1)] 
+        input Real c1_in[size(c0_in,1)]
             "Coefficients of s^1 term of base filter if conjugate complex pole";
-        input SI.Frequency f_min 
+        input SI.Frequency f_min
             "Band of band pass filter is f_min (A=-3db) .. f_max (A=-3db)";
         input SI.Frequency f_max "Upper band frequency";
 
-        output Real a[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real a[size(cr_in,1) + 2*size(c0_in,1)]
             "Real parts of complex conjugate eigenvalues";
-        output Real b[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real b[size(cr_in,1) + 2*size(c0_in,1)]
             "Imaginary parts of complex conjugate eigenvalues";
         output Real ku[size(cr_in,1) + 2*size(c0_in,1)] "Gains of input terms";
-        output Real k1[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real k1[size(cr_in,1) + 2*size(c0_in,1)]
             "Gains of y = k1*x1 + k2*x";
-        output Real k2[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real k2[size(cr_in,1) + 2*size(c0_in,1)]
             "Gains of y = k1*x1 + k2*x";
         protected
         Real cr[0];
@@ -3323,8 +3323,8 @@ This representation has the following transfer function:
         for i in 1:size(a,1) loop
           a[i]  := -c1[i]/2;
           bb    := c0[i] - a[i]*a[i];
-          assert(bb >= 0, "\nNot possible to use band pass filter, since transformation results in\n"+ 
-                          "system that does not have conjugate complex poles.\n" + 
+          assert(bb >= 0, "\nNot possible to use band pass filter, since transformation results in\n"+
+                          "system that does not have conjugate complex poles.\n" +
                           "Try to use another analog filter for the band pass.\n");
           b[i]  := sqrt(bb);
           ku[i] := c0[i]/b[i];
@@ -3383,27 +3383,27 @@ This representation has the following transfer function:
 </html>"));
       end bandPass;
 
-      function bandStop 
+      function bandStop
           "Return band stop filter roots as needed for block for given cut-off frequency"
         extends Modelica.Icons.Function;
 
         input Real cr_in[:] "Coefficients of real poles of base filter";
-        input Real c0_in[:] 
+        input Real c0_in[:]
             "Coefficients of s^0 term of base filter if conjugate complex pole";
-        input Real c1_in[size(c0_in,1)] 
+        input Real c1_in[size(c0_in,1)]
             "Coefficients of s^1 term of base filter if conjugate complex pole";
-        input SI.Frequency f_min 
+        input SI.Frequency f_min
             "Band of band stop filter is f_min (A=-3db) .. f_max (A=-3db)";
         input SI.Frequency f_max "Upper band frequency";
 
-        output Real a[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real a[size(cr_in,1) + 2*size(c0_in,1)]
             "Real parts of complex conjugate eigenvalues";
-        output Real b[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real b[size(cr_in,1) + 2*size(c0_in,1)]
             "Imaginary parts of complex conjugate eigenvalues";
         output Real ku[size(cr_in,1) + 2*size(c0_in,1)] "Gains of input terms";
-        output Real k1[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real k1[size(cr_in,1) + 2*size(c0_in,1)]
             "Gains of y = k1*x1 + k2*x";
-        output Real k2[size(cr_in,1) + 2*size(c0_in,1)] 
+        output Real k2[size(cr_in,1) + 2*size(c0_in,1)]
             "Gains of y = k1*x1 + k2*x";
         protected
         Real cr[0];
@@ -3419,8 +3419,8 @@ This representation has the following transfer function:
         for i in 1:size(a,1) loop
           a[i]  := -c1[i]/2;
           bb    := c0[i] - a[i]*a[i];
-          assert(bb >= 0, "\nNot possible to use band stop filter, since transformation results in\n"+ 
-                          "system that does not have conjugate complex poles.\n" + 
+          assert(bb >= 0, "\nNot possible to use band stop filter, since transformation results in\n"+
+                          "system that does not have conjugate complex poles.\n" +
                           "Try to use another analog filter for the band stop filter.\n");
           b[i]  := sqrt(bb);
           ku[i] := c0[i]/b[i];
@@ -3482,15 +3482,15 @@ This representation has the following transfer function:
 
       package Utilities "Utility functions for filter computations"
           extends Modelica.Icons.InternalPackage;
-        function BesselBaseCoefficients 
+        function BesselBaseCoefficients
           "Return coefficients of normalized low pass Bessel filter (= gain at cut-off frequency 1 rad/s is decreased 3dB)"
           extends Modelica.Icons.Function;
 
           import Modelica.Utilities.Streams;
           input Integer order "Order of filter in the range 1..41";
-          output Real c1[mod(order, 2)] 
+          output Real c1[mod(order, 2)]
             "[p] coefficients of Bessel denominator polynomials (a*p + 1)";
-          output Real c2[integer(order/2),2] 
+          output Real c2[integer(order/2),2]
             "[p^2, p] coefficients of Bessel denominator polynomials (b2*p^2 + b1*p + 1)";
           output Real alpha "Normalization factor";
         algorithm
@@ -4438,7 +4438,7 @@ This representation has the following transfer function:
             c2[20, 1] := 0.3757210572966463e-1;
             c2[20, 2] := 0.5341611499960143e-1;
           else
-            Streams.error("Input argument order (= " + String(order) + 
+            Streams.error("Input argument order (= " + String(order) +
               ") of Bessel filter is not in the range 1..41");
           end if;
 
@@ -4524,18 +4524,18 @@ b2_k = 1/(beta_k^2 + gamma_k^2) b1_k = -2*beta_k/(beta_k^2 + gamma_k^2)
 </html>"));
         end BesselBaseCoefficients;
 
-        function toHighestPowerOne 
+        function toHighestPowerOne
           "Transform filter to form with highest power of s equal 1"
           extends Modelica.Icons.Function;
 
           input Real den1[:] "[s] coefficients of polynomials (den1[i]*s + 1)";
-          input Real den2[:,2] 
+          input Real den2[:,2]
             "[s^2, s] coefficients of polynomials (den2[i,1]*s^2 + den2[i,2]*s + 1)";
-          output Real cr[size(den1, 1)] 
+          output Real cr[size(den1, 1)]
             "[s^0] coefficients of polynomials cr[i]*(s+1/cr[i])";
-          output Real c0[size(den2, 1)] 
+          output Real c0[size(den2, 1)]
             "[s^0] coefficients of polynomials (s^2 + (den2[i,2]/den2[i,1])*s + (1/den2[i,1]))";
-          output Real c1[size(den2, 1)] 
+          output Real c1[size(den2, 1)]
             "[s^1] coefficients of polynomials (s^2 + (den2[i,2]/den2[i,1])*s + (1/den2[i,1]))";
         algorithm
           for i in 1:size(den1, 1) loop
@@ -4548,32 +4548,32 @@ b2_k = 1/(beta_k^2 + gamma_k^2) b1_k = -2*beta_k/(beta_k^2 + gamma_k^2)
           end for;
         end toHighestPowerOne;
 
-        function normalizationFactor 
+        function normalizationFactor
           "Compute correction factor of low pass filter such that amplitude at cut-off frequency is -3db (=10^(-3/20) = 0.70794...)"
           extends Modelica.Icons.Function;
 
           import Modelica.Utilities.Streams;
 
-          input Real c1[:] 
+          input Real c1[:]
             "[p] coefficients of denominator polynomials (c1[i}*p + 1)";
-          input Real c2[:,2] 
+          input Real c2[:,2]
             "[p^2, p] coefficients of denominator polynomials (c2[i,1]*p^2 + c2[i,2]*p + 1)";
           output Real alpha "Correction factor (replace p by alpha*p)";
         protected
           Real alpha_min;
           Real alpha_max;
 
-          function normalizationResidue 
+          function normalizationResidue
             "Residue of correction factor computation"
             extends Modelica.Icons.Function;
-            input Real c1[:] 
+            input Real c1[:]
               "[p] coefficients of denominator polynomials (c1[i]*p + 1)";
-            input Real c2[:,2] 
+            input Real c2[:,2]
               "[p^2, p] coefficients of denominator polynomials (c2[i,1]*p^2 + c2[i,2]*p + 1)";
             input Real alpha;
             output Real residue;
           protected
-            constant Real beta= 10^(-3/20) 
+            constant Real beta= 10^(-3/20)
               "Amplitude of -3db required, i.e., -3db = 20*log(beta)";
             Real cc1;
             Real cc2;
@@ -4599,9 +4599,9 @@ b2_k = 1/(beta_k^2 + gamma_k^2) b1_k = -2*beta_k/(beta_k^2 + gamma_k^2)
 
           function findInterval "Find interval for the root"
             extends Modelica.Icons.Function;
-            input Real c1[:] 
+            input Real c1[:]
               "[p] coefficients of denominator polynomials (a*p + 1)";
-            input Real c2[:,2] 
+            input Real c2[:,2]
               "[p^2, p] coefficients of denominator polynomials (b*p^2 + a*p + 1)";
             output Real alpha_min;
             output Real alpha_max;
@@ -4622,18 +4622,18 @@ b2_k = 1/(beta_k^2 + gamma_k^2) b1_k = -2*beta_k/(beta_k^2 + gamma_k^2)
             end if;
           end findInterval;
 
-        function solveOneNonlinearEquation 
+        function solveOneNonlinearEquation
             "Solve f(u) = 0; f(u_min) and f(u_max) must have different signs"
             extends Modelica.Icons.Function;
             import Modelica.Utilities.Streams.error;
 
-          input Real c1[:] 
+          input Real c1[:]
               "[p] coefficients of denominator polynomials (c1[i]*p + 1)";
-          input Real c2[:,2] 
+          input Real c2[:,2]
               "[p^2, p] coefficients of denominator polynomials (c2[i,1]*p^2 + c2[i,2]*p + 1)";
           input Real u_min "Lower bound of search interval";
           input Real u_max "Upper bound of search interval";
-          input Real tolerance=100*Modelica.Constants.eps 
+          input Real tolerance=100*Modelica.Constants.eps
               "Relative tolerance of solution u";
           output Real u "Value of independent variable so that f(u) = 0";
 
@@ -4661,11 +4661,11 @@ b2_k = 1/(beta_k^2 + gamma_k^2) b1_k = -2*beta_k/(beta_k^2 + gamma_k^2)
           fc := fb;
           if fa > 0.0 and fb > 0.0 or fa < 0.0 and fb < 0.0 then
             error(
-              "The arguments u_min and u_max to solveOneNonlinearEquation(..)\n" + 
-              "do not bracket the root of the single non-linear equation:\n" + 
-              "  u_min  = " + String(u_min) + "\n" + "  u_max  = " + String(u_max) 
-               + "\n" + "  fa = f(u_min) = " + String(fa) + "\n" + 
-              "  fb = f(u_max) = " + String(fb) + "\n" + 
+              "The arguments u_min and u_max to solveOneNonlinearEquation(..)\n" +
+              "do not bracket the root of the single non-linear equation:\n" +
+              "  u_min  = " + String(u_min) + "\n" + "  u_max  = " + String(u_max)
+               + "\n" + "  fa = f(u_min) = " + String(fa) + "\n" +
+              "  fb = f(u_max) = " + String(fb) + "\n" +
               "fa and fb must have opposite sign which is not the case");
           end if;
 
@@ -4780,9 +4780,9 @@ function. The solver function is a direct mapping of the Algol 60 procedure
 
            // Compute alpha, so that abs(G(p)) = -3db
            alpha :=solveOneNonlinearEquation(
-            c1, 
-            c2, 
-            alpha_min, 
+            c1,
+            c2,
+            alpha_min,
             alpha_max);
         end normalizationFactor;
 
@@ -4792,7 +4792,7 @@ function. The solver function is a direct mapping of the Algol 60 procedure
           import Modelica;
            input Real a "Coefficient of s^1";
            input Real b "Coefficient of s^0";
-           input Modelica.Units.SI.AngularVelocity w 
+           input Modelica.Units.SI.AngularVelocity w
             "Bandwidth angular frequency";
            output Real alpha "Alpha factor to build up band pass";
 
@@ -4814,7 +4814,7 @@ function. The solver function is a direct mapping of the Algol 60 procedure
             res := z^2 + (a*w*z/(1+z))^2 - (2+b*w^2)*z + 1;
           end residue;
 
-        function solveOneNonlinearEquation 
+        function solveOneNonlinearEquation
             "Solve f(u) = 0; f(u_min) and f(u_max) must have different signs"
             extends Modelica.Icons.Function;
             import Modelica.Utilities.Streams.error;
@@ -4824,7 +4824,7 @@ function. The solver function is a direct mapping of the Algol 60 procedure
           input Real ww;
           input Real u_min "Lower bound of search interval";
           input Real u_max "Upper bound of search interval";
-          input Real tolerance=100*Modelica.Constants.eps 
+          input Real tolerance=100*Modelica.Constants.eps
               "Relative tolerance of solution u";
           output Real u "Value of independent variable so that f(u) = 0";
 
@@ -4852,11 +4852,11 @@ function. The solver function is a direct mapping of the Algol 60 procedure
           fc := fb;
           if fa > 0.0 and fb > 0.0 or fa < 0.0 and fb < 0.0 then
             error(
-              "The arguments u_min and u_max to solveOneNonlinearEquation(..)\n" + 
-              "do not bracket the root of the single non-linear equation:\n" + 
-              "  u_min  = " + String(u_min) + "\n" + "  u_max  = " + String(u_max) 
-               + "\n" + "  fa = f(u_min) = " + String(fa) + "\n" + 
-              "  fb = f(u_max) = " + String(fb) + "\n" + 
+              "The arguments u_min and u_max to solveOneNonlinearEquation(..)\n" +
+              "do not bracket the root of the single non-linear equation:\n" +
+              "  u_min  = " + String(u_min) + "\n" + "  u_max  = " + String(u_max)
+               + "\n" + "  fa = f(u_min) = " + String(fa) + "\n" +
+              "  fb = f(u_max) = " + String(fb) + "\n" +
               "fa and fb must have opposite sign which is not the case");
           end if;
 
@@ -5141,9 +5141,9 @@ for a 1-dim. rotational inertia controlled by a PI controller are that
 </p>
 
 </html>"), Icon(graphics={Line(
-          origin={0.061,4.184}, 
-          points={{81.939,36.056},{65.362,36.056},{14.39,-26.199},{-29.966, 
-              113.485},{-65.374,-61.217},{-78.061,-78.184}}, 
-          color={95,95,95}, 
+          origin={0.061,4.184},
+          points={{81.939,36.056},{65.362,36.056},{14.39,-26.199},{-29.966,
+              113.485},{-65.374,-61.217},{-78.061,-78.184}},
+          color={95,95,95},
           smooth=Smooth.Bezier)}));
 end Continuous;

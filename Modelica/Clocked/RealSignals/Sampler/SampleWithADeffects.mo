@@ -1,20 +1,20 @@
 ﻿within Modelica.Clocked.RealSignals.Sampler;
-block SampleWithADeffects 
+block SampleWithADeffects
   "Sample with (simulated) Analog-Digital converter effects including noise"
   extends Clocked.RealSignals.Interfaces.PartialSISOSampler;
 
-  parameter Boolean noisy = false 
+  parameter Boolean noisy = false
     "= true, if output should be superimposed with noise" 
     annotation(Evaluate=true,choices(checkBox=true),Dialog(group="Sampling and noise"));
 
   parameter Boolean limited = false "= true, if output is limited" 
     annotation(Evaluate=true,choices(checkBox=true),Dialog(group="Limiting and quantization"));
-  parameter Boolean quantized = false 
+  parameter Boolean quantized = false
     "= true, if output quantization effects included" 
     annotation(Evaluate=true,choices(checkBox=true),Dialog(enable=limited,group="Limiting and quantization"));
   parameter Real yMax=1 "Upper limit of output (if limited = true)" annotation(Dialog(enable=limited,group="Limiting and quantization"));
   parameter Real yMin=-yMax "Lower limit of output (if limited = true)" annotation(Dialog(enable=limited,group="Limiting and quantization"));
-  parameter Integer bits(min=1)=8 
+  parameter Integer bits(min=1)=8
     "Number of bits of quantization (if quantized = true)" annotation(Dialog(enable=limited and quantized,group="Limiting and quantization"));
 
   Sample sample1 
@@ -23,16 +23,16 @@ block SampleWithADeffects
   replaceable Clocked.RealSignals.Sampler.Utilities.Internal.UniformNoise noise if noisy 
     constrainedby Clocked.RealSignals.Interfaces.PartialNoise "Noise model" 
     annotation (
-    choicesAllMatching=true, 
-    Dialog(enable=noisy, group="Sampling and noise"), 
+    choicesAllMatching=true,
+    Dialog(enable=noisy, group="Sampling and noise"),
     Placement(transformation(extent={{-54,-6},{-42,6}})));
-  Clocked.RealSignals.Sampler.Utilities.Internal.Limiter limiter(uMax=yMax, 
+  Clocked.RealSignals.Sampler.Utilities.Internal.Limiter limiter(uMax=yMax,
       uMin=yMin) if limited 
     annotation (Placement(transformation(extent={{-24,-8},{-8,8}})));
   Clocked.RealSignals.Sampler.Utilities.Internal.Quantization quantization(
-    quantized=quantized, 
-    yMax=yMax, 
-    yMin=yMin, 
+    quantized=quantized,
+    yMax=yMax,
+    yMin=yMin,
     bits=bits) if quantized and limited 
     annotation (Placement(transformation(extent={{14,-8},{30,8}})));
 protected
@@ -42,7 +42,7 @@ protected
     annotation (Placement(transformation(extent={{-26,12},{-10,28}})));
   Modelica.Blocks.Interfaces.RealInput uFeedthrough3 if not quantized or not limited 
     annotation (Placement(transformation(extent={{12,12},{28,28}})));
-  Modelica.Blocks.Interfaces.RealOutput y1 
+  Modelica.Blocks.Interfaces.RealOutput y1
     "Connector with a Real output signal" 
     annotation (Placement(transformation(extent={{-61,-1},{-59,1}})));
   Modelica.Blocks.Interfaces.RealOutput y2 
@@ -54,80 +54,80 @@ protected
 
 equation
   connect(uFeedthrough1, y1) annotation (Line(
-      points={{-50,20},{-58,20},{-58,0},{-60,0}}, 
+      points={{-50,20},{-58,20},{-58,0},{-60,0}},
       color={0,0,127}));
   connect(y1, noise.u) annotation (Line(
-      points={{-60,0},{-55.2,0}}, 
+      points={{-60,0},{-55.2,0}},
       color={0,0,127}));
   connect(noise.y, y2) annotation (Line(
-      points={{-41.4,0},{-34,0}}, 
+      points={{-41.4,0},{-34,0}},
       color={0,0,127}));
   connect(y2, limiter.u) annotation (Line(
-      points={{-34,0},{-25.6,0}}, 
+      points={{-34,0},{-25.6,0}},
       color={0,0,127}));
   connect(uFeedthrough1, y2) annotation (Line(
-      points={{-50,20},{-38,20},{-38,0},{-34,0}}, 
+      points={{-50,20},{-38,20},{-38,0},{-34,0}},
       color={0,0,127}));
   connect(y2, uFeedthrough2) annotation (Line(
-      points={{-34,0},{-30,0},{-30,20},{-18,20}}, 
+      points={{-34,0},{-30,0},{-30,20},{-18,20}},
       color={0,0,127}));
   connect(limiter.y, y3) annotation (Line(
-      points={{-7.2,0},{4,0}}, 
+      points={{-7.2,0},{4,0}},
       color={0,0,127}));
   connect(y3, quantization.u) annotation (Line(
-      points={{4,0},{12.4,0}}, 
+      points={{4,0},{12.4,0}},
       color={0,0,127}));
   connect(y3, uFeedthrough3) annotation (Line(
-      points={{4,0},{8,0},{8,20},{20,20}}, 
+      points={{4,0},{8,0},{8,20},{20,20}},
       color={0,0,127}));
   connect(quantization.y, y4) annotation (Line(
-      points={{30.8,0},{42,0}}, 
+      points={{30.8,0},{42,0}},
       color={0,0,127}));
   connect(uFeedthrough3, y4) annotation (Line(
-      points={{20,20},{38,20},{38,0},{42,0}}, 
+      points={{20,20},{38,20},{38,0},{42,0}},
       color={0,0,127}));
   connect(uFeedthrough2, y3) annotation (Line(
-      points={{-18,20},{0,20},{0,0},{4,0}}, 
+      points={{-18,20},{0,20},{0,0},{4,0}},
       color={0,0,127}));
 
   connect(sample1.y, y1) annotation (Line(
-      points={{-71.4,0},{-60,0}}, 
+      points={{-71.4,0},{-60,0}},
       color={0,0,127}));
 
   connect(u, sample1.u) annotation (Line(
-      points={{-120,0},{-85.2,0}}, 
+      points={{-120,0},{-85.2,0}},
       color={0,0,127}));
   connect(y4, y) annotation (Line(
-      points={{42,0},{110,0}}, 
+      points={{42,0},{110,0}},
       color={0,0,127}));
   annotation (
-   defaultComponentName="sample1", 
+   defaultComponentName="sample1",
    Icon(coordinateSystem(
-        preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}, 
-        initialScale=0.06), 
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}},
+        initialScale=0.06),
                      graphics={
         Polygon(
-          points={{0,-22},{-6,-38},{6,-38},{0,-22}}, 
-          lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{0,-100},{0,-38}},color={192,192,192}), 
-        Line(points={{-40,-72},{40,-72}}, color={192,192,192}), 
+          points={{0,-22},{-6,-38},{6,-38},{0,-22}},
+          lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
+        Line(points={{0,-100},{0,-38}},color={192,192,192}),
+        Line(points={{-40,-72},{40,-72}}, color={192,192,192}),
         Polygon(
-          points={{0,8},{-6,-8},{6,-8},{0,8}}, 
-          lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          origin={48,-72}, 
-          rotation=-90), 
+          points={{0,8},{-6,-8},{6,-8},{0,8}},
+          lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          origin={48,-72},
+          rotation=-90),
         Line(
-          points={{-30,-92},{-10,-92},{-10,-72},{10,-72},{10,-52},{30,-52}}, 
-          color={0,0,127}), 
+          points={{-30,-92},{-10,-92},{-10,-72},{10,-72},{10,-52},{30,-52}},
+          color={0,0,127}),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
+          extent={{-150,90},{150,50}},
+          textString="%name",
+          textColor={0,0,255})}),
     Documentation(info="<html>
 <p>
 This block is similar to the

@@ -1,5 +1,5 @@
 ﻿within Modelica;
-package ComplexMath 
+package ComplexMath
   "Library of complex mathematical functions (e.g., sin, cos) and of functions operating on complex vectors and matrices"
   extends Modelica.Icons.Package;
   final constant Complex j = Complex(0,1) "Imaginary unit";
@@ -10,7 +10,7 @@ package Vectors "Library of functions operating on complex vectors"
 function norm "Returns the p-norm of a complex vector"
   extends Modelica.Icons.Function;
   input Complex v[:] "Vector";
-  input Real p(min=1) = 2 
+  input Real p(min=1) = 2
         "Type of p-norm (often used: 1, 2, or Modelica.Constants.inf)";
   output Real result "p-norm of vector v";
 
@@ -122,7 +122,7 @@ v = {2, -4, -2, -1};
 </html>"));
 end length;
 
-function normalize 
+function normalize
       "Return normalized complex vector such that length = 1 and prevent zero-division for zero vector"
   extends Modelica.Icons.Function;
   input Complex v[:] "Vector";
@@ -204,9 +204,9 @@ end reverse;
 function sort "Sort elements of complex vector"
   extends Modelica.Icons.Function;
   input Complex v[:] "Vector to be sorted";
-  input Boolean ascending = true 
+  input Boolean ascending = true
         "= true if ascending order, otherwise descending order";
-  input Boolean sortFrequency=true 
+  input Boolean sortFrequency=true
         "= true, if sorting is first for imaginary then for real value; = false, if sorting is for absolute value";
   output Complex sorted_v[size(v,1)] = v "Sorted vector";
   output Integer indices[size(v,1)] = 1:size(v,1) "sorted_v = v[indices]";
@@ -497,13 +497,13 @@ end Vectors;
   function arg "Phase angle of complex number"
     extends Modelica.Icons.Function;
     input Complex c "Complex number";
-    input Modelica.Units.SI.Angle phi0=0 
+    input Modelica.Units.SI.Angle phi0=0
       "Phase angle phi shall be in the range: -pi < phi-phi0 < pi";
     output Modelica.Units.SI.Angle phi "= phase angle of c";
   algorithm
     phi := Modelica.Math.atan3(
-        c.im, 
-        c.re, 
+        c.im,
+        c.re,
         phi0);
     annotation(Inline=true, Documentation(info="<html>
 <p>This function returns the Real argument of the Complex input, i.e., its angle.</p>
@@ -656,16 +656,16 @@ operating on complex numbers (such as sin(..)),
 as well as functions operating on vectors of complex numbers.
 </p>
 
-</html>"), Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
+</html>"), Icon(coordinateSystem(extent={{-100,-100},{100,100}},
           preserveAspectRatio=false), graphics={
-        Line(points={{32,-86},{32,88}}, color={175,175,175}), 
-        Line(points={{-84,2},{88,2}}, color={175,175,175}), 
+        Line(points={{32,-86},{32,88}}, color={175,175,175}),
+        Line(points={{-84,2},{88,2}}, color={175,175,175}),
         Line(
-          points={{-50,75},{-5,30}}), 
+          points={{-50,75},{-5,30}}),
         Line(
-          points={{-50,30},{-5,75}}), 
+          points={{-50,30},{-5,75}}),
         Line(
-          points={{-50,-30},{-5,-75}}), 
+          points={{-50,-30},{-5,-75}}),
         Line(
           points={{-50,-75},{-5,-30}})}));
 

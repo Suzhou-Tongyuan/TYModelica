@@ -22,7 +22,7 @@ These models use package SpacePhasors.
     imaginary= q-axis</li>
 <li>Voltage induced by the magnet wheel (d-axis) is located in the q-axis.</li>
 </ul>
-</html>", 
+</html>",
       revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

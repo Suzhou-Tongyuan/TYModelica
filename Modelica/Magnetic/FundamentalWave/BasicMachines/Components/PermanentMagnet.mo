@@ -1,5 +1,5 @@
 ﻿within Modelica.Magnetic.FundamentalWave.BasicMachines.Components;
-model PermanentMagnet 
+model PermanentMagnet
   "Permanent magnet represented by magnetic potential difference"
   extends Magnetic.FundamentalWave.Sources.ConstantMagneticPotentialDifference;
   extends 

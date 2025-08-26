@@ -1,68 +1,68 @@
 ﻿within Modelica.Mechanics.MultiBody.Forces;
-model LineForceWithTwoMasses 
+model LineForceWithTwoMasses
   "General line force component with two optional point masses on the connection line"
 
   import Modelica.Mechanics.MultiBody.Types;
 
   extends Interfaces.LineForceBase;
-  Modelica.Mechanics.Translational.Interfaces.Flange_a flange_b 
+  Modelica.Mechanics.Translational.Interfaces.Flange_a flange_b
     "1-dim. translational flange (connect force of Translational library between flange_a and flange_b)" 
     annotation (Placement(transformation(
-        origin={60,110}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={60,110},
+        extent={{-10,-10},{10,10}},
         rotation=90)));
-  Modelica.Mechanics.Translational.Interfaces.Flange_b flange_a 
+  Modelica.Mechanics.Translational.Interfaces.Flange_b flange_a
     "1-dim. translational flange (connect force of Translational library between flange_a and flange_b)" 
     annotation (Placement(transformation(
-        origin={-60,110}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-60,110},
+        extent={{-10,-10},{10,10}},
         rotation=90)));
 
   parameter Boolean animate=true "= true, if animation shall be enabled";
-  parameter Boolean animateMasses=true 
+  parameter Boolean animateMasses=true
     "= true, if point masses shall be visualized provided animate=true and m_a, m_b > 0";
-  parameter SI.Mass m_a(min=0)=0 
+  parameter SI.Mass m_a(min=0)=0
     "Mass of point mass a on the connection line between the origin of frame_a and the origin of frame_b";
-  parameter SI.Mass m_b(min=0)=0 
+  parameter SI.Mass m_b(min=0)=0
     "Mass of point mass b on the connection line between the origin of frame_a and the origin of frame_b";
-  parameter SI.Position L_a=0 
+  parameter SI.Position L_a=0
     "Distance between point mass a and frame_a (positive, if in direction of frame_b)";
-  parameter SI.Position L_b=L_a 
+  parameter SI.Position L_b=L_a
     "Distance between point mass b and frame_b (positive, if in direction of frame_a)";
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(tab="Animation", enable=animate));
-  input SI.Diameter cylinderDiameter_a=world.defaultForceWidth 
+  input SI.Diameter cylinderDiameter_a=world.defaultForceWidth
     "Diameter of cylinder at frame_a" 
     annotation (Dialog(tab="Animation", group="Cylinder at frame_a if animate = true", enable=animate));
   parameter SI.Length cylinderLength_a=2*L_a "Length of cylinder at frame_a" 
     annotation (Dialog(tab="Animation", group="Cylinder at frame_a if animate = true", enable=animate));
   input Types.Color color_a={155,155,155} "Color of cylinder at frame_a" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="Cylinder at frame_a if animate = true", enable=animate));
-  input Real diameterFraction=0.8 
+  input Real diameterFraction=0.8
     "Diameter of cylinder at frame_b with respect to diameter of cylinder at frame_a" 
     annotation (Dialog(tab="Animation", group="Cylinder at frame_b if animate = true", enable=animate));
   parameter SI.Length cylinderLength_b=2*L_b "Length of cylinder at frame_b" 
     annotation (Dialog(tab="Animation", group="Cylinder at frame_b if animate = true", enable=animate));
   input Types.Color color_b={100,100,100} "Color of cylinder at frame_b" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="Cylinder at frame_b if animate = true", enable=animate));
-  input Real massDiameterFaction=1.7 
+  input Real massDiameterFaction=1.7
     "Diameter of point mass spheres with respect to cylinderDiameter_a" 
     annotation (Dialog(tab="Animation", group="if animate = true and animateMasses = true", enable=animate and animateMasses));
-  input Types.Color massColor=Modelica.Mechanics.MultiBody.Types.Defaults.BodyColor 
+  input Types.Color massColor=Modelica.Mechanics.MultiBody.Types.Defaults.BodyColor
     "Color of point masses" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="if animate = true and animateMasses = true", enable=animate and animateMasses));
 
 protected
   SI.Force fa "Force from flange_a";
   SI.Force fb "Force from flange_b";
-  SI.Position r_CM1_0[3](each stateSelect=StateSelect.avoid) 
+  SI.Position r_CM1_0[3](each stateSelect=StateSelect.avoid)
     "Position vector from world frame to point mass 1, resolved in world frame";
-  SI.Position r_CM2_0[3](each stateSelect=StateSelect.avoid) 
+  SI.Position r_CM2_0[3](each stateSelect=StateSelect.avoid)
     "Position vector from world frame to point mass 2, resolved in world frame";
-  SI.Velocity v_CM1_0[3](each stateSelect=StateSelect.avoid) 
+  SI.Velocity v_CM1_0[3](each stateSelect=StateSelect.avoid)
     "der(r_CM_1_0) - velocity of point mass 1";
-  SI.Velocity v_CM2_0[3](each stateSelect=StateSelect.avoid) 
+  SI.Velocity v_CM2_0[3](each stateSelect=StateSelect.avoid)
     "der(r_CM_2_0) - velocity of point mass 2";
   SI.Acceleration ag_CM1_0[3] "der(v_CM1_0) - gravityAcceleration(r_CM1_0)";
   SI.Acceleration ag_CM2_0[3] "der(v_CM2_0) - gravityAcceleration(r_CM2_0)";
@@ -73,49 +73,49 @@ protected
   input SI.Length massDiameter=cylinderDiameter_a*massDiameterFaction;
   parameter Boolean animateMasses2=world.enableAnimation and animate and animateMasses and m_a > 0 and m_b > 0;
   Visualizers.Advanced.Shape cylinder_a(
-    shapeType="cylinder", 
-    color=color_a, 
-    specularCoefficient=specularCoefficient, 
-    length=cylinderLength_a, 
-    width=cylinderDiameter_a, 
-    height=cylinderDiameter_a, 
-    lengthDirection=e_rel_0, 
-    widthDirection={0,1,0}, 
+    shapeType="cylinder",
+    color=color_a,
+    specularCoefficient=specularCoefficient,
+    length=cylinderLength_a,
+    width=cylinderDiameter_a,
+    height=cylinderDiameter_a,
+    lengthDirection=e_rel_0,
+    widthDirection={0,1,0},
     r=frame_a.r_0) if world.enableAnimation and animate;
 
   Visualizers.Advanced.Shape cylinder_b(
-    shapeType="cylinder", 
-    color=color_b, 
-    specularCoefficient=specularCoefficient, 
-    length=cylinderLength_b, 
-    width=cylinderDiameter_b, 
-    height=cylinderDiameter_b, 
-    lengthDirection=-e_rel_0, 
-    widthDirection={0,1,0}, 
+    shapeType="cylinder",
+    color=color_b,
+    specularCoefficient=specularCoefficient,
+    length=cylinderLength_b,
+    width=cylinderDiameter_b,
+    height=cylinderDiameter_b,
+    lengthDirection=-e_rel_0,
+    widthDirection={0,1,0},
     r=frame_b.r_0) if world.enableAnimation and animate;
 
   Visualizers.Advanced.Shape sphere_a(
-    shapeType="sphere", 
-    color=massColor, 
-    specularCoefficient=specularCoefficient, 
-    length=massDiameter, 
-    width=massDiameter, 
-    height=massDiameter, 
-    lengthDirection=e_rel_0, 
-    widthDirection={0,1,0}, 
-    r_shape=e_rel_0*(L_a - massDiameter/2), 
+    shapeType="sphere",
+    color=massColor,
+    specularCoefficient=specularCoefficient,
+    length=massDiameter,
+    width=massDiameter,
+    height=massDiameter,
+    lengthDirection=e_rel_0,
+    widthDirection={0,1,0},
+    r_shape=e_rel_0*(L_a - massDiameter/2),
     r=frame_a.r_0) if animateMasses2;
 
   Visualizers.Advanced.Shape sphere_b(
-    shapeType="sphere", 
-    color=massColor, 
-    specularCoefficient=specularCoefficient, 
-    length=massDiameter, 
-    width=massDiameter, 
-    height=massDiameter, 
-    lengthDirection=-e_rel_0, 
-    widthDirection={0,1,0}, 
-    r_shape=-e_rel_0*(L_b - massDiameter/2), 
+    shapeType="sphere",
+    color=massColor,
+    specularCoefficient=specularCoefficient,
+    length=massDiameter,
+    width=massDiameter,
+    height=massDiameter,
+    lengthDirection=-e_rel_0,
+    widthDirection={0,1,0},
+    r_shape=-e_rel_0*(L_b - massDiameter/2),
     r=frame_b.r_0) if animateMasses2;
 
 equation
@@ -206,142 +206,142 @@ equation
 
   annotation (
     Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Ellipse(
-          extent={{-100,-40},{-20,40}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{-100,-40},{-20,40}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{-90,-30},{-30,30}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-90,-30},{-30,30}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{20,-40},{100,40}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{20,-40},{100,40}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{31,-29},{91,30}}, 
-          lineColor={128,128,128}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{31,-29},{91,30}},
+          lineColor={128,128,128},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,-55},{150,-95}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,-55},{150,-95}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
-          extent={{-52,40},{48,-40}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-52,40},{48,-40}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-74,15},{-45,-13}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{-74,15},{-45,-13}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{45,14},{74,-14}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
-        Line(points={{-60,0},{-60,23},{-30,23},{-30,70},{-60,70},{-60,101}}), 
-        Line(points={{60,0},{60,20},{30,20},{30,70},{60,70},{60,100}}), 
+          extent={{45,14},{74,-14}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
+        Line(points={{-60,0},{-60,23},{-30,23},{-30,70},{-60,70},{-60,101}}),
+        Line(points={{60,0},{60,20},{30,20},{30,70},{60,70},{60,100}}),
         Line(
-          points={{-23,0},{25,0}}, 
-          pattern=LinePattern.Dot), 
+          points={{-23,0},{25,0}},
+          pattern=LinePattern.Dot),
         Ellipse(
-          extent={{23,8},{39,-8}}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{23,8},{39,-8}},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-39,8},{-23,-8}}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-60,0},{-29,0}}), 
-        Line(points={{29,0},{60,0}}), 
-        Ellipse(visible=fixedRotationAtFrame_a, extent={{-70,30},{-130,-30}}, lineColor={255,0,0}), 
-        Text(visible=fixedRotationAtFrame_a, 
-          extent={{-62,50},{-140,30}}, 
-          textColor={255,0,0}, 
-          textString="R=0"), 
-        Ellipse(visible=fixedRotationAtFrame_b, extent={{70,30},{130,-30}}, lineColor={255,0,0}), 
-        Text(visible=fixedRotationAtFrame_b, 
-          extent={{62,50},{140,30}}, 
-          textColor={255,0,0}, 
-          textString="R=0")}), 
+          extent={{-39,8},{-23,-8}},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-60,0},{-29,0}}),
+        Line(points={{29,0},{60,0}}),
+        Ellipse(visible=fixedRotationAtFrame_a, extent={{-70,30},{-130,-30}}, lineColor={255,0,0}),
+        Text(visible=fixedRotationAtFrame_a,
+          extent={{-62,50},{-140,30}},
+          textColor={255,0,0},
+          textString="R=0"),
+        Ellipse(visible=fixedRotationAtFrame_b, extent={{70,30},{130,-30}}, lineColor={255,0,0}),
+        Text(visible=fixedRotationAtFrame_b,
+          extent={{62,50},{140,30}},
+          textColor={255,0,0},
+          textString="R=0")}),
     Diagram(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
-        Line(points={{-60,80},{46,80}}, color={0,0,255}), 
+        Line(points={{-60,80},{46,80}}, color={0,0,255}),
         Polygon(
-          points={{60,80},{45,86},{45,74},{60,80}}, 
-          lineColor={0,0,255}, 
-          fillColor={0,0,255}, 
-          fillPattern=FillPattern.Solid), 
+          points={{60,80},{45,86},{45,74},{60,80}},
+          lineColor={0,0,255},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-42,91},{30,79}}, 
-          textString="length", 
-          textColor={0,0,255}), 
+          extent={{-42,91},{30,79}},
+          textString="length",
+          textColor={0,0,255}),
         Ellipse(
-          extent={{-100,-40},{-20,40}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{-100,-40},{-20,40}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{-90,-30},{-30,30}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-90,-30},{-30,30}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{20,-40},{100,40}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{20,-40},{100,40}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{31,-29},{91,30}}, 
-          lineColor={128,128,128}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{31,-29},{91,30}},
+          lineColor={128,128,128},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-49,39},{51,-41}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-49,39},{51,-41}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-74,15},{-45,-13}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{-74,15},{-45,-13}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{45,15},{74,-13}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
-        Line(points={{-60,0},{-60,24},{-40,24},{-40,60},{-60,60},{-60,110}}), 
-        Line(points={{60,1},{60,21},{40,21},{40,60},{60,60},{60,110}}), 
+          extent={{45,15},{74,-13}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
+        Line(points={{-60,0},{-60,24},{-40,24},{-40,60},{-60,60},{-60,110}}),
+        Line(points={{60,1},{60,21},{40,21},{40,60},{60,60},{60,110}}),
         Line(
-          points={{-60,0},{60,0}}, 
-          pattern=LinePattern.Dot), 
+          points={{-60,0},{60,0}},
+          pattern=LinePattern.Dot),
         Ellipse(
-          extent={{20,8},{36,-8}}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-18,-18},{11,-18}}, color={0,0,255}), 
-        Polygon(points={{23,-18},{11,-15},{11,-21},{23,-18}}, lineColor={0,0, 
-              255}), 
-        Line(points={{-60,16},{-37,16}}, color={0,0,255}), 
-        Line(points={{-25,0},{-25,20}}, color={0,0,255}), 
+          extent={{20,8},{36,-8}},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-18,-18},{11,-18}}, color={0,0,255}),
+        Polygon(points={{23,-18},{11,-15},{11,-21},{23,-18}}, lineColor={0,0,
+              255}),
+        Line(points={{-60,16},{-37,16}}, color={0,0,255}),
+        Line(points={{-25,0},{-25,20}}, color={0,0,255}),
         Text(
-          extent={{-38,-20},{33,-35}}, 
-          textString="e_rel_0"), 
-        Polygon(points={{-25,16},{-37,19},{-37,13},{-25,16}}, lineColor={0,0, 
-              255}), 
+          extent={{-38,-20},{33,-35}},
+          textString="e_rel_0"),
+        Polygon(points={{-25,16},{-37,19},{-37,13},{-25,16}}, lineColor={0,0,
+              255}),
         Text(
-          extent={{-39,31},{-22,21}}, 
-          textString="L_a"), 
+          extent={{-39,31},{-22,21}},
+          textString="L_a"),
         Ellipse(
-          extent={{-33,7},{-17,-9}}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{29,3},{29,22}}, color={0,0,255}), 
-        Line(points={{29,16},{60,16}}, color={0,0,255}), 
-        Polygon(points={{29,16},{41,19},{41,13},{29,16}}, lineColor={0,0,255}), 
+          extent={{-33,7},{-17,-9}},
+          fillPattern=FillPattern.Solid),
+        Line(points={{29,3},{29,22}}, color={0,0,255}),
+        Line(points={{29,16},{60,16}}, color={0,0,255}),
+        Polygon(points={{29,16},{41,19},{41,13},{29,16}}, lineColor={0,0,255}),
         Text(
-          extent={{15,36},{32,26}}, 
-          textString="L_b"), 
+          extent={{15,36},{32,26}},
+          textString="L_b"),
         Line(
-          points={{37,18},{30,27}}, 
-          pattern=LinePattern.Dot, 
-          color={0,0,255})}), 
+          points={{37,18},{30,27}},
+          pattern=LinePattern.Dot,
+          color={0,0,255})}),
     Documentation(info="<html>
 <p>
 This component is used to exert a <strong>line force</strong>

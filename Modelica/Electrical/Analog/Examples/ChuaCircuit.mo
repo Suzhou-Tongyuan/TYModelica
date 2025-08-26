@@ -3,31 +3,31 @@ model ChuaCircuit "Chua's circuit, ns, V, A"
   extends Modelica.Icons.Example;
 
   Modelica.Electrical.Analog.Basic.Inductor L(L=18, i(start=0, fixed=true)) annotation (Placement(transformation(
-        origin={-75,38}, 
-        extent={{-25,-25},{25,25}}, 
+        origin={-75,38},
+        extent={{-25,-25},{25,25}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Resistor Ro(R=12.5e-3) annotation (Placement(transformation(
-        origin={-75,-17}, 
-        extent={{-25,-25},{25,25}}, 
+        origin={-75,-17},
+        extent={{-25,-25},{25,25}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Conductor G(G=0.565) annotation (Placement(transformation(extent={{-25,38}, 
+  Modelica.Electrical.Analog.Basic.Conductor G(G=0.565) annotation (Placement(transformation(extent={{-25,38},
             {25,88}})));
   Modelica.Electrical.Analog.Basic.Capacitor C1(C=10, v(start=4, fixed=true)) annotation (Placement(transformation(
-        origin={25,3}, 
-        extent={{-25,-25},{25,25}}, 
+        origin={25,3},
+        extent={{-25,-25},{25,25}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Capacitor C2(C=100, v(start=0, fixed=true)) annotation (Placement(transformation(
-        origin={-25,3}, 
-        extent={{-25,-25},{25,25}}, 
+        origin={-25,3},
+        extent={{-25,-25},{25,25}},
         rotation=270)));
   Modelica.Electrical.Analog.Examples.Utilities.NonlinearResistor Nr(
-    Ga(min=-1) = -0.757576, 
-    Gb(min=-1) = -0.409091, 
+    Ga(min=-1) = -0.757576,
+    Gb(min=-1) = -0.409091,
     Ve=1) annotation (Placement(transformation(
-        origin={75,3}, 
-        extent={{-25,-25},{25,25}}, 
+        origin={75,3},
+        extent={{-25,-25},{25,25}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Ground Gnd annotation (Placement(transformation(extent={{-25,-112},{25, 
+  Modelica.Electrical.Analog.Basic.Ground Gnd annotation (Placement(transformation(extent={{-25,-112},{25,
             -62}})));
 equation
   connect(L.n, Ro.p) annotation (Line(points={{-75,13},{-75,8}}));
@@ -53,7 +53,7 @@ equation
 <p>The simulation end time should be set to 5e4. To get the chaotic behaviour please plot C1.v. Choose C2.v as the independent variable .</p>
 <p><strong>Reference:</strong></p>
 <p>Kennedy, M.P.: Three Steps to Chaos - Part I: Evolution. IEEE Transactions on CAS I 40 (1993)10, 640-656</p>
-</html>", 
+</html>",
    revisions="<html>
 <dl>
 <dt>
@@ -70,11 +70,11 @@ Christoph Clau&szlig;
     D-01069 Dresden<br>
 </dd>
 </dl>
-</html>"), 
-    experiment(StopTime=5e4, Interval=1), 
+</html>"),
+    experiment(StopTime=5e4, Interval=1),
     Diagram(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{
             100,100}}), graphics={Text(
-          extent={{-98,104},{-32,72}}, 
-          textColor={0,0,255}, 
+          extent={{-98,104},{-32,72}},
+          textColor={0,0,255},
           textString="Chua Circuit")}));
 end ChuaCircuit;

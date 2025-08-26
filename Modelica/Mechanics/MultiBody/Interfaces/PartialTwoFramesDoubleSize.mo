@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.MultiBody.Interfaces;
-partial model PartialTwoFramesDoubleSize 
+partial model PartialTwoFramesDoubleSize
   "Base model for components providing two frame connectors + outer world + assert to guarantee that the component is connected (default icon size is factor 2 larger as usual)"
 
   Interfaces.Frame_a frame_a "Coordinate system fixed to the component with one cut-force and cut-torque" annotation (Placement(transformation(extent={{-108,-8},{-92,8}})));
@@ -8,21 +8,21 @@ partial model PartialTwoFramesDoubleSize
 protected
   outer Modelica.Mechanics.MultiBody.World world;
 equation
-  assert(cardinality(frame_a) > 0, 
+  assert(cardinality(frame_a) > 0,
     "Connector frame_a of component is not connected");
-  assert(cardinality(frame_b) > 0, 
+  assert(cardinality(frame_b) > 0,
     "Connector frame_b of component is not connected");
   annotation (
     Icon(coordinateSystem(
-        preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}, 
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}},
         initialScale=0.2), graphics={Text(
-          extent={{-117,-13},{-106,-23}}, 
-          textColor={128,128,128}, 
+          extent={{-117,-13},{-106,-23}},
+          textColor={128,128,128},
           textString="a"), Text(
-          extent={{110,-15},{122,-25}}, 
-          textColor={128,128,128}, 
-          textString="b")}), 
+          extent={{110,-15},{122,-25}},
+          textColor={128,128,128},
+          textString="b")}),
     Documentation(info="<html>
 <p>
 This partial model provides two frame connectors, access to the world

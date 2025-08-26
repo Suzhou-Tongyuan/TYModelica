@@ -7,13 +7,13 @@ equation
   omega = der(port.reference.gamma);
   port.Phi = Complex(0);
   annotation (Icon(graphics={
-        Line(points={{-70,0},{-90,0}}, color={255,170,85}), 
+        Line(points={{-70,0},{-90,0}}, color={255,170,85}),
         Text(
-          extent={{-150,120},{150,80}}, 
-          textColor={0,0,255}, 
-          pattern=LinePattern.None, 
-          fillColor={170,85,255}, 
-          fillPattern=FillPattern.Solid, 
+          extent={{-150,120},{150,80}},
+          textColor={0,0,255},
+          pattern=LinePattern.None,
+          fillColor={170,85,255},
+          fillPattern=FillPattern.Solid,
           textString="%name")}), Documentation(info="<html>
 <p>
 The absolute sensor partial model provides a single

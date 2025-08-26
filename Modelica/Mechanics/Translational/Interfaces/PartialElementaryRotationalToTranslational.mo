@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.Translational.Interfaces;
-partial model PartialElementaryRotationalToTranslational 
+partial model PartialElementaryRotationalToTranslational
   "Partial model to transform rotational into translational motion"
   extends 
     Modelica.Mechanics.Rotational.Interfaces.PartialElementaryRotationalToTranslational;

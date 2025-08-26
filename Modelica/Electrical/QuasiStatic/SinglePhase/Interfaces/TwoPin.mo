@@ -9,11 +9,11 @@ partial model TwoPin "Two pins"
   SI.ComplexCurrent i "Complex current";
   SI.Current abs_i=Modelica.ComplexMath.abs(i) "Magnitude of complex current";
   SI.Angle arg_i=Modelica.ComplexMath.arg(i) "Argument of complex current";
-  SI.ActivePower P=Modelica.ComplexMath.real(v* 
+  SI.ActivePower P=Modelica.ComplexMath.real(v*
       Modelica.ComplexMath.conj(i)) "Active power";
-  SI.ReactivePower Q=Modelica.ComplexMath.imag(v* 
+  SI.ReactivePower Q=Modelica.ComplexMath.imag(v*
       Modelica.ComplexMath.conj(i)) "Reactive power";
-  SI.ApparentPower S=Modelica.ComplexMath.abs(v* 
+  SI.ApparentPower S=Modelica.ComplexMath.abs(v*
       Modelica.ComplexMath.conj(i)) "Magnitude of complex apparent power";
   Real pf=cos(Modelica.ComplexMath.arg(Complex(P, Q))) "Power factor";
   SI.AngularVelocity omega "Angular velocity of reference frame";

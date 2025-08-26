@@ -1,13 +1,13 @@
 ﻿within Modelica.Electrical.Polyphase.Interfaces;
-partial model ConditionalHeatPort 
+partial model ConditionalHeatPort
   "Partial model to include conditional HeatPorts in order to describe the power loss via a thermal network"
   parameter Integer mh(min=1) = 3 "Number of heatPorts=number of phases";
-  parameter Boolean useHeatPort=false 
+  parameter Boolean useHeatPort=false
     "= true, if all heat ports are enabled" annotation (
-    Evaluate=true, 
-    HideResult=true, 
+    Evaluate=true,
+    HideResult=true,
     choices(checkBox=true));
-  parameter SI.Temperature T[mh]=fill(293.15, mh) 
+  parameter SI.Temperature T[mh]=fill(293.15, mh)
     "Fixed device temperatures if useHeatPort = false" 
     annotation (Dialog(enable=not useHeatPort));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort[mh] if 
@@ -18,7 +18,7 @@ partial model ConditionalHeatPort
 <ul>
 <li><em>August 26, 2009 </em>by Anton Haumer initially implemented</li>
 </ul>
-</html>", 
+</html>",
       info="<html>
 <p>
 This partial model provides conditional heat ports for the connection to a thermal network.

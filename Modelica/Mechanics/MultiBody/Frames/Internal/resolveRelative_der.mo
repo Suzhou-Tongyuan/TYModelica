@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.Internal;
-function resolveRelative_der 
+function resolveRelative_der
   "Derivative of function Frames.resolveRelative(..)"
   import Modelica.Mechanics.MultiBody.Frames;
   extends Modelica.Icons.Function;
@@ -9,7 +9,7 @@ function resolveRelative_der
   input Real v1_der[3] "= der(v1)";
   output Real v2_der[3] "Derivative of vector v resolved in frame 2";
 algorithm
-  v2_der := Frames.resolveRelative(v1_der+cross(R1.w,v1), R1, R2) 
+  v2_der := Frames.resolveRelative(v1_der+cross(R1.w,v1), R1, R2)
             - cross(R2.w, Frames.resolveRelative(v1, R1, R2));
 
   /* skew(w) = T*der(T'), -skew(w) = der(T)*T'

@@ -1,5 +1,5 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
-model GenericHystTellinenSoft 
+model GenericHystTellinenSoft
   "Generic flux tube with soft magnetic hysteresis based on the Tellinen model and simple tanh()-functions"
   // Dialog Group Hysteresis
   parameter SI.MagneticFluxDensity Js = 1.8 "Saturation polarization" annotation (Dialog(group="Hysteresis", groupImage="modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/HysteresisAndMagnets/GenericHystTellinenSoft/SoftMagneticHysteresis2.png"));
@@ -28,9 +28,9 @@ equation
 </td>
 </tr>
 </table>
-</html>"), 
+</html>"),
      Icon(graphics={Text(
-          extent={{40,0},{40,-30}}, 
-          textColor={255,128,0}, 
+          extent={{40,0},{40,-30}},
+          textColor={255,128,0},
           textString="TS")}));
 end GenericHystTellinenSoft;

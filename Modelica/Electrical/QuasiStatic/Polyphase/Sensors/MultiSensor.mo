@@ -5,41 +5,41 @@ model MultiSensor "Polyphase sensor to measure current, voltage and power"
   import Modelica.ComplexMath.abs;
   import Modelica.ComplexMath.arg;
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);
-  QuasiStatic.Polyphase.Interfaces.PositivePlug pc(final m=m) 
+  QuasiStatic.Polyphase.Interfaces.PositivePlug pc(final m=m)
     "Positive plug, current path" 
     annotation (Placement(transformation(extent={{-90,-10},{-110,10}})));
-  QuasiStatic.Polyphase.Interfaces.NegativePlug nc(final m=m) 
+  QuasiStatic.Polyphase.Interfaces.NegativePlug nc(final m=m)
     "Negative plug, current path" 
     annotation (Placement(transformation(extent={{110,-10},{90,10}})));
-  QuasiStatic.Polyphase.Interfaces.PositivePlug pv(final m=m) 
+  QuasiStatic.Polyphase.Interfaces.PositivePlug pv(final m=m)
     "Positive plug, voltage path" 
     annotation (Placement(transformation(extent={{-10,110},{10,90}})));
-  QuasiStatic.Polyphase.Interfaces.NegativePlug nv(final m=m) 
+  QuasiStatic.Polyphase.Interfaces.NegativePlug nv(final m=m)
     "Negative plug, voltage path" 
     annotation (Placement(transformation(extent={{10,-110},{-10,-90}})));
   Modelica.ComplexBlocks.Interfaces.ComplexOutput i[m](
-    redeclare each final SI.Current re, redeclare each final SI.Current im) 
+    redeclare each final SI.Current re, redeclare each final SI.Current im)
     "Current as complex output signal" annotation (Placement(transformation(
-        origin={-60,-110}, 
-        extent={{10,10},{-10,-10}}, 
+        origin={-60,-110},
+        extent={{10,10},{-10,-10}},
         rotation=90)));
   Modelica.ComplexBlocks.Interfaces.ComplexOutput v[m](
-    redeclare each final SI.Voltage re, redeclare each final SI.Voltage im) 
+    redeclare each final SI.Voltage re, redeclare each final SI.Voltage im)
     "Voltage as complex output signal" annotation (Placement(transformation(
-        origin={60,-110}, 
-        extent={{10,10},{-10,-10}}, 
+        origin={60,-110},
+        extent={{10,10},{-10,-10}},
         rotation=90)));
   Modelica.ComplexBlocks.Interfaces.ComplexOutput apparentPower[m](
-    redeclare each final SI.ActivePower re, redeclare each final SI.ReactivePower im) 
+    redeclare each final SI.ActivePower re, redeclare each final SI.ReactivePower im)
     "Instantaneous apparent power as complex output signal" annotation (Placement(transformation(
-        origin={-110,-60}, 
-        extent={{-10,10},{10,-10}}, 
+        origin={-110,-60},
+        extent={{-10,10},{10,-10}},
         rotation=180)));
   Modelica.ComplexBlocks.Interfaces.ComplexOutput apparentPowerTotal(
-    redeclare final SI.ActivePower re, redeclare final SI.ReactivePower im) 
+    redeclare final SI.ActivePower re, redeclare final SI.ReactivePower im)
     "Sum of instantaneous apparent power as complex output signal" annotation (Placement(transformation(
-        origin={110,-60}, 
-        extent={{10,10},{-10,-10}}, 
+        origin={110,-60},
+        extent={{10,10},{-10,-10}},
         rotation=180)));
   output SI.Current abs_i[m]=abs(i) "Absolute of complex currents";
   output SI.Angle arg_i[m]=arg(i) "Argument of complex currents";
@@ -72,33 +72,33 @@ equation
   apparentPowerTotal = Complex(sum(apparentPower.re),sum(apparentPower.im));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
-      Line(points = {{0,100},{0,70}}, color={85,170,255}), 
-      Line(points = {{0,-70},{0,-100}}, color={85,170,255}), 
-      Line(points = {{-100,0},{100,0}}, color={85,170,255}), 
-      Line(points = {{0,70},{0,40}}), 
-        Line(points={{-100,-60},{-80,-60},{-56,-42}}, 
-                                                   color={85,170,255}), 
-        Line(points={{-60,-100},{-60,-80},{-42,-56}}, 
-                                                   color={85,170,255}), 
-        Line(points={{60,-100},{60,-80},{42,-56}}, 
-                                                color={85,170,255}), 
+      Line(points = {{0,100},{0,70}}, color={85,170,255}),
+      Line(points = {{0,-70},{0,-100}}, color={85,170,255}),
+      Line(points = {{-100,0},{100,0}}, color={85,170,255}),
+      Line(points = {{0,70},{0,40}}),
+        Line(points={{-100,-60},{-80,-60},{-56,-42}},
+                                                   color={85,170,255}),
+        Line(points={{-60,-100},{-60,-80},{-42,-56}},
+                                                   color={85,170,255}),
+        Line(points={{60,-100},{60,-80},{42,-56}},
+                                                color={85,170,255}),
         Text(
-          extent={{-100,-20},{-60,-60}}, 
-            textColor={64,64,64}, 
-            textString="V.A"), 
+          extent={{-100,-20},{-60,-60}},
+            textColor={64,64,64},
+            textString="V.A"),
         Text(
-          extent={{-80,-60},{-40,-100}}, 
-            textString="A", 
-            textColor={64,64,64}), 
+          extent={{-80,-60},{-40,-100}},
+            textString="A",
+            textColor={64,64,64}),
         Text(
-          extent={{40,-60},{80,-100}}, 
-            textString="V", 
-            textColor={64,64,64}), 
-        Line(points={{100,-60},{80,-60},{56,-42}}, color={85,170,255}), 
+          extent={{40,-60},{80,-100}},
+            textString="V",
+            textColor={64,64,64}),
+        Line(points={{100,-60},{80,-60},{56,-42}}, color={85,170,255}),
         Text(
-          extent={{-150,110},{150,150}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
+          extent={{-150,110},{150,150}},
+          textString="%name",
+          textColor={0,0,255})}),
     Documentation(info="<html>
 <p>This multi sensor measures currents, voltages and instantaneous electrical power of a polyphase system and has separated voltage and current paths.
 The plugs of the voltage paths are pv and nv, the plugs of the current paths are pc and nc.

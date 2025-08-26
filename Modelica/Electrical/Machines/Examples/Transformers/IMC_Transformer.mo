@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical.Machines.Examples.Transformers;
-model IMC_Transformer 
+model IMC_Transformer
   "Test example: InductionMachineSquirrelCage transformer starting"
   extends Machines.Examples.InductionMachines.IMC_Transformer;
   annotation (experiment(StopTime=2.5, Interval=1E-4, Tolerance=1E-6), Documentation(

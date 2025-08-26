@@ -4,14 +4,14 @@ model OneWayClutch "Parallel connection of freewheel and clutch"
   extends 
     Modelica.Mechanics.Rotational.Interfaces.PartialCompliantWithRelativeStates;
 
-  parameter Real mu_pos[:, 2]=[0, 0.5] 
+  parameter Real mu_pos[:, 2]=[0, 0.5]
     "Positive sliding friction coefficient [-] as function of w_rel [rad/s] (w_rel>=0)";
-  parameter Real peak(final min=1) = 1 
+  parameter Real peak(final min=1) = 1
     "Peak for maximum value of mu at w==0 (mu0_max = peak*mu_pos[1,2])";
-  parameter Real cgeo(final min=0) = 1 
+  parameter Real cgeo(final min=0) = 1
     "Geometry constant containing friction distribution assumption";
   parameter SI.Force fn_max(final min=0, start=1) "Maximum normal force";
-  parameter SI.AngularVelocity w_small=1e10 
+  parameter SI.AngularVelocity w_small=1e10
     "Relative angular velocity near to zero if jumps due to a reinit(..) of the velocity can occur (set to low value only if such impulses can occur)" 
     annotation (Dialog(tab="Advanced"));
   extends 
@@ -19,7 +19,7 @@ model OneWayClutch "Parallel connection of freewheel and clutch"
 
   Real u "Normalized force input signal (0..1)";
   SI.Force fn "Normal force (fn=fn_max*inPort.signal)";
-  Boolean startForward(start=false) 
+  Boolean startForward(start=false)
     "= true, if w_rel=0 and start of forward sliding or w_rel > w_small";
   Boolean locked(start=false) "= true, if w_rel=0 and not sliding";
   Boolean stuck(start=false) "w_rel=0 (locked or start forward sliding)";
@@ -29,7 +29,7 @@ protected
   SI.Torque tau0_max "Maximum friction torque for w=0 and locked";
   Real mu0 "Friction coefficient for w=0 and sliding";
   Boolean free "= true, if frictional element is not active";
-  Real sa(final unit="1") 
+  Real sa(final unit="1")
     "Path parameter of tau = f(a_rel) Friction characteristic";
   constant Real eps0=1.0e-4 "Relative hysteresis epsilon";
   SI.Torque tau0_max_low "Lowest value for tau0_max";
@@ -37,11 +37,11 @@ protected
   constant SI.AngularAcceleration unitAngularAcceleration=1;
   constant SI.Torque unitTorque=1;
 public
-  Modelica.Blocks.Interfaces.RealInput f_normalized 
+  Modelica.Blocks.Interfaces.RealInput f_normalized
     "Normalized force signal 0..1 (normal force = fn_max*f_normalized; clutch is engaged if > 0)" 
     annotation (Placement(transformation(
-        origin={0,110}, 
-        extent={{20,-20},{-20,20}}, 
+        origin={0,110},
+        extent={{20,-20},{-20,20}},
         rotation=90)));
 
 equation
@@ -67,9 +67,9 @@ equation
   locked = pre(stuck) and not startForward;
 
   // acceleration and friction torque
-  a_rel = unitAngularAcceleration*(if locked then 0 else sa - tau0/ 
+  a_rel = unitAngularAcceleration*(if locked then 0 else sa - tau0/
     unitTorque);
-  tau = if locked then sa*unitTorque else (if free then 0 else cgeo*fn* 
+  tau = if locked then sa*unitTorque else (if free then 0 else cgeo*fn*
     Modelica.Math.Vectors.interpolate(mu_pos[:,1], mu_pos[:,2], w_rel, 1));
 
   // Determine configuration
@@ -78,17 +78,17 @@ equation
   lossPower = if stuck then 0 else tau*w_rel;
   annotation (
     Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-100,-100},{100,100}}),
           graphics={
-        Text(extent={{-150,-110},{150,-70}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
-        Polygon(points={{-10,30},{50,0},{-10,-30},{-10,30}}, 
-          fillPattern=FillPattern.Solid), 
-        Line(visible=useHeatPort, 
-          points={{-100,-99},{-100,-40},{0,-40}}, 
-          color={191,0,0}, 
+        Text(extent={{-150,-110},{150,-70}},
+          textString="%name",
+          textColor={0,0,255}),
+        Polygon(points={{-10,30},{50,0},{-10,-30},{-10,30}},
+          fillPattern=FillPattern.Solid),
+        Line(visible=useHeatPort,
+          points={{-100,-99},{-100,-40},{0,-40}},
+          color={191,0,0},
           pattern=LinePattern.Dot)}), Documentation(info="<html>
 <p>
 This component models a <strong>one-way clutch</strong>, i.e., a component with

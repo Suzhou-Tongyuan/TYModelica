@@ -1,66 +1,66 @@
 ﻿within Modelica.Fluid;
-model System 
+model System
   "System properties and default values (ambient, flow direction, initialization)"
 
-  package Medium = Modelica.Media.Interfaces.PartialMedium 
+  package Medium = Modelica.Media.Interfaces.PartialMedium
     "Medium model for default start values" 
       annotation (choicesAllMatching = true);
-  parameter SI.AbsolutePressure p_ambient=101325 
+  parameter SI.AbsolutePressure p_ambient=101325
     "Default ambient pressure" 
     annotation(Dialog(group="Environment"));
-  parameter SI.Temperature T_ambient=293.15 
+  parameter SI.Temperature T_ambient=293.15
     "Default ambient temperature" 
     annotation(Dialog(group="Environment"));
-  parameter SI.Acceleration g=Modelica.Constants.g_n 
+  parameter SI.Acceleration g=Modelica.Constants.g_n
     "Constant gravity acceleration" 
     annotation(Dialog(group="Environment"));
 
   // Assumptions
-  parameter Boolean allowFlowReversal = true 
+  parameter Boolean allowFlowReversal = true
     "= false to restrict to design flow direction (port_a -> port_b)" 
     annotation(Dialog(tab="Assumptions"), Evaluate=true);
-  parameter Modelica.Fluid.Types.Dynamics energyDynamics= 
-    Modelica.Fluid.Types.Dynamics.DynamicFreeInitial 
+  parameter Modelica.Fluid.Types.Dynamics energyDynamics=
+    Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
     "Default formulation of energy balances" 
     annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-  parameter Modelica.Fluid.Types.Dynamics massDynamics= 
+  parameter Modelica.Fluid.Types.Dynamics massDynamics=
     energyDynamics "Default formulation of mass balances" 
     annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-  final parameter Modelica.Fluid.Types.Dynamics substanceDynamics= 
+  final parameter Modelica.Fluid.Types.Dynamics substanceDynamics=
     massDynamics "Default formulation of substance balances" 
     annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-  final parameter Modelica.Fluid.Types.Dynamics traceDynamics= 
+  final parameter Modelica.Fluid.Types.Dynamics traceDynamics=
     massDynamics "Default formulation of trace substance balances" 
     annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
-  parameter Modelica.Fluid.Types.Dynamics momentumDynamics= 
-    Modelica.Fluid.Types.Dynamics.SteadyState 
+  parameter Modelica.Fluid.Types.Dynamics momentumDynamics=
+    Modelica.Fluid.Types.Dynamics.SteadyState
     "Default formulation of momentum balances, if options available" 
     annotation(Evaluate=true, Dialog(tab = "Assumptions", group="Dynamics"));
 
   // Initialization
-  parameter SI.MassFlowRate m_flow_start = 0 
+  parameter SI.MassFlowRate m_flow_start = 0
     "Default start value for mass flow rates" 
     annotation(Dialog(tab = "Initialization"));
-  parameter SI.AbsolutePressure p_start = p_ambient 
+  parameter SI.AbsolutePressure p_start = p_ambient
     "Default start value for pressures" 
     annotation(Dialog(tab = "Initialization"));
-  parameter SI.Temperature T_start = T_ambient 
+  parameter SI.Temperature T_start = T_ambient
     "Default start value for temperatures" 
     annotation(Dialog(tab = "Initialization"));
   // Advanced
-  parameter Boolean use_eps_Re = false 
+  parameter Boolean use_eps_Re = false
     "= true to determine turbulent region automatically using Reynolds number" 
     annotation(Evaluate=true, Dialog(tab = "Advanced"));
-  parameter SI.MassFlowRate m_flow_nominal = if use_eps_Re then 1 else 1e2*m_flow_small 
+  parameter SI.MassFlowRate m_flow_nominal = if use_eps_Re then 1 else 1e2*m_flow_small
     "Default nominal mass flow rate" 
     annotation(Dialog(tab="Advanced", enable = use_eps_Re));
-  parameter Real eps_m_flow(min=0) = 1e-4 
+  parameter Real eps_m_flow(min=0) = 1e-4
     "Regularization of zero flow for |m_flow| < eps_m_flow*m_flow_nominal" 
     annotation(Dialog(tab = "Advanced", enable = use_eps_Re));
-  parameter SI.AbsolutePressure dp_small(min=0) = 1 
+  parameter SI.AbsolutePressure dp_small(min=0) = 1
     "Default small pressure drop for regularization of laminar and zero flow" 
     annotation(Dialog(tab="Advanced", group="Classic", enable = not use_eps_Re));
-  parameter SI.MassFlowRate m_flow_small(min=0) = 1e-2 
+  parameter SI.MassFlowRate m_flow_small(min=0) = 1e-2
     "Default small mass flow rate for regularization of laminar and zero flow" 
     annotation(Dialog(tab = "Advanced", group="Classic", enable = not use_eps_Re));
 initial equation
@@ -71,47 +71,47 @@ initial equation
   //       + " Please update the model to new system.use_eps_Re = true  (see system, Advanced tab). ***",
   //       level=AssertionLevel.warning);
   annotation (
-    defaultComponentName="system", 
-    defaultComponentPrefixes="inner", 
+    defaultComponentName="system",
+    defaultComponentPrefixes="inner",
     missingInnerMessage="
 Your model is using an outer \"system\" component but
 an inner \"system\" component is not defined.
 For simulation drag Modelica.Fluid.System into your model
-to specify system properties.", 
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100, 
+to specify system properties.",
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
             100}}), graphics={
         Rectangle(
-          extent={{-100,100},{100,-100}}, 
-          lineColor={0,0,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-100,100},{100,-100}},
+          lineColor={0,0,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,150},{150,110}}, 
-          textColor={0,0,255}, 
-          textString="%name"), 
-        Line(points={{-86,-30},{82,-30}}), 
-        Line(points={{-82,-68},{-52,-30}}), 
-        Line(points={{-48,-68},{-18,-30}}), 
-        Line(points={{-14,-68},{16,-30}}), 
-        Line(points={{22,-68},{52,-30}}), 
-        Line(points={{74,84},{74,14}}), 
+          extent={{-150,150},{150,110}},
+          textColor={0,0,255},
+          textString="%name"),
+        Line(points={{-86,-30},{82,-30}}),
+        Line(points={{-82,-68},{-52,-30}}),
+        Line(points={{-48,-68},{-18,-30}}),
+        Line(points={{-14,-68},{16,-30}}),
+        Line(points={{22,-68},{52,-30}}),
+        Line(points={{74,84},{74,14}}),
         Polygon(
-          points={{60,14},{88,14},{74,-18},{60,14}}, 
-          fillPattern=FillPattern.Solid), 
+          points={{60,14},{88,14},{74,-18},{60,14}},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{16,20},{60,-18}}, 
-          textString="g"), 
+          extent={{16,20},{60,-18}},
+          textString="g"),
         Text(
-          extent={{-90,82},{74,50}}, 
-          textString="defaults"), 
+          extent={{-90,82},{74,50}},
+          textString="defaults"),
         Line(
-          points={{-82,14},{-42,-20},{2,30}}, 
-          thickness=0.5), 
+          points={{-82,14},{-42,-20},{2,30}},
+          thickness=0.5),
         Ellipse(
-          extent={{-10,40},{12,18}}, 
-          pattern=LinePattern.None, 
-          fillColor={255,0,0}, 
-          fillPattern=FillPattern.Solid)}), 
+          extent={{-10,40},{12,18}},
+          pattern=LinePattern.None,
+          fillColor={255,0,0},
+          fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
  A system component is needed in each fluid model to provide system-wide settings, such as ambient conditions and overall modeling assumptions.

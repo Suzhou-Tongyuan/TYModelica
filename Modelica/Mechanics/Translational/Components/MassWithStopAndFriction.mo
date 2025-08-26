@@ -1,67 +1,67 @@
 ﻿within Modelica.Mechanics.Translational.Components;
-model MassWithStopAndFriction 
+model MassWithStopAndFriction
   "Sliding mass with hard stop and Stribeck friction"
   extends PartialFrictionWithStop;
-  SI.Velocity v(start=0, stateSelect=StateSelect.always) 
+  SI.Velocity v(start=0, stateSelect=StateSelect.always)
     "Absolute velocity of flange_a and flange_b";
-  SI.Acceleration a(start=0) 
+  SI.Acceleration a(start=0)
     "Absolute acceleration of flange_a and flange_b";
   parameter SI.Mass m(start=1) "Mass";
   parameter Real F_prop(
-    final unit="N.s/m", 
-    final min=0, 
+    final unit="N.s/m",
+    final min=0,
     start=1) "Velocity dependent friction";
-  parameter SI.Force F_Coulomb(start=5) 
+  parameter SI.Force F_Coulomb(start=5)
     "Constant friction: Coulomb force";
   parameter SI.Force F_Stribeck(start=10) "Stribeck effect";
   parameter Real fexp(
-    final unit="s/m", 
-    final min=0, 
+    final unit="s/m",
+    final min=0,
     start=2) "Exponential decay";
   extends Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPortWithoutT;
-  Integer stopped 
+  Integer stopped
     "Mode of stop (-1: hard stop at flange_a, 0: no stop, +1: hard stop at flange_b";
-  encapsulated partial model PartialFrictionWithStop 
+  encapsulated partial model PartialFrictionWithStop
     "Base model of Coulomb friction elements with stop"
 
     import Modelica;
     import Modelica.Mechanics.Translational.Interfaces.PartialRigid;
-    parameter Modelica.Units.SI.Position smax(start=25) 
+    parameter Modelica.Units.SI.Position smax(start=25)
       "Right stop for (right end of) sliding mass";
-    parameter Modelica.Units.SI.Position smin(start=-25) 
+    parameter Modelica.Units.SI.Position smin(start=-25)
       "Left stop for (left end of) sliding mass";
-    parameter Modelica.Units.SI.Velocity v_small=1e-3 
+    parameter Modelica.Units.SI.Velocity v_small=1e-3
       "Relative velocity near to zero (see model info text)" 
       annotation (Dialog(tab="Advanced"));
     // Equations to define the following variables have to be defined in subclasses
     Modelica.Units.SI.Velocity v_relfric "Relative velocity between frictional surfaces";
-    Modelica.Units.SI.Acceleration a_relfric 
+    Modelica.Units.SI.Acceleration a_relfric
       "Relative acceleration between frictional surfaces";
-    Modelica.Units.SI.Force f 
+    Modelica.Units.SI.Force f
       "Friction force (positive, if directed in opposite direction of v_rel)";
     Modelica.Units.SI.Force f0 "Friction force for v=0 and forward sliding";
     Modelica.Units.SI.Force f0_max "Maximum friction force for v=0 and locked";
     Boolean free "= true, if frictional element is not active";
     // Equations to define the following variables are given in this class
-    Real sa(unit="1") 
+    Real sa(unit="1")
       "Path parameter of friction characteristic f = f(a_relfric)";
-    Boolean startForward(start=false, fixed=true) 
+    Boolean startForward(start=false, fixed=true)
       "= true, if v_rel=0 and start of forward sliding or v_rel > v_small";
-    Boolean startBackward(start=false, fixed=true) 
+    Boolean startBackward(start=false, fixed=true)
       "= true, if v_rel=0 and start of backward sliding or v_rel < -v_small";
     Boolean locked(start=false) "= true, if v_rel=0 and not sliding";
     extends PartialRigid(s(start=0, stateSelect=StateSelect.always));
     constant Integer Unknown=3 "Value of mode is not known";
     constant Integer Free=2 "Element is not active";
     constant Integer Forward=1 "v_rel > 0 (forward sliding)";
-    constant Integer Stuck=0 
+    constant Integer Stuck=0
       "v_rel = 0 (forward sliding, locked or backward sliding)";
     constant Integer Backward=-1 "v_rel < 0 (backward sliding)";
     Integer mode(
-      final min=Backward, 
-      final max=Unknown, 
-      start=Unknown, 
-      fixed=true) 
+      final min=Backward,
+      final max=Unknown,
+      start=Unknown,
+      fixed=true)
       "Mode of friction (-1: backward sliding, 0: stuck, 1: forward sliding, 2: inactive, 3: unknown)";
   protected
     constant Modelica.Units.SI.Acceleration unitAcceleration=1 annotation (HideResult=true);
@@ -73,10 +73,10 @@ model MassWithStopAndFriction
    if for each configuration special code shall be generated)
 */
     startForward = pre(mode) == Stuck and (sa > f0_max/unitForce and s < (
-      smax - L/2) or pre(startForward) and sa > f0/unitForce and s < (smax 
+      smax - L/2) or pre(startForward) and sa > f0/unitForce and s < (smax
        - L/2)) or pre(mode) == Backward and v_relfric > v_small or initial() 
        and (v_relfric > 0);
-    startBackward = pre(mode) == Stuck and (sa < -f0_max/unitForce and s > 
+    startBackward = pre(mode) == Stuck and (sa < -f0_max/unitForce and s >
       (smin + L/2) or pre(startBackward) and sa < -f0/unitForce and s > (
       smin + L/2)) or pre(mode) == Forward and v_relfric < -v_small or 
       initial() and (v_relfric < 0);
@@ -97,7 +97,7 @@ model MassWithStopAndFriction
                                              -Modelica.Math.Vectors.interpolate(mu_pos[:,1], mu_pos[:,2], -v_relfric, 1));
 */
     // finite state machine to determine configuration
-    mode = if free then Free else (if (pre(mode) == Forward or pre(mode) 
+    mode = if free then Free else (if (pre(mode) == Forward or pre(mode)
        == Free or startForward) and v_relfric > 0 and s < (smax - L/2) 
        then Forward else if (pre(mode) == Backward or pre(mode) == Free or 
       startBackward) and v_relfric < 0 and s > (smin + L/2) then Backward 
@@ -125,17 +125,17 @@ equation
   f = if locked then sa*unitForce else if free then 0 else (if startForward 
      then F_prop*v + F_Coulomb + F_Stribeck else if startBackward then 
     F_prop*v - F_Coulomb - F_Stribeck else if pre(mode) == Forward then 
-    F_prop*v + F_Coulomb + F_Stribeck*Modelica.Math.exp(-fexp*abs(v)) else F_prop*v - 
+    F_prop*v + F_Coulomb + F_Stribeck*Modelica.Math.exp(-fexp*abs(v)) else F_prop*v -
     F_Coulomb - F_Stribeck*Modelica.Math.exp(-fexp*abs(v)));
   lossPower = f*v_relfric;
   when (initial()) then
-    assert(s > smin + L/2 or s >= smin + L/2 and v >= 0, 
-      "Error in initialization of hard stop. (s - L/2) must be >= smin\n" 
-       + "(s=" + String(s) + ", L=" + String(L) + ", smin=" + String(smin) 
+    assert(s > smin + L/2 or s >= smin + L/2 and v >= 0,
+      "Error in initialization of hard stop. (s - L/2) must be >= smin\n"
+       + "(s=" + String(s) + ", L=" + String(L) + ", smin=" + String(smin)
        + ")");
-    assert(s < smax - L/2 or s <= smax - L/2 and v <= 0, 
-      "Error in initialization of hard stop. (s + L/2) must be <= smax\n" 
-       + "(s=" + String(s) + ", L=" + String(L) + ", smax=" + String(smax) 
+    assert(s < smax - L/2 or s <= smax - L/2 and v <= 0,
+      "Error in initialization of hard stop. (s + L/2) must be <= smax\n"
+       + "(s=" + String(s) + ", L=" + String(L) + ", smax=" + String(smax)
        + ")");
   end when;
 
@@ -265,7 +265,7 @@ in the lossPower due to the discontinuously changing kinetic energy of the mass
 (lossPower is the derivative of the kinetic energy at the time instant of the impact).
 </p>
 
-</html>", 
+</html>",
       revisions="<html>
 <h4>Release Notes</h4>
 <ul>
@@ -276,49 +276,49 @@ modified event logic such if you have friction parameters equal to zero you do n
 between the stops.</em></li>
 <li><em>June 10, 2002 by P. Beater, StateSelect.always for variables s and v (instead of fixed=true). </em></li>
 </ul>
-</html>"), 
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+</html>"),
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
       graphics={
-        Line(points={{-100,0},{100,0}},color={0,127,0}), 
+        Line(points={{-100,0},{100,0}},color={0,127,0}),
         Polygon(
-          points={{80,-100},{50,-90},{50,-110},{80,-100}}, 
-          lineColor={95,127,95}, 
-          fillColor={95,127,95}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-40,-100},{50,-100}}, color={95,127,95}), 
+          points={{80,-100},{50,-90},{50,-110},{80,-100}},
+          lineColor={95,127,95},
+          fillColor={95,127,95},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-40,-100},{50,-100}}, color={95,127,95}),
         Rectangle(
-          extent={{-30,30},{30,-30}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={166,221,166}, 
-          lineColor={0,127,0}), 
+          extent={{-30,30},{30,-30}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={166,221,166},
+          lineColor={0,127,0}),
         Rectangle(
-          extent={{-64,-16},{-56,-46}}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,127,0}, 
-          fillColor={0,127,0}), 
+          extent={{-64,-16},{-56,-46}},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,127,0},
+          fillColor={0,127,0}),
         Rectangle(
-          extent={{56,-16},{64,-46}}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,127,0}, 
-          fillColor={0,127,0}), 
-        Text( extent={{-150,80},{150,40}}, 
-              textString="%name", 
-              textColor={0,0,255}), 
-        Line(points={{-50,-90},{-28,-68}}, color={0,127,0}), 
-        Line(points={{-30,-90},{-8,-68}}, color={0,127,0}), 
-        Line(points={{-10,-90},{12,-68}}, color={0,127,0}), 
-        Line(points={{10,-90},{32,-68}}, color={0,127,0}), 
+          extent={{56,-16},{64,-46}},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,127,0},
+          fillColor={0,127,0}),
+        Text( extent={{-150,80},{150,40}},
+              textString="%name",
+              textColor={0,0,255}),
+        Line(points={{-50,-90},{-28,-68}}, color={0,127,0}),
+        Line(points={{-30,-90},{-8,-68}}, color={0,127,0}),
+        Line(points={{-10,-90},{12,-68}}, color={0,127,0}),
+        Line(points={{10,-90},{32,-68}}, color={0,127,0}),
         Text(
-          extent={{-150,-110},{150,-140}}, 
-          textString="m=%m"), 
+          extent={{-150,-110},{150,-140}},
+          textString="m=%m"),
         Line(
-          visible=useHeatPort, 
-          points={{-100,-100},{-100,-40},{3,-40}}, 
-          color={191,0,0}, 
-          pattern=LinePattern.Dot), 
+          visible=useHeatPort,
+          points={{-100,-100},{-100,-40},{3,-40}},
+          color={191,0,0},
+          pattern=LinePattern.Dot),
         Rectangle(
-          extent={{-70,-46},{70,-70}}, 
-          fillColor={160,215,160}, 
-          fillPattern=FillPattern.Solid, 
+          extent={{-70,-46},{70,-70}},
+          fillColor={160,215,160},
+          fillPattern=FillPattern.Solid,
           lineColor={0,127,0})}));
 end MassWithStopAndFriction;

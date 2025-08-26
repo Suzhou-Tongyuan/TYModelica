@@ -3,7 +3,7 @@ partial model GenericHysteresis "Partial hysteresis model"
   extends BaseClasses.Generic;
   extends Interfaces.ConditionalHeatPort(final T=293.15);
 
-  parameter Boolean includeEddyCurrents = false 
+  parameter Boolean includeEddyCurrents = false
     "= true, if eddy current losses are enabled" 
   annotation(Dialog(tab="Losses and heat", group="Eddy currents"), Evaluate=true, HideResult=true, choices(checkBox=true));
 
@@ -11,15 +11,15 @@ partial model GenericHysteresis "Partial hysteresis model"
   parameter SI.Length d = 0.5e-3 "Thickness of lamination" annotation (Dialog(tab="Losses and heat", group="Eddy currents", enable=includeEddyCurrents));
 
   output SI.MagneticFieldStrength H(start=0) "Magnetic field strength";
-  output SI.MagneticFieldStrength Hstat 
+  output SI.MagneticFieldStrength Hstat
     "Static (ferromagnetic) portion of the magnetic field strength";
-  output SI.MagneticFieldStrength Heddy 
+  output SI.MagneticFieldStrength Heddy
     "Dynamic (eddy currents) portion of the magnetic field strength";
   output SI.MagneticFluxDensity B "Magnetic flux density";
-  output Real MagRel(final quantity="Relative magnetization", final unit="1", start=0, min=-1, max=1) 
+  output Real MagRel(final quantity="Relative magnetization", final unit="1", start=0, min=-1, max=1)
     "Relative magnetization at initialization (-1..1)";
   output SI.Power LossPowerStat "Ferromagnetic (static) hysteresis losses";
-  output SI.Power LossPowerEddy 
+  output SI.Power LossPowerEddy
     "Eddy current losses (dynamic hysteresis losses)";
   //output SI.Power LossPower "Total power loss of core (ferromagnetic + eddy currents)"; // defined in ConditionalHeatPort
   Real derHstat(start=0, unit="A/(m.s)")=der(Hstat);
@@ -40,12 +40,12 @@ equation
   LossPowerEddy = Heddy * der(B) * V;
   LossPower = LossPowerStat + LossPowerEddy;
   annotation (Icon(graphics={Line(
-          points={{-30,-20},{-14,-20},{-6,-16},{2,0},{10,16},{18,20},{26,20}}, 
-          color={255,128,0}, 
+          points={{-30,-20},{-14,-20},{-6,-16},{2,0},{10,16},{18,20},{26,20}},
+          color={255,128,0},
           smooth=Smooth.Bezier), Line(
-          points={{-30,-20},{-14,-20},{-6,-16},{2,0},{10,16},{18,20},{26,20}}, 
-          color={255,128,0}, 
-          smooth=Smooth.Bezier, 
-          origin={-4,0}, 
+          points={{-30,-20},{-14,-20},{-6,-16},{2,0},{10,16},{18,20},{26,20}},
+          color={255,128,0},
+          smooth=Smooth.Bezier,
+          origin={-4,0},
           rotation=180)}));
 end GenericHysteresis;

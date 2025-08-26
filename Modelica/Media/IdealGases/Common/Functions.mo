@@ -1,17 +1,17 @@
 ﻿within Modelica.Media.IdealGases.Common;
-package Functions 
+package Functions
   "Basic Functions for ideal gases: cp, h, s, thermal conductivity, viscosity"
   extends Modelica.Icons.FunctionsPackage;
 
-  constant Boolean excludeEnthalpyOfFormation=true 
+  constant Boolean excludeEnthalpyOfFormation=true
     "If true, enthalpy of formation Hf is not included in specific enthalpy h";
-  constant Modelica.Media.Interfaces.Choices.ReferenceEnthalpy referenceChoice=Modelica.Media.Interfaces.Choices.ReferenceEnthalpy.ZeroAt0K 
+  constant Modelica.Media.Interfaces.Choices.ReferenceEnthalpy referenceChoice=Modelica.Media.Interfaces.Choices.ReferenceEnthalpy.ZeroAt0K
     "Choice of reference enthalpy";
-  constant Modelica.Media.Interfaces.Types.SpecificEnthalpy h_offset=0.0 
+  constant Modelica.Media.Interfaces.Types.SpecificEnthalpy h_offset=0.0
     "User defined offset for reference enthalpy, if referenceChoice = UserDefined";
   constant Integer methodForThermalConductivity(min=1,max=2)=1;
 
-  function cp_T 
+  function cp_T
     "Compute specific heat capacity at constant pressure from temperature and gas data"
     extends Modelica.Icons.Function;
     input IdealGases.Common.DataRecord data "Ideal gas data";
@@ -19,14 +19,14 @@ package Functions
     output SI.SpecificHeatCapacity cp "Specific heat capacity at temperature T";
   algorithm
     cp := smooth(0,if T < data.Tlimit then data.R_s*(1/(T*T)*(data.alow[1] + T*(
-      data.alow[2] + T*(1.*data.alow[3] + T*(data.alow[4] + T*(data.alow[5] + T 
-      *(data.alow[6] + data.alow[7]*T))))))) else data.R_s*(1/(T*T)*(data.ahigh[1] 
+      data.alow[2] + T*(1.*data.alow[3] + T*(data.alow[4] + T*(data.alow[5] + T
+      *(data.alow[6] + data.alow[7]*T))))))) else data.R_s*(1/(T*T)*(data.ahigh[1]
        + T*(data.ahigh[2] + T*(1.*data.ahigh[3] + T*(data.ahigh[4] + T*(data.
       ahigh[5] + T*(data.ahigh[6] + data.ahigh[7]*T))))))));
     annotation (Inline=true,smoothOrder=2);
   end cp_T;
 
-  function cp_Tlow 
+  function cp_Tlow
     "Compute specific heat capacity at constant pressure, low T region"
     extends Modelica.Icons.Function;
     input IdealGases.Common.DataRecord data "Ideal gas data";
@@ -34,12 +34,12 @@ package Functions
     output SI.SpecificHeatCapacity cp "Specific heat capacity at temperature T";
   algorithm
     cp := data.R_s*(1/(T*T)*(data.alow[1] + T*(
-      data.alow[2] + T*(1.*data.alow[3] + T*(data.alow[4] + T*(data.alow[5] + T 
+      data.alow[2] + T*(1.*data.alow[3] + T*(data.alow[4] + T*(data.alow[5] + T
       *(data.alow[6] + data.alow[7]*T)))))));
     annotation (Inline=false, derivative(zeroDerivative=data) = cp_Tlow_der);
   end cp_Tlow;
 
-  function cp_Tlow_der 
+  function cp_Tlow_der
     "Compute derivative of specific heat capacity at constant pressure, low T region"
     extends Modelica.Icons.Function;
     input IdealGases.Common.DataRecord data "Ideal gas data";
@@ -48,7 +48,7 @@ package Functions
     output Real cp_der(unit="J/(kg.K.s)") "Derivative of specific heat capacity";
   algorithm
     cp_der := dT*data.R_s/(T*T*T)*(-2*data.alow[1] + T*(
-      -data.alow[2] + T*T*(data.alow[4] + T*(2.*data.alow[5] + T 
+      -data.alow[2] + T*T*(data.alow[4] + T*(2.*data.alow[5] + T
       *(3.*data.alow[6] + 4.*data.alow[7]*T)))));
     annotation(smoothOrder=2);
   end cp_Tlow_der;
@@ -59,23 +59,23 @@ package Functions
     extends Modelica.Icons.Function;
     input IdealGases.Common.DataRecord data "Ideal gas data";
     input SI.Temperature T "Temperature";
-    input Boolean exclEnthForm=excludeEnthalpyOfFormation 
+    input Boolean exclEnthForm=excludeEnthalpyOfFormation
       "If true, enthalpy of formation Hf is not included in specific enthalpy h";
     input Modelica.Media.Interfaces.Choices.ReferenceEnthalpy 
-                                    refChoice=referenceChoice 
+                                    refChoice=referenceChoice
       "Choice of reference enthalpy";
-    input SI.SpecificEnthalpy h_off=h_offset 
+    input SI.SpecificEnthalpy h_off=h_offset
       "User defined offset for reference enthalpy, if referenceChoice = UserDefined";
     output SI.SpecificEnthalpy h "Specific enthalpy at temperature T";
 
   algorithm
     h := smooth(0,(if T < data.Tlimit then data.R_s*((-data.alow[1] + T*(data.
       blow[1] + data.alow[2]*Math.log(T) + T*(1.*data.alow[3] + T*(0.5*data.
-      alow[4] + T*(1/3*data.alow[5] + T*(0.25*data.alow[6] + 0.2*data.alow[7]*T)))))) 
-      /T) else data.R_s*((-data.ahigh[1] + T*(data.bhigh[1] + data.ahigh[2]* 
+      alow[4] + T*(1/3*data.alow[5] + T*(0.25*data.alow[6] + 0.2*data.alow[7]*T))))))
+      /T) else data.R_s*((-data.ahigh[1] + T*(data.bhigh[1] + data.ahigh[2]*
       Math.log(T) + T*(1.*data.ahigh[3] + T*(0.5*data.ahigh[4] + T*(1/3*data.
       ahigh[5] + T*(0.25*data.ahigh[6] + 0.2*data.ahigh[7]*T))))))/T)) + (if 
-      exclEnthForm then -data.Hf else 0.0) + (if (refChoice 
+      exclEnthForm then -data.Hf else 0.0) + (if (refChoice
        == Choices.ReferenceEnthalpy.ZeroAt0K) then data.H0 else 0.0) + (if 
       refChoice == Choices.ReferenceEnthalpy.UserDefined then h_off else 
             0.0));
@@ -87,12 +87,12 @@ package Functions
     extends Modelica.Icons.Function;
     input IdealGases.Common.DataRecord data "Ideal gas data";
     input SI.Temperature T "Temperature";
-    input Boolean exclEnthForm=excludeEnthalpyOfFormation 
+    input Boolean exclEnthForm=excludeEnthalpyOfFormation
       "If true, enthalpy of formation Hf is not included in specific enthalpy h";
     input Modelica.Media.Interfaces.Choices.ReferenceEnthalpy 
-                                    refChoice=referenceChoice 
+                                    refChoice=referenceChoice
       "Choice of reference enthalpy";
-    input SI.SpecificEnthalpy h_off=h_offset 
+    input SI.SpecificEnthalpy h_off=h_offset
       "User defined offset for reference enthalpy, if referenceChoice = UserDefined";
     input Real dT(unit="K/s") "Temperature derivative";
     output Real h_der(unit="J/(kg.s)") "Derivative of specific enthalpy at temperature T";
@@ -108,21 +108,21 @@ package Functions
     extends Modelica.Icons.Function;
     input IdealGases.Common.DataRecord data "Ideal gas data";
     input SI.Temperature T "Temperature";
-    input Boolean exclEnthForm=excludeEnthalpyOfFormation 
+    input Boolean exclEnthForm=excludeEnthalpyOfFormation
       "If true, enthalpy of formation Hf is not included in specific enthalpy h";
     input Modelica.Media.Interfaces.Choices.ReferenceEnthalpy 
-                                    refChoice=referenceChoice 
+                                    refChoice=referenceChoice
       "Choice of reference enthalpy";
-    input SI.SpecificEnthalpy h_off=h_offset 
+    input SI.SpecificEnthalpy h_off=h_offset
       "User defined offset for reference enthalpy, if referenceChoice = UserDefined";
     output SI.SpecificEnthalpy h "Specific enthalpy at temperature T";
 
   algorithm
     h := data.R_s*((-data.alow[1] + T*(data.
       blow[1] + data.alow[2]*Math.log(T) + T*(1.*data.alow[3] + T*(0.5*data.
-      alow[4] + T*(1/3*data.alow[5] + T*(0.25*data.alow[6] + 0.2*data.alow[7]*T)))))) 
+      alow[4] + T*(1/3*data.alow[5] + T*(0.25*data.alow[6] + 0.2*data.alow[7]*T))))))
       /T) + (if 
-      exclEnthForm then -data.Hf else 0.0) + (if (refChoice 
+      exclEnthForm then -data.Hf else 0.0) + (if (refChoice
        == Choices.ReferenceEnthalpy.ZeroAt0K) then data.H0 else 0.0) + (if 
       refChoice == Choices.ReferenceEnthalpy.UserDefined then h_off else 
             0.0);
@@ -135,15 +135,15 @@ package Functions
     extends Modelica.Icons.Function;
     input IdealGases.Common.DataRecord data "Ideal gas data";
     input SI.Temperature T "Temperature";
-    input Boolean exclEnthForm=excludeEnthalpyOfFormation 
+    input Boolean exclEnthForm=excludeEnthalpyOfFormation
       "If true, enthalpy of formation Hf is not included in specific enthalpy h";
     input Modelica.Media.Interfaces.Choices.ReferenceEnthalpy 
-                                    refChoice=referenceChoice 
+                                    refChoice=referenceChoice
       "Choice of reference enthalpy";
-    input SI.SpecificEnthalpy h_off=h_offset 
+    input SI.SpecificEnthalpy h_off=h_offset
       "User defined offset for reference enthalpy, if referenceChoice = UserDefined";
     input Real dT(unit="K/s") "Temperature derivative";
-    output Real h_der(unit="J/(kg.s)") 
+    output Real h_der(unit="J/(kg.s)")
       "Derivative of specific enthalpy at temperature T";
   algorithm
     h_der := dT*Modelica.Media.IdealGases.Common.Functions.cp_Tlow(
@@ -161,7 +161,7 @@ package Functions
       1]/(T*T) - data.alow[2]/T + data.alow[3]*Math.log(T) + T*(
       data.alow[4] + T*(0.5*data.alow[5] + T*(1/3*data.alow[6] + 0.25*data.alow[
       7]*T)))) else data.R_s*(data.bhigh[2] - 0.5*data.ahigh[1]/(T*T) - data.
-      ahigh[2]/T + data.ahigh[3]*Math.log(T) + T*(data.ahigh[4] 
+      ahigh[2]/T + data.ahigh[3]*Math.log(T) + T*(data.ahigh[4]
        + T*(0.5*data.ahigh[5] + T*(1/3*data.ahigh[6] + 0.25*data.ahigh[7]*T))));
     annotation (Inline=true, smoothOrder=2);
   end s0_T;
@@ -190,7 +190,7 @@ package Functions
     annotation (Inline=true);
   end s0_Tlow_der;
 
-  function dynamicViscosityLowPressure 
+  function dynamicViscosityLowPressure
     "Dynamic viscosity of low pressure gases"
     extends Modelica.Icons.Function;
     input SI.Temperature T "Gas temperature";
@@ -198,28 +198,28 @@ package Functions
     input SI.MolarMass M "Molar mass of gas";
     input SI.MolarVolume Vc "Critical molar volume of gas";
     input Real w "Acentric factor of gas";
-    input Modelica.Media.Interfaces.Types.DipoleMoment mu 
+    input Modelica.Media.Interfaces.Types.DipoleMoment mu
       "Dipole moment of gas molecule";
     input Real k =  0.0 "Special correction for highly polar substances";
     output SI.DynamicViscosity eta "Dynamic viscosity of gas";
   protected
-    parameter Real Const1_SI=40.785*10^(-9.5) 
+    parameter Real Const1_SI=40.785*10^(-9.5)
       "Constant in formula for eta converted to SI units";
-    parameter Real Const2_SI=131.3/1000.0 
+    parameter Real Const2_SI=131.3/1000.0
       "Constant in formula for mur converted to SI units";
-    Real mur=Const2_SI*mu/sqrt(Vc*Tc) 
+    Real mur=Const2_SI*mu/sqrt(Vc*Tc)
       "Dimensionless dipole moment of gas molecule";
-    Real Fc=1 - 0.2756*w + 0.059035*mur^4 + k 
+    Real Fc=1 - 0.2756*w + 0.059035*mur^4 + k
       "Factor to account for molecular shape and polarities of gas";
     Real Tstar "Dimensionless temperature defined by equation below";
     Real Ov "Viscosity collision integral for the gas";
 
   algorithm
     Tstar := 1.2593*T/Tc;
-    Ov := 1.16145*Tstar^(-0.14874) + 0.52487*Modelica.Math.exp(-0.7732*Tstar) + 2.16178*Modelica.Math.exp(-2.43787 
+    Ov := 1.16145*Tstar^(-0.14874) + 0.52487*Modelica.Math.exp(-0.7732*Tstar) + 2.16178*Modelica.Math.exp(-2.43787
       *Tstar);
     eta := Const1_SI*Fc*sqrt(M*T)/(Vc^(2/3)*Ov);
-    annotation (smoothOrder=2, 
+    annotation (smoothOrder=2,
                 Documentation(info="<html>
 <p>
 The used formula are based on the method of Chung et al (1984, 1988) referred to in ref [1] chapter 9.
@@ -247,22 +247,22 @@ transform the formula to SI units:
 </html>"));
   end dynamicViscosityLowPressure;
 
-  function thermalConductivityEstimate 
+  function thermalConductivityEstimate
     "Thermal conductivity of polyatomic gases (Eucken and Modified Eucken correlation)"
     extends Modelica.Icons.Function;
-    input Modelica.Media.Interfaces.Types.SpecificHeatCapacity Cp 
+    input Modelica.Media.Interfaces.Types.SpecificHeatCapacity Cp
       "Constant pressure heat capacity";
-    input Modelica.Media.Interfaces.Types.DynamicViscosity eta 
+    input Modelica.Media.Interfaces.Types.DynamicViscosity eta
       "Dynamic viscosity";
-    input Integer method(min=1,max=2)=1 
+    input Integer method(min=1,max=2)=1
       "1: Eucken Method, 2: Modified Eucken Method";
     input IdealGases.Common.DataRecord data "Ideal gas data";
-    output Modelica.Media.Interfaces.Types.ThermalConductivity lambda 
+    output Modelica.Media.Interfaces.Types.ThermalConductivity lambda
       "Thermal conductivity [W/(m.k)]";
   algorithm
     lambda := if method == 1 then eta*(Cp - data.R_s + (9/4)*data.R_s) 
                              else eta*(Cp - data.R_s)*(1.32 + 1.77/((Cp/data.R_s) - 1.0));
-    annotation (smoothOrder=2, 
+    annotation (smoothOrder=2,
                 Documentation(info="<html>
 <p>
 This function provides two similar methods for estimating the

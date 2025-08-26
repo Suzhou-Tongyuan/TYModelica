@@ -1,8 +1,8 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
-function orientationConstraint 
+function orientationConstraint
   "Return residues of orientation constraints (shall be zero)"
   extends Modelica.Icons.Function;
-  input Quaternions.Orientation Q 
+  input Quaternions.Orientation Q
     "Quaternions orientation object to rotate frame 1 into frame 2";
   output Real residue[1] "Residue constraint (shall be zero)";
 algorithm

@@ -22,22 +22,22 @@ model WhyArrows "Use of arrows in Mechanics.Translational"
   Translational.Components.Spring spring1(s_rel0=2, c=11) annotation (
       Placement(transformation(extent={{-80,-60},{-60,-40}})));
   Translational.Components.Mass mass1(
-    L=2, 
-    s(fixed=true), 
-    v(fixed=true), 
+    L=2,
+    s(fixed=true),
+    v(fixed=true),
     m=1) annotation (Placement(transformation(extent={{-50,-60},{-30,-40}})));
   Translational.Components.Fixed fixed2(s0=-1.9) annotation (Placement(
         transformation(extent={{0,-60},{20,-40}})));
   Translational.Components.Spring spring2(s_rel0=2, c=11) annotation (
       Placement(transformation(extent={{30,-60},{50,-40}})));
   Translational.Components.Mass inertia2(
-    L=2, 
-    m=1, 
-    s(fixed=true), 
+    L=2,
+    m=1,
+    s(fixed=true),
     v(fixed=true)) annotation (Placement(transformation(extent={{80,-60},{
             60,-40}})));
 equation
-  connect(spring1.flange_b, mass1.flange_b) annotation (Line(points={{-60,-50}, 
+  connect(spring1.flange_b, mass1.flange_b) annotation (Line(points={{-60,-50},
           {-60,-72},{-30,-72},{-30,-50}}, color={0,127,0}));
   connect(spring2.flange_b, inertia2.flange_b) 
     annotation (Line(points={{50,-50},{60,-50}}, color={0,127,0}));
@@ -73,20 +73,20 @@ condition for an easy use of the library. There are cases
 where horizontally flipped models can be used without
 problems.
 </p>
-</html>"), 
-    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={Text(
-              extent={{-84,10},{88,2}}, 
-              textColor={0,0,255}, 
+              extent={{-84,10},{88,2}},
+              textColor={0,0,255},
               textString="positionSensor2.s = positionSensor3.s"),Text(
-              extent={{-78,-4},{86,-12}}, 
-              textColor={0,0,255}, 
+              extent={{-78,-4},{86,-12}},
+              textColor={0,0,255},
               textString="positionSensor3.s <>positionSensor1.s"),Text(
-              extent={{-82,-80},{92,-88}}, 
-              textString="Both systems are equivalent", 
+              extent={{-82,-80},{92,-88}},
+              textString="Both systems are equivalent",
               textColor={0,0,255}),Line(
-              points={{-90,-28},{90,-28}}, 
-              thickness=0.5, 
-              color={0,0,255})}), 
+              points={{-90,-28},{90,-28}},
+              thickness=0.5,
+              color={0,0,255})}),
     experiment(StopTime=1.0, Interval=0.001));
 end WhyArrows;

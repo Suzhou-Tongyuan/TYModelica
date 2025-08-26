@@ -1,13 +1,13 @@
 ﻿within Modelica.Clocked.Types;
 type Resolution = enumeration(
-    y "y (year)", 
-    d "d (day)", 
-    h "h (hour)", 
-    m "min (minutes)", 
-    s "s (seconds)", 
-    ms "ms (milli seconds)", 
-    us "us (micro seconds)", 
-    ns "ns (nano seconds)") 
+    y "y (year)",
+    d "d (day)",
+    h "h (hour)",
+    m "min (minutes)",
+    s "s (seconds)",
+    ms "ms (milli seconds)",
+    us "us (micro seconds)",
+    ns "ns (nano seconds)")
   "Enumeration defining the resolution of a clocked signal" 
   annotation (Documentation(info="<html>
 <p>

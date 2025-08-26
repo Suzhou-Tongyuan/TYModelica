@@ -7,7 +7,7 @@ package Sensors "Polyphase potential, voltage and current sensors"
 This package contains polyphase potential, voltage, and current sensors.
 </p>
 
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

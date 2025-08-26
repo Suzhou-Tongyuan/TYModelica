@@ -1,16 +1,16 @@
 ﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced.SurfaceCharacteristics;
-function pipeWithScalarField 
+function pipeWithScalarField
   "Function defining the surface characteristic of a pipe where a scalar field value is displayed with color along the pipe axis"
   extends Modelica.Mechanics.MultiBody.Interfaces.partialSurfaceCharacteristic(
     final multiColoredSurface=true);
   input SI.Radius rOuter "Outer radius of cylinder" annotation(Dialog);
   input SI.Length length "Length of cylinder" annotation(Dialog);
-  input SI.Position xsi[:] 
+  input SI.Position xsi[:]
     "Relative position along the pipe with x[1] = 0, x[end] = 1" annotation(Dialog);
   input Real T[size(xsi,1)] "Scalar field value at position xsi*length" annotation(Dialog);
   input Real T_min "T <= T_min is mapped to colorMap[1,:]" annotation(Dialog);
   input Real T_max "T >= T_max is mapped to colorMap[end,:]" annotation(Dialog);
-  input Real colorMap[:,3] 
+  input Real colorMap[:,3]
     "Color map to map scalar T to a corresponding color" annotation(Dialog);
 protected
   Real beta;
@@ -29,9 +29,9 @@ algorithm
 
     // Map the scalar field value Ti to a color value
     Ci := Modelica.Mechanics.MultiBody.Visualizers.Colors.scalarToColor(
-      Ti, 
-      T_min, 
-      T_max, 
+      Ti,
+      T_min,
+      T_max,
       colorMap);
 
     // Determine outputs

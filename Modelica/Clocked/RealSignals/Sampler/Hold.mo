@@ -1,5 +1,5 @@
 ﻿within Modelica.Clocked.RealSignals.Sampler;
-block Hold 
+block Hold
   "Hold the clocked, Real input signal and provide it as continuous-time output signal (zero order hold)"
 extends Clocked.RealSignals.Interfaces.PartialSISOHold;
 
@@ -7,32 +7,32 @@ equation
     y = hold(u);
 
   annotation (
-    defaultComponentName="hold1", 
+    defaultComponentName="hold1",
     Icon(coordinateSystem(
-        preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}, 
-        initialScale=0.06), 
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}},
+        initialScale=0.06),
                      graphics={
         Ellipse(
-          extent={{-70,-30},{-50,-50}}, 
-          lineColor={0,0,127}, 
-          fillColor={0,0,127}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-70,-30},{-50,-50}},
+          lineColor={0,0,127},
+          fillColor={0,0,127},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-30,28},{-10,8}}, 
-          lineColor={0,0,127}, 
-          fillColor={0,0,127}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-30,28},{-10,8}},
+          lineColor={0,0,127},
+          fillColor={0,0,127},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{10,70},{30,50}}, 
-          lineColor={0,0,127}, 
-          fillColor={0,0,127}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{10,70},{30,50}},
+          lineColor={0,0,127},
+          fillColor={0,0,127},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{50,10},{70,-10}}, 
-          lineColor={0,0,127}, 
-          fillColor={0,0,127}, 
-          fillPattern=FillPattern.Solid)}), 
+          extent={{50,10},{70,-10}},
+          lineColor={0,0,127},
+          fillColor={0,0,127},
+          fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
 This block holds the clocked Real input signal u with a zero order hold

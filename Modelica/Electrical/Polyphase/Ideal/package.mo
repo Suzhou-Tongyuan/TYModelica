@@ -8,7 +8,7 @@ This package contains analog electrical polyphase components with idealized beha
 like thyristor, diode, switch, transformer.
 </p>
 
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>
@@ -25,19 +25,19 @@ like thyristor, diode, switch, transformer.
   </ul>
   </dd>
 </dl>
-</html>"), 
-         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
         Line(
-          origin={10,40}, 
-          points={{-100,-40},{80,-40}}, 
-          color={0,0,255}), 
+          origin={10,40},
+          points={{-100,-40},{80,-40}},
+          color={0,0,255}),
         Polygon(
-          origin={10,40}, 
-          fillColor={255,255,255}, 
-          points={{20,-40},{-40,0},{-40,-80},{20,-40}}), 
+          origin={10,40},
+          fillColor={255,255,255},
+          points={{20,-40},{-40,0},{-40,-80},{20,-40}}),
         Line(
-          origin={-10,0}, 
-          points={{40,40},{40,-40}}, 
+          origin={-10,0},
+          points={{40,40},{40,-40}},
           color={0,0,255})}));
 end Ideal;

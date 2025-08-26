@@ -6,14 +6,14 @@ model IdealTriacCircuit "Ideal triac test circuit"
     annotation (Placement(transformation(extent={{-12,-40},{8,-20}})));
   Modelica.Electrical.Analog.Basic.Resistor R(R=20) annotation (
       Placement(transformation(
-        extent={{-10,-10},{12,12}}, 
+        extent={{-10,-10},{12,12}},
         origin={-44,32})));
   Modelica.Electrical.Analog.Sources.SineVoltage V(V=5, f=2) 
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={-42,-20})));
-  Modelica.Blocks.Sources.BooleanPulse booleanPulse(width=50, 
-    period=0.25, 
+  Modelica.Blocks.Sources.BooleanPulse booleanPulse(width=50,
+    period=0.25,
     startTime=0.1) 
     annotation (Placement(transformation(extent={{-22,0},{-6,16}})));
  Modelica.Electrical.Analog.Ideal.IdealTriac idealTriac(capacitor(v(start=0, fixed=true)),idealThyristor(
@@ -31,7 +31,7 @@ equation
       points={{32.52,33},{42,33},{42,-20},{-2,-20}}, color={0,0,255}));
   connect(idealTriac.fire1, booleanPulse.y) annotation (Line(
       points={{6,18.18},{0,18.18},{0,8},{-5.2,8}},    color={255,0,255}));
-  annotation (experiment(StopTime=2), 
+  annotation (experiment(StopTime=2),
     Documentation(revisions="<html>
 <ul>
 <li><em>November 25, 2009   </em><br>

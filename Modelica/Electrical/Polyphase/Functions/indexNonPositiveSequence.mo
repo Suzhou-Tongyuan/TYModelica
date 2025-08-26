@@ -1,10 +1,10 @@
 ﻿within Modelica.Electrical.Polyphase.Functions;
-function indexNonPositiveSequence 
+function indexNonPositiveSequence
   "Determines the indices of all non positive sequences"
   extends Modelica.Icons.Function;
   input Integer m=3 "Number of phases";
-  output Integer ind[numberOfSymmetricBaseSystems(m)*(integer(m/ 
-    numberOfSymmetricBaseSystems(m)) - 1)] 
+  output Integer ind[numberOfSymmetricBaseSystems(m)*(integer(m/
+    numberOfSymmetricBaseSystems(m)) - 1)]
     "Indices of non positive sequences";
 protected
   constant Integer nBase=numberOfSymmetricBaseSystems(m) "Number of base systems";

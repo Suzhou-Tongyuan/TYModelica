@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical.Polyphase.Functions;
-function numberOfSymmetricBaseSystems 
+function numberOfSymmetricBaseSystems
   "Determines the number of symmetric base systems of m phase symmetric system"
   extends Modelica.Icons.Function;
   input Integer m=3 "Number of phases";

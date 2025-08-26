@@ -1,5 +1,5 @@
 ﻿within Modelica.Blocks;
-package Discrete 
+package Discrete
   "Library of discrete input/output blocks with fixed sample period"
 
   extends Modelica.Icons.Package;
@@ -13,23 +13,23 @@ package Discrete
     end when;
     annotation (
       Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100.0,-100.0},{100.0,100.0}}), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-100.0,-100.0},{100.0,100.0}}),
           graphics={
-        Ellipse(lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          extent={{25.0,-10.0},{45.0,10.0}}), 
-        Line(points={{-100.0,0.0},{-45.0,0.0}}, 
-          color={0,0,127}), 
-        Line(points={{45.0,0.0},{100.0,0.0}}, 
-          color={0,0,127}), 
-        Line(points={{-35.0,0.0},{30.0,35.0}}, 
-          color={0,0,127}), 
-        Ellipse(lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          extent={{-45.0,-10.0},{-25.0,10.0}})}), 
+        Ellipse(lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          extent={{25.0,-10.0},{45.0,10.0}}),
+        Line(points={{-100.0,0.0},{-45.0,0.0}},
+          color={0,0,127}),
+        Line(points={{45.0,0.0},{100.0,0.0}},
+          color={0,0,127}),
+        Line(points={{-35.0,0.0},{30.0,35.0}},
+          color={0,0,127}),
+        Ellipse(lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          extent={{-45.0,-10.0},{-25.0,10.0}})}),
       Documentation(info="<html>
 <p>
 Samples the continues input signal with a sampling rate defined
@@ -53,11 +53,11 @@ via parameter <strong>samplePeriod</strong>.
     y = pre(ySample);
     annotation (
       Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100.0,-100.0},{100.0,100.0}}), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-100.0,-100.0},{100.0,100.0}}),
           graphics={
-        Line(points={{-78.0,-42.0},{-52.0,-42.0},{-52.0,0.0},{-26.0,0.0},{-26.0,24.0},{-6.0,24.0},{-6.0,64.0},{18.0,64.0},{18.0,20.0},{38.0,20.0},{38.0,0.0},{44.0,0.0},{44.0,0.0},{62.0,0.0}}, 
-          color={0,0,127})}), 
+        Line(points={{-78.0,-42.0},{-52.0,-42.0},{-52.0,0.0},{-26.0,0.0},{-26.0,24.0},{-6.0,24.0},{-6.0,64.0},{18.0,64.0},{18.0,20.0},{38.0,20.0},{38.0,0.0},{44.0,0.0},{44.0,0.0},{62.0,0.0}},
+          color={0,0,127})}),
       Documentation(info="<html>
 <p>
 The output is identical to the sampled input signal at sample
@@ -93,13 +93,13 @@ sample instant during the sample points.
     y = pre_uSample + pre(c)*(time - tSample);
     annotation (
       Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100.0,-100.0},{100.0,100.0}}), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-100.0,-100.0},{100.0,100.0}}),
           graphics={
-        Line(points={{-79.0,-41.0},{-59.0,-33.0},{-40.0,1.0},{-20.0,9.0},{0.0,63.0},{21.0,20.0},{41.0,10.0},{60.0,20.0}}, 
-          color={0,0,127}), 
-        Line(points={{60.0,20.0},{81.0,10.0}}, 
-          color={0,0,127})}), 
+        Line(points={{-79.0,-41.0},{-59.0,-33.0},{-40.0,1.0},{-20.0,9.0},{0.0,63.0},{21.0,20.0},{41.0,10.0},{60.0,20.0}},
+          color={0,0,127}),
+        Line(points={{60.0,20.0},{81.0,10.0}},
+          color={0,0,127})}),
       Documentation(info="<html>
 <p>
 The output signal is the extrapolation through the
@@ -136,16 +136,16 @@ the output y is identical to parameter yStart.
 </p>
 
 </html>"), Icon(
-      coordinateSystem(preserveAspectRatio=true, 
-        extent={{-100.0,-100.0},{100.0,100.0}}), 
+      coordinateSystem(preserveAspectRatio=true,
+        extent={{-100.0,-100.0},{100.0,100.0}}),
         graphics={
-      Line(points={{-30.0,0.0},{30.0,0.0}}, 
-        color={0,0,127}), 
-      Text(textColor={0,0,127}, 
-        extent={{-90.0,10.0},{90.0,90.0}}, 
-        textString="1"), 
-      Text(textColor={0,0,127}, 
-        extent={{-90.0,-90.0},{90.0,-10.0}}, 
+      Line(points={{-30.0,0.0},{30.0,0.0}},
+        color={0,0,127}),
+      Text(textColor={0,0,127},
+        extent={{-90.0,10.0},{90.0,90.0}},
+        textString="1"),
+      Text(textColor={0,0,127},
+        extent={{-90.0,-90.0},{90.0,-10.0}},
         textString="z")}));
   end UnitDelay;
   block UnitDelayImproved "Unit Delay Block improved version"
@@ -156,10 +156,10 @@ the output y is identical to parameter yStart.
     output Real x[N](start = 0, fixed=true);
 
     Modelica.Blocks.Interfaces.RealInput u 
-      annotation (Placement(transformation(origin={-120,0}, 
+      annotation (Placement(transformation(origin={-120,0},
   extent={{-20,-20},{20,20}})));
     Modelica.Blocks.Interfaces.RealOutput y 
-      annotation (Placement(transformation(origin={110,2.220446049250313e-16}, 
+      annotation (Placement(transformation(origin={110,2.220446049250313e-16},
   extent={{-10,-10},{10,10}})));
   protected
     Real xext[N+1](each start=0, each fixed=true);
@@ -190,16 +190,16 @@ the output y is identical to parameter yStart.
 </p>
 
 </html>"  ), Icon(
-      coordinateSystem(preserveAspectRatio=true, 
-        extent={{-100.0,-100.0},{100.0,100.0}}), 
+      coordinateSystem(preserveAspectRatio=true,
+        extent={{-100.0,-100.0},{100.0,100.0}}),
         graphics={
-      Line(points={{-30.0,0.0},{30.0,0.0}}, 
-        color={0,0,127}), 
-      Text(textColor={0,0,127}, 
-        extent={{-90.0,10.0},{90.0,90.0}}, 
-        textString="1"), 
-      Text(textColor={0,0,127}, 
-        extent={{-90.0,-90.0},{90.0,-10.0}}, 
+      Line(points={{-30.0,0.0},{30.0,0.0}},
+        color={0,0,127}),
+      Text(textColor={0,0,127},
+        extent={{-90.0,10.0},{90.0,90.0}},
+        textString="1"),
+      Text(textColor={0,0,127},
+        extent={{-90.0,-90.0},{90.0,-10.0}},
         textString="z")}));
   end UnitDelayImproved;
   block BooleanUnitDelay "Unit Delay Block of Boolean interface"
@@ -233,20 +233,20 @@ previous sample instant. Before the second sample instant,
 the output y is identical to parameter yStart.
 </p>
 
-</html>"      ), Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-preserveAspectRatio=true, 
-grid={2,2}),graphics = {Line(origin={0,0}, 
-points={{-30,0},{30,0}}, 
-color={255,0,255}), Text(origin={0,50}, 
-lineColor={255,0,255}, 
-extent={{-90,-40},{90,40}}, 
-textString="1", 
-textStyle={TextStyle.None}, 
-textColor={255,0,255}), Text(origin={0,-50}, 
-lineColor={255,0,255}, 
-extent={{-90,-40},{90,40}}, 
-textString="z", 
-textStyle={TextStyle.None}, 
+</html>"      ), Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+preserveAspectRatio=true,
+grid={2,2}),graphics = {Line(origin={0,0},
+points={{-30,0},{30,0}},
+color={255,0,255}), Text(origin={0,50},
+lineColor={255,0,255},
+extent={{-90,-40},{90,40}},
+textString="1",
+textStyle={TextStyle.None},
+textColor={255,0,255}), Text(origin={0,-50},
+lineColor={255,0,255},
+extent={{-90,-40},{90,40}},
+textString="z",
+textStyle={TextStyle.None},
 textColor={255,0,255})}));
   end BooleanUnitDelay;
   block IntergerUnitDelay "Unit Delay Block of Integer interface"
@@ -280,20 +280,20 @@ previous sample instant. Before the second sample instant,
 the output y is identical to parameter yStart.
 </p>
 
-</html>"    ), Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-preserveAspectRatio=true, 
-grid={2,2}),graphics = {Line(origin={0,0}, 
-points={{-30,0},{30,0}}, 
-color={255,127,0}), Text(origin={0,50}, 
-lineColor={255,127,0}, 
-extent={{-90,-40},{90,40}}, 
-textString="1", 
-textStyle={TextStyle.None}, 
-textColor={255,127,0}), Text(origin={0,-50}, 
-lineColor={255,127,0}, 
-extent={{-90,-40},{90,40}}, 
-textString="z", 
-textStyle={TextStyle.None}, 
+</html>"    ), Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+preserveAspectRatio=true,
+grid={2,2}),graphics = {Line(origin={0,0},
+points={{-30,0},{30,0}},
+color={255,127,0}), Text(origin={0,50},
+lineColor={255,127,0},
+extent={{-90,-40},{90,40}},
+textString="1",
+textStyle={TextStyle.None},
+textColor={255,127,0}), Text(origin={0,-50},
+lineColor={255,127,0},
+extent={{-90,-40},{90,40}},
+textString="z",
+textStyle={TextStyle.None},
 textColor={255,127,0})}));
   end IntergerUnitDelay;
 
@@ -301,7 +301,7 @@ textColor={255,127,0})}));
     parameter Real b[:]={1} "Numerator coefficients of transfer function.";
     parameter Real a[:]={1} "Denominator coefficients of transfer function.";
     extends Interfaces.DiscreteSISO;
-    output Real x[size(a, 1) - 1](each start=0, each fixed=true) 
+    output Real x[size(a, 1) - 1](each start=0, each fixed=true)
       "State of transfer function from controller canonical form";
   protected
     parameter Integer nb=size(b, 1) "Size of Numerator of transfer function";
@@ -368,25 +368,25 @@ y = --------- * u
     Realized based on a corresponding model of Dieter Moormann
     and Hilding Elmqvist.</li>
 </ul>
-</html>"), 
+</html>"),
       Icon(
-      coordinateSystem(preserveAspectRatio=true, 
-        extent={{-100.0,-100.0},{100.0,100.0}}), 
+      coordinateSystem(preserveAspectRatio=true,
+        extent={{-100.0,-100.0},{100.0,100.0}}),
         graphics={
-      Line(points={{82.0,0.0},{-84.0,0.0}}, 
-        color={0,0,127}), 
-      Text(textColor={0,0,127}, 
-        extent={{-92.0,12.0},{86.0,92.0}}, 
-        textString="b(z)"), 
-      Text(textColor={0,0,127}, 
-        extent={{-90.0,-90.0},{90.0,-12.0}}, 
+      Line(points={{82.0,0.0},{-84.0,0.0}},
+        color={0,0,127}),
+      Text(textColor={0,0,127},
+        extent={{-92.0,12.0},{86.0,92.0}},
+        textString="b(z)"),
+      Text(textColor={0,0,127},
+        extent={{-90.0,-90.0},{90.0,-12.0}},
         textString="a(z)")}));
   end TransferFunction;
   block TransferFunctionDia "Discrete Transfer Function block，Dynamic icon display"
     parameter Real b[:]={1} "Numerator coefficients of transfer function.";
     parameter Real a[:]={1} "Denominator coefficients of transfer function.";
     extends Interfaces.DiscreteSISO;
-    output Real x[size(a, 1) - 1](each start=0, each fixed=true) 
+    output Real x[size(a, 1) - 1](each start=0, each fixed=true)
       "State of transfer function from controller canonical form";
   protected
     parameter Integer nb=size(b, 1) "Size of Numerator of transfer function";
@@ -453,27 +453,27 @@ y = --------- * u
     Realized based on a corresponding model of Dieter Moormann
     and Hilding Elmqvist.</li>
 </ul>
-</html>"    ), 
+</html>"    ),
       Icon(
-      coordinateSystem(preserveAspectRatio=true, 
-        extent={{-100.0,-100.0},{100.0,100.0}}), 
+      coordinateSystem(preserveAspectRatio=true,
+        extent={{-100.0,-100.0},{100.0,100.0}}),
         graphics={
-      Line(points={{82.0,0.0},{-84.0,0.0}}, 
-        color={0,0,127}), 
-      Text(textColor={0,0,127}, 
-        extent={{-92.0,12.0},{86.0,92.0}}, 
-        textString="%{b(polynomial_z)}"), 
-      Text(textColor={0,0,127}, 
-        extent={{-90.0,-90.0},{90.0,-12.0}}, 
+      Line(points={{82.0,0.0},{-84.0,0.0}},
+        color={0,0,127}),
+      Text(textColor={0,0,127},
+        extent={{-92.0,12.0},{86.0,92.0}},
+        textString="%{b(polynomial_z)}"),
+      Text(textColor={0,0,127},
+        extent={{-90.0,-90.0},{90.0,-12.0}},
         textString="%{a(polynomial_z)}")}));
   end TransferFunctionDia;
 
   block StateSpace "Discrete State Space block"
-    parameter Real A[:, size(A, 1)]=[1, 0; 0, 1] 
+    parameter Real A[:, size(A, 1)]=[1, 0; 0, 1]
       "Matrix A of state space model";
     parameter Real B[size(A, 1), :]=[1; 1] "Matrix B of state space model";
     parameter Real C[:, size(A, 1)]=[1, 1] "Matrix C of state space model";
-    parameter Real D[size(C, 1), size(B, 2)]=zeros(size(C, 1), size(B, 2)) 
+    parameter Real D[size(C, 1), size(B, 2)]=zeros(size(C, 1), size(B, 2))
       "Matrix D of state space model";
 
     extends Interfaces.DiscreteMIMO(final nin=size(B, 2), final nout=size(C, 1));
@@ -524,27 +524,27 @@ results in the following equations:
                              [pre(x[2])]            [u[2]]
 </pre></blockquote>
 </html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
           Text(
-            extent={{-90,15},{-15,90}}, 
-            textString="A", 
-            textColor={0,0,127}), 
+            extent={{-90,15},{-15,90}},
+            textString="A",
+            textColor={0,0,127}),
           Text(
-            extent={{15,15},{90,90}}, 
-            textString="B", 
-            textColor={0,0,127}), 
+            extent={{15,15},{90,90}},
+            textString="B",
+            textColor={0,0,127}),
           Text(
-            extent={{-52,28},{54,-20}}, 
-            textString="z", 
-            textColor={0,0,127}), 
+            extent={{-52,28},{54,-20}},
+            textString="z",
+            textColor={0,0,127}),
           Text(
-            extent={{-90,-15},{-15,-90}}, 
-            textString="C", 
-            textColor={0,0,127}), 
+            extent={{-90,-15},{-15,-90}},
+            textString="C",
+            textColor={0,0,127}),
           Text(
-            extent={{15,-15},{90,-90}}, 
-            textString="D", 
+            extent={{15,-15},{90,-90}},
+            textString="D",
             textColor={0,0,127})}));
   end StateSpace;
 
@@ -555,13 +555,13 @@ results in the following equations:
     Modelica.Blocks.Interfaces.RealInput u "Connector with a Real input signal" 
                                                           annotation (Placement(
           transformation(extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.RealOutput y 
+    Modelica.Blocks.Interfaces.RealOutput y
       "Connector with a Real output signal" annotation (Placement(
           transformation(extent={{100,-10},{120,10}})));
     Modelica.Blocks.Interfaces.BooleanInput trigger "Trigger input" annotation (Placement(
           transformation(
-          origin={0,-118}, 
-          extent={{-20,-20},{20,20}}, 
+          origin={0,-118},
+          extent={{-20,-20},{20,20}},
           rotation=90)));
   equation
     when trigger then
@@ -571,25 +571,25 @@ results in the following equations:
     y = y_start;
     annotation (
       Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100.0,-100.0},{100.0,100.0}}), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-100.0,-100.0},{100.0,100.0}}),
           graphics={
-        Ellipse(lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          extent={{25.0,-10.0},{45.0,10.0}}), 
-        Line(points={{-100.0,0.0},{-45.0,0.0}}, 
-          color={0,0,127}), 
-        Line(points={{45.0,0.0},{100.0,0.0}}, 
-          color={0,0,127}), 
-        Line(points={{0.0,-100.0},{0.0,-26.0}}, 
-          color={255,0,255}), 
-        Line(points={{-35.0,0.0},{28.0,-48.0}}, 
-          color={0,0,127}), 
-        Ellipse(lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          extent={{-45.0,-10.0},{-25.0,10.0}})}), 
+        Ellipse(lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          extent={{25.0,-10.0},{45.0,10.0}}),
+        Line(points={{-100.0,0.0},{-45.0,0.0}},
+          color={0,0,127}),
+        Line(points={{45.0,0.0},{100.0,0.0}},
+          color={0,0,127}),
+        Line(points={{0.0,-100.0},{0.0,-26.0}},
+          color={255,0,255}),
+        Line(points={{-35.0,0.0},{28.0,-48.0}},
+          color={0,0,127}),
+        Ellipse(lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          extent={{-45.0,-10.0},{-25.0,10.0}})}),
       Documentation(info="<html>
 <p>
 Samples the continuous input signal whenever the trigger input
@@ -601,20 +601,20 @@ the initial value defined via parameter <strong>y0</strong>.
 </html>"));
   end TriggeredSampler;
 
-  block TriggeredMax 
+  block TriggeredMax
     "Compute maximum, absolute value of continuous signal at trigger instants"
 
     extends Modelica.Blocks.Icons.DiscreteBlock;
     Modelica.Blocks.Interfaces.RealInput u "Connector with a Real input signal" 
                                            annotation (Placement(transformation(
             extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.RealOutput y 
+    Modelica.Blocks.Interfaces.RealOutput y
       "Connector with a Real output signal" annotation (Placement(
           transformation(extent={{100,-10},{120,10}})));
     Modelica.Blocks.Interfaces.BooleanInput trigger annotation (Placement(
           transformation(
-          origin={0,-118}, 
-          extent={{-20,-20},{20,20}}, 
+          origin={0,-118},
+          extent={{-20,-20},{20,20}},
           rotation=90)));
   equation
     when trigger then
@@ -624,28 +624,28 @@ the initial value defined via parameter <strong>y0</strong>.
     y = 0;
     annotation (
       Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-          extent={{-100.0,-100.0},{100.0,100.0}}), 
+        coordinateSystem(preserveAspectRatio=true,
+          extent={{-100.0,-100.0},{100.0,100.0}}),
           graphics={
-        Ellipse(lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          extent={{25.0,-10.0},{45.0,10.0}}), 
-        Line(points={{-100.0,0.0},{-45.0,0.0}}, 
-          color={0,0,127}), 
-        Line(points={{45.0,0.0},{100.0,0.0}}, 
-          color={0,0,127}), 
-        Line(points={{0.0,-100.0},{0.0,-26.0}}, 
-          color={255,0,255}), 
-        Line(points={{-35.0,0.0},{28.0,-48.0}}, 
-          color={0,0,127}), 
-        Text(extent={{-86.0,24.0},{82.0,82.0}}, 
-          color={0,0,127}, 
-          textString="max"), 
-        Ellipse(lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          extent={{-45.0,-10.0},{-25.0,10.0}})}), 
+        Ellipse(lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          extent={{25.0,-10.0},{45.0,10.0}}),
+        Line(points={{-100.0,0.0},{-45.0,0.0}},
+          color={0,0,127}),
+        Line(points={{45.0,0.0},{100.0,0.0}},
+          color={0,0,127}),
+        Line(points={{0.0,-100.0},{0.0,-26.0}},
+          color={255,0,255}),
+        Line(points={{-35.0,0.0},{28.0,-48.0}},
+          color={0,0,127}),
+        Text(extent={{-86.0,24.0},{82.0,82.0}},
+          color={0,0,127},
+          textString="max"),
+        Ellipse(lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          extent={{-45.0,-10.0},{-25.0,10.0}})}),
       Documentation(info="<html>
 <p>
 Samples the continuous input signal whenever the trigger input
@@ -686,18 +686,18 @@ as the components of packages <strong>Modelica.Blocks.Math</strong>,
        Hilding Elmqvist.</li>
 </ul>
 </html>"), Icon(graphics={
-        Line(points={{-88,0},{-45,0}}, color={95,95,95}), 
+        Line(points={{-88,0},{-45,0}}, color={95,95,95}),
         Ellipse(
-          lineColor={95,95,95}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          extent={{-45,-10},{-25,10}}), 
-        Line(points={{-35,0},{24,52}}, color={95,95,95}), 
+          lineColor={95,95,95},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          extent={{-45,-10},{-25,10}}),
+        Line(points={{-35,0},{24,52}}, color={95,95,95}),
         Ellipse(
-          lineColor={95,95,95}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          extent={{25,-10},{45,10}}), 
+          lineColor={95,95,95},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          extent={{25,-10},{45,10}}),
         Line(points={{45,0},{82,0}}, color={95,95,95})}));
   model SlidingModeController "Hysteresis-based sliding mode control"
 
@@ -709,45 +709,45 @@ as the components of packages <strong>Modelica.Blocks.Math</strong>,
   parameter Real Ts(start = 0.02, unit = 1) "Block sample time, in s, between consecutive block executions. During execution, the block produces outputs and, if appropriate, updates its internal state. ";
 
     Modelica.Blocks.Interfaces.RealInput r "Plant system reference signal." 
-      annotation (Placement(transformation(origin={-120.131,39.5511}, 
+      annotation (Placement(transformation(origin={-120.131,39.5511},
   extent={{-20,-20},{20,20}})));
     Modelica.Blocks.Interfaces.RealInput y "Plant system output signal." 
-      annotation (Placement(transformation(origin={-120.132,-40.6601}, 
+      annotation (Placement(transformation(origin={-120.132,-40.6601},
   extent={{-20,-20},{20,20}})));
     Modelica.Blocks.Interfaces.RealOutput u "Control system output signal." 
-      annotation (Placement(transformation(origin={110.152,5.41254e-5}, 
+      annotation (Placement(transformation(origin={110.152,5.41254e-5},
   extent={{-10,-10},{10,10}})));
     Modelica.Blocks.Math.Feedback feedback 
-      annotation (Placement(transformation(origin={-68.0132,39.5512}, 
+      annotation (Placement(transformation(origin={-68.0132,39.5512},
   extent={{-10,-10},{10,10}})));
     Modelica.Blocks.Discrete.TransferFunction transferFunction(samplePeriod=Ts,b={1, -1},a=Ts * {1, 0}) 
-      annotation (Placement(transformation(origin={-30.605,2.13064}, 
+      annotation (Placement(transformation(origin={-30.605,2.13064},
   extent={{-10,-10},{10,10}})));
     Modelica.Blocks.Math.Add add 
-      annotation (Placement(transformation(origin={8.13199,33.637}, 
+      annotation (Placement(transformation(origin={8.13199,33.637},
   extent={{-10,-10},{10,10}})));
     Modelica.Blocks.Nonlinear.Relay relay(ov=uplim,cv=lowlim,op=band/2,cp=-band/2) 
-      annotation (Placement(transformation(origin={51.0099,33.6369}, 
+      annotation (Placement(transformation(origin={51.0099,33.6369},
   extent={{-10,-10},{10,10}})));
     Modelica.Blocks.Math.Gain gain(k=lambda) 
-      annotation (Placement(transformation(origin={-26.7131,39.7914}, 
+      annotation (Placement(transformation(origin={-26.7131,39.7914},
   extent={{-10,-10},{10,10}})));
-    annotation(Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-  grid={2,2}),graphics = {Text(origin={-77,39.5511}, 
-  lineColor={0,0,127}, 
-  extent={{-39,36.6633},{39,-36.6633}}, 
-  textString="r", 
-  textStyle={TextStyle.None}, 
-  textColor={0,0,127}), Text(origin={-77,-28.9901}, 
-  lineColor={0,0,127}, 
-  extent={{-39,31.67},{39,-31.67}}, 
-  textString="y", 
-  textStyle={TextStyle.None}, 
-  textColor={0,0,127}), Text(origin={74.5,5.41254e-5}, 
-  lineColor={0,0,127}, 
-  extent={{-32.5,36.663325},{32.5,-36.6633}}, 
-  textString="u", 
-  textStyle={TextStyle.None}, 
+    annotation(Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+  grid={2,2}),graphics = {Text(origin={-77,39.5511},
+  lineColor={0,0,127},
+  extent={{-39,36.6633},{39,-36.6633}},
+  textString="r",
+  textStyle={TextStyle.None},
+  textColor={0,0,127}), Text(origin={-77,-28.9901},
+  lineColor={0,0,127},
+  extent={{-39,31.67},{39,-31.67}},
+  textString="y",
+  textStyle={TextStyle.None},
+  textColor={0,0,127}), Text(origin={74.5,5.41254e-5},
+  lineColor={0,0,127},
+  extent={{-32.5,36.663325},{32.5,-36.6633}},
+  textString="u",
+  textStyle={TextStyle.None},
   textColor={0,0,127})}),Documentation(info="<html><p style=\"text-align: start;\">The Sliding Mode Controller block implements hysteresis-based sliding mode control (SMC).
 </p>
 <p style=\"text-align: start;\">The sliding mode controller has this structure:
@@ -768,36 +768,36 @@ Note:
 </html>"    ));
     equation
     connect(r, feedback.u1) 
-    annotation(Line(origin={-118.525,39.6568}, 
-  points={{-1.60666,-0.105663},{42.5116,-0.105663},{42.5116,-0.1056}}, 
+    annotation(Line(origin={-118.525,39.6568},
+  points={{-1.60666,-0.105663},{42.5116,-0.105663},{42.5116,-0.1056}},
   color={0,0,127}));
     connect(feedback.u2, y) 
-    annotation(Line(origin={-114.525,-0.343234}, 
-  points={{46.5116,31.8944},{46.5116,-40.3168},{-5.60702,-40.3168}}, 
+    annotation(Line(origin={-114.525,-0.343234},
+  points={{46.5116,31.8944},{46.5116,-40.3168},{-5.60702,-40.3168}},
   color={0,0,127}));
     connect(transferFunction.u, feedback.y) 
-    annotation(Line(origin={-41.5248,8.65677}, 
-  points={{-1.08023,-6.52613},{-7.5082,-6.52613},{-7.5082,30.89443},{-17.4884,30.89443}}, 
+    annotation(Line(origin={-41.5248,8.65677},
+  points={{-1.08023,-6.52613},{-7.5082,-6.52613},{-7.5082,30.89443},{-17.4884,30.89443}},
   color={0,0,127}),__MWORKS(BlockSystem(NamedSignal)));
     connect(transferFunction.y, add.u2) 
-    annotation(Line(origin={16.4752,2.65677}, 
-  points={{-36.0802,-0.526126},{-25.8878,-0.526126},{-25.8878,24.98023},{-20.34321,24.98023}}, 
+    annotation(Line(origin={16.4752,2.65677},
+  points={{-36.0802,-0.526126},{-25.8878,-0.526126},{-25.8878,24.98023},{-20.34321,24.98023}},
   color={0,0,127}));
     connect(add.y, relay.u) 
-    annotation(Line(origin={54.4752,35.6568}, 
-  points={{-35.3433,-2.01981},{-15.4786,-2.01981},{-15.4786,-2.09378}}, 
+    annotation(Line(origin={54.4752,35.6568},
+  points={{-35.3433,-2.01981},{-15.4786,-2.01981},{-15.4786,-2.09378}},
   color={0,0,127}));
     connect(relay.y, u) 
-    annotation(Line(origin={133.475,34.6568}, 
-  points={{-71.4132,-1.01985},{-53.6334,-1.01985},{-53.6334,-34.6567},{-23.3232,-34.6567}}, 
+    annotation(Line(origin={133.475,34.6568},
+  points={{-71.4132,-1.01985},{-53.6334,-1.01985},{-53.6334,-34.6567},{-23.3232,-34.6567}},
   color={0,0,127}));
     connect(gain.y, add.u1) 
-    annotation(Line(origin={-10,39}, 
-  points={{-5.71306,0.791352},{6.13199,0.791352},{6.13199,0.637}}, 
+    annotation(Line(origin={-10,39},
+  points={{-5.71306,0.791352},{6.13199,0.791352},{6.13199,0.637}},
   color={0,0,127}));
     connect(gain.u, feedback.y) 
-    annotation(Line(origin={-49,39}, 
-  points={{10.2869,0.791352},{-10.0132,0.791352},{-10.0132,0.5512}}, 
+    annotation(Line(origin={-49,39},
+  points={{10.2869,0.791352},{-10.0132,0.791352},{-10.0132,0.5512}},
   color={0,0,127}),__MWORKS(BlockSystem(NamedSignal)));
     end SlidingModeController;
 end Discrete;

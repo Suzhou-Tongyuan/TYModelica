@@ -4,7 +4,7 @@ package Examples "Test examples"
 
   annotation (Documentation(info="<html>
 This package contains test examples of electric machines.
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

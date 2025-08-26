@@ -1,15 +1,15 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
-model GenericHystPreisachEverett 
+model GenericHystPreisachEverett
   "Generic flux tube with ferromagnetic hysteresis based on the Preisach model and the Everett function [Ya89])"
   import Modelica.Constants.pi;
 
-  parameter FluxTubes.Material.HysteresisEverettParameter.BaseData mat= 
-      FluxTubes.Material.HysteresisEverettParameter.BaseData() 
+  parameter FluxTubes.Material.HysteresisEverettParameter.BaseData mat=
+      FluxTubes.Material.HysteresisEverettParameter.BaseData()
     "Preisach Parameters" 
     annotation (Dialog(group="Material"), choicesAllMatching=true);
 
   parameter Integer Count=100 "Length of history array" annotation(Dialog(group="Advanced"));
-  parameter SI.MagneticFieldStrength eps=1e-5 
+  parameter SI.MagneticFieldStrength eps=1e-5
     "Tolerance in Preisach history" annotation(Dialog(group="Advanced"));
   parameter SI.Time t1=1e-6 "Initialization time" annotation(Dialog(group="Advanced"));
 
@@ -21,27 +21,27 @@ protected
   SI.MagneticFluxDensity J "Polarisation";
   SI.MagneticFieldStrength hmax(start=0, min=0) "Maximum value of h";
 
-  SI.MagneticFieldStrength alpha 
+  SI.MagneticFieldStrength alpha
     "Current alpha coordinate of Everett-Function everett(alpha,beta)";
-  SI.MagneticFieldStrength beta 
+  SI.MagneticFieldStrength beta
     "Current beta coordinate of Everett-Function everett(alpha,beta)";
 
   Boolean asc(start=true, fixed=true) "=asc without chatter";
   Boolean asc2 "Hstat is ascending der(Hstat)>0";
-  Boolean delAsc(start=false) 
+  Boolean delAsc(start=false)
     "Wipeout history vertex at ascending Hstat";
-  Boolean delDesc(start=false) 
+  Boolean delDesc(start=false)
     "Wipeout history vertex at descending Hstat";
   Boolean del(start=false) "delAsc or delDesc";
-  Boolean init(start=false, fixed=true) 
+  Boolean init(start=false, fixed=true)
     "If init=1 then J runs on the initial magnetization curve";
   Boolean evInit(start=false) "Event init=0 -> init=1";
   Boolean evAsc(start=false) "Event asc=0 -> asc=1";
   Boolean evDesc(start=false) "Event asc=1 -> asc=0";
 
-  SI.MagneticFieldStrength aSav[Count] 
+  SI.MagneticFieldStrength aSav[Count]
     "1xCount array of alpha history (vertices on Preisach Plane)";
-  SI.MagneticFieldStrength bSav[Count] 
+  SI.MagneticFieldStrength bSav[Count]
     "1xCount array of beta history (vertices on Preisach Plane)";
 
   SI.MagneticFluxDensity E "Everett function";
@@ -55,7 +55,7 @@ protected
 
   Boolean init2(start=false, fixed=true);
   Boolean init3;
-  SI.MagneticFieldStrength x(start=0) 
+  SI.MagneticFieldStrength x(start=0)
     "Variable for initialization of the Preisach model";
   discrete Real aSavI(start=0, fixed=true);
   discrete Real bSavI(start=0, fixed=true);
@@ -64,21 +64,21 @@ protected
 
 initial equation
   J = 0.5*(FluxTubes.Utilities.everett(
-          H, 
-          -mat.Hsat, 
-          mat, 
+          H,
+          -mat.Hsat,
+          mat,
           false)*(1 - MagRel) - FluxTubes.Utilities.everett(
-          mat.Hsat, 
-          H, 
-          mat, 
+          mat.Hsat,
+          H,
+          mat,
           false)*(1 + MagRel) + FluxTubes.Utilities.everett(
-          mat.Hsat, 
-          -mat.Hsat, 
-          mat, 
+          mat.Hsat,
+          -mat.Hsat,
+          mat,
           false)*MagRel);
   J = FluxTubes.Utilities.initPreisach(
-          x, 
-          H, 
+          x,
+          H,
           mat);
   aSav=fill( mat.Hsat,Count);
   bSav=fill(-mat.Hsat,Count);
@@ -111,10 +111,10 @@ equation
     bI = if asc then bSav[1] else aSav[1];
   end when;
 
-  alpha = if Hstat<=-mat.Hsat then -mat.Hsat elseif Hstat>=mat.Hsat then mat.Hsat else Hstat;
+  alpha = if Hstat<=-mat.Hsat then -mat.Hsat else if Hstat>=mat.Hsat then mat.Hsat else Hstat;
 
   asc2 = der(Hstat)>0;
-  der(v)= if (asc2 and v<1) then 0.5/t1 elseif (not asc2 and v>0) then -0.5/t1 else 0;
+  der(v)= if (asc2 and v<1) then 0.5/t1 else if (not asc2 and v>0) then -0.5/t1 else 0;
   asc = v>0.5;
 
   evAsc = (not pre(asc)) and asc;
@@ -162,7 +162,7 @@ equation
 
   // #### beta ####
   when {init3, change(asc), evInit, del} then
-    reinit(beta, if init3 then bI elseif change(asc) then alpha elseif evInit then -alpha elseif asc then bSav[1] else aSav[1]);
+    reinit(beta, if init3 then bI else if change(asc) then alpha else if evInit then -alpha else if asc then bSav[1] else aSav[1]);
   end when;
 
   H1= -beta-mat.Hc;
@@ -170,19 +170,19 @@ equation
   H3= -alpha-mat.Hc;
   H4= beta-mat.Hc;
 
-  E = unitT* 
-      ((mat.M*mat.r*(2/pi*atan(mat.q*H1)+1)+(2*mat.M*(1-mat.r))/(1+1/2*(exp(-mat.p1*H1)+exp(-mat.p2*H1))))* 
-      (mat.M*mat.r*(2/pi*atan(mat.q*H2)+1)+(2*mat.M*(1-mat.r))/(1+1/2*(exp(-mat.p1*H2)+exp(-mat.p2*H2))))- 
-      (mat.M*mat.r*(2/pi*atan(mat.q*H3)+1)+(2*mat.M*(1-mat.r))/(1+1/2*(exp(-mat.p1*H3)+exp(-mat.p2*H3))))* 
+  E = unitT*
+      ((mat.M*mat.r*(2/pi*atan(mat.q*H1)+1)+(2*mat.M*(1-mat.r))/(1+1/2*(exp(-mat.p1*H1)+exp(-mat.p2*H1))))*
+      (mat.M*mat.r*(2/pi*atan(mat.q*H2)+1)+(2*mat.M*(1-mat.r))/(1+1/2*(exp(-mat.p1*H2)+exp(-mat.p2*H2))))-
+      (mat.M*mat.r*(2/pi*atan(mat.q*H3)+1)+(2*mat.M*(1-mat.r))/(1+1/2*(exp(-mat.p1*H3)+exp(-mat.p2*H3))))*
       (mat.M*mat.r*(2/pi*atan(mat.q*H4)+1)+(2*mat.M*(1-mat.r))/(1+1/2*(exp(-mat.p1*H4)+exp(-mat.p2*H4)))));
 
   der(J) = (if init then 0.5 else 1) * der(E);
   B = J + mu0 * Hstat;
 
   annotation (defaultComponentName="core", Icon(graphics={Text(
-          extent={{40,0},{40,-30}}, 
-          textColor={255,128,0}, 
-          textString="PE")}), 
+          extent={{40,0},{40,-30}},
+          textColor={255,128,0},
+          textString="PE")}),
     Documentation(info="<html>
 <p>
 Flux tube element for modeling magnetic materials with ferromagnetic and dynamic hysteresis (eddy currents). The ferromagnetic hysteresis behavior is defined by the

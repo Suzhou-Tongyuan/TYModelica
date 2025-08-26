@@ -1805,7 +1805,7 @@ The authors would like to thank following persons for their support ...
 
 <p>This code appears then as in the \"Revisions\" section below.</p>
 
-</html>", 
+</html>",
       revisions="<html>
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
     <tr>
@@ -2348,19 +2348,91 @@ more of the following changes.
 </ul>
 </html>"));
 end VersionManagement;
+  class Version_4_0_0_TY_1_build_7 "Version 4.0.0.TY.1 build 7 (August 30, 2025)"
+    extends Modelica.Icons.ReleaseNotes;
+
+    annotation(Documentation(info="<html><p>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
+</p>
+<p>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 7，2025.08.30</strong></span>
+</p>
+<p>
+<br>1. A new Blocks model has been added, as detailed in the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">FFT</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.FFT</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Fast Fourier Transform</td></tr></tbody></table><p>
+<br>2. Optimized the missing physical property functions in the Modelica.Media for ParticalSimpleGasMedium and ParticalSimpleMediume to ensure smooth medium switching without errors.
+</p>
+<p>
+<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"594.34\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.Interfaces.PartialSimpleIdealGasMedium.density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Return density derivative w.r.t. pressure at const specific enthalpy</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.Interfaces.PartialSimpleIdealGasMedium.density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Return density derivative w.r.t. specific enthalpy at constant pressure</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.Interfaces.PartialSimpleMedium.density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Return density derivative w.r.t. pressure at const specific enthalpy</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.Interfaces.PartialSimpleMedium.density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Return density derivative w.r.t. specific enthalpy at constant pressure</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">specificInternalEnergy_derT_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.Interfaces.PartialSimpleMedium.specificInternalEnergy_derT_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Return specific internalEnergy derivative w.r.t. temperature at const pressure</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">specificInternalEnergy_derp_T</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.Interfaces.PartialSimpleMedium.specificInternalEnergy_derp_T</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Return specific internalEnergy derivative w.r.t. pressure at const temperature</td></tr></tbody></table><p>
+<br>
+</p>
+</html>"));
+  end Version_4_0_0_TY_1_build_7;
+  class Version_4_0_0_TY_1_build_6 "Version 4.0.0.TY.1 build 6 (July 30, 2025)"
+    extends Modelica.Icons.ReleaseNotes;
+
+    annotation(Documentation(info="<html><p>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
+</p>
+<p>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 6，2025.07.30</strong></span>
+</p>
+<p>
+<br>1. A new Blocks model has been added, as detailed in the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Cot</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.Cot</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Calculates the cotangent of the input value</td></tr></tbody></table><p>
+<br>2. The description for time-related table models has been updated, as detailed in the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"196.24\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"381.96\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimization Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Updated the supported MAT file version description</td></tr></tbody></table><p>
+<br>
+</p>
+<p>
+3. Performance improvements have been made for the Modelica.Blocks.Math.RealFFTWithOutput module.
+</p>
+<p>
+<br>
+</p>
+</html>"));
+  end Version_4_0_0_TY_1_build_6;
+  class Version_4_0_0_TY_1_build_5 "Version 4.0.0.TY.1 build 5 (June 30, 2025)"
+    extends Modelica.Icons.ReleaseNotes;
+
+    annotation(Documentation(info="<html><p>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
+</p>
+<p>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 5，2025.06.30</strong></span>
+</p>
+<p>
+<br>1. Two new Blocks models have been added, as detailed in the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">IntegerVectorOutput</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Interfaces.IntegerVectorOutput</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Connector for integer data output for vector interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">BooleanVectorOutput</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Interfaces.BooleanVectorOutput</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Connector for boolean data output for vector interfaces</td></tr></tbody></table><p>
+<br>2. Optimizations have been made to multiplexing, demultiplexing, addition, and other Blocks models, as detailed in the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"196.24\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"381.96\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimization Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Multiplex</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.Multiplex</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Multiplex2</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.Multiplex2</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Multiplex3</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.Multiplex3</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Multiplex4</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.Multiplex4</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Multiplex5</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.Multiplex5</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Multiplex6</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.Multiplex6</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">DeMultiplex</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.DeMultiplex</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">DeMultiplex2</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.DeMultiplex2</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">DeMultiplex3</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.DeMultiplex3</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">DeMultiplex4</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.DeMultiplex4</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">DeMultiplex5</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.DeMultiplex5</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">DeMultiplex6</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Routing.DeMultiplex6</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added integer and boolean interfaces</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Add</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.Add</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimized graphical interface</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Add3</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.Add3</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimized graphical interface</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Product</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.Product</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimized graphical interface</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Division</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.Division</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimized graphical interface</td></tr></tbody></table><p>
+<br>
+</p>
+<p>
+<br>
+</p>
+</html>"));
+  end Version_4_0_0_TY_1_build_5;
   class Version_4_0_0_TY_1_build_4 "Version 4.0.0.TY.1 build 4 (May 30, 2025)"
     extends Modelica.Icons.ReleaseNotes;
 
     annotation(Documentation(info="<html><p>
-<span style=\"font-size: 22px;\"><strong>版本说明</strong></span>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
 </p>
 <p>
-<span style=\"font-size: 19px;\"><strong>Version4.0.0.TY.1 build 4，2025.05.30</strong></span>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 4，2025.05.30</strong></span>
 </p>
 <p>
-<br>1.同元基础库新增介质传递功能<br><br>2.优化插值表、PIDs等模型，具体见下表：<br>
+<br>1. The medium transfer function has been added to the base library.<br><br>2. Optimizations have been made to interpolation tables, PIDs, and other models, as detailed in the table below:<br>
 </p>
-<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"196.24\">模型名称</th><th colSpan=\"1\" rowSpan=\"1\" width=\"381.96\">模型路径</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">优化说明</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">新增支持读取csv文件的说明</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable1Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable1Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">新增支持读取csv文件的说明</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable1Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable1Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">新增支持读取csv文件的说明</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable2Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable2Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">新增支持读取csv文件的说明</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable2Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable2Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">新增支持读取csv文件的说明</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">修改参数Nd，避免出现除零错误</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">优化表数据的内存排布与解析</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">优化表数据的内存排布与解析</td></tr></tbody></table><p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"196.24\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"381.96\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimization Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added support for reading CSV files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable1Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable1Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added support for reading CSV files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable1Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable1Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added support for reading CSV files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable2Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable2Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added support for reading CSV files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable2Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable2Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added support for reading CSV files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modified parameter Nd to avoid division by zero errors</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimized memory layout and parsing of table data</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimized memory layout and parsing of table data</td></tr></tbody></table><p>
 <br>
 </p>
 <p>
@@ -2372,18 +2444,21 @@ end VersionManagement;
         extends Modelica.Icons.ReleaseNotes;
 
         annotation(Documentation(info="<html><p>
-<span style=\"font-size: 22px;\"><strong>版本说明</strong></span>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
 </p>
 <p>
-<span style=\"font-size: 19px;\"><strong>Version4.0.0.TY.1 build 3，2025.03.30</strong></span>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 3，2025.03.30</strong></span>
 </p>
 <p>
-<br>1.新增1个Blocks模型，具体见下表：<br>
+<br>1. A new Blocks model has been added, as detailed in the table below:<br>
 </p>
-<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">模型名称</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">模型路径</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">功能描述</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">TransferFunctionDia</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Discrete.TransferFunctionDia</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">离散传递函数块，动态图标显示</td></tr></tbody></table><p>
-<br>2.优化插值表模型，具体见下表：<br>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">TransferFunctionDia</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Discrete.TransferFunctionDia</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Discrete transfer function block with dynamic icon display</td></tr></tbody></table><p>
+<br>2. Optimizations have been made to the interpolation table models, as detailed in the table below:<br>
 </p>
-<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"196.24\">模型名称</th><th colSpan=\"1\" rowSpan=\"1\" width=\"381.96\">模型路径</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">优化说明</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">新增支持读取csv文件</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable1Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable1Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">新增支持读取csv文件</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable1Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable1Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">新增支持读取csv文件</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable2Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable2Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">新增支持读取csv文件</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable2Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable2Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">新增支持读取csv文件</td></tr></tbody></table><p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"196.24\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"381.96\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimization Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added support for reading CSV files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable1Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable1Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added support for reading CSV files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable1Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable1Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added support for reading CSV files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable2Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable2Ds</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added support for reading CSV files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable2Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable2Dv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added support for reading CSV files</td></tr></tbody></table><p>
+<br>
+</p>
+<p>
 <br>
 </p>
 </html>"));
@@ -2392,21 +2467,24 @@ end VersionManagement;
     extends Modelica.Icons.ReleaseNotes;
 
     annotation (Documentation(info="<html><p>
-<span style=\"font-size: 22px;\"><strong>版本说明</strong></span>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
 </p>
 <p>
-<span style=\"font-size: 19px;\"><strong>Version4.0.0.TY.1 build 2，2024.12.30</strong></span>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 2，2024.12.30</strong></span>
 </p>
 <p>
-<br>1.新增9个Blocks模型，具体见下表：<br>
+<br>1. 9 New Blocks Models Added, see the table below:<br>
 </p>
-<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"137.44\">模型名称</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">模型路径</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">功能描述</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">TriangleWave</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.TriangleWave</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">产生三角波信号</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">UnitDelayImproved</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Discrete.UnitDelayImproved</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">单位延迟改进优化版本</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Relay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Nonlinear.Relay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">两个常量之间切换输出</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">SlidingModeController</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Discrete.SlidingModeController</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">滑模控制器块实现基于迟滞的滑模控制（SMC）</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">TimeSampler</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.TimeSampler</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">根据仿真时间进行输入信号保持</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Pow</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.Pow</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">幂函数块</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">一维查找表</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">二维查找表</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">三维查找表</td></tr></tbody></table><p>
-<br>2.新增6个Blocks案例模型，具体见下表：<br>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"137.44\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">TriangleWave</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.TriangleWave</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Generates a triangle wave signal</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">UnitDelayImproved</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Discrete.UnitDelayImproved</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimized version of the unit delay</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Relay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Nonlinear.Relay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Switches output between two constants</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">SlidingModeController</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Discrete.SlidingModeController</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Implements sliding mode control (SMC) with hysteresis</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">TimeSampler</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.TimeSampler</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Holds input signal based on simulation time</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Pow</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.Pow</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Power function block</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">1D lookup table</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">2D lookup table</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">3D lookup table </td></tr></tbody></table><p>
+<br>2. 6 New Blocks Example Models Added, see the table below:<br>
 </p>
-<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"223.56\">案例名称</th><th colSpan=\"1\" rowSpan=\"1\" width=\"359.08\">案例路径</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">案例描述</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">SlidingModeControllerExample</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.SlidingModeControllerExample</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">滑膜控制例子展示</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">TimeSamplerTest</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.TimeSamplerTest</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">信号保持例子</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">一维查找表案例，其中断点和表格数据来自模型参数</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable1D_File</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable1D_File</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">一维查找表案例，其中断点和表格数据来自文件读取</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">二维查找表案例，其中断点和表格数据来自模型参数</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">三维查找表案例，其中断点和表格数据来自模型参数</td></tr></tbody></table><p>
-<br>3.优化PIDs模型，具体见下表；<br>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"223.56\">Example Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"359.08\">Example Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Example Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">SlidingModeControllerExample</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.SlidingModeControllerExample</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Example of sliding mode control</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">TimeSamplerTest</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.TimeSamplerTest</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Example of signal holding</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">1D lookup table example where breakpoints and table data come from model parameters</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable1D_File</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable1D_File</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">1D lookup table example where breakpoints and table data come from file reading</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">2D lookup table example where breakpoints and table data come from model parameters</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">3D lookup table example where breakpoints and table data come from model parameters</td></tr></tbody></table><p>
+<br>3. Optimized PIDs Model, see the table below:<br>
 </p>
-<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"196.24\">模型名称</th><th colSpan=\"1\" rowSpan=\"1\" width=\"381.96\">模型路径</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">优化说明</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">增加模式选择</td></tr></tbody></table><p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"196.24\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"381.96\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimization Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Added mode selection feature</td></tr></tbody></table><p>
+<br>
+</p>
+<p>
 <br>
 </p>
 </html>"));
@@ -2415,22 +2493,25 @@ end VersionManagement;
     extends Modelica.Icons.ReleaseNotes;
 
     annotation (Documentation(info="<html><p>
-<span style=\"font-size: 22px;\"><strong>版本说明</strong></span>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
 </p>
 <p>
-<span style=\"font-size: 19px;\"><strong>Version4.0.0.TY.1 build 1，2024.09.30</strong></span>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 1，2024.09.30</strong></span>
 </p>
 <p>
-<br>1.新增15个Blocks、Media模型和函数，具体见下表：<br>
+<br>1. Added 15 Blocks, Media Models, and Functions, as detailed below:<br>
 </p>
-<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"205.56\">模型名称</th><th colSpan=\"1\" rowSpan=\"1\" width=\"648.72\">模型路径</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">功能描述</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">StateSpaceAlg</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">优化后的状态空间法模型</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">AxFn</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.Internal.Filter.Utilities.AxFn</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">用于StateSpaceAlg调用函数</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">PID_Parallel</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.PID_Parallel</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">并联PID控制器模型</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">理想的PID控制器和并联控制器两种可选</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">MultiVector</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.MultiVector</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">向量的标量乘法: y[n] = k*u[n]</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">DivVector</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.DivVector</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">向量的标量除法：y[n] = u[n]/k</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">VectorAdd</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.VectorAdd</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">向量加法: y[n] = k1*u1[n]+k2*u2[n]</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">VI2VO</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Interfaces.VI2VO</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">接口基类，用于VectorAdd调用</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">BooleanUnitDelay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Discrete.BooleanUnitDelay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">单位延迟块，输入输出为布尔接口</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">IntergerUnitDelay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Discrete.IntergerUnitDelay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">单位延迟块，输入输出为整型接口</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.IdealGases.Common.SingleGasNasa.density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">求解定比焓下密度关于压力的偏导数</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.IdealGases.Common.SingleGasNasa.density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">求解定压力下密度关于比焓的偏导数</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.IdealGases.Common.MixtureGasNasa.density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">求解定比焓下密度关于压力的偏导数</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.IdealGases.Common.MixtureGasNasa.density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">求解定压力下密度关于比焓的偏导数</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">setSat_p_diff2</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.Interfaces.PartialTwoPhaseMedium.setSat_p_diff2</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">setSat_p函数，2阶可微</td></tr></tbody></table><p>
-<br>2.新增4个Blocks、StateGraph案例模型，具体见下表：<br>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"205.56\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"648.72\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">StateSpaceAlg</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimized state-space method model</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">AxFn</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.Internal.Filter.Utilities.AxFn</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Function for StateSpaceAlg invocation</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">PID_Parallel</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.PID_Parallel</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Parallel PID controller model</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Continuous.PIDs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Two options: ideal PID controller and parallel controller</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">MultiVector</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.MultiVector</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Scalar multiplication of vectors: y[n] = k*u[n]</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">DivVector</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.DivVector</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Scalar division of vectors: y[n] = u[n]/k</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">VectorAdd</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.VectorAdd</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Vector addition: y[n] = k1*u1[n]+k2*u2[n]</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">VI2VO</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Interfaces.VI2VO</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Interface base class for VectorAdd invocation</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">BooleanUnitDelay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Discrete.BooleanUnitDelay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Unit delay block with boolean input/output interface</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">IntergerUnitDelay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Discrete.IntergerUnitDelay</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Unit delay block with integer input/output interface</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.IdealGases.Common.SingleGasNasa.density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Partial derivative of density with respect to pressure at constant specific enthalpy</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.IdealGases.Common.SingleGasNasa.density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Partial derivative of density with respect to specific enthalpy at constant pressure</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.IdealGases.Common.MixtureGasNasa.density_derp_h</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Partial derivative of density with respect to pressure at constant specific enthalpy for mixtures</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.IdealGases.Common.MixtureGasNasa.density_derh_p</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Partial derivative of density with respect to specific enthalpy at constant pressure for mixtures</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">setSat_p_diff2</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.Interfaces.PartialTwoPhaseMedium.setSat_p_diff2</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">setSat_p function, 2nd-order differentiable</td></tr></tbody></table><p>
+<br>2. Added 4 Blocks and StateGraph example models, as detailed below:<br>
 </p>
-<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"211.64\">案例名称</th><th colSpan=\"1\" rowSpan=\"1\" width=\"644.44\">案例路径</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">案例描述</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">StateSpaceComparison</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.StateSpaceComparison</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">展示StateSpace和StateSpaceAlg模型在相同条件下计算结果</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">VectorOperation</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.VectorOperation</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">向量运算案例</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Vertical_Launch</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.StateGraph.Examples.Vertical_Launch</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">示例演示了顺序操作过程</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">System_Controller</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.StateGraph.Examples.System_Controller</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">示例演示了状态机控制系统的整体应用</td></tr></tbody></table><p>
-<br>3.优化1个StateGraph状态机模型，具体见下表；<br>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"211.64\">Example Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"644.44\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">StateSpaceComparison</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.StateSpaceComparison</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Demonstrates the calculation results of StateSpace and StateSpaceAlg models under the same conditions</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">VectorOperation</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.VectorOperation</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Vector operation example</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Vertical_Launch</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.StateGraph.Examples.Vertical_Launch</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Example showing sequential operation process</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">System_Controller</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.StateGraph.Examples.System_Controller</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Example demonstrating the overall application of state-machine-controlled systems</td></tr></tbody></table><p>
+<br>3. Optimized 1 StateGraph state machine model, as detailed below:<br>
 </p>
-<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"211\">模型名称</th><th colSpan=\"1\" rowSpan=\"1\" width=\"650.12\">模型路径</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">优化说明</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">PartialStep</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.StateGraph.Interfaces.PartialStep</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">解决状态机模型的版本兼容性问题</td></tr></tbody></table><p>
-<br>4.修复Modelica.Icons图标等兼容问题。<br>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"211\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"650.12\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optimization Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">PartialStep</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.StateGraph.Interfaces.PartialStep</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Solved version compatibility issues in the state machine model</td></tr></tbody></table><p>
+<br>4. Fixed compatibility issues with Modelica.Icons icons and others.
+</p>
+<p>
+<br>
 </p>
 </html>"));
   end Version_4_0_0_TY_1_build_1;
@@ -2438,76 +2519,38 @@ end VersionManagement;
     extends Modelica.Icons.ReleaseNotes;
 
     annotation (Documentation(info="<html><p>
-<span style=\"font-size: 22px;\"><strong>版本说明</strong></span>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
 </p>
 <p>
-<span style=\"font-size: 19px;\"><strong>Version4.0.0.TY.1，2024.06.30</strong></span>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1，2024.06.30</strong></span>
 </p>
-<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;\"> 1. </span><span style=\"color: rgb(51, 51, 51);\">同元基础库初版发布；</span>
+<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;\"> 1. </span><span style=\"color: rgb(51, 51, 51);\">Initial release of the TongYuan Basic Library.</span>
 </p>
-<p style=\"text-align: left;\"><span style=\"color: rgb(51, 51, 51);\"> 2. 适配软件平台“模型库切换-升级模型”功能，</span><span style=\"color: black;\">可通过该功能将</span>Modelica<span style=\"color: black;\">标准库的依赖关系直接升级为依赖同元</span><span style=\"color: rgb(51, 51, 51);\">基础</span><span style=\"color: black;\">库</span>Modelica4.0.0.TY.1；
+<p style=\"text-align: left;\"><span style=\"color: rgb(51, 51, 51);\"> 2. Compatibility with the software platform\\\\'s \"Model Library Switch - Upgrade Model\" feature, which allows direct upgrading of dependencies from the Modelica Standard Library to the TongYuan Basic Library Modelica 4.0.0.TY.1.</span>
 </p>
-<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;\"> 3. </span><span style=\"color: rgb(51, 51, 51);\">适配同元商业模型库，在标准库Modelica4.0基础上新增标准库Modelica3.2.3部分内容，详见下表1；</span>
+<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;\"> 3. </span><span style=\"color: rgb(51, 51, 51);\">Compatibility with </span>the <span style=\"color: rgb(51, 51, 51);\">TongYuan </span>Commercial Model Library, adding some content from the Modelica 3.2.3 Standard Library on top of the Modelica 4.0 Standard Library. Please refer to Table 1 below for details.
 </p>
-<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;\"> 4. </span><span style=\"color: rgb(51, 51, 51);\">新增RealFFTWithOutput模型，增加两个输出接口y_amplitudes、y_phases；</span>
+<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;\"> 4. </span><span style=\"color: rgb(51, 51, 51);\">Added the RealFFTWithOutput model, which introduces two output interfaces: y_amplitudes and y_phases.</span>
 </p>
-<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;\"> 5. 新增</span><span style=\"color: rgb(0, 0, 0);\">TransferFunctionDia模型，传递函数清晰，分子分母可动态显示在图标层；</span>
+<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;\"> 5. </span><span style=\"color: rgb(0, 0, 0);\">Added the TransferFunctionDia model, with a clear transfer function where the numerator and denominator can be dynamically displayed in the icon layer.</span>
 </p>
-<p style=\"text-align: left;\"><span style=\"color: rgb(0, 0, 0);\"> 6. 新增IntegerSwitch、IntegerGreater、Equality、IntegerEquality模型；</span>
+<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;\"> 6. </span><span style=\"color: rgb(0, 0, 0);\">Added the IntegerSwitch, IntegerGreater, Equality, and IntegerEquality models.</span>
 </p>
-<p style=\"text-align: left;\"><span style=\"color: rgb(0, 0, 0);\"> 7. 新增InnerMemory、OuterMemory模型，用于全局变量定义与引用。</span>
-</p>
-<p>
-<br>
-</p>
-<p>
-同元<span style=\"color: rgb(51, 51, 51);\">基础</span>库Modelica4.0.0.TY.1相对于标准库Modelica4.0.0的更新如下：<br>表1 新增模型列表:
-</p>
-<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"470\">模型路径</th><th colSpan=\"1\" rowSpan=\"1\" width=\"434.6\">模型描述</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Blocks</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.Clock(隐藏)</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">生成当前时间信号</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.Internal.readTimeTableData</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">从文本或MATLAB文件中读取表格数据</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.Internal.readTable1DData</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">从文本或MATLAB文件中读取表格数据</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.Internal.readTable2DData</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">从文本或MATLAB文件中读取表格数据</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Types.InitPlD</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">定义PID和LimPID模块初始化的枚举</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Electrical</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Electrical.Analog,Basic.HeatingResistor</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">温度相关电阻</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Electrical.Analog.ldeal.ldealGyrator</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">理想回转器</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Electrical.MultiPhase (隐藏)</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">用于单相或多相电气元件的库</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Mechanics</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Mechanics.MultiBody.Types.Init</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">初始化类型</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Mechanics.MultiBody.lcons.Motorlcon</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">电机图标</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Fluid</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Fluid.Examples.ControlledTankSystem.Utilities.RadioButton</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">按下时将其输出设置为“true”,并在\"reset”元素变为“true”时重置的按钮</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Media</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.Common.OneNonlinearEquation</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">以可靠有效的方式确定一个未知数的非线性代数方程的解，没有导数</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Math</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Vectors.Utilities.householderVector</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">计算一个归一化向量以将向量a映射到向量b上</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Vectors.Utilities.householderReflection</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">在具有正交向量u的平面上反映向量a</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.LAPACK.dgegv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">计算(A，B)系统的广义特征值</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.LAPACK.dgelsx</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">计算秩缺陷A的实线性最小二乘问题的最小范数解</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.LAPACK.dgelsx vec</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">计算秩缺陷A的实线性最小二乘问题的最小范数解</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.LAPACK.dgeqpf</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">计算具有列透视的正方形或矩形矩阵A的QR因式分解</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.Utilities.householderReflection</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">在具有正交向量u的平面上映射矩阵A的每个向量</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.Utilities.householderSimilarityTransformation</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">相似性变换</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.tempinterpol1</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">线性插值</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.tempInterpol2</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">矢量化线性插值</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.lcons</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.lcons.RotationalSensor(隐藏)</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">角度传感器图标</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Slunits(隐藏)</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">单位定义库</td></tr></tbody></table><p>
-<br>
+<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;\"> 7. </span><span style=\"color: rgb(0, 0, 0);\">Added the InnerMemory and OuterMemory models for global variable definition and referencing.</span>
 </p>
 <p>
 <br>
 </p>
 <p>
-<br>
+Updates of <span style=\"color: rgb(51, 51, 51);\">TongYuan </span>Basic Library Version 4.0.0.TY.1 relative to Modelica Standard Library 4.0.0 are as follows:
 </p>
-<p>
-<br>
+<p style=\"text-align: center;\">Table 1: New Models List
 </p>
-<p>
-<br>
-</p>
-<p>
-<br>
-</p>
-<p>
-<br>
-</p>
-<p>
-<br>
-</p>
-<p>
-<br>
-</p>
-<p>
-<br>
-</p>
-<p>
-<br>
-</p>
-<p>
-<br>
-</p>
-<p>
-<br>
-</p>
-<p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"470\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"434.6\">Model Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Blocks</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.Clock (hidden)</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Generates the current time signal</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.Internal.readTimeTableData</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Reads table data from text or MATLAB files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.Internal.readTable1DData</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Reads 1D table data from text or MATLAB files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.Internal.readTable2DData</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Reads 2D table data from text or MATLAB files</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Types.InitPlD</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Defines enumerations for PID and LimPID module initialization</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Electrical</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Electrical.Analog,Basic.HeatingResistor</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Temperature-dependent resistor</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Electrical.Analog.ldeal.ldealGyrator</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Ideal gyrator</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Electrical.MultiPhase (hidden)</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Library for single-phase or multi-phase electrical components</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Mechanics</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Mechanics.MultiBody.Types.Init</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Initialization types</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Mechanics.MultiBody.lcons.Motorlcon</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Motor icon</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Fluid</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Fluid.Examples.ControlledTankSystem.Utilities.RadioButton</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Button that sets output to \"true\" when pressed, and resets when \"reset\" element turns \"true\"</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Media</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Media.Common.OneNonlinearEquation</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Determines the solution of a nonlinear algebraic equation for an unknown, effectively and reliably, without derivatives</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Math</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Vectors.Utilities.householderVector</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Computes a normalized vector to map vector a to vector b</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Vectors.Utilities.householderReflection</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Reflects vector a on a plane with orthogonal vector u</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.LAPACK.dgegv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Computes the generalized eigenvalues for the (A, B) system</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.LAPACK.dgelsx</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Computes the minimum norm solution for the rank-deficient real linear least squares problem for matrix A</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.LAPACK.dgelsx vec</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Computes the minimum norm solution for the rank-deficient real linear least squares problem for matrix A</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.LAPACK.dgeqpf</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Computes the QR factorization of a square or rectangular matrix A with column pivoting</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.Utilities.householderReflection</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Reflects each vector of matrix A on a plane with orthogonal vector u</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.Matrices.Utilities.householderSimilarityTransformation</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Performs similarity transformation</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.tempinterpol1</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Linear interpolation</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Math.tempInterpol2</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Vectorized linear interpolation</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.lcons</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"></td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.lcons.RotationalSensor (hidden)</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Angle sensor icon</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\"><strong>Modelica.Slunits (hidden)</strong></td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Unit definition library</td></tr></tbody></table><p>
 <br>
 </p>
 </html>"));
   end Version_4_0_0_TY_1;
-
 class Version_4_0_0 "Version 4.0.0 (June 4, 2020)"
   extends Modelica.Icons.ReleaseNotes;
 
@@ -5752,7 +5795,6 @@ units are wrong or errors in documentation):
 
 </html>"));
 end Version_3_0_1;
-
 class Version_3_0 "Version 3.0 (March 1, 2008)"
   extends Modelica.Icons.ReleaseNotes;
 
@@ -9080,27 +9122,27 @@ User's Guides that can be accessed by the following links:
 end UsersGuide;
 
 annotation (
-preferredView="info", 
-version="4.0.0.TY.1", 
-versionDate="2024-04-03", 
-dateModified = "2024-04-03 15:00:00Z", 
-revisionId="e2983375f2 2024-04-04 08:28:31 +0200", 
-uses(Complex(version="4.0.0.TY.1"), ModelicaServices(version="4.0.0.TY.1")), 
+preferredView="info",
+version="4.0.0.TY.1",
+versionDate="2024-04-03",
+dateModified = "2024-04-03 15:00:00Z",
+revisionId="e2983375f2 2024-04-04 08:28:31 +0200",
+uses(Complex(version="4.0.0.TY.1"), ModelicaServices(version="4.0.0.TY.1")),
 conversion(
- from(version={"3.0", "3.0.1", "3.1", "3.2", "3.2.1", "3.2.2", "3.2.3"}, script="modelica://Modelica/Resources/Scripts/Conversion/ConvertModelica_from_3.2.3_to_4.0.0.mos")), 
+ from(version={"3.0", "3.0.1", "3.1", "3.2", "3.2.1", "3.2.2", "3.2.3"}, script="modelica://Modelica/Resources/Scripts/Conversion/ConvertModelica_from_3.2.3_to_4.0.0.mos")),
 Icon(coordinateSystem(extent={{-100.0,-100.0},{100.0,100.0}}), graphics={
   Polygon(
-    origin={-6.9888,20.048}, 
-    pattern=LinePattern.None, 
-    fillPattern=FillPattern.Solid, 
-    points={{-93.0112,10.3188},{-93.0112,10.3188},{-73.011,24.6},{-63.011,31.221},{-51.219,36.777},{-39.842,38.629},{-31.376,36.248},{-25.819,29.369},{-24.232,22.49},{-23.703,17.463},{-15.501,25.135},{-6.24,32.015},{3.02,36.777},{15.191,39.423},{27.097,37.306},{32.653,29.633},{35.035,20.108},{43.501,28.046},{54.085,35.19},{65.991,39.952},{77.897,39.688},{87.422,33.338},{91.126,21.696},{90.068,9.525},{86.099,-1.058},{79.749,-10.054},{71.283,-21.431},{62.816,-33.337},{60.964,-32.808},{70.489,-16.14},{77.368,-2.381},{81.072,10.054},{79.749,19.05},{72.605,24.342},{61.758,23.019},{49.587,14.817},{39.003,4.763},{29.214,-6.085},{21.012,-16.669},{13.339,-26.458},{5.401,-36.777},{-1.213,-46.037},{-6.24,-53.446},{-8.092,-52.387},{-0.684,-40.746},{5.401,-30.692},{12.81,-17.198},{19.424,-3.969},{23.658,7.938},{22.335,18.785},{16.514,23.283},{8.047,23.019},{-1.478,19.05},{-11.267,11.113},{-19.734,2.381},{-29.259,-8.202},{-38.519,-19.579},{-48.044,-31.221},{-56.511,-43.392},{-64.449,-55.298},{-72.386,-66.939},{-77.678,-74.612},{-79.53,-74.083},{-71.857,-61.383},{-62.861,-46.037},{-52.278,-28.046},{-44.869,-15.346},{-38.784,-2.117},{-35.344,8.731},{-36.403,19.844},{-42.488,23.813},{-52.013,22.49},{-60.744,16.933},{-68.947,10.054},{-76.884,2.646},{-93.0112,-12.1707},{-93.0112,-12.1707}}, 
-    smooth=Smooth.Bezier), 
+    origin={-6.9888,20.048},
+    pattern=LinePattern.None,
+    fillPattern=FillPattern.Solid,
+    points={{-93.0112,10.3188},{-93.0112,10.3188},{-73.011,24.6},{-63.011,31.221},{-51.219,36.777},{-39.842,38.629},{-31.376,36.248},{-25.819,29.369},{-24.232,22.49},{-23.703,17.463},{-15.501,25.135},{-6.24,32.015},{3.02,36.777},{15.191,39.423},{27.097,37.306},{32.653,29.633},{35.035,20.108},{43.501,28.046},{54.085,35.19},{65.991,39.952},{77.897,39.688},{87.422,33.338},{91.126,21.696},{90.068,9.525},{86.099,-1.058},{79.749,-10.054},{71.283,-21.431},{62.816,-33.337},{60.964,-32.808},{70.489,-16.14},{77.368,-2.381},{81.072,10.054},{79.749,19.05},{72.605,24.342},{61.758,23.019},{49.587,14.817},{39.003,4.763},{29.214,-6.085},{21.012,-16.669},{13.339,-26.458},{5.401,-36.777},{-1.213,-46.037},{-6.24,-53.446},{-8.092,-52.387},{-0.684,-40.746},{5.401,-30.692},{12.81,-17.198},{19.424,-3.969},{23.658,7.938},{22.335,18.785},{16.514,23.283},{8.047,23.019},{-1.478,19.05},{-11.267,11.113},{-19.734,2.381},{-29.259,-8.202},{-38.519,-19.579},{-48.044,-31.221},{-56.511,-43.392},{-64.449,-55.298},{-72.386,-66.939},{-77.678,-74.612},{-79.53,-74.083},{-71.857,-61.383},{-62.861,-46.037},{-52.278,-28.046},{-44.869,-15.346},{-38.784,-2.117},{-35.344,8.731},{-36.403,19.844},{-42.488,23.813},{-52.013,22.49},{-60.744,16.933},{-68.947,10.054},{-76.884,2.646},{-93.0112,-12.1707},{-93.0112,-12.1707}},
+    smooth=Smooth.Bezier),
   Ellipse(
-    origin={40.8208,-37.7602}, 
-    fillColor={161,0,4}, 
-    pattern=LinePattern.None, 
-    fillPattern=FillPattern.Solid, 
-    extent={{-17.8562,-17.8563},{17.8563,17.8562}})}), 
+    origin={40.8208,-37.7602},
+    fillColor={161,0,4},
+    pattern=LinePattern.None,
+    fillPattern=FillPattern.Solid,
+    extent={{-17.8562,-17.8563},{17.8563,17.8562}})}),
 Documentation(info="<html>
 <div>
 <img src=\"modelica://Modelica/Resources/Images/Logos/Modelica_Libraries.svg\" width=\"250\">

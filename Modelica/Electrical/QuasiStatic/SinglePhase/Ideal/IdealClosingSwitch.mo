@@ -9,8 +9,8 @@ model IdealClosingSwitch "Ideal electrical closer"
   Modelica.Blocks.Interfaces.BooleanInput control "true => p--n connected, false => switch open" 
                                                    annotation (Placement(
         transformation(
-        origin={0,120}, 
-        extent={{-20,-20},{20,20}}, 
+        origin={0,120},
+        extent={{-20,-20},{20,20}},
         rotation=270)));
 protected
   Complex s(re(final unit="1"), im(final unit="1")) "Auxiliary variable";
@@ -23,7 +23,7 @@ equation
   i = (s*unitVoltage)*(if control then 1 else Goff);
 
   LossPower = real(v*conj(i));
-  annotation (defaultComponentName="switch", 
+  annotation (defaultComponentName="switch",
     Documentation(info="<html>
 <p>
 The ideal closing switch has a positive pin p and a negative pin n.
@@ -49,26 +49,26 @@ behavior is <strong>not</strong> modelled. The parameters are not temperature de
 <strong>Use with care:</strong>
 This switch is only intended to be used for structural changes, not for fast switching sequences, due to the quasi-static formulation.
 </p>
-</html>"), 
+</html>"),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={
-        Ellipse(extent={{-44,4},{-36,-4}}, lineColor={85,170,255}), 
-        Line(points={{-90,0},{-44,0}}, color={85,170,255}), 
-        Line(points={{-37,2},{40,40}}, color={85,170,255}), 
-        Line(points={{40,0},{90,0}}, color={85,170,255}), 
+        Ellipse(extent={{-44,4},{-36,-4}}, lineColor={85,170,255}),
+        Line(points={{-90,0},{-44,0}}, color={85,170,255}),
+        Line(points={{-37,2},{40,40}}, color={85,170,255}),
+        Line(points={{40,0},{90,0}}, color={85,170,255}),
         Line(
-          visible=useHeatPort, 
-          points={{0,-100},{0,25}}, 
-          color={127,0,0}, 
-          pattern=LinePattern.Dot), 
+          visible=useHeatPort,
+          points={{0,-100},{0,25}},
+          color={127,0,0},
+          pattern=LinePattern.Dot),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
-    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+          extent={{-150,90},{150,50}},
+          textString="%name",
+          textColor={0,0,255})}),
+    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
         Text(
-          extent={{-100,-40},{100,-79}}, 
-          textString="%name", 
+          extent={{-100,-40},{100,-79}},
+          textString="%name",
           textColor={0,0,255})}));
 end IdealClosingSwitch;

@@ -8,16 +8,16 @@ package Routing "Library of blocks to combine and extract signals"
     y = fill(u, nout);
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=false, 
+          preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-100,0},{-6,0}}, color={0,0,127}), 
-          Line(points={{100,0},{10,0}}, color={0,0,127}), 
-          Line(points={{0,0},{100,10}}, color={0,0,127}), 
-          Line(points={{0,0},{100,-10}}, color={0,0,127}), 
+          Line(points={{-100,0},{-6,0}}, color={0,0,127}),
+          Line(points={{100,0},{10,0}}, color={0,0,127}),
+          Line(points={{0,0},{100,10}}, color={0,0,127}),
+          Line(points={{0,0},{100,-10}}, color={0,0,127}),
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid)}), 
+            extent={{-15,15},{15,-15}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid)}),
       Documentation(info="<html>
 <p>
 This block replicates the input signal to an array of <code>nout</code> identical output signals.
@@ -28,10 +28,10 @@ This block replicates the input signal to an array of <code>nout</code> identica
   block IntegerReplicator "Integer signal replicator"
     extends Modelica.Blocks.Icons.IntegerBlock;
     parameter Integer nout=1 "Number of outputs";
-    Modelica.Blocks.Interfaces.IntegerInput u 
+    Modelica.Blocks.Interfaces.IntegerInput u
       "Connector of Integer input signal" 
       annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.IntegerOutput y[nout] 
+    Modelica.Blocks.Interfaces.IntegerOutput y[nout]
       "Connector of Integer output signals" 
       annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   equation
@@ -39,16 +39,16 @@ This block replicates the input signal to an array of <code>nout</code> identica
     y = fill(u, nout);
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=false, 
+          preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-100,0},{-6,0}}, color={255,127,0}), 
-          Line(points={{100,0},{10,0}}, color={255,127,0}), 
-          Line(points={{0,0},{100,10}}, color={255,127,0}), 
-          Line(points={{0,0},{100,-10}}, color={255,127,0}), 
+          Line(points={{-100,0},{-6,0}}, color={255,127,0}),
+          Line(points={{100,0},{10,0}}, color={255,127,0}),
+          Line(points={{0,0},{100,10}}, color={255,127,0}),
+          Line(points={{0,0},{100,-10}}, color={255,127,0}),
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={255,127,0}, 
-            fillPattern=FillPattern.Solid)}), 
+            extent={{-15,15},{15,-15}},
+            fillColor={255,127,0},
+            fillPattern=FillPattern.Solid)}),
       Documentation(info="<html>
 <p>
 This block replicates the Integer input signal to an array of <code>nout</code> identical Integer output signals.
@@ -59,10 +59,10 @@ This block replicates the Integer input signal to an array of <code>nout</code> 
   block BooleanReplicator "Boolean signal replicator"
     extends Modelica.Blocks.Icons.BooleanBlock;
     parameter Integer nout=1 "Number of outputs";
-    Modelica.Blocks.Interfaces.BooleanInput u 
+    Modelica.Blocks.Interfaces.BooleanInput u
       "Connector of Boolean input signal" 
       annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.BooleanOutput y[nout] 
+    Modelica.Blocks.Interfaces.BooleanOutput y[nout]
       "Connector of Boolean output signals" 
       annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   equation
@@ -70,16 +70,16 @@ This block replicates the Integer input signal to an array of <code>nout</code> 
     y = fill(u, nout);
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=false, 
+          preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-100,0},{-6,0}}, color={255,0,255}), 
-          Line(points={{100,0},{10,0}}, color={255,0,255}), 
-          Line(points={{0,0},{100,10}}, color={255,0,255}), 
-          Line(points={{0,0},{100,-10}}, color={255,0,255}), 
+          Line(points={{-100,0},{-6,0}}, color={255,0,255}),
+          Line(points={{100,0},{10,0}}, color={255,0,255}),
+          Line(points={{0,0},{100,10}}, color={255,0,255}),
+          Line(points={{0,0},{100,-10}}, color={255,0,255}),
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={255,0,255}, 
-            fillPattern=FillPattern.Solid)}), 
+            extent={{-15,15},{15,-15}},
+            fillColor={255,0,255},
+            fillPattern=FillPattern.Solid)}),
       Documentation(info="<html>
 <p>
 This block replicates the Boolean input signal to an array of <code>nout</code> identical Boolean output signals.
@@ -98,90 +98,90 @@ equation
   end for;
   annotation (
     Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
-            extent={{-90,51},{-50,-49}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
+            extent={{-90,51},{-50,-49}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
           Rectangle(
-            extent={{50,50},{90,-50}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
+            extent={{50,50},{90,-50}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
           Polygon(
-            points={{-94.4104,1.90792},{-94.4104,-2.09208},{-90.4104,-0.0920762}, 
-                {-94.4104,1.90792}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-72,2},{-60.1395,12.907},{-49.1395,12.907}}, color={0,0,127}), 
-          Line(points={{-73,4},{-59,40},{-49,40}}, color={0,0,127}), 
-          Line(points={{-113,0},{-76.0373,-0.0180176}}, color={0,0,127}), 
+            points={{-94.4104,1.90792},{-94.4104,-2.09208},{-90.4104,-0.0920762},
+                {-94.4104,1.90792}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
+          Line(points={{-72,2},{-60.1395,12.907},{-49.1395,12.907}}, color={0,0,127}),
+          Line(points={{-73,4},{-59,40},{-49,40}}, color={0,0,127}),
+          Line(points={{-113,0},{-76.0373,-0.0180176}}, color={0,0,127}),
           Ellipse(
-            extent={{-81.0437,4.59255},{-71.0437,-4.90745}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-73,-5},{-60,-40},{-49,-40}}, color={0,0,127}), 
+            extent={{-81.0437,4.59255},{-71.0437,-4.90745}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
+          Line(points={{-73,-5},{-60,-40},{-49,-40}}, color={0,0,127}),
           Line(points={{-72,-2},{-60.0698,-12.907},{-49.0698,-12.907}}, color={
-                0,0,127}), 
+                0,0,127}),
           Polygon(
-            points={{-48.8808,-11},{-48.8808,-15},{-44.8808,-13},{-48.8808,-11}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-46,13},{-35,13},{35,-30},{45,-30}}, color={0,0,127}), 
-          Line(points={{-45,40},{-35,40},{35,0},{44,0}}, color={0,0,127}), 
-          Line(points={{-45,-40},{-34,-40},{35,30},{44,30}}, color={0,0,127}), 
+            points={{-48.8808,-11},{-48.8808,-15},{-44.8808,-13},{-48.8808,-11}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
+          Line(points={{-46,13},{-35,13},{35,-30},{45,-30}}, color={0,0,127}),
+          Line(points={{-45,40},{-35,40},{35,0},{44,0}}, color={0,0,127}),
+          Line(points={{-45,-40},{-34,-40},{35,30},{44,30}}, color={0,0,127}),
           Polygon(
-            points={{-49,42},{-49,38},{-45,40},{-49,42}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
+            points={{-49,42},{-49,38},{-45,40},{-49,42}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
           Polygon(
-            points={{-48.8728,-38.0295},{-48.8728,-42.0295},{-44.8728,-40.0295}, 
-                {-48.8728,-38.0295}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
+            points={{-48.8728,-38.0295},{-48.8728,-42.0295},{-44.8728,-40.0295},
+                {-48.8728,-38.0295}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
           Polygon(
-            points={{-48.9983,14.8801},{-48.9983,10.8801},{-44.9983,12.8801},{-48.9983, 
-                14.8801}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
+            points={{-48.9983,14.8801},{-48.9983,10.8801},{-44.9983,12.8801},{-48.9983,
+                14.8801}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
           Ellipse(
-            extent={{69.3052,4.12743},{79.3052,-5.37257}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{80,0},{100,0}}, color={0,0,127}), 
+            extent={{69.3052,4.12743},{79.3052,-5.37257}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
+          Line(points={{80,0},{100,0}}, color={0,0,127}),
           Polygon(
             points={{43.1618,32.3085},{43.1618,28.3085},{47.1618,30.3085},{
-                43.1618,32.3085}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
+                43.1618,32.3085}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
           Polygon(
             points={{43.2575,1.80443},{43.2575,-2.19557},{47.2575,-0.195573},{
-                43.2575,1.80443}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
+                43.2575,1.80443}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
           Polygon(
             points={{43.8805,-28.1745},{43.8805,-32.1745},{47.8805,-30.1745},{
-                43.8805,-28.1745}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{48,0},{70,0}}, color={0,0,127}), 
-          Line(points={{47,30},{60,30},{73,3}}, color={0,0,127}), 
-          Line(points={{49,-30},{60,-30},{74,-4}}, color={0,0,127}), 
+                43.8805,-28.1745}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
+          Line(points={{48,0},{70,0}}, color={0,0,127}),
+          Line(points={{47,30},{60,30},{73,3}}, color={0,0,127}),
+          Line(points={{49,-30},{60,-30},{74,-4}}, color={0,0,127}),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="extract=%extract")}), 
+            extent={{-150,-150},{150,-110}},
+            textString="extract=%extract")}),
     Documentation(info="<html>
 <p>Extract signals from the input connector and transfer them
 to the output connector.</p>
@@ -209,7 +209,7 @@ output no. 4 is set equal to input no. 2
 </html>"));
 end ExtractSignal;
 
-block Extractor 
+block Extractor
     "Extract scalar signal out of signal vector dependent on IntegerRealInput index"
 
   extends Modelica.Blocks.Interfaces.MISO;
@@ -219,8 +219,8 @@ block Extractor
 
   Modelica.Blocks.Interfaces.IntegerInput index annotation (Placement(
           transformation(
-          origin={0,-120}, 
-          extent={{-20,-20},{20,20}}, 
+          origin={0,-120},
+          extent={{-20,-20},{20,20}},
           rotation=90)));
   protected
   Real k[nin];
@@ -238,69 +238,69 @@ equation
   y = if not allowOutOfRange or index > 0 and index <= nin then 
               k*u else outOfRangeValue;
   annotation (Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
-            extent={{-80,50},{-40,-50}}, 
-            lineColor={0,0,127}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-80,50},{-40,-50}},
+            lineColor={0,0,127},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Polygon(
             points={{-84.4104,1.9079},{-84.4104,-2.09208},{-80.4104,-0.09208},{
-                -84.4104,1.9079}}, 
-            lineColor={0,0,127}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-62,2},{-50.1395,12.907},{-39.1395,12.907}}, color={0,0,127}), 
-          Line(points={{-63,4},{-49,40},{-39,40}}, color={0,0,127}), 
-          Line(points={{-102,0},{-65.0373,-0.01802}}, color={0,0,127}), 
+                -84.4104,1.9079}},
+            lineColor={0,0,127},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-62,2},{-50.1395,12.907},{-39.1395,12.907}}, color={0,0,127}),
+          Line(points={{-63,4},{-49,40},{-39,40}}, color={0,0,127}),
+          Line(points={{-102,0},{-65.0373,-0.01802}}, color={0,0,127}),
           Ellipse(
-            extent={{-70.0437,4.5925},{-60.0437,-4.90745}}, 
-            lineColor={0,0,127}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-63,-5},{-50,-40},{-39,-40}}, color={0,0,127}), 
+            extent={{-70.0437,4.5925},{-60.0437,-4.90745}},
+            lineColor={0,0,127},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-63,-5},{-50,-40},{-39,-40}}, color={0,0,127}),
           Line(points={{-62,-2},{-50.0698,-12.907},{-39.0698,-12.907}}, color={
-                0,0,127}), 
+                0,0,127}),
           Polygon(
-            points={{-38.8808,-11},{-38.8808,-15},{-34.8808,-13},{-38.8808,-11}}, 
-            lineColor={0,0,127}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            points={{-38.8808,-11},{-38.8808,-15},{-34.8808,-13},{-38.8808,-11}},
+            lineColor={0,0,127},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-39,42},{-39,38},{-35,40},{-39,42}}, 
-            lineColor={0,0,127}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            points={{-39,42},{-39,38},{-35,40},{-39,42}},
+            lineColor={0,0,127},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-38.8728,-38.0295},{-38.8728,-42.0295},{-34.8728,-40.0295}, 
-                {-38.8728,-38.0295}}, 
-            lineColor={0,0,127}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            points={{-38.8728,-38.0295},{-38.8728,-42.0295},{-34.8728,-40.0295},
+                {-38.8728,-38.0295}},
+            lineColor={0,0,127},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-38.9983,14.8801},{-38.9983,10.8801},{-34.9983,12.8801},{-38.9983, 
-                14.8801}}, 
-            lineColor={0,0,127}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            points={{-38.9983,14.8801},{-38.9983,10.8801},{-34.9983,12.8801},{-38.9983,
+                14.8801}},
+            lineColor={0,0,127},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-30,50},{30,-50}}, 
-            fillColor={235,235,235}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{100,0},{0,0}}, color={0,0,127}), 
-          Line(points={{0,2},{0,-104}}, color={255,128,0}), 
-          Line(points={{-35,40},{-20,40}}, color={0,0,127}), 
-          Line(points={{-35,13},{-20,13}}, color={0,0,127}), 
-          Line(points={{-35,-13},{-20,-13}}, color={0,0,127}), 
-          Line(points={{-35,-40},{-20,-40}}, color={0,0,127}), 
-          Polygon(points={{0,0},{-20,13},{-20,13},{0,0},{0,0}}, lineColor={0,0, 
-                127}), 
+            extent={{-30,50},{30,-50}},
+            fillColor={235,235,235},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}),
+          Line(points={{100,0},{0,0}}, color={0,0,127}),
+          Line(points={{0,2},{0,-104}}, color={255,128,0}),
+          Line(points={{-35,40},{-20,40}}, color={0,0,127}),
+          Line(points={{-35,13},{-20,13}}, color={0,0,127}),
+          Line(points={{-35,-13},{-20,-13}}, color={0,0,127}),
+          Line(points={{-35,-40},{-20,-40}}, color={0,0,127}),
+          Polygon(points={{0,0},{-20,13},{-20,13},{0,0},{0,0}}, lineColor={0,0,
+                127}),
           Ellipse(
-            extent={{-6,6},{6,-6}}, 
-            lineColor={255,128,0}, 
-            fillColor={255,128,0}, 
-            fillPattern=FillPattern.Solid)}), 
+            extent={{-6,6},{6,-6}},
+            lineColor={255,128,0},
+            fillColor={255,128,0},
+            fillPattern=FillPattern.Solid)}),
                             Documentation(info="<html>
 <p>This block extracts a scalar output signal out the
 vector of input signals dependent on the Integer
@@ -314,57 +314,114 @@ end Extractor;
 
   block Multiplex "Multiplexer block for arbitrary number of input connectors"
     extends Modelica.Blocks.Icons.Block;
-    parameter Integer n(min=0)=0 "Dimension of input signal connector" annotation(Dialog(connectorSizing=true), HideResult=true);
-    Modelica.Blocks.Interfaces.RealVectorInput u[n] 
-      "Connector of Real input signals" annotation(Placement(transformation(extent={{-120,70},{-80,-70}})));
-    Modelica.Blocks.Interfaces.RealOutput y[n+0] 
-      "Connector of Real output signals" annotation(Placement(transformation(extent={{100,-10},{120,10}})));
+    parameter Integer n(min = 0) = 0 "Dimension of input signal connector" annotation(Dialog(connectorSizing = true), HideResult = true);
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealVectorInput u[n] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals" annotation(Placement(transformation(extent = {{-120, 70}, {-80, -70}})));
+    Modelica.Blocks.Interfaces.RealOutput y[n + 0] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.IntegerVectorInput u_Integer[n] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals" annotation(Placement(transformation(extent = {{-120, 70}, {-80, -70}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y_Integer[n + 0] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.BooleanVectorInput u_Boolean[n] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals" annotation(Placement(transformation(extent = {{-120, 70}, {-80, -70}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y_Boolean[n + 0] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
 
   equation
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
       y = u;
-    annotation (
-      defaultComponentName="mux", 
-      Documentation(info="<html>
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      y_Integer = u_Integer;
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      y_Boolean = u_Boolean;
+    end if;
+    annotation(
+      defaultComponentName = "mux",
+      Documentation(info = "<html>
 <p>
 The output connector is the <strong>concatenation</strong> of the input connectors.
 </p>
-</html>"), 
+</html>"          ),
       Icon(
-        coordinateSystem(
-          preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}), 
-        graphics={
-          Line(points={{8,0},{102,0}}, color={0,0,127}), 
-          Line(points={{-100,70},{-60,70},{-4,4}}, color={0,0,127}), 
-          Line(points={{-100,0},{-12,0}}, color={0,0,127}), 
-          Line(points={{-100,-70},{-60,-70},{-4,-4}}, color={0,0,127}), 
-          Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-100,0},{-6,0}}, color={0,0,127}), 
-          Text(
-            extent={{-140,-90},{150,-50}}, 
-            textString="n=%n")}));
+      coordinateSystem(
+      preserveAspectRatio = true,
+      extent = {{-100, -100}, {100, 100}}),
+      graphics = {
+      Line(points = {{8, 0}, {102, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, 70}, {-60, 70}, {-4, 4}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, 0}, {-12, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, -70}, {-60, -70}, {-4, -4}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {0, 0, 127},
+      fillPattern = FillPattern.Solid,
+      lineColor = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{8, 0}, {102, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, 70}, {-60, 70}, {-4, 4}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, 0}, {-12, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, -70}, {-60, -70}, {-4, -4}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {255, 128, 0},
+      fillPattern = FillPattern.Solid,
+      lineColor = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{8, 0}, {102, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{-100, 70}, {-60, 70}, {-4, 4}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{-100, 0}, {-12, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{-100, -70}, {-60, -70}, {-4, -4}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {255, 0, 255},
+      fillPattern = FillPattern.Solid,
+      lineColor = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Text(
+      extent = {{-140, -90}, {150, -50}},
+      textString = "n=%n")}));
   end Multiplex;
 
   block Multiplex2 "Multiplexer block for two input connectors"
     extends Modelica.Blocks.Icons.Block;
     parameter Integer n1=1 "Dimension of input signal connector 1";
     parameter Integer n2=1 "Dimension of input signal connector 2";
-    Modelica.Blocks.Interfaces.RealInput u1[n1] 
-      "Connector of Real input signals 1" annotation (Placement(transformation(
-            extent={{-140,40},{-100,80}})));
-    Modelica.Blocks.Interfaces.RealInput u2[n2] 
-      "Connector of Real input signals 2" annotation (Placement(transformation(
-            extent={{-140,-80},{-100,-40}})));
-    Modelica.Blocks.Interfaces.RealOutput y[n1 + n2] 
-      "Connector of Real output signals" annotation (Placement(transformation(
-            extent={{100,-10},{120,10}})));
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u1[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 1" annotation(Placement(transformation(extent = {{-140, 40}, {-100, 80}})));
+    Modelica.Blocks.Interfaces.RealInput u2[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 2" annotation(Placement(transformation(extent = {{-140, -80}, {-100, -40}})));
+    Modelica.Blocks.Interfaces.RealOutput y[n1 + n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u1_Integer[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 1" annotation(Placement(transformation(extent = {{-140, 40}, {-100, 80}})));
+    Modelica.Blocks.Interfaces.IntegerInput u2_Integer[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 2" annotation(Placement(transformation(extent = {{-140, -80}, {-100, -40}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y_Integer[n1 + n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u1_Boolean[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 1" annotation(Placement(transformation(extent = {{-140, 40}, {-100, 80}})));
+    Modelica.Blocks.Interfaces.BooleanInput u2_Boolean[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 2" annotation(Placement(transformation(extent = {{-140, -80}, {-100, -40}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y_Boolean[n1 + n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
 
   equation
-    [y] = [u1; u2];
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      [y] = [u1; u2];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      [y_Integer] = [u1_Integer; u2_Integer];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      [y_Boolean] = [u1_Boolean; u2_Boolean];
+    end if;
     annotation (
       Documentation(info="<html>
 <p>
@@ -372,17 +429,33 @@ The output connector is the <strong>concatenation</strong> of the two input conn
 Note, that the dimensions of the input connector signals have to be
 explicitly defined via parameters n1 and n2.
 </p>
-</html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+</html>"              ), Icon(coordinateSystem(
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{8,0},{102,0}}, color={0,0,127}), 
+          Line(points={{8,0},{102,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-100,60},{-60,60},{0,0}}, color={0,0,127}), 
-          Line(points={{-100,-60},{-60,-60},{0,0}}, color={0,0,127})}));
+            extent={{-15,15},{15,-15}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,60},{-60,60},{0,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,-60},{-60,-60},{0,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{8,0},{102,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 128, 0},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,60},{-60,60},{0,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,-60},{-60,-60},{0,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+         Line(points={{8,0},{102,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 0, 255},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,60},{-60,60},{0,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,-60},{-60,-60},{0,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean)}));
   end Multiplex2;
 
   block Multiplex3 "Multiplexer block for three input connectors"
@@ -390,39 +463,79 @@ explicitly defined via parameters n1 and n2.
     parameter Integer n1=1 "Dimension of input signal connector 1";
     parameter Integer n2=1 "Dimension of input signal connector 2";
     parameter Integer n3=1 "Dimension of input signal connector 3";
-    Modelica.Blocks.Interfaces.RealInput u1[n1] 
-      "Connector of Real input signals 1" annotation (Placement(transformation(
-            extent={{-140,50},{-100,90}})));
-    Modelica.Blocks.Interfaces.RealInput u2[n2] 
-      "Connector of Real input signals 2" annotation (Placement(transformation(
-            extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.RealInput u3[n3] 
-      "Connector of Real input signals 3" annotation (Placement(transformation(
-            extent={{-140,-90},{-100,-50}})));
-    Modelica.Blocks.Interfaces.RealOutput y[n1 + n2 + n3] 
-      "Connector of Real output signals" annotation (Placement(transformation(
-            extent={{100,-10},{120,10}})));
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u1[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 1" annotation(Placement(transformation(extent = {{-140, 50}, {-100, 90}})));
+    Modelica.Blocks.Interfaces.RealInput u2[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 2" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.RealInput u3[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 3" annotation(Placement(transformation(extent = {{-140, -90}, {-100, -50}})));
+    Modelica.Blocks.Interfaces.RealOutput y[n1 + n2 + n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u1_Integer[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 1" annotation(Placement(transformation(extent = {{-140, 50}, {-100, 90}})));
+    Modelica.Blocks.Interfaces.IntegerInput u2_Integer[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 2" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.IntegerInput u3_Integer[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 3" annotation(Placement(transformation(extent = {{-140, -90}, {-100, -50}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y_Integer[n1 + n2 + n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u1_Boolean[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 1" annotation(Placement(transformation(extent = {{-140, 50}, {-100, 90}})));
+    Modelica.Blocks.Interfaces.BooleanInput u2_Boolean[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 2" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.BooleanInput u3_Boolean[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 3" annotation(Placement(transformation(extent = {{-140, -90}, {-100, -50}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y_Boolean[n1 + n2 + n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
 
   equation
-    [y] = [u1; u2; u3];
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      [y] = [u1; u2; u3];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      [y_Integer] = [u1_Integer; u2_Integer; u3_Integer];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      [y_Boolean] = [u1_Boolean; u2_Boolean; u3_Boolean];
+    end if;
     annotation (
       Documentation(info="<html>
 <p>
 The output connector is the <strong>concatenation</strong> of the three input connectors.
 Note, that the dimensions of the input connector signals have to be
 explicitly defined via parameters n1, n2 and n3.</p>
-</html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+</html>"              ), Icon(coordinateSystem(
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{8,0},{102,0}}, color={0,0,127}), 
-          Line(points={{-100,70},{-60,70},{0,0}}, color={0,0,127}), 
-          Line(points={{-100,0},{-12,0}}, color={0,0,127}), 
-          Line(points={{-100,-70},{-60,-70},{0,0}}, color={0,0,127}), 
+          Line(points={{8,0},{102,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,70},{-60,70},{0,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,0},{-12,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,-70},{-60,-70},{0,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127})}));
+            extent={{-15,15},{15,-15}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{8,0},{102,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,70},{-60,70},{0,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,0},{-12,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,-70},{-60,-70},{0,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 128, 0},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{8,0},{102,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,70},{-60,70},{0,0}}, color={255, 0, 255}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,0},{-12,0}}, color={255, 0, 255}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,-70},{-60,-70},{0,0}}, color={255, 0, 255}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 0, 255},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 0, 255}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean)}));
   end Multiplex3;
 
   block Multiplex4 "Multiplexer block for four input connectors"
@@ -431,24 +544,49 @@ explicitly defined via parameters n1, n2 and n3.</p>
     parameter Integer n2=1 "Dimension of input signal connector 2";
     parameter Integer n3=1 "Dimension of input signal connector 3";
     parameter Integer n4=1 "Dimension of input signal connector 4";
-    Modelica.Blocks.Interfaces.RealInput u1[n1] 
-      "Connector of Real input signals 1" annotation (Placement(transformation(
-            extent={{-140,70},{-100,110}})));
-    Modelica.Blocks.Interfaces.RealInput u2[n2] 
-      "Connector of Real input signals 2" annotation (Placement(transformation(
-            extent={{-140,10},{-100,50}})));
-    Modelica.Blocks.Interfaces.RealInput u3[n3] 
-      "Connector of Real input signals 3" annotation (Placement(transformation(
-            extent={{-140,-50},{-100,-10}})));
-    Modelica.Blocks.Interfaces.RealInput u4[n4] 
-      "Connector of Real input signals 4" annotation (Placement(transformation(
-            extent={{-140,-110},{-100,-70}})));
-    Modelica.Blocks.Interfaces.RealOutput y[n1 + n2 + n3 + n4] 
-      "Connector of Real output signals" annotation (Placement(transformation(
-            extent={{100,-10},{120,10}})));
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u1[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 1" annotation(Placement(transformation(extent = {{-140, 70}, {-100, 110}})));
+    Modelica.Blocks.Interfaces.RealInput u2[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 2" annotation(Placement(transformation(extent = {{-140, 10}, {-100, 50}})));
+    Modelica.Blocks.Interfaces.RealInput u3[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 3" annotation(Placement(transformation(extent = {{-140, -50}, {-100, -10}})));
+    Modelica.Blocks.Interfaces.RealInput u4[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 4" annotation(Placement(transformation(extent = {{-140, -110}, {-100, -70}})));
+    Modelica.Blocks.Interfaces.RealOutput y[n1 + n2 + n3 + n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u1_Integer[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 1" annotation(Placement(transformation(extent = {{-140, 70}, {-100, 110}})));
+    Modelica.Blocks.Interfaces.IntegerInput u2_Integer[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 2" annotation(Placement(transformation(extent = {{-140, 10}, {-100, 50}})));
+    Modelica.Blocks.Interfaces.IntegerInput u3_Integer[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 3" annotation(Placement(transformation(extent = {{-140, -50}, {-100, -10}})));
+    Modelica.Blocks.Interfaces.IntegerInput u4_Integer[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 4" annotation(Placement(transformation(extent = {{-140, -110}, {-100, -70}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y_Integer[n1 + n2 + n3 + n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u1_Boolean[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 1" annotation(Placement(transformation(extent = {{-140, 70}, {-100, 110}})));
+    Modelica.Blocks.Interfaces.BooleanInput u2_Boolean[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 2" annotation(Placement(transformation(extent = {{-140, 10}, {-100, 50}})));
+    Modelica.Blocks.Interfaces.BooleanInput u3_Boolean[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 3" annotation(Placement(transformation(extent = {{-140, -50}, {-100, -10}})));
+    Modelica.Blocks.Interfaces.BooleanInput u4_Boolean[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 4" annotation(Placement(transformation(extent = {{-140, -110}, {-100, -70}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y_Boolean[n1 + n2 + n3 + n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
 
   equation
-    [y] = [u1; u2; u3; u4];
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      [y] = [u1; u2; u3; u4];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      [y_Integer] = [u1_Integer; u2_Integer; u3_Integer; u4_Integer];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      [y_Boolean] = [u1_Boolean; u2_Boolean; u3_Boolean; u4_Boolean];
+    end if;
     annotation (
       Documentation(info="<html>
 <p>
@@ -456,19 +594,39 @@ The output connector is the <strong>concatenation</strong> of the four input con
 Note, that the dimensions of the input connector signals have to be
 explicitly defined via parameters n1, n2, n3 and n4.
 </p>
-</html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+</html>"              ), Icon(coordinateSystem(
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{8,0},{102,0}}, color={0,0,127}), 
-          Line(points={{-100,90},{-60,90},{-3,4}}, color={0,0,127}), 
-          Line(points={{-100,30},{-60,30},{0,0}}, color={0,0,127}), 
-          Line(points={{-100,-30},{-60,-30},{0,0}}, color={0,0,127}), 
-          Line(points={{-100,-90},{-60,-90},{-5,-6}}, color={0,0,127}), 
+          Line(points={{8,0},{102,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,90},{-60,90},{-3,4}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,30},{-60,30},{0,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,-30},{-60,-30},{0,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,-90},{-60,-90},{-5,-6}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127})}));
+            extent={{-15,15},{15,-15}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{8,0},{102,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,90},{-60,90},{-3,4}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,30},{-60,30},{0,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,-30},{-60,-30},{0,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,-90},{-60,-90},{-5,-6}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 128, 0},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{8,0},{102,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,90},{-60,90},{-3,4}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,30},{-60,30},{0,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,-30},{-60,-30},{0,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,-90},{-60,-90},{-5,-6}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 0, 255},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean)}));
   end Multiplex4;
 
   block Multiplex5 "Multiplexer block for five input connectors"
@@ -478,27 +636,55 @@ explicitly defined via parameters n1, n2, n3 and n4.
     parameter Integer n3=1 "Dimension of input signal connector 3";
     parameter Integer n4=1 "Dimension of input signal connector 4";
     parameter Integer n5=1 "Dimension of input signal connector 5";
-    Modelica.Blocks.Interfaces.RealInput u1[n1] 
-      "Connector of Real input signals 1" annotation (Placement(transformation(
-            extent={{-140,80},{-100,120}})));
-    Modelica.Blocks.Interfaces.RealInput u2[n2] 
-      "Connector of Real input signals 2" annotation (Placement(transformation(
-            extent={{-140,30},{-100,70}})));
-    Modelica.Blocks.Interfaces.RealInput u3[n3] 
-      "Connector of Real input signals 3" annotation (Placement(transformation(
-            extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.RealInput u4[n4] 
-      "Connector of Real input signals 4" annotation (Placement(transformation(
-            extent={{-140,-70},{-100,-30}})));
-    Modelica.Blocks.Interfaces.RealInput u5[n5] 
-      "Connector of Real input signals 5" annotation (Placement(transformation(
-            extent={{-140,-120},{-100,-80}})));
-    Modelica.Blocks.Interfaces.RealOutput y[n1 + n2 + n3 + n4 + n5] 
-      "Connector of Real output signals" annotation (Placement(transformation(
-            extent={{100,-10},{120,10}})));
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u1[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 1" annotation(Placement(transformation(extent = {{-140, 80}, {-100, 120}})));
+    Modelica.Blocks.Interfaces.RealInput u2[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 2" annotation(Placement(transformation(extent = {{-140, 30}, {-100, 70}})));
+    Modelica.Blocks.Interfaces.RealInput u3[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 3" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.RealInput u4[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 4" annotation(Placement(transformation(extent = {{-140, -70}, {-100, -30}})));
+    Modelica.Blocks.Interfaces.RealInput u5[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 5" annotation(Placement(transformation(extent = {{-140, -120}, {-100, -80}})));
+    Modelica.Blocks.Interfaces.RealOutput y[n1 + n2 + n3 + n4 + n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u1_Integer[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 1" annotation(Placement(transformation(extent = {{-140, 80}, {-100, 120}})));
+    Modelica.Blocks.Interfaces.IntegerInput u2_Integer[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "整数输入信号连接器2" annotation(Placement(transformation(extent = {{-140, 30}, {-100, 70}})));
+    Modelica.Blocks.Interfaces.IntegerInput u3_Integer[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "整数输入信号连接器3" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.IntegerInput u4_Integer[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "整数输入信号连接器4" annotation(Placement(transformation(extent = {{-140, -70}, {-100, -30}})));
+    Modelica.Blocks.Interfaces.IntegerInput u5_Integer[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "整数输入信号连接器5" annotation(Placement(transformation(extent = {{-140, -120}, {-100, -80}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y_Integer[n1 + n2 + n3 + n4 + n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u1_Boolean[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 1" annotation(Placement(transformation(extent = {{-140, 80}, {-100, 120}})));
+    Modelica.Blocks.Interfaces.BooleanInput u2_Boolean[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 2" annotation(Placement(transformation(extent = {{-140, 30}, {-100, 70}})));
+    Modelica.Blocks.Interfaces.BooleanInput u3_Boolean[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 3" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.BooleanInput u4_Boolean[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 4" annotation(Placement(transformation(extent = {{-140, -70}, {-100, -30}})));
+    Modelica.Blocks.Interfaces.BooleanInput u5_Boolean[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 5" annotation(Placement(transformation(extent = {{-140, -120}, {-100, -80}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y_Boolean[n1 + n2 + n3 + n4 + n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
 
   equation
-    [y] = [u1; u2; u3; u4; u5];
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      [y] = [u1; u2; u3; u4; u5];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      [y_Integer] = [u1_Integer; u2_Integer; u3_Integer; u4_Integer; u5_Integer];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      [y_Boolean] = [u1_Boolean; u2_Boolean; u3_Boolean; u4_Boolean; u5_Boolean];
+    end if;
     annotation (
       Documentation(info="<html>
 <p>
@@ -506,20 +692,42 @@ The output connector is the <strong>concatenation</strong> of the five input con
 Note, that the dimensions of the input connector signals have to be
 explicitly defined via parameters n1, n2, n3, n4 and n5.
 </p>
-</html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+</html>"              ), Icon(coordinateSystem(
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{8,0},{102,0}}, color={0,0,127}), 
-          Line(points={{-100,100},{-60,100},{0,0}}, color={0,0,127}), 
-          Line(points={{-100,50},{-60,50},{-4,0}}, color={0,0,127}), 
-          Line(points={{-100,0},{-7,0}}, color={0,0,127}), 
-          Line(points={{-100,-50},{-60,-50},{-4,0}}, color={0,0,127}), 
-          Line(points={{-100,-100},{-60,-100},{0,0}}, color={0,0,127}), 
+          Line(points={{8,0},{102,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,100},{-60,100},{0,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,50},{-60,50},{-4,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,0},{-7,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,-50},{-60,-50},{-4,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,-100},{-60,-100},{0,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127})}));
+            extent={{-15,15},{15,-15}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{8,0},{102,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,100},{-60,100},{0,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,50},{-60,50},{-4,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,0},{-7,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,-50},{-60,-50},{-4,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,-100},{-60,-100},{0,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 128, 0},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{8,0},{102,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,100},{-60,100},{0,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,50},{-60,50},{-4,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,0},{-7,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,-50},{-60,-50},{-4,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,-100},{-60,-100},{0,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 0, 255},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean)}));
   end Multiplex5;
 
   block Multiplex6 "Multiplexer block for six input connectors"
@@ -530,31 +738,61 @@ explicitly defined via parameters n1, n2, n3, n4 and n5.
     parameter Integer n4=1 "Dimension of input signal connector 4";
     parameter Integer n5=1 "Dimension of input signal connector 5";
     parameter Integer n6=1 "Dimension of input signal connector 6";
-    Modelica.Blocks.Interfaces.RealInput u1[n1] 
-      "Connector of Real input signals 1" annotation (Placement(transformation(
-            extent={{-124,73},{-100,97}})));
-    Modelica.Blocks.Interfaces.RealInput u2[n2] 
-      "Connector of Real input signals 2" annotation (Placement(transformation(
-            extent={{-124,39},{-100,63}})));
-    Modelica.Blocks.Interfaces.RealInput u3[n3] 
-      "Connector of Real input signals 3" annotation (Placement(transformation(
-            extent={{-124,5},{-100,29}})));
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
 
-    Modelica.Blocks.Interfaces.RealInput u4[n4] 
-      "Connector of Real input signals 4" annotation (Placement(transformation(
-            extent={{-124,-29},{-100,-5}})));
-    Modelica.Blocks.Interfaces.RealInput u5[n5] 
-      "Connector of Real input signals 5" annotation (Placement(transformation(
-            extent={{-124,-63},{-100,-39}})));
-    Modelica.Blocks.Interfaces.RealInput u6[n6] 
-      "Connector of Real input signals 6" annotation (Placement(transformation(
-            extent={{-124,-97},{-100,-73}})));
-    Modelica.Blocks.Interfaces.RealOutput y[n1 + n2 + n3 + n4 + n5 + n6] 
-      "Connector of Real output signals" annotation (Placement(transformation(
-            extent={{100,-10},{120,10}})));
+    Modelica.Blocks.Interfaces.RealInput u1[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 1" annotation(Placement(transformation(extent = {{-124, 73}, {-100, 97}})));
+    Modelica.Blocks.Interfaces.RealInput u2[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 2" annotation(Placement(transformation(extent = {{-124, 39}, {-100, 63}})));
+    Modelica.Blocks.Interfaces.RealInput u3[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 3" annotation(Placement(transformation(extent = {{-124, 5}, {-100, 29}})));
+    Modelica.Blocks.Interfaces.RealInput u4[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 4" annotation(Placement(transformation(extent = {{-124, -29}, {-100, -5}})));
+    Modelica.Blocks.Interfaces.RealInput u5[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 5" annotation(Placement(transformation(extent = {{-124, -63}, {-100, -39}})));
+    Modelica.Blocks.Interfaces.RealInput u6[n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals 6" annotation(Placement(transformation(extent = {{-124, -97}, {-100, -73}})));
+    Modelica.Blocks.Interfaces.RealOutput y[n1 + n2 + n3 + n4 + n5 + n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u1_Integer[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 1" annotation(Placement(transformation(extent = {{-124, 73}, {-100, 97}})));
+    Modelica.Blocks.Interfaces.IntegerInput u2_Integer[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 2" annotation(Placement(transformation(extent = {{-124, 39}, {-100, 63}})));
+    Modelica.Blocks.Interfaces.IntegerInput u3_Integer[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 3" annotation(Placement(transformation(extent = {{-124, 5}, {-100, 29}})));
+    Modelica.Blocks.Interfaces.IntegerInput u4_Integer[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 4" annotation(Placement(transformation(extent = {{-124, -29}, {-100, -5}})));
+    Modelica.Blocks.Interfaces.IntegerInput u5_Integer[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 5" annotation(Placement(transformation(extent = {{-124, -63}, {-100, -39}})));
+    Modelica.Blocks.Interfaces.IntegerInput u6_Integer[n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals 6" annotation(Placement(transformation(extent = {{-124, -97}, {-100, -73}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y_Integer[n1 + n2 + n3 + n4 + n5 + n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u1_Boolean[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 1" annotation(Placement(transformation(extent = {{-124, 73}, {-100, 97}})));
+    Modelica.Blocks.Interfaces.BooleanInput u2_Boolean[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 2" annotation(Placement(transformation(extent = {{-124, 39}, {-100, 63}})));
+    Modelica.Blocks.Interfaces.BooleanInput u3_Boolean[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 3" annotation(Placement(transformation(extent = {{-124, 5}, {-100, 29}})));
+    Modelica.Blocks.Interfaces.BooleanInput u4_Boolean[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 4" annotation(Placement(transformation(extent = {{-124, -29}, {-100, -5}})));
+    Modelica.Blocks.Interfaces.BooleanInput u5_Boolean[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 5" annotation(Placement(transformation(extent = {{-124, -63}, {-100, -39}})));
+    Modelica.Blocks.Interfaces.BooleanInput u6_Boolean[n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals 6" annotation(Placement(transformation(extent = {{-124, -97}, {-100, -73}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y_Boolean[n1 + n2 + n3 + n4 + n5 + n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
 
   equation
-    [y] = [u1; u2; u3; u4; u5; u6];
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      [y] = [u1; u2; u3; u4; u5; u6];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      [y_Integer] = [u1_Integer; u2_Integer; u3_Integer; u4_Integer; u5_Integer; u6_Integer];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      [y_Boolean] = [u1_Boolean; u2_Boolean; u3_Boolean; u4_Boolean; u5_Boolean; u6_Boolean];
+    end if;
     annotation (
       Documentation(info="<html>
 <p>
@@ -562,77 +800,157 @@ The output connector is the <strong>concatenation</strong> of the six input conn
 Note, that the dimensions of the input connector signals have to be
 explicitly defined via parameters n1, n2, n3, n4, n5 and n6.
 </p>
-</html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+</html>"              ), Icon(coordinateSystem(
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{8,0},{102,0}}, color={0,0,127}), 
+          Line(points={{8,0},{102,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-100,85},{-60,85},{-3,10}}, color={0,0,127}), 
-          Line(points={{-100,51},{-60,51},{-7,6}}, color={0,0,127}), 
-          Line(points={{-100,-17},{-60,-17},{-10,-2}}, color={0,0,127}), 
-          Line(points={{-100,17},{-60,17},{-10,2}}, color={0,0,127}), 
-          Line(points={{-100,-51},{-60,-51},{-7,-6}}, color={0,0,127}), 
-          Line(points={{-100,-85},{-60,-85},{-3,-10}}, color={0,0,127})}));
+            extent={{-15,15},{15,-15}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,85},{-60,85},{-3,10}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,51},{-60,51},{-7,6}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,-17},{-60,-17},{-10,-2}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,17},{-60,17},{-10,2}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,-51},{-60,-51},{-7,-6}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,-85},{-60,-85},{-3,-10}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{8,0},{102,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 128, 0},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,85},{-60,85},{-3,10}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,51},{-60,51},{-7,6}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,-17},{-60,-17},{-10,-2}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,17},{-60,17},{-10,2}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,-51},{-60,-51},{-7,-6}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,-85},{-60,-85},{-3,-10}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{8,0},{102,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 0, 255},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,85},{-60,85},{-3,10}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,51},{-60,51},{-7,6}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,-17},{-60,-17},{-10,-2}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,17},{-60,17},{-10,2}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,-51},{-60,-51},{-7,-6}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,-85},{-60,-85},{-3,-10}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean)}));
   end Multiplex6;
 
   block DeMultiplex "DeMultiplexer block for arbitrary number of output connectors"
     extends Modelica.Blocks.Icons.Block;
-    parameter Integer n(min=0)=0 "Dimension of output signal connector" annotation(Dialog(connectorSizing=true), HideResult=true);
-    Modelica.Blocks.Interfaces.RealInput u[n+0] 
-      "Connector of Real input signals" annotation(Placement(transformation(extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.RealVectorOutput y[n] 
-      "Connector of Real output signals" 
-                                        annotation(Placement(transformation(extent={{80,70},{120,-70}})));
+    parameter Integer n(min = 0) = 0 "Dimension of output signal connector" annotation(Dialog(connectorSizing = true), HideResult = true);
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u[n + 0] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.RealVectorOutput y[n] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals" annotation(Placement(transformation(extent = {{80, 70}, {120, -70}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u_Integer[n + 0] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.IntegerVectorOutput y_Integer[n] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals" annotation(Placement(transformation(extent = {{80, 70}, {120, -70}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u_Boolean[n + 0] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.BooleanVectorOutput y_Boolean[n] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals" annotation(Placement(transformation(extent = {{80, 70}, {120, -70}})));
 
   equation
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
       y = u;
-    annotation (
-      defaultComponentName="demux", 
-      Documentation(info="<html>
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      y_Integer = u_Integer;
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      y_Boolean = u_Boolean;
+    end if;
+    annotation(
+      defaultComponentName = "demux",
+      Documentation(info = "<html>
 <p>
 The input connector is <strong>split</strong> up into output connectors.
 </p>
-</html>"), 
+</html>"                ),
       Icon(
-        coordinateSystem(
-          preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}), 
-        graphics={
-          Line(points={{8,0},{102,0}}, color={0,0,127}), 
-          Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-100,0},{-6,0}}, color={0,0,127}), 
-          Line(points={{100,70},{60,70},{4,4}}, color={0,0,127}), 
-          Line(points={{0,0},{100,0}}, color={0,0,127}), 
-          Line(points={{100,-70},{60,-70},{4,-4}}, color={0,0,127}), 
-          Text(
-            extent={{-140,-90},{150,-50}}, 
-            textString="n=%n")}));
+      coordinateSystem(
+      preserveAspectRatio = true,
+      extent = {{-100, -100}, {100, 100}}),
+      graphics = {
+      Line(points = {{8, 0}, {102, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {0, 0, 127},
+      fillPattern = FillPattern.Solid,
+      lineColor = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, 70}, {60, 70}, {4, 4}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{0, 0}, {100, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, -70}, {60, -70}, {4, -4}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{8, 0}, {102, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {255, 128, 0},
+      fillPattern = FillPattern.Solid,
+      lineColor = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, 70}, {60, 70}, {4, 4}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{0, 0}, {100, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, -70}, {60, -70}, {4, -4}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{8, 0}, {102, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {255, 0, 255},
+      fillPattern = FillPattern.Solid,
+      lineColor = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, 70}, {60, 70}, {4, 4}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{0, 0}, {100, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, -70}, {60, -70}, {4, -4}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Text(
+      extent = {{-140, -90}, {150, -50}},
+      textString = "n=%n")}));
   end DeMultiplex;
 
   block DeMultiplex2 "DeMultiplexer block for two output connectors"
     extends Modelica.Blocks.Icons.Block;
     parameter Integer n1=1 "Dimension of output signal connector 1";
     parameter Integer n2=1 "Dimension of output signal connector 2";
-    Modelica.Blocks.Interfaces.RealInput u[n1 + n2] 
-      "Connector of Real input signals" annotation (Placement(transformation(
-            extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.RealOutput y1[n1] 
-      "Connector of Real output signals 1" annotation (Placement(transformation(
-            extent={{100,50},{120,70}})));
-    Modelica.Blocks.Interfaces.RealOutput y2[n2] 
-      "Connector of Real output signals 2" annotation (Placement(transformation(
-            extent={{100,-70},{120,-50}})));
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u[n1 + n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.RealOutput y1[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 1" annotation(Placement(transformation(extent = {{100, 50}, {120, 70}})));
+    Modelica.Blocks.Interfaces.RealOutput y2[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 2" annotation(Placement(transformation(extent = {{100, -70}, {120, -50}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u_Integer[n1 + n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y1_Integer[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 1" annotation(Placement(transformation(extent = {{100, 50}, {120, 70}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y2_Integer[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 2" annotation(Placement(transformation(extent = {{100, -70}, {120, -50}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u_Boolean[n1 + n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y1_Boolean[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 1" annotation(Placement(transformation(extent = {{100, 50}, {120, 70}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y2_Boolean[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 2" annotation(Placement(transformation(extent = {{100, -70}, {120, -50}})));
 
   equation
-    [u] = [y1; y2];
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      [u] = [y1; y2];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      [u_Integer] = [y1_Integer; y2_Integer];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      [u_Boolean] = [y1_Boolean; y2_Boolean];
+    end if;
     annotation (
       Documentation(info="<html>
 <p>
@@ -640,156 +958,307 @@ The input connector is <strong>split</strong> up into two output connectors.
 Note, that the dimensions of the output connector signals have to be
 explicitly defined via parameters n1 and n2.
 </p>
-</html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}), 
+</html>"                ), Icon(coordinateSystem(
+          preserveAspectRatio=true,
+          extent={{-100,-100},{100,100}}),
         graphics={
-          Line(points={{100,60},{60,60},{0,0}}, color={0,0,127}), 
+          Line(points={{100,60},{60,60},{0,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{100,-60},{60,-60},{0,0}}, color={0,0,127}), 
-          Line(points={{-100,0},{-6,0}}, color={0,0,127})}));
+            extent={{-15,15},{15,-15}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{100,-60},{60,-60},{0,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,0},{-6,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{100,60},{60,60},{0,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 128, 0},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{100,-60},{60,-60},{0,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,0},{-6,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{100,60},{60,60},{0,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 0, 255},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{100,-60},{60,-60},{0,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,0},{-6,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean)}));
   end DeMultiplex2;
 
   block DeMultiplex3 "DeMultiplexer block for three output connectors"
     extends Modelica.Blocks.Icons.Block;
-    parameter Integer n1=1 "Dimension of output signal connector 1";
-    parameter Integer n2=1 "Dimension of output signal connector 2";
-    parameter Integer n3=1 "Dimension of output signal connector 3";
-    Modelica.Blocks.Interfaces.RealInput u[n1 + n2 + n3] 
-      "Connector of Real input signals" annotation (Placement(transformation(
-            extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.RealOutput y1[n1] 
-      "Connector of Real output signals 1" annotation (Placement(transformation(
-            extent={{100,60},{120,80}})));
-    Modelica.Blocks.Interfaces.RealOutput y2[n2] 
-      "Connector of Real output signals 2" annotation (Placement(transformation(
-            extent={{100,-10},{120,10}})));
-    Modelica.Blocks.Interfaces.RealOutput y3[n3] 
-      "Connector of Real output signals 3" annotation (Placement(transformation(
-            extent={{100,-80},{120,-60}})));
+    parameter Integer n1 = 1 "Dimension of output signal connector 1";
+    parameter Integer n2 = 1 "Dimension of output signal connector 2";
+    parameter Integer n3 = 1 "Dimension of output signal connector 3";
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u[n1 + n2 + n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.RealOutput y1[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 1" annotation(Placement(transformation(extent = {{100, 60}, {120, 80}})));
+    Modelica.Blocks.Interfaces.RealOutput y2[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 2" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+    Modelica.Blocks.Interfaces.RealOutput y3[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 3" annotation(Placement(transformation(extent = {{100, -80}, {120, -60}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u_Integer[n1 + n2 + n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y1_Integer[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 1" annotation(Placement(transformation(extent = {{100, 60}, {120, 80}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y2_Integer[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 2" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y3_Integer[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 3" annotation(Placement(transformation(extent = {{100, -80}, {120, -60}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u_Boolean[n1 + n2 + n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y1_Boolean[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 1" annotation(Placement(transformation(extent = {{100, 60}, {120, 80}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y2_Boolean[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 2" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y3_Boolean[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 3" annotation(Placement(transformation(extent = {{100, -80}, {120, -60}})));
 
   equation
-    [u] = [y1; y2; y3];
-    annotation (
-      Documentation(info="<html>
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      [u] = [y1; y2; y3];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      [u_Integer] = [y1_Integer; y2_Integer; y3_Integer];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      [u_Boolean] = [y1_Boolean; y2_Boolean; y3_Boolean];
+    end if;
+    annotation(
+      Documentation(info = "<html>
 <p>
 The input connector is <strong>split</strong> into three output connectors.
 Note, that the dimensions of the output connector signals have to be
 explicitly defined via parameters n1, n2 and n3.
 </p>
-</html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}), graphics={
-          Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-100,0},{-6,0}}, color={0,0,127}), 
-          Line(points={{100,70},{60,70},{0,0}}, color={0,0,127}), 
-          Line(points={{0,0},{100,0}}, color={0,0,127}), 
-          Line(points={{100,-70},{60,-70},{0,0}}, color={0,0,127})}));
+</html>"              ), Icon(coordinateSystem(
+      preserveAspectRatio = true,
+      extent = {{-100, -100}, {100, 100}}), graphics = {
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {0, 0, 127},
+      fillPattern = FillPattern.Solid,
+      lineColor = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, 70}, {60, 70}, {0, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{0, 0}, {100, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, -70}, {60, -70}, {0, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {255, 128, 0},
+      fillPattern = FillPattern.Solid,
+      lineColor = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, 70}, {60, 70}, {0, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{0, 0}, {100, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, -70}, {60, -70}, {0, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {255, 0, 255},
+      fillPattern = FillPattern.Solid,
+      lineColor = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, 70}, {60, 70}, {0, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{0, 0}, {100, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, -70}, {60, -70}, {0, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean)}));
   end DeMultiplex3;
 
   block DeMultiplex4 "DeMultiplexer block for four output connectors"
 
     extends Modelica.Blocks.Icons.Block;
-    parameter Integer n1=1 "Dimension of output signal connector 1";
-    parameter Integer n2=1 "Dimension of output signal connector 2";
-    parameter Integer n3=1 "Dimension of output signal connector 3";
-    parameter Integer n4=1 "Dimension of output signal connector 4";
-    Modelica.Blocks.Interfaces.RealInput u[n1 + n2 + n3 + n4] 
-      "Connector of Real input signals" annotation (Placement(transformation(
-            extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.RealOutput y1[n1] 
-      "Connector of Real output signals 1" annotation (Placement(transformation(
-            extent={{100,80},{120,100}})));
-    Modelica.Blocks.Interfaces.RealOutput y2[n2] 
-      "Connector of Real output signals 2" annotation (Placement(transformation(
-            extent={{100,20},{120,40}})));
-    Modelica.Blocks.Interfaces.RealOutput y3[n3] 
-      "Connector of Real output signals 3" annotation (Placement(transformation(
-            extent={{100,-40},{120,-20}})));
-    Modelica.Blocks.Interfaces.RealOutput y4[n4] 
-      "Connector of Real output signals 4" annotation (Placement(transformation(
-            extent={{100,-100},{120,-80}})));
+    parameter Integer n1 = 1 "Dimension of output signal connector 1";
+    parameter Integer n2 = 1 "Dimension of output signal connector 2";
+    parameter Integer n3 = 1 "Dimension of output signal connector 3";
+    parameter Integer n4 = 1 "Dimension of output signal connector 4";
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u[n1 + n2 + n3 + n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.RealOutput y1[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 1" annotation(Placement(transformation(extent = {{100, 80}, {120, 100}})));
+    Modelica.Blocks.Interfaces.RealOutput y2[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 2" annotation(Placement(transformation(extent = {{100, 20}, {120, 40}})));
+    Modelica.Blocks.Interfaces.RealOutput y3[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 3" annotation(Placement(transformation(extent = {{100, -40}, {120, -20}})));
+    Modelica.Blocks.Interfaces.RealOutput y4[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 4" annotation(Placement(transformation(extent = {{100, -100}, {120, -80}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u_Integer[n1 + n2 + n3 + n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y1_Integer[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 1" annotation(Placement(transformation(extent = {{100, 80}, {120, 100}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y2_Integer[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 2" annotation(Placement(transformation(extent = {{100, 20}, {120, 40}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y3_Integer[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 3" annotation(Placement(transformation(extent = {{100, -40}, {120, -20}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y4_Integer[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 4" annotation(Placement(transformation(extent = {{100, -100}, {120, -80}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u_Boolean[n1 + n2 + n3 + n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y1_Boolean[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 1" annotation(Placement(transformation(extent = {{100, 80}, {120, 100}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y2_Boolean[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 2" annotation(Placement(transformation(extent = {{100, 20}, {120, 40}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y3_Boolean[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 3" annotation(Placement(transformation(extent = {{100, -40}, {120, -20}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y4_Boolean[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 4" annotation(Placement(transformation(extent = {{100, -100}, {120, -80}})));
 
   equation
-    [u] = [y1; y2; y3; y4];
-    annotation (
-      Documentation(info="<html>
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      [u] = [y1; y2; y3; y4];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      [u_Integer] = [y1_Integer; y2_Integer; y3_Integer; y4_Integer];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      [u_Boolean] = [y1_Boolean; y2_Boolean; y3_Boolean; y4_Boolean];
+    end if;
+    annotation(
+      Documentation(info = "<html>
 <p>
 The input connector is <strong>split</strong> into four output connectors.
 Note, that the dimensions of the output connector signals have to be
 explicitly defined via parameters n1, n2, n3 and n4.</p>
-</html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}), graphics={
-          Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-100,0},{-6,0}}, color={0,0,127}), 
-          Line(points={{100,90},{60,90},{0,0}}, color={0,0,127}), 
-          Line(points={{100,30},{60,30},{0,0}}, color={0,0,127}), 
-          Line(points={{100,-30},{60,-30},{0,0}}, color={0,0,127}), 
-          Line(points={{100,-90},{60,-90},{0,0}}, color={0,0,127})}));
+</html>"              ), Icon(coordinateSystem(
+      preserveAspectRatio = true,
+      extent = {{-100, -100}, {100, 100}}), graphics = {
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {0, 0, 127},
+      fillPattern = FillPattern.Solid,
+      lineColor = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, 90}, {60, 90}, {0, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, 30}, {60, 30}, {0, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, -30}, {60, -30}, {0, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, -90}, {60, -90}, {0, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {255, 128, 0},
+      fillPattern = FillPattern.Solid,
+      lineColor = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, 90}, {60, 90}, {0, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, 30}, {60, 30}, {0, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, -30}, {60, -30}, {0, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, -90}, {60, -90}, {0, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {255, 0, 255},
+      fillPattern = FillPattern.Solid,
+      lineColor = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, 90}, {60, 90}, {0, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, 30}, {60, 30}, {0, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, -30}, {60, -30}, {0, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, -90}, {60, -90}, {0, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean)}));
   end DeMultiplex4;
 
   block DeMultiplex5 "DeMultiplexer block for five output connectors"
 
     extends Modelica.Blocks.Icons.Block;
-    parameter Integer n1=1 "Dimension of output signal connector 1";
-    parameter Integer n2=1 "Dimension of output signal connector 2";
-    parameter Integer n3=1 "Dimension of output signal connector 3";
-    parameter Integer n4=1 "Dimension of output signal connector 4";
-    parameter Integer n5=1 "Dimension of output signal connector 5";
-    Modelica.Blocks.Interfaces.RealInput u[n1 + n2 + n3 + n4 + n5] 
-      "Connector of Real input signals" annotation (Placement(transformation(
-            extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.RealOutput y1[n1] 
-      "Connector of Real output signals 1" annotation (Placement(transformation(
-            extent={{100,70},{120,90}})));
-    Modelica.Blocks.Interfaces.RealOutput y2[n2] 
-      "Connector of Real output signals 2" annotation (Placement(transformation(
-            extent={{100,30},{120,50}})));
-    Modelica.Blocks.Interfaces.RealOutput y3[n3] 
-      "Connector of Real output signals 3" annotation (Placement(transformation(
-            extent={{100,-10},{120,10}})));
-    Modelica.Blocks.Interfaces.RealOutput y4[n4] 
-      "Connector of Real output signals 4" annotation (Placement(transformation(
-            extent={{100,-50},{120,-30}})));
-    Modelica.Blocks.Interfaces.RealOutput y5[n5] 
-      "Connector of Real output signals 5" annotation (Placement(transformation(
-            extent={{100,-90},{120,-70}})));
+    parameter Integer n1 = 1 "Dimension of output signal connector 1";
+    parameter Integer n2 = 1 "Dimension of output signal connector 2";
+    parameter Integer n3 = 1 "Dimension of output signal connector 3";
+    parameter Integer n4 = 1 "Dimension of output signal connector 4";
+    parameter Integer n5 = 1 "Dimension of output signal connector 5";
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u[n1 + n2 + n3 + n4 + n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.RealOutput y1[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 1" annotation(Placement(transformation(extent = {{100, 70}, {120, 90}})));
+    Modelica.Blocks.Interfaces.RealOutput y2[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 2" annotation(Placement(transformation(extent = {{100, 30}, {120, 50}})));
+    Modelica.Blocks.Interfaces.RealOutput y3[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 3" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+    Modelica.Blocks.Interfaces.RealOutput y4[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 4" annotation(Placement(transformation(extent = {{100, -50}, {120, -30}})));
+    Modelica.Blocks.Interfaces.RealOutput y5[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 5" annotation(Placement(transformation(extent = {{100, -90}, {120, -70}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u_Integer[n1 + n2 + n3 + n4 + n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y1_Integer[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 1" annotation(Placement(transformation(extent = {{100, 70}, {120, 90}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y2_Integer[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 2" annotation(Placement(transformation(extent = {{100, 30}, {120, 50}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y3_Integer[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 3" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y4_Integer[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 4" annotation(Placement(transformation(extent = {{100, -50}, {120, -30}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y5_Integer[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 5" annotation(Placement(transformation(extent = {{100, -90}, {120, -70}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u_Boolean[n1 + n2 + n3 + n4 + n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y1_Boolean[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 1" annotation(Placement(transformation(extent = {{100, 70}, {120, 90}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y2_Boolean[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 2" annotation(Placement(transformation(extent = {{100, 30}, {120, 50}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y3_Boolean[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 3" annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y4_Boolean[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 4" annotation(Placement(transformation(extent = {{100, -50}, {120, -30}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y5_Boolean[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 5" annotation(Placement(transformation(extent = {{100, -90}, {120, -70}})));
 
   equation
-    [u] = [y1; y2; y3; y4; y5];
-    annotation (
-      Documentation(info="<html>
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      [u] = [y1; y2; y3; y4; y5];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      [u_Integer] = [y1_Integer; y2_Integer; y3_Integer; y4_Integer; y5_Integer];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      [u_Boolean] = [y1_Boolean; y2_Boolean; y3_Boolean; y4_Boolean; y5_Boolean];
+    end if;
+    annotation(
+      Documentation(info = "<html>
 <p>
 The input connector is <strong>split</strong> into five output connectors.
 Note, that the dimensions of the output connector signals have to be
 explicitly defined via parameters n1, n2, n3, n4 and n5.</p>
-</html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}), graphics={
-          Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-100,0},{-6,0}}, color={0,0,127}), 
-          Line(points={{100,80},{60,80},{0,0}}, color={0,0,127}), 
-          Line(points={{100,40},{60,40},{8,4}}, color={0,0,127}), 
-          Line(points={{100,0},{10,0}}, color={0,0,127}), 
-          Line(points={{100,-40},{60,-40},{8,-4}}, color={0,0,127}), 
-          Line(points={{100,-80},{60,-80},{0,0}}, color={0,0,127})}));
+</html>"              ), Icon(coordinateSystem(
+      preserveAspectRatio = true,
+      extent = {{-100, -100}, {100, 100}}), graphics = {
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {0, 0, 127},
+      fillPattern = FillPattern.Solid,
+      lineColor = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, 80}, {60, 80}, {0, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, 40}, {60, 40}, {8, 4}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, 0}, {10, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, -40}, {60, -40}, {8, -4}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{100, -80}, {60, -80}, {0, 0}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {255, 128, 0},
+      fillPattern = FillPattern.Solid,
+      lineColor = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, 80}, {60, 80}, {0, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, 40}, {60, 40}, {8, 4}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, 0}, {10, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, -40}, {60, -40}, {8, -4}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{100, -80}, {60, -80}, {0, 0}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Ellipse(
+      extent = {{-15, 15}, {15, -15}},
+      fillColor = {255, 0, 255},
+      fillPattern = FillPattern.Solid,
+      lineColor = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{-100, 0}, {-6, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, 80}, {60, 80}, {0, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, 40}, {60, 40}, {8, 4}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, 0}, {10, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, -40}, {60, -40}, {8, -4}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{100, -80}, {60, -80}, {0, 0}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean)}));
   end DeMultiplex5;
 
   block DeMultiplex6 "DeMultiplexer block for six output connectors"
@@ -800,60 +1269,115 @@ explicitly defined via parameters n1, n2, n3, n4 and n5.</p>
     parameter Integer n4=1 "Dimension of output signal connector 4";
     parameter Integer n5=1 "Dimension of output signal connector 5";
     parameter Integer n6=1 "Dimension of output signal connector 6";
-    Modelica.Blocks.Interfaces.RealInput u[n1 + n2 + n3 + n4 + n5 + n6] 
-      "Connector of Real input signals" annotation (Placement(transformation(
-            extent={{-140,-20},{-100,20}})));
-    Modelica.Blocks.Interfaces.RealOutput y1[n1] 
-      "Connector of Real output signals 1" annotation (Placement(transformation(
-            extent={{100,80},{120,100}})));
-    Modelica.Blocks.Interfaces.RealOutput y2[n2] 
-      "Connector of Real output signals 2" annotation (Placement(transformation(
-            extent={{100,44},{120,64}})));
-    Modelica.Blocks.Interfaces.RealOutput y3[n3] 
-      "Connector of Real output signals 3" annotation (Placement(transformation(
-            extent={{100,8},{120,28}})));
-    Modelica.Blocks.Interfaces.RealOutput y4[n4] 
-      "Connector of Real output signals 4" annotation (Placement(transformation(
-            extent={{100,-28},{120,-8}})));
-    Modelica.Blocks.Interfaces.RealOutput y5[n5] 
-      "Connector of Real output signals 5" annotation (Placement(transformation(
-            extent={{100,-64},{120,-44}})));
-    Modelica.Blocks.Interfaces.RealOutput y6[n6] 
-      "Connector of Real output signals 6" annotation (Placement(transformation(
-            extent={{100,-100},{120,-80}})));
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u[n1 + n2 + n3 + n4 + n5 + n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.RealOutput y1[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 1" annotation(Placement(transformation(extent = {{100, 80}, {120, 100}})));
+    Modelica.Blocks.Interfaces.RealOutput y2[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 2" annotation(Placement(transformation(extent = {{100, 44}, {120, 64}})));
+    Modelica.Blocks.Interfaces.RealOutput y3[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 3" annotation(Placement(transformation(extent = {{100, 8}, {120, 28}})));
+    Modelica.Blocks.Interfaces.RealOutput y4[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 4" annotation(Placement(transformation(extent = {{100, -28}, {120, -8}})));
+    Modelica.Blocks.Interfaces.RealOutput y5[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 5" annotation(Placement(transformation(extent = {{100, -64}, {120, -44}})));
+    Modelica.Blocks.Interfaces.RealOutput y6[n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Real
+      "Connector of Real output signals 6" annotation(Placement(transformation(extent = {{100, -100}, {120, -80}})));
+
+    Modelica.Blocks.Interfaces.IntegerInput u_Integer[n1 + n2 + n3 + n4 + n5 + n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y1_Integer[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 1" annotation(Placement(transformation(extent = {{100, 80}, {120, 100}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y2_Integer[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 2" annotation(Placement(transformation(extent = {{100, 44}, {120, 64}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y3_Integer[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 3" annotation(Placement(transformation(extent = {{100, 8}, {120, 28}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y4_Integer[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 4" annotation(Placement(transformation(extent = {{100, -28}, {120, -8}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y5_Integer[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 5" annotation(Placement(transformation(extent = {{100, -64}, {120, -44}})));
+    Modelica.Blocks.Interfaces.IntegerOutput y6_Integer[n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer
+      "Connector of Integer output signals 6" annotation(Placement(transformation(extent = {{100, -100}, {120, -80}})));
+
+    Modelica.Blocks.Interfaces.BooleanInput u_Boolean[n1 + n2 + n3 + n4 + n5 + n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean input signals" annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y1_Boolean[n1] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 1" annotation(Placement(transformation(extent = {{100, 80}, {120, 100}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y2_Boolean[n2] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 2" annotation(Placement(transformation(extent = {{100, 44}, {120, 64}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y3_Boolean[n3] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 3" annotation(Placement(transformation(extent = {{100, 8}, {120, 28}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y4_Boolean[n4] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 4" annotation(Placement(transformation(extent = {{100, -28}, {120, -8}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y5_Boolean[n5] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 5" annotation(Placement(transformation(extent = {{100, -64}, {120, -44}})));
+    Modelica.Blocks.Interfaces.BooleanOutput y6_Boolean[n6] if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean
+      "Connector of Boolean output signals 6" annotation(Placement(transformation(extent = {{100, -100}, {120, -80}})));
 
   equation
-    [u] = [y1; y2; y3; y4; y5; y6];
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      [u] = [y1; y2; y3; y4; y5; y6];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      [u_Integer] = [y1_Integer; y2_Integer; y3_Integer; y4_Integer; y5_Integer; y6_Integer];
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      [u_Boolean] = [y1_Boolean; y2_Boolean; y3_Boolean; y4_Boolean; y5_Boolean; y6_Boolean];
+    end if;
     annotation (
       Documentation(info="<html>
 <p>
 The input connector is <strong>split</strong> into six output connectors.
 Note, that the dimensions of the output connector signals have to be
 explicitly defined via parameters n1, n2, n3, n4, n5 and n6.</p>
-</html>"), Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+</html>"                ), Icon(coordinateSystem(
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
           Ellipse(
-            extent={{-15,15},{15,-15}}, 
-            fillColor={0,0,127}, 
-            fillPattern=FillPattern.Solid, 
-            lineColor={0,0,127}), 
-          Line(points={{-100,0},{-6,0}}, color={0,0,127}), 
-          Line(points={{100,90},{60,90},{0,4}}, color={0,0,127}), 
-          Line(points={{100,54},{60,54},{8,6}}, color={0,0,127}), 
-          Line(points={{100,18},{60,18},{10,2}}, color={0,0,127}), 
-          Line(points={{100,-18},{60,-18},{10,-2}}, color={0,0,127}), 
-          Line(points={{100,-54},{60,-54},{8,-6}}, color={0,0,127}), 
-          Line(points={{100,-90},{60,-90},{0,-4}}, color={0,0,127})}));
+            extent={{-15,15},{15,-15}},
+            fillColor={0,0,127},
+            fillPattern=FillPattern.Solid,
+            lineColor={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{-100,0},{-6,0}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{100,90},{60,90},{0,4}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{100,54},{60,54},{8,6}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{100,18},{60,18},{10,2}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{100,-18},{60,-18},{10,-2}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{100,-54},{60,-54},{8,-6}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Line(points={{100,-90},{60,-90},{0,-4}}, color={0,0,127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 128, 0},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{-100,0},{-6,0}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{100,90},{60,90},{0,4}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{100,54},{60,54},{8,6}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{100,18},{60,18},{10,2}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{100,-18},{60,-18},{10,-2}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{100,-54},{60,-54},{8,-6}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Line(points={{100,-90},{60,-90},{0,-4}}, color={255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+          Ellipse(
+            extent={{-15,15},{15,-15}},
+            fillColor={255, 0, 255},
+            fillPattern=FillPattern.Solid,
+            lineColor={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{-100,0},{-6,0}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{100,90},{60,90},{0,4}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{100,54},{60,54},{8,6}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{100,18},{60,18},{10,2}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{100,-18},{60,-18},{10,-2}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{100,-54},{60,-54},{8,-6}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+          Line(points={{100,-90},{60,-90},{0,-4}}, color={255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean)}));
   end DeMultiplex6;
 
   model RealPassThrough "Pass a Real signal through without modification"
     extends Modelica.Blocks.Interfaces.SISO;
   equation
     y = u;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
-              -100},{100,100}}), graphics={Line(points={{-100,0},{100,0}}, 
-              color={0,0,127})}), 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
+              -100},{100,100}}), graphics={Line(points={{-100,0},{100,0}},
+              color={0,0,127})}),
                       Documentation(info="<html>
 <p>
 Passes a Real signal through without modification.  Enables signals to be read out of one bus, have their name changed and be sent back to a bus.
@@ -871,9 +1395,9 @@ Passes a Real signal through without modification.  Enables signals to be read o
   equation
     y = u;
 
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
-              -100},{100,100}}), graphics={Line(points={{-100,0},{100,0}}, 
-              color={255,128,0})}), 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
+              -100},{100,100}}), graphics={Line(points={{-100,0},{100,0}},
+              color={255,128,0})}),
                       Documentation(info="<html>
 <p>Passes a Integer signal through without modification.  Enables signals to be read out of one bus, have their name changed and be sent back to a bus.</p>
 </html>"));
@@ -885,13 +1409,13 @@ Passes a Real signal through without modification.  Enables signals to be read o
     y = u;
     annotation (Documentation(info="<html>
 <p>Passes a Boolean signal through without modification.  Enables signals to be read out of one bus, have their name changed and be sent back to a bus.</p>
-</html>"), 
+</html>"),
       Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-            extent={{-100.0,-100.0},{100.0,100.0}}), 
+        coordinateSystem(preserveAspectRatio=true,
+            extent={{-100.0,-100.0},{100.0,100.0}}),
             graphics={
         Line(
-          points={{-100.0,0.0},{100.0,0.0}}, 
+          points={{-100.0,0.0},{100.0,0.0}},
           color={255,0,255})}));
   end BooleanPassThrough;
   annotation (Documentation(info="<html>
@@ -899,8 +1423,8 @@ Passes a Real signal through without modification.  Enables signals to be read o
 This package contains blocks to combine and extract signals.
 </p>
 </html>"), Icon(graphics={
-        Line(points={{-90,0},{4,0}}, color={95,95,95}), 
-        Line(points={{88,65},{48,65},{-8,0}}, color={95,95,95}), 
-        Line(points={{-8,0},{93,0}}, color={95,95,95}), 
+        Line(points={{-90,0},{4,0}}, color={95,95,95}),
+        Line(points={{88,65},{48,65},{-8,0}}, color={95,95,95}),
+        Line(points={{-8,0},{93,0}}, color={95,95,95}),
         Line(points={{87,-65},{48,-65},{-8,0}}, color={95,95,95})}));
 end Routing;

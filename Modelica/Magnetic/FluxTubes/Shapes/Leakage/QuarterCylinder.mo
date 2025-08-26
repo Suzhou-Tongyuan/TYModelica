@@ -1,12 +1,12 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.Leakage;
-model QuarterCylinder 
+model QuarterCylinder
   "Leakage flux from one edge to the opposite plane through a quarter cylinder"
 
   extends BaseClasses.Leakage;
 
-  parameter SI.Length l=0.1 
+  parameter SI.Length l=0.1
     "Axial length orthogonal to flux (=2*pi*r for cylindrical pole and r>>distance between edge and plane)" 
-    annotation (Dialog(group="Parameters", groupImage= 
+    annotation (Dialog(group="Parameters", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/Leakage/QuarterCylinder.png"));
 equation
   G_m = mu_0*0.52*l;

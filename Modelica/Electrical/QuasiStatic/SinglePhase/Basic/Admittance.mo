@@ -18,7 +18,7 @@ model Admittance "Single-phase linear admittance"
   final parameter SI.Conductance G_ref=real(Y_ref) "Resistive component of conductance";
   final parameter SI.Susceptance B_ref=imag(Y_ref) "Reactive component of susceptance";
 equation
-  assert((1 + alpha_ref*(T_heatPort - T_ref)) >= Modelica.Constants.eps, 
+  assert((1 + alpha_ref*(T_heatPort - T_ref)) >= Modelica.Constants.eps,
     "Temperature outside scope of model!");
   G_actual = G_ref/(1 + alpha_ref*(T_heatPort - T_ref));
   B_actual = B_ref * (if not frequencyDependent then 1 else 
@@ -26,22 +26,22 @@ equation
   i = Complex(G_actual, B_actual) * v;
   LossPower = real(v*conj(i));
   annotation (Icon(graphics={
-        Line(points={{60,0},{90,0}}, color={85,170,255}), 
-        Line(points={{-90,0},{-60,0}}, color={85,170,255}), 
+        Line(points={{60,0},{90,0}}, color={85,170,255}),
+        Line(points={{-90,0},{-60,0}}, color={85,170,255}),
         Rectangle(
-          extent={{-70,30},{70,-30}}, 
-          lineColor={85,170,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-70,30},{70,-30}},
+          lineColor={85,170,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{-70,-30},{70,30},{70,-30},{-70,-30}}, 
-          lineColor={85,170,255}, 
-          fillColor={85,170,255}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-70,-30},{70,30},{70,-30},{-70,-30}},
+          lineColor={85,170,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
+          extent={{-150,90},{150,50}},
+          textString="%name",
+          textColor={0,0,255})}),
       Documentation(info="<html>
 
 <p>The admittance model represents a <strong>parallel</strong> connection of a conductor and either a capacitor or inductor.<br>

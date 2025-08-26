@@ -53,7 +53,7 @@ protected
 <li>triac</li>
 </ul>
 <p>Most of the semiconductor devices contain a conditional heat port, which is not active by default. If it is active the loss power is calculated to be used in a thermal net. The heating variants of the semiconductor devices are provided to use the thermal port temperature in the electric calculation. That means that for a true thermal electric interaction the heating device models have to be used.</p>
-</html>", 
+</html>",
    revisions="<html>
 <dl>
 <dt>
@@ -71,10 +71,10 @@ Christoph Clau&szlig;
 </dd>
 </dl>
 </html>"), Icon(graphics={
-          Line(points={{-20,0},{-90,0}}), 
-          Line(points={{-20,60},{-20,-60}}), 
-          Line(points={{20,68},{-20,28}}), 
-          Line(points={{80,68},{20,68}}), 
-          Line(points={{-20,-30},{20,-70}}), 
+          Line(points={{-20,0},{-90,0}}),
+          Line(points={{-20,60},{-20,-60}}),
+          Line(points={{20,68},{-20,28}}),
+          Line(points={{80,68},{20,68}}),
+          Line(points={{-20,-30},{20,-70}}),
           Line(points={{20,-70},{80,-70}})}));
 end Semiconductors;

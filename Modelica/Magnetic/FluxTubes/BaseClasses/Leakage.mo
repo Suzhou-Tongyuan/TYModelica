@@ -12,11 +12,11 @@ equation
   R_m = 1/G_m;
 
   annotation (Icon(coordinateSystem(
-      preserveAspectRatio=false, 
+      preserveAspectRatio=false,
       extent={{-100,-100},{100,100}}), graphics={
       Text(
-        extent={{-150,50},{150,90}}, 
-        textString="%name", 
+        extent={{-150,50},{150,90}},
+        textString="%name",
         textColor={0,0,255})}), Documentation(info="<html>
 <p>
 Please refer to the description of  the sub-package <a href=\"modelica://Modelica.Magnetic.FluxTubes.Shapes.Leakage\">Shapes.Leakage</a> for utilisation of this partial model.

@@ -1,19 +1,19 @@
 ﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
-model BasicRelativePosition 
+model BasicRelativePosition
   "Basic sensor to measure relative position vector"
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB;
   extends Modelica.Mechanics.MultiBody.Sensors.Internal.PartialRelativeBaseSensor;
   Modelica.Blocks.Interfaces.RealOutput r_rel[3](each final quantity="Length", each final
-            unit = "m") 
+            unit = "m")
     "Relative position vector frame_b.r_0 - frame_a.r_0 resolved in frame defined by resolveInFrame" 
     annotation (Placement(transformation(
-        origin={0,-110}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={0,-110},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
 
   parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB 
-    resolveInFrame= 
-  Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a 
+    resolveInFrame=
+  Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a
     "Frame in which output vector r_rel is resolved (world, frame_a, frame_b, or frame_resolve)";
 
 equation
@@ -30,16 +30,16 @@ equation
       r_rel = zeros(3);
    end if;
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
       graphics={
         Text(
-          extent={{-127,95},{134,143}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-127,95},{134,143}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
-          extent={{-50,-14},{50,-54}}, 
-          textColor={64,64,64}, 
-          textString="m")}), 
+          extent={{-50,-14},{50,-54}},
+          textColor={64,64,64},
+          textString="m")}),
     Documentation(info="<html>
 <p>
 This basic sensor is aimed to be used within advanced sensors where

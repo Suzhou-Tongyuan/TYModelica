@@ -1,8 +1,8 @@
 ﻿within Modelica.Mechanics.MultiBody.Interfaces;
-partial model PartialForce 
+partial model PartialForce
   "Base model for force elements (provide frame_b.f and frame_b.t in subclasses)"
   extends PartialTwoFrames;
-  SI.Position r_rel_b[3] 
+  SI.Position r_rel_b[3]
     "Position vector from origin of frame_a to origin of frame_b, resolved in frame_b";
 equation
   // Determine relative position vector between frame_a and frame_b

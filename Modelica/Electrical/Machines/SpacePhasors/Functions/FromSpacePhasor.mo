@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical.Machines.SpacePhasors.Functions;
-function FromSpacePhasor 
+function FromSpacePhasor
   "Conversion from space phasor and zero sequence component to polyphase"
   import Modelica.Constants.pi;
   extends Modelica.Icons.Function;
@@ -8,7 +8,7 @@ function FromSpacePhasor
   input Integer m "Number of phases";
   output Real y[m] "Polyphase output";
 protected
-  parameter SI.Angle phi[m]= 
+  parameter SI.Angle phi[m]=
       Modelica.Electrical.Polyphase.Functions.symmetricOrientation(m);
   parameter Real TransformationMatrix[2, m]=2/m*{+cos(+phi),+sin(+phi)};
   parameter Real InverseTransformation[m, 2]={{+cos(-phi[k]),-sin(-phi[k])} 

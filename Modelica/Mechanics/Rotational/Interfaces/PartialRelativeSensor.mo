@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.Rotational.Interfaces;
-partial model PartialRelativeSensor 
+partial model PartialRelativeSensor
   "Partial model to measure a single relative variable between two flanges"
   extends Modelica.Icons.RoundSensor;
 
@@ -18,14 +18,14 @@ between the two flanges or the cut-torque in the flange and
 to provide the measured signal as output signal for further processing
 with the blocks of package Modelica.Blocks.
 </p>
-</html>"), 
+</html>"),
        Icon(
-    coordinateSystem(preserveAspectRatio=true, 
-      extent={{-100.0,-100.0},{100.0,100.0}}), 
+    coordinateSystem(preserveAspectRatio=true,
+      extent={{-100.0,-100.0},{100.0,100.0}}),
       graphics={
-    Line(points={{-70.0,0.0},{-90.0,0.0}}), 
-    Line(points={{70.0,0.0},{90.0,0.0}}), 
-    Text(textColor={0,0,255}, 
-      extent={{-150,80},{150,120}}, 
+    Line(points={{-70.0,0.0},{-90.0,0.0}}),
+    Line(points={{70.0,0.0},{90.0,0.0}}),
+    Text(textColor={0,0,255},
+      extent={{-150,80},{150,120}},
       textString="%name")}));
 end PartialRelativeSensor;

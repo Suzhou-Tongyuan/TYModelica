@@ -2,14 +2,14 @@
 function planarRotation "Return orientation object of a planar rotation"
   import Modelica.Math;
   extends Modelica.Icons.Function;
-  input Real e[3](each final unit="1") 
+  input Real e[3](each final unit="1")
     "Normalized axis of rotation (must have length=1)";
-  input SI.Angle angle 
+  input SI.Angle angle
     "Rotation angle to rotate frame 1 into frame 2 along axis e";
   input SI.AngularVelocity der_angle "= der(angle)";
   output Orientation R "Orientation object to rotate frame 1 into frame 2";
 algorithm
-  R := Orientation(T=outerProduct(e,e) + (identity(3) - outerProduct(e,e))* 
+  R := Orientation(T=outerProduct(e,e) + (identity(3) - outerProduct(e,e))*
     Math.cos(angle) - skew(e)*Math.sin(angle),w= e*der_angle);
 
   annotation(Inline=true, Documentation(info="<html>

@@ -1,32 +1,32 @@
 ﻿within Modelica.Mechanics.MultiBody.Interfaces;
-connector Frame_resolve 
+connector Frame_resolve
   "Coordinate system fixed to the component used to express in which coordinate system a vector is resolved (non-filled rectangular icon)"
   extends Frame;
 
-  annotation (defaultComponentName="frame_resolve", 
+  annotation (defaultComponentName="frame_resolve",
     Icon(coordinateSystem(
-          preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}, 
+          preserveAspectRatio=true,
+          extent={{-100,-100},{100,100}},
           initialScale=0.16), graphics={Rectangle(
-            extent={{-10,10},{10,-10}}, 
-            lineColor={95,95,95}, 
+            extent={{-10,10},{10,-10}},
+            lineColor={95,95,95},
             pattern=LinePattern.Dot), Rectangle(
-            extent={{-30,100},{30,-100}}, 
-            lineColor={95,95,95}, 
-            pattern=LinePattern.Dot, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid)}), 
+            extent={{-30,100},{30,-100}},
+            lineColor={95,95,95},
+            pattern=LinePattern.Dot,
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid)}),
     Diagram(coordinateSystem(
-          preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}, 
+          preserveAspectRatio=true,
+          extent={{-100,-100},{100,100}},
           initialScale=0.16), graphics={Text(
-            extent={{-140,-50},{140,-90}}, 
+            extent={{-140,-50},{140,-90}},
             textString="%name"), Rectangle(
-            extent={{-12,40},{12,-40}}, 
-            lineColor={95,95,95}, 
-            pattern=LinePattern.Dot, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid)}), 
+            extent={{-12,40},{12,-40}},
+            lineColor={95,95,95},
+            pattern=LinePattern.Dot,
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
 Basic definition of a coordinate system that is fixed to a mechanical

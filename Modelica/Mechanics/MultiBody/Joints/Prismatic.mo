@@ -1,43 +1,43 @@
 ﻿within Modelica.Mechanics.MultiBody.Joints;
-model Prismatic 
+model Prismatic
   "Prismatic joint (1 translational degree-of-freedom, 2 potential states, optional axis flange)"
 
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialElementaryJoint;
-  Modelica.Mechanics.Translational.Interfaces.Flange_a axis if useAxisFlange 
+  Modelica.Mechanics.Translational.Interfaces.Flange_a axis if useAxisFlange
     "1-dim. translational flange that drives the joint" 
     annotation (Placement(transformation(extent={{90,50},{70,70}})));
-  Modelica.Mechanics.Translational.Interfaces.Flange_b support if useAxisFlange 
+  Modelica.Mechanics.Translational.Interfaces.Flange_b support if useAxisFlange
     "1-dim. translational flange of the drive support (assumed to be fixed in the world frame, NOT in the joint)" 
     annotation (Placement(transformation(extent={{-30,50},{-50,70}})));
 
   parameter Boolean useAxisFlange=false "= true, if axis flange is enabled" 
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean animation=true "= true, if animation shall be enabled";
-  parameter Modelica.Mechanics.MultiBody.Types.Axis n={1,0,0} 
+  parameter Modelica.Mechanics.MultiBody.Types.Axis n={1,0,0}
     "Axis of translation resolved in frame_a (= same as in frame_b)" 
     annotation (Evaluate=true);
-  parameter Types.Axis boxWidthDirection={0,1,0} 
+  parameter Types.Axis boxWidthDirection={0,1,0}
     "Vector in width direction of box, resolved in frame_a" 
-    annotation (Evaluate=true, Dialog(tab="Animation", group= 
+    annotation (Evaluate=true, Dialog(tab="Animation", group=
           "if animation = true", enable=animation));
-  parameter SI.Distance boxWidth=world.defaultJointWidth 
+  parameter SI.Distance boxWidth=world.defaultJointWidth
     "Width of prismatic joint box" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
   parameter SI.Distance boxHeight=boxWidth "Height of prismatic joint box" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  input Types.Color boxColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor 
+  input Types.Color boxColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor
     "Color of prismatic joint box" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  parameter StateSelect stateSelect=StateSelect.prefer 
+  parameter StateSelect stateSelect=StateSelect.prefer
     "Priority to use distance s and v=der(s) as states" annotation(Dialog(tab="Advanced"));
-  final parameter Real e[3](each final unit="1")= 
-     Modelica.Math.Vectors.normalizeWithAssert(n) 
+  final parameter Real e[3](each final unit="1")=
+     Modelica.Math.Vectors.normalizeWithAssert(n)
     "Unit vector in direction of prismatic axis n";
 
-  SI.Position s(start=0, final stateSelect=stateSelect) 
+  SI.Position s(start=0, final stateSelect=stateSelect)
     "Relative distance between frame_a and frame_b" 
     annotation (unassignedMessage="
 The relative distance s of a prismatic joint cannot be determined.
@@ -49,22 +49,22 @@ Possible reasons:
   (remove all StateSelect.always settings).
 ");
 
-  SI.Velocity v(start=0,final stateSelect=stateSelect) 
+  SI.Velocity v(start=0,final stateSelect=stateSelect)
     "First derivative of s (relative velocity)";
   SI.Acceleration a(start=0) "Second derivative of s (relative acceleration)";
   SI.Force f "Actuation force in direction of joint axis";
 
 protected
   Visualizers.Advanced.Shape box(
-    shapeType="box", 
-    color=boxColor, 
-    specularCoefficient=specularCoefficient, 
-    length=if noEvent(abs(s) > 1.e-6) then s else 1.e-6, 
-    width=boxWidth, 
-    height=boxHeight, 
-    lengthDirection=e, 
-    widthDirection=boxWidthDirection, 
-    r=frame_a.r_0, 
+    shapeType="box",
+    color=boxColor,
+    specularCoefficient=specularCoefficient,
+    length=if noEvent(abs(s) > 1.e-6) then s else 1.e-6,
+    width=boxWidth,
+    height=boxHeight,
+    lengthDirection=e,
+    widthDirection=boxWidthDirection,
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
   Translational.Components.Fixed fixed 
     annotation (Placement(transformation(extent={{-50,30},{-30,50}})));
@@ -98,60 +98,60 @@ equation
       points={{60,40},{80,40}}, color={0,127,0}));
   annotation (
     Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
-          extent={{-100,-50},{-30,41}}, 
-          pattern=LinePattern.None, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
+          extent={{-100,-50},{-30,41}},
+          pattern=LinePattern.None,
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
         Rectangle(
-          extent={{-100,40},{-30,50}}, 
-          pattern=LinePattern.None, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
+          extent={{-100,40},{-30,50}},
+          pattern=LinePattern.None,
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
         Rectangle(
-          extent={{-30,-30},{100,20}}, 
-          pattern=LinePattern.None, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
+          extent={{-30,-30},{100,20}},
+          pattern=LinePattern.None,
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
         Rectangle(
-          extent={{-30,20},{100,30}}, 
-          pattern=LinePattern.None, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
-        Line(points={{-30,-50},{-30,50}}), 
-        Line(points={{100,-30},{100,21}}), 
+          extent={{-30,20},{100,30}},
+          pattern=LinePattern.None,
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
+        Line(points={{-30,-50},{-30,50}}),
+        Line(points={{100,-30},{100,21}}),
         Text(
-          extent={{60,12},{96,-13}}, 
-          textColor={128,128,128}, 
-          textString="b"), 
+          extent={{60,12},{96,-13}},
+          textColor={128,128,128},
+          textString="b"),
         Text(
-          extent={{-95,13},{-60,-9}}, 
-          textColor={128,128,128}, 
-          textString="a"), 
+          extent={{-95,13},{-60,-9}},
+          textColor={128,128,128},
+          textString="a"),
         Text(
-          visible=useAxisFlange, 
-          extent={{-150,-135},{150,-95}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          visible=useAxisFlange,
+          extent={{-150,-135},{150,-95}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
-          extent={{-150,-90},{150,-60}}, 
-          textString="n=%n"), 
+          extent={{-150,-90},{150,-60}},
+          textString="n=%n"),
         Rectangle(
-          visible=useAxisFlange, 
-          extent={{90,30},{100,70}}, 
-          pattern=LinePattern.None, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
+          visible=useAxisFlange,
+          extent={{90,30},{100,70}},
+          pattern=LinePattern.None,
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
         Text(
-          visible=not useAxisFlange, 
-          extent={{-150,60},{150,100}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
+          visible=not useAxisFlange,
+          extent={{-150,60},{150,100}},
+          textString="%name",
+          textColor={0,0,255})}),
     Documentation(info="<html>
 <p>
 Joint where frame_b is translated along axis n which is fixed in frame_a.

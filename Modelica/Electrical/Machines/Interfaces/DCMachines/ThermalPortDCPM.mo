@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical.Machines.Interfaces.DCMachines;
-connector ThermalPortDCPM 
+connector ThermalPortDCPM
   "Thermal port of DC machine with permanent magnets"
   extends Machines.Interfaces.DCMachines.PartialThermalPortDCMachines;
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a 

@@ -4,7 +4,7 @@ package Yd "Transformers: primary Y / secondary d"
 
   annotation (Documentation(info="<html>
 This package contains transformers primary Y connected / secondary d connected in all possible vector groups.
-</html>", 
+</html>",
     revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

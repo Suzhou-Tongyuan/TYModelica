@@ -1,9 +1,9 @@
 ﻿within Modelica.Electrical.Polyphase.Functions;
-function symmetricOrientation 
+function symmetricOrientation
   "Orientations of the resulting fundamental wave field phasors"
   extends Modelica.Icons.Function;
   input Integer m "Number of phases";
-  output SI.Angle orientation[m] 
+  output SI.Angle orientation[m]
     "Orientation of the resulting fundamental wave field phasors";
   import Modelica.Constants.pi;
 algorithm
@@ -15,7 +15,7 @@ algorithm
       orientation[2] := +pi/2;
     else
       orientation[1:integer(m/2)] := symmetricOrientation(integer(m/2));
-      orientation[integer(m/2) + 1:m] := symmetricOrientation(integer(m/2)) 
+      orientation[integer(m/2) + 1:m] := symmetricOrientation(integer(m/2))
          - fill(pi/m, integer(m/2));
     end if;
   else

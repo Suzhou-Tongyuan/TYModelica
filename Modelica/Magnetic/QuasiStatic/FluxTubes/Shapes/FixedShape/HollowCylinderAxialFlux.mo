@@ -1,19 +1,19 @@
 ﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.FixedShape;
-model HollowCylinderAxialFlux 
+model HollowCylinderAxialFlux
 "(Hollow) cylinder with axial flux of fixed shape and linear material characteristics"
 
   extends BaseClasses.FixedShape;
   extends Modelica.Magnetic.QuasiStatic.FluxTubes.Icons.HollowCylinderAxialFlux;
 
   parameter SI.Length l=0.01 "Axial length (in direction of flux)" 
-    annotation (Dialog(group="Fixed geometry", groupImage= 
+    annotation (Dialog(group="Fixed geometry", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/QuasiStatic/FluxTubes/HollowCylinderAxialFlux_qs.png"));
-  parameter SI.Radius r_i=0 
+  parameter SI.Radius r_i=0
   "Inner radius of hollow cylinder (zero for cylinder)" 
     annotation (Dialog(group="Fixed geometry"));
   parameter SI.Radius r_o=0.01 "Outer radius of (hollow) cylinder" 
     annotation (Dialog(group="Fixed geometry"));
-  parameter SI.Angle alpha=2*Modelica.Constants.pi 
+  parameter SI.Angle alpha=2*Modelica.Constants.pi
   "Central angle";
 equation
   A = pi*(r_o^2 - r_i^2)*alpha/(2*Modelica.Constants.pi);

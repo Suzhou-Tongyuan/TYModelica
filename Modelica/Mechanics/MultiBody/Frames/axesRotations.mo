@@ -1,14 +1,14 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames;
-function axesRotations 
+function axesRotations
   "Return fixed rotation object to rotate in sequence around fixed angles along 3 axes"
 
   import TM = Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
   extends Modelica.Icons.Function;
   input Integer sequence[3](
-    min={1,1,1}, 
-    max={3,3,3}) = {1,2,3} 
+    min={1,1,1},
+    max={3,3,3}) = {1,2,3}
     "Sequence of rotations from frame 1 to frame 2 along axis sequence[i]";
-  input SI.Angle angles[3] 
+  input SI.Angle angles[3]
     "Rotation angles around the axes defined in 'sequence'";
   input SI.AngularVelocity der_angles[3] "= der(angles)";
   output Orientation R "Orientation object to rotate frame 1 into frame 2";

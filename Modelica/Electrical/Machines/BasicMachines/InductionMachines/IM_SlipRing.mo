@@ -1,119 +1,119 @@
 ﻿within Modelica.Electrical.Machines.BasicMachines.InductionMachines;
 model IM_SlipRing "Induction machine with slipring rotor"
   extends Machines.Interfaces.PartialBasicInductionMachine(
-    final idq_ss=airGap.i_ss, 
-    final idq_sr=airGap.i_sr, 
-    final idq_rs=airGap.i_rs, 
-    final idq_rr=airGap.i_rr, 
+    final idq_ss=airGap.i_ss,
+    final idq_sr=airGap.i_sr,
+    final idq_rs=airGap.i_rs,
+    final idq_rr=airGap.i_rr,
     redeclare final Machines.Thermal.InductionMachines.ThermalAmbientIMS 
-      thermalAmbient(final Tr=TrOperational, final mr=m), 
+      thermalAmbient(final Tr=TrOperational, final mr=m),
     redeclare final Machines.Interfaces.InductionMachines.ThermalPortIMS 
-      thermalPort(final mr=m), 
+      thermalPort(final mr=m),
     redeclare final Machines.Interfaces.InductionMachines.ThermalPortIMS 
-      internalThermalPort(final mr=m), 
+      internalThermalPort(final mr=m),
     redeclare final Machines.Interfaces.InductionMachines.PowerBalanceIMS 
       powerBalance(
-      final lossPowerRotorWinding=sum(rr.resistor.LossPower), 
-      final lossPowerRotorCore=rotorCore.lossPower, 
-      final lossPowerBrush=0, 
-      final powerRotor=Machines.SpacePhasors.Functions.activePower(vr, ir)), 
+      final lossPowerRotorWinding=sum(rr.resistor.LossPower),
+      final lossPowerRotorCore=rotorCore.lossPower,
+      final lossPowerBrush=0,
+      final powerRotor=Machines.SpacePhasors.Functions.activePower(vr, ir)),
     statorCore(final w=statorCoreParameters.wRef));
 
   Machines.BasicMachines.Components.AirGapS airGap(
-    final p=p, 
-    final Lm=Lm, 
-    final m=m) annotation (Placement(transformation(extent={{-10,-10},{10,10}}, 
+    final p=p,
+    final Lm=Lm,
+    final m=m) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
           rotation=270)));
-  parameter SI.Inductance Lm(start=3*sqrt(1 - 0.0667)/(2*pi 
+  parameter SI.Inductance Lm(start=3*sqrt(1 - 0.0667)/(2*pi
         *fsNominal)) "Stator main field inductance per phase" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter SI.Inductance Lrsigma(start=3*(1 - sqrt(1 - 
-        0.0667))/(2*pi*fsNominal)) 
+  parameter SI.Inductance Lrsigma(start=3*(1 - sqrt(1 -
+        0.0667))/(2*pi*fsNominal))
     "Rotor stray inductance per phase w.r.t. rotor side" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter SI.Inductance Lrzero=Lrsigma 
+  parameter SI.Inductance Lrzero=Lrsigma
     "Rotor zero sequence inductance w.r.t. rotor side" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter SI.Resistance Rr(start=0.04) 
+  parameter SI.Resistance Rr(start=0.04)
     "Rotor resistance per phase at TRef w.r.t. rotor side" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter SI.Temperature TrRef(start=293.15) 
+  parameter SI.Temperature TrRef(start=293.15)
     "Reference temperature of rotor resistance" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter Machines.Thermal.LinearTemperatureCoefficient20 alpha20r(start=0) 
+  parameter Machines.Thermal.LinearTemperatureCoefficient20 alpha20r(start=0)
     "Temperature coefficient of rotor resistance at 20 degC" 
     annotation (Dialog(tab="Nominal resistances and inductances"));
-  parameter Boolean useTurnsRatio(start=true) 
+  parameter Boolean useTurnsRatio(start=true)
     "Use turnsRatio or calculate from locked-rotor voltage?";
-  parameter Real turnsRatio(final min=Modelica.Constants.small, start=1) 
+  parameter Real turnsRatio(final min=Modelica.Constants.small, start=1)
     "Effective number of stator turns / effective number of rotor turns" 
     annotation (Dialog(enable=useTurnsRatio));
-  parameter SI.Voltage VsNominal(start=100) 
+  parameter SI.Voltage VsNominal(start=100)
     "Nominal stator voltage per phase" 
     annotation (Dialog(enable=not useTurnsRatio));
-  parameter SI.Voltage VrLockedRotor(start=100*(2*pi* 
-        fsNominal*Lm)/sqrt(Rs^2 + (2*pi*fsNominal*(Lm + Lssigma))^2)) 
+  parameter SI.Voltage VrLockedRotor(start=100*(2*pi*
+        fsNominal*Lm)/sqrt(Rs^2 + (2*pi*fsNominal*(Lm + Lssigma))^2))
     "Locked-rotor voltage per phase" 
     annotation (Dialog(enable=not useTurnsRatio));
-  parameter SI.Temperature TrOperational(start=293.15) 
+  parameter SI.Temperature TrOperational(start=293.15)
     "Operational temperature of rotor resistance" annotation (Dialog(
         group="Operational temperatures", enable=not useThermalPort));
   parameter Machines.Losses.CoreParameters rotorCoreParameters(
-    final m=3, 
-    PRef=0, 
-    VRef(start=1) = 1, 
-    wRef(start=1) = 1) 
+    final m=3,
+    PRef=0,
+    VRef(start=1) = 1,
+    wRef(start=1) = 1)
     "Rotor core loss parameter record; all parameters refer to rotor side" 
     annotation (Dialog(tab="Losses"));
-  output SI.Current i_0_r(stateSelect=StateSelect.prefer)= 
+  output SI.Current i_0_r(stateSelect=StateSelect.prefer)=
        spacePhasorR.zero.i "Rotor zero-sequence current";
-  output SI.Voltage vr[m]=plug_rp.pin.v - plug_rn.pin.v 
+  output SI.Voltage vr[m]=plug_rp.pin.v - plug_rn.pin.v
     "Rotor instantaneous voltages";
-  output SI.Current ir[m]=plug_rp.pin.i 
+  output SI.Current ir[m]=plug_rp.pin.i
     "Rotor instantaneous currents";
 protected
   final parameter Real internalTurnsRatio=if useTurnsRatio then 
-      turnsRatio else VsNominal/VrLockedRotor*(2*pi*fsNominal*Lm)/sqrt(Rs 
+      turnsRatio else VsNominal/VrLockedRotor*(2*pi*fsNominal*Lm)/sqrt(Rs
       ^2 + (2*pi*fsNominal*(Lm + Lssigma))^2);
 public
-  Machines.SpacePhasors.Components.SpacePhasor spacePhasorR(final turnsRatio= 
+  Machines.SpacePhasors.Components.SpacePhasor spacePhasorR(final turnsRatio=
         internalTurnsRatio) annotation (Placement(transformation(
-        origin={-70,-50}, 
-        extent={{10,10},{-10,-10}}, 
+        origin={-70,-50},
+        extent={{10,10},{-10,-10}},
         rotation=180)));
   Modelica.Electrical.Polyphase.Basic.Resistor rr(
-    final m=m, 
-    final R=fill(Rr, m), 
-    final T_ref=fill(TrRef, m), 
-    final alpha=fill(Machines.Thermal.convertAlpha(alpha20r, TrRef), m), 
-    final useHeatPort=true, 
+    final m=m,
+    final R=fill(Rr, m),
+    final T_ref=fill(TrRef, m),
+    final alpha=fill(Machines.Thermal.convertAlpha(alpha20r, TrRef), m),
+    final useHeatPort=true,
     final T=fill(TrRef, m)) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}}, 
-        rotation=90, 
+        extent={{10,-10},{-10,10}},
+        rotation=90,
         origin={-80,40})));
-  Modelica.Electrical.Polyphase.Interfaces.PositivePlug plug_rp(final m= 
+  Modelica.Electrical.Polyphase.Interfaces.PositivePlug plug_rp(final m=
         m) "Positive rotor plug" annotation (Placement(transformation(
           extent={{-110,70},{-90,50}})));
-  Modelica.Electrical.Polyphase.Interfaces.NegativePlug plug_rn(final m= 
+  Modelica.Electrical.Polyphase.Interfaces.NegativePlug plug_rn(final m=
         m) "Negative rotor plug" annotation (Placement(transformation(
           extent={{-110,-50},{-90,-70}})));
   Machines.BasicMachines.Components.Inductor lrsigma(final L=fill(
         internalTurnsRatio^2*Lrsigma, 2)) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}}, 
-        rotation=270, 
+        extent={{10,-10},{-10,10}},
+        rotation=270,
         origin={20,-20})));
-  Modelica.Electrical.Analog.Basic.Inductor lrzero(final L= 
+  Modelica.Electrical.Analog.Basic.Inductor lrzero(final L=
         internalTurnsRatio^2*Lrzero) annotation (Placement(transformation(
-        extent={{10,10},{-10,-10}}, 
-        rotation=90, 
+        extent={{10,10},{-10,-10}},
+        rotation=90,
         origin={-50,-60})));
   Machines.Losses.InductionMachines.Core rotorCore(
-    final coreParameters=rotorCoreParameters, 
-    final w=rotorCoreParameters.wRef, 
-    final useHeatPort=true, 
+    final coreParameters=rotorCoreParameters,
+    final w=rotorCoreParameters.wRef,
+    final useHeatPort=true,
     final turnsRatio=internalTurnsRatio) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=180, 
+        extent={{-10,10},{10,-10}},
+        rotation=180,
         origin={0,-30})));
 equation
   connect(lssigma.spacePhasor_b, airGap.spacePhasor_s) annotation (Line(
@@ -148,7 +148,7 @@ equation
   connect(internalSupport, airGap.support) annotation (Line(
       points={{60,-100},{60,-90},{-40,-90},{-40,0},{-10,0}}));
   annotation (
-    defaultComponentName="ims", 
+    defaultComponentName="ims",
     Documentation(info="<html>
 <p><strong>Model of a three-phase induction machine with slipring rotor.</strong><br>
 Resistance and stray inductance of stator and rotor are modeled directly in stator respectively rotor phases, then using space phasor transformation and a stator-fixed <em>AirGap</em> model. The machine models take the following loss effects into account:
@@ -279,9 +279,9 @@ at standstill with open rotor circuit at nominal voltage and nominal frequency,<
 using the locked-rotor voltage VR, no-load stator current I0 and powerfactor PF0:<br>
 turnsRatio * <u>V</u><sub>R</sub> = <u>V</u><sub>s</sub> - (R<sub>s</sub> + j X<sub>s,sigma</sub>) <u>I</u><sub>0</sub>
 </p>
-</html>"), 
+</html>"),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-            100,100}}), graphics={Line(points={{-100,50},{-100,20},{-60, 
-              20}}, color={0,0,255}), Line(points={{-100,-50},{-100,-20}, 
+            100,100}}), graphics={Line(points={{-100,50},{-100,20},{-60,
+              20}}, color={0,0,255}), Line(points={{-100,-50},{-100,-20},
               {-60,-20}}, color={0,0,255})}));
 end IM_SlipRing;

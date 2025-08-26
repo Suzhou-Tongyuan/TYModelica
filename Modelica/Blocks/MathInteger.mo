@@ -1,22 +1,22 @@
 ﻿within Modelica.Blocks;
-package MathInteger 
+package MathInteger
   "Library of Integer mathematical functions as input/output blocks"
   extends Modelica.Icons.Package;
-block MultiSwitch 
+block MultiSwitch
     "Set Integer expression that is associated with the first active input signal"
 
-  input Integer expr[nu]=fill(0, nu) 
+  input Integer expr[nu]=fill(0, nu)
       "y = if u[i] then expr[i] elseif use_pre_as_default then pre(y) else y_default" annotation(Dialog);
-  parameter Integer y_default=0 
+  parameter Integer y_default=0
       "Default value of output y if use_pre_as_default=false, as well as pre(y) at initial time";
 
-  parameter Boolean use_pre_as_default=true 
+  parameter Boolean use_pre_as_default=true
       "= true, y holds its last value if all u[i]=false, otherwise y=y_default" 
         annotation(HideResult=true, choices(checkBox=true));
   parameter Integer nu(min=0) = 0 "Number of input connections" 
           annotation(Dialog(connectorSizing=true), HideResult=true);
 
-  Modelica.Blocks.Interfaces.BooleanVectorInput u[nu] 
+  Modelica.Blocks.Interfaces.BooleanVectorInput u[nu]
       "Set y = expr[i], if u[i] = true" 
     annotation (Placement(transformation(extent={{-110,30},{-90,-30}})));
   Modelica.Blocks.Interfaces.IntegerOutput y "Output depending on expression" 
@@ -32,34 +32,34 @@ equation
   y = if firstActiveIndex > 0 then expr[firstActiveIndex] else 
       if use_pre_as_default then pre(y) else y_default;
   annotation (defaultComponentName="multiSwitch1", Icon(coordinateSystem(
-        preserveAspectRatio=false, 
+        preserveAspectRatio=false,
         extent={{-100,-100},{300,100}}), graphics={
             Text(
-              extent={{310,-25},{410,-45}}, 
+              extent={{310,-25},{410,-45}},
               textString=DynamicSelect(" ", String(
-                  y, 
-                  minimumLength=1, 
-                  significantDigits=0))), 
+                  y,
+                  minimumLength=1,
+                  significantDigits=0))),
             Text(
-              visible=not use_pre_as_default, 
-              extent={{-100,-60},{300,-90}}, 
-              textString="else: %y_default"), 
+              visible=not use_pre_as_default,
+              extent={{-100,-60},{300,-90}},
+              textString="else: %y_default"),
             Text(
-              visible=use_pre_as_default, 
-              extent={{-100,-50},{300,-80}}, 
-              textString="else: pre(y)"), 
+              visible=use_pre_as_default,
+              extent={{-100,-50},{300,-80}},
+              textString="else: pre(y)"),
             Rectangle(
-              extent={{-100,-40},{300,40}}, 
-              fillColor={255,213,170}, 
-              fillPattern=FillPattern.Solid, 
-              borderPattern=BorderPattern.Raised), 
+              extent={{-100,-40},{300,40}},
+              fillColor={255,213,170},
+              fillPattern=FillPattern.Solid,
+              borderPattern=BorderPattern.Raised),
             Text(
-              extent={{-100,90},{300,50}}, 
-              textString="%name", 
-              textColor={0,0,255}), 
+              extent={{-100,90},{300,50}},
+              textString="%name",
+              textColor={0,0,255}),
             Text(
-              extent={{-80,15},{290,-15}}, 
-              textString="%expr")}), 
+              extent={{-80,15},{290,-15}},
+              textString="%expr")}),
     Documentation(info="<html>
 <p>
 This block has a vector of Boolean input signals u[nu] and a vector of
@@ -102,9 +102,9 @@ end MultiSwitch;
        y = 0;
     end if;
     annotation (Icon(graphics={Text(
-              extent={{-200,-110},{200,-140}}, 
+              extent={{-200,-110},{200,-140}},
               textString="%k"), Text(
-              extent={{-72,68},{92,-68}}, 
+              extent={{-72,68},{92,-68}},
               textString="+")}), Documentation(info="<html>
 <p>
 This blocks computes the scalar Integer output \"y\" as sum of the elements of the
@@ -144,7 +144,7 @@ the output is set to zero: y=0.
     end if;
 
     annotation (Icon(graphics={Text(
-              extent={{-74,50},{94,-94}}, 
+              extent={{-74,50},{94,-94}},
               textString="*")}), Documentation(info="<html>
 <p>
 This blocks computes the scalar Integer output \"y\" as product of the elements of the
@@ -174,34 +174,34 @@ the output is set to zero: y=0.
 </html>"));
   end Product;
 
-  block TriggeredAdd 
+  block TriggeredAdd
     "Add input to previous value of output, if rising edge of trigger port"
     extends Modelica.Blocks.Interfaces.PartialIntegerSISO;
 
     parameter Boolean use_reset = false "= true, if reset port enabled" 
           annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-    parameter Boolean use_set = false 
+    parameter Boolean use_set = false
       "= true, if set port enabled and used as default value when reset" 
           annotation(Dialog(enable=use_reset), Evaluate=true, HideResult=true, choices(checkBox=true));
-    parameter Integer y_start = 0 
+    parameter Integer y_start = 0
       "Initial and reset value of y if set port is not used";
 
     Modelica.Blocks.Interfaces.BooleanInput trigger annotation (Placement(
           transformation(
-          extent={{-20,-20},{20,20}}, 
-          rotation=90, 
+          extent={{-20,-20},{20,20}},
+          rotation=90,
           origin={-60,-120})));
     Modelica.Blocks.Interfaces.BooleanInput reset if use_reset annotation (Placement(
           transformation(
-          extent={{-20,-20},{20,20}}, 
-          rotation=90, 
+          extent={{-20,-20},{20,20}},
+          rotation=90,
           origin={60,-120})));
     Modelica.Blocks.Interfaces.IntegerInput set if use_set annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}}, 
-          rotation=270, 
+          extent={{-20,-20},{20,20}},
+          rotation=270,
           origin={60,120}), iconTransformation(
-          extent={{-20,-20},{20,20}}, 
-          rotation=270, 
+          extent={{-20,-20},{20,20}},
+          rotation=270,
           origin={28,98})));
   protected
     Modelica.Blocks.Interfaces.BooleanOutput local_reset annotation(HideResult=true);
@@ -225,26 +225,26 @@ the output is set to zero: y=0.
        y = if local_reset then local_set else pre(y) + u;
     end when;
     annotation (Icon(coordinateSystem(
-            preserveAspectRatio=false, extent={{-100,-100},{100,100}}, 
+            preserveAspectRatio=false, extent={{-100,-100},{100,100}},
           initialScale=0.06), graphics={
             Line(
-              points={{-100,0},{32,76}}, 
-              color={255,128,0}, 
-              pattern=LinePattern.Dot), 
+              points={{-100,0},{32,76}},
+              color={255,128,0},
+              pattern=LinePattern.Dot),
             Line(
-              points={{-100,0},{32,-20}}, 
-              color={255,128,0}, 
-              pattern=LinePattern.Dot), 
+              points={{-100,0},{32,-20}},
+              color={255,128,0},
+              pattern=LinePattern.Dot),
             Line(
-              points={{-54,-56},{-26,-56},{-26,-20},{32,-20},{32,76}}), 
+              points={{-54,-56},{-26,-56},{-26,-20},{32,-20},{32,76}}),
             Line(
-              points={{-60,-100},{32,-20}}, 
-              color={255,0,255}, 
-              pattern=LinePattern.Dot), 
+              points={{-60,-100},{32,-20}},
+              color={255,0,255},
+              pattern=LinePattern.Dot),
             Text(
-              visible=use_reset, 
-              extent={{-28,-62},{94,-86}}, 
-              textString="reset")}), 
+              visible=use_reset,
+              extent={{-28,-62},{94,-86}},
+              textString="reset")}),
       Documentation(info="<html>
 <p>
 Add input to previous value of output, if rising edge of trigger port
@@ -282,10 +282,10 @@ The usage is demonstrated, e.g., in example
 This package contains basic <strong>mathematical operations</strong>
 on <strong>Integer</strong> signals.
 </p>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics={Line(
-          points={{-74,-66},{-46,-66},{-46,-30},{12,-30},{12,66}}, 
+          points={{-74,-66},{-46,-66},{-46,-30},{12,-30},{12,66}},
           color={255,128,0}), Line(
-          points={{12,66},{70,66}}, 
+          points={{12,66},{70,66}},
           color={255,128,0})}));
 end MathInteger;

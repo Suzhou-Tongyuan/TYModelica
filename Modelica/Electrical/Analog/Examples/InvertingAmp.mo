@@ -14,40 +14,40 @@ model InvertingAmp "Inverting amplifier"
   Modelica.Electrical.Analog.Basic.Ground ground 
     annotation (Placement(transformation(extent={{-20,-80},{0,-60}})));
   Modelica.Electrical.Analog.Sources.TrapezoidVoltage vIn(
-    V=2*Vin, 
-    rising=0.2/f, 
-    width=0.3/f, 
-    falling=0.2/f, 
-    period=1/f, 
-    nperiod=-1, 
-    offset=-Vin, 
+    V=2*Vin,
+    rising=0.2/f,
+    width=0.3/f,
+    falling=0.2/f,
+    period=1/f,
+    nperiod=-1,
+    offset=-Vin,
     startTime=-(vIn.rising + vIn.width/2)) annotation (Placement(
         transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-80,0})));
   Modelica.Electrical.Analog.Sensors.VoltageSensor vOut annotation (Placement(
         transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=270, 
+        extent={{-10,10},{10,-10}},
+        rotation=270,
         origin={50,-20})));
   Modelica.Electrical.Analog.Basic.Resistor r1(R=R1) 
     annotation (Placement(transformation(extent={{-40,50},{-20,70}})));
   Modelica.Electrical.Analog.Basic.Resistor r2(R=R2) 
     annotation (Placement(transformation(extent={{20,50},{0,70}})));
   Modelica.Electrical.Analog.Basic.Ground ground1 
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-60,0})));
   Modelica.Electrical.Analog.Sources.ConstantVoltage vSourcePos(V=Vps) annotation (Placement(
         transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-40,20})));
   Modelica.Electrical.Analog.Sources.ConstantVoltage vSourceNeg(V=Vns) annotation (Placement(
         transformation(
-        extent={{10,-10},{-10,10}}, 
-        rotation=270, 
+        extent={{10,-10},{-10,10}},
+        rotation=270,
         origin={-40,-20})));
 equation
   connect(r1.n, r2.n) annotation (Line(
@@ -77,10 +77,10 @@ equation
   annotation (
     Documentation(info="<html>
 <p>This is an inverting amplifier. Resistance R1 can be chosen, R2 is defined by the desired amplification k.</p>
-</html>"), 
+</html>"),
     experiment(
-      StartTime=0, 
-      StopTime=1, 
-      Tolerance=1e-006, 
+      StartTime=0,
+      StopTime=1,
+      Tolerance=1e-006,
       Interval=0.001));
 end InvertingAmp;

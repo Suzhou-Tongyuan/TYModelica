@@ -1,30 +1,30 @@
 ﻿within Modelica.Mechanics.Rotational.Sources;
-model Speed 
+model Speed
   "Forced movement of a flange according to a reference angular velocity signal"
   extends 
     Modelica.Mechanics.Rotational.Interfaces.PartialElementaryOneFlangeAndSupport2;
-  parameter Boolean exact=false 
+  parameter Boolean exact=false
     "Is true/false for exact treatment/filtering of the input signal, respectively" 
     annotation (Evaluate=true);
-  parameter SI.Frequency f_crit=50 
+  parameter SI.Frequency f_crit=50
     "If exact=false, critical frequency of filter to filter input signal" 
     annotation (Dialog(enable=not exact));
   SI.Angle phi(
-    start=0, 
-    fixed=true, 
-    stateSelect=StateSelect.prefer) 
+    start=0,
+    fixed=true,
+    stateSelect=StateSelect.prefer)
     "Rotation angle of flange with respect to support";
   SI.AngularVelocity w(stateSelect=if exact then StateSelect.default else 
-        StateSelect.prefer) 
+        StateSelect.prefer)
     "Angular velocity of flange with respect to support";
-  SI.AngularAcceleration a 
+  SI.AngularAcceleration a
     "If exact=false, angular acceleration of flange with respect to support else dummy";
-  Modelica.Blocks.Interfaces.RealInput w_ref(unit="rad/s") 
+  Modelica.Blocks.Interfaces.RealInput w_ref(unit="rad/s")
     "Reference angular velocity of flange with respect to support as input signal" 
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
 
 protected
-  parameter SI.AngularFrequency w_crit=2*Modelica.Constants.pi 
+  parameter SI.AngularFrequency w_crit=2*Modelica.Constants.pi
       *f_crit "Critical frequency";
 initial equation
   if not exact then
@@ -71,28 +71,28 @@ to move relative to flange support according to this reference motion. According
 The input signal can be provided from one of the signal generator
 blocks of the block library Modelica.Blocks.Sources.
 </p>
-</html>"), 
+</html>"),
        Icon(
-    coordinateSystem(preserveAspectRatio=true, 
-      extent={{-100.0,-100.0},{100.0,100.0}}), 
+    coordinateSystem(preserveAspectRatio=true,
+      extent={{-100.0,-100.0},{100.0,100.0}}),
       graphics={
-    Text(extent={{-140,-60},{-40,-30}}, 
-          textColor={128,128,128}, 
-          horizontalAlignment=TextAlignment.Right, 
-          textString="w_ref"), 
-    Text(extent={{30,-60},{150,-30}}, 
-      textString="exact="), 
-    Text(extent={{30,-90},{150,-60}}, 
-      textString="%exact"), 
-    Rectangle(lineColor={64,64,64}, 
-      fillColor={192,192,192}, 
-      fillPattern=FillPattern.HorizontalCylinder, 
-      extent={{-100.0,-20.0},{100.0,20.0}}), 
-    Line(points={{-30.0,-32.0},{30.0,-32.0}}), 
-    Line(points={{0.0,52.0},{0.0,32.0}}), 
-    Line(points={{-29.0,32.0},{30.0,32.0}}), 
-    Line(points={{0.0,-32.0},{0.0,-100.0}}), 
-    Text(textColor={0,0,255}, 
-      extent={{-150,60},{150,100}}, 
+    Text(extent={{-140,-60},{-40,-30}},
+          textColor={128,128,128},
+          horizontalAlignment=TextAlignment.Right,
+          textString="w_ref"),
+    Text(extent={{30,-60},{150,-30}},
+      textString="exact="),
+    Text(extent={{30,-90},{150,-60}},
+      textString="%exact"),
+    Rectangle(lineColor={64,64,64},
+      fillColor={192,192,192},
+      fillPattern=FillPattern.HorizontalCylinder,
+      extent={{-100.0,-20.0},{100.0,20.0}}),
+    Line(points={{-30.0,-32.0},{30.0,-32.0}}),
+    Line(points={{0.0,52.0},{0.0,32.0}}),
+    Line(points={{-29.0,32.0},{30.0,32.0}}),
+    Line(points={{0.0,-32.0},{0.0,-100.0}}),
+    Text(textColor={0,0,255},
+      extent={{-150,60},{150,100}},
       textString="%name")}));
 end Speed;

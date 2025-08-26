@@ -3,11 +3,11 @@ model IdealGear "Ideal gear without inertia"
   extends Modelica.Mechanics.Rotational.Icons.Gear;
   extends 
     Modelica.Mechanics.Rotational.Interfaces.PartialElementaryTwoFlangesAndSupport2;
-  parameter Real ratio(start=1) 
+  parameter Real ratio(start=1)
     "Transmission ratio (flange_a.phi/flange_b.phi)";
-  SI.Angle phi_a 
+  SI.Angle phi_a
     "Angle between left shaft flange and support";
-  SI.Angle phi_b 
+  SI.Angle phi_b
     "Angle between right shaft flange and support";
 
 equation
@@ -25,14 +25,14 @@ or backlash. If these effects have to be considered, the gear has to be
 connected to other elements in an appropriate way.
 </p>
 
-</html>"), 
+</html>"),
        Icon(
-    coordinateSystem(preserveAspectRatio=true, 
-      extent={{-100,-100},{100,100}}), 
+    coordinateSystem(preserveAspectRatio=true,
+      extent={{-100,-100},{100,100}}),
     graphics={
-      Text(extent={{-153,145},{147,105}}, 
-        textColor={0,0,255}, 
-        textString="%name"), 
-      Text(extent={{-146,-49},{154,-79}}, 
+      Text(extent={{-153,145},{147,105}},
+        textColor={0,0,255},
+        textString="%name"),
+      Text(extent={{-146,-49},{154,-79}},
         textString="ratio=%ratio")}));
 end IdealGear;

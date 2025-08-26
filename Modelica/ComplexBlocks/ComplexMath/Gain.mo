@@ -1,9 +1,9 @@
 ﻿within Modelica.ComplexBlocks.ComplexMath;
 block Gain "Output the product of a gain value with the input signal"
 
-  parameter Complex k(re(start=1), im(start=0)) 
+  parameter Complex k(re(start=1), im(start=0))
     "Gain value multiplied with input signal";
-  parameter Boolean useConjugateInput=false 
+  parameter Boolean useConjugateInput=false
     "If true, input is processed conjugate complex";
   Interfaces.ComplexInput u "Input signal connector" annotation (Placement(
         transformation(extent={{-140,-20},{-100,20}})));
@@ -23,16 +23,16 @@ input <code>u</code>. Optionally, the input <code>u</code> can be processed conj
 y = k * (if useConjugateInput then Modelica.ComplexMath.conj(u) else u);
 </pre></blockquote>
 <p><strong>Example:</strong> If <code>useConjugateInput = true</code> and <code>k = 2</code> the output signal <code>y = 2 * Modelica.ComplexMath.conj(u)</code>.</p>
-</html>"), 
+</html>"),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={Polygon(
-          points={{-100,-100},{-100,100},{100,0},{-100,-100}}, 
-          lineColor={85,170,255}, 
-          fillColor={255,255,255}, 
+          points={{-100,-100},{-100,100},{100,0},{-100,-100}},
+          lineColor={85,170,255},
+          fillColor={255,255,255},
           fillPattern=FillPattern.Solid),    Text(
-              extent={{-150,-140},{150,-100}}, 
+              extent={{-150,-140},{150,-100}},
               textString="k=%k"),Text(
-              extent={{-150,140},{150,100}}, 
-              textString="%name", 
+              extent={{-150,140},{150,100}},
+              textString="%name",
               textColor={0,0,255})}));
 end Gain;

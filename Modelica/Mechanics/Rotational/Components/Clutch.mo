@@ -4,11 +4,11 @@ model Clutch "Clutch based on Coulomb friction"
   extends 
     Modelica.Mechanics.Rotational.Interfaces.PartialCompliantWithRelativeStates;
 
-  parameter Real mu_pos[:, 2]=[0, 0.5] 
+  parameter Real mu_pos[:, 2]=[0, 0.5]
     "Positive sliding friction coefficient [-] as function of w_rel [rad/s] (w_rel>=0)";
-  parameter Real peak(final min=1) = 1 
+  parameter Real peak(final min=1) = 1
     "Peak for maximum value of mu at w==0 (mu0_max = peak*mu_pos[1,2])";
-  parameter Real cgeo(final min=0) = 1 
+  parameter Real cgeo(final min=0) = 1
     "Geometry constant containing friction distribution assumption";
   parameter SI.Force fn_max(final min=0, start=1) "Maximum normal force";
 
@@ -18,11 +18,11 @@ model Clutch "Clutch based on Coulomb friction"
 
   Real mu0 "Friction coefficient for w=0 and forward sliding";
   SI.Force fn "Normal force (fn=fn_max*f_normalized)";
-  Modelica.Blocks.Interfaces.RealInput f_normalized 
+  Modelica.Blocks.Interfaces.RealInput f_normalized
     "Normalized force signal 0..1 (normal force = fn_max*f_normalized; clutch is engaged if > 0)" 
     annotation (Placement(transformation(
-        origin={0,110}, 
-        extent={{20,-20},{-20,20}}, 
+        origin={0,110},
+        extent={{20,-20},{-20,20}},
         rotation=90)));
 
 equation
@@ -51,15 +51,15 @@ equation
       -Modelica.Math.Vectors.interpolate(mu_pos[:,1], mu_pos[:,2], -w_rel, 1));
   lossPower = tau*w_relfric;
   annotation (Icon(
-      coordinateSystem(preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}), 
+      coordinateSystem(preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}}),
         graphics={
-      Text(extent={{-150,-110},{150,-70}}, 
-        textString="%name", 
-        textColor={0,0,255}), 
-      Line(visible=useHeatPort, 
-        points={{-100,-100},{-100,-40},{0,-40}}, 
-        color={191,0,0}, 
+      Text(extent={{-150,-110},{150,-70}},
+        textString="%name",
+        textColor={0,0,255}),
+      Line(visible=useHeatPort,
+        points={{-100,-100},{-100,-40},{0,-40}},
+        color={191,0,0},
         pattern=LinePattern.Dot)}), Documentation(info="<html>
 <p>
 This component models a <strong>clutch</strong>, i.e., a component with

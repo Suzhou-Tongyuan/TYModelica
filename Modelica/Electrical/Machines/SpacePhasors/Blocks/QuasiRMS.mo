@@ -15,10 +15,10 @@ equation
   annotation (
     Documentation(info="<html>
 <p>
-This model determines the RMS value of the input space phasor <code>u</code>.</p> </html>"), 
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+This model determines the RMS value of the input space phasor <code>u</code>.</p> </html>"),
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics={Text(
-                extent={{-60,40},{60,-20}}, 
-                textColor={0,0,255}, 
+                extent={{-60,40},{60,-20}},
+                textColor={0,0,255},
                 textString="RMS")}));
 end QuasiRMS;

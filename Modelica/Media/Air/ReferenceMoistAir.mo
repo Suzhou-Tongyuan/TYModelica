@@ -1,34 +1,34 @@
 ﻿within Modelica.Media.Air;
-package ReferenceMoistAir 
+package ReferenceMoistAir
   "ReferenceMoistAir: Detailed moist air model (143.15 ... 2000 K)"
 
   extends Modelica.Media.Interfaces.PartialRealCondensingGases(
-    mediumName="Moist air", 
-    substanceNames={"Water","Air"}, 
-    final fixedX=false, 
-    final reducedX=true, 
-    final singleState=false, 
-    reference_X={0.01,0.99}, 
-    fluidConstants={Utilities.Water95_Utilities.waterConstants,Modelica.Media.Air.ReferenceAir.airConstants}, 
+    mediumName="Moist air",
+    substanceNames={"Water","Air"},
+    final fixedX=false,
+    final reducedX=true,
+    final singleState=false,
+    reference_X={0.01,0.99},
+    fluidConstants={Utilities.Water95_Utilities.waterConstants,Modelica.Media.Air.ReferenceAir.airConstants},
     ThermoStates=Modelica.Media.Interfaces.Choices.IndependentVariables.pTX);
 
-  constant Integer Water=1 
+  constant Integer Water=1
     "Index of water (in substanceNames, massFractions X, etc.)";
 
-  constant Integer Air=2 
+  constant Integer Air=2
     "Index of air (in substanceNames, massFractions X, etc.)";
 
-  constant Boolean useEnhancementFactor=false 
+  constant Boolean useEnhancementFactor=false
     "Use the enhancement factor in the calculations";
 
-  constant Boolean useDissociation=true 
+  constant Boolean useDissociation=true
     "Take dissociation into account for high temperatures";
 
   constant Real k_mair=steam.MM/dryair.MM "Ratio of molar weights";
 
   constant Common.FundamentalConstants dryair=ReferenceAir.Air_Utilities.Basic.Constants;
   constant Common.FundamentalConstants steam=Utilities.Water95_Utilities.Constants;
-  constant SI.MolarMass[2] MMX={steam.MM,dryair.MM} 
+  constant SI.MolarMass[2] MMX={steam.MM,dryair.MM}
     "Molar masses of components";
 
   import Modelica.Media.Interfaces;
@@ -37,17 +37,17 @@ package ReferenceMoistAir
   import Modelica.Constants;
   import Modelica.Media.IdealGases.Common.SingleGasNasa;
 
-  redeclare record extends ThermodynamicState 
+  redeclare record extends ThermodynamicState
     "ThermodynamicState record for moist air"
   end ThermodynamicState;
 
   redeclare replaceable model extends BaseProperties(
     T(stateSelect=if preferredMediumStates then StateSelect.prefer else 
-          StateSelect.default), 
+          StateSelect.default),
     p(stateSelect=if preferredMediumStates then StateSelect.prefer else 
-          StateSelect.default), 
+          StateSelect.default),
     Xi(each stateSelect=if preferredMediumStates then StateSelect.prefer else 
-          StateSelect.default), 
+          StateSelect.default),
     final standardOrderComponents=true) "Moist air base properties record"
 
     Real x_water "Mass of total water/mass of dry air";
@@ -57,14 +57,14 @@ package ReferenceMoistAir
     MassFraction X_liquid "Mass fraction of liquid or solid water";
     MassFraction X_steam "Mass fraction of steam water";
     MassFraction X_air "Mass fraction of air";
-    MassFraction X_sat 
+    MassFraction X_sat
       "Steam water mass fraction of saturation boundary in kg_water/kg_moistair";
-    Real x_sat 
+    Real x_sat
       "Steam water mass content of saturation boundary in kg_water/kg_dryair";
     AbsolutePressure p_steam_sat "Partial saturation pressure of steam";
   equation
-    assert(T >= 143.15 and T <= 2000, 
-      "Temperature T is not in the allowed range 143.15 K <= (T =" + String(T) 
+    assert(T >= 143.15 and T <= 2000,
+      "Temperature T is not in the allowed range 143.15 K <= (T =" + String(T)
        + " K) <= 2000 K required from medium model \"" + mediumName + "\".");
 
     MM = 1/(Xi[Water]/MMX[Water] + (1.0 - Xi[Water])/MMX[Air]);
@@ -76,17 +76,17 @@ package ReferenceMoistAir
     X_air = 1 - Xi[Water];
 
     h = specificEnthalpy_pTX(
-        p, 
-        T, 
+        p,
+        T,
         Xi);
     R_s = dryair.R_s*(X_air/(1 - X_liquid)) + steam.R_s*X_steam/(1 - X_liquid);
     u = Modelica.Media.Air.ReferenceMoistAir.Utilities.u_pTX(
-        p, 
-        T, 
+        p,
+        T,
         Xi);
     d = Modelica.Media.Air.ReferenceMoistAir.Utilities.rho_pTX(
-        p, 
-        T, 
+        p,
+        T,
         Xi);
     state.p = p;
     state.T = T;
@@ -96,8 +96,8 @@ package ReferenceMoistAir
     x_sat = Modelica.Media.Air.ReferenceMoistAir.xsaturation(state);
     x_water = Modelica.Media.Air.ReferenceMoistAir.waterContent_X(state.X);
     phi = Modelica.Media.Air.ReferenceMoistAir.Utilities.phi_pTX(
-        p, 
-        T, 
+        p,
+        T,
         Xi);
 
     annotation (Documentation(revisions="<html>
@@ -105,106 +105,106 @@ package ReferenceMoistAir
 </html>"));
   end BaseProperties;
 
-  redeclare function extends setState_pTX 
+  redeclare function extends setState_pTX
     "Return thermodynamic state as function of pressure p, temperature T and composition X"
   algorithm
     state := if size(X, 1) == nX then ThermodynamicState(
-        p=p, 
-        T=T, 
+        p=p,
+        T=T,
         X=X) else ThermodynamicState(
-        p=p, 
-        T=T, 
+        p=p,
+        T=T,
         X=cat(
-          1, 
-          X, 
+          1,
+          X,
           {1 - sum(X)}));
   end setState_pTX;
 
-  redeclare function extends setState_phX 
+  redeclare function extends setState_phX
     "Return thermodynamic state as function of pressure p, specific enthalpy h and composition X"
   algorithm
     state := if size(X, 1) == nX then ThermodynamicState(
-        p=p, 
+        p=p,
         T=Modelica.Media.Air.ReferenceMoistAir.Utilities.Inverses.T_phX(
-          p, 
-          h, 
-          X), 
+          p,
+          h,
+          X),
         X=X) else ThermodynamicState(
-        p=p, 
+        p=p,
         T=Modelica.Media.Air.ReferenceMoistAir.Utilities.Inverses.T_phX(
-          p, 
-          h, 
-          X), 
+          p,
+          h,
+          X),
         X=cat(
-          1, 
-          X, 
+          1,
+          X,
           {1 - sum(X)}));
   end setState_phX;
 
-  redeclare function extends setState_psX 
+  redeclare function extends setState_psX
     "Return thermodynamic state as function of pressure p, specific enthalpy h and composition X"
   algorithm
     state := if size(X, 1) == nX then ThermodynamicState(
-        p=p, 
+        p=p,
         T=Modelica.Media.Air.ReferenceMoistAir.Utilities.Inverses.T_psX(
-          p, 
-          s, 
-          X), 
+          p,
+          s,
+          X),
         X=X) else ThermodynamicState(
-        p=p, 
+        p=p,
         T=Modelica.Media.Air.ReferenceMoistAir.Utilities.Inverses.T_psX(
-          p, 
-          s, 
-          X), 
+          p,
+          s,
+          X),
         X=cat(
-          1, 
-          X, 
+          1,
+          X,
           {1 - sum(X)}));
   end setState_psX;
 
-  redeclare function extends setState_dTX 
+  redeclare function extends setState_dTX
     "Return thermodynamic state as function of density d, temperature T and composition X"
   algorithm
     state := if size(X, 1) == nX then ThermodynamicState(
         p=Modelica.Media.Air.ReferenceMoistAir.Utilities.Inverses.p_dTX(
-          d, 
-          T, 
-          X), 
-        T=T, 
+          d,
+          T,
+          X),
+        T=T,
         X=X) else ThermodynamicState(
         p=Modelica.Media.Air.ReferenceMoistAir.Utilities.Inverses.p_dTX(
-          d, 
-          T, 
-          X), 
-        T=T, 
+          d,
+          T,
+          X),
+        T=T,
         X=cat(
-          1, 
-          X, 
+          1,
+          X,
           {1 - sum(X)}));
   end setState_dTX;
 
-  redeclare function extends setSmoothState 
+  redeclare function extends setSmoothState
     "Return thermodynamic state so that it smoothly approximates: if x > 0 then state_a else state_b"
   algorithm
     state := ThermodynamicState(
         p=Modelica.Media.Common.smoothStep(
-          x, 
-          state_a.p, 
-          state_b.p, 
-          x_small), 
+          x,
+          state_a.p,
+          state_b.p,
+          x_small),
         T=Modelica.Media.Common.smoothStep(
-          x, 
-          state_a.T, 
-          state_b.T, 
-          x_small), 
+          x,
+          state_a.T,
+          state_b.T,
+          x_small),
         X=Modelica.Media.Common.smoothStep(
-          x, 
-          state_a.X, 
-          state_b.X, 
+          x,
+          state_a.X,
+          state_b.X,
           x_small));
   end setSmoothState;
 
-  function Xsaturation 
+  function Xsaturation
     "Return absolute humidity per unit mass of moist air at saturation as a function of the thermodynamic state record"
     extends Modelica.Icons.Function;
     input ThermodynamicState state "Thermodynamic state record";
@@ -216,30 +216,30 @@ package ReferenceMoistAir
     X_sat := X[1];
   end Xsaturation;
 
-  function xsaturation 
+  function xsaturation
     "Return absolute humidity per unit mass of dry air at saturation as a function of the thermodynamic state record"
     extends Modelica.Icons.Function;
     input ThermodynamicState state "Thermodynamic state record";
     output MassFraction x_sat "Absolute humidity per unit mass of dry air";
   algorithm
-    x_sat := Modelica.Media.Air.ReferenceMoistAir.Utilities.xws_pT(state.p, 
+    x_sat := Modelica.Media.Air.ReferenceMoistAir.Utilities.xws_pT(state.p,
       state.T);
-    assert(x_sat > -1, 
-      "Calculation of absolute humidity is meaningless\nfor input pressure p = " 
+    assert(x_sat > -1,
+      "Calculation of absolute humidity is meaningless\nfor input pressure p = "
        + String(state.p) + " Pa and temperature T = " + String(state.T) + " K.");
   end xsaturation;
 
-  redeclare function extends massFraction_pTphi 
+  redeclare function extends massFraction_pTphi
     "Return mass fractions as a function of pressure, temperature and relative humidity"
   protected
     Real pds;
 
   algorithm
-    assert(phi < 1.0 and phi > 0, "Illegal input phi = " + String(phi) + 
+    assert(phi < 1.0 and phi > 0, "Illegal input phi = " + String(phi) +
       ". Relative humidity is only defined in the range\n 0 <= phi <= 1.0.");
     pds := Modelica.Media.Air.ReferenceMoistAir.Utilities.pds_pT(p, T);
-    assert(pds > -1, 
-      "Calculation of mass fraction of steam is meaningless\nfor input pressure p = " 
+    assert(pds > -1,
+      "Calculation of mass fraction of steam is meaningless\nfor input pressure p = "
        + String(p) + " Pa and temperature T = " + String(T) + " K.");
     X := {phi*k_mair/(p/pds - phi),1 - phi*k_mair/(p/pds - phi)};
   end massFraction_pTphi;
@@ -260,7 +260,7 @@ package ReferenceMoistAir
 </html>"));
   end massFractionWaterVapor;
 
-  function massFractionWaterNonVapor 
+  function massFractionWaterNonVapor
     "Return mass fraction of liquid and solid water"
     extends Modelica.Icons.Function;
     input ThermodynamicState state "Thermodynamic state record";
@@ -277,20 +277,20 @@ package ReferenceMoistAir
 </html>"));
   end massFractionWaterNonVapor;
 
-  redeclare function extends massFractionSaturation(redeclare output MassFraction Xsat[2]) 
+  redeclare function extends massFractionSaturation(redeclare output MassFraction Xsat[2])
     "Return saturation mass fractions"
   protected
     AbsolutePressure pds;
   algorithm
     pds := Utilities.pds_pT(state.p, state.T);
-    Xsat := {k_mair/(state.p/pds - 1 + k_mair),(state.p/pds - 1)/(state.p/pds 
+    Xsat := {k_mair/(state.p/pds - 1 + k_mair),(state.p/pds - 1)/(state.p/pds
        - 1 + k_mair)};
-    assert(Xsat[1] > -1, 
-      "Calculation of saturation mass fraction is meaningless\nfor input pressure p = " 
+    assert(Xsat[1] > -1,
+      "Calculation of saturation mass fraction is meaningless\nfor input pressure p = "
        + String(state.p) + " Pa and temperature T = " + String(state.T) + " K.");
   end massFractionSaturation;
 
-  function massFractionSaturation_ppsat 
+  function massFractionSaturation_ppsat
     "Return mass fvraction at saturation boundary given pressure and saturation pressure"
     extends Modelica.Icons.Function;
     input AbsolutePressure p "Ambient pressure";
@@ -300,7 +300,7 @@ package ReferenceMoistAir
     X := {k_mair/(p/psat - 1 + k_mair),(p/psat - 1)/(p/psat - 1 + k_mair)};
   end massFractionSaturation_ppsat;
 
-  function massFraction_waterContent 
+  function massFraction_waterContent
     "Return mass fractions as a function of pressure, temperature and absolute humidity in kg(water)/kg(dry air)"
     extends Modelica.Icons.Function;
     input Real xw "Water content in kg(water)/kg(dry air)";
@@ -309,7 +309,7 @@ package ReferenceMoistAir
     X := {xw/(1 + xw),1/(1 + xw)};
   end massFraction_waterContent;
 
-  function waterContent_X 
+  function waterContent_X
     "Return water content in kg(water)/kg(dry air) given mass fractions"
     extends Modelica.Icons.Function;
     input MassFraction[:] X "Mass fractions";
@@ -324,53 +324,53 @@ package ReferenceMoistAir
   redeclare function extends relativeHumidity "Return relative humidity"
   algorithm
     phi := Utilities.phi_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
-    assert(phi > -1, 
-      "Calculation of relative humidity is meaningless\nfor input pressure p = " 
+    assert(phi > -1,
+      "Calculation of relative humidity is meaningless\nfor input pressure p = "
        + String(state.p) + " Pa and temperature T = " + String(state.T) + " K.");
   end relativeHumidity;
 
-  redeclare function extends gasConstant 
+  redeclare function extends gasConstant
     "Return ideal gas constant as a function from thermodynamic state, only valid for phi<1"
 
   algorithm
     R_s := dryair.R_s*(1 - state.X[Water]) + steam.R_s*state.X[Water];
   end gasConstant;
 
-  function saturationPressureLiquid 
+  function saturationPressureLiquid
     "Return saturation pressure of water as a function of temperature T"
     extends Modelica.Icons.Function;
     input ThermodynamicState state "Thermodynamic state record";
     output AbsolutePressure psat "Saturation pressure";
   algorithm
-    psat := 
+    psat :=
       Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.psat(
       state.T);
   end saturationPressureLiquid;
 
-  function sublimationPressureIce 
+  function sublimationPressureIce
     "Return sublimation pressure of water as a function of temperature T between 223.16 and 273.16 K"
     extends Modelica.Icons.Function;
     input ThermodynamicState state "Thermodynamic state record";
     output AbsolutePressure psat "Sublimation pressure";
   algorithm
-    psat := 
+    psat :=
       Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.Basic.psub(
       state.T);
   end sublimationPressureIce;
 
-  redeclare function extends saturationPressure 
+  redeclare function extends saturationPressure
     "Return saturation pressure of condensing fluid"
   algorithm
     psat := Utilities.pds_pT(state.p, state.T);
-    assert(psat > -1, 
-      "Calculation of saturation pressure is meaningless\nfor input temperature T = " 
+    assert(psat > -1,
+      "Calculation of saturation pressure is meaningless\nfor input temperature T = "
        + String(state.T) + " K.");
   end saturationPressure;
 
-  redeclare function extends saturationTemperature 
+  redeclare function extends saturationTemperature
     "Return saturation temperature of condensing fluid"
   protected
     partial function Tsat_res
@@ -383,19 +383,19 @@ package ReferenceMoistAir
 
   algorithm
     Tsat := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
-        function Tsat_res(p=state.p), 
-        50.0, 
-        673.15, 
+        function Tsat_res(p=state.p),
+        50.0,
+        673.15,
         1e-9);
   end saturationTemperature;
 
-  redeclare function extends enthalpyOfVaporization 
+  redeclare function extends enthalpyOfVaporization
     "Return enthalpy of vaporization of water"
   protected
     AbsolutePressure p_liq;
   algorithm
     p_liq := saturationPressureLiquid(state);
-    r0 := Modelica.Media.Water.IF97_Utilities.hv_p(p_liq) - 
+    r0 := Modelica.Media.Water.IF97_Utilities.hv_p(p_liq) -
       Modelica.Media.Water.IF97_Utilities.hl_p(p_liq);
   end enthalpyOfVaporization;
 
@@ -408,15 +408,15 @@ package ReferenceMoistAir
     xws := Utilities.xws_pT(state.p, state.T);
     if ((xws > xw) and (state.T > 273.15)) then
       h := Modelica.Media.Water.IF97_Utilities.h_pT(
-          state.p, 
-          state.T, 
+          state.p,
+          state.T,
           region=1);
     else
       h := 0;
     end if;
   end enthalpyOfLiquid;
 
-  redeclare function extends enthalpyOfGas 
+  redeclare function extends enthalpyOfGas
     "Return specific enthalpy of gas (air and steam)"
   protected
     Real xw;
@@ -426,28 +426,28 @@ package ReferenceMoistAir
 
   algorithm
     pd := Utilities.pd_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
     pl := state.p - pd;
     xw := state.X[1]/(1 - state.X[1]);
     xws := Utilities.xws_pT(state.p, state.T);
     if ((xw <= xws) or (xws == -1)) then
-      h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, state.T) + xw 
+      h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, state.T) + xw
         *Utilities.IF97_new.h_pT(pd, state.T);
     else
       if (state.T < 273.16) then
-        h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, state.T) + 
+        h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, state.T) +
           xws*Utilities.IF97_new.h_pT(pd, state.T);
       else
-        h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, state.T) + 
+        h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, state.T) +
           xws*Utilities.IF97_new.h_pT(pd, state.T);
       end if;
     end if;
     annotation (Inline=false, LateInline=true);
   end enthalpyOfGas;
 
-  redeclare function extends enthalpyOfCondensingGas 
+  redeclare function extends enthalpyOfCondensingGas
     "Return specific enthalpy of steam"
   protected
     Real xw;
@@ -455,24 +455,24 @@ package ReferenceMoistAir
 
   algorithm
     pd := Utilities.pd_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
     xw := state.X[1]/(1 - state.X[1]);
     h := xw*Utilities.IF97_new.h_pT(pd, state.T);
     annotation (Inline=false, LateInline=true);
   end enthalpyOfCondensingGas;
 
-  redeclare function extends enthalpyOfNonCondensingGas 
+  redeclare function extends enthalpyOfNonCondensingGas
     "Return specific enthalpy of dry air"
 
   algorithm
     h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(state.p, state.T);
   end enthalpyOfNonCondensingGas;
 
-  function enthalpyOfDryAir = enthalpyOfNonCondensingGas 
+  function enthalpyOfDryAir = enthalpyOfNonCondensingGas
     "Return specific enthalpy of dry air";
-  function enthalpyOfWater 
+  function enthalpyOfWater
     "Return specific enthalpy of water (solid + liquid + steam)"
     extends Modelica.Icons.Function;
     input ThermodynamicState state "Thermodynamic state record";
@@ -481,7 +481,7 @@ package ReferenceMoistAir
     h := specificEnthalpy(state) - enthalpyOfNonCondensingGas(state);
   end enthalpyOfWater;
 
-  function enthalpyOfWaterVapor = enthalpyOfCondensingGas 
+  function enthalpyOfWaterVapor = enthalpyOfCondensingGas
     "Return specific enthalpy of steam";
   function enthalpyOfWaterNonVapor "Return enthalpy of liquid and solid water"
     extends Modelica.Icons.Function;
@@ -491,7 +491,7 @@ package ReferenceMoistAir
     h := enthalpyOfWater(state) - enthalpyOfWaterVapor(state);
   end enthalpyOfWaterNonVapor;
 
-  redeclare function extends pressure 
+  redeclare function extends pressure
     "Returns pressure of ideal gas as a function of the thermodynamic state record"
 
   algorithm
@@ -499,7 +499,7 @@ package ReferenceMoistAir
 
   end pressure;
 
-  redeclare function extends temperature 
+  redeclare function extends temperature
     "Return temperature of ideal gas as a function of the thermodynamic state record"
 
   algorithm
@@ -507,95 +507,95 @@ package ReferenceMoistAir
 
   end temperature;
 
-  redeclare function extends density 
+  redeclare function extends density
     "Returns density as a function of the thermodynamic state record"
 
   algorithm
     d := Utilities.rho_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
 
   end density;
 
-  redeclare function extends specificEnthalpy 
+  redeclare function extends specificEnthalpy
     "Return specific enthalpy of moist air as a function of the thermodynamic state record"
 
   algorithm
     h := Modelica.Media.Air.ReferenceMoistAir.Utilities.h_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
 
   end specificEnthalpy;
 
-  redeclare function extends specificInternalEnergy 
+  redeclare function extends specificInternalEnergy
     "Return specific internal energy of moist air as a function of the thermodynamic state record"
 
   algorithm
     u := Utilities.u_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
 
   end specificInternalEnergy;
 
-  redeclare function extends specificEntropy 
+  redeclare function extends specificEntropy
     "Return specific entropy from thermodynamic state record, only valid for phi<1"
 
   algorithm
     s := Utilities.s_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
 
   end specificEntropy;
 
-  redeclare function extends specificGibbsEnergy 
+  redeclare function extends specificGibbsEnergy
     "Return specific Gibbs energy as a function of the thermodynamic state record, only valid for phi<1"
   algorithm
     g := Utilities.h_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X) - state.T*Utilities.s_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
 
   end specificGibbsEnergy;
 
-  redeclare function extends specificHelmholtzEnergy 
+  redeclare function extends specificHelmholtzEnergy
     "Return specific Helmholtz energy as a function of the thermodynamic state record, only valid for phi<1"
 
   algorithm
     f := Utilities.u_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X) - state.T*Utilities.s_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
 
   end specificHelmholtzEnergy;
 
-  redeclare function extends specificHeatCapacityCp 
+  redeclare function extends specificHeatCapacityCp
     "Return specific heat capacity at constant pressure as a function of the thermodynamic state record"
 
   algorithm
     cp := Utilities.cp_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
 
   end specificHeatCapacityCp;
 
-  redeclare function extends specificHeatCapacityCv 
+  redeclare function extends specificHeatCapacityCv
     "Return specific heat capacity at constant volume as a function of the thermodynamic state record"
 
   algorithm
     cv := Utilities.cv_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
 
   end specificHeatCapacityCv;
@@ -615,8 +615,8 @@ package ReferenceMoistAir
       {1 - sum(refState.X)}) else refState.X;*/
     X := refState.X;
     h_is := specificEnthalpy(setState_psX(
-        p_downstream, 
-        specificEntropy(refState), 
+        p_downstream,
+        specificEntropy(refState),
         X));
     annotation (Documentation(revisions="<html>
 2013-07-18 Stefan Wischhusen: Changed internal calculation of X.
@@ -625,7 +625,7 @@ package ReferenceMoistAir
 
   redeclare function extends velocityOfSound "Return velocity of sound"
   algorithm
-    a := sqrt(max(0, gasConstant(state)*state.T*specificHeatCapacityCp(state)/ 
+    a := sqrt(max(0, gasConstant(state)*state.T*specificHeatCapacityCp(state)/
       specificHeatCapacityCv(state)));
   end velocityOfSound;
 
@@ -634,22 +634,22 @@ package ReferenceMoistAir
     MM := 1/(state.X[1]/steam.MM + state.X[2]/dryair.MM);
   end molarMass;
 
-  redeclare function extends dynamicViscosity 
+  redeclare function extends dynamicViscosity
     "Return dynamic viscosity as a function of the thermodynamic state record, valid from 73.15 K to 373.15 K"
   algorithm
     eta := Utilities.Transport.eta_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
 
   end dynamicViscosity;
 
-  redeclare function extends thermalConductivity 
+  redeclare function extends thermalConductivity
     "Return thermal conductivity as a function of the thermodynamic state record, valid from 73.15 K to 373.15 K"
   algorithm
     lambda := Utilities.Transport.lambda_pTX(
-        state.p, 
-        state.T, 
+        state.p,
+        state.T,
         state.X);
 
   end thermalConductivity;
@@ -657,7 +657,7 @@ package ReferenceMoistAir
   package Utilities "Utility package for moist air"
     extends Modelica.Icons.UtilitiesPackage;
 
-    final constant MoleFraction[4] MMX={18.015257E-003,28.01348E-003, 
+    final constant MoleFraction[4] MMX={18.015257E-003,28.01348E-003,
         31.9988E-003,39.948E-003};
 
     final constant Real[3] Xi_Air={0.7557,0.2316,0.0127};
@@ -665,135 +665,135 @@ package ReferenceMoistAir
     package Inverses "Compute inverse function"
       extends Modelica.Icons.BasesPackage;
 
-      function T_phX 
+      function T_phX
         "Return temperature as a function of pressure, specific enthalpy and mass fractions"
         extends Modelica.Icons.Function;
         input SI.AbsolutePressure p "Pressure";
         input SI.SpecificEnthalpy h "Specific enthalpy";
-        input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+        input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
           "Mass fractions";
         output SI.Temperature T "Temperature";
 
       protected
         MassFraction[nX] Xfull=if size(X, 1) == nX then X else cat(
-                  1, 
-                  X, 
+                  1,
+                  X,
                   {1 - sum(X)});
 
         function T_phX_res
           extends Modelica.Math.Nonlinear.Interfaces.partialScalarFunction;
           input SI.AbsolutePressure p "Pressure";
           input SI.SpecificEnthalpy h "Specific enthalpy";
-          input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+          input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
             "Mass fractions";
         algorithm
           y := Modelica.Media.Air.ReferenceMoistAir.Utilities.h_pTX(
-                    p=p, 
-                    T=u, 
+                    p=p,
+                    T=u,
                     X=X) - h;
         end T_phX_res;
 
       algorithm
         T := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
                 function T_phX_res(
-                  p=p, 
-                  h=h, 
-                  X=Xfull), 
-                173.15, 
-                2000.0, 
+                  p=p,
+                  h=h,
+                  X=Xfull),
+                173.15,
+                2000.0,
                 1e-9);
-        annotation (inverse(h= 
+        annotation (inverse(h=
                 Modelica.Media.Air.ReferenceMoistAir.Utilities.h_pTX(
-                      p=p, 
-                      T=T, 
+                      p=p,
+                      T=T,
                       X=X)));
       end T_phX;
 
-      function T_psX 
+      function T_psX
         "Return temperature as function of pressure, specific entropy and mass fractions"
         extends Modelica.Icons.Function;
         input SI.AbsolutePressure p "Pressure";
         input SI.SpecificEntropy s "Specific entropy";
-        input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+        input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
           "Mass fractions";
         output SI.Temperature T "Temperature";
 
       protected
         MassFraction[nX] Xfull=if size(X, 1) == nX then X else cat(
-                  1, 
-                  X, 
+                  1,
+                  X,
                   {1 - sum(X)});
 
         function T_psX_res
           extends Modelica.Math.Nonlinear.Interfaces.partialScalarFunction;
           input SI.AbsolutePressure p "Pressure";
           input SI.SpecificEntropy s "Specific entropy";
-          input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+          input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
             "Mass fractions";
         algorithm
           y := Modelica.Media.Air.ReferenceMoistAir.Utilities.s_pTX(
-                    p=p, 
-                    T=u, 
+                    p=p,
+                    T=u,
                     X=X) - s;
         end T_psX_res;
 
       algorithm
         T := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
                 function T_psX_res(
-                  p=p, 
-                  s=s, 
-                  X=Xfull), 
-                173.15, 
-                2000.0, 
+                  p=p,
+                  s=s,
+                  X=Xfull),
+                173.15,
+                2000.0,
                 1e-9);
-        annotation (inverse(s= 
+        annotation (inverse(s=
                 Modelica.Media.Air.ReferenceMoistAir.Utilities.s_pTX(
-                      p=p, 
-                      T=T, 
+                      p=p,
+                      T=T,
                       X=X)));
       end T_psX;
 
-      function p_dTX 
+      function p_dTX
         "Return pressure as function of density, temperature and mass fractions"
         extends Modelica.Icons.Function;
         input SI.Density d "Density";
         input SI.Temperature T "Temperature";
-        input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+        input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
           "Mass fractions";
         output SI.AbsolutePressure p "Pressure";
 
       protected
         MassFraction[nX] Xfull=if size(X, 1) == nX then X else cat(
-                  1, 
-                  X, 
+                  1,
+                  X,
                   {1 - sum(X)});
 
         function p_dTX_res
           extends Modelica.Math.Nonlinear.Interfaces.partialScalarFunction;
           input SI.Density d "Density";
           input SI.Temperature T "Temperature";
-          input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+          input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
             "Mass fractions";
         algorithm
           y := Modelica.Media.Air.ReferenceMoistAir.Utilities.rho_pTX(
-                    p=u, 
-                    T=T, 
+                    p=u,
+                    T=T,
                     X=X) - d;
         end p_dTX_res;
 
       algorithm
         p := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
                 function p_dTX_res(
-                  d=d, 
-                  T=T, 
-                  X=Xfull), 
-                611.2, 
-                1e7, 
+                  d=d,
+                  T=T,
+                  X=Xfull),
+                611.2,
+                1e7,
                 1e-9);
-        annotation (inverse(d= 
+        annotation (inverse(d=
                 Modelica.Media.Air.ReferenceMoistAir.Utilities.rho_pTX(
-                      p=p, 
-                      T=T, 
+                      p=p,
+                      T=T,
                       X=X)), Documentation(revisions="<html>
 2013-07-18 Stefan Wischhusen: Corrected inverse interval of pressure to complete range of medium model.
 </html>"));
@@ -803,7 +803,7 @@ package ReferenceMoistAir
     package Transport "Package for transport properties of moist air"
       extends Modelica.Icons.BasesPackage;
 
-      record coef 
+      record coef
         "Coefficients for polynomials used to calculate transport properties"
         extends Modelica.Icons.Record;
         Real sigma=2.52;
@@ -811,7 +811,7 @@ package ReferenceMoistAir
         Real M=18.0152;
         Real R=0.46144;
         Real[5] w={0.69339511,-0.002597963,1.2864772,0.1576848,0.02543632};
-        Real[5] a={0.4159259E+001,-0.1725577E-002,0.5702012E-005,-0.4596049E-008, 
+        Real[5] a={0.4159259E+001,-0.1725577E-002,0.5702012E-005,-0.4596049E-008,
             0.1424309E-011};
       end coef;
 
@@ -819,7 +819,7 @@ package ReferenceMoistAir
         extends Modelica.Icons.Function;
         input SI.AbsolutePressure p "Pressure";
         input SI.Temperature T "Temperature";
-        input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+        input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
           "Mass fractions";
         output SI.DynamicViscosity eta "Dynamic viscosity";
 
@@ -846,8 +846,8 @@ package ReferenceMoistAir
         xw := X[1]/(1 - X[1]);
         xws := Modelica.Media.Air.ReferenceMoistAir.Utilities.xws_pT(p, T);
         pd := Modelica.Media.Air.ReferenceMoistAir.Utilities.pd_pTX(
-                p, 
-                T, 
+                p,
+                T,
                 X);
         pl := p - pd;
         da := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T);
@@ -860,18 +860,18 @@ package ReferenceMoistAir
             Omega := coef.w[1] + coef.w[2]*Tred + coef.w[3]*Modelica.Math.exp(
               coef.w[4]*Tred)/(coef.w[5] + Tred);
             etad := 2.6695E-006*sqrt(T*coef.M)/(coef.sigma^2*Omega);
-            eta := ya* 
-              Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.eta_dT(da, 
+            eta := ya*
+              Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.eta_dT(da,
               T) + yd*etad;
           else
-            dd := 
-              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.rho_pT(pd, 
+            dd :=
+              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.rho_pT(pd,
               T);
             ya := da/(da + dd);
             yd := 1 - ya;
-            eta := ya* 
-              Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.eta_dT(da, 
-              T) + yd* 
+            eta := ya*
+              Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.eta_dT(da,
+              T) + yd*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.visc_dT(
               dd, T);
           end if;
@@ -884,22 +884,22 @@ package ReferenceMoistAir
             Omega := coef.w[1] + coef.w[2]*Tred + coef.w[3]*Modelica.Math.exp(
               coef.w[4]*Tred)/(coef.w[5] + Tred);
             etad := 2.6695E-006*sqrt(T*coef.M)/(coef.sigma^2*Omega);
-            eta := ya* 
-              Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.eta_dT(da, 
+            eta := ya*
+              Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.eta_dT(da,
               T) + yd*etad;
           else
-            dd := 
-              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.rho_pT(pd, 
+            dd :=
+              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.rho_pT(pd,
               T);
             df := Modelica.Media.Water.IF97_Utilities.rho_pT(p, T);
             yf := (xw - xws)/df/((1 + xws)/(da + dd) + (xw - xws)/df);
             ya := (1 - yf)/(1 + dd/da);
             yd := 1 - (ya + yf);
-            eta := ya* 
-              Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.eta_dT(da, 
-              T) + yd* 
+            eta := ya*
+              Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.eta_dT(da,
+              T) + yd*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.visc_dT(
-              dd, T) + yf* 
+              dd, T) + yf*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.visc_dT(
               df, T);
           end if;
@@ -910,9 +910,9 @@ package ReferenceMoistAir
         extends Modelica.Icons.Function;
         input SI.AbsolutePressure p "Pressure";
         input SI.Temperature T "Temperature";
-        input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+        input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
           "Mass fractions";
-        output SI.ThermalConductivity lambda 
+        output SI.ThermalConductivity lambda
           "Thermal conductivity";
 
       protected
@@ -940,8 +940,8 @@ package ReferenceMoistAir
         xw := X[1]/(1 - X[1]);
         xws := Modelica.Media.Air.ReferenceMoistAir.Utilities.xws_pT(p, T);
         pd := Modelica.Media.Air.ReferenceMoistAir.Utilities.pd_pTX(
-                p, 
-                T, 
+                p,
+                T,
                 X);
         pl := p - pd;
         da := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T);
@@ -953,30 +953,30 @@ package ReferenceMoistAir
             Tred := T/coef.epsilon;
             Omega := coef.w[1] + coef.w[2]*Tred + coef.w[3]*Modelica.Math.exp(
               coef.w[4]*Tred)/(coef.w[5] + Tred);
-            cp := coef.a[1] + coef.a[2]*T + coef.a[3]*T^2 + coef.a[4]*T^3 + 
+            cp := coef.a[1] + coef.a[2]*T + coef.a[3]*T^2 + coef.a[4]*T^3 +
               coef.a[5]*T^4;
             Eu := 0.35424*cp + 0.1144;
             Eu := 0;
             lambdad := 0.083232*sqrt(T/coef.M)/(coef.sigma^2*Omega)*Eu;
-            lambda := ya* 
+            lambda := ya*
               Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.lambda_dT(
               da, T) + yd*lambdad;
           else
-            dd := 
-              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.rho_pT(pd, 
+            dd :=
+              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.rho_pT(pd,
               T);
             ya := da/(da + dd);
             yd := 1 - ya;
-            lambda := ya* 
+            lambda := ya*
               Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.lambda_dT(
-              da, T) + yd* 
+              da, T) + yd*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.cond_dT(
               dd, T);
           end if;
         else
           if (T < 273.16) then
             dd := pd/(Modelica.Media.Air.ReferenceMoistAir.steam.R_s*T);
-            df := 
+            df :=
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.rho_pT(
               p, T);
             yf := (xw - xws)/df/((1 + xws)/(da + dd) + (xw - xws)/df);
@@ -985,26 +985,26 @@ package ReferenceMoistAir
             Tred := T/coef.epsilon;
             Omega := coef.w[1] + coef.w[2]*Tred + coef.w[3]*Modelica.Math.exp(
               coef.w[4]*Tred)/(coef.w[5] + Tred);
-            cp := coef.a[1] + coef.a[2]*T + coef.a[3]*T^2 + coef.a[4]*T^3 + 
+            cp := coef.a[1] + coef.a[2]*T + coef.a[3]*T^2 + coef.a[4]*T^3 +
               coef.a[5]*T^4;
             Eu := 0.35424*cp + 0.1144;
             lambdad := 0.083232*sqrt(T/coef.M)/(coef.sigma^2*Omega)*Eu;
-            lambda := ya* 
+            lambda := ya*
               Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.lambda_dT(
               da, T) + yd*lambdad + yf*2.21;
           else
-            dd := 
-              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.rho_pT(pd, 
+            dd :=
+              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.rho_pT(pd,
               T);
             df := Modelica.Media.Water.IF97_Utilities.rho_pT(p, T);
             yf := (xw - xws)/df/((1 + xws)/(da + dd) + (xw - xws)/df);
             ya := (1 - yf)/(1 + dd/da);
             yd := 1 - (ya + yf);
-            lambda := ya* 
+            lambda := ya*
               Modelica.Media.Air.ReferenceAir.Air_Utilities.Transport.lambda_dT(
-              da, T) + yd* 
+              da, T) + yd*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.cond_dT(
-              dd, T) + yf* 
+              dd, T) + yf*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.cond_dT(
               df, T);
           end if;
@@ -1012,7 +1012,7 @@ package ReferenceMoistAir
       end lambda_pTX;
     end Transport;
 
-    package VirialCoefficients 
+    package VirialCoefficients
       "Virial and cross-virial coefficients of air and water"
       extends Modelica.Icons.BasesPackage;
 
@@ -1024,14 +1024,14 @@ package ReferenceMoistAir
         output SI.MolarVolume baa "Second virial coefficient";
 
       protected
-        final constant Real[19] N={0.118160747229,0.713116392079,-0.161824192067E+001, 
-            0.714140178971E-001,-0.865421396646E-001,0.134211176704, 
-            0.112626704218E-001,-0.420533228842E-001,0.349008431982E-001, 
-            0.164957183186E-003,-0.101365037912,-0.173813690970,-0.472103183731E-001, 
-            -0.122523554253E-001,-0.146629609713,-0.316055879821E-001, 
+        final constant Real[19] N={0.118160747229,0.713116392079,-0.161824192067E+001,
+            0.714140178971E-001,-0.865421396646E-001,0.134211176704,
+            0.112626704218E-001,-0.420533228842E-001,0.349008431982E-001,
+            0.164957183186E-003,-0.101365037912,-0.173813690970,-0.472103183731E-001,
+            -0.122523554253E-001,-0.146629609713,-0.316055879821E-001,
             0.233594806142E-003,0.148287891978E-001,-0.938782884667E-002};
         final constant Integer[19] i={1,1,1,2,3,3,4,4,4,6,1,3,5,6,1,3,11,1,3};
-        final constant Real[19] j={0,0.33,1.01,0,0,0.15,0,0.2,0.35,1.35,1.6,0.8, 
+        final constant Real[19] j={0,0.33,1.01,0,0,0.15,0,0.2,0.35,1.35,1.6,0.8,
             0.95,1.25,3.6,6,3.25,3.5,15};
         Real tau=ReferenceAir.Air_Utilities.Basic.Constants.Tred/T;
 
@@ -1049,7 +1049,7 @@ package ReferenceMoistAir
 
         input SI.Density d "Density";
         input SI.Temperature T "Temperature";
-        output SI.MolarVolume baw 
+        output SI.MolarVolume baw
           "Second cross-virial coefficient";
 
       protected
@@ -1075,68 +1075,68 @@ package ReferenceMoistAir
         output SI.MolarVolume bww "Second virial coefficient";
 
       protected
-        final constant Real[56] N={0.12533547935523E-001,0.78957634722828E+001, 
-            -0.87803203303561E+001,0.31802509345418,-0.26145533859358,-0.78199751687981E-002, 
-            0.88089493102134E-002,-0.66856572307965,0.20433810950965,-0.66212605039687E-004, 
-            -0.19232721156002,-0.25709043003438,0.16074868486251,-0.40092828925807E-001, 
-            0.39343422603254E-006,-0.75941377088144E-005,0.56250979351888E-003, 
-            -0.15608652257135E-004,0.11537996422951E-008,0.36582165144204E-006, 
-            -0.13251180074668E-011,-0.62639586912454E-009,-0.10793600908932, 
-            0.17611491008752E-001,0.22132295167546,-0.40247669763528, 
-            0.58083399985759,0.49969146990806E-002,-0.31358700712549E-001,-0.74315929710341, 
-            0.4780732991548,0.20527940895948E-001,-0.13636435110343, 
-            0.14180634400617E-001,0.83326504880713E-002,-0.29052336009585E-001, 
-            0.38615085574206E-001,-0.20393486513704E-001,-0.16554050063734E-002, 
-            0.19955571979541E-002,0.15870308324157E-003,-0.1638856834253E-004, 
-            0.43613615723811E-001,0.34994005463765E-001,-0.76788197844621E-001, 
-            0.22446277332006E-001,-0.62689710414685E-004,-0.55711118565645E-009, 
-            -0.19905718354408,0.31777497330738,-0.11841182425981,-0.31306260323435E+002, 
-            0.31546140237781E+002,-0.25213154341695E+004,-0.14874640856724, 
+        final constant Real[56] N={0.12533547935523E-001,0.78957634722828E+001,
+            -0.87803203303561E+001,0.31802509345418,-0.26145533859358,-0.78199751687981E-002,
+            0.88089493102134E-002,-0.66856572307965,0.20433810950965,-0.66212605039687E-004,
+            -0.19232721156002,-0.25709043003438,0.16074868486251,-0.40092828925807E-001,
+            0.39343422603254E-006,-0.75941377088144E-005,0.56250979351888E-003,
+            -0.15608652257135E-004,0.11537996422951E-008,0.36582165144204E-006,
+            -0.13251180074668E-011,-0.62639586912454E-009,-0.10793600908932,
+            0.17611491008752E-001,0.22132295167546,-0.40247669763528,
+            0.58083399985759,0.49969146990806E-002,-0.31358700712549E-001,-0.74315929710341,
+            0.4780732991548,0.20527940895948E-001,-0.13636435110343,
+            0.14180634400617E-001,0.83326504880713E-002,-0.29052336009585E-001,
+            0.38615085574206E-001,-0.20393486513704E-001,-0.16554050063734E-002,
+            0.19955571979541E-002,0.15870308324157E-003,-0.1638856834253E-004,
+            0.43613615723811E-001,0.34994005463765E-001,-0.76788197844621E-001,
+            0.22446277332006E-001,-0.62689710414685E-004,-0.55711118565645E-009,
+            -0.19905718354408,0.31777497330738,-0.11841182425981,-0.31306260323435E+002,
+            0.31546140237781E+002,-0.25213154341695E+004,-0.14874640856724,
             0.31806110878444};
-        final constant Integer[51] c={0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 
+        final constant Integer[51] c={0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
             1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,4,6,6,6,6};
-        final constant Integer[54] dd={1,1,1,2,2,3,4,1,1,1,2,2,3,4,4,5,7,9,10, 
-            11,13,15,1,2,2,2,3,4,4,4,5,6,6,7,9,9,9,9,9,10,10,12,3,4,4,5,14,3,6, 
+        final constant Integer[54] dd={1,1,1,2,2,3,4,1,1,1,2,2,3,4,4,5,7,9,10,
+            11,13,15,1,2,2,2,3,4,4,4,5,6,6,7,9,9,9,9,9,10,10,12,3,4,4,5,14,3,6,
             6,6,3,3,3};
-        final constant Real[54] t={-0.5,0.875,1.0,0.5,0.75,0.375,1.0,4.0,6.0, 
-            12.0,1.0,5.0,4.0,2.0,13.0,9.0,3.0,4.0,11.0,4.0,13.0,1.0,7.0,1.0,9.0, 
-            10.0,10.0,3.0,7.0,10.0,10.0,6.0,10.0,10.0,1.0,2.0,3.0,4.0,8.0,6.0, 
+        final constant Real[54] t={-0.5,0.875,1.0,0.5,0.75,0.375,1.0,4.0,6.0,
+            12.0,1.0,5.0,4.0,2.0,13.0,9.0,3.0,4.0,11.0,4.0,13.0,1.0,7.0,1.0,9.0,
+            10.0,10.0,3.0,7.0,10.0,10.0,6.0,10.0,10.0,1.0,2.0,3.0,4.0,8.0,6.0,
             9.0,8.0,16.0,22.0,23.0,23.0,10.0,50.0,44.0,46.0,50.0,0.0,1.0,4.0};
-        final constant Integer[54] alpha={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20, 
+        final constant Integer[54] alpha={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,
             20,20};
-        final constant Real[56] beta={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[56] beta={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,150,150,250,0.3,0.3};
-        final constant Real[54] gamma={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[54] gamma={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.21,1.21,1.25};
-        final constant Integer[54] epsilon={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, 
+        final constant Integer[54] epsilon={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
             1,1};
-        final constant Real[56] a={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[56] a={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.5,3.5};
-        final constant Real[56] b={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[56] b={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.85,0.95};
-        final constant Real[56] AA={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[56] AA={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.32,0.32};
-        final constant Real[56] BB={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[56] BB={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.2};
-        final constant Integer[56] CC={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
+        final constant Integer[56] CC={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
             28,32};
-        final constant Integer[56] DD={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
+        final constant Integer[56] DD={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
             700,800};
 
         Real Delta55=0;
@@ -1179,8 +1179,8 @@ package ReferenceMoistAir
           bww := if (dd[k] == 1) then bww + N[k]*tau^t[k]*exp(-alpha[k]*epsilon[
             k]^2 - beta[k]*(tau - gamma[k])^2) else bww;
         end for;
-        bww := (bww + N[55]*Delta55^b[55]*psi55 + N[56]*Delta56^b[56]*psi56)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Constants.rhored 
+        bww := (bww + N[55]*Delta55^b[55]*psi55 + N[56]*Delta56^b[56]*psi56)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Constants.rhored
           *Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Constants.MM;
       end Bww_dT;
 
@@ -1192,14 +1192,14 @@ package ReferenceMoistAir
         output SI.MolarVolume caaa "Third virial coefficient";
 
       protected
-        final constant Real[19] N={0.118160747229,0.713116392079,-0.161824192067E+001, 
-            0.714140178971E-001,-0.865421396646E-001,0.134211176704, 
-            0.112626704218E-001,-0.420533228842E-001,0.349008431982E-001, 
-            0.164957183186E-003,-0.101365037912,-0.173813690970,-0.472103183731E-001, 
-            -0.122523554253E-001,-0.146629609713,-0.316055879821E-001, 
+        final constant Real[19] N={0.118160747229,0.713116392079,-0.161824192067E+001,
+            0.714140178971E-001,-0.865421396646E-001,0.134211176704,
+            0.112626704218E-001,-0.420533228842E-001,0.349008431982E-001,
+            0.164957183186E-003,-0.101365037912,-0.173813690970,-0.472103183731E-001,
+            -0.122523554253E-001,-0.146629609713,-0.316055879821E-001,
             0.233594806142E-003,0.148287891978E-001,-0.938782884667E-002};
         final constant Integer[19] i={1,1,1,2,3,3,4,4,4,6,1,3,5,6,1,3,11,1,3};
-        final constant Real[19] j={0,0.33,1.01,0,0,0.15,0,0.2,0.35,1.35,1.6,0.8, 
+        final constant Real[19] j={0,0.33,1.01,0,0,0.15,0,0.2,0.35,1.35,1.6,0.8,
             0.95,1.25,3.6,6,3.25,3.5,15};
         final constant Integer[19] l={0,0,0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,3,3};
         Real tau=ReferenceAir.Air_Utilities.Basic.Constants.Tred/T;
@@ -1210,7 +1210,7 @@ package ReferenceMoistAir
           caaa := if (i[k] == 2) then caaa + 2*N[k]*tau^j[k] else caaa;
         end for;
         for k in 11:19 loop
-          caaa := if (i[k] == 2) then caaa + 2*N[k]*tau^j[k] elseif ((i[k] == 1) 
+          caaa := if (i[k] == 2) then caaa + 2*N[k]*tau^j[k] else if ((i[k] == 1) 
              and (l[k] == 1)) then caaa - 2*N[k]*tau^j[k] else caaa;
         end for;
         caaa := 1/ReferenceAir.Air_Utilities.Basic.Constants.rhored^2*caaa;
@@ -1224,7 +1224,7 @@ package ReferenceMoistAir
         output Real caaw "Third cross-virial coefficient";
 
       protected
-        final constant Real[5] c={0.482737E+003,0.105678E+006,-0.656394E+008, 
+        final constant Real[5] c={0.482737E+003,0.105678E+006,-0.656394E+008,
             0.294442E+011,-0.319317E+013};
 
         Real theta=T;
@@ -1246,7 +1246,7 @@ package ReferenceMoistAir
         output Real caww "Third cross-virial coefficient";
 
       protected
-        final constant Real[4] dd={-0.1072887E+002,0.347804E+004,-0.383383E+006, 
+        final constant Real[4] dd={-0.1072887E+002,0.347804E+004,-0.383383E+006,
             0.33406E+008};
 
         Real theta=T;
@@ -1268,68 +1268,68 @@ package ReferenceMoistAir
         output SI.MolarVolume cwww "Third virial coefficient";
 
       protected
-        final constant Real[56] N={0.12533547935523E-001,0.78957634722828E+001, 
-            -0.87803203303561E+001,0.31802509345418,-0.26145533859358,-0.78199751687981E-002, 
-            0.88089493102134E-002,-0.66856572307965,0.20433810950965,-0.66212605039687E-004, 
-            -0.19232721156002,-0.25709043003438,0.16074868486251,-0.40092828925807E-001, 
-            0.39343422603254E-006,-0.75941377088144E-005,0.56250979351888E-003, 
-            -0.15608652257135E-004,0.11537996422951E-008,0.36582165144204E-006, 
-            -0.13251180074668E-011,-0.62639586912454E-009,-0.10793600908932, 
-            0.17611491008752E-001,0.22132295167546,-0.40247669763528, 
-            0.58083399985759,0.49969146990806E-002,-0.31358700712549E-001,-0.74315929710341, 
-            0.4780732991548,0.20527940895948E-001,-0.13636435110343, 
-            0.14180634400617E-001,0.83326504880713E-002,-0.29052336009585E-001, 
-            0.38615085574206E-001,-0.20393486513704E-001,-0.16554050063734E-002, 
-            0.19955571979541E-002,0.15870308324157E-003,-0.1638856834253E-004, 
-            0.43613615723811E-001,0.34994005463765E-001,-0.76788197844621E-001, 
-            0.22446277332006E-001,-0.62689710414685E-004,-0.55711118565645E-009, 
-            -0.19905718354408,0.31777497330738,-0.11841182425981,-0.31306260323435E+002, 
-            0.31546140237781E+002,-0.25213154341695E+004,-0.14874640856724, 
+        final constant Real[56] N={0.12533547935523E-001,0.78957634722828E+001,
+            -0.87803203303561E+001,0.31802509345418,-0.26145533859358,-0.78199751687981E-002,
+            0.88089493102134E-002,-0.66856572307965,0.20433810950965,-0.66212605039687E-004,
+            -0.19232721156002,-0.25709043003438,0.16074868486251,-0.40092828925807E-001,
+            0.39343422603254E-006,-0.75941377088144E-005,0.56250979351888E-003,
+            -0.15608652257135E-004,0.11537996422951E-008,0.36582165144204E-006,
+            -0.13251180074668E-011,-0.62639586912454E-009,-0.10793600908932,
+            0.17611491008752E-001,0.22132295167546,-0.40247669763528,
+            0.58083399985759,0.49969146990806E-002,-0.31358700712549E-001,-0.74315929710341,
+            0.4780732991548,0.20527940895948E-001,-0.13636435110343,
+            0.14180634400617E-001,0.83326504880713E-002,-0.29052336009585E-001,
+            0.38615085574206E-001,-0.20393486513704E-001,-0.16554050063734E-002,
+            0.19955571979541E-002,0.15870308324157E-003,-0.1638856834253E-004,
+            0.43613615723811E-001,0.34994005463765E-001,-0.76788197844621E-001,
+            0.22446277332006E-001,-0.62689710414685E-004,-0.55711118565645E-009,
+            -0.19905718354408,0.31777497330738,-0.11841182425981,-0.31306260323435E+002,
+            0.31546140237781E+002,-0.25213154341695E+004,-0.14874640856724,
             0.31806110878444};
-        final constant Integer[51] c={0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 
+        final constant Integer[51] c={0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
             1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,4,6,6,6,6};
-        final constant Integer[54] dd={1,1,1,2,2,3,4,1,1,1,2,2,3,4,4,5,7,9,10, 
-            11,13,15,1,2,2,2,3,4,4,4,5,6,6,7,9,9,9,9,9,10,10,12,3,4,4,5,14,3,6, 
+        final constant Integer[54] dd={1,1,1,2,2,3,4,1,1,1,2,2,3,4,4,5,7,9,10,
+            11,13,15,1,2,2,2,3,4,4,4,5,6,6,7,9,9,9,9,9,10,10,12,3,4,4,5,14,3,6,
             6,6,3,3,3};
-        final constant Real[54] t={-0.5,0.875,1.0,0.5,0.75,0.375,1.0,4.0,6.0, 
-            12.0,1.0,5.0,4.0,2.0,13.0,9.0,3.0,4.0,11.0,4.0,13.0,1.0,7.0,1.0,9.0, 
-            10.0,10.0,3.0,7.0,10.0,10.0,6.0,10.0,10.0,1.0,2.0,3.0,4.0,8.0,6.0, 
+        final constant Real[54] t={-0.5,0.875,1.0,0.5,0.75,0.375,1.0,4.0,6.0,
+            12.0,1.0,5.0,4.0,2.0,13.0,9.0,3.0,4.0,11.0,4.0,13.0,1.0,7.0,1.0,9.0,
+            10.0,10.0,3.0,7.0,10.0,10.0,6.0,10.0,10.0,1.0,2.0,3.0,4.0,8.0,6.0,
             9.0,8.0,16.0,22.0,23.0,23.0,10.0,50.0,44.0,46.0,50.0,0.0,1.0,4.0};
-        final constant Integer[54] alpha={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20, 
+        final constant Integer[54] alpha={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,
             20,20};
-        final constant Real[56] beta={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[56] beta={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,150,150,250,0.3,0.3};
-        final constant Real[54] gamma={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[54] gamma={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.21,1.21,1.25};
-        final constant Integer[54] epsilon={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, 
+        final constant Integer[54] epsilon={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
             1,1};
-        final constant Real[56] a={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[56] a={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.5,3.5};
-        final constant Real[56] b={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[56] b={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.85,0.95};
-        final constant Real[56] AA={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[56] AA={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.32,0.32};
-        final constant Real[56] BB={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
-            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, 
+        final constant Real[56] BB={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+            0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
             0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.2};
-        final constant Integer[56] CC={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
+        final constant Integer[56] CC={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
             28,32};
-        final constant Integer[56] DD={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
+        final constant Integer[56] DD={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
             700,800};
 
         Real Delta55=0;
@@ -1367,9 +1367,9 @@ package ReferenceMoistAir
         Deltab56delta := b[56]*Delta56^(b[56] - 1)*Delta56delta;
         psi55delta := 2*CC[55]*psi55;
         psi56delta := 2*CC[56]*psi56;
-        Delta55deltadelta := -Delta55delta + AA[55]^2*2/beta[55]^2 + AA[55]* 
+        Delta55deltadelta := -Delta55delta + AA[55]^2*2/beta[55]^2 + AA[55]*
           theta55*4/beta[55]*(1/(2*beta[55]) - 1) + 4*BB[55]*a[55]*(a[55] - 1);
-        Delta56deltadelta := -Delta56delta + AA[56]^2*2/beta[56]^2 + AA[56]* 
+        Delta56deltadelta := -Delta56delta + AA[56]^2*2/beta[56]^2 + AA[56]*
           theta56*4/beta[56]*(1/(2*beta[56]) - 1) + 4*BB[56]*a[56]*(a[56] - 1);
         Deltab55deltadelta := b[55]*(Delta55^(b[55] - 1)*Delta55deltadelta + (b[
           55] - 1)*Delta55^(b[55] - 2)*Delta55delta^2);
@@ -1383,31 +1383,31 @@ package ReferenceMoistAir
           cwww := if (dd[k] == 2) then cwww + 2*N[k]*tau^t[k] else cwww;
         end for;
         for k in 8:51 loop
-          cwww := if (dd[k] == 2) then cwww + 2*N[k]*tau^t[k] elseif ((dd[k] 
+          cwww := if (dd[k] == 2) then cwww + 2*N[k]*tau^t[k] else if ((dd[k]
              == 1) and (c[k] == 1)) then cwww - 2*N[k]*tau^t[k] else cwww;
         end for;
-        cwww := cwww + N[55]*(Delta55^b[55]*2*psi55delta + 2*Deltab55delta* 
+        cwww := cwww + N[55]*(Delta55^b[55]*2*psi55delta + 2*Deltab55delta*
           psi55) + N[56]*(Delta56^b[56]*2*psi56delta + 2*Deltab56delta*psi56);
-        cwww := Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Constants.MM 
-          ^2/Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Constants.rhored 
+        cwww := Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Constants.MM
+          ^2/Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Constants.rhored
           ^2*cwww*1E-006;
       end Cwww_dT;
     end VirialCoefficients;
 
-    package ReactionIndices 
+    package ReactionIndices
       "Parameters and equations for determining reaction variables (dissociation VDI 4670)"
       extends Modelica.Icons.BasesPackage;
 
       final constant Real[6] AA={20413.2,1075.5,165.95,1491.75,3235.34,4.5542};
-      final constant SI.Temperature[6] BB={-33086.5,-30283.3,-19526.8, 
+      final constant SI.Temperature[6] BB={-33086.5,-30283.3,-19526.8,
           -27488.0,-30807.8,-10973.6};
-      final constant SI.MolarHeatCapacity[6] CC={-19.5,-65.2,-18.7, 
+      final constant SI.MolarHeatCapacity[6] CC={-19.5,-65.2,-18.7,
           -3.6,-21.8,-5.6};
-      final constant SI.MolarInternalEnergy[6] DD={-1.15E+005, 
+      final constant SI.MolarInternalEnergy[6] DD={-1.15E+005,
           3.03E+005,5.72E+004,3.93E+005,1.5E+005,1.62E+004};
-      final constant Real[6] EE(each unit="J.K/mol") = {9.483E+009,7.277E+009, 
+      final constant Real[6] EE(each unit="J.K/mol") = {9.483E+009,7.277E+009,
         3.136E+009,5.826E+009,7.659E+009,9.94E+008};
-      final constant SI.AbsolutePressure p0=101325 
+      final constant SI.AbsolutePressure p0=101325
         "Reference pressure";
 
       function U2 "Reaction index for formation of H2"
@@ -1417,11 +1417,11 @@ package ReferenceMoistAir
         input SI.MoleFraction[4] moleFraction "Mole fractions";
         output Real u "Reaction index for H2";
       algorithm
-        u := AA[2]*moleFraction[1]/sqrt(moleFraction[3])*(p/p0)^(-0.5)* 
+        u := AA[2]*moleFraction[1]/sqrt(moleFraction[3])*(p/p0)^(-0.5)*
           Modelica.Math.exp(BB[2]/T);
         annotation (
-          derivative=U2_der, 
-          Inline=false, 
+          derivative=U2_der,
+          Inline=false,
           LateInline=true);
       end U2;
 
@@ -1432,11 +1432,11 @@ package ReferenceMoistAir
         input SI.MoleFraction[4] moleFraction "Mole fractions";
         output Real u "Reaction index for OH";
       algorithm
-        u := AA[3]*sqrt(moleFraction[1])*sqrt(sqrt(moleFraction[3]))*(p/p0)^(-0.25) 
+        u := AA[3]*sqrt(moleFraction[1])*sqrt(sqrt(moleFraction[3]))*(p/p0)^(-0.25)
           *Modelica.Math.exp(BB[3]/T);
         annotation (
-          derivative=U3_der, 
-          Inline=false, 
+          derivative=U3_der,
+          Inline=false,
           LateInline=true);
       end U3;
 
@@ -1448,12 +1448,12 @@ package ReferenceMoistAir
         output Real u "Reaction index for H";
       algorithm
         u := AA[4]*sqrt(U2(
-                p, 
-                T, 
+                p,
+                T,
                 moleFraction))*(p/p0)^(-0.5)*Modelica.Math.exp(BB[4]/T);
         annotation (
-          derivative=U4_der, 
-          Inline=false, 
+          derivative=U4_der,
+          Inline=false,
           LateInline=true);
       end U4;
 
@@ -1464,11 +1464,11 @@ package ReferenceMoistAir
         input SI.MoleFraction[4] moleFraction "Mole fractions";
         output Real u "Reaction index for O";
       algorithm
-        u := AA[5]*sqrt(moleFraction[3])*(p/p0)^(-0.5)*Modelica.Math.exp(BB[5]/ 
+        u := AA[5]*sqrt(moleFraction[3])*(p/p0)^(-0.5)*Modelica.Math.exp(BB[5]/
           T);
         annotation (
-          derivative=U5_der, 
-          Inline=false, 
+          derivative=U5_der,
+          Inline=false,
           LateInline=true);
       end U5;
 
@@ -1479,11 +1479,11 @@ package ReferenceMoistAir
         input SI.MoleFraction[4] moleFraction "Mole fractions";
         output Real u "Reaction index for NO";
       algorithm
-        u := AA[6]*sqrt(moleFraction[2]*moleFraction[3])*Modelica.Math.exp(BB[6] 
+        u := AA[6]*sqrt(moleFraction[2]*moleFraction[3])*Modelica.Math.exp(BB[6]
           /T);
         annotation (
-          derivative=U6_der, 
-          Inline=false, 
+          derivative=U6_der,
+          Inline=false,
           LateInline=true);
       end U6;
 
@@ -1494,8 +1494,8 @@ package ReferenceMoistAir
       algorithm
         v := CC[2] + DD[2]/T + EE[2]/T^2;
         annotation (
-          derivative=V2_der, 
-          Inline=false, 
+          derivative=V2_der,
+          Inline=false,
           LateInline=true);
       end V2;
 
@@ -1506,8 +1506,8 @@ package ReferenceMoistAir
       algorithm
         v := CC[3] + DD[3]/T + EE[3]/T^2;
         annotation (
-          derivative=V3_der, 
-          Inline=false, 
+          derivative=V3_der,
+          Inline=false,
           LateInline=true);
       end V3;
 
@@ -1518,8 +1518,8 @@ package ReferenceMoistAir
       algorithm
         v := CC[4] + DD[4]/T + EE[4]/T^2;
         annotation (
-          derivative=V4_der, 
-          Inline=false, 
+          derivative=V4_der,
+          Inline=false,
           LateInline=true);
       end V4;
 
@@ -1530,8 +1530,8 @@ package ReferenceMoistAir
       algorithm
         v := CC[5] + DD[5]/T + EE[5]/T^2;
         annotation (
-          derivative=V5_der, 
-          Inline=false, 
+          derivative=V5_der,
+          Inline=false,
           LateInline=true);
       end V5;
 
@@ -1542,8 +1542,8 @@ package ReferenceMoistAir
       algorithm
         v := CC[6] + DD[6]/T + EE[6]/T^2;
         annotation (
-          derivative=V6_der, 
-          Inline=false, 
+          derivative=V6_der,
+          Inline=false,
           LateInline=true);
       end V6;
 
@@ -1562,13 +1562,13 @@ package ReferenceMoistAir
       algorithm
         o[1] := AA[2]*sqrt(moleFraction[3])*(p/p0)^(-0.5)*Modelica.Math.exp(BB[
           2]/T);
-        o[2] := -0.5*AA[2]*moleFraction[1]/(moleFraction[3])^1.5*(p/p0)^(-0.5)* 
+        o[2] := -0.5*AA[2]*moleFraction[1]/(moleFraction[3])^1.5*(p/p0)^(-0.5)*
           Modelica.Math.exp(BB[2]/T);
-        o[3] := -0.5*AA[2]*moleFraction[1]/sqrt(moleFraction[3])*sqrt(p0)*p^(-1.5) 
+        o[3] := -0.5*AA[2]*moleFraction[1]/sqrt(moleFraction[3])*sqrt(p0)*p^(-1.5)
           *Modelica.Math.exp(BB[2]/T);
-        o[4] := -BB[2]*AA[2]*moleFraction[1]/sqrt(moleFraction[3])*(p/p0)^(-0.5) 
+        o[4] := -BB[2]*AA[2]*moleFraction[1]/sqrt(moleFraction[3])*(p/p0)^(-0.5)
           *Modelica.Math.exp(BB[2]/T)/T^2;
-        u_der := o[1]*moleFraction_der[1] + o[2]*moleFraction_der[3] + o[3]* 
+        u_der := o[1]*moleFraction_der[1] + o[2]*moleFraction_der[3] + o[3]*
           p_der + o[4]*T_der;
 
       end U2_der;
@@ -1585,15 +1585,15 @@ package ReferenceMoistAir
       protected
         Real o[4];
       algorithm
-        o[1] := 0.5*AA[3]/sqrt(moleFraction[1])*sqrt(sqrt(moleFraction[3]))*(p/ 
+        o[1] := 0.5*AA[3]/sqrt(moleFraction[1])*sqrt(sqrt(moleFraction[3]))*(p/
           p0)^(-0.25)*Modelica.Math.exp(BB[3]/T);
-        o[2] := 0.25*AA[3]*sqrt(moleFraction[1])/(moleFraction[3])^0.75*(p/p0)^ 
+        o[2] := 0.25*AA[3]*sqrt(moleFraction[1])/(moleFraction[3])^0.75*(p/p0)^
           (-0.25)*Modelica.Math.exp(BB[3]/T);
-        o[3] := -0.25*AA[3]*sqrt(moleFraction[1])*sqrt(sqrt(moleFraction[3]))* 
+        o[3] := -0.25*AA[3]*sqrt(moleFraction[1])*sqrt(sqrt(moleFraction[3]))*
           sqrt(sqrt(p0))*p^(-1.25)*Modelica.Math.exp(BB[3]/T);
-        o[4] := BB[3]*AA[3]*moleFraction[1]/sqrt(sqrt(moleFraction[3]))*(p/p0)^ 
+        o[4] := BB[3]*AA[3]*moleFraction[1]/sqrt(sqrt(moleFraction[3]))*(p/p0)^
           (-0.25)*Modelica.Math.exp(BB[3]/T)/T^2;
-        u_der := o[1]*moleFraction_der[1] + o[2]*moleFraction_der[3] + o[3]* 
+        u_der := o[1]*moleFraction_der[1] + o[2]*moleFraction_der[3] + o[3]*
           p_der + o[4]*T_der;
 
       end U3_der;
@@ -1611,22 +1611,22 @@ package ReferenceMoistAir
         Real o[3];
       algorithm
         o[1] := 0.5*AA[4]/sqrt(U2(
-                p, 
-                T, 
+                p,
+                T,
                 moleFraction))*U2_der(
-                p, 
-                T, 
-                moleFraction, 
-                p_der, 
-                T_der, 
+                p,
+                T,
+                moleFraction,
+                p_der,
+                T_der,
                 moleFraction_der)*(p/p0)^(-0.5)*Modelica.Math.exp(BB[4]/T);
         o[2] := -0.5*AA[4]*sqrt(U2(
-                p, 
-                T, 
+                p,
+                T,
                 moleFraction))*sqrt(p0)*p^(-1.5)*Modelica.Math.exp(BB[4]/T);
         o[3] := BB[4]*AA[4]*sqrt(U2(
-                p, 
-                T, 
+                p,
+                T,
                 moleFraction))*(p/p0)^(-0.5)*Modelica.Math.exp(BB[4]/T)/T^2;
         u_der := o[1] + o[2]*p_der + o[3]*T_der;
 
@@ -1646,9 +1646,9 @@ package ReferenceMoistAir
       algorithm
         o[1] := 0.5*AA[5]/sqrt(moleFraction[3])*(p/p0)^(-0.5)*Modelica.Math.exp(
           BB[5]/T);
-        o[2] := -0.5*AA[5]*sqrt(moleFraction[3])*sqrt(p0)*p^(-1.5)* 
+        o[2] := -0.5*AA[5]*sqrt(moleFraction[3])*sqrt(p0)*p^(-1.5)*
           Modelica.Math.exp(BB[5]/T);
-        o[3] := BB[5]*AA[5]*sqrt(moleFraction[3])*(p/p0)^(-0.5)* 
+        o[3] := BB[5]*AA[5]*sqrt(moleFraction[3])*(p/p0)^(-0.5)*
           Modelica.Math.exp(BB[5]/T)/T^2;
         u_der := o[1]*moleFraction[3] + o[2]*p_der + o[3]*T_der;
       end U5_der;
@@ -1665,11 +1665,11 @@ package ReferenceMoistAir
       protected
         Real o[3];
       algorithm
-        o[1] := 0.5*AA[6]/sqrt(moleFraction[2]*moleFraction[3])*moleFraction[3] 
+        o[1] := 0.5*AA[6]/sqrt(moleFraction[2]*moleFraction[3])*moleFraction[3]
           *Modelica.Math.exp(BB[6]/T);
-        o[2] := 0.5*AA[6]/sqrt(moleFraction[2]*moleFraction[3])*moleFraction[2] 
+        o[2] := 0.5*AA[6]/sqrt(moleFraction[2]*moleFraction[3])*moleFraction[2]
           *Modelica.Math.exp(BB[6]/T);
-        o[3] := BB[6]*AA[6]*sqrt(moleFraction[2]*moleFraction[3])* 
+        o[3] := BB[6]*AA[6]*sqrt(moleFraction[2]*moleFraction[3])*
           Modelica.Math.exp(BB[6]/T)/T^2;
         u_der := o[1]*moleFraction[2] + o[2]*moleFraction[3] + o[3]*T_der;
       end U6_der;
@@ -1728,14 +1728,14 @@ package ReferenceMoistAir
       final constant MolarMass molarMass=0.018015257;
 
       function g2 = Modelica.Media.Water.IF97_Utilities.BaseIF97.Basic.g2(
-        final checkLimits=false) 
+        final checkLimits=false)
         "Gibbs function for region 2: g(p,T)";
 
       function h_pT "Specific enthalpy as function or pressure and temperature"
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
         input SI.Temperature T "Temperature";
-        input Integer region=0 
+        input Integer region=0
           "If 0, region is unknown, otherwise known and this input (unused)";
         output SI.SpecificEnthalpy h "Specific enthalpy";
       protected
@@ -1744,8 +1744,8 @@ package ReferenceMoistAir
         g := Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.g2(p, T);
         h := g.R_s*T*g.tau*g.gtau;
         annotation (
-          derivative(noDerivative=region) = h_pT_der, 
-          Inline=false, 
+          derivative(noDerivative=region) = h_pT_der,
+          Inline=false,
           LateInline=true);
       end h_pT;
 
@@ -1753,7 +1753,7 @@ package ReferenceMoistAir
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
         input SI.Temperature T "Temperature";
-        input Integer region=0 
+        input Integer region=0
           "If 0, region is unknown, otherwise known and this input (unused)";
         output SI.SpecificEntropy s "Specific entropy";
       protected
@@ -1763,14 +1763,14 @@ package ReferenceMoistAir
         s := g.R_s*(g.tau*g.gtau - g.g);
       end s_pT;
 
-      function cp_pT 
+      function cp_pT
         "Specific heat capacity at constant pressure as function of pressure and temperature for region 2"
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
         input SI.Temperature T "Temperature";
-        input Integer region=0 
+        input Integer region=0
           "If 0, region is unknown, otherwise known and this input (unused)";
-        output SI.SpecificHeatCapacity cp 
+        output SI.SpecificHeatCapacity cp
           "Specific heat capacity";
       protected
         Modelica.Media.Common.GibbsDerivs g;
@@ -1779,20 +1779,20 @@ package ReferenceMoistAir
         cp := -g.R_s*g.tau*g.tau*g.gtautau;
       end cp_pT;
 
-      function cv_pT 
+      function cv_pT
         "Specific heat capacity at constant volume as function of pressure and temperature for region 2"
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
         input SI.Temperature T "Temperature";
-        input Integer region=0 
+        input Integer region=0
           "If 0, region is unknown, otherwise known and this input (unused)";
-        output SI.SpecificHeatCapacity cv 
+        output SI.SpecificHeatCapacity cv
           "Specific heat capacity";
       protected
         Modelica.Media.Common.GibbsDerivs g;
       algorithm
         g := Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.g2(p, T);
-        cv := g.R_s*(-g.tau*g.tau*g.gtautau + ((g.gpi - g.tau*g.gtaupi)*(g.gpi - 
+        cv := g.R_s*(-g.tau*g.tau*g.gtautau + ((g.gpi - g.tau*g.gtaupi)*(g.gpi -
           g.tau*g.gtaupi)/g.gpipi));
       end cv_pT;
 
@@ -1807,8 +1807,8 @@ package ReferenceMoistAir
         g := Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.g2(p, T);
         rho := p/(g.R_s*T*g.pi*g.gpi);
         annotation (
-          derivative=rho_pT_der, 
-          Inline=false, 
+          derivative=rho_pT_der,
+          Inline=false,
           LateInline=true);
       end rho_pT;
 
@@ -1833,18 +1833,18 @@ package ReferenceMoistAir
       end rho_pT_der;
 
       function visc_dT = Modelica.Media.Water.IF97_Utilities.BaseIF97.Transport.visc_dTp(
-        final p=0, final phase=0, final checkLimits=false) 
+        final p=0, final phase=0, final checkLimits=false)
         "Dynamic viscosity eta(d,T), industrial formulation";
 
       function cond_dT = Modelica.Media.Water.IF97_Utilities.BaseIF97.Transport.cond_dTp(
-        final p=0, final phase=0, final industrialMethod=true, final checkLimits=false) 
+        final p=0, final phase=0, final industrialMethod=true, final checkLimits=false)
         "Thermal conductivity lam(d,T), industrial formulation";
 
       function h_pT_der "Derivative function of h_pT for region 2"
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
         input SI.Temperature T "Temperature";
-        input Integer region=0 
+        input Integer region=0
           "If 0, region is unknown, otherwise known and this input (unused)";
         input Real p_der "Derivative of pressure";
         input Real T_der "Derivative of temperature";
@@ -1872,49 +1872,49 @@ for region 2.
 </html>"));
     end IF97_new;
 
-    package Water95_Utilities 
+    package Water95_Utilities
       "Utility functions from IAPWS95 required for air temperatures below 273.15 K"
       extends Modelica.Icons.BasesPackage;
 
       constant Common.FundamentalConstants Constants(
-        R_bar=8.314371, 
-        R_s=461.51805, 
-        MM=18.015268E-003, 
-        rhored=322, 
-        Tred=647.096, 
-        pred=22064000, 
-        h_off=0.0, 
+        R_bar=8.314371,
+        R_s=461.51805,
+        MM=18.015268E-003,
+        rhored=322,
+        Tred=647.096,
+        pred=22064000,
+        h_off=0.0,
         s_off=0.0);
 
       constant Modelica.Media.Interfaces.Types.TwoPhase.FluidConstants 
         waterConstants(
-        chemicalFormula="H2O", 
-        structureFormula="H2O", 
-        casRegistryNumber="7732-18-5", 
-        iupacName="oxidane", 
-        molarMass=0.018015268, 
-        criticalTemperature=647.096, 
-        criticalPressure=22064.0e3, 
-        criticalMolarVolume=1/322.0*0.018015268, 
-        triplePointTemperature=273.16, 
-        triplePointPressure=611.657, 
-        normalBoilingPoint=373.124, 
-        meltingPoint=273.15, 
-        acentricFactor=0.344, 
-        dipoleMoment=1.8, 
-        hasCriticalData=true, 
-        hasIdealGasHeatCapacity=false, 
-        hasDipoleMoment=true, 
-        hasFundamentalEquation=true, 
-        hasLiquidHeatCapacity=true, 
-        hasSolidHeatCapacity=false, 
-        hasAccurateViscosityData=true, 
-        hasAccurateConductivityData=true, 
-        hasVapourPressureCurve=false, 
-        hasAcentricFactor=true, 
-        HCRIT0=0.0, 
-        SCRIT0=0.0, 
-        deltah=0.0, 
+        chemicalFormula="H2O",
+        structureFormula="H2O",
+        casRegistryNumber="7732-18-5",
+        iupacName="oxidane",
+        molarMass=0.018015268,
+        criticalTemperature=647.096,
+        criticalPressure=22064.0e3,
+        criticalMolarVolume=1/322.0*0.018015268,
+        triplePointTemperature=273.16,
+        triplePointPressure=611.657,
+        normalBoilingPoint=373.124,
+        meltingPoint=273.15,
+        acentricFactor=0.344,
+        dipoleMoment=1.8,
+        hasCriticalData=true,
+        hasIdealGasHeatCapacity=false,
+        hasDipoleMoment=true,
+        hasFundamentalEquation=true,
+        hasLiquidHeatCapacity=true,
+        hasSolidHeatCapacity=false,
+        hasAccurateViscosityData=true,
+        hasAccurateConductivityData=true,
+        hasVapourPressureCurve=false,
+        hasAcentricFactor=true,
+        HCRIT0=0.0,
+        SCRIT0=0.0,
+        deltah=0.0,
         deltas=0.0);
 
       function psat "Saturation pressure"
@@ -1928,9 +1928,9 @@ for region 2.
         Real A;
         Real B;
         Real C;
-        final constant Real[10] n={0.11670521452767E+004,-0.72421316703206E+006, 
-            -0.17073846940092E+002,0.1202082470247E+005,-0.32325550322333E+007, 
-            0.1491510861353E+002,-0.48232657361591E+004,0.40511340542057E+006,-0.23855557567849, 
+        final constant Real[10] n={0.11670521452767E+004,-0.72421316703206E+006,
+            -0.17073846940092E+002,0.1202082470247E+005,-0.32325550322333E+007,
+            0.1491510861353E+002,-0.48232657361591E+004,0.40511340542057E+006,-0.23855557567849,
             0.65017534844798E+003};
       algorithm
         theta_s := min(T, 553) + n[9]/(min(T, 553) - n[10]);
@@ -1939,8 +1939,8 @@ for region 2.
         C := n[6]*theta_s^2 + n[7]*theta_s + n[8];
         p := (2*C/(-B + sqrt(B^2 - 4*A*C)))^4*1E+006;
         annotation (
-          derivative=psat_der, 
-          Inline=false, 
+          derivative=psat_der,
+          Inline=false,
           LateInline=true);
       end psat;
 
@@ -1956,9 +1956,9 @@ for region 2.
         Real E;
         Real F;
         Real G;
-        final constant Real[10] n={0.11670521452767E+004,-0.72421316703206E+006, 
-            -0.17073846940092E+002,0.1202082470247E+005,-0.32325550322333E+007, 
-            0.1491510861353E+002,-0.48232657361591E+004,0.40511340542057E+006,-0.23855557567849, 
+        final constant Real[10] n={0.11670521452767E+004,-0.72421316703206E+006,
+            -0.17073846940092E+002,0.1202082470247E+005,-0.32325550322333E+007,
+            0.1491510861353E+002,-0.48232657361591E+004,0.40511340542057E+006,-0.23855557567849,
             0.65017534844798E+003};
 
       algorithm
@@ -1969,8 +1969,8 @@ for region 2.
         D := 2*G/(-F - sqrt(F^2 - 4*E*G));
         T := (n[10] + D - sqrt((n[10] + D)^2 - 4*(n[9] + n[10]*D)))/2;
         annotation (
-          derivative=Tsat_der, 
-          Inline=false, 
+          derivative=Tsat_der,
+          Inline=false,
           LateInline=true);
       end Tsat;
 
@@ -1986,9 +1986,9 @@ for region 2.
         Real A,        A_der;
         Real B,        B_der;
         Real C,        C_der,        o_der[3];
-        final constant Real[10] n={0.11670521452767E+004,-0.72421316703206E+006, 
-            -0.17073846940092E+002,0.1202082470247E+005,-0.32325550322333E+007, 
-            0.1491510861353E+002,-0.48232657361591E+004,0.40511340542057E+006,-0.23855557567849, 
+        final constant Real[10] n={0.11670521452767E+004,-0.72421316703206E+006,
+            -0.17073846940092E+002,0.1202082470247E+005,-0.32325550322333E+007,
+            0.1491510861353E+002,-0.48232657361591E+004,0.40511340542057E+006,-0.23855557567849,
             0.65017534844798E+003};
       algorithm
         theta_s := min(T, 553) + n[9]/(min(T, 553) - n[10]);
@@ -2002,7 +2002,7 @@ for region 2.
         C_der := 2*n[6]*theta_s*theta_s_der + n[7]*theta_s_der;
         o_der[1] := 2*B*B_der - 4*(A*C_der + A_der*C);
         o_der[2] := -B_der + 0.5/sqrt(B^2 - 4*A*C)*o_der[1];
-        o_der[3] := ((2*C_der*(-B + sqrt(B^2 - 4*A*C))) - 2*C*o_der[2])/(-B + 
+        o_der[3] := ((2*C_der*(-B + sqrt(B^2 - 4*A*C))) - 2*C*o_der[2])/(-B +
           sqrt(B^2 - 4*A*C))^2;
 
         p_der := 4*((2*C/(-B + sqrt(B^2 - 4*A*C))))^3*o_der[3]*1E+006*T_der;
@@ -2023,9 +2023,9 @@ for region 2.
         Real F,        F_der;
         Real G,        G_der;
         Real o_der[2];
-        final constant Real[10] n={0.11670521452767E+004,-0.72421316703206E+006, 
-            -0.17073846940092E+002,0.1202082470247E+005,-0.32325550322333E+007, 
-            0.1491510861353E+002,-0.48232657361591E+004,0.40511340542057E+006,-0.23855557567849, 
+        final constant Real[10] n={0.11670521452767E+004,-0.72421316703206E+006,
+            -0.17073846940092E+002,0.1202082470247E+005,-0.32325550322333E+007,
+            0.1491510861353E+002,-0.48232657361591E+004,0.40511340542057E+006,-0.23855557567849,
             0.65017534844798E+003};
 
       algorithm
@@ -2042,12 +2042,12 @@ for region 2.
         o_der[2] := -F_der - 0.5/sqrt(F^2 - 4*E*G)*o_der[1];
         D_der := ((2*G_der*(-F - sqrt(F^2 - 4*E*G))) - 2*G*o_der[2])/(-F - sqrt(
           F^2 - 4*E*G))^2;
-        T_der := (D_der - 0.5/sqrt((n[10] + D)^2 - 4*(n[9] + n[10]*D))*(2*D* 
+        T_der := (D_der - 0.5/sqrt((n[10] + D)^2 - 4*(n[9] + n[10]*D))*(2*D*
           D_der - 2*n[10]*D_der))/2*p_der;
       end Tsat_der;
     end Water95_Utilities;
 
-    package Ice09_Utilities 
+    package Ice09_Utilities
       "Utility functions from IAPWS09 required for ice in air"
       extends Modelica.Icons.BasesPackage;
 
@@ -2060,36 +2060,36 @@ for region 2.
         end IceConstants;
 
         constant IceConstants Constants(
-          R_bar=8.314472, 
-          R_s=461.52364, 
-          MM=18.015268E-003, 
-          rhored=1.0, 
-          Tred=273.16, 
-          pred=611.657, 
-          p0=101325, 
-          h_off=0.0, 
+          R_bar=8.314472,
+          R_s=461.52364,
+          MM=18.015268E-003,
+          rhored=1.0,
+          Tred=273.16,
+          pred=611.657,
+          p0=101325,
+          h_off=0.0,
           s_off=0.0);
 
         function Gibbs "Gibbs equation of state"
           extends Modelica.Icons.Function;
           input SI.AbsolutePressure p "Absolute pressure";
           input SI.Temperature T "Temperature";
-          output Common.GibbsDerivs2 g 
+          output Common.GibbsDerivs2 g
             "Gibbs function and derivatives w.r.t. T and p";
 
         protected
-          final constant Real[5] g_0={-0.632020233449497E+006,0.655022213658955, 
-              -0.189369929326131E-007,0.339746123271053E-014,-0.556464869058991E-021} 
+          final constant Real[5] g_0={-0.632020233449497E+006,0.655022213658955,
+              -0.189369929326131E-007,0.339746123271053E-014,-0.556464869058991E-021}
             "Coefficients of EOS";
           final constant Real s_0=-0.332733756492168E+004 "Coefficient of EOS";
-          final Complex[2] t={Complex(0.368017112855051E-001, 
-              0.510878114959572E-001),Complex(0.337315741065416, 
+          final Complex[2] t={Complex(0.368017112855051E-001,
+              0.510878114959572E-001),Complex(0.337315741065416,
               0.335449415919309)} "Coefficients of EOS";
-          final constant Complex r_1=Complex(0.447050716285388E+002, 
+          final constant Complex r_1=Complex(0.447050716285388E+002,
               0.656876847463481E+002) "Coefficients of EOS";
-          final Complex[3] r_2={Complex(-0.725974574329220E+002, -0.781008427112870E+002), 
-              Complex(-0.557107698030123E-004, 0.464578634580806E-004), 
-              Complex(0.234801409215913E-010, -0.285651142904972E-010)} 
+          final Complex[3] r_2={Complex(-0.725974574329220E+002, -0.781008427112870E+002),
+              Complex(-0.557107698030123E-004, 0.464578634580806E-004),
+              Complex(0.234801409215913E-010, -0.285651142904972E-010)}
             "Coefficients of EOS";
           final Real pi0=Constants.p0/Constants.pred "Reduced pressure";
 
@@ -2199,7 +2199,7 @@ for region 2.
 
           //   //Second derivative of g w.r.t. T
           g.gTT := 1/Constants.Tred*Modelica.ComplexMath.real(
-              (r_1 * (((Complex(1) / (t[1] - Complex(g.theta))) + (Complex(1) / (t[1] + Complex(g.theta)))) - (Complex(2) / t[1]))) 
+              (r_1 * (((Complex(1) / (t[1] - Complex(g.theta))) + (Complex(1) / (t[1] + Complex(g.theta)))) - (Complex(2) / t[1])))
             + (r2  * (((Complex(1) / (t[2] - Complex(g.theta))) + (Complex(1) / (t[2] + Complex(g.theta)))) - (Complex(2) / t[2]))));
 
           //  //Mixed derivative of g w.r.t. T and p
@@ -2207,7 +2207,7 @@ for region 2.
           //   ComplexMath.log(t[2] + g.theta) - 2*g.theta/t[2]));
 
           //  //Mixed derivative of g w.r.t. T and p
-          g.gTp := Modelica.ComplexMath.real(r2p * (Modelica.ComplexMath.log(t[2] + Complex(g.theta)) - 
+          g.gTp := Modelica.ComplexMath.real(r2p * (Modelica.ComplexMath.log(t[2] + Complex(g.theta)) -
             ((Complex(2*g.theta) / t[2]) + Modelica.ComplexMath.log(t[2] - Complex(g.theta)))));
 
         end Gibbs;
@@ -2235,8 +2235,8 @@ for region 2.
 
           p_sub := exp(sum/theta)*Constants.pred;
           annotation (
-            derivative=psub_der, 
-            Inline=false, 
+            derivative=psub_der,
+            Inline=false,
             LateInline=true);
         end psub;
 
@@ -2257,9 +2257,9 @@ for region 2.
 
         algorithm
           T_sub := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
-                    function Tsub_res(p=p), 
-                    143.15, 
-                    2000.0, 
+                    function Tsub_res(p=p),
+                    143.15,
+                    2000.0,
                     1e-9);
         end Tsub;
 
@@ -2272,7 +2272,7 @@ for region 2.
 
         protected
           final constant Real[3] a={-0.212144006E+002,0.273203819E+002,-0.610598130E+001};
-          final constant Real[3] b={0.333333333E-002,0.120666667E+001, 
+          final constant Real[3] b={0.333333333E-002,0.120666667E+001,
               0.170333333E+001};
           Real theta;
           Real theta_der;
@@ -2296,7 +2296,7 @@ for region 2.
 
       end Basic;
 
-      function ice09BaseProp_pT 
+      function ice09BaseProp_pT
         "Intermediate property record for water (p and T preferred states)"
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
@@ -2329,8 +2329,8 @@ for region 2.
       algorithm
         rho := aux.rho;
         annotation (
-          derivative(noDerivative=aux) = rho_pT_der, 
-          Inline=false, 
+          derivative(noDerivative=aux) = rho_pT_der,
+          Inline=false,
           LateInline=true);
       end rho_props_pT;
 
@@ -2341,8 +2341,8 @@ for region 2.
         output SI.Density rho "Density";
       algorithm
         rho := rho_props_pT(
-                p, 
-                T, 
+                p,
+                T,
             Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
             p, T));
 
@@ -2357,11 +2357,11 @@ for region 2.
         input Real T_der "Derivative of temperature";
         output Real rho_der "Derivative of density";
       algorithm
-        rho_der := (-aux.rho*aux.rho*aux.vp)*p_der + (-aux.rho*aux.rho*aux.vt)* 
+        rho_der := (-aux.rho*aux.rho*aux.vp)*p_der + (-aux.rho*aux.rho*aux.vt)*
           T_der;
       end rho_pT_der;
 
-      function h_props_pT 
+      function h_props_pT
         "Specific enthalpy as function or pressure and temperature"
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
@@ -2371,8 +2371,8 @@ for region 2.
       algorithm
         h := aux.h;
         annotation (
-          derivative(noDerivative=aux) = h_pT_der, 
-          Inline=false, 
+          derivative(noDerivative=aux) = h_pT_der,
+          Inline=false,
           LateInline=true);
       end h_props_pT;
 
@@ -2383,8 +2383,8 @@ for region 2.
         output SI.SpecificEnthalpy h "Specific enthalpy";
       algorithm
         h := h_props_pT(
-                p, 
-                T, 
+                p,
+                T,
             Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
             p, T));
 
@@ -2402,7 +2402,7 @@ for region 2.
         h_der := (1/aux.rho - aux.T*aux.vt)*p_der + aux.cp*T_der;
       end h_pT_der;
 
-      function s_props_pT 
+      function s_props_pT
         "Specific entropy as function of pressure and temperature"
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
@@ -2421,37 +2421,37 @@ for region 2.
         output SI.SpecificEntropy s "Specific entropy";
       algorithm
         s := s_props_pT(
-                p, 
-                T, 
+                p,
+                T,
             Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
             p, T));
 
       end s_pT;
 
-      function kappa_props_pT 
+      function kappa_props_pT
         "Isothermal compressibility factor as function of pressure and temperature"
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
         input SI.Temperature T "Temperature";
         input Common.AuxiliaryProperties aux "Auxiliary record";
-        output SI.IsothermalCompressibility kappa 
+        output SI.IsothermalCompressibility kappa
           "Isothermal compressibility factor";
       algorithm
         kappa := -aux.vp*aux.rho;
         annotation (Inline=false, LateInline=true);
       end kappa_props_pT;
 
-      function kappa_pT 
+      function kappa_pT
         "Isothermal compressibility factor as function of pressure and temperature"
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
         input SI.Temperature T "Temperature";
-        output SI.IsothermalCompressibility kappa 
+        output SI.IsothermalCompressibility kappa
           "Isothermal compressibility factor";
       algorithm
         kappa := kappa_props_pT(
-                p, 
-                T, 
+                p,
+                T,
             Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
             p, T));
 
@@ -2477,13 +2477,13 @@ for region 2.
       Real tau=1 - Tr;
 
     algorithm
-      if ((T < 273.15) or (T > 
+      if ((T < 273.15) or (T >
           Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Tsat(
           p))) then
         beta_H := 0;
       else
         for k in 1:3 loop
-          beta[k] := 
+          beta[k] :=
             Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.psat(
             T)*exp(A[k]/Tr + B[k]*tau^(0.355)/Tr + C[k]*Tr^(-0.41)*exp(tau));
         end for;
@@ -2539,8 +2539,8 @@ for region 2.
         end if;
 
         //v_ws is the molar volume of saturated water
-        v_ws := if (T >= 273.16) then Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.molarMass 
-          /Modelica.Media.Water.IF97_Utilities.rho_pT(p, T) else Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.Basic.Constants.MM 
+        v_ws := if (T >= 273.16) then Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.molarMass
+          /Modelica.Media.Water.IF97_Utilities.rho_pT(p, T) else Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.Basic.Constants.MM
           /Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.rho_pT(p, T);
 
         //beta_H is Henry's law constant
@@ -2555,16 +2555,16 @@ for region 2.
         caww := Modelica.Media.Air.ReferenceMoistAir.Utilities.VirialCoefficients.Caww_dT(0, T);
         cwww := Modelica.Media.Air.ReferenceMoistAir.Utilities.VirialCoefficients.Cwww_dT(0, T);
 
-        y := ((1 + kappa_T*p_ws)*(p - p_ws) - kappa_T*(p^2 - p_ws^2)/2)/(R_bar* 
+        y := ((1 + kappa_T*p_ws)*(p - p_ws) - kappa_T*(p^2 - p_ws^2)/2)/(R_bar*
           T)*v_ws + log(1 - beta_H*(1 - x*p_ws/p)*p) + (1 - x*p_ws/p)^2*p/(
-          R_bar*T)*baa - 2*(1 - x*p_ws/p)^2*p/(R_bar*T)*baw - (p - p_ws - (1 - 
-          x*p_ws/p)^2*p)/(R_bar*T)*bww + (1 - x*p_ws/p)^3*p^2/(R_bar*T)^2*caaa 
-           + 3*(1 - x*p_ws/p)^2*(1 - 2*(1 - x*p_ws/p))*p^2/(2*(R_bar*T)^2)*caaw 
-           - 3*(1 - x*p_ws/p)^2*x*p_ws/p*p^2/(R_bar*T)^2*caww - ((3 - 2*x*p_ws/ 
-          p)*(x*p_ws/p)^2*p^2 - p_ws^2)/(2*(R_bar*T)^2)*cwww - (1 - x*p_ws/p)^2 
-          *(-2 + 3*x*p_ws/p)*x*p_ws/p*p^2/(R_bar*T)^2*baa*bww - 2*(1 - x*p_ws/p) 
-          ^3*(-1 + 3*x*p_ws/p)*p^2/(R_bar*T)^2*baa*baw + 6*(1 - x*p_ws/p)^2*(x* 
-          p_ws/p)^2*p^2/(R_bar*T)^2*bww*baw - 3*(1 - x*p_ws/p)^4*p^2/(2*(R_bar* 
+          R_bar*T)*baa - 2*(1 - x*p_ws/p)^2*p/(R_bar*T)*baw - (p - p_ws - (1 -
+          x*p_ws/p)^2*p)/(R_bar*T)*bww + (1 - x*p_ws/p)^3*p^2/(R_bar*T)^2*caaa
+           + 3*(1 - x*p_ws/p)^2*(1 - 2*(1 - x*p_ws/p))*p^2/(2*(R_bar*T)^2)*caaw
+           - 3*(1 - x*p_ws/p)^2*x*p_ws/p*p^2/(R_bar*T)^2*caww - ((3 - 2*x*p_ws/
+          p)*(x*p_ws/p)^2*p^2 - p_ws^2)/(2*(R_bar*T)^2)*cwww - (1 - x*p_ws/p)^2
+          *(-2 + 3*x*p_ws/p)*x*p_ws/p*p^2/(R_bar*T)^2*baa*bww - 2*(1 - x*p_ws/p)
+          ^3*(-1 + 3*x*p_ws/p)*p^2/(R_bar*T)^2*baa*baw + 6*(1 - x*p_ws/p)^2*(x*
+          p_ws/p)^2*p^2/(R_bar*T)^2*bww*baw - 3*(1 - x*p_ws/p)^4*p^2/(2*(R_bar*
           T)^2)*baa^2 - 2*(1 - x*p_ws/p)^2*x*p_ws/p*(-2 + 3*x*p_ws/p)*p^2/(
           R_bar*T)^2*baw^2 - (p_ws^2 - (4 - 3*x*p_ws/p)*(x*p_ws/p)^3*p^2)/(2*(
           R_bar*T)^2)*bww^2 - log(x);
@@ -2572,27 +2572,27 @@ for region 2.
       Real xmax;
 
     algorithm
-      if ((useEnhancementFactor == false) or (T >= 
+      if ((useEnhancementFactor == false) or (T >=
           Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Tsat(
           p))) then
         f := 1;
       else
         xmax := if (T < 273.16) then 120.0 else 8.0;
         f := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
-              function f_res(p=p, T=T), 
-              0.99999, 
-              xmax, 
+              function f_res(p=p, T=T),
+              0.99999,
+              xmax,
               1e-9);
       end if;
     end f_pT;
 
-    function rho_pTX 
+    function rho_pTX
       "Return density as a function of pressure p, temperature T and composition X"
       extends Modelica.Icons.Function;
 
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output SI.Density d "Density";
 
@@ -2609,36 +2609,36 @@ for region 2.
         xw := X[1]/(1 - X[1]);
         xws := xws_pT(p, T);
         pd := pd_pTX(
-              p, 
-              T, 
+              p,
+              T,
               X);
         pl := p - pd;
         if ((xw <= xws) or (xws == -1)) then
           if (T < 273.16) then
-            d := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) + 
+            d := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) +
               pd/(.Modelica.Media.Air.ReferenceMoistAir.steam.R_s*T);
           else
-            d := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) + 
+            d := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) +
               IF97_new.rho_pT(pd, T);
           end if;
         else
           if (T < 273.16) then
             d := (1 + xw)/((1 + xws)/(
-              Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) + pd/ 
-              (.Modelica.Media.Air.ReferenceMoistAir.steam.R_s*T)) + (xw - xws)/ 
+              Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) + pd/
+              (.Modelica.Media.Air.ReferenceMoistAir.steam.R_s*T)) + (xw - xws)/
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.rho_pT(
               p, T));
           else
             d := (1 + xw)/((1 + xws)/(
-              Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) + 
-              IF97_new.rho_pT(pd, T)) + (xw - xws)/ 
+              Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) +
+              IF97_new.rho_pT(pd, T)) + (xw - xws)/
               Modelica.Media.Water.IF97_Utilities.rho_pT(p, T));
           end if;
         end if;
       end if;
       annotation (
-        derivative=rho_pTX_der, 
-        Inline=false, 
+        derivative=rho_pTX_der,
+        Inline=false,
         LateInline=true);
     end rho_pTX;
 
@@ -2654,17 +2654,17 @@ for region 2.
 
     algorithm
       if (T >= 273.16) then
-        pds := 
+        pds :=
           Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.psat(
           T);
-        Tlim := 
+        Tlim :=
           Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Tsat(
           p);
       else
-        pds := 
+        pds :=
           Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.Basic.psub(
           T);
-        Tlim := 
+        Tlim :=
           Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.Basic.Tsub(
           p);
       end if;
@@ -2675,9 +2675,9 @@ for region 2.
         pds := p;
       end if;
       annotation (
-        derivative=pds_pT_der, 
-        Inline=false, 
-        LateInline=true, 
+        derivative=pds_pT_der,
+        Inline=false,
+        LateInline=true,
         Documentation(revisions="<html>
 2017-04-13 Stefan Wischhusen: Partial steam pressure cannot become higher than absolute pressure p.
 </html>"));
@@ -2688,7 +2688,7 @@ for region 2.
 
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output SI.AbsolutePressure pd "Partial pressure";
 
@@ -2708,8 +2708,8 @@ for region 2.
         pd := if ((xw <= xws) or (xws == -1)) then pd else pds;
       end if;
       annotation (
-        derivative=pd_pTX_der, 
-        Inline=false, 
+        derivative=pd_pTX_der,
+        Inline=false,
         LateInline=true);
     end pd_pTX;
 
@@ -2734,9 +2734,9 @@ for region 2.
     //     pds/(p - pds) else -1;
       xws := if (pds < p) then pds*Modelica.Media.Air.ReferenceMoistAir.k_mair/(p - pds) else Modelica.Constants.inf;
       annotation (
-        derivative=xws_pT_der, 
-        Inline=false, 
-        LateInline=true, 
+        derivative=xws_pT_der,
+        Inline=false,
+        LateInline=true,
         Documentation(revisions="<html>
 2017-04-13 Stefan Wischhusen: New formula for xws.
 </html>"));
@@ -2746,7 +2746,7 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output Real phi "Relative humidity";
 
@@ -2763,7 +2763,7 @@ for region 2.
         if (T >= 273.16) then
           pds := Modelica.Media.Water.IF97_Utilities.BaseIF97.Basic.psat(T);
         else
-          pds := 
+          pds :=
             Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.Basic.psub(
             T);
         end if;
@@ -2777,7 +2777,7 @@ for region 2.
         phi := pd/max(100*Modelica.Constants.eps, pds);
       end if;
 
-      annotation(Inline=false, LateInline=true, 
+      annotation(Inline=false, LateInline=true,
         Documentation(revisions="<html>
 2017-04-13 Stefan Wischhusen: New calculation for phi.
 </html>"));
@@ -2787,7 +2787,7 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output SI.SpecificHeatCapacity cp "Specific heat capacity";
 
@@ -2800,35 +2800,35 @@ for region 2.
     algorithm
       if (X[1] == 0.0) then
         if (T >= 773.15) then
-          cp := Modelica.Media.Air.ReferenceAir.Air_Utilities.cp_pT(p, T) + 
+          cp := Modelica.Media.Air.ReferenceAir.Air_Utilities.cp_pT(p, T) +
             Utilities.cp_dis_pTX(
-                p, 
-                T, 
+                p,
+                T,
                 X);
         else
           cp := Modelica.Media.Air.ReferenceAir.Air_Utilities.cp_pT(p, T);
         end if;
       else
         pd := Modelica.Media.Air.ReferenceMoistAir.Utilities.pd_pTX(
-              p, 
-              T, 
+              p,
+              T,
               X);
         pl := p - pd;
         xw := X[1]/(1 - X[1]);
         xws := Modelica.Media.Air.ReferenceMoistAir.Utilities.xws_pT(p, T);
         if ((xw <= xws) or (xws == -1)) then
           if (T >= 773.15) then
-            cp := X[1]* 
-              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.cp_pT(pd, 
-              T) + X[2]*Modelica.Media.Air.ReferenceAir.Air_Utilities.cp_pT(pl, 
+            cp := X[1]*
+              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.cp_pT(pd,
+              T) + X[2]*Modelica.Media.Air.ReferenceAir.Air_Utilities.cp_pT(pl,
               T) + Modelica.Media.Air.ReferenceMoistAir.Utilities.cp_dis_pTX(
-                  p, 
-                  T, 
+                  p,
+                  T,
                   X);
           else
-            cp := X[1]* 
-              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.cp_pT(pd, 
-              T) + X[2]*Modelica.Media.Air.ReferenceAir.Air_Utilities.cp_pT(pl, 
+            cp := X[1]*
+              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.cp_pT(pd,
+              T) + X[2]*Modelica.Media.Air.ReferenceAir.Air_Utilities.cp_pT(pl,
               T);
           end if;
         else
@@ -2842,7 +2842,7 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output SI.SpecificHeatCapacity cv "Specific heat capacity";
 
@@ -2857,15 +2857,15 @@ for region 2.
         cv := Modelica.Media.Air.ReferenceAir.Air_Utilities.cv_pT(p, T);
       else
         pd := Modelica.Media.Air.ReferenceMoistAir.Utilities.pd_pTX(
-              p, 
-              T, 
+              p,
+              T,
               X);
         pl := p - pd;
         xw := X[1]/(1 - X[1]);
         xws := Modelica.Media.Air.ReferenceMoistAir.Utilities.xws_pT(p, T);
         if ((xw <= xws) or (xws == -1)) then
-          cv := X[1]* 
-            Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.cv_pT(pd, T) 
+          cv := X[1]*
+            Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.cv_pT(pd, T)
              + X[2]*Modelica.Media.Air.ReferenceAir.Air_Utilities.cv_pT(pl, T);
         else
           cv := -1;
@@ -2878,7 +2878,7 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output SI.SpecificEnthalpy h "Specific enthalpy";
 
@@ -2893,35 +2893,35 @@ for region 2.
         h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(p, T);
       else
         pd := Modelica.Media.Air.ReferenceMoistAir.Utilities.pd_pTX(
-              p, 
-              T, 
+              p,
+              T,
               X);
         pl := p - pd;
         xw := X[1]/(1 - X[1]);
         xws := Modelica.Media.Air.ReferenceMoistAir.Utilities.xws_pT(p, T);
         if ((xw <= xws) or (xws == -1)) then
           if (T >= 773.15) then
-            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + xw 
-              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd, 
-              T) + (1 + xw)* 
+            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + xw
+              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd,
+              T) + (1 + xw)*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.h_dis_pTX(
-                  p, 
-                  T, 
+                  p,
+                  T,
                   X);
           else
-            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + xw 
-              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd, 
+            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + xw
+              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd,
               T);
           end if;
         else
           if (T < 273.16) then
-            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + 
+            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) +
               xws*Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(
-              pd, T) + (xw - xws)* 
+              pd, T) + (xw - xws)*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.h_pT(
               p, T);
           else
-            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + 
+            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) +
               xws*Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(
               pd, T) + (xw - xws)*Modelica.Media.Water.IF97_Utilities.h_pT(p, T);
           end if;
@@ -2929,8 +2929,8 @@ for region 2.
         h := h/(1 + xw);
       end if;
       annotation (
-        derivative=h_pTX_der, 
-        Inline=false, 
+        derivative=h_pTX_der,
+        Inline=false,
         LateInline=true);
     end h_pTX;
 
@@ -2938,7 +2938,7 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output Real u "Reaction index";
     protected
@@ -2946,7 +2946,7 @@ for region 2.
       Real invMMX[4] "Inverses of molar weights";
       SI.MolarMass Mmix "Molar mass of mixture";
       MassFraction[4] massFraction "Mass fractions of components";
-      SI.MoleFraction[4] Y 
+      SI.MoleFraction[4] Y
         "Mole fractions of individual components (H2O, N2, O2, Ar) of moist air";
     algorithm
       if (useDissociation == false) then
@@ -2960,58 +2960,58 @@ for region 2.
         for i in 1:4 loop
           Y[i] := Mmix*massFraction[i]/MMX[i];
         end for;
-        uges := 1 + 
+        uges := 1 +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
-              p, 
-              T, 
+              p,
+              T,
               Y);
         u := -T^2*(
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2(T)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[2] 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2(T)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[2]
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3(T)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[3] 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3(T)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[3]
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4(T)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[4] 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4(T)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[4]
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5(T)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[5] 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5(T)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[5]
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6(T)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[6]) 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6(T)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[6])
           /uges*sum(massFraction[j]/MMX[j] for j in 1:4);
       end if;
     end h_dis_pTX;
@@ -3020,7 +3020,7 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output SI.SpecificEntropy s "Specific entropy";
 
@@ -3035,35 +3035,35 @@ for region 2.
         s := Modelica.Media.Air.ReferenceAir.Air_Utilities.s_pT(p, T);
       else
         pd := Modelica.Media.Air.ReferenceMoistAir.Utilities.pd_pTX(
-              p, 
-              T, 
+              p,
+              T,
               X);
         pl := p - pd;
         xw := X[1]/(1 - X[1]);
         xws := Modelica.Media.Air.ReferenceMoistAir.Utilities.xws_pT(p, T);
         if ((xw <= xws) or (xws == -1)) then
           if (T >= 773.15) then
-            s := Modelica.Media.Air.ReferenceAir.Air_Utilities.s_pT(pl, T) + xw 
-              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.s_pT(pd, 
-              T) + (1 + xw)* 
+            s := Modelica.Media.Air.ReferenceAir.Air_Utilities.s_pT(pl, T) + xw
+              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.s_pT(pd,
+              T) + (1 + xw)*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.s_dis_pTX(
-                  p, 
-                  T, 
+                  p,
+                  T,
                   X);
           else
-            s := Modelica.Media.Air.ReferenceAir.Air_Utilities.s_pT(pl, T) + xw 
-              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.s_pT(pd, 
+            s := Modelica.Media.Air.ReferenceAir.Air_Utilities.s_pT(pl, T) + xw
+              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.s_pT(pd,
               T);
           end if;
         else
           if (T < 273.16) then
-            s := Modelica.Media.Air.ReferenceAir.Air_Utilities.s_pT(pl, T) + 
+            s := Modelica.Media.Air.ReferenceAir.Air_Utilities.s_pT(pl, T) +
               xws*Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.s_pT(
-              pd, T) + (xw - xws)* 
+              pd, T) + (xw - xws)*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.s_pT(
               p, T);
           else
-            s := Modelica.Media.Air.ReferenceAir.Air_Utilities.s_pT(pl, T) + 
+            s := Modelica.Media.Air.ReferenceAir.Air_Utilities.s_pT(pl, T) +
               xws*Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.s_pT(
               pd, T) + (xw - xws)*Modelica.Media.Water.IF97_Utilities.s_pT(p, T);
           end if;
@@ -3077,21 +3077,21 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output SI.SpecificEnergy u "Specific entropy";
 
     algorithm
       u := Modelica.Media.Air.ReferenceMoistAir.Utilities.h_pTX(
-            p, 
-            T, 
+            p,
+            T,
             X) - p/Modelica.Media.Air.ReferenceMoistAir.Utilities.rho_pTX(
-            p, 
-            T, 
+            p,
+            T,
             X);
       annotation (
-        derivative=u_pTX_der, 
-        Inline=false, 
+        derivative=u_pTX_der,
+        Inline=false,
         LateInline=true);
     end u_pTX;
 
@@ -3099,7 +3099,7 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output Real u "Reaction index";
     protected
@@ -3107,7 +3107,7 @@ for region 2.
       Real invMMX[4] "Inverses of molar weights";
       SI.MolarMass Mmix "Molar mass of mixture";
       MassFraction[4] massFraction "Mass fractions of components";
-      SI.MoleFraction[4] Y 
+      SI.MoleFraction[4] Y
         "Mole fractions of individual components (H2O, N2, O2, Ar) of moist air";
     algorithm
       if (useDissociation == false) then
@@ -3121,52 +3121,52 @@ for region 2.
         for i in 1:4 loop
           Y[i] := Mmix*massFraction[i]/MMX[i];
         end for;
-        uges := 1 + 
+        uges := 1 +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
-              p, 
-              T, 
+              p,
+              T,
               Y);
         u := (Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2(T) 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2(T)
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3(T) 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3(T)
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4(T) 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4(T)
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5(T) 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5(T)
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6(T)) 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6(T))
           /uges*sum(massFraction[j]/MMX[j] for j in 1:4);
       end if;
     end cp_dis_pTX;
@@ -3175,7 +3175,7 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       output Real u "Reaction index";
     protected
@@ -3183,7 +3183,7 @@ for region 2.
       Real invMMX[4] "Inverses of molar weights";
       SI.MolarMass Mmix "Molar mass of mixture";
       MassFraction[4] massFraction "Mass fractions of components";
-      SI.MoleFraction[4] Y 
+      SI.MoleFraction[4] Y
         "Mole fractions of individual components (H2O, N2, O2, Ar) of moist air";
     algorithm
       if (useDissociation == false) then
@@ -3197,58 +3197,58 @@ for region 2.
         for i in 1:4 loop
           Y[i] := Mmix*massFraction[i]/MMX[i];
         end for;
-        uges := 1 + 
+        uges := 1 +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
-              p, 
-              T, 
-              Y) + 
+              p,
+              T,
+              Y) +
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
-              p, 
-              T, 
+              p,
+              T,
               Y);
         u := -T*(
           Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2(T)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[2] 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2(T)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[2]
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3(T)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[3] 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3(T)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[3]
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4(T)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[4] 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4(T)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[4]
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5(T)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[5] 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5(T)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[5]
            + Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
-              p, 
-              T, 
-              Y)* 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6(T)/ 
-          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[6]) 
+              p,
+              T,
+              Y)*
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6(T)/
+          Modelica.Media.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[6])
           /uges*sum(massFraction[j]/MMX[j] for j in 1:4);
       end if;
     end s_dis_pTX;
@@ -3258,7 +3258,7 @@ for region 2.
 
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       input Real p_der "Derivative of pressure";
       input Real T_der "Derivative of temperature";
@@ -3278,13 +3278,13 @@ for region 2.
         xw := X[1]/(1 - X[1]) "d(xw)/dt = d(xw)/dX[1] * dX[1]/dt";
         xw_der := (X_der[1]*(1 - X[1]) + X[1]*X_der[1])/(1 - X[1])^2;
         pds_der := Modelica.Media.Air.ReferenceMoistAir.Utilities.pds_pT_der(
-              p, 
-              T, 
-              p_der, 
+              p,
+              T,
+              p_der,
               T_der);
         //pd := xw/(Modelica.Media.Air.ReferenceMoistAir.k_mair + xw)*p;
-        pd_der := (xw_der*(Modelica.Media.Air.ReferenceMoistAir.k_mair + xw) - 
-          xw*xw_der)*p + xw/(Modelica.Media.Air.ReferenceMoistAir.k_mair + xw)* 
+        pd_der := (xw_der*(Modelica.Media.Air.ReferenceMoistAir.k_mair + xw) -
+          xw*xw_der)*p + xw/(Modelica.Media.Air.ReferenceMoistAir.k_mair + xw)*
           p_der;
         xws := Modelica.Media.Air.ReferenceMoistAir.Utilities.xws_pT(p, T);
         pd_der := if (xw <= xws) then pd_der else pds_der;
@@ -3294,7 +3294,7 @@ for region 2.
 </html>"));
     end pd_pTX_der;
 
-    function xws_pT_der 
+    function xws_pT_der
       "Derivative of humidity ration (absolute) of saturated humid air"
       extends Modelica.Icons.Function;
 
@@ -3311,16 +3311,16 @@ for region 2.
     algorithm
       pds := Modelica.Media.Air.ReferenceMoistAir.Utilities.pds_pT(p, T);
       pds_der := Modelica.Media.Air.ReferenceMoistAir.Utilities.pds_pT_der(
-            p, 
-            T, 
-            p_der, 
+            p,
+            T,
+            p_der,
             T_der);
       Tlim := if (T <= 273.16) then 
         Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.Basic.Tsub(
         p) else 
         Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Tsat(p);
       if (pds < p) then
-        xws_der := Modelica.Media.Air.ReferenceMoistAir.k_mair*((pds_der*(p - 
+        xws_der := Modelica.Media.Air.ReferenceMoistAir.k_mair*((pds_der*(p -
           pds) + pds*pds_der)/(p - pds)^2);
       else
         xws_der := 0;
@@ -3344,17 +3344,17 @@ for region 2.
 
     algorithm
       if (T >= 273.16) then
-        pds_der := 
+        pds_der :=
           Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.psat_der(
           T, T_der);
-        Tlim := 
+        Tlim :=
           Modelica.Media.Air.ReferenceMoistAir.Utilities.Water95_Utilities.Tsat(
           p);
       else
-        pds_der := 
+        pds_der :=
           Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.Basic.psub_der(
           T, T_der);
-        Tlim := 
+        Tlim :=
           Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.Basic.Tsub(
           p);
       end if;
@@ -3368,13 +3368,13 @@ for region 2.
 </html>"));
     end pds_pT_der;
 
-    function rho_pTX_der 
+    function rho_pTX_der
       "Derivative of density as a function of pressure p, temperature T and composition X"
       extends Modelica.Icons.Function;
 
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       input Real p_der "Derivative of pressure";
       input Real T_der "Derivative of temperature";
@@ -3391,129 +3391,129 @@ for region 2.
     algorithm
       if (X[1] == 0) then
         d_der := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT_der(
-              p, 
-              T, 
-              Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(p, T), 
-              p_der, 
+              p,
+              T,
+              Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(p, T),
+              p_der,
               T_der);
       else
         xw := X[1]/(1 - X[1]);
         xw_der := (X_der[1])/(1 - X[1])^2;
         xws := xws_pT(p, T);
         xws_der := xws_pT_der(
-              p, 
-              T, 
-              p_der, 
+              p,
+              T,
+              p_der,
               T_der);
         pd := pd_pTX(
-              p, 
-              T, 
+              p,
+              T,
               X);
         pd_der := Modelica.Media.Air.ReferenceMoistAir.Utilities.pd_pTX_der(
-              p, 
-              T, 
-              X, 
-              p_der, 
-              T_der, 
+              p,
+              T,
+              X,
+              p_der,
+              T_der,
               X_der);
         pl := p - pd;
         pl_der := p_der - pd_der;
         if ((xw <= xws) or (xws == -1)) then
           if (T < 273.16) then
             d_der := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT_der(
-                  pl, 
-                  T, 
+                  pl,
+                  T,
                   Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
-                pl, T), 
-                  pl_der, 
-                  T_der) + Modelica.Media.Air.ReferenceMoistAir.steam.R_s*(pd_der 
+                pl, T),
+                  pl_der,
+                  T_der) + Modelica.Media.Air.ReferenceMoistAir.steam.R_s*(pd_der
               *T - pd*T_der)/(Modelica.Media.Air.ReferenceMoistAir.steam.R_s*T)^2;
 
           else
             d_der := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT_der(
-                  pl, 
-                  T, 
+                  pl,
+                  T,
                   Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
-                pl, T), 
-                  pl_der, 
+                pl, T),
+                  pl_der,
                   T_der) + IF97_new.rho_pT_der(
-                  pd, 
-                  T, 
-                  pd_der, 
+                  pd,
+                  T,
+                  pd_der,
                   T_der);
 
           end if;
         else
           if (T < 273.16) then
             o[1] := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T);
-            o[2] := 
+            o[2] :=
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.rho_pT(
               p, T);
             o[3] := ((1 + xws)/(
-              Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) + pd/ 
-              (.Modelica.Media.Air.ReferenceMoistAir.steam.R_s*T)) + (xw - xws)/ 
+              Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) + pd/
+              (.Modelica.Media.Air.ReferenceMoistAir.steam.R_s*T)) + (xw - xws)/
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.rho_pT(
               p, T));
             o[4] := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT_der(
-                  pl, 
-                  T, 
+                  pl,
+                  T,
                   Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
-                p, T), 
-                  p_der, 
+                p, T),
+                  p_der,
                   T_der);
 
-            o[5] := (xws_der*o[1] - (1 + xws)*o[4])/o[1]^2 + (pd_der*T - pd* 
-              T_der)/Modelica.Media.Air.ReferenceMoistAir.steam.R_s/T^2 + (xw_der 
-              *o[2] - xw* 
+            o[5] := (xws_der*o[1] - (1 + xws)*o[4])/o[1]^2 + (pd_der*T - pd*
+              T_der)/Modelica.Media.Air.ReferenceMoistAir.steam.R_s/T^2 + (xw_der
+              *o[2] - xw*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.rho_pT_der(
-                  p, 
-                  T, 
+                  p,
+                  T,
                 Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
-                p, T), 
-                  p_der, 
-                  T_der))/o[2]^2 - (xws_der*o[2] - xws* 
+                p, T),
+                  p_der,
+                  T_der))/o[2]^2 - (xws_der*o[2] - xws*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.rho_pT_der(
-                  p, 
-                  T, 
+                  p,
+                  T,
                 Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
-                p, T), 
-                  p_der, 
+                p, T),
+                  p_der,
                   T_der))/o[2]^2;
 
             d_der := (xw_der*o[3] - (1 + xw)*o[5])/o[3]^2;
 
           else
-            o[1] := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) 
+            o[1] := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T)
                + IF97_new.rho_pT(pd, T);
             o[2] := Modelica.Media.Water.IF97_Utilities.rho_pT(p, T);
             o[3] := ((1 + xws)/(
-              Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) + 
-              IF97_new.rho_pT(pd, T)) + (xw - xws)/ 
+              Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT(pl, T) +
+              IF97_new.rho_pT(pd, T)) + (xw - xws)/
               Modelica.Media.Water.IF97_Utilities.rho_pT(p, T));
             o[4] := Modelica.Media.Air.ReferenceAir.Air_Utilities.rho_pT_der(
-                  pl, 
-                  T, 
+                  pl,
+                  T,
                   Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
-                p, T), 
-                  p_der, 
+                p, T),
+                  p_der,
                   T_der) + IF97_new.rho_pT_der(
-                  pd, 
-                  T, 
-                  pd_der, 
+                  pd,
+                  T,
+                  pd_der,
                   T_der);
 
-            o[5] := (xws_der*o[1] - (1 + xws)*o[4])/o[1]^2 + (xw_der*o[2] - xw* 
+            o[5] := (xws_der*o[1] - (1 + xws)*o[4])/o[1]^2 + (xw_der*o[2] - xw*
               Modelica.Media.Water.IF97_Utilities.rho_pT_der(
-                  p, 
-                  T, 
-                  Modelica.Media.Water.IF97_Utilities.waterBaseProp_pT(p, T), 
-                  p_der, 
-                  T_der))/o[2]^2 - (xws_der*o[2] - xws* 
+                  p,
+                  T,
+                  Modelica.Media.Water.IF97_Utilities.waterBaseProp_pT(p, T),
+                  p_der,
+                  T_der))/o[2]^2 - (xws_der*o[2] - xws*
               Modelica.Media.Water.IF97_Utilities.rho_pT_der(
-                  p, 
-                  T, 
-                  Modelica.Media.Water.IF97_Utilities.waterBaseProp_pT(p, T), 
-                  p_der, 
+                  p,
+                  T,
+                  Modelica.Media.Water.IF97_Utilities.waterBaseProp_pT(p, T),
+                  p_der,
                   T_der))/o[2]^2;
             d_der := (xw_der*o[3] - (1 + xw)*o[5])/o[3]^2;
           end if;
@@ -3526,7 +3526,7 @@ for region 2.
       import Modelica.Media.Air.ReferenceMoistAir.Utilities;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       input Real p_der "Derivative of pressure";
       input Real T_der "Derivative of temperature";
@@ -3539,9 +3539,9 @@ for region 2.
       Real Mmix_der "Derivative of molar mass of mixture";
       MassFraction[4] massFraction "Mass fractions of components";
       Real[4] massFraction_der "Derivative of mass fractions of components";
-      SI.MoleFraction[4] Y 
+      SI.MoleFraction[4] Y
         "Mole fractions of individual components (H2O, N2, O2, Ar) of moist air";
-      Real[4] Y_der 
+      Real[4] Y_der
         "Derivative of mole fractions of individual components (H2O, N2, O2, Ar) of moist air";
 
     algorithm
@@ -3550,7 +3550,7 @@ for region 2.
         u_der := 0;
       elseif (size(X, 1) > 1) then
         massFraction := {X[1],X[2]*Xi_Air[1],X[2]*Xi_Air[2],X[2]*Xi_Air[3]};
-        massFraction_der := {X_der[1],X_der[2]*Xi_Air[1],X_der[2]*Xi_Air[2], 
+        massFraction_der := {X_der[1],X_der[2]*Xi_Air[1],X_der[2]*Xi_Air[2],
           X_der[2]*Xi_Air[3]};
         for i in 1:4 loop
           invMMX[i] := 1/MMX[i];
@@ -3563,156 +3563,156 @@ for region 2.
             i];
         end for;
         uges := 1 + Utilities.ReactionIndices.U2(
-              p, 
-              T, 
+              p,
+              T,
               Y) + Utilities.ReactionIndices.U3(
-              p, 
-              T, 
+              p,
+              T,
               Y) + Utilities.ReactionIndices.U4(
-              p, 
-              T, 
+              p,
+              T,
               Y) + Utilities.ReactionIndices.U5(
-              p, 
-              T, 
+              p,
+              T,
               Y) + Utilities.ReactionIndices.U6(
-              p, 
-              T, 
+              p,
+              T,
               Y);
         uges_der := Utilities.ReactionIndices.U2_der(
-              p, 
-              T, 
-              Y, 
-              p_der, 
-              T_der, 
+              p,
+              T,
+              Y,
+              p_der,
+              T_der,
               Y_der) + Utilities.ReactionIndices.U3_der(
-              p, 
-              T, 
-              Y, 
-              p_der, 
-              T_der, 
+              p,
+              T,
+              Y,
+              p_der,
+              T_der,
               Y_der) + Utilities.ReactionIndices.U4_der(
-              p, 
-              T, 
-              Y, 
-              p_der, 
-              T_der, 
+              p,
+              T,
+              Y,
+              p_der,
+              T_der,
               Y_der) + Utilities.ReactionIndices.U5_der(
-              p, 
-              T, 
-              Y, 
-              p_der, 
-              T_der, 
+              p,
+              T,
+              Y,
+              p_der,
+              T_der,
               Y_der) + Utilities.ReactionIndices.U6_der(
-              p, 
-              T, 
-              Y, 
-              p_der, 
-              T_der, 
+              p,
+              T,
+              Y,
+              p_der,
+              T_der,
               Y_der);
         o[1] := (Utilities.ReactionIndices.U2_der(
-              p, 
-              T, 
-              Y, 
-              p_der, 
-              T_der, 
-              Y_der)*Utilities.ReactionIndices.V2(T) + 
+              p,
+              T,
+              Y,
+              p_der,
+              T_der,
+              Y_der)*Utilities.ReactionIndices.V2(T) +
           Utilities.ReactionIndices.U2(
-              p, 
-              T, 
+              p,
+              T,
               Y)*Utilities.ReactionIndices.V2_der(T, T_der))/Utilities.ReactionIndices.BB[
           2];
         o[2] := (Utilities.ReactionIndices.U3_der(
-              p, 
-              T, 
-              Y, 
-              p_der, 
-              T_der, 
-              Y_der)*Utilities.ReactionIndices.V3(T) + 
+              p,
+              T,
+              Y,
+              p_der,
+              T_der,
+              Y_der)*Utilities.ReactionIndices.V3(T) +
           Utilities.ReactionIndices.U3(
-              p, 
-              T, 
+              p,
+              T,
               Y)*Utilities.ReactionIndices.V3_der(T, T_der))/Utilities.ReactionIndices.BB[
           3];
         o[3] := (Utilities.ReactionIndices.U4_der(
-              p, 
-              T, 
-              Y, 
-              p_der, 
-              T_der, 
-              Y_der)*Utilities.ReactionIndices.V4(T) + 
+              p,
+              T,
+              Y,
+              p_der,
+              T_der,
+              Y_der)*Utilities.ReactionIndices.V4(T) +
           Utilities.ReactionIndices.U4(
-              p, 
-              T, 
+              p,
+              T,
               Y)*Utilities.ReactionIndices.V4_der(T, T_der))/Utilities.ReactionIndices.BB[
           4];
         o[4] := (Utilities.ReactionIndices.U5_der(
-              p, 
-              T, 
-              Y, 
-              p_der, 
-              T_der, 
-              Y_der)*Utilities.ReactionIndices.V5(T) + 
+              p,
+              T,
+              Y,
+              p_der,
+              T_der,
+              Y_der)*Utilities.ReactionIndices.V5(T) +
           Utilities.ReactionIndices.U5(
-              p, 
-              T, 
+              p,
+              T,
               Y)*Utilities.ReactionIndices.V5_der(T, T_der))/Utilities.ReactionIndices.BB[
           5];
         o[5] := (Utilities.ReactionIndices.U6_der(
-              p, 
-              T, 
-              Y, 
-              p_der, 
-              T_der, 
-              Y_der)*Utilities.ReactionIndices.V6(T) + 
+              p,
+              T,
+              Y,
+              p_der,
+              T_der,
+              Y_der)*Utilities.ReactionIndices.V6(T) +
           Utilities.ReactionIndices.U6(
-              p, 
-              T, 
+              p,
+              T,
               Y)*Utilities.ReactionIndices.V6_der(T, T_der))/Utilities.ReactionIndices.BB[
           6];
         l := (Utilities.ReactionIndices.U2(
-              p, 
-              T, 
-              Y)*Utilities.ReactionIndices.V2(T)/Utilities.ReactionIndices.BB[2] 
+              p,
+              T,
+              Y)*Utilities.ReactionIndices.V2(T)/Utilities.ReactionIndices.BB[2]
            + Utilities.ReactionIndices.U3(
-              p, 
-              T, 
-              Y)*Utilities.ReactionIndices.V3(T)/Utilities.ReactionIndices.BB[3] 
+              p,
+              T,
+              Y)*Utilities.ReactionIndices.V3(T)/Utilities.ReactionIndices.BB[3]
            + Utilities.ReactionIndices.U4(
-              p, 
-              T, 
-              Y)*Utilities.ReactionIndices.V4(T)/Utilities.ReactionIndices.BB[4] 
+              p,
+              T,
+              Y)*Utilities.ReactionIndices.V4(T)/Utilities.ReactionIndices.BB[4]
            + Utilities.ReactionIndices.U5(
-              p, 
-              T, 
-              Y)*Utilities.ReactionIndices.V5(T)/Utilities.ReactionIndices.BB[5] 
+              p,
+              T,
+              Y)*Utilities.ReactionIndices.V5(T)/Utilities.ReactionIndices.BB[5]
            + Utilities.ReactionIndices.U6(
-              p, 
-              T, 
+              p,
+              T,
               Y)*Utilities.ReactionIndices.V6(T)/Utilities.ReactionIndices.BB[6]);
         o[6] := -2*T*(Utilities.ReactionIndices.U2(
-              p, 
-              T, 
-              Y)*Utilities.ReactionIndices.V2(T)/Utilities.ReactionIndices.BB[2] 
+              p,
+              T,
+              Y)*Utilities.ReactionIndices.V2(T)/Utilities.ReactionIndices.BB[2]
            + Utilities.ReactionIndices.U3(
-              p, 
-              T, 
-              Y)*Utilities.ReactionIndices.V3(T)/Utilities.ReactionIndices.BB[3] 
+              p,
+              T,
+              Y)*Utilities.ReactionIndices.V3(T)/Utilities.ReactionIndices.BB[3]
            + Utilities.ReactionIndices.U4(
-              p, 
-              T, 
-              Y)*Utilities.ReactionIndices.V4(T)/Utilities.ReactionIndices.BB[4] 
+              p,
+              T,
+              Y)*Utilities.ReactionIndices.V4(T)/Utilities.ReactionIndices.BB[4]
            + Utilities.ReactionIndices.U5(
-              p, 
-              T, 
-              Y)*Utilities.ReactionIndices.V5(T)/Utilities.ReactionIndices.BB[5] 
+              p,
+              T,
+              Y)*Utilities.ReactionIndices.V5(T)/Utilities.ReactionIndices.BB[5]
            + Utilities.ReactionIndices.U6(
-              p, 
-              T, 
-              Y)*Utilities.ReactionIndices.V6(T)/Utilities.ReactionIndices.BB[6]) 
+              p,
+              T,
+              Y)*Utilities.ReactionIndices.V6(T)/Utilities.ReactionIndices.BB[6])
            - T^2*sum(o[1:5]);
         o[7] := uges_der*sum(massFraction[j]/MMX[j] for j in 1:4) + uges*sum(
           massFraction_der[j]/MMX[j] for j in 1:4);
-        u_der := (o[6]*(uges*sum(massFraction[j]/MMX[j] for j in 1:4)) - l*o[7]) 
+        u_der := (o[6]*(uges*sum(massFraction[j]/MMX[j] for j in 1:4)) - l*o[7])
           /(uges*sum(massFraction[j]/MMX[j] for j in 1:4))^2;
 
       end if;
@@ -3722,7 +3722,7 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       input Real p_der "Derivative of pressure";
       input Real T_der "Derivative of temperature";
@@ -3739,22 +3739,22 @@ for region 2.
     algorithm
       if (X[1] == 0) then
         h_der := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT_der(
-              p, 
-              T, 
-              Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(p, T), 
-              p_der, 
+              p,
+              T,
+              Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(p, T),
+              p_der,
               T_der);
       else
         pd := Modelica.Media.Air.ReferenceMoistAir.Utilities.pd_pTX(
-              p, 
-              T, 
+              p,
+              T,
               X);
         pd_der := Modelica.Media.Air.ReferenceMoistAir.Utilities.pd_pTX_der(
-              p, 
-              T, 
-              X, 
-              p_der, 
-              T_der, 
+              p,
+              T,
+              X,
+              p_der,
+              T_der,
               X_der);
         pl := p - pd;
         pl_der := p_der - pd_der;
@@ -3762,147 +3762,147 @@ for region 2.
         xw_der := (X_der[1])/(1 - X[1])^2;
         xws := Modelica.Media.Air.ReferenceMoistAir.Utilities.xws_pT(p, T);
         xws_der := xws_pT_der(
-              p, 
-              T, 
-              p_der, 
+              p,
+              T,
+              p_der,
               T_der);
         if ((xw <= xws) or (xws == -1)) then
           if (T >= 773.15) then
             h_der := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT_der(
-                  pl, 
-                  T, 
+                  pl,
+                  T,
                   Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
-                pl, T), 
-                  pl_der, 
-                  T_der) + xw_der* 
-              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd, 
-              T) + xw* 
+                pl, T),
+                  pl_der,
+                  T_der) + xw_der*
+              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd,
+              T) + xw*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT_der(
-                  pd, 
-                  T, 
-                  0, 
-                  pd_der, 
-                  T_der) + xw_der* 
+                  pd,
+                  T,
+                  0,
+                  pd_der,
+                  T_der) + xw_der*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.h_dis_pTX(
-                  p, 
-                  T, 
-                  X) + xw* 
+                  p,
+                  T,
+                  X) + xw*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.h_dis_pTX_der(
-                  p, 
-                  T, 
-                  X, 
-                  p_der, 
-                  T_der, 
+                  p,
+                  T,
+                  X,
+                  p_der,
+                  T_der,
                   X_der);
 
           else
             h_der := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT_der(
-                  pl, 
-                  T, 
+                  pl,
+                  T,
                   Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
-                pl, T), 
-                  pl_der, 
-                  T_der) + xw_der* 
-              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd, 
-              T) + xw* 
+                pl, T),
+                  pl_der,
+                  T_der) + xw_der*
+              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd,
+              T) + xw*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT_der(
-                  pd, 
-                  T, 
-                  0, 
-                  pd_der, 
+                  pd,
+                  T,
+                  0,
+                  pd_der,
                   T_der);
 
           end if;
         else
           if (T < 273.16) then
             h_der := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT_der(
-                  pl, 
-                  T, 
+                  pl,
+                  T,
                   Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
-                pl, T), 
-                  pl_der, 
-                  T_der) + xws_der* 
-              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd, 
-              T) + xws* 
+                pl, T),
+                  pl_der,
+                  T_der) + xws_der*
+              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd,
+              T) + xws*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT_der(
-                  pd, 
-                  T, 
-                  0, 
-                  pd_der, 
-                  T_der) + xw_der* 
+                  pd,
+                  T,
+                  0,
+                  pd_der,
+                  T_der) + xw_der*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.h_pT(
-              p, T) + xw* 
+              p, T) + xw*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.h_pT_der(
-                  p, 
-                  T, 
+                  p,
+                  T,
                 Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
-                p, T), 
-                  p_der, 
-                  T_der) - xws_der* 
+                p, T),
+                  p_der,
+                  T_der) - xws_der*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.h_pT(
-              p, T) - xws* 
+              p, T) - xws*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.h_pT_der(
-                  p, 
-                  T, 
+                  p,
+                  T,
                 Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
-                p, T), 
-                  p_der, 
+                p, T),
+                  p_der,
                   T_der);
 
           else
             h_der := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT_der(
-                  pl, 
-                  T, 
+                  pl,
+                  T,
                   Modelica.Media.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
-                p, T), 
-                  pl_der, 
-                  T_der) + xws_der* 
-              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd, 
-              T) + xws* 
+                p, T),
+                  pl_der,
+                  T_der) + xws_der*
+              Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd,
+              T) + xws*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT_der(
-                  pd, 
-                  T, 
-                  0, 
-                  pd_der, 
-                  T_der) + xw_der*Modelica.Media.Water.IF97_Utilities.h_pT(p, T) 
+                  pd,
+                  T,
+                  0,
+                  pd_der,
+                  T_der) + xw_der*Modelica.Media.Water.IF97_Utilities.h_pT(p, T)
                + xw*Modelica.Media.Water.IF97_Utilities.h_pT_der(
-                  p, 
-                  T, 
-                  Modelica.Media.Water.IF97_Utilities.waterBaseProp_pT(p, T), 
-                  p_der, 
-                  T_der) - xws_der*Modelica.Media.Water.IF97_Utilities.h_pT(p, 
+                  p,
+                  T,
+                  Modelica.Media.Water.IF97_Utilities.waterBaseProp_pT(p, T),
+                  p_der,
+                  T_der) - xws_der*Modelica.Media.Water.IF97_Utilities.h_pT(p,
               T) - xws*Modelica.Media.Water.IF97_Utilities.h_pT_der(
-                  p, 
-                  T, 
-                  Modelica.Media.Water.IF97_Utilities.waterBaseProp_pT(p, T), 
-                  p_der, 
+                  p,
+                  T,
+                  Modelica.Media.Water.IF97_Utilities.waterBaseProp_pT(p, T),
+                  p_der,
                   T_der);
 
           end if;
         end if;
         if ((xw <= xws) or (xws == -1)) then
           if (T >= 773.15) then
-            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + xw 
-              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd, 
-              T) + (1 + xw)* 
+            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + xw
+              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd,
+              T) + (1 + xw)*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.h_dis_pTX(
-                  p, 
-                  T, 
+                  p,
+                  T,
                   X);
           else
-            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + xw 
-              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd, 
+            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + xw
+              *Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(pd,
               T);
           end if;
         else
           if (T < 273.16) then
-            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + 
+            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) +
               xws*Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(
-              pd, T) + (xw - xws)* 
+              pd, T) + (xw - xws)*
               Modelica.Media.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.h_pT(
               p, T);
           else
-            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) + 
+            h := Modelica.Media.Air.ReferenceAir.Air_Utilities.h_pT(pl, T) +
               xws*Modelica.Media.Air.ReferenceMoistAir.Utilities.IF97_new.h_pT(
               pd, T) + (xw - xws)*Modelica.Media.Water.IF97_Utilities.h_pT(p, T);
           end if;
@@ -3915,7 +3915,7 @@ for region 2.
       extends Modelica.Icons.Function;
       input SI.AbsolutePressure p "Pressure";
       input SI.Temperature T "Temperature";
-      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X 
+      input SI.MassFraction X[:]=Modelica.Media.Air.ReferenceMoistAir.reference_X
         "Mass fractions";
       input Real p_der "Derivative of pressure";
       input Real T_der "Derivative of temperature";
@@ -3924,24 +3924,24 @@ for region 2.
 
     algorithm
       u_der := Modelica.Media.Air.ReferenceMoistAir.Utilities.h_pTX_der(
-            p, 
-            T, 
-            X, 
-            p_der, 
-            T_der, 
-            X_der) - (p_der* 
+            p,
+            T,
+            X,
+            p_der,
+            T_der,
+            X_der) - (p_der*
         Modelica.Media.Air.ReferenceMoistAir.Utilities.rho_pTX(
-            p, 
-            T, 
+            p,
+            T,
             X) - p*Modelica.Media.Air.ReferenceMoistAir.Utilities.rho_pTX_der(
-            p, 
-            T, 
-            X, 
-            p_der, 
-            T_der, 
+            p,
+            T,
+            X,
+            p_der,
+            T_der,
             X_der))/Modelica.Media.Air.ReferenceMoistAir.Utilities.rho_pTX(
-            p, 
-            T, 
+            p,
+            T,
             X)^2;
     end u_pTX_der;
   end Utilities;

@@ -4,19 +4,19 @@ model BasicRelativeAngularVelocity "Basic sensor to measure relative angular vel
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB;
 
   extends Modelica.Mechanics.MultiBody.Sensors.Internal.PartialRelativeBaseSensor;
-  Modelica.Blocks.Interfaces.RealOutput w_rel[3](each final quantity="AngularVelocity",each final unit = "rad/s") 
+  Modelica.Blocks.Interfaces.RealOutput w_rel[3](each final quantity="AngularVelocity",each final unit = "rad/s")
     "Relative angular velocity vector" 
     annotation (Placement(transformation(
-        origin={0,-110}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={0,-110},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB 
-    resolveInFrame= 
-  Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a 
+    resolveInFrame=
+  Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a
     "Frame in which output vector w_rel is resolved (world, frame_a, frame_b, or frame_resolve)";
 
 protected
-  Modelica.Mechanics.MultiBody.Frames.Orientation R_rel 
+  Modelica.Mechanics.MultiBody.Frames.Orientation R_rel
     "Relative orientation object from frame_a to frame_b";
 equation
    R_rel = Frames.relativeRotation(frame_a.R, frame_b.R);
@@ -33,16 +33,16 @@ equation
       w_rel = zeros(3);
    end if;
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
       graphics={
         Text(
-          extent={{-132,90},{129,138}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-132,90},{129,138}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
-          extent={{-50,-14},{50,-54}}, 
-          textColor={64,64,64}, 
-          textString="rad/s")}), 
+          extent={{-50,-14},{50,-54}},
+          textColor={64,64,64},
+          textString="rad/s")}),
     Documentation(info="<html>
 <p>
 This basic sensor is aimed to be used within advanced sensors where

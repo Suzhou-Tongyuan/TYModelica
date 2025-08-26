@@ -1,9 +1,9 @@
 ﻿within Modelica.Electrical.Batteries.ParameterRecords;
 record CellData "Parameters of a battery cell"
   extends Modelica.Electrical.Batteries.Icons.BaseCellRecord;
-  parameter SI.ElectricCharge Qnom(displayUnit="A.h") 
+  parameter SI.ElectricCharge Qnom(displayUnit="A.h")
     "Nominal (maximum) charge";
-  parameter Boolean useLinearSOCDependency=true 
+  parameter Boolean useLinearSOCDependency=true
     "Use a linear SOC dependent OCV, otherwise table based" 
     annotation(Dialog(group="OCV versus SOC"));
   parameter SI.Voltage OCVmax(final min=0) "OCV at SOC = SOCmax" 
@@ -16,11 +16,11 @@ record CellData "Parameters of a battery cell"
     annotation(Dialog(group="OCV versus SOC"));
   parameter Real OCV_SOC[:,2]=[SOCmin,OCVmin/OCVmax; SOCmax,1] "OCV/OCVmax versus SOC table" 
     annotation(Dialog(group="OCV versus SOC", enable=not useLinearSOCDependency));
-  parameter Modelica.Blocks.Types.Smoothness smoothness=Modelica.Blocks.Types.Smoothness.LinearSegments 
+  parameter Modelica.Blocks.Types.Smoothness smoothness=Modelica.Blocks.Types.Smoothness.LinearSegments
     "Smoothness of table interpolation" 
     annotation(Dialog(group="OCV versus SOC", enable=not useLinearSOCDependency));
-  final parameter Real OCV_SOC_internal[:,2]= 
-    if useLinearSOCDependency then [SOCmin,OCVmin/OCVmax; SOCmax,1] else OCV_SOC 
+  final parameter Real OCV_SOC_internal[:,2]=
+    if useLinearSOCDependency then [SOCmin,OCVmin/OCVmax; SOCmax,1] else OCV_SOC
     "OCV/OCVmax versus SOC used internal" 
     annotation(Dialog(group="OCV versus SOC"));
   parameter SI.Resistance Ri "Total inner resistance (= OCVmax/Isc)";
@@ -28,7 +28,7 @@ record CellData "Parameters of a battery cell"
   parameter SI.LinearTemperatureCoefficient alpha=0 "Temperature coefficient of resistance at T_ref";
   parameter SI.Current Idis=0 "Self-discharge current at SOC = SOCmax" 
     annotation(Evaluate=true);
-  parameter SI.Resistance R0=Ri 
+  parameter SI.Resistance R0=Ri
     "Inner resistance without parallel C";
   annotation(defaultComponentPrefixes="parameter", Documentation(info="<html>
 <p>Collects parameters of battery cells:</p>

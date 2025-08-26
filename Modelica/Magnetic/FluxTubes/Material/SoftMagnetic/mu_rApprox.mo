@@ -1,25 +1,25 @@
 ﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic;
-function mu_rApprox 
+function mu_rApprox
   "Approximation of relative permeability mu_r as a function of flux density B for soft magnetic materials"
 
   extends Modelica.Icons.Function;
 
-  input SI.MagneticFluxDensity B 
+  input SI.MagneticFluxDensity B
     "Flux density in ferromagnetic flux tube element";
   //Material specific parameter set:
-  input SI.RelativePermeability mu_i 
+  input SI.RelativePermeability mu_i
     "Initial relative permeability at B=0";
-  input SI.MagneticFluxDensity B_myMax 
+  input SI.MagneticFluxDensity B_myMax
     "Flux density at maximum relative permeability";
   input Real c_a "Coefficient of approximation function";
   input Real c_b "Coefficient of approximation function";
   input Real n "Exponent of approximation function";
 
-  output SI.RelativePermeability mu_r 
+  output SI.RelativePermeability mu_r
     "Relative magnetic permeability of ferromagnetic flux tube element";
 
 protected
-  Real B_N 
+  Real B_N
     "Flux density B normalized to flux density at maximum relative permeability B_myMax";
 
 algorithm

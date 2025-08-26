@@ -1,11 +1,11 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.Force;
-model CuboidParallelFlux 
+model CuboidParallelFlux
   "Cuboid with flux in direction of motion, e.g., air gap with rectangular cross-section; constant permeability"
 
   extends BaseClasses.Force;
 
   SI.Length l=s "Axial length (in direction of flux)" annotation (Dialog(
-        group="Variable geometry", groupImage= 
+        group="Variable geometry", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/CuboidParallelFlux.png"));
   parameter SI.Length a=0.01 "Width of rectangular cross-section";
   parameter SI.Length b=0.01 "Height of rectangular cross-section";
@@ -13,7 +13,7 @@ model CuboidParallelFlux
   SI.MagneticFluxDensity B "Homogeneous flux density";
 
 protected
-  parameter SI.Area A=a*b 
+  parameter SI.Area A=a*b
     "Cross-sectional area orthogonal to direction of flux";
 
 equation

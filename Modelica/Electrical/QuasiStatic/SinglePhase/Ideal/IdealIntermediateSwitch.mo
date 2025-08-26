@@ -4,10 +4,10 @@ model IdealIntermediateSwitch "Ideal intermediate switch"
   import Modelica.ComplexMath.conj;
   parameter SI.Resistance Ron(final min=0) = 1e-5 "Closed switch resistance";
   parameter SI.Conductance Goff(final min=0) = 1e-5 "Opened switch conductance";
-  extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T= 
+  extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T=
        293.15);
   QuasiStatic.SinglePhase.Interfaces.PositivePin p1 annotation (Placement(
-        transformation(extent={{-110,30},{-90,50}}), iconTransformation(extent= 
+        transformation(extent={{-110,30},{-90,50}}), iconTransformation(extent=
             {{-110,30},{-90,50}})));
   QuasiStatic.SinglePhase.Interfaces.PositivePin p2 
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
@@ -18,8 +18,8 @@ model IdealIntermediateSwitch "Ideal intermediate switch"
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   Modelica.Blocks.Interfaces.BooleanInput control "true => p1--n2, p2--n1 connected, otherwise p1--n1, p2--n2  connected" 
     annotation (Placement(transformation(
-        origin={0,120}, 
-        extent={{-20,-20},{20,20}}, 
+        origin={0,120},
+        extent={{-20,-20},{20,20}},
         rotation=270)));
 protected
   Complex s1(re(final unit="1"), im(final unit="1"));
@@ -43,18 +43,18 @@ equation
   p1.v - n2.v = (s3*unitCurrent)*(if (control) then Ron else 1);
   p2.v - n1.v = (s4*unitCurrent)*(if (control) then Ron else 1);
 
-  p1.i = if control then s1*unitVoltage*Goff + s3*unitCurrent else s1* 
+  p1.i = if control then s1*unitVoltage*Goff + s3*unitCurrent else s1*
     unitCurrent + s3*unitVoltage*Goff;
-  p2.i = if control then s2*unitVoltage*Goff + s4*unitCurrent else s2* 
+  p2.i = if control then s2*unitVoltage*Goff + s4*unitCurrent else s2*
     unitCurrent + s4*unitVoltage*Goff;
-  n1.i = if control then -s1*unitVoltage*Goff - s4*unitCurrent else -s1* 
+  n1.i = if control then -s1*unitVoltage*Goff - s4*unitCurrent else -s1*
     unitCurrent - s4*unitVoltage*Goff;
-  n2.i = if control then -s2*unitVoltage*Goff - s3*unitCurrent else -s2* 
+  n2.i = if control then -s2*unitVoltage*Goff - s3*unitCurrent else -s2*
     unitCurrent - s3*unitVoltage*Goff;
 
-  LossPower = real(p1.v*conj(p1.i)) + real(p2.v*conj(p2.i)) + real(n1.v* 
+  LossPower = real(p1.v*conj(p1.i)) + real(p2.v*conj(p2.i)) + real(n1.v*
     conj(n1.i)) + real(n2.v*conj(n2.i));
-  annotation (defaultComponentName="switch", 
+  annotation (defaultComponentName="switch",
     Documentation(info="<html>
 <p>
 The intermediate switch has four switching contact pins p1, p2, n1, and n2.
@@ -92,18 +92,18 @@ behavior is <strong>not</strong> modelled. The parameters are not temperature de
 <strong>Use with care:</strong>
 This switch is only intended to be used for structural changes, not for fast switching sequences, due to the quasi-static formulation.
 </p>
-</html>"), 
+</html>"),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={
-        Ellipse(extent={{-4,24},{4,16}}, lineColor={85,170,255}), 
-        Line(points={{-90,0},{-40,0}}, color={85,170,255}), 
-        Line(points={{-90,40},{-40,40}}, color={85,170,255}), 
-        Line(points={{-40,0},{40,40}}, color={85,170,255}), 
-        Line(points={{-40,40},{40,2}}, color={85,170,255}), 
-        Line(points={{40,40},{90,40}}, color={85,170,255}), 
-        Line(points={{40,0},{90,0}}, color={85,170,255}), 
+        Ellipse(extent={{-4,24},{4,16}}, lineColor={85,170,255}),
+        Line(points={{-90,0},{-40,0}}, color={85,170,255}),
+        Line(points={{-90,40},{-40,40}}, color={85,170,255}),
+        Line(points={{-40,0},{40,40}}, color={85,170,255}),
+        Line(points={{-40,40},{40,2}}, color={85,170,255}),
+        Line(points={{40,40},{90,40}}, color={85,170,255}),
+        Line(points={{40,0},{90,0}}, color={85,170,255}),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textString="%name", 
+          extent={{-150,90},{150,50}},
+          textString="%name",
           textColor={0,0,255})}));
 end IdealIntermediateSwitch;

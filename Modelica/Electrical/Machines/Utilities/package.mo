@@ -4,7 +4,7 @@ package Utilities "Library with auxiliary models for testing"
 
   annotation (Documentation(info="<html>
 This package contains utility components for testing examples.
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

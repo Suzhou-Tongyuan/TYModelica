@@ -1,22 +1,22 @@
 ﻿within Modelica.Mechanics.MultiBody.Visualizers.Colors;
-function colorMapToSvg 
+function colorMapToSvg
   "Save a color map on file in svg (scalable vector graphics) format"
   extends Modelica.Icons.Function;
  encapsulated type HeaderType = enumeration(
-      svgBeginAndEnd, 
-      svgBegin, 
-      svgEnd, 
+      svgBeginAndEnd,
+      svgBegin,
+      svgEnd,
       noHeader);
   import Modelica.Utilities.Streams.print;
   input Real colorMap[:,3] "Color map to be stored in svg format" 
-    annotation(choices( choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.jet(), 
-                        choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.hot(), 
-                        choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.gray(), 
-                        choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.spring(), 
-                        choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.summer(), 
-                        choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.autumn(), 
+    annotation(choices( choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.jet(),
+                        choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.hot(),
+                        choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.gray(),
+                        choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.spring(),
+                        choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.summer(),
+                        choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.autumn(),
                         choice=Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps.winter()));
-  input String fileName="colorMap.svg" 
+  input String fileName="colorMap.svg"
     "File where the svg representation shall be stored";
   input Real width(unit="mm")=10 "Width in svg-figure";
   input Real height(unit="mm")=100 "Height in svg-figure";
@@ -24,14 +24,14 @@ function colorMapToSvg
   input Real y(unit="mm")=10 "Y-Coordinate of left upper corner";
   input Real T_min=0 "Value of scalar corresponding to colorMap[1,:]";
   input Real T_max=100 "Value of scalar corresponding to colorMap[end,:]";
-  input Integer nScalars=11 
+  input Integer nScalars=11
     "Number of scalars to be displayed at the right side";
   input String format=".3g" "Format of the numbers";
   input Real fontSize=11 "Font size in [pt]";
-  input Real textWidth(unit="mm")=8 
+  input Real textWidth(unit="mm")=8
     "Numbers are right justified starting at x+width+textWidth";
   input String caption="" "Caption above the map";
-  input HeaderType headerType=Colors.colorMapToSvg.HeaderType.svgBeginAndEnd 
+  input HeaderType headerType=Colors.colorMapToSvg.HeaderType.svgBeginAndEnd
     "Type of header";
 protected
   Integer nc = size(colorMap,1);
@@ -68,13 +68,13 @@ algorithm
   for i in nc:-1:1 loop
      // print:  <rect x="XXmm" y="XXmm" width="YYmm" height="ZZmm" style="fill:rgb(100,128,255);stroke:none"/>
      yy :=yy + dy;
-     print("    <rect x=\"" + String(x) + 
-           "mm\" y=\"" + String(yy) + 
-           "mm\" width=\"" + strWidth + 
-           "mm\" height=\"" + strHeight + 
-           "mm\" style=\"fill:rgb(" + String(integer(colorMap[i,1])) + "," 
-                                    + String(integer(colorMap[i,2])) + "," 
-                                    + String(integer(colorMap[i,3])) + 
+     print("    <rect x=\"" + String(x) +
+           "mm\" y=\"" + String(yy) +
+           "mm\" width=\"" + strWidth +
+           "mm\" height=\"" + strHeight +
+           "mm\" style=\"fill:rgb(" + String(integer(colorMap[i,1])) + ","
+                                    + String(integer(colorMap[i,2])) + ","
+                                    + String(integer(colorMap[i,3])) +
            ");stroke:none\"/>", fileName);
   end for;
 
@@ -87,18 +87,18 @@ algorithm
     // print: <text x="22mm" y="12mm" font-family="Arial,sans-serif" font-size="11pt">1.2345</text>
     yy :=yy + dy;
     T := T_min + (T_max - T_min)*(i-1)/(ni-1);
-    print("    <text x=\"" + strXX + 
-          "mm\" y=\"" + String(yy) + 
-          "mm\" font-family=\"Fixedsys\" font-size=\"" + String(fontSize) + 
-          "pt\" text-anchor=\"end\">" + String(T,format=format) + 
+    print("    <text x=\"" + strXX +
+          "mm\" y=\"" + String(yy) +
+          "mm\" font-family=\"Fixedsys\" font-size=\"" + String(fontSize) +
+          "pt\" text-anchor=\"end\">" + String(T,format=format) +
           "</text>", fileName);
   end for;
 
   if caption <> "" then
-     print("   <text x=\"" + String(xHeading) + 
-           "mm\" y=\"" + String(yHeading) + 
-           "mm\" font-family=\"Fixedsys\" font-size=\"" + String(fontSize) + 
-           "pt\" text-anchor=\"middle\">" + caption + 
+     print("   <text x=\"" + String(xHeading) +
+           "mm\" y=\"" + String(yHeading) +
+           "mm\" font-family=\"Fixedsys\" font-size=\"" + String(fontSize) +
+           "pt\" text-anchor=\"middle\">" + caption +
            "</text>", fileName);
   end if;
 

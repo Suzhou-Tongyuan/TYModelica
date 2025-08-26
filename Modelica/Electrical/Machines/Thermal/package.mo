@@ -3,9 +3,9 @@ package Thermal "Library with models for connecting thermal models"
   extends Modelica.Icons.Package;
 
   annotation (Icon(graphics={Ellipse(
-          extent={{-65,-63},{65,63}}, 
-          lineColor={191,0,0}, 
-          fillColor={191,0,0}, 
+          extent={{-65,-63},{65,63}},
+          lineColor={191,0,0},
+          fillColor={191,0,0},
           fillPattern=FillPattern.Solid)}), Documentation(info="<html>
 <h4>Thermal concept</h4>
 <p>
@@ -153,7 +153,7 @@ In sub-package <a href=\"modelica://Modelica.Electrical.Machines.Thermal.Constan
 <li><code>heatPort2[m]</code>: m=3 heatPorts for the m=3 secondary phases</li>
 <li><code>heatPortCore</code>: iron core losses (not yet connected/implemented)</li>
 </ul>
-</html>", 
+</html>",
         revisions="<html>
   <ul>
   <li> v2.2.0 2011/02/10 Anton Haumer<br>

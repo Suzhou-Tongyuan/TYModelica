@@ -1,22 +1,22 @@
 ﻿within Modelica.Electrical.PowerConverters.Interfaces.Enable;
-partial model Enable 
+partial model Enable
   "Partial model providing enable parameter and optional enable input"
-  parameter Boolean useConstantEnable=true 
+  parameter Boolean useConstantEnable=true
     "Disable boolean input and use constantEnable, if true" 
     annotation (Dialog(tab="Enable"));
-  parameter Boolean constantEnable=true 
+  parameter Boolean constantEnable=true
     "Constant enabling of firing signals" 
     annotation (Dialog(tab="Enable", enable=useConstantEnable));
   parameter Integer m(final min=1) = 3 "Number of phases" annotation(Evaluate=true);
   PowerConverters.Enable.EnableLogic enableLogic(
-    final useConstantEnable=useConstantEnable, 
-    final constantEnable=constantEnable, 
+    final useConstantEnable=useConstantEnable,
+    final constantEnable=constantEnable,
     final m=m) "Enabling logic" 
     annotation (Placement(transformation(extent={{80,-90},{100,-70}})));
-  Modelica.Blocks.Interfaces.BooleanInput enable if not useConstantEnable 
+  Modelica.Blocks.Interfaces.BooleanInput enable if not useConstantEnable
     "Enables fire and notFire" annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}}, 
-        rotation=90, 
+        extent={{-20,-20},{20,20}},
+        rotation=90,
         origin={100,-120})));
 equation
   connect(enableLogic.enable, enable) annotation (Line(

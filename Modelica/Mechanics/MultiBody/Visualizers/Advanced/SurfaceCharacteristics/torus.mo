@@ -5,9 +5,9 @@ function torus "Function defining the surface characteristic of a torus"
   input SI.Length R=1 "Major radius (distance from center of torus to center of tube)" annotation(Dialog);
   input SI.Length r=0.2 "Minor radius (radius of tube)" annotation(Dialog);
   input SI.Angle opening=0 "Opening angle of torus" annotation(Dialog);
-  input SI.Angle startAngle= -Modelica.Constants.pi 
+  input SI.Angle startAngle= -Modelica.Constants.pi
     "Start angle of torus slice" annotation(Dialog);
-  input SI.Angle stopAngle= Modelica.Constants.pi 
+  input SI.Angle stopAngle= Modelica.Constants.pi
     "End angle of torus slice" annotation(Dialog);
 protected
   SI.Angle alpha;

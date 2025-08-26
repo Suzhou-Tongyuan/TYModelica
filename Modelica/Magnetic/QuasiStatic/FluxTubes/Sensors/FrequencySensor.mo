@@ -11,10 +11,10 @@ equation
 This sensor can be used to measure the frequency of the reference system.
 The integral of the angular frequency of the quasi-static magnetic system is equal to the reference angle.
 </p>
-</html>"), 
+</html>"),
        Icon(graphics={
         Text(
-          extent={{-30,-10},{30,-70}}, 
-          textColor={64,64,64}, 
+          extent={{-30,-10},{30,-70}},
+          textColor={64,64,64},
           textString="Hz")}));
 end FrequencySensor;

@@ -1,81 +1,81 @@
 ﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
-model SMR_Inverter 
+model SMR_Inverter
   "Test example: SynchronousMachineReluctanceRotor with inverter"
   extends Modelica.Icons.Example;
   constant Integer m=3 "Number of phases";
-  parameter SI.Voltage VNominal=100 
+  parameter SI.Voltage VNominal=100
     "Nominal RMS voltage per phase";
   parameter SI.Frequency fNominal=50 "Nominal frequency";
   parameter SI.Frequency f=50 "Actual frequency";
   parameter SI.Time tRamp=1 "Frequency ramp";
   parameter SI.Torque TLoad=46 "Nominal load torque";
   parameter SI.Time tStep=1.2 "Time of load torque step";
-  parameter SI.Inertia JLoad=0.29 
+  parameter SI.Inertia JLoad=0.29
     "Load's moment of inertia";
   Machines.BasicMachines.SynchronousMachines.SM_ReluctanceRotor smr(
-    p=smrData.p, 
-    fsNominal=smrData.fsNominal, 
-    Rs=smrData.Rs, 
-    TsRef=smrData.TsRef, 
-    Lszero=smrData.Lszero, 
-    Lssigma=smrData.Lssigma, 
-    Jr=smrData.Jr, 
-    Js=smrData.Js, 
-    frictionParameters=smrData.frictionParameters, 
-    phiMechanical(fixed=true), 
-    wMechanical(fixed=true), 
-    statorCoreParameters=smrData.statorCoreParameters, 
-    strayLoadParameters=smrData.strayLoadParameters, 
-    Lmd=smrData.Lmd, 
-    Lmq=smrData.Lmq, 
-    useDamperCage=smrData.useDamperCage, 
-    Lrsigmad=smrData.Lrsigmad, 
-    Lrsigmaq=smrData.Lrsigmaq, 
-    Rrd=smrData.Rrd, 
-    Rrq=smrData.Rrq, 
-    TrRef=smrData.TrRef, 
-    TsOperational=293.15, 
-    alpha20s=smrData.alpha20s, 
-    ir(each fixed=true), 
-    TrOperational=293.15, 
+    p=smrData.p,
+    fsNominal=smrData.fsNominal,
+    Rs=smrData.Rs,
+    TsRef=smrData.TsRef,
+    Lszero=smrData.Lszero,
+    Lssigma=smrData.Lssigma,
+    Jr=smrData.Jr,
+    Js=smrData.Js,
+    frictionParameters=smrData.frictionParameters,
+    phiMechanical(fixed=true),
+    wMechanical(fixed=true),
+    statorCoreParameters=smrData.statorCoreParameters,
+    strayLoadParameters=smrData.strayLoadParameters,
+    Lmd=smrData.Lmd,
+    Lmq=smrData.Lmq,
+    useDamperCage=smrData.useDamperCage,
+    Lrsigmad=smrData.Lrsigmad,
+    Lrsigmaq=smrData.Lrsigmaq,
+    Rrd=smrData.Rrd,
+    Rrq=smrData.Rrq,
+    TrRef=smrData.TrRef,
+    TsOperational=293.15,
+    alpha20s=smrData.alpha20s,
+    ir(each fixed=true),
+    TrOperational=293.15,
     alpha20r=smrData.alpha20r) 
     annotation (Placement(transformation(extent={{-20,-50},{0,-30}})));
   Machines.Sensors.CurrentQuasiRMSSensor currentQuasiRMSSensor annotation (
       Placement(transformation(
-        origin={0,30}, 
-        extent={{-10,10},{10,-10}}, 
+        origin={0,30},
+        extent={{-10,10},{10,-10}},
         rotation=270)));
   Machines.Sensors.RotorDisplacementAngle rotorDisplacementAngle(p=smr.p) 
     annotation (Placement(transformation(
-        origin={20,-40}, 
-        extent={{10,-10},{-10,10}}, 
+        origin={20,-40},
+        extent={{10,-10},{-10,10}},
         rotation=90)));
   Modelica.Blocks.Sources.Ramp ramp(height=f, duration=tRamp) annotation (
      Placement(transformation(extent={{-80,50},{-60,70}})));
   Machines.Utilities.VfController vfController(
-    final m=m, 
-    VNominal=VNominal, 
+    final m=m,
+    VNominal=VNominal,
     fNominal=fNominal) 
     annotation (Placement(transformation(extent={{-40,50},{-20,70}})));
   Modelica.Electrical.Polyphase.Sources.SignalVoltage signalVoltage(
       final m=m) annotation (Placement(transformation(
-        origin={0,60}, 
-        extent={{10,10},{-10,-10}}, 
+        origin={0,60},
+        extent={{10,10},{-10,-10}},
         rotation=270)));
   Modelica.Electrical.Polyphase.Basic.Star star(final m=m) annotation (
       Placement(transformation(extent={{-50,80},{-70,100}})));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
         transformation(
-        origin={-90,90}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-90,90},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Mechanics.Rotational.Components.Inertia loadInertia(J=JLoad) 
     annotation (Placement(transformation(extent={{40,-50},{60,-30}})));
   Modelica.Mechanics.Rotational.Sources.TorqueStep loadTorqueStep(
-    startTime=tStep, 
-    stepTorque=-TLoad, 
-    useSupport=false, 
-    offsetTorque=0) annotation (Placement(transformation(extent={{90,-50}, 
+    startTime=tStep,
+    stepTorque=-TLoad,
+    useSupport=false,
+    offsetTorque=0) annotation (Placement(transformation(extent={{90,-50},
             {70,-30}})));
   Machines.Utilities.TerminalBox terminalBox(terminalConnection="Y") 
     annotation (Placement(transformation(extent={{-20,-34},{0,-14}})));
@@ -103,13 +103,13 @@ equation
     annotation (Line(points={{-4,-30},{14,-30}}, color={0,0,255}));
   connect(terminalBox.plugSupply, currentQuasiRMSSensor.plug_n) 
     annotation (Line(
-      points={{-10,-28},{-10,0},{0,0},{0,20}}, 
+      points={{-10,-28},{-10,0},{0,0},{0,20}},
       color={0,0,255}));
   connect(terminalBox.plug_sp, smr.plug_sp) annotation (Line(
-      points={{-4,-30},{-4,-30}}, 
+      points={{-4,-30},{-4,-30}},
       color={0,0,255}));
   connect(terminalBox.plug_sn, smr.plug_sn) annotation (Line(
-      points={{-16,-30},{-16,-30}}, 
+      points={{-16,-30},{-16,-30}},
       color={0,0,255}));
   connect(smr.flange, rotorDisplacementAngle.flange) annotation (Line(
       points={{0,-40},{10,-40}}));

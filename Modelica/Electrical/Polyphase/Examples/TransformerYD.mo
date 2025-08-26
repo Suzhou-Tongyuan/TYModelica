@@ -5,38 +5,38 @@ model TransformerYD "Test example with polyphase components"
   parameter SI.Voltage V=1 "Amplitude of Star-Voltage";
   parameter SI.Frequency f=5 "Frequency";
   parameter SI.Inductance Lm=1 "Transformer main inductance";
-  parameter SI.Inductance LT=0.003 
+  parameter SI.Inductance LT=0.003
     "Transformer stray inductance";
   parameter SI.Resistance RT=0.05 "Transformer resistance";
   parameter SI.Resistance RL=1 "Load Resistance";
-  parameter Real nT=1/sqrt((1 - Modelica.Math.cos(2*Modelica.Constants.pi/m)) 
-      ^2 + (Modelica.Math.sin(2*Modelica.Constants.pi/m))^2) 
+  parameter Real nT=1/sqrt((1 - Modelica.Math.cos(2*Modelica.Constants.pi/m))
+      ^2 + (Modelica.Math.sin(2*Modelica.Constants.pi/m))^2)
     "Transformer ratio";
   Sources.SineVoltage sineVoltage(
-    V=fill(V, m), 
-    f=fill(f, m), 
+    V=fill(V, m),
+    f=fill(f, m),
     m=m) annotation (Placement(transformation(
-        origin={-80,20}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-80,20},
+        extent={{-10,-10},{10,10}},
         rotation=180)));
   Basic.Star starS(m=m) annotation (Placement(transformation(
-        origin={-90,-62}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-90,-62},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Ground groundS annotation (Placement(
         transformation(extent={{-100,-100},{-80,-80}})));
   Ideal.IdealTransformer idealTransformer(
-    m=m, 
-    n=fill(nT, m), 
+    m=m,
+    n=fill(nT, m),
     Lm1=fill(Lm, m)) annotation (Placement(transformation(extent={{-40,0},{
             -20,20}})));
   Basic.Star starT(m=m) annotation (Placement(transformation(
-        origin={-40,-62}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-40,-62},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Basic.Delta deltaT2(m=m) annotation (Placement(transformation(
-        origin={50,10}, 
-        extent={{-10,10},{10,-10}}, 
+        origin={50,10},
+        extent={{-10,10},{10,-10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Ground groundT annotation (Placement(
         transformation(extent={{-50,-100},{-30,-80}})));
@@ -47,8 +47,8 @@ model TransformerYD "Test example with polyphase components"
   Basic.Resistor loadR(m=m, R=fill(RL, m)) annotation (Placement(
         transformation(extent={{70,10},{90,30}})));
   Basic.Star starL(m=m) annotation (Placement(transformation(
-        origin={90,-62}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={90,-62},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Ground groundL annotation (Placement(
         transformation(extent={{80,-100},{100,-80}})));
@@ -87,6 +87,6 @@ Star-connected voltage source feeds via a Y-D-transformer with internal impedanc
 Using f=5 Hz LT=3mH defines nominal voltage drop of approximately 10 %.<br>
 Simulate for 1 second (2 periods) and compare voltages and currents of source, transformer and load.
 </p>
-</html>"), 
+</html>"),
        experiment(StopTime=1.0, Interval=0.001));
 end TransformerYD;

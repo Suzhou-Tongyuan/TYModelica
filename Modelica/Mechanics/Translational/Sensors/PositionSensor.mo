@@ -1,9 +1,9 @@
 ﻿within Modelica.Mechanics.Translational.Sensors;
 model PositionSensor "Ideal sensor to measure the absolute position"
   extends Translational.Interfaces.PartialAbsoluteSensor;
-  Modelica.Blocks.Interfaces.RealOutput s(unit="m") 
+  Modelica.Blocks.Interfaces.RealOutput s(unit="m")
     "Absolute position of flange as output signal" annotation (Placement(
-        transformation(extent={{100,-11},{120,9}}), 
+        transformation(extent={{100,-11},{120,9}}),
         iconTransformation(extent={{100,-10},{120,10}})));
 
 equation
@@ -16,11 +16,11 @@ output signals (to be further processed with blocks of the
 Modelica.Blocks library).
 </p>
 
-</html>"), 
-       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
         Text(
-          extent={{-24,20},{66,-40}}, 
-          textColor={64,64,64}, 
+          extent={{-24,20},{66,-40}},
+          textColor={64,64,64},
           textString="m")}));
 end PositionSensor;

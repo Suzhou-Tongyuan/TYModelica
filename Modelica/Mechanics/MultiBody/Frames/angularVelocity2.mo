@@ -1,10 +1,10 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames;
-function angularVelocity2 
+function angularVelocity2
   "Return angular velocity resolved in frame 2 from orientation object"
 
   extends Modelica.Icons.Function;
   input Orientation R "Orientation object to rotate frame 1 into frame 2";
-  output SI.AngularVelocity w[3] 
+  output SI.AngularVelocity w[3]
     "Angular velocity of frame 2 with respect to frame 1 resolved in frame 2";
 algorithm
   w := R.w;

@@ -1,15 +1,15 @@
 ﻿within Modelica.Mechanics.MultiBody.Types;
-type Axis = Modelica.Icons.TypeReal[3](each final unit="1") 
+type Axis = Modelica.Icons.TypeReal[3](each final unit="1")
   "Axis vector with choices" annotation (
-  preferredView="text", 
-  Evaluate=true, 
+  preferredView="text",
+  Evaluate=true,
   choices(
-    choice={1,0,0} "{1,0,0} \"x axis\"", 
-    choice={0,1,0} "{0,1,0} \"y axis\"", 
-    choice={0,0,1} "{0,0,1} \"z axis\"", 
-    choice={-1,0,0} "{-1,0,0} \"negative x axis\"", 
-    choice={0,-1,0} "{0,-1,0} \"negative y axis\"", 
-    choice={0,0,-1} "{0,0,-1} \"negative z axis\""), 
+    choice={1,0,0} "{1,0,0} \"x axis\"",
+    choice={0,1,0} "{0,1,0} \"y axis\"",
+    choice={0,0,1} "{0,0,1} \"z axis\"",
+    choice={-1,0,0} "{-1,0,0} \"negative x axis\"",
+    choice={0,-1,0} "{0,-1,0} \"negative y axis\"",
+    choice={0,0,-1} "{0,0,-1} \"negative z axis\""),
   Documentation(info="<html>
 <p>
 Type definition of an axis vector with scroll down menu that provides

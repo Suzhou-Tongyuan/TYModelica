@@ -1,66 +1,66 @@
 ﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
 model SaliencyCageWinding "Rotor cage with saliency in d- and q-axis"
   extends Magnetic.QuasiStatic.FundamentalWave.Interfaces.TwoPortExtended;
-  parameter Boolean useHeatPort=false 
+  parameter Boolean useHeatPort=false
     "Enable / disable (=fixed temperatures) thermal port" 
     annotation (Evaluate=true);
   parameter Magnetic.FundamentalWave.Types.SalientResistance RRef(d(start=1), q(
         start=1)) "Salient cage resistance";
-  parameter SI.Temperature TRef(start=293.15) 
+  parameter SI.Temperature TRef(start=293.15)
     "Reference temperature of winding";
   parameter
     Modelica.Electrical.Machines.Thermal.LinearTemperatureCoefficient20 
     alpha20(start=0) "Temperature coefficient of winding at 20 degC";
-  final parameter SI.LinearTemperatureCoefficient alphaRef= 
+  final parameter SI.LinearTemperatureCoefficient alphaRef=
       Modelica.Electrical.Machines.Thermal.convertAlpha(
-            alpha20, 
-            TRef, 
+            alpha20,
+            TRef,
             293.15) "Temperature coefficient of winding at reference temperature";
-  parameter SI.Temperature TOperational(start=293.15) 
+  parameter SI.Temperature TOperational(start=293.15)
     "Operational temperature of winding" 
     annotation (Dialog(enable=not useHeatPort));
-  parameter Magnetic.FundamentalWave.Types.SalientInductance Lsigma(d(start=1), 
+  parameter Magnetic.FundamentalWave.Types.SalientInductance Lsigma(d(start=1),
       q(start=1)) "Salient cage stray inductance";
   parameter Real effectiveTurns=1 "Effective number of turns";
-  Modelica.ComplexBlocks.Interfaces.ComplexOutput i[2]= 
+  Modelica.ComplexBlocks.Interfaces.ComplexOutput i[2]=
       electroMagneticConverter.i "Cage currents";
   Modelica.Blocks.Interfaces.RealOutput lossPower(
-    final quantity="Power", 
+    final quantity="Power",
     final unit="W") = sum(resistor.resistor.LossPower) "Damper losses";
   Magnetic.QuasiStatic.FundamentalWave.Components.PolyphaseElectroMagneticConverter 
     electroMagneticConverter(final m=2, final effectiveTurns=effectiveTurns) 
     annotation (Placement(transformation(
-        origin={0,-10}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={0,-10},
+        extent={{-10,-10},{10,10}},
         rotation=90)));
   Modelica.Electrical.QuasiStatic.Polyphase.Basic.Resistor resistor(
-    final useHeatPort=useHeatPort, 
-    final m=2, 
-    final T_ref=fill(TRef, 2), 
-    final T=fill(TOperational, 2), 
-    R_ref={RRef.d,RRef.q}, 
+    final useHeatPort=useHeatPort,
+    final m=2,
+    final T_ref=fill(TRef, 2),
+    final T=fill(TOperational, 2),
+    R_ref={RRef.d,RRef.q},
     alpha_ref=fill(alphaRef, 2)) annotation (Placement(transformation(
-        origin={-20,-50}, 
-        extent={{10,10},{-10,-10}}, 
+        origin={-20,-50},
+        extent={{10,10},{-10,-10}},
         rotation=90)));
-  Modelica.Electrical.QuasiStatic.Polyphase.Basic.Star star(final m= 
+  Modelica.Electrical.QuasiStatic.Polyphase.Basic.Star star(final m=
         2) annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
   Modelica.Electrical.QuasiStatic.SinglePhase.Basic.Ground ground 
     annotation (Placement(transformation(
-        origin={60,-20}, 
-        extent={{-10,10},{10,-10}}, 
+        origin={60,-20},
+        extent={{-10,10},{10,-10}},
         rotation=270)));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortWinding if 
     useHeatPort "Heat ports of winding resistor" 
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   Modelica.Thermal.HeatTransfer.Components.ThermalCollector 
-    thermalCollector(final m=2) if useHeatPort 
+    thermalCollector(final m=2) if useHeatPort
     "Connector of thermal rotor resistance heat ports" 
     annotation (Placement(transformation(extent={{-50,-90},{-30,-70}})));
   Magnetic.QuasiStatic.FundamentalWave.Components.Reluctance strayReluctance(final R_m(
-        d=effectiveTurns^2/Lsigma.d, q=effectiveTurns^2/Lsigma.q)) 
+        d=effectiveTurns^2/Lsigma.d, q=effectiveTurns^2/Lsigma.q))
     "Stray reluctance equivalent to ideally coupled stray inductances" 
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={0, 
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={0,
             20})));
 equation
   connect(thermalCollector.port_b, heatPortWinding) annotation (Line(
@@ -81,45 +81,45 @@ equation
       Line(points={{-10,-20},{-20,-20},{-20,-40}}, color={85,170,255}));
   connect(electroMagneticConverter.plug_n, star.plug_p) annotation (Line(
         points={{10,-20},{15,-20},{20,-20}}, color={85,170,255}));
-  connect(star.plug_p, resistor.plug_n) annotation (Line(points={{20,-20}, 
+  connect(star.plug_p, resistor.plug_n) annotation (Line(points={{20,-20},
           {20,-60},{-20,-60}}, color={85,170,255}));
-  annotation (defaultComponentName="cage", 
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+  annotation (defaultComponentName="cage",
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics={
         Ellipse(
-          extent={{-80,80},{80,-80}}, 
-          fillColor={175,175,175}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-80,80},{80,-80}},
+          fillColor={175,175,175},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-20,76},{20,36}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-20,76},{20,36}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{28,46},{68,6}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{28,46},{68,6}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{28,-8},{68,-48}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{28,-8},{68,-48}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-20,-36},{20,-76}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-20,-36},{20,-76}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-68,-6},{-28,-46}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-68,-6},{-28,-46}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-66,50},{-26,10}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-80,0},{-100,0}}, color={255,170,85}), 
-        Line(points={{100,0},{80,0}}, color={255,170,85}), 
+          extent={{-66,50},{-26,10}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-80,0},{-100,0}}, color={255,170,85}),
+        Line(points={{100,0},{80,0}}, color={255,170,85}),
         Text(
-          extent={{150,140},{-150,100}}, 
-          textColor={0,0,255}, 
-          textString="%name")}), 
+          extent={{150,140},{-150,100}},
+          textColor={0,0,255},
+          textString="%name")}),
     Documentation(info="<html>
 
 <p>

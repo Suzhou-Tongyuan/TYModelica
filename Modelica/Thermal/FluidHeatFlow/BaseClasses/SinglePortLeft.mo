@@ -1,10 +1,10 @@
 ﻿within Modelica.Thermal.FluidHeatFlow.BaseClasses;
 partial model SinglePortLeft "Partial model of a single port at the left"
-  parameter FluidHeatFlow.Media.Medium medium=FluidHeatFlow.Media.Medium() 
+  parameter FluidHeatFlow.Media.Medium medium=FluidHeatFlow.Media.Medium()
     "Medium" annotation (choicesAllMatching=true);
-  parameter SI.Temperature T0(start=293.15, displayUnit="degC") 
+  parameter SI.Temperature T0(start=293.15, displayUnit="degC")
     "Initial temperature of medium";
-  parameter Boolean T0fixed=false 
+  parameter Boolean T0fixed=false
     "Initial temperature guess value or fixed" 
   annotation(choices(checkBox=true));
   output SI.Temperature T_port "Temperature at flowPort_a";
@@ -29,10 +29,10 @@ annotation (Documentation(info="<html>
 <p>
 Partial model of single port at the left, defining the medium and the temperature at the port.
 </p>
-</html>"), 
-     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={       Text(
-          extent={{-150,140},{150,100}}, 
-          textColor={0,0,255}, 
+          extent={{-150,140},{150,100}},
+          textColor={0,0,255},
           textString="%name")}));
 end SinglePortLeft;

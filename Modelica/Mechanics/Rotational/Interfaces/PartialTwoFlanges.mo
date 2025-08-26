@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.Rotational.Interfaces;
-partial model PartialTwoFlanges 
+partial model PartialTwoFlanges
   "Partial model for a component with two rotational 1-dim. shaft flanges"
 
   Flange_a flange_a "Flange of left shaft" annotation (Placement(

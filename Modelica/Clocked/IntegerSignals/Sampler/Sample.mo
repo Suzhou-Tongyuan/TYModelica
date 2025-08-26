@@ -1,5 +1,5 @@
 ﻿within Modelica.Clocked.IntegerSignals.Sampler;
-block Sample 
+block Sample
   "Sample the continuous-time, Integer input signal and provide it as clocked output signal (clock is inferred)"
   extends Clocked.IntegerSignals.Interfaces.PartialSISOSampler;
 
@@ -7,16 +7,16 @@ equation
   y = sample(u);
 
   annotation (
-   defaultComponentName="sample1", 
+   defaultComponentName="sample1",
    Icon(coordinateSystem(
-        preserveAspectRatio=false, 
-        extent={{-100,-100},{100,100}}, 
-        initialScale=0.06), 
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        initialScale=0.06),
                      graphics={
         Text(
-          extent={{-150,90},{150,50}}, 
-          textColor={0,0,255}, 
-          textString="%name")}), 
+          extent={{-150,90},{150,50}},
+          textColor={0,0,255},
+          textString="%name")}),
     Documentation(info="<html>
 <p>
 This block for Integer signals works similarly as the corresponding block for Real signals

@@ -1,5 +1,5 @@
 ﻿within Modelica.Magnetic.FundamentalWave.Types;
-record SalientReluctance = Salient (redeclare SI.Reluctance d, 
+record SalientReluctance = Salient (redeclare SI.Reluctance d,
       redeclare SI.Reluctance q) "Salient reluctance" 
   annotation (Documentation(info="<html>
 <p>Type representing the d- and q-axis of an reluctance with respect to the fundamental wave.</p>

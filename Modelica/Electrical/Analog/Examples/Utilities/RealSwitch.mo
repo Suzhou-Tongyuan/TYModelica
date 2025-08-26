@@ -3,13 +3,13 @@ model RealSwitch "Ideal switch with resistance"
 
   Ideal.ControlledIdealTwoWaySwitch S(level=2.5) annotation (Placement(
         transformation(extent={{11.3333,-46},{58,0.6667}})));
-  Basic.Resistor R(R=0.01) annotation (Placement(transformation(extent={{-66,-48}, 
+  Basic.Resistor R(R=0.01) annotation (Placement(transformation(extent={{-66,-48},
             {-19.3333,-1.3333}})));
-  Interfaces.Pin p annotation (Placement(transformation(extent={{-110,-34},{-90, 
+  Interfaces.Pin p annotation (Placement(transformation(extent={{-110,-34},{-90,
             -14}})));
-  Interfaces.Pin n1 annotation (Placement(transformation(extent={{90,-14},{110, 
+  Interfaces.Pin n1 annotation (Placement(transformation(extent={{90,-14},{110,
             6}})));
-  Interfaces.Pin n2 annotation (Placement(transformation(extent={{90,-60},{110, 
+  Interfaces.Pin n2 annotation (Placement(transformation(extent={{90,-60},{110,
             -40}})));
   Interfaces.Pin control annotation (Placement(transformation(extent={{24,26},{
             44,46}})));
@@ -22,9 +22,9 @@ equation
   annotation (
     Documentation(info="<html>
 <p>This component is a special kind of a commuting switch which possesses an additional constant resistance. This resistance was necessary in an example. It is not designed for common use.</p>
-</html>"), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100, 
+</html>"), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics={Text(
-          extent={{-90,86},{28,70}}, 
-          textColor={0,0,255}, 
+          extent={{-90,86},{28,70}},
+          textColor={0,0,255},
           textString="Real Switch")}));
 end RealSwitch;

@@ -3,7 +3,7 @@ function relativeRotation "Return relative orientation object"
   extends Modelica.Icons.Function;
   input Orientation R1 "Orientation object to rotate frame 0 into frame 1";
   input Orientation R2 "Orientation object to rotate frame 0 into frame 2";
-  output Orientation R_rel 
+  output Orientation R_rel
     "Orientation object to rotate frame 1 into frame 2";
 algorithm
   R_rel := Orientation(T=R2.T*transpose(R1.T),w= R2.w - resolve2(R2, resolve1(

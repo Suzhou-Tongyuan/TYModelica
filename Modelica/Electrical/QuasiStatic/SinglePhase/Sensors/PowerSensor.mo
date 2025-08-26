@@ -13,11 +13,11 @@ model PowerSensor "Power sensor"
   output SI.ComplexCurrent i;
   output SI.ComplexVoltage v;
   Modelica.ComplexBlocks.Interfaces.ComplexOutput apparentPower(re(unit="W"), im(unit="var")) "Complex apparent power = active power + j * reactive power" annotation (Placement(transformation(
-        origin={-100,-110}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-100,-110},
+        extent={{-10,-10},{10,10}},
         rotation=270), iconTransformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-100,-110})));
   SI.ApparentPower abs_apparentPower=Modelica.ComplexMath.abs(apparentPower) "Magnitude of complex apparent power";
   SI.Angle arg_apparentPower=Modelica.ComplexMath.arg(apparentPower) "Argument of complex apparent power";
@@ -39,17 +39,17 @@ equation
   apparentPower = v*conj(i);
   annotation (
     Icon(graphics={
-        Line(points={{0,100},{0,70}}, color={85,170,255}), 
-        Line(points={{0,-70},{0,-100}}, color={85,170,255}), 
-        Line(points={{-100,0},{100,0}}, color={85,170,255}), 
+        Line(points={{0,100},{0,70}}, color={85,170,255}),
+        Line(points={{0,-70},{0,-100}}, color={85,170,255}),
+        Line(points={{-100,0},{100,0}}, color={85,170,255}),
         Text(
-          extent={{-150,110},{150,150}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
-      Line(points={{-100,-100},{-100,-80},{-58,-38}}, color={85,170,255}), 
+          extent={{-150,110},{150,150}},
+          textString="%name",
+          textColor={0,0,255}),
+      Line(points={{-100,-100},{-100,-80},{-58,-38}}, color={85,170,255}),
         Text(
-          extent={{-30,-10},{30,-70}}, 
-          textColor={64,64,64}, 
+          extent={{-30,-10},{30,-70}},
+          textColor={64,64,64},
           textString="V.A")}),Documentation(
         info="<html>
 

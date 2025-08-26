@@ -1,8 +1,8 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames;
-function nullRotation 
+function nullRotation
   "Return orientation object that does not rotate a frame"
   extends Modelica.Icons.Function;
-  output Orientation R 
+  output Orientation R
     "Orientation object such that frame 1 and frame 2 are identical";
 algorithm
   R := Orientation(T=identity(3),w= zeros(3));

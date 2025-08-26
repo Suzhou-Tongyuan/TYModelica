@@ -5,13 +5,13 @@ model CharacteristicThyristors "Characteristic of ideal thyristors"
 
   Modelica.Electrical.Analog.Ideal.IdealThyristor IdealThyristor1(
                              off(start=true, fixed= true), Vknee=1) 
-                           annotation (Placement(transformation(extent={{-20,30}, 
+                           annotation (Placement(transformation(extent={{-20,30},
             {0,50}})));
-  Modelica.Electrical.Analog.Sources.SineVoltage SineVoltage1(V=10, 
-      offset=0, 
+  Modelica.Electrical.Analog.Sources.SineVoltage SineVoltage1(V=10,
+      offset=0,
     f=1) annotation (Placement(transformation(
-        origin={-40,-60}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-40,-60},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Ground Ground1 
   annotation (Placement(transformation(extent={{-50,-108},{-30,-88}})));
@@ -20,7 +20,7 @@ model CharacteristicThyristors "Characteristic of ideal thyristors"
 
   Modelica.Electrical.Analog.Ideal.IdealGTOThyristor IdealGTOThyristor1(
                                 off(fixed=true, start=true), Vknee=1) 
-                              annotation (Placement(transformation(extent={{-20,0}, 
+                              annotation (Placement(transformation(extent={{-20,0},
             {0,20}})));
   Modelica.Electrical.Analog.Basic.Resistor R1(R=1e-3) 
   annotation (Placement(transformation(extent={{40,0},{60,20}})));
@@ -29,19 +29,19 @@ model CharacteristicThyristors "Characteristic of ideal thyristors"
     annotation (Placement(transformation(extent={{-68,44},{-48,64}})));
   Modelica.Electrical.Analog.Ideal.IdealThyristor IdealThyristor2(
                              off(start=true, fixed= true), Vknee=1) 
-                           annotation (Placement(transformation(extent={{-20,-50}, 
+                           annotation (Placement(transformation(extent={{-20,-50},
             {0,-30}})));
   Modelica.Electrical.Analog.Basic.Resistor R2(R=1e-3) 
   annotation (Placement(transformation(extent={{40,-50},{60,-30}})));
   Modelica.Electrical.Analog.Ideal.IdealGTOThyristor IdealGTOThyristor2(
                                 off(fixed=true, start=true), Vknee=1) 
-                              annotation (Placement(transformation(extent={{-20,-80}, 
+                              annotation (Placement(transformation(extent={{-20,-80},
             {0,-60}})));
   Modelica.Electrical.Analog.Basic.Resistor R4(R=1e-3) 
   annotation (Placement(transformation(extent={{40,-80},{60,-60}})));
   Blocks.Sources.BooleanPulse booleanPulse(
-    width=20, 
-    period=1, 
+    width=20,
+    period=1,
     startTime=0.15) 
     annotation (Placement(transformation(extent={{-68,-30},{-48,-10}})));
 initial equation
@@ -73,7 +73,7 @@ equation
   connect(IdealGTOThyristor2.p,IdealThyristor2. p) 
   annotation (Line(points={{-20,-70},{-20,-40}}, color={0,0,255}));
   connect(IdealGTOThyristor2.fire,IdealThyristor2. fire) 
-  annotation (Line(points={{0,-58},{0,-44},{-2,-44},{-2,-36},{0,-36},{0,-28}}, 
+  annotation (Line(points={{0,-58},{0,-44},{-2,-44},{-2,-36},{0,-36},{0,-28}},
                  color={255,0,255}));
   connect(R4.n, Ground1.p) annotation (Line(
       points={{60,-70},{60,-88},{-40,-88}}, color={0,0,255}));
@@ -83,14 +83,14 @@ equation
       points={{-40,-50},{-40,-40},{-20,-40}}, color={0,0,255}));
   connect(booleanPulse.y, IdealThyristor2.fire) annotation (Line(
       points={{-47,-20},{0,-20},{0,-28}},   color={255,0,255}));
-annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics={Text(
-          extent={{-96,100},{98,60}}, 
-          textString="Characteristic Thyristors", 
+          extent={{-96,100},{98,60}},
+          textString="Characteristic Thyristors",
           textColor={0,0,255})}), Documentation(info="<html>
 <p>This example compares the behavior of the <strong>ideal thyristor</strong> and the <strong>ideal GTO thyristor</strong> with <em>Vknee=1</em> both. The thyristors IdealThyristor1 and IdealGTOThyristor1 are controlled by an unregular Boolean fire signal. The aim is to show several cases for the fire signal in combination with the state (s&lt;0 or s&gt;0)of the thyristors. Please simulate until 6 seconds and compare IdealThyristor1.v with IdealGTOThyristor1.v, the same with IdealThyristor1.s and IdealGTOThyristor1.s (attention: s is a protected variable in each thyristor). Also compare IdealThyristor1.off and IdealGTOThyristor1.off and have a look at the fire signal (e.g. IdealThyristor1.fire). It can be seen that the IdealGTOThyristor1 reacts on switching off the fire signal whereas the IdealThyristor1 does not show this behavior.</p>
 <p>The other thyristors IdealThyristor2 and IdealGTOThyristor2 are controlled by an periodic Boolean fire signal to show a typical use case. Please compare IdealThyristor2.v with IdealGTOThyristor2.v</p>
-</html>", 
+</html>",
    revisions="<html>
 <p><strong>Release Notes:</strong></p>
 <ul>

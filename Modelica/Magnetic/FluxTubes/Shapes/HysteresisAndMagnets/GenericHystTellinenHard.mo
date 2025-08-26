@@ -1,5 +1,5 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
-model GenericHystTellinenHard 
+model GenericHystTellinenHard
   "Generic flux tube with hard magnetic hysteresis based on the Tellinen model and simple tanh()-functions"
 
   extends BaseClasses.GenericHysteresisTellinen(      mu0=K*mu_0);
@@ -25,37 +25,37 @@ equation
   hystR = Br*tanhR + mu0*H - eps/2;
   hystF = Br*tanhF + mu0*H + eps/2;
 
- annotation (defaultComponentName="core", Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100, 
+ annotation (defaultComponentName="core", Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
             -100},{100,100}}), graphics={
         Rectangle(
-          extent={{-70,32},{70,-30}}, 
-          lineColor={255,128,0}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-70,32},{70,-30}},
+          lineColor={255,128,0},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Line(
-          points={{70,0},{100,0}}, 
-          color={255,128,0}), 
+          points={{70,0},{100,0}},
+          color={255,128,0}),
         Line(
-          points={{-90,0},{-70,0}}, 
+          points={{-90,0},{-70,0}},
           color={255,128,0}), Line(
-          points={{-30,-20},{-14,-20},{-6,-16},{2,0},{10,16},{18,20},{26,20}}, 
-          color={255,128,0}, 
-          smooth=Smooth.Bezier, 
-          origin={-14,0}, 
+          points={{-30,-20},{-14,-20},{-6,-16},{2,0},{10,16},{18,20},{26,20}},
+          color={255,128,0},
+          smooth=Smooth.Bezier,
+          origin={-14,0},
           rotation=180), Line(
-          points={{-18,-20},{-2,-20},{6,-16},{14,0},{22,16},{30,20},{38, 
-              20}}, 
-          color={255,128,0}, 
-          smooth=Smooth.Bezier), 
+          points={{-18,-20},{-2,-20},{6,-16},{14,0},{22,16},{30,20},{38,
+              20}},
+          color={255,128,0},
+          smooth=Smooth.Bezier),
         Line(
-          points={{-18,-20},{-42,-20}}, 
-          color={255,128,0}), 
+          points={{-18,-20},{-42,-20}},
+          color={255,128,0}),
         Line(
-          points={{16,20},{40,20}}, 
-          color={255,128,0}), 
+          points={{16,20},{40,20}},
+          color={255,128,0}),
         Text(
-          extent={{40,-2},{40,-30}}, 
-          textColor={255,128,0}, 
+          extent={{40,-2},{40,-30}},
+          textColor={255,128,0},
           textString="TH")}), Documentation(info="<html>
 <p>
   Flux tube element for modeling the ferromagnetic (static) hysteresis of hard magnetic materials. The ferromagnetic hysteresis behavior is defined by the <a href=\"modelica://Modelica.Magnetic.FluxTubes.UsersGuide.Hysteresis.StaticHysteresis.Tellinen\">Tellinen hysteresis model</a>. The shape of the limiting hysteresis loop is described by simple hyperbolic tangent functions with 4 parameters.

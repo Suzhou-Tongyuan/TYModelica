@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
-model Shape 
+model Shape
   "Visualizing an elementary object with variable size; all data have to be set as modifiers (see info layer)"
 
   extends ModelicaServices.Animation.Shape;
@@ -7,30 +7,30 @@ model Shape
 
     annotation (
      Icon(coordinateSystem(
-         preserveAspectRatio=true, 
+         preserveAspectRatio=true,
          extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
-          extent={{-100,-100},{80,60}}, 
-          lineColor={0,0,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-100,-100},{80,60}},
+          lineColor={0,0,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{-100,60},{-80,100},{100,100},{80,60},{-100,60}}, 
-          lineColor={0,0,255}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-100,60},{-80,100},{100,100},{80,60},{-100,60}},
+          lineColor={0,0,255},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{100,100},{100,-60},{80,-100},{80,60},{100,100}}, 
-          lineColor={0,0,255}, 
-          fillColor={160,160,164}, 
-          fillPattern=FillPattern.Solid), 
+          points={{100,100},{100,-60},{80,-100},{80,60},{100,100}},
+          lineColor={0,0,255},
+          fillColor={160,160,164},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-100,-54},{80,8}}, 
-          textString="%shapeType"), 
+          extent={{-100,-54},{80,8}},
+          textString="%shapeType"),
         Text(
-          extent={{-150,150},{150,110}}, 
-          textColor={0,0,255}, 
-          textString="%name")}), 
+          extent={{-150,150},{150,110}},
+          textColor={0,0,255},
+          textString="%name")}),
      Documentation(info="<html>
 <p>
 Model <strong>Shape</strong> defines a visual shape that is

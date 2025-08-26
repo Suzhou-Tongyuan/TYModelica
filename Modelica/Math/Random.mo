@@ -2,22 +2,22 @@
 package Random "Library of functions for generating random numbers"
    extends Modelica.Icons.Package;
 
-  package Examples 
+  package Examples
     "Examples demonstrating the usage of the functions in package Random"
     extends Modelica.Icons.ExamplesPackage;
 
-    model GenerateRandomNumbers 
+    model GenerateRandomNumbers
       "Generate random numbers with the various random number generators"
        extends Modelica.Icons.Example;
 
     // Global parameters
-      parameter Modelica.Units.SI.Period samplePeriod = 0.05 
+      parameter Modelica.Units.SI.Period samplePeriod = 0.05
         "Sample period for the generation of random numbers";
-      parameter Integer globalSeed = 30020 
+      parameter Integer globalSeed = 30020
         "Global seed to initialize random number generator";
 
     // Random number generators with exposed state
-      parameter Integer localSeed = 614657 
+      parameter Integer localSeed = 614657
         "Local seed to initialize random number generator";
       output Real r64 "Random number generated with Xorshift64star";
       output Real r128 "Random number generated with Xorshift128plus";
@@ -53,8 +53,8 @@ package Random "Library of functions for generating random numbers"
       elsewhen sample(0,samplePeriod) then
         rImpure := Utilities.impureRandom(id=id);
         iImpure := Utilities.impureRandomInteger(
-              id=id, 
-              imin=-1234, 
+              id=id,
+              imin=-1234,
               imax=2345);
       end when;
 
@@ -115,7 +115,7 @@ This package contains examples demonstrating the usage of the functions in packa
 </html>"));
   end Examples;
 
-  package Generators 
+  package Generators
     "Library of functions generating uniform random numbers in the range 0 < random <= 1.0 (with exposed state vectors)"
     extends Modelica.Icons.Package;
 
@@ -124,12 +124,12 @@ This package contains examples demonstrating the usage of the functions in packa
 
       extends Modelica.Icons.Package;
 
-      function initialState 
+      function initialState
         "Returns an initial state for the xorshift64* algorithm"
         extends Modelica.Icons.Function;
-        input Integer localSeed 
+        input Integer localSeed
           "The local seed to be used for generating initial states";
-        input Integer globalSeed 
+        input Integer globalSeed
           "The global seed to be combined with the local seed";
         output Integer state[nState] "The generated initial states";
       protected
@@ -212,14 +212,14 @@ and the returned state is the one from the last iteration.
 </html>"));
       end initialState;
 
-      pure function random 
+      pure function random
         "Returns a uniform random number with the xorshift64* algorithm"
         extends Modelica.Icons.Function;
-        input Integer stateIn[nState] 
+        input Integer stateIn[nState]
           "The internal states for the random number generator";
-        output Real result 
+        output Real result
           "A random number with a uniform distribution on the interval (0,1]";
-        output Integer stateOut[nState] 
+        output Integer stateOut[nState]
           "The new internal states of the random number generator";
         external "C" ModelicaRandom_xorshift64star(stateIn, stateOut, result) 
           annotation (IncludeDirectory="modelica://Modelica/Resources/C-Sources", Include="#include \"ModelicaRandom.h\"", Library="ModelicaExternalC");
@@ -301,15 +301,15 @@ For an overview, comparison with other random number generators, and links to ar
 </td></tr>
 
 </table>
-</html>"), Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), 
+</html>"), Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
             graphics={
         Ellipse(
-          extent={{-64,0},{-14,-50}}, 
-          fillColor={215,215,215}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-64,0},{-14,-50}},
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{12,52},{62,2}}, 
-          fillColor={215,215,215}, 
+          extent={{12,52},{62,2}},
+          fillColor={215,215,215},
           fillPattern=FillPattern.Solid)}));
     end Xorshift64star;
 
@@ -318,18 +318,18 @@ For an overview, comparison with other random number generators, and links to ar
 
       extends Modelica.Icons.Package;
 
-      function initialState 
+      function initialState
         "Returns an initial state for the xorshift128+ algorithm"
         extends Modelica.Icons.Function;
-        input Integer localSeed 
+        input Integer localSeed
           "The local seed to be used for generating initial states";
-        input Integer globalSeed 
+        input Integer globalSeed
           "The global seed to be combined with the local seed";
         output Integer state[nState] "The generated initial states";
       algorithm
         state := Utilities.initialStateWithXorshift64star(
-                localSeed, 
-                globalSeed, 
+                localSeed,
+                globalSeed,
                 size(state, 1));
         annotation(Inline=true, Documentation(info="<html>
 <h4>Syntax</h4>
@@ -385,14 +385,14 @@ random number generator is used to fill the internal state vector with 64 bit ra
 </html>"));
       end initialState;
 
-      pure function random 
+      pure function random
         "Returns a uniform random number with the xorshift128+ algorithm"
         extends Modelica.Icons.Function;
-        input Integer stateIn[nState] 
+        input Integer stateIn[nState]
           "The internal states for the random number generator";
-        output Real result 
+        output Real result
           "A random number with a uniform distribution on the interval (0,1]";
-        output Integer stateOut[nState] 
+        output Integer stateOut[nState]
           "The new internal states of the random number generator";
         external "C" ModelicaRandom_xorshift128plus(stateIn, stateOut, result) 
           annotation (IncludeDirectory="modelica://Modelica/Resources/C-Sources", Include="#include \"ModelicaRandom.h\"", Library="ModelicaExternalC");
@@ -475,19 +475,19 @@ other random number generators, and links to articles, see
 </td></tr>
 
 </table>
-</html>"), 
+</html>"),
      Icon(graphics={
         Ellipse(
-          extent={{-70,60},{-20,10}}, 
-          fillColor={215,215,215}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-70,60},{-20,10}},
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{32,58},{82,8}}, 
-          fillColor={215,215,215}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{32,58},{82,8}},
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-20,-12},{30,-62}}, 
-          fillColor={215,215,215}, 
+          extent={{-20,-12},{30,-62}},
+          fillColor={215,215,215},
           fillPattern=FillPattern.Solid)}));
     end Xorshift128plus;
 
@@ -496,12 +496,12 @@ other random number generators, and links to articles, see
 
       extends Modelica.Icons.Package;
 
-      function initialState 
+      function initialState
         "Returns an initial state for the xorshift1024* algorithm"
         extends Modelica.Icons.Function;
-        input Integer localSeed 
+        input Integer localSeed
           "The local seed to be used for generating initial states";
-        input Integer globalSeed 
+        input Integer globalSeed
           "The global seed to be combined with the local seed";
         output Integer state[nState] "The generated initial states";
       algorithm
@@ -562,14 +562,14 @@ random number generator is used to fill the internal state vector with 64 bit ra
 </html>"));
       end initialState;
 
-      pure function random 
+      pure function random
         "Returns a uniform random number with the xorshift1024* algorithm"
         extends Modelica.Icons.Function;
-        input Integer stateIn[nState] 
+        input Integer stateIn[nState]
           "The internal states for the random number generator";
-        output Real result 
+        output Real result
           "A random number with a uniform distribution on the interval (0,1]";
-        output Integer stateOut[nState] 
+        output Integer stateOut[nState]
           "The new internal states of the random number generator";
         external "C" ModelicaRandom_xorshift1024star(stateIn, stateOut, result) 
           annotation (IncludeDirectory="modelica://Modelica/Resources/C-Sources", Include="#include \"ModelicaRandom.h\"", Library="ModelicaExternalC");
@@ -651,23 +651,23 @@ For an overview, comparison with other random number generators, and links to ar
 </td></tr>
 
 </table>
-</html>"), 
+</html>"),
      Icon(graphics={
         Ellipse(
-          extent={{-70,78},{-20,28}}, 
-          fillColor={215,215,215}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-70,78},{-20,28}},
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{20,58},{70,8}}, 
-          fillColor={215,215,215}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{20,58},{70,8}},
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-64,6},{-14,-44}}, 
-          fillColor={215,215,215}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-64,6},{-14,-44}},
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{16,-20},{66,-70}}, 
-          fillColor={215,215,215}, 
+          extent={{16,-20},{66,-70}},
+          fillColor={215,215,215},
           fillPattern=FillPattern.Solid)}));
     end Xorshift1024star;
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
@@ -843,18 +843,18 @@ These numbers are mapped to the 52 bit mantissa of double numbers in the range 0
 </html>"));
   end Generators;
 
-  package Utilities 
+  package Utilities
     "Library of utility functions for the Random package (usually of no interest for the user)"
 
     extends Modelica.Icons.UtilitiesPackage;
 
-    function initialStateWithXorshift64star 
+    function initialStateWithXorshift64star
       "Return an initial state vector for a random number generator (based on xorshift64star algorithm)"
       import Modelica.Math.Random.Generators.Xorshift64star;
       extends Modelica.Icons.Function;
-      input Integer localSeed 
+      input Integer localSeed
         "The local seed to be used for generating initial states";
-      input Integer globalSeed 
+      input Integer globalSeed
         "The global seed to be combined with the local seed";
       input Integer nState(min=1) "The dimension of the state vector (>= 1)";
       output Integer[nState] state "The generated initial states";
@@ -934,7 +934,7 @@ If the same localSeed, globalSeed, nState is given, the same state vector is ret
 </html>"));
     end initialStateWithXorshift64star;
 
-    impure function automaticGlobalSeed 
+    impure function automaticGlobalSeed
       "Creates an automatic integer seed (typically from the current time and process id; this is an impure function)"
       extends Modelica.Icons.Function;
       output Integer seed "Automatically generated seed";
@@ -997,10 +997,10 @@ This function should be only called once during initialization.
 </html>"));
     end automaticGlobalSeed;
 
-    function automaticLocalSeed 
+    function automaticLocalSeed
       "Creates an automatic local seed from the instance name"
       extends Modelica.Icons.Function;
-      input String path 
+      input String path
         "Full path name of the instance (inquire with getInstanceName())";
       output Integer seed "Automatically generated seed";
     algorithm
@@ -1058,20 +1058,20 @@ path is provided.
 </html>"));
     end automaticLocalSeed;
 
-    function initializeImpureRandom 
+    function initializeImpureRandom
       "Initializes the internal state of the impure random number generator"
       extends Modelica.Icons.Function;
-      input Integer seed 
+      input Integer seed
         "The input seed to initialize the impure random number generator";
-      output Integer id 
+      output Integer id
         "Identification number to be passed as input to function impureRandom, in order that sorting is correct";
     protected
-      constant Integer localSeed = 715827883 
+      constant Integer localSeed = 715827883
         "Since there is no local seed, a large prime number is used";
-      Integer rngState[33] 
+      Integer rngState[33]
         "The internal state vector of the impure random number generator";
 
-      impure function setInternalState 
+      impure function setInternalState
         "Stores the given state vector in an external static variable"
         extends Modelica.Icons.Function;
         input Integer[33] rngState "The initial state";
@@ -1149,12 +1149,12 @@ random number generator to fill the internal state vector with 64 bit random num
 </html>"));
     end initializeImpureRandom;
 
-    impure function impureRandom 
+    impure function impureRandom
       "Impure random number generator (with hidden state vector)"
       extends Modelica.Icons.Function;
-      input Integer id 
+      input Integer id
         "Identification number from initializeImpureRandom(..) function (is needed for correct sorting)";
-      output Real y 
+      output Real y
         "A random number with a uniform distribution on the interval (0,1]";
       external "C" y = ModelicaRandom_impureRandom_xorshift1024star(id) 
         annotation (IncludeDirectory="modelica://Modelica/Resources/C-Sources", Include="#include \"ModelicaRandom.h\"", Library="ModelicaExternalC");
@@ -1221,14 +1221,14 @@ is returned, so the function is impure.
 </html>"));
     end impureRandom;
 
-    impure function impureRandomInteger 
+    impure function impureRandomInteger
       "Impure random number generator for integer values (with hidden state vector)"
       extends Modelica.Icons.Function;
-      input Integer id 
+      input Integer id
         "Identification number from initializeImpureRandom(..) function (is needed for correct sorting)";
       input Integer imin = 1 "Minimum integer to generate";
       input Integer imax = 268435456 "Maximum integer to generate (default = 2^28)";
-      output Integer y 
+      output Integer y
         "A random number with a uniform distribution on the interval [imin,imax]";
     protected
       Real r "Impure Real random number";
@@ -1306,23 +1306,23 @@ that are usually of no interest for the user
 </table>
 </html>"));
   end Utilities;
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100, 
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
         -100},{100,100}}), graphics={
     Ellipse(
-      extent={{-84,84},{-24,24}}, 
-      fillColor={215,215,215}, 
-      fillPattern=FillPattern.Solid), 
+      extent={{-84,84},{-24,24}},
+      fillColor={215,215,215},
+      fillPattern=FillPattern.Solid),
     Ellipse(
-      extent={{22,62},{82,2}}, 
-      fillColor={215,215,215}, 
-      fillPattern=FillPattern.Solid), 
+      extent={{22,62},{82,2}},
+      fillColor={215,215,215},
+      fillPattern=FillPattern.Solid),
     Ellipse(
-      extent={{-58,6},{2,-54}}, 
-      fillColor={215,215,215}, 
-      fillPattern=FillPattern.Solid), 
+      extent={{-58,6},{2,-54}},
+      fillColor={215,215,215},
+      fillPattern=FillPattern.Solid),
     Ellipse(
-      extent={{26,-30},{86,-90}}, 
-      fillColor={215,215,215}, 
+      extent={{26,-30},{86,-90}},
+      fillColor={215,215,215},
       fillPattern=FillPattern.Solid)}), Documentation(info="<html>
 <p>
 This package contains low level functions for the generation of random numbers.

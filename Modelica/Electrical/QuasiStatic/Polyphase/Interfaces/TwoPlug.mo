@@ -3,25 +3,25 @@ partial model TwoPlug "Two plugs with pin-adapter, reference connection and decl
   extends Modelica.Electrical.QuasiStatic.Polyphase.Interfaces.TwoPlugElementary;
 
   SI.ComplexVoltage v[m] "Complex voltage";
-  SI.Voltage abs_v[m]=Modelica.ComplexMath.abs(v) 
+  SI.Voltage abs_v[m]=Modelica.ComplexMath.abs(v)
     "Magnitude of complex voltage";
-  SI.Angle arg_v[m]=Modelica.ComplexMath.arg(v) 
+  SI.Angle arg_v[m]=Modelica.ComplexMath.arg(v)
     "Argument of complex voltage";
   SI.ComplexCurrent i[m] "Complex current";
-  SI.Current abs_i[m]=Modelica.ComplexMath.abs(i) 
+  SI.Current abs_i[m]=Modelica.ComplexMath.abs(i)
     "Magnitude of complex current";
-  SI.Angle arg_i[m]=Modelica.ComplexMath.arg(i) 
+  SI.Angle arg_i[m]=Modelica.ComplexMath.arg(i)
     "Argument of complex current";
-  SI.ActivePower P[m]={Modelica.ComplexMath.real(v[k]* 
+  SI.ActivePower P[m]={Modelica.ComplexMath.real(v[k]*
       Modelica.ComplexMath.conj(i[k])) for k in 1:m} "Active power";
   SI.ActivePower P_total=sum(P) "Total active power";
-  SI.ReactivePower Q[m]={Modelica.ComplexMath.imag(v[k]* 
+  SI.ReactivePower Q[m]={Modelica.ComplexMath.imag(v[k]*
       Modelica.ComplexMath.conj(i[k])) for k in 1:m} "Reactive power";
   SI.ReactivePower Q_total=sum(Q) "Total reactive power";
-  SI.ApparentPower S[m]={Modelica.ComplexMath.abs(v[k]* 
-      Modelica.ComplexMath.conj(i[k])) for k in 1:m} 
+  SI.ApparentPower S[m]={Modelica.ComplexMath.abs(v[k]*
+      Modelica.ComplexMath.conj(i[k])) for k in 1:m}
     "Magnitude of complex apparent power";
-  SI.ApparentPower S_total=sqrt(P_total^2 + Q_total^2) 
+  SI.ApparentPower S_total=sqrt(P_total^2 + Q_total^2)
     "Magnitude of total complex apparent power";
   Real pf[m]={cos(Modelica.ComplexMath.arg(Complex(P[k], Q[k]))) for k in 1
       :m} "Power factor";

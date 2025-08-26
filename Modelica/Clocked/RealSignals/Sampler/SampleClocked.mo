@@ -1,39 +1,39 @@
 ﻿within Modelica.Clocked.RealSignals.Sampler;
-block SampleClocked 
+block SampleClocked
   "Sample the continuous-time, Real input signal and provide it as clocked output signal. The clock is provided as input signal"
   extends Clocked.RealSignals.Interfaces.SamplerIcon;
-  Modelica.Blocks.Interfaces.RealInput u 
+  Modelica.Blocks.Interfaces.RealInput u
     "Connector of continuous-time, Real input signal" 
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-  Modelica.Blocks.Interfaces.RealOutput y 
+  Modelica.Blocks.Interfaces.RealOutput y
     "Connector of clocked, Real output signal" 
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-  Clocked.ClockSignals.Interfaces.ClockInput clock 
+  Clocked.ClockSignals.Interfaces.ClockInput clock
     "Output signal y is associated with this clock input" annotation (
       Placement(transformation(
-        extent={{-20,-20},{20,20}}, 
-        rotation=90, 
+        extent={{-20,-20},{20,20}},
+        rotation=90,
         origin={0,-120})));
 
 equation
   y = sample(u,clock);
 
   annotation (
-   defaultComponentName="sample1", 
+   defaultComponentName="sample1",
    Icon(coordinateSystem(
-        preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}, 
-        initialScale=0.06), 
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}},
+        initialScale=0.06),
                      graphics={
         Line(
-          points={{0,-100},{0,18}}, 
-          color={175,175,175}, 
-          pattern=LinePattern.Dot, 
-          thickness=0.5), 
+          points={{0,-100},{0,18}},
+          color={175,175,175},
+          pattern=LinePattern.Dot,
+          thickness=0.5),
     Text(
-        extent={{-150,90},{150,50}}, 
-        textString="%name", 
-        textColor={0,0,255})}), 
+        extent={{-150,90},{150,50}},
+        textString="%name",
+        textColor={0,0,255})}),
     Documentation(info="<html>
 <p>
 This block is similar to the

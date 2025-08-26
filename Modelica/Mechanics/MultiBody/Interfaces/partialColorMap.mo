@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.MultiBody.Interfaces;
-partial function partialColorMap 
+partial function partialColorMap
   "Interface for a function returning a color map"
   extends Modelica.Icons.Function;
   input Integer n_colors=64 "Number of colors in the color map";

@@ -9,32 +9,32 @@ model Multivibrator "Multivibrator with Schmitt trigger"
   parameter SI.Resistance R=1000 "Arbitrary resistance";
   parameter SI.Capacitance C=1/f/(2*R*log(1 + 2*R1/R2)) "Calculated capacitance to reach the desired frequency f";
   Modelica.Electrical.Analog.Ideal.IdealizedOpAmpLimited opAmp(
-    Vps=Vps, 
-    Vns=Vns, 
-    homotopyType = Modelica.Blocks.Types.LimiterHomotopy.LowerLimit, 
+    Vps=Vps,
+    Vns=Vns,
+    homotopyType = Modelica.Blocks.Types.LimiterHomotopy.LowerLimit,
     strict = true) annotation (Placement(transformation(extent={{0,-10},{20,10}})));
   Modelica.Electrical.Analog.Basic.Ground ground 
     annotation (Placement(transformation(extent={{-20,-80},{0,-60}})));
   Modelica.Electrical.Analog.Sensors.VoltageSensor vOut annotation (Placement(
         transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=270, 
+        extent={{-10,10},{10,-10}},
+        rotation=270,
         origin={50,-20})));
   Modelica.Electrical.Analog.Basic.Resistor r1(R=R1, i(start=0)) annotation (
       Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-10,-40})));
   Modelica.Electrical.Analog.Basic.Resistor r2(R=R2) annotation (Placement(
         transformation(
-        extent={{10,10},{-10,-10}}, 
+        extent={{10,10},{-10,-10}},
         origin={10,-20})));
   Modelica.Electrical.Analog.Basic.Resistor r(R=R) 
     annotation (Placement(transformation(extent={{20,20},{0,40}})));
   Modelica.Electrical.Analog.Basic.Capacitor c(C=C, v(start=1, fixed=true)) 
     annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}}, 
-        rotation=90, 
+        extent={{10,-10},{-10,10}},
+        rotation=90,
         origin={-30,-40})));
 equation
   connect(ground.p, r1.n) annotation (Line(
@@ -61,10 +61,10 @@ equation
 <p>This is a Multivibrator with Schmitt trigger according to:</p>
 <p>U. Tietze and C. Schenk, Halbleiter-Schaltungstechnik (German), 11th edition, Springer 1999, Chapter 6.5.3</p>
 <p>As the initialization system has two solutions, one with the op amp output at the lower saturation limit, and the other one with the two voltage inputs very close to each other, the <code>homotopyType</code> parameter is set to get the solver to converge to the former one, which is the required solution.</p>
-</html>"), 
+</html>"),
     experiment(
-      StartTime=0, 
-      StopTime=1, 
-      Tolerance=1e-006, 
+      StartTime=0,
+      StopTime=1,
+      Tolerance=1e-006,
       Interval=0.001));
 end Multivibrator;

@@ -1,9 +1,9 @@
 ﻿within Modelica.Electrical.Machines.Losses.DCMachines;
-model StrayLoad 
+model StrayLoad
   "Model of stray load losses dependent on current and speed"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;
   extends Machines.Interfaces.FlangeSupport;
-  parameter Machines.Losses.StrayLoadParameters strayLoadParameters 
+  parameter Machines.Losses.StrayLoadParameters strayLoadParameters
     "Stray load loss parameters";
   extends 
     Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPortWithoutT(
@@ -13,17 +13,17 @@ equation
   if (strayLoadParameters.PRef <= 0) then
     tau = 0;
   else
-    tau = -strayLoadParameters.tauRef*(i/strayLoadParameters.IRef)^2* 
+    tau = -strayLoadParameters.tauRef*(i/strayLoadParameters.IRef)^2*
       sign(w)*(abs(w)/strayLoadParameters.wRef)^strayLoadParameters.power_w;
   end if;
   lossPower = -tau*w;
-  annotation (Icon(graphics={Line(points={{-90,0},{90,0}}, color={0,0,255}), 
+  annotation (Icon(graphics={Line(points={{-90,0},{90,0}}, color={0,0,255}),
           Rectangle(
-                extent={{-70,30},{70,-30}}, 
-                lineColor={0,0,255}, 
+                extent={{-70,30},{70,-30}},
+                lineColor={0,0,255},
                 pattern=LinePattern.Dot),Text(
-                extent={{-150,90},{150,50}}, 
-                textColor={0,0,255}, 
+                extent={{-150,90},{150,50}},
+                textColor={0,0,255},
                 textString="%name")}), Documentation(info="<html>
 <p>
 The stray load loss torque is

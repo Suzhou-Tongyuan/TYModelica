@@ -1,21 +1,21 @@
 ﻿within Modelica.Mechanics.MultiBody.Sensors;
-model RelativePosition 
+model RelativePosition
   "Measure relative position vector between the origins of two frame connectors"
   extends Internal.PartialRelativeSensor;
 
-  Blocks.Interfaces.RealOutput r_rel[3] 
+  Blocks.Interfaces.RealOutput r_rel[3]
     "Relative position vector resolved in frame defined by resolveInFrame" 
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=-90, 
+        extent={{-10,-10},{10,10}},
+        rotation=-90,
         origin={0,-110})));
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_resolve frame_resolve if resolveInFrame == 
-    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_resolve 
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_resolve frame_resolve if resolveInFrame ==
+    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_resolve
     "Coordinate system in which r_rel is optionally resolved" 
     annotation (Placement(transformation(extent={{84,64},{116,96}})));
 
-  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB resolveInFrame= 
-    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a 
+  parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB resolveInFrame=
+    Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a
     "Frame in which output vector r_rel shall be resolved (world, frame_a, frame_b, or frame_resolve)";
 
 protected
@@ -28,37 +28,37 @@ protected
 
 equation
   connect(relativePosition.frame_a, frame_a) annotation (Line(
-      points={{-10,0},{-100,0}}, 
-      color={95,95,95}, 
+      points={{-10,0},{-100,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(relativePosition.frame_b, frame_b) annotation (Line(
-      points={{10,0},{100,0}}, 
-      color={95,95,95}, 
+      points={{10,0},{100,0}},
+      color={95,95,95},
       thickness=0.5));
   connect(relativePosition.frame_resolve, frame_resolve) annotation (Line(
-      points={{10,8},{20,8},{20,8},{30,8},{30,80},{100,80}}, 
-      color={95,95,95}, 
+      points={{10,8},{20,8},{20,8},{30,8},{30,80},{100,80}},
+      color={95,95,95},
       pattern=LinePattern.Dot));
   connect(zeroPosition.frame_resolve, relativePosition.frame_resolve) 
     annotation (Line(
-      points={{52,30},{30,30},{30,8},{10,8}}, 
-      color={95,95,95}, 
+      points={{52,30},{30,30},{30,8},{10,8}},
+      color={95,95,95},
       pattern=LinePattern.Dot));
   connect(relativePosition.r_rel, r_rel) annotation (Line(
       points={{0,-11},{0,-110}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(
           preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
         Line(
-          points={{0,-70},{0,-100}}, 
-          color={0,0,127}), 
+          points={{0,-70},{0,-100}},
+          color={0,0,127}),
         Text(
-          extent={{-127,95},{134,143}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-127,95},{134,143}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
-          extent={{-50,-14},{50,-54}}, 
-          textColor={64,64,64}, 
-          textString="m")}), 
+          extent={{-50,-14},{50,-54}},
+          textColor={64,64,64},
+          textString="m")}),
     Documentation(info="<html>
 <p>
 The relative position vector between the origins of frame_a and frame_b are

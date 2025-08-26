@@ -18,24 +18,24 @@ protected
 equation
   on1 = oneTrue({time >= Tstart1[k] and time < Tstart1[k] + T1 for k in 1:n1});
   on2 = oneTrue({time >= Tstart2[k] and time < Tstart2[k] + T2 for k in 1:n1});
-  y= offset + (if on1 then amplitude1 elseif on2 then amplitude2 else 0);
+  y= offset + (if on1 then amplitude1 else if on2 then amplitude2 else 0);
   annotation (Icon(graphics={
         Line(
-          points={{-100,0},{-80,0}}, 
-          color={0,0,0}, 
-          pattern=LinePattern.Dash), 
-        Line(points={{-10,0},{-10,-60},{10,-60},{10,0},{20,0}}, color={0,0,0}), 
-        Line(points={{-50,0},{-50,60},{-40,60},{-40,0},{-20,0}}, color={0,0,0}), 
+          points={{-100,0},{-80,0}},
+          color={0,0,0},
+          pattern=LinePattern.Dash),
+        Line(points={{-10,0},{-10,-60},{10,-60},{10,0},{20,0}}, color={0,0,0}),
+        Line(points={{-50,0},{-50,60},{-40,60},{-40,0},{-20,0}}, color={0,0,0}),
         Line(
-          points={{-20,0},{-10,0}}, 
-          color={0,0,0}, 
-          pattern=LinePattern.Dash), 
-        Line(points={{-80,0},{-80,60},{-70,60},{-70,0},{-50,0}}, color={0,0,0}), 
-        Line(points={{20,0},{20,-60},{40,-60},{40,0},{50,0}}, color={0,0,0}), 
-        Line(points={{50,0},{50,-60},{70,-60},{70,0},{80,0}}, color={0,0,0}), 
+          points={{-20,0},{-10,0}},
+          color={0,0,0},
+          pattern=LinePattern.Dash),
+        Line(points={{-80,0},{-80,60},{-70,60},{-70,0},{-50,0}}, color={0,0,0}),
+        Line(points={{20,0},{20,-60},{40,-60},{40,0},{50,0}}, color={0,0,0}),
+        Line(points={{50,0},{50,-60},{70,-60},{70,0},{80,0}}, color={0,0,0}),
         Line(
-          points={{80,0},{100,0}}, 
-          color={0,0,0}, 
+          points={{80,0},{100,0}},
+          color={0,0,0},
           pattern=LinePattern.Dash)}), Documentation(info="<html>
 <p>
 Starting at <code>time = startTime</code>, first a series of <code>n1</code> pulses of <code>amplitude1</code> with length <code>T1</code> and pause after each pulse <code>Tp1</code> is issued.<br>

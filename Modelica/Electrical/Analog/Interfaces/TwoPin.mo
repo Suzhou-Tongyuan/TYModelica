@@ -15,7 +15,7 @@ equation
        by Christoph Clauss<br> initially implemented<br>
        </li>
 </ul>
-</html>", 
+</html>",
         info = "<html>
 <p>TwoPin is a partial model with two pins and one internal variable for the voltage over the two pins. Internal currents are not defined. It is intended to be used in cases where the model which inherits TwoPin is composed by combining other components graphically, not by equations.</p>
 </html>"));

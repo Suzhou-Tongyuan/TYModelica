@@ -1,7 +1,7 @@
 ﻿within Modelica.Electrical.Polyphase.UsersGuide;
 class Contact "Contact"
   extends Modelica.Icons.Contact;
-  annotation (preferredView="info", 
+  annotation (preferredView="info",
     DocumentationClass=true, Documentation(info="<html>
 <h4>Main authors</h4>
 

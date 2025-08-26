@@ -14,21 +14,21 @@ package Defaults "Default settings of the MultiBody library via constants"
   constant Types.Color ArrowColor={0,0,255} "Default color for arrows and double arrows (blue)";
 
   // Arrow and frame defaults
-  constant Real FrameHeadLengthFraction=5.0 
+  constant Real FrameHeadLengthFraction=5.0
     "Frame arrow head length / arrow diameter";
-  constant Real FrameHeadWidthFraction=3.0 
+  constant Real FrameHeadWidthFraction=3.0
     "Frame arrow head width / arrow diameter";
-  constant Real FrameLabelHeightFraction=3.0 
+  constant Real FrameLabelHeightFraction=3.0
     "Height of frame label / arrow diameter";
-  constant Real ArrowHeadLengthFraction=4.0 
+  constant Real ArrowHeadLengthFraction=4.0
     "Arrow head length / arrow diameter";
-  constant Real ArrowHeadWidthFraction=3.0 
+  constant Real ArrowHeadWidthFraction=3.0
     "Arrow head width / arrow diameter";
 
   // Other defaults
-  constant Real BodyCylinderDiameterFraction=3 
+  constant Real BodyCylinderDiameterFraction=3
     "Default for body cylinder diameter as a fraction of body sphere diameter";
-  constant Real JointRodDiameterFraction=2 
+  constant Real JointRodDiameterFraction=2
     "Default for rod diameter as a fraction of joint sphere diameter attached to rod";
 
   /*

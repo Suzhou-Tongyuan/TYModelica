@@ -1,5 +1,5 @@
 ﻿within Modelica.Blocks;
-package Sources 
+package Sources
   "Library of signal source blocks generating Real, Integer and Boolean signals"
   import Modelica.Blocks.Interfaces;
 
@@ -12,19 +12,19 @@ package Sources
           transformation(extent={{100,-10},{120,10}})));
 
     annotation (Icon(coordinateSystem(
-          preserveAspectRatio=false, 
+          preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
-            extent={{-100,40},{100,-40}}, 
-            fillColor={235,235,235}, 
-            fillPattern=FillPattern.Solid, 
-            borderPattern=BorderPattern.Raised), 
+            extent={{-100,40},{100,-40}},
+            fillColor={235,235,235},
+            fillPattern=FillPattern.Solid,
+            borderPattern=BorderPattern.Raised),
           Text(
-            extent={{-96,15},{96,-15}}, 
-            textString="%y"), 
+            extent={{-96,15},{96,-15}},
+            textString="%y"),
           Text(
-            extent={{-150,90},{150,50}}, 
-            textString="%name", 
+            extent={{-150,90},{150,50}},
+            textString="%name",
             textColor={0,0,255})}), Documentation(info="<html>
 <p>
 The (time varying) Real output signal of this block can be defined in its
@@ -40,7 +40,7 @@ variable <strong>y</strong> is both a variable and a connector.
 
   end RealExpression;
 
-  block IntegerExpression 
+  block IntegerExpression
     "Set output signal to a time varying Integer expression"
 
     Modelica.Blocks.Interfaces.IntegerOutput y=0 "Value of Integer output" 
@@ -48,19 +48,19 @@ variable <strong>y</strong> is both a variable and a connector.
           transformation(extent={{100,-10},{120,10}})));
 
     annotation (Icon(coordinateSystem(
-          preserveAspectRatio=false, 
+          preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
-            extent={{-100,40},{100,-40}}, 
-            fillColor={235,235,235}, 
-            fillPattern=FillPattern.Solid, 
-            borderPattern=BorderPattern.Raised), 
+            extent={{-100,40},{100,-40}},
+            fillColor={235,235,235},
+            fillPattern=FillPattern.Solid,
+            borderPattern=BorderPattern.Raised),
           Text(
-            extent={{-96,15},{96,-15}}, 
-            textString="%y"), 
+            extent={{-96,15},{96,-15}},
+            textString="%y"),
           Text(
-            extent={{-150,90},{150,50}}, 
-            textString="%name", 
+            extent={{-150,90},{150,50}},
+            textString="%name",
             textColor={0,0,255})}), Documentation(info="<html>
 <p>
 The (time varying) Integer output signal of this block can be defined in its
@@ -76,7 +76,7 @@ variable <strong>y</strong> is both a variable and a connector.
 
   end IntegerExpression;
 
-  block BooleanExpression 
+  block BooleanExpression
     "Set output signal to a time varying Boolean expression"
 
     Modelica.Blocks.Interfaces.BooleanOutput y=false "Value of Boolean output" 
@@ -84,24 +84,24 @@ variable <strong>y</strong> is both a variable and a connector.
           transformation(extent={{100,-10},{120,10}})));
 
     annotation (Icon(coordinateSystem(
-          preserveAspectRatio=false, 
+          preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
-            extent={{-100,40},{100,-40}}, 
-            fillColor={235,235,235}, 
-            fillPattern=FillPattern.Solid, 
-            borderPattern=BorderPattern.Raised), 
+            extent={{-100,40},{100,-40}},
+            fillColor={235,235,235},
+            fillPattern=FillPattern.Solid,
+            borderPattern=BorderPattern.Raised),
           Text(
-            extent={{-96,15},{96,-15}}, 
-            textString="%y"), 
+            extent={{-96,15},{96,-15}},
+            textString="%y"),
           Text(
-            extent={{-150,90},{150,50}}, 
-            textString="%name", 
-            textColor={0,0,255}), 
+            extent={{-150,90},{150,50}},
+            textString="%name",
+            textColor={0,0,255}),
           Polygon(
-            points={{100,10},{120,0},{100,-10},{100,10}}, 
-            lineColor=DynamicSelect({255,0,255}, if y then {0,255,0} else {255,0,255}), 
-            fillColor=DynamicSelect({255,255,255}, if y then {0,255,0} else {255,255,255}), 
+            points={{100,10},{120,0},{100,-10},{100,10}},
+            lineColor=DynamicSelect({255,0,255}, if y then {0,255,0} else {255,0,255}),
+            fillColor=DynamicSelect({255,255,255}, if y then {0,255,0} else {255,255,255}),
             fillPattern=FillPattern.Solid)}), Documentation(info="<html>
 <p>
 The (time varying) Boolean output signal of this block can be defined in its
@@ -122,83 +122,83 @@ variable <strong>y</strong> is both a variable and a connector.
 
   equation
     y = offset + (if time < startTime then 0 else time - startTime);
-    annotation (Protection(hideFromBrowser=true), 
+    annotation (Protection(hideFromBrowser=true),
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Ellipse(extent={{-80,80},{80,-80}}, lineColor={160,160,164}), 
-          Line(points={{0,80},{0,60}}, color={160,160,164}), 
-          Line(points={{80,0},{60,0}}, color={160,160,164}), 
-          Line(points={{0,-80},{0,-60}}, color={160,160,164}), 
-          Line(points={{-80,0},{-60,0}}, color={160,160,164}), 
-          Line(points={{37,70},{26,50}}, color={160,160,164}), 
-          Line(points={{70,38},{49,26}}, color={160,160,164}), 
-          Line(points={{71,-37},{52,-27}}, color={160,160,164}), 
-          Line(points={{39,-70},{29,-51}}, color={160,160,164}), 
-          Line(points={{-39,-70},{-29,-52}}, color={160,160,164}), 
-          Line(points={{-71,-37},{-50,-26}}, color={160,160,164}), 
-          Line(points={{-71,37},{-54,28}}, color={160,160,164}), 
-          Line(points={{-38,70},{-28,51}}, color={160,160,164}), 
+          Ellipse(extent={{-80,80},{80,-80}}, lineColor={160,160,164}),
+          Line(points={{0,80},{0,60}}, color={160,160,164}),
+          Line(points={{80,0},{60,0}}, color={160,160,164}),
+          Line(points={{0,-80},{0,-60}}, color={160,160,164}),
+          Line(points={{-80,0},{-60,0}}, color={160,160,164}),
+          Line(points={{37,70},{26,50}}, color={160,160,164}),
+          Line(points={{70,38},{49,26}}, color={160,160,164}),
+          Line(points={{71,-37},{52,-27}}, color={160,160,164}),
+          Line(points={{39,-70},{29,-51}}, color={160,160,164}),
+          Line(points={{-39,-70},{-29,-52}}, color={160,160,164}),
+          Line(points={{-71,-37},{-50,-26}}, color={160,160,164}),
+          Line(points={{-71,37},{-54,28}}, color={160,160,164}),
+          Line(points={{-38,70},{-28,51}}, color={160,160,164}),
           Line(
-            points={{0,0},{-50,50}}, 
-            thickness=0.5), 
+            points={{0,0},{-50,50}},
+            thickness=0.5),
           Line(
-            points={{0,0},{40,0}}, 
-            thickness=0.5), 
+            points={{0,0},{40,0}},
+            thickness=0.5),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="startTime=%startTime")}), 
+            extent={{-150,-150},{150,-110}},
+            textString="startTime=%startTime")}),
       Diagram(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
           Polygon(
-            points={{-80,90},{-85,68},{-75,68},{-80,90}}, 
-            lineColor={95,95,95}, 
-            fillColor={95,95,95}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,68},{-80,-80}}, color={95,95,95}), 
+            points={{-80,90},{-85,68},{-75,68},{-80,90}},
+            lineColor={95,95,95},
+            fillColor={95,95,95},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,68},{-80,-80}}, color={95,95,95}),
           Line(
-            points={{-80,0},{-10,0},{60,70}}, 
-            color={0,0,255}, 
-            thickness=0.5), 
-          Line(points={{-90,-70},{82,-70}}, color={95,95,95}), 
+            points={{-80,0},{-10,0},{60,70}},
+            color={0,0,255},
+            thickness=0.5),
+          Line(points={{-90,-70},{82,-70}}, color={95,95,95}),
           Polygon(
-            points={{90,-70},{68,-64},{68,-76},{90,-70}}, 
-            lineColor={95,95,95}, 
-            fillColor={95,95,95}, 
-            fillPattern=FillPattern.Solid), 
+            points={{90,-70},{68,-64},{68,-76},{90,-70}},
+            lineColor={95,95,95},
+            fillColor={95,95,95},
+            fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-34,0},{-37,-13},{-31,-13},{-34,0}}, 
-            lineColor={95,95,95}, 
-            fillColor={95,95,95}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-34,0},{-34,-70}}, color={95,95,95}), 
+            points={{-34,0},{-37,-13},{-31,-13},{-34,0}},
+            lineColor={95,95,95},
+            fillColor={95,95,95},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-34,0},{-34,-70}}, color={95,95,95}),
           Polygon(
-            points={{-34,-70},{-37,-57},{-31,-57},{-34,-70},{-34,-70}}, 
-            lineColor={95,95,95}, 
-            fillColor={95,95,95}, 
-            fillPattern=FillPattern.Solid), 
+            points={{-34,-70},{-37,-57},{-31,-57},{-34,-70},{-34,-70}},
+            lineColor={95,95,95},
+            fillColor={95,95,95},
+            fillPattern=FillPattern.Solid),
           Text(
-            extent={{-77,-28},{-35,-40}}, 
-            textString="offset"), 
+            extent={{-77,-28},{-35,-40}},
+            textString="offset"),
           Text(
-            extent={{-30,-73},{18,-86}}, 
-            textString="startTime"), 
+            extent={{-30,-73},{18,-86}},
+            textString="startTime"),
           Text(
-            extent={{-81,91},{-40,71}}, 
-            textString="y"), 
+            extent={{-81,91},{-40,71}},
+            textString="y"),
           Text(
-            extent={{63,-79},{94,-89}}, 
-            textString="time"), 
-          Line(points={{-10,0},{-10,-70}}, color={95,95,95}), 
-          Line(points={{-10,0},{50,0}}, color={95,95,95}), 
-          Line(points={{50,0},{50,60}}, color={95,95,95}), 
+            extent={{63,-79},{94,-89}},
+            textString="time"),
+          Line(points={{-10,0},{-10,-70}}, color={95,95,95}),
+          Line(points={{-10,0},{50,0}}, color={95,95,95}),
+          Line(points={{50,0},{50,60}}, color={95,95,95}),
           Text(
-            extent={{35,33},{50,23}}, 
-            textString="1"), 
+            extent={{35,33},{50,23}},
+            textString="1"),
           Text(
-            extent={{14,13},{32,1}}, 
-            textString="1")}), 
+            extent={{14,13},{32,1}},
+            textString="1")}),
       Documentation(info="<html>
 <p>
 The Real output y is a clock signal:
@@ -218,30 +218,30 @@ The Real output y is a clock signal:
     y = offset + (if time < startTime then 0 else time - startTime);
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Ellipse(extent={{-80,80},{80,-80}}, lineColor={160,160,164}), 
-          Line(points={{0,80},{0,60}}, color={160,160,164}), 
-          Line(points={{80,0},{60,0}}, color={160,160,164}), 
-          Line(points={{0,-80},{0,-60}}, color={160,160,164}), 
-          Line(points={{-80,0},{-60,0}}, color={160,160,164}), 
-          Line(points={{37,70},{26,50}}, color={160,160,164}), 
-          Line(points={{70,38},{49,26}}, color={160,160,164}), 
-          Line(points={{71,-37},{52,-27}}, color={160,160,164}), 
-          Line(points={{39,-70},{29,-51}}, color={160,160,164}), 
-          Line(points={{-39,-70},{-29,-52}}, color={160,160,164}), 
-          Line(points={{-71,-37},{-50,-26}}, color={160,160,164}), 
-          Line(points={{-71,37},{-54,28}}, color={160,160,164}), 
-          Line(points={{-38,70},{-28,51}}, color={160,160,164}), 
+          Ellipse(extent={{-80,80},{80,-80}}, lineColor={160,160,164}),
+          Line(points={{0,80},{0,60}}, color={160,160,164}),
+          Line(points={{80,0},{60,0}}, color={160,160,164}),
+          Line(points={{0,-80},{0,-60}}, color={160,160,164}),
+          Line(points={{-80,0},{-60,0}}, color={160,160,164}),
+          Line(points={{37,70},{26,50}}, color={160,160,164}),
+          Line(points={{70,38},{49,26}}, color={160,160,164}),
+          Line(points={{71,-37},{52,-27}}, color={160,160,164}),
+          Line(points={{39,-70},{29,-51}}, color={160,160,164}),
+          Line(points={{-39,-70},{-29,-52}}, color={160,160,164}),
+          Line(points={{-71,-37},{-50,-26}}, color={160,160,164}),
+          Line(points={{-71,37},{-54,28}}, color={160,160,164}),
+          Line(points={{-38,70},{-28,51}}, color={160,160,164}),
           Line(
-            points={{0,0},{-50,50}}, 
-            thickness=0.5), 
+            points={{0,0},{-50,50}},
+            thickness=0.5),
           Line(
-            points={{0,0},{40,0}}, 
-            thickness=0.5), 
+            points={{0,0},{40,0}},
+            thickness=0.5),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="startTime=%startTime")}), 
+            extent={{-150,-150},{150,-110}},
+            textString="startTime=%startTime")}),
       Documentation(info="<html>
 <p>
 The Real output y is a clock signal:
@@ -262,26 +262,26 @@ The Real output y is a clock signal:
   equation
     y = k;
     annotation (
-      defaultComponentName="const", 
+      defaultComponentName="const",
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-70},{82,-70}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-70},{82,-70}}, color={192,192,192}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,0},{80,0}}), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,0},{80,0}}),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="k=%k")}), 
+            extent={{-150,-150},{150,-110}},
+            textString="k=%k")}),
       Documentation(info="<html>
 <p>
 The Real output y is a constant signal:
@@ -303,24 +303,24 @@ The Real output y is a constant signal:
     y = offset + (if time < startTime then 0 else height);
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-70},{82,-70}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-70},{82,-70}}, color={192,192,192}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,-70},{0,-70},{0,50},{80,50}}), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,-70},{0,-70},{0,50},{80,50}}),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="startTime=%startTime")}), 
+            extent={{-150,-150},{150,-110}},
+            textString="startTime=%startTime")}),
       Documentation(info="<html>
 <p>
 The Real output y is a step signal:
@@ -337,34 +337,34 @@ The Real output y is a step signal:
   block Ramp "Generate ramp signal"
     parameter Real height=1 "Height of ramps" 
       annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/Ramp.png"));
-    parameter SI.Time duration(min=0.0, start=2) 
+    parameter SI.Time duration(min=0.0, start=2)
       "Duration of ramp (= 0.0 gives a Step)";
     extends Interfaces.SignalSource;
 
   equation
-    y = offset + (if time < startTime then 0 else if time < (startTime + 
+    y = offset + (if time < startTime then 0 else if time < (startTime +
       duration) then (time - startTime)*height/duration else height);
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-70},{82,-70}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-70},{82,-70}}, color={192,192,192}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,-70},{-40,-70},{31,38}}), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,-70},{-40,-70},{31,38}}),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="duration=%duration"), 
-          Line(points={{31,38},{86,38}})}), 
+            extent={{-150,-150},{150,-110}},
+            textString="duration=%duration"),
+          Line(points={{31,38},{86,38}})}),
       Documentation(info="<html>
 <p>
 The Real output y is a ramp signal:
@@ -389,32 +389,32 @@ If parameter duration is set to 0.0, the limiting case of a Step signal is achie
     parameter SI.Angle phase=0 "Phase of sine wave";
     extends Interfaces.SignalSource;
   equation
-    y = offset + (if time < startTime then 0 else amplitude*Modelica.Math.sin(2 
+    y = offset + (if time < startTime then 0 else amplitude*Modelica.Math.sin(2
       *pi*f*(time - startTime) + phase));
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,0},{68,0}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,0},{68,0}}, color={192,192,192}),
           Polygon(
-            points={{90,0},{68,8},{68,-8},{90,0}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,0},{-68.7,34.2},{-61.5,53.1},{-55.1,66.4},{-49.4, 
-                74.6},{-43.8,79.1},{-38.2,79.8},{-32.6,76.6},{-26.9,69.7},{-21.3, 
-                59.4},{-14.9,44.1},{-6.83,21.2},{10.1,-30.8},{17.3,-50.2},{23.7, 
-                -64.2},{29.3,-73.1},{35,-78.4},{40.6,-80},{46.2,-77.6},{51.9,-71.5}, 
-                {57.5,-61.9},{63.9,-47.2},{72,-24.8},{80,0}}, smooth = Smooth.Bezier), 
+            points={{90,0},{68,8},{68,-8},{90,0}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,0},{-68.7,34.2},{-61.5,53.1},{-55.1,66.4},{-49.4,
+                74.6},{-43.8,79.1},{-38.2,79.8},{-32.6,76.6},{-26.9,69.7},{-21.3,
+                59.4},{-14.9,44.1},{-6.83,21.2},{10.1,-30.8},{17.3,-50.2},{23.7,
+                -64.2},{29.3,-73.1},{35,-78.4},{40.6,-80},{46.2,-77.6},{51.9,-71.5},
+                {57.5,-61.9},{63.9,-47.2},{72,-24.8},{80,0}}, smooth = Smooth.Bezier),
           Text(
-            extent={{-147,-152},{153,-112}}, 
-            textString="f=%f")}), 
+            extent={{-147,-152},{153,-112}},
+            textString="f=%f")}),
       Documentation(info="<html>
 <p>
 The Real output y is a sine signal:
@@ -435,33 +435,33 @@ The Real output y is a sine signal:
     parameter SI.Angle phase=0 "Phase of cosine wave";
     extends Interfaces.SignalSource;
   equation
-    y = offset + (if time < startTime then 0 else amplitude*Modelica.Math.cos(2 
+    y = offset + (if time < startTime then 0 else amplitude*Modelica.Math.cos(2
       *pi*f*(time - startTime) + phase));
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,0},{68,0}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,0},{68,0}}, color={192,192,192}),
           Polygon(
-            points={{90,0},{68,8},{68,-8},{90,0}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,80},{-76.2,79.8},{-70.6,76.6},{-64.9,69.7},{-59.3, 
-                59.4},{-52.9,44.1},{-44.83,21.2},{-27.9,-30.8},{-20.7,-50.2},{-14.3, 
-                -64.2},{-8.7,-73.1},{-3,-78.4},{2.6,-80},{8.2,-77.6},{13.9,-71.5}, 
-                {19.5,-61.9},{25.9,-47.2},{34,-24.8},{42,0}}, smooth=Smooth.Bezier), 
+            points={{90,0},{68,8},{68,-8},{90,0}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,80},{-76.2,79.8},{-70.6,76.6},{-64.9,69.7},{-59.3,
+                59.4},{-52.9,44.1},{-44.83,21.2},{-27.9,-30.8},{-20.7,-50.2},{-14.3,
+                -64.2},{-8.7,-73.1},{-3,-78.4},{2.6,-80},{8.2,-77.6},{13.9,-71.5},
+                {19.5,-61.9},{25.9,-47.2},{34,-24.8},{42,0}}, smooth=Smooth.Bezier),
           Text(
-            extent={{-147,-152},{153,-112}}, 
-            textString="f=%f"), 
+            extent={{-147,-152},{153,-112}},
+            textString="f=%f"),
           Line(points={{42,1},{53.3,35.2},{60.5,54.1},{66.9,67.4},{72.6,75.6},{
-                78.2,80.1},{83.8,80.8}})}), 
+                78.2,80.1},{83.8,80.8}})}),
       Documentation(info="<html>
 <p>
 The Real output y is a cosine signal:
@@ -474,7 +474,7 @@ The Real output y is a cosine signal:
 </html>"));
   end Cosine;
 
-  block SineVariableFrequencyAndAmplitude 
+  block SineVariableFrequencyAndAmplitude
     "Generate sine signal with variable frequency and amplitude"
     extends Interfaces.SO;
     import Modelica.Constants.pi;
@@ -490,31 +490,31 @@ The Real output y is a cosine signal:
     Blocks.Interfaces.RealInput amplitude if not useConstantAmplitude "Amplitude" 
                   annotation (Placement(
           transformation(
-          extent={{-20,-20},{20,20}}, 
+          extent={{-20,-20},{20,20}},
           origin={-120,60})));
-    Blocks.Interfaces.RealInput f(unit="Hz") if not useConstantFrequency 
+    Blocks.Interfaces.RealInput f(unit="Hz") if not useConstantFrequency
       "Frequency" annotation (Placement(
           transformation(
-          extent={{-20,-20},{20,20}}, 
+          extent={{-20,-20},{20,20}},
           origin={-120,-60})));
   protected
     Blocks.Interfaces.RealInput amplitude_internal "Amplitude" annotation (Placement(
           transformation(
-          extent={{-2,-2},{2,2}}, 
+          extent={{-2,-2},{2,2}},
           origin={-80,60})));
     Blocks.Interfaces.RealInput f_internal(unit="Hz") "Frequency" annotation (Placement(
           transformation(
-          extent={{-2,-2},{2,2}}, 
+          extent={{-2,-2},{2,2}},
           origin={-80,-60})));
     Blocks.Sources.Constant amplitude_constant(final k=constantAmplitude) if 
       useConstantAmplitude 
-      annotation (Placement(transformation(extent={{-10,-10},{10,10}}, 
-          rotation=90, 
+      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          rotation=90,
           origin={-80,30})));
     Blocks.Sources.Constant f_constant(final k=constantFrequency) if 
       useConstantFrequency 
-      annotation (Placement(transformation(extent={{10,-10},{-10,10}}, 
-          rotation=90, 
+      annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+          rotation=90,
           origin={-80,-30})));
   equation
     der(phi) = 2*pi*f_internal;
@@ -527,44 +527,44 @@ The Real output y is a cosine signal:
       annotation (Line(points={{-80,41},{-80,60}}, color={0,0,127}));
     connect(f_constant.y, f_internal) 
       annotation (Line(points={{-80,-41},{-80,-60}}, color={0,0,127}));
-    annotation (defaultComponentName="sine", 
+    annotation (defaultComponentName="sine",
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,0},{68,0}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,0},{68,0}}, color={192,192,192}),
           Polygon(
-            points={{90,0},{68,8},{68,-8},{90,0}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
+            points={{90,0},{68,8},{68,-8},{90,0}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
           Line(points={
-  {-80,0},{-78.4,0},{-76.8,0},{-75.2,0},{-73.6,0.1}, 
-  {-72,0.1},{-70.4,0.2},{-68.8,0.3},{-67.2,0.4},{-65.6,0.6}, 
-  {-64,0.8},{-62.4,1.1},{-60.8,1.4},{-59.2,1.8},{-57.6,2.2}, 
-  {-56,2.7},{-54.4,3.3},{-52.8,3.9},{-51.2,4.6},{-49.6,5.4}, 
-  {-48,6.2},{-46.4,7.2},{-44.8,8.2},{-43.2,9.2},{-41.6,10.4}, 
-  {-40,11.6},{-38.4,12.9},{-36.8,14.2},{-35.2,15.6},{-33.6,17.1}, 
-  {-32,18.6},{-30.4,20.1},{-28.8,21.6},{-27.2,23.1},{-25.6,24.6}, 
-  {-24,26.1},{-22.4,27.5},{-20.8,28.8},{-19.2,30},{-17.6,31.1}, 
-  {-16,32},{-14.4,32.7},{-12.8,33.2},{-11.2,33.5},{-9.6,33.5}, 
-  {-8,33.2},{-6.4,32.5},{-4.8,31.5},{-3.2,30.1},{-1.6,28.4}, 
-  {0,26.2},{1.6,23.6},{3.2,20.6},{4.8,17.2},{6.4,13.3}, 
-  {8,9.1},{9.6,4.6},{11.2,-0.3},{12.8,-5.4},{14.4,-10.7}, 
-  {16,-16.1},{17.6,-21.6},{19.2,-27.1},{20.8,-32.3},{22.4,-37.4}, 
-  {24,-42.1},{25.6,-46.3},{27.2,-49.9},{28.8,-52.8},{30.4,-54.8}, 
-  {32,-56},{33.6,-56.1},{35.2,-55.2},{36.8,-53.1},{38.4,-49.8}, 
-  {40,-45.3},{41.6,-39.7},{43.2,-33},{44.8,-25.3},{46.4,-16.6}, 
-  {48,-7.3},{49.6,2.6},{51.2,12.8},{52.8,23},{54.4,33}, 
-  {56,42.5},{57.6,51.2},{59.2,58.8},{60.8,64.9},{62.4,69.3}, 
-  {64,71.9},{65.6,72.3},{67.2,70.5},{68.8,66.4},{70.4,60}, 
-  {72,51.4},{73.6,40.8},{75.2,28.4},{76.8,14.7},{78.4,0}, 
-  {80,-15.1}},     smooth = Smooth.Bezier)}), 
+  {-80,0},{-78.4,0},{-76.8,0},{-75.2,0},{-73.6,0.1},
+  {-72,0.1},{-70.4,0.2},{-68.8,0.3},{-67.2,0.4},{-65.6,0.6},
+  {-64,0.8},{-62.4,1.1},{-60.8,1.4},{-59.2,1.8},{-57.6,2.2},
+  {-56,2.7},{-54.4,3.3},{-52.8,3.9},{-51.2,4.6},{-49.6,5.4},
+  {-48,6.2},{-46.4,7.2},{-44.8,8.2},{-43.2,9.2},{-41.6,10.4},
+  {-40,11.6},{-38.4,12.9},{-36.8,14.2},{-35.2,15.6},{-33.6,17.1},
+  {-32,18.6},{-30.4,20.1},{-28.8,21.6},{-27.2,23.1},{-25.6,24.6},
+  {-24,26.1},{-22.4,27.5},{-20.8,28.8},{-19.2,30},{-17.6,31.1},
+  {-16,32},{-14.4,32.7},{-12.8,33.2},{-11.2,33.5},{-9.6,33.5},
+  {-8,33.2},{-6.4,32.5},{-4.8,31.5},{-3.2,30.1},{-1.6,28.4},
+  {0,26.2},{1.6,23.6},{3.2,20.6},{4.8,17.2},{6.4,13.3},
+  {8,9.1},{9.6,4.6},{11.2,-0.3},{12.8,-5.4},{14.4,-10.7},
+  {16,-16.1},{17.6,-21.6},{19.2,-27.1},{20.8,-32.3},{22.4,-37.4},
+  {24,-42.1},{25.6,-46.3},{27.2,-49.9},{28.8,-52.8},{30.4,-54.8},
+  {32,-56},{33.6,-56.1},{35.2,-55.2},{36.8,-53.1},{38.4,-49.8},
+  {40,-45.3},{41.6,-39.7},{43.2,-33},{44.8,-25.3},{46.4,-16.6},
+  {48,-7.3},{49.6,2.6},{51.2,12.8},{52.8,23},{54.4,33},
+  {56,42.5},{57.6,51.2},{59.2,58.8},{60.8,64.9},{62.4,69.3},
+  {64,71.9},{65.6,72.3},{67.2,70.5},{68.8,66.4},{70.4,60},
+  {72,51.4},{73.6,40.8},{75.2,28.4},{76.8,14.7},{78.4,0},
+  {80,-15.1}},     smooth = Smooth.Bezier)}),
       Documentation(info="<html>
 <p>
 This signal source provides a sinusoidal signal with variable frequency <code>f</code> and variable <code>amplitude</code>,
@@ -577,7 +577,7 @@ and that the parameter <code>startTime</code> is omitted since the voltage can b
 </html>"));
   end SineVariableFrequencyAndAmplitude;
 
-  block CosineVariableFrequencyAndAmplitude 
+  block CosineVariableFrequencyAndAmplitude
     "Generate cosine signal with variable frequency and amplitude"
     extends Interfaces.SO;
     import Modelica.Constants.pi;
@@ -593,31 +593,31 @@ and that the parameter <code>startTime</code> is omitted since the voltage can b
     Blocks.Interfaces.RealInput amplitude if not useConstantAmplitude "Amplitude" 
                   annotation (Placement(
           transformation(
-          extent={{-20,-20},{20,20}}, 
+          extent={{-20,-20},{20,20}},
           origin={-120,60})));
-    Blocks.Interfaces.RealInput f(unit="Hz") if not useConstantFrequency 
+    Blocks.Interfaces.RealInput f(unit="Hz") if not useConstantFrequency
       "Frequency" annotation (Placement(
           transformation(
-          extent={{-20,-20},{20,20}}, 
+          extent={{-20,-20},{20,20}},
           origin={-120,-60})));
   protected
     Blocks.Interfaces.RealInput amplitude_internal "Amplitude" annotation (Placement(
           transformation(
-          extent={{-2,-2},{2,2}}, 
+          extent={{-2,-2},{2,2}},
           origin={-80,60})));
     Blocks.Interfaces.RealInput f_internal(unit="Hz") "Frequency" annotation (Placement(
           transformation(
-          extent={{-2,-2},{2,2}}, 
+          extent={{-2,-2},{2,2}},
           origin={-80,-60})));
     Blocks.Sources.Constant amplitude_constant(final k=constantAmplitude) if 
       useConstantAmplitude 
-      annotation (Placement(transformation(extent={{-10,-10},{10,10}}, 
-          rotation=90, 
+      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          rotation=90,
           origin={-80,30})));
     Blocks.Sources.Constant f_constant(final k=constantFrequency) if 
       useConstantFrequency 
-      annotation (Placement(transformation(extent={{10,-10},{-10,10}}, 
-          rotation=90, 
+      annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+          rotation=90,
           origin={-80,-30})));
   equation
     der(phi) = 2*pi*f_internal;
@@ -630,44 +630,44 @@ and that the parameter <code>startTime</code> is omitted since the voltage can b
       annotation (Line(points={{-80,41},{-80,60}}, color={0,0,127}));
     connect(f_constant.y, f_internal) 
       annotation (Line(points={{-80,-41},{-80,-60}}, color={0,0,127}));
-    annotation (defaultComponentName="cosine", 
+    annotation (defaultComponentName="cosine",
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,0},{68,0}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,0},{68,0}}, color={192,192,192}),
           Polygon(
-            points={{90,0},{68,8},{68,-8},{90,0}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
+            points={{90,0},{68,8},{68,-8},{90,0}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
           Line(points={
-  {-80,80},{-78.4,79.6},{-76.8,79.2},{-75.2,78.8},{-73.6,78.4},{-72,78}, 
-  {-70.4,77.5},{-68.8,77.1},{-67.2,76.6},{-65.6,76.1},{-64,75.6}, 
-  {-62.4,75},{-60.8,74.4},{-59.2,73.7},{-57.6,73},{-56,72.2}, 
-  {-54.4,71.3},{-52.8,70.3},{-51.2,69.2},{-49.6,68},{-48,66.6}, 
-  {-46.4,65.2},{-44.8,63.6},{-43.2,61.8},{-41.6,59.9},{-40,57.7}, 
-  {-38.4,55.5},{-36.8,53},{-35.2,50.3},{-33.6,47.5},{-32,44.4}, 
-  {-30.4,41.1},{-28.8,37.7},{-27.2,34},{-25.6,30.1},{-24,26.1}, 
-  {-22.4,21.9},{-20.8,17.5},{-19.2,13},{-17.6,8.3},{-16,3.5}, 
-  {-14.4,-1.3},{-12.8,-6.2},{-11.2,-11.1},{-9.6,-16},{-8,-20.8}, 
-  {-6.4,-25.5},{-4.8,-30.1},{-3.2,-34.5},{-1.6,-38.6},{0,-42.4}, 
-  {1.6,-45.9},{3.2,-49},{4.8,-51.7},{6.4,-53.9},{8,-55.5}, 
-  {9.6,-56.5},{11.2,-57},{12.8,-56.8},{14.4,-55.9},{16,-54.4}, 
-  {17.6,-52.2},{19.2,-49.3},{20.8,-45.7},{22.4,-41.5},{24,-36.7}, 
-  {25.6,-31.4},{27.2,-25.6},{28.8,-19.4},{30.4,-12.9},{32,-6.2}, 
-  {33.6,0.6},{35.2,7.4},{36.8,14},{38.4,20.4},{40,26.3}, 
-  {41.6,31.8},{43.2,36.5},{44.8,40.6},{46.4,43.7},{48,45.9}, 
-  {49.6,47.1},{51.2,47.2},{52.8,46.2},{54.4,44.1},{56,41}, 
-  {57.6,36.8},{59.2,31.8},{60.8,25.9},{62.4,19.4},{64,12.4}, 
-  {65.6,5.1},{67.2,-2.2},{68.8,-9.5},{70.4,-16.4},{72,-22.8}, 
-  {73.6,-28.4},{75.2,-33},{76.8,-36.6},{78.4,-38.9},{80,-39.8}}, 
-      smooth = Smooth.Bezier)}), 
+  {-80,80},{-78.4,79.6},{-76.8,79.2},{-75.2,78.8},{-73.6,78.4},{-72,78},
+  {-70.4,77.5},{-68.8,77.1},{-67.2,76.6},{-65.6,76.1},{-64,75.6},
+  {-62.4,75},{-60.8,74.4},{-59.2,73.7},{-57.6,73},{-56,72.2},
+  {-54.4,71.3},{-52.8,70.3},{-51.2,69.2},{-49.6,68},{-48,66.6},
+  {-46.4,65.2},{-44.8,63.6},{-43.2,61.8},{-41.6,59.9},{-40,57.7},
+  {-38.4,55.5},{-36.8,53},{-35.2,50.3},{-33.6,47.5},{-32,44.4},
+  {-30.4,41.1},{-28.8,37.7},{-27.2,34},{-25.6,30.1},{-24,26.1},
+  {-22.4,21.9},{-20.8,17.5},{-19.2,13},{-17.6,8.3},{-16,3.5},
+  {-14.4,-1.3},{-12.8,-6.2},{-11.2,-11.1},{-9.6,-16},{-8,-20.8},
+  {-6.4,-25.5},{-4.8,-30.1},{-3.2,-34.5},{-1.6,-38.6},{0,-42.4},
+  {1.6,-45.9},{3.2,-49},{4.8,-51.7},{6.4,-53.9},{8,-55.5},
+  {9.6,-56.5},{11.2,-57},{12.8,-56.8},{14.4,-55.9},{16,-54.4},
+  {17.6,-52.2},{19.2,-49.3},{20.8,-45.7},{22.4,-41.5},{24,-36.7},
+  {25.6,-31.4},{27.2,-25.6},{28.8,-19.4},{30.4,-12.9},{32,-6.2},
+  {33.6,0.6},{35.2,7.4},{36.8,14},{38.4,20.4},{40,26.3},
+  {41.6,31.8},{43.2,36.5},{44.8,40.6},{46.4,43.7},{48,45.9},
+  {49.6,47.1},{51.2,47.2},{52.8,46.2},{54.4,44.1},{56,41},
+  {57.6,36.8},{59.2,31.8},{60.8,25.9},{62.4,19.4},{64,12.4},
+  {65.6,5.1},{67.2,-2.2},{68.8,-9.5},{70.4,-16.4},{72,-22.8},
+  {73.6,-28.4},{75.2,-33},{76.8,-36.6},{78.4,-38.9},{80,-39.8}},
+      smooth = Smooth.Bezier)}),
       Documentation(info="<html>
 <p>
 This signal source provides a cosine signal with variable frequency <code>f</code> and variable <code>amplitude</code>,
@@ -690,38 +690,38 @@ and that the parameter <code>startTime</code> is omitted since the voltage can b
   protected
     SI.Angle x=2*pi*f*(time - startTime);
   equation
-    y = offset + (if time < startTime then 0 else amplitude* 
+    y = offset + (if time < startTime then 0 else amplitude*
       (if noEvent(time - startTime < eps) then 1 else (sin(x))/x));
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,0},{68,0}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,0},{68,0}}, color={192,192,192}),
           Polygon(
-            points={{90,0},{68,8},{68,-8},{90,0}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
+            points={{90,0},{68,8},{68,-8},{90,0}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
           Text(
-            extent={{-147,-152},{153,-112}}, 
-            textString="f=%f", 
-            textColor={0,0,0}), 
+            extent={{-147,-152},{153,-112}},
+            textString="f=%f",
+            textColor={0,0,0}),
       Line(points={
-        {-80, 80.0},{-76, 78.7},{-72, 74.8},{-68, 68.7},{-64, 60.5}, 
-        {-60, 50.9},{-56, 40.4},{-52, 29.4},{-48, 18.7},{-44,  8.7}, 
-        {-40,  0.0},{-36, -7.2},{-32,-12.5},{-28,-15.8},{-24,-17.3}, 
-        {-20,-17.0},{-16,-15.1},{-12,-12.1},{ -8, -8.3},{ -4, -4.1}, 
-        {  0,  0.0},{  4,  3.7},{  8,  6.8},{ 12,  9.0},{ 16, 10.1}, 
-        { 20, 10.2},{ 24,  9.3},{ 28,  7.6},{ 32,  5.3},{ 36,  2.7}, 
-        { 40,  0.0},{ 44, -2.5},{ 48, -4.7},{ 52, -6.2},{ 56, -7.1}, 
-        { 60, -7.3},{ 64, -6.7},{ 68, -5.6},{ 72, -3.9},{ 76, -2.0}, 
-        { 80,  0.0}}, smooth = Smooth.Bezier)}), 
+        {-80, 80.0},{-76, 78.7},{-72, 74.8},{-68, 68.7},{-64, 60.5},
+        {-60, 50.9},{-56, 40.4},{-52, 29.4},{-48, 18.7},{-44,  8.7},
+        {-40,  0.0},{-36, -7.2},{-32,-12.5},{-28,-15.8},{-24,-17.3},
+        {-20,-17.0},{-16,-15.1},{-12,-12.1},{ -8, -8.3},{ -4, -4.1},
+        {  0,  0.0},{  4,  3.7},{  8,  6.8},{ 12,  9.0},{ 16, 10.1},
+        { 20, 10.2},{ 24,  9.3},{ 28,  7.6},{ 32,  5.3},{ 36,  2.7},
+        { 40,  0.0},{ 44, -2.5},{ 48, -4.7},{ 52, -6.2},{ 56, -7.1},
+        { 60, -7.3},{ 64, -6.7},{ 68, -5.6},{ 72, -3.9},{ 76, -2.0},
+        { 80,  0.0}}, smooth = Smooth.Bezier)}),
       Documentation(info="<html>
 <p>
 The Real output y is a sinc signal: <code> amplitude*(sin(2*&pi;*f*t))/((2*&pi;*f*t))</code>
@@ -739,39 +739,39 @@ The Real output y is a sinc signal: <code> amplitude*(sin(2*&pi;*f*t))/((2*&pi;*
     annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/ExpSine.png"));
     parameter SI.Frequency f(start=2) "Frequency of sine wave";
     parameter SI.Angle phase=0 "Phase of sine wave";
-    parameter SI.Damping damping(start=1) 
+    parameter SI.Damping damping(start=1)
       "Damping coefficient of sine wave";
     extends Interfaces.SignalSource;
   equation
     y = offset + (if time < startTime then 0 else amplitude*Modelica.Math.exp(-
-      (time - startTime)*damping)*Modelica.Math.sin(2*pi*f*(time - 
+      (time - startTime)*damping)*Modelica.Math.sin(2*pi*f*(time -
       startTime) + phase));
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,0},{68,0}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,0},{68,0}}, color={192,192,192}),
           Polygon(
-            points={{90,0},{68,8},{68,-8},{90,0}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,0},{-75.2,32.3},{-72,50.3},{-68.7,64.5},{-65.5,74.2}, 
-                {-62.3,79.3},{-59.1,79.6},{-55.9,75.3},{-52.7,67.1},{-48.6,52.2}, 
-                {-43,25.8},{-35,-13.9},{-30.2,-33.7},{-26.1,-45.9},{-22.1,-53.2}, 
-                {-18.1,-55.3},{-14.1,-52.5},{-10.1,-45.3},{-5.23,-32.1},{8.44, 
-                13.7},{13.3,26.4},{18.1,34.8},{22.1,38},{26.9,37.2},{31.8,31.8}, 
-                {38.2,19.4},{51.1,-10.5},{57.5,-21.2},{63.1,-25.9},{68.7,-25.9}, 
-                {75.2,-20.5},{80,-13.8}}, smooth = Smooth.Bezier), 
+            points={{90,0},{68,8},{68,-8},{90,0}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,0},{-75.2,32.3},{-72,50.3},{-68.7,64.5},{-65.5,74.2},
+                {-62.3,79.3},{-59.1,79.6},{-55.9,75.3},{-52.7,67.1},{-48.6,52.2},
+                {-43,25.8},{-35,-13.9},{-30.2,-33.7},{-26.1,-45.9},{-22.1,-53.2},
+                {-18.1,-55.3},{-14.1,-52.5},{-10.1,-45.3},{-5.23,-32.1},{8.44,
+                13.7},{13.3,26.4},{18.1,34.8},{22.1,38},{26.9,37.2},{31.8,31.8},
+                {38.2,19.4},{51.1,-10.5},{57.5,-21.2},{63.1,-25.9},{68.7,-25.9},
+                {75.2,-20.5},{80,-13.8}}, smooth = Smooth.Bezier),
           Text(
-            extent={{-147,-152},{153,-112}}, 
-            textString="f=%f")}), 
+            extent={{-147,-152},{153,-112}},
+            textString="f=%f")}),
       Documentation(info="<html>
 <p>
 The Real output y is a sine signal with exponentially changing amplitude:
@@ -789,9 +789,9 @@ The Real output y is a sine signal with exponentially changing amplitude:
     parameter Real outMax=1 "Height of output for infinite riseTime" 
     annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/Exponentials.png"));
     parameter SI.Time riseTime(min=0,start=0.5) "Rise time";
-    parameter SI.Time riseTimeConst(min=Modelica.Constants.small) = 0.1 
+    parameter SI.Time riseTimeConst(min=Modelica.Constants.small) = 0.1
       "Rise time constant; rising is defined as outMax*(1-exp(-riseTime/riseTimeConst))";
-    parameter SI.Time fallTimeConst(min=Modelica.Constants.small)= 
+    parameter SI.Time fallTimeConst(min=Modelica.Constants.small)=
       riseTimeConst "Fall time constant";
     extends Interfaces.SignalSource;
   protected
@@ -799,36 +799,36 @@ The Real output y is a sine signal with exponentially changing amplitude:
 
   equation
     y_riseTime = outMax*(1 - Modelica.Math.exp(-riseTime/riseTimeConst));
-    y = offset + (if (time < startTime) then 0 else if (time < (startTime + 
-      riseTime)) then outMax*(1 - Modelica.Math.exp(-(time - startTime)/ 
-      riseTimeConst)) else y_riseTime*Modelica.Math.exp(-(time - startTime - 
+    y = offset + (if (time < startTime) then 0 else if (time < (startTime +
+      riseTime)) then outMax*(1 - Modelica.Math.exp(-(time - startTime)/
+      riseTimeConst)) else y_riseTime*Modelica.Math.exp(-(time - startTime -
       riseTime)/fallTimeConst));
 
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-90,-70},{68,-70}}, color={192,192,192}), 
+          Line(points={{-90,-70},{68,-70}}, color={192,192,192}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,-70},{-77.2,-55.3},{-74.3,-42.1},{-70.8,-27.6},{-67.3, 
-                -15},{-63.7,-4.08},{-59.5,7.18},{-55.3,16.7},{-50.3,26},{-44.6, 
-                34.5},{-38.3,42.1},{-31.2,48.6},{-22.7,54.3},{-12.1,59.2},{-10, 
-                60},{-7.88,47.5},{-5.05,32.7},{-2.22,19.8},{0.606,8.45},{4.14,-3.7}, 
-                {7.68,-14},{11.9,-24.2},{16.2,-32.6},{21.1,-40.5},{26.8,-47.4}, 
-                {33.1,-53.3},{40.9,-58.5},{50.8,-62.8},{60,-65.4}}), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,-70},{-77.2,-55.3},{-74.3,-42.1},{-70.8,-27.6},{-67.3,
+                -15},{-63.7,-4.08},{-59.5,7.18},{-55.3,16.7},{-50.3,26},{-44.6,
+                34.5},{-38.3,42.1},{-31.2,48.6},{-22.7,54.3},{-12.1,59.2},{-10,
+                60},{-7.88,47.5},{-5.05,32.7},{-2.22,19.8},{0.606,8.45},{4.14,-3.7},
+                {7.68,-14},{11.9,-24.2},{16.2,-32.6},{21.1,-40.5},{26.8,-47.4},
+                {33.1,-53.3},{40.9,-58.5},{50.8,-62.8},{60,-65.4}}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="riseTime=%riseTime")}), 
+            extent={{-150,-150},{150,-110}},
+            textString="riseTime=%riseTime")}),
       Documentation(info="<html>
 <p>
 The Real output y is a rising exponential followed
@@ -846,11 +846,11 @@ by a falling exponential signal:
     parameter Real amplitude=1 "Amplitude of pulse" 
     annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/Pulse.png"));
     parameter Real width(
-      final min=Modelica.Constants.small, 
+      final min=Modelica.Constants.small,
       final max=100) = 50 "Width of pulse in % of period";
-    parameter SI.Time period(final min=Modelica.Constants.small, 
+    parameter SI.Time period(final min=Modelica.Constants.small,
         start=1) "Time for one period";
-    parameter Integer nperiod=-1 
+    parameter Integer nperiod=-1
       "Number of periods (< 0 means infinite number of periods)";
     extends Interfaces.SignalSource;
   protected
@@ -870,25 +870,25 @@ by a falling exponential signal:
        else 0);
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-70},{82,-70}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-70},{82,-70}}, color={192,192,192}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,-70},{-40,-70},{-40,44},{0,44},{0,-70},{40,-70},{40, 
-                44},{79,44}}), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,-70},{-40,-70},{-40,44},{0,44},{0,-70},{40,-70},{40,
+                44},{79,44}}),
           Text(
-            extent={{-147,-152},{153,-112}}, 
-            textString="period=%period")}), 
+            extent={{-147,-152},{153,-112}},
+            textString="period=%period")}),
       Documentation(info="<html>
 <p>
 The Real output y is a pulse signal:
@@ -904,9 +904,9 @@ The Real output y is a pulse signal:
   block SawTooth "Generate saw tooth signal"
     parameter Real amplitude=1 "Amplitude of saw tooth" 
     annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/SawTooth.png"));
-    parameter SI.Time period(final min=Modelica.Constants.small,start=1) 
+    parameter SI.Time period(final min=Modelica.Constants.small,start=1)
       "Time for one period";
-    parameter Integer nperiod=-1 
+    parameter Integer nperiod=-1
       "Number of periods (< 0 means infinite number of periods)";
     extends Interfaces.SignalSource;
   protected
@@ -924,24 +924,24 @@ The Real output y is a pulse signal:
       count >= nperiod)) then 0 else amplitude*(time - T_start)/period);
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-70},{82,-70}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-70},{82,-70}}, color={192,192,192}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,-70},{-60,-70},{0,40},{0,-70},{60,41},{60,-70}}), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,-70},{-60,-70},{0,40},{0,-70},{60,41},{60,-70}}),
           Text(
-            extent={{-147,-152},{153,-112}}, 
-            textString="period=%period")}), 
+            extent={{-147,-152},{153,-112}},
+            textString="period=%period")}),
       Documentation(info="<html>
 <p>
 The Real output y is a saw tooth signal:
@@ -982,23 +982,23 @@ The Real output y is a saw tooth signal:
        then amplitude else if (time < T_start + T_falling) then amplitude*(
       T_start + T_falling - time)/falling else 0);
     annotation (
-      Icon(coordinateSystem(extent={{-100,-100},{100,100}}, 
-  preserveAspectRatio=true, 
-  grid={2,2}),graphics = {Line(origin={-80,-6}, 
-  points={{0,74},{0,-74}}, 
-  color={192,192,192}), Polygon(origin={-80,79}, 
-  lineColor={192,192,192}, 
-  fillColor={192,192,192}, 
-  fillPattern=FillPattern.Solid, 
-  points={{0,11},{-8,-11},{8,-11},{0,11}}), Line(origin={-4,-70}, 
-  points={{-86,0},{86,0}}, 
-  color={192,192,192}), Polygon(origin={79,-70}, 
-  lineColor={192,192,192}, 
-  fillColor={192,192,192}, 
-  fillPattern=FillPattern.Solid, 
-  points={{11,0},{-11,8},{-11,-8},{11,0}}), Text(origin={3,-132}, 
-  extent={{-150,-20},{150,20}}, 
-  textString="period=%period"), Line(origin={-8,-15}, 
+      Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+  preserveAspectRatio=true,
+  grid={2,2}),graphics = {Line(origin={-80,-6},
+  points={{0,74},{0,-74}},
+  color={192,192,192}), Polygon(origin={-80,79},
+  lineColor={192,192,192},
+  fillColor={192,192,192},
+  fillPattern=FillPattern.Solid,
+  points={{0,11},{-8,-11},{8,-11},{0,11}}), Line(origin={-4,-70},
+  points={{-86,0},{86,0}},
+  color={192,192,192}), Polygon(origin={79,-70},
+  lineColor={192,192,192},
+  fillColor={192,192,192},
+  fillPattern=FillPattern.Solid,
+  points={{11,0},{-11,8},{-11,-8},{11,0}}), Text(origin={3,-132},
+  extent={{-150,-20},{150,20}},
+  textString="period=%period"), Line(origin={-8,-15},
   points={{-72,-55},{-32,-55},{-6,55},{-6,55},{22,-55},{48,55},{72,-55}})}),__MWORKS(VisibleVariable={"y"
   }),Documentation(info="<html><p>
 The Real output y is a triangular wave signal:
@@ -1013,23 +1013,23 @@ The Real output y is a triangular wave signal:
   block Trapezoid "Generate trapezoidal signal of type Real"
     parameter Real amplitude=1 "Amplitude of trapezoid" 
     annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/Trapezoid.png"));
-    parameter SI.Time rising(final min=0) = 0 
+    parameter SI.Time rising(final min=0) = 0
       "Rising duration of trapezoid";
-    parameter SI.Time width(final min=0) = 0.5 
+    parameter SI.Time width(final min=0) = 0.5
       "Width duration of trapezoid";
-    parameter SI.Time falling(final min=0) = 0 
+    parameter SI.Time falling(final min=0) = 0
       "Falling duration of trapezoid";
-    parameter SI.Time period(final min=Modelica.Constants.small, start=1) 
+    parameter SI.Time period(final min=Modelica.Constants.small, start=1)
       "Time for one period";
-    parameter Integer nperiod=-1 
+    parameter Integer nperiod=-1
       "Number of periods (< 0 means infinite number of periods)";
     extends Interfaces.SignalSource;
   protected
-    parameter SI.Time T_rising=rising 
+    parameter SI.Time T_rising=rising
       "End time of rising phase within one period";
-    parameter SI.Time T_width=T_rising + width 
+    parameter SI.Time T_width=T_rising + width
       "End time of width phase within one period";
-    parameter SI.Time T_falling=T_width + falling 
+    parameter SI.Time T_falling=T_width + falling
       "End time of falling phase within one period";
     SI.Time T_start "Start time of current period";
     Integer count "Period count";
@@ -1048,25 +1048,25 @@ The Real output y is a triangular wave signal:
       T_start + T_falling - time)/falling else 0);
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-70},{82,-70}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-70},{82,-70}}, color={192,192,192}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
           Text(
-            extent={{-147,-152},{153,-112}}, 
-            textString="period=%period"), 
+            extent={{-147,-152},{153,-112}},
+            textString="period=%period"),
           Line(points={{-81,-70},{-60,-70},{-30,40},{9,40},{39,-70},{61,-70},{
-                90,40}})}), 
+                90,40}})}),
       Documentation(info="<html>
 <p>
 The Real output y is a trapezoid signal:
@@ -1093,7 +1093,7 @@ The Real output y is a trapezoid signal:
         10^(log10(wMin) + (log10(wMax) - log10(wMin))*min(1, (time-startTime)/max(duration,eps))) 
       else 
         wMax;
-     annotation (defaultComponentName="logSweep", 
+     annotation (defaultComponentName="logSweep",
        Documentation(info="<html>
 <p>The output <code>y</code> performs a logarithmic frequency sweep.
 The logarithm of frequency <code>w</code> performs a linear ramp from <code>log10(wMin)</code> to <code>log10(wMax)</code>.
@@ -1106,52 +1106,52 @@ The output is the decimal power of this logarithmic ramp.
      alt=\"LogFrequencySweep.png\">
 </div>
 
-</html>"), 
+</html>"),
       Icon(graphics={
-          Line(points={{-78,44},{80,44}}, color={192,192,192}), 
-          Line(points={{-78,34},{80,34}}, color={192,192,192}), 
-          Line(points={{-78,20},{80,20}}, color={192,192,192}), 
-          Line(points={{-78,-2},{80,-2}}, color={192,192,192}), 
-          Line(points={{-78,-48},{80,-48}}, color={192,192,192}), 
+          Line(points={{-78,44},{80,44}}, color={192,192,192}),
+          Line(points={{-78,34},{80,34}}, color={192,192,192}),
+          Line(points={{-78,20},{80,20}}, color={192,192,192}),
+          Line(points={{-78,-2},{80,-2}}, color={192,192,192}),
+          Line(points={{-78,-48},{80,-48}}, color={192,192,192}),
           Line(
-            points={{-70,-48},{-50,-48},{50,44},{70,44}}, 
-            color={0,0,127}, 
-            thickness=0.5), 
-          Line(points={{-50,-48},{-50,44}}, color={192,192,192}), 
-          Line(points={{50,-48},{50,44}}, color={192,192,192}), 
-          Line(points={{-78,40},{80,40}}, color={192,192,192}), 
+            points={{-70,-48},{-50,-48},{50,44},{70,44}},
+            color={0,0,127},
+            thickness=0.5),
+          Line(points={{-50,-48},{-50,44}}, color={192,192,192}),
+          Line(points={{50,-48},{50,44}}, color={192,192,192}),
+          Line(points={{-78,40},{80,40}}, color={192,192,192}),
                                  Polygon(
-                points={{90,-48},{68,-40},{68,-56},{90,-48}}, 
-                lineColor={192,192,192}, 
-                fillColor={192,192,192}, 
-                fillPattern=FillPattern.Solid), 
+                points={{90,-48},{68,-40},{68,-56},{90,-48}},
+                lineColor={192,192,192},
+                fillColor={192,192,192},
+                fillPattern=FillPattern.Solid),
                           Polygon(
-                points={{-70,90},{-78,68},{-62,68},{-70,90}}, 
-                lineColor={192,192,192}, 
-                fillColor={192,192,192}, 
-                fillPattern=FillPattern.Solid), 
+                points={{-70,90},{-78,68},{-62,68},{-70,90}},
+                lineColor={192,192,192},
+                fillColor={192,192,192},
+                fillPattern=FillPattern.Solid),
           Line(points={{-70,-56},{-70,68}}, color={192,192,192})}));
   end LogFrequencySweep;
 
-  block KinematicPTP 
+  block KinematicPTP
     "Move as fast as possible along a distance within given kinematic constraints"
 
     parameter Real deltaq[:]={1} "Distance to move" 
     annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/KinematicPTP.png"));
-    parameter Real qd_max[:](each final min=Modelica.Constants.small) = {1} 
+    parameter Real qd_max[:](each final min=Modelica.Constants.small) = {1}
       "Maximum velocities der(q)";
-    parameter Real qdd_max[:](each final min=Modelica.Constants.small) = {1} 
+    parameter Real qdd_max[:](each final min=Modelica.Constants.small) = {1}
       "Maximum accelerations der(qd)";
     parameter SI.Time startTime=0 "Time instant at which movement starts";
 
     extends Interfaces.MO(final nout=max([size(deltaq, 1); size(qd_max, 1); size(qdd_max, 1)]));
 
   protected
-    parameter Real p_deltaq[nout]=(if size(deltaq, 1) == 1 then ones(nout)* 
+    parameter Real p_deltaq[nout]=(if size(deltaq, 1) == 1 then ones(nout)*
         deltaq[1] else deltaq);
-    parameter Real p_qd_max[nout]=(if size(qd_max, 1) == 1 then ones(nout)* 
+    parameter Real p_qd_max[nout]=(if size(qd_max, 1) == 1 then ones(nout)*
         qd_max[1] else qd_max);
-    parameter Real p_qdd_max[nout]=(if size(qdd_max, 1) == 1 then ones(nout)* 
+    parameter Real p_qdd_max[nout]=(if size(qdd_max, 1) == 1 then ones(nout)*
         qdd_max[1] else qdd_max);
     Real sd_max;
     Real sdd_max;
@@ -1179,39 +1179,39 @@ The output is the decimal power of this logarithmic ramp.
     Te = if noWphase then Ta1 + Ta1 else Tv + Ta2;
 
     // path-acceleration
-    sdd = if time < startTime then 0 else ((if noWphase then (if time < Ta1 + 
+    sdd = if time < startTime then 0 else ((if noWphase then (if time < Ta1 +
       startTime then sdd_max else (if time < Te + startTime then -sdd_max else 
-      0)) else (if time < Ta2 + startTime then sdd_max else (if time < Tv + 
+      0)) else (if time < Ta2 + startTime then sdd_max else (if time < Tv +
       startTime then 0 else (if time < Te + startTime then -sdd_max else 0)))));
 
     // acceleration
     y = p_deltaq*sdd;
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,78},{-80,-82}}, color={192,192,192}), 
+          Line(points={{-80,78},{-80,-82}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,88},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,0},{82,0}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,88},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,0},{82,0}}, color={192,192,192}),
           Polygon(
-            points={{90,0},{68,8},{68,-8},{90,0}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
+            points={{90,0},{68,8},{68,-8},{90,0}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
           Line(
             points={{-80,0},{-70,0},{-70,70},{-30,70},{-30,0},{20,0},{20,-70},{
-                60,-70},{60,0},{68,0}}), 
+                60,-70},{60,0},{68,0}}),
           Text(
-            extent={{2,80},{80,20}}, 
-            textColor={192,192,192}, 
-            textString="acc"), 
+            extent={{2,80},{80,20}},
+            textColor={192,192,192},
+            textString="acc"),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="deltaq=%deltaq")}), 
+            extent={{-150,-150},{150,-110}},
+            textString="deltaq=%deltaq")}),
           Documentation(info="<html>
 <p>
 The goal is to move as <strong>fast</strong> as possible along a distance
@@ -1265,45 +1265,45 @@ a flange according to a given acceleration.
 </html>"));
   end KinematicPTP;
 
-  block KinematicPTP2 
+  block KinematicPTP2
     "Move as fast as possible from start to end position within given kinematic constraints with output signals q, qd=der(q), qdd=der(qd)"
 
     parameter Real q_begin[:]={0} "Start position" 
     annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/KinematicPTP2.png"));
     parameter Real q_end[:]={1} "End position";
-    parameter Real qd_max[:](each final min=Modelica.Constants.small) = {1} 
+    parameter Real qd_max[:](each final min=Modelica.Constants.small) = {1}
       "Maximum velocities der(q)";
-    parameter Real qdd_max[:](each final min=Modelica.Constants.small) = {1} 
+    parameter Real qdd_max[:](each final min=Modelica.Constants.small) = {1}
       "Maximum accelerations der(qd)";
-    parameter SI.Time startTime=0 
+    parameter SI.Time startTime=0
       "Time instant at which movement starts";
 
     extends Modelica.Blocks.Icons.Block;
-    final parameter Integer nout=max([size(q_begin, 1); size(q_end, 1); size(qd_max, 1); size(qdd_max, 1)]) 
+    final parameter Integer nout=max([size(q_begin, 1); size(q_end, 1); size(qd_max, 1); size(qdd_max, 1)])
       "Number of output signals (= dimension of q, qd, qdd, moving)";
     output SI.Time endTime "Time instant at which movement stops";
 
-    Modelica.Blocks.Interfaces.RealOutput q[nout] 
+    Modelica.Blocks.Interfaces.RealOutput q[nout]
       "Reference position of path planning" annotation (Placement(
           transformation(extent={{100,70},{120,90}})));
-    Modelica.Blocks.Interfaces.RealOutput qd[nout] 
+    Modelica.Blocks.Interfaces.RealOutput qd[nout]
       "Reference speed of path planning" annotation (Placement(transformation(
             extent={{100,20},{120,40}})));
-    Modelica.Blocks.Interfaces.RealOutput qdd[nout] 
+    Modelica.Blocks.Interfaces.RealOutput qdd[nout]
       "Reference acceleration of path planning" annotation (Placement(
           transformation(extent={{100,-40},{120,-20}})));
-    Modelica.Blocks.Interfaces.BooleanOutput moving[nout] 
+    Modelica.Blocks.Interfaces.BooleanOutput moving[nout]
       "= true, if end position not yet reached; = false, if end position reached or axis is completely at rest" 
       annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
 
   protected
-    parameter Real p_q_begin[nout]=(if size(q_begin, 1) == 1 then ones(nout)* 
+    parameter Real p_q_begin[nout]=(if size(q_begin, 1) == 1 then ones(nout)*
         q_begin[1] else q_begin);
     parameter Real p_q_end[nout]=(if size(q_end, 1) == 1 then ones(nout)*q_end[
         1] else q_end);
-    parameter Real p_qd_max[nout]=(if size(qd_max, 1) == 1 then ones(nout)* 
+    parameter Real p_qd_max[nout]=(if size(qd_max, 1) == 1 then ones(nout)*
         qd_max[1] else qd_max);
-    parameter Real p_qdd_max[nout]=(if size(qdd_max, 1) == 1 then ones(nout)* 
+    parameter Real p_qdd_max[nout]=(if size(qdd_max, 1) == 1 then ones(nout)*
         qdd_max[1] else qdd_max);
     parameter Real p_deltaq[nout]=p_q_end - p_q_begin;
     constant Real eps=10*Modelica.Constants.eps;
@@ -1381,7 +1381,7 @@ a flange according to a given acceleration.
         if time < Ta1s then
           s = (sdd_max/2)*(time - startTime)*(time - startTime);
         elseif time < Tes then
-          s = s1 + sd_max2*(time - Ta1s) - (sdd_max/2)*(time - Ta1s)*(time - 
+          s = s1 + sd_max2*(time - Ta1s) - (sdd_max/2)*(time - Ta1s)*(time -
             Ta1s);
         else
           s = s2;
@@ -1414,32 +1414,32 @@ a flange according to a given acceleration.
     end for;
 
     annotation (
-      defaultComponentName="kinematicPTP", 
+      defaultComponentName="kinematicPTP",
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,78},{-80,-82}}, color={192,192,192}), 
+          Line(points={{-80,78},{-80,-82}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,88},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,0},{17,0}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,88},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,0},{17,0}}, color={192,192,192}),
           Line(
-            points={{-80,0},{-70,0},{-70,70},{-50,70},{-50,0},{-15,0},{-15,-70}, 
-                {5,-70},{5,0},{18,0}}), 
+            points={{-80,0},{-70,0},{-70,70},{-50,70},{-50,0},{-15,0},{-15,-70},
+                {5,-70},{5,0},{18,0}}),
           Text(
-            extent={{34,96},{94,66}}, 
-            textString="q"), 
+            extent={{34,96},{94,66}},
+            textString="q"),
           Text(
-            extent={{40,44},{96,14}}, 
-            textString="qd"), 
+            extent={{40,44},{96,14}},
+            textString="qd"),
           Text(
-            extent={{32,-18},{99,-44}}, 
-            textString="qdd"), 
+            extent={{32,-18},{99,-44}},
+            textString="qdd"),
           Text(
-            extent={{-32,-74},{97,-96}}, 
-            textString="moving")}), 
+            extent={{-32,-74},{97,-96}},
+            textString="moving")}),
       Documentation(info="<html>
 <p>
 The goal is to move as <strong>fast</strong> as possible from start position <strong>q_begin</strong>
@@ -1493,28 +1493,28 @@ a flange according to a given acceleration.
 </html>"));
   end KinematicPTP2;
 
-  block TimeTable 
+  block TimeTable
     "Generate a (possibly discontinuous) signal by linear interpolation in a table"
 
-    parameter Real table[:, 2] = fill(0.0, 0, 2) 
+    parameter Real table[:, 2] = fill(0.0, 0, 2)
       "Table matrix (time = first column; e.g., table=[0, 0; 1, 1; 2, 4])" 
       annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/TimeTable.png"));
     parameter SI.Time timeScale(
       min=Modelica.Constants.eps)=1 "Time scale of first table column" 
       annotation (Evaluate=true);
     extends Interfaces.SignalSource;
-    parameter SI.Time shiftTime=startTime 
+    parameter SI.Time shiftTime=startTime
       "Shift time of first table column";
   protected
     discrete Real a "Interpolation coefficient a of actual interval (y=a*x+b)";
     discrete Real b "Interpolation coefficient b of actual interval (y=a*x+b)";
     Integer last(start=1) "Last used lower grid index";
     discrete SI.Time nextEvent(start=0, fixed=true) "Next event instant";
-    discrete Real nextEventScaled(start=0, fixed=true) 
+    discrete Real nextEventScaled(start=0, fixed=true)
       "Next scaled event instant";
     Real timeScaled "Scaled time";
 
-    function getInterpolationCoefficients 
+    function getInterpolationCoefficients
       "Determine interpolation coefficients and next time event"
       extends Modelica.Icons.Function;
       input Real table[:, 2] "Table for interpolation";
@@ -1587,12 +1587,12 @@ a flange according to a given acceleration.
     end if;
     when {time >= pre(nextEvent),initial()} then
       (a,b,nextEventScaled,last) := getInterpolationCoefficients(
-          table, 
-          offset, 
-          startTime/timeScale, 
-          timeScaled, 
-          last, 
-          100*Modelica.Constants.eps, 
+          table,
+          offset,
+          startTime/timeScale,
+          timeScaled,
+          last,
+          100*Modelica.Constants.eps,
           shiftTime/timeScale);
       nextEvent := nextEventScaled*timeScale;
     end when;
@@ -1602,30 +1602,30 @@ a flange according to a given acceleration.
     y = a*timeScaled + b;
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-70},{82,-70}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-70},{82,-70}}, color={192,192,192}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-48,70},{2,-50}}, 
-            lineColor={255,255,255}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-48,-50},{-48,70},{52,70},{52,-50},{-48,-50},{-48,-20}, 
-                {52,-20},{52,10},{-48,10},{-48,40},{52,40},{52,70},{2,70},{2,-51}}), 
+            extent={{-48,70},{2,-50}},
+            lineColor={255,255,255},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-48,-50},{-48,70},{52,70},{52,-50},{-48,-50},{-48,-20},
+                {52,-20},{52,10},{-48,10},{-48,40},{52,40},{52,70},{2,70},{2,-51}}),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="offset=%offset")}), 
+            extent={{-150,-150},{150,-110}},
+            textString="offset=%offset")}),
           Documentation(info="<html>
 <p>
 This block generates an output signal by <strong>linear interpolation</strong> in
@@ -1703,36 +1703,36 @@ parameter Real table[:, <strong>2</strong>]=[0, 0; 1, 1; 2, 4];
 </html>"));
   end TimeTable;
 
-  block CombiTimeTable 
+  block CombiTimeTable
     "Table look-up with respect to time and linear/periodic extrapolation methods (data from matrix/file)"
     import Modelica.Blocks.Tables.Internal;
     extends Modelica.Blocks.Interfaces.MO(final nout=max([size(columns, 1); size(offset, 1)]));
-    parameter Boolean tableOnFile=false 
+    parameter Boolean tableOnFile=false
       "= true, if table is defined on file or in function usertab" 
       annotation (Dialog(group="Table data definition"));
-    parameter Real table[:, :] = fill(0.0, 0, 2) 
+    parameter Real table[:, :] = fill(0.0, 0, 2)
       "Table matrix (time = first column; e.g., table=[0, 0; 1, 1; 2, 4])" 
       annotation (Dialog(group="Table data definition",enable=not tableOnFile));
-    parameter String tableName="NoName" 
+    parameter String tableName="NoName"
       "Table name on file or in function usertab (see docu)" 
       annotation (Dialog(group="Table data definition",enable=tableOnFile));
     parameter String fileName="NoName" "File where matrix is stored" 
       annotation (Dialog(
-        group="Table data definition", 
-        enable=tableOnFile, 
-        loadSelector(filter="Text files (*.txt);;MATLAB MAT-files (*.mat);;csv files (*.csv)", 
+        group="Table data definition",
+        enable=tableOnFile,
+        loadSelector(filter="Text files (*.txt);;MATLAB MAT-files (*.mat);;csv files (*.csv)",
             caption="Open file in which table is present")));
-    parameter Boolean verboseRead=true 
+    parameter Boolean verboseRead=true
       "= true, if info message that file is loading is to be printed" 
       annotation (Dialog(group="Table data definition",enable=tableOnFile));
-    parameter Integer columns[:]=2:size(table, 2) 
+    parameter Integer columns[:]=2:size(table, 2)
       "Columns of table to be interpolated" 
-      annotation (Dialog(group="Table data interpretation", 
+      annotation (Dialog(group="Table data interpretation",
       groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/CombiTimeTable.png"));
-    parameter Modelica.Blocks.Types.Smoothness smoothness=Modelica.Blocks.Types.Smoothness.LinearSegments 
+    parameter Modelica.Blocks.Types.Smoothness smoothness=Modelica.Blocks.Types.Smoothness.LinearSegments
       "Smoothness of table interpolation" 
       annotation (Dialog(group="Table data interpretation"));
-    parameter Modelica.Blocks.Types.Extrapolation extrapolation=Modelica.Blocks.Types.Extrapolation.LastTwoPoints 
+    parameter Modelica.Blocks.Types.Extrapolation extrapolation=Modelica.Blocks.Types.Extrapolation.LastTwoPoints
       "Extrapolation of data outside the definition range" 
       annotation (Dialog(group="Table data interpretation"));
     parameter SI.Time timeScale(
@@ -1740,52 +1740,52 @@ parameter Real table[:, <strong>2</strong>]=[0, 0; 1, 1; 2, 4];
       annotation (Dialog(group="Table data interpretation"), Evaluate=true);
     parameter Real offset[:]={0} "Offsets of output signals" 
       annotation (Dialog(group="Table data interpretation"));
-    parameter SI.Time startTime=0 
+    parameter SI.Time startTime=0
       "Output = offset for time < startTime" 
       annotation (Dialog(group="Table data interpretation"));
-    parameter SI.Time shiftTime=startTime 
+    parameter SI.Time shiftTime=startTime
       "Shift time of first table column" 
       annotation (Dialog(group="Table data interpretation"));
-    parameter Modelica.Blocks.Types.TimeEvents timeEvents=Modelica.Blocks.Types.TimeEvents.Always 
+    parameter Modelica.Blocks.Types.TimeEvents timeEvents=Modelica.Blocks.Types.TimeEvents.Always
       "Time event handling of table interpolation" 
       annotation (Dialog(group="Table data interpretation", enable=smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments));
-    parameter Boolean verboseExtrapolation=false 
+    parameter Boolean verboseExtrapolation=false
       "= true, if warning messages are to be printed if time is outside the table definition range" 
       annotation (Dialog(group="Table data interpretation", enable=extrapolation == Modelica.Blocks.Types.Extrapolation.LastTwoPoints or extrapolation == Modelica.Blocks.Types.Extrapolation.HoldLastPoint));
-    final parameter SI.Time t_min=t_minScaled*timeScale 
+    final parameter SI.Time t_min=t_minScaled*timeScale
       "Minimum abscissa value defined in table";
-    final parameter SI.Time t_max=t_maxScaled*timeScale 
+    final parameter SI.Time t_max=t_maxScaled*timeScale
       "Maximum abscissa value defined in table";
-    final parameter Real t_minScaled=Internal.getTimeTableTmin(tableID) 
+    final parameter Real t_minScaled=Internal.getTimeTableTmin(tableID)
       "Minimum (scaled) abscissa value defined in table";
-    final parameter Real t_maxScaled=Internal.getTimeTableTmax(tableID) 
+    final parameter Real t_maxScaled=Internal.getTimeTableTmax(tableID)
       "Maximum (scaled) abscissa value defined in table";
   protected
-    final parameter Real p_offset[nout]=(if size(offset, 1) == 1 then ones(nout)*offset[1] else offset) 
+    final parameter Real p_offset[nout]=(if size(offset, 1) == 1 then ones(nout)*offset[1] else offset)
       "Offsets of output signals";
-    parameter Modelica.Blocks.Types.ExternalCombiTimeTable tableID= 
+    parameter Modelica.Blocks.Types.ExternalCombiTimeTable tableID=
         Modelica.Blocks.Types.ExternalCombiTimeTable(
-          if tableOnFile then tableName else "NoName", 
-          if tableOnFile and fileName <> "NoName" and not Modelica.Utilities.Strings.isEmpty(fileName) then fileName else "NoName", 
-          table, 
-          startTime/timeScale, 
-          columns, 
-          smoothness, 
-          extrapolation, 
-          shiftTime/timeScale, 
-          if smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments then timeEvents elseif smoothness == Modelica.Blocks.Types.Smoothness.ConstantSegments then Modelica.Blocks.Types.TimeEvents.Always else Modelica.Blocks.Types.TimeEvents.NoTimeEvents, 
+          if tableOnFile then tableName else "NoName",
+          if tableOnFile and fileName <> "NoName" and not Modelica.Utilities.Strings.isEmpty(fileName) then fileName else "NoName",
+          table,
+          startTime/timeScale,
+          columns,
+          smoothness,
+          extrapolation,
+          shiftTime/timeScale,
+          if smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments then timeEvents else if smoothness == Modelica.Blocks.Types.Smoothness.ConstantSegments then Modelica.Blocks.Types.TimeEvents.Always else Modelica.Blocks.Types.TimeEvents.NoTimeEvents,
           if tableOnFile then verboseRead else false) "External table object";
-    discrete SI.Time nextTimeEvent(start=0, fixed=true) 
+    discrete SI.Time nextTimeEvent(start=0, fixed=true)
       "Next time event instant";
-    discrete Real nextTimeEventScaled(start=0, fixed=true) 
+    discrete Real nextTimeEventScaled(start=0, fixed=true)
       "Next scaled time event instant";
     Real timeScaled "Scaled time";
   equation
     if tableOnFile then
-      assert(tableName <> "NoName", 
+      assert(tableName <> "NoName",
         "tableOnFile = true and no table name given");
     else
-      assert(size(table, 1) > 0 and size(table, 2) > 0, 
+      assert(size(table, 1) > 0 and size(table, 2) > 0,
         "tableOnFile = false and parameter table is an empty matrix");
     end if;
 
@@ -1793,13 +1793,13 @@ parameter Real table[:, <strong>2</strong>]=[0, 0; 1, 1; 2, 4];
       extrapolation == Modelica.Blocks.Types.Extrapolation.LastTwoPoints or 
       extrapolation == Modelica.Blocks.Types.Extrapolation.HoldLastPoint) then
       assert(noEvent(time >= t_min), "
-Extrapolation warning: Time (="     + String(time) + ") must be greater or equal
-than the minimum abscissa value t_min (="     + String(t_min) + ") defined in the table.
-"    , level=AssertionLevel.warning);
+Extrapolation warning: Time (="       + String(time) + ") must be greater or equal
+than the minimum abscissa value t_min (="       + String(t_min) + ") defined in the table.
+"      , level=AssertionLevel.warning);
       assert(noEvent(time <= t_max), "
-Extrapolation warning: Time (="     + String(time) + ") must be less or equal
-than the maximum abscissa value t_max (="     + String(t_max) + ") defined in the table.
-"    , level=AssertionLevel.warning);
+Extrapolation warning: Time (="       + String(time) + ") must be less or equal
+than the maximum abscissa value t_max (="       + String(t_max) + ") defined in the table.
+"      , level=AssertionLevel.warning);
     end if;
 
     timeScaled = time/timeScale;
@@ -1950,7 +1950,7 @@ fileName  is \"NoName\" or has only blanks.
     \"tableName\". Both text and MATLAB MAT-file format is possible.
     (The text format is described below).
     The MAT-file format comes in four different versions: v4, v6, v7 and v7.3.
-    The library supports at least v4, v6 and v7 whereas v7.3 is optional.
+    The library supports v4, v6 and v7, but v7.3 is not suppoeted.
     It is most convenient to generate the MAT-file from FreeMat or MATLAB&reg;
     by command
 <blockquote><pre>
@@ -2042,7 +2042,7 @@ Other characters, like trailing non comments, are not allowed in the file.
 <p>
 MATLAB is a registered trademark of The MathWorks, Inc.
 </p>
-</html>"    , revisions="<html>
+</html>"      , revisions="<html>
 <p><strong>Release Notes:</strong></p>
 <ul>
 <li><em>April 09, 2013</em>
@@ -2054,27 +2054,27 @@ MATLAB is a registered trademark of The MathWorks, Inc.
        arguments <strong>extrapolation, columns, startTime</strong>.
        This allows periodic function definitions.</li>
 </ul>
-</html>"    ), 
+</html>"      ),
       Icon(
-      coordinateSystem(preserveAspectRatio=true, 
-        extent={{-100.0,-100.0},{100.0,100.0}}), 
+      coordinateSystem(preserveAspectRatio=true,
+        extent={{-100.0,-100.0},{100.0,100.0}}),
         graphics={
-      Polygon(lineColor={192,192,192}, 
-        fillColor={192,192,192}, 
-        fillPattern=FillPattern.Solid, 
-        points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}), 
-      Line(points={{-80.0,68.0},{-80.0,-80.0}}, 
-        color={192,192,192}), 
-      Line(points={{-90.0,-70.0},{82.0,-70.0}}, 
-        color={192,192,192}), 
-      Polygon(lineColor={192,192,192}, 
-        fillColor={192,192,192}, 
-        fillPattern=FillPattern.Solid, 
-        points={{90.0,-70.0},{68.0,-62.0},{68.0,-78.0},{90.0,-70.0}}), 
-      Rectangle(lineColor={255,255,255}, 
-        fillColor={255,215,136}, 
-        fillPattern=FillPattern.Solid, 
-        extent={{-48.0,-50.0},{2.0,70.0}}), 
+      Polygon(lineColor={192,192,192},
+        fillColor={192,192,192},
+        fillPattern=FillPattern.Solid,
+        points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}),
+      Line(points={{-80.0,68.0},{-80.0,-80.0}},
+        color={192,192,192}),
+      Line(points={{-90.0,-70.0},{82.0,-70.0}},
+        color={192,192,192}),
+      Polygon(lineColor={192,192,192},
+        fillColor={192,192,192},
+        fillPattern=FillPattern.Solid,
+        points={{90.0,-70.0},{68.0,-62.0},{68.0,-78.0},{90.0,-70.0}}),
+      Rectangle(lineColor={255,255,255},
+        fillColor={255,215,136},
+        fillPattern=FillPattern.Solid,
+        extent={{-48.0,-50.0},{2.0,70.0}}),
       Line(points={{-48.0,-50.0},{-48.0,70.0},{52.0,70.0},{52.0,-50.0},{-48.0,-50.0},{-48.0,-20.0},{52.0,-20.0},{52.0,10.0},{-48.0,10.0},{-48.0,40.0},{52.0,40.0},{52.0,70.0},{2.0,70.0},{2.0,-51.0}})}));
   end CombiTimeTable;
 
@@ -2087,11 +2087,11 @@ MATLAB is a registered trademark of The MathWorks, Inc.
     y = k;
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
-          extent={{-100,-100},{100,100}}), graphics={Line(points={{-80,0},{80,0}}), 
+          preserveAspectRatio=true,
+          extent={{-100,-100},{100,100}}), graphics={Line(points={{-80,0},{80,0}}),
             Text(
-            extent={{-150,-140},{150,-110}}, 
-            textString="%k")}), 
+            extent={{-150,-140},{150,-110}},
+            textString="%k")}),
         Documentation(info="<html>
 <p>
 The Boolean output y is a constant signal:
@@ -2113,17 +2113,17 @@ The Boolean output y is a constant signal:
   equation
     y = if time >= startTime then not startValue else startValue;
     annotation (
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
           Line(
-            visible=not startValue, 
-            points={{-80,-70},{0,-70},{0,50},{80,50}}), 
+            visible=not startValue,
+            points={{-80,-70},{0,-70},{0,50},{80,50}}),
           Line(
-            visible=startValue, 
-            points={{-80,50},{0,50},{0,-70},{68,-70}}), 
+            visible=startValue,
+            points={{-80,50},{0,50},{0,-70},{68,-70}}),
           Text(
-            extent={{-150,-140},{150,-110}}, 
-            textString="%startTime")}), 
+            extent={{-150,-140},{150,-110}},
+            textString="%startTime")}),
       Documentation(info="<html>
 <p>
 The Boolean output y is a step signal:
@@ -2139,16 +2139,16 @@ The Boolean output y is a step signal:
   block BooleanPulse "Generate pulse signal of type Boolean"
 
     parameter Real width(
-      final min=Modelica.Constants.small, 
+      final min=Modelica.Constants.small,
       final max=100) = 50 "Width of pulse in % of period" 
       annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/BooleanPulse.png"));
-    parameter SI.Time period(final min=Modelica.Constants.small, 
+    parameter SI.Time period(final min=Modelica.Constants.small,
         start=1) "Time for one period";
     parameter SI.Time startTime=0 "Time instant of first pulse";
     extends Modelica.Blocks.Interfaces.partialBooleanSource;
 
   protected
-    parameter SI.Time Twidth=period*width/100 
+    parameter SI.Time Twidth=period*width/100
       "Width of one pulse" annotation (HideResult=true);
     discrete SI.Time pulseStart "Start time of pulse" 
       annotation (HideResult=true);
@@ -2161,11 +2161,11 @@ The Boolean output y is a step signal:
     y = time >= pulseStart and time < pulseStart + Twidth;
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={Text(
-            extent={{-150,-140},{150,-110}}, 
-            textString="%period"), Line(points={{-80,-70},{-40,-70},{-40,44},{0, 
-                44},{0,-70},{40,-70},{40,44},{79,44}})}), 
+            extent={{-150,-140},{150,-110}},
+            textString="%period"), Line(points={{-80,-70},{-40,-70},{-40,44},{0,
+                44},{0,-70},{40,-70},{40,44},{79,44}})}),
         Documentation(info="<html>
 <p>
 The Boolean output y is a pulse signal:
@@ -2179,10 +2179,10 @@ The Boolean output y is a pulse signal:
   end BooleanPulse;
 
   block SampleTrigger "Generate sample trigger signal"
-    parameter SI.Time period(final min=Modelica.Constants.small, 
+    parameter SI.Time period(final min=Modelica.Constants.small,
         start=0.01) "Sample period" 
       annotation(Dialog(groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/SampleTrigger.png"));
-    parameter SI.Time startTime=0 
+    parameter SI.Time startTime=0
       "Time instant of first sample trigger";
     extends Interfaces.partialBooleanSource;
 
@@ -2190,15 +2190,15 @@ The Boolean output y is a pulse signal:
     y = sample(startTime, period);
     annotation (
       Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-60,-70},{-60,70}}), 
-          Line(points={{-20,-70},{-20,70}}), 
-          Line(points={{20,-70},{20,70}}), 
-          Line(points={{60,-70},{60,70}}), 
+          Line(points={{-60,-70},{-60,70}}),
+          Line(points={{-20,-70},{-20,70}}),
+          Line(points={{20,-70},{20,70}}),
+          Line(points={{60,-70},{60,70}}),
           Text(
-            extent={{-150,-140},{150,-110}}, 
-            textString="%period")}), 
+            extent={{-150,-140},{150,-110}},
+            textString="%period")}),
         Documentation(info="<html>
 <p>
 The Boolean output y is a trigger signal where the output y is only <strong>true</strong>
@@ -2213,29 +2213,29 @@ at sample times (defined by parameter <strong>period</strong>) and is otherwise
 </html>"));
   end SampleTrigger;
 
-  block BooleanTable 
+  block BooleanTable
     "Generate a Boolean output signal based on a vector of time instants"
 
-    parameter SI.Time table[:]={0,1} 
+    parameter SI.Time table[:]={0,1}
       "Vector of time points. At every time point, the output y gets its opposite value (e.g., table={0,1})" annotation(Dialog(group="Table data definition"));
-    parameter Boolean startValue=false 
-      "Start value of y. At time = table[1], y changes to 'not startValue'" annotation(Dialog(group="Table data interpretation", 
+    parameter Boolean startValue=false
+      "Start value of y. At time = table[1], y changes to 'not startValue'" annotation(Dialog(group="Table data interpretation",
       groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/BooleanTable.png"));
-    parameter Modelica.Blocks.Types.Extrapolation extrapolation=Modelica.Blocks.Types.Extrapolation.HoldLastPoint 
+    parameter Modelica.Blocks.Types.Extrapolation extrapolation=Modelica.Blocks.Types.Extrapolation.HoldLastPoint
       "Extrapolation of data outside the definition range" annotation(Dialog(group="Table data interpretation"));
-    parameter SI.Time startTime=-Modelica.Constants.inf 
+    parameter SI.Time startTime=-Modelica.Constants.inf
       "Output = false for time < startTime" annotation(Dialog(group="Table data interpretation"));
-    parameter SI.Time shiftTime=0 
+    parameter SI.Time shiftTime=0
       "Shift time of table" annotation(Dialog(group="Table data interpretation"));
 
     extends Interfaces.partialBooleanSO;
 
     CombiTimeTable combiTimeTable(
-      final table=if n > 0 then if startValue then [table[1], 1.0; table, {mod(i + 1, 2.0) for i in 1:n}] else [table[1], 0.0; table, {mod(i, 2.0) for i in 1:n}] else if startValue then [0.0, 1.0] else [0.0, 0.0], 
-      final smoothness=Modelica.Blocks.Types.Smoothness.ConstantSegments, 
-      final columns={2}, 
-      final extrapolation=extrapolation, 
-      final startTime=startTime, 
+      final table=if n > 0 then if startValue then [table[1], 1.0; table, {mod(i + 1, 2.0) for i in 1:n}] else [table[1], 0.0; table, {mod(i, 2.0) for i in 1:n}] else if startValue then [0.0, 1.0] else [0.0, 0.0],
+      final smoothness=Modelica.Blocks.Types.Smoothness.ConstantSegments,
+      final columns={2},
+      final extrapolation=extrapolation,
+      final startTime=startTime,
       final shiftTime=shiftTime) annotation(Placement(transformation(extent={{-30,-10},{-10,10}})));
     Modelica.Blocks.Math.RealToBoolean realToBoolean annotation(Placement(transformation(extent={{10,-10},{30,10}})));
 
@@ -2249,9 +2249,9 @@ at sample times (defined by parameter <strong>period</strong>) and is otherwise
         if n > 0 then
           // Check whether time values are strict monotonically increasing
           for i in 2:n loop
-            assert(table[i] > table[i-1], 
-              "Time values of table not strict monotonically increasing: table[" 
-               + String(i - 1) + "] = " + String(table[i - 1]) + ", table[" + 
+            assert(table[i] > table[i-1],
+              "Time values of table not strict monotonically increasing: table["
+               + String(i - 1) + "] = " + String(table[i - 1]) + ", table[" +
               String(i) + "] = " + String(table[i]));
           end for;
         end if;
@@ -2265,26 +2265,26 @@ at sample times (defined by parameter <strong>period</strong>) and is otherwise
       connect(combiTimeTable.y[1], realToBoolean.u) annotation(Line(points={{-9,0},{8,0}}, color={0,0,127}));
       connect(realToBoolean.y, y) annotation(Line(points={{31,0},{110,0},{110,0}}, color={255,127,0}));
     annotation (
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={Polygon(
-            points={{-80,88},{-88,66},{-72,66},{-80,88}}, 
-            lineColor={255,0,255}, 
-            fillColor={255,0,255}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,66},{-80,-82}}, color={255,0,255}), 
-          Line(points={{-90,-70},{72,-70}}, color={255,0,255}), 
+            points={{-80,88},{-88,66},{-72,66},{-80,88}},
+            lineColor={255,0,255},
+            fillColor={255,0,255},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,66},{-80,-82}}, color={255,0,255}),
+          Line(points={{-90,-70},{72,-70}}, color={255,0,255}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={255,0,255}, 
-            fillColor={255,0,255}, 
-            fillPattern=FillPattern.Solid), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={255,0,255},
+            fillColor={255,0,255},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-18,70},{32,-50}}, 
-            lineColor={255,255,255}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), Line(points={{-18,-50},{-18,70},{32, 
-                70},{32,-50},{-18,-50},{-18,-20},{32,-20},{32,10},{-18,10},{-18, 
-                40},{32,40},{32,70},{32,70},{32,-51}})}), 
+            extent={{-18,70},{32,-50}},
+            lineColor={255,255,255},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid), Line(points={{-18,-50},{-18,70},{32,
+                70},{32,-50},{-18,-50},{-18,-20},{32,-20},{32,10},{-18,10},{-18,
+                40},{32,40},{32,70},{32,70},{32,-51}})}),
       Documentation(info="<html>
 <p>
 The Boolean output y is a signal defined by parameter vector <strong>table</strong>.
@@ -2339,9 +2339,9 @@ The precise semantics is:
 
   block RadioButtonSource "Boolean signal source that mimics a radio button"
 
-    parameter SI.Time buttonTimeTable[:]={0,1} 
+    parameter SI.Time buttonTimeTable[:]={0,1}
       "Time instants where button is pressed";
-    input Boolean reset[:]={false} 
+    input Boolean reset[:]={false}
       "Reset button to false, if an element of reset becomes true" 
       annotation (Dialog(group="Time varying expressions"));
 
@@ -2365,17 +2365,17 @@ The precise semantics is:
     end when;
 
     annotation (Icon(coordinateSystem(
-          preserveAspectRatio=false, 
-          extent={{-100,-100},{100,100}}, 
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
           initialScale=0.06), graphics={Rectangle(
-            extent={{-100,-100},{100,100}}, 
-            borderPattern=BorderPattern.Raised, 
-            fillColor=DynamicSelect({192,192,192}, if on then {0,255,0} else {192,192,192}), 
-            fillPattern=FillPattern.Solid, 
+            extent={{-100,-100},{100,100}},
+            borderPattern=BorderPattern.Raised,
+            fillColor=DynamicSelect({192,192,192}, if on then {0,255,0} else {192,192,192}),
+            fillPattern=FillPattern.Solid,
             lineColor={128,128,128}), Text(
-            extent={{-300,110},{300,175}}, 
-            textColor={0,0,255}, 
-            textString="%name")}, 
+            extent={{-300,110},{300,175}},
+            textColor={0,0,255},
+            textString="%name")},
           interaction={OnMouseDownSetBoolean(on, true)}), Documentation(info="<html>
 <p>
 Boolean signal source that mimics a radio button:
@@ -2416,24 +2416,24 @@ This example is also available in
   equation
     y = k;
     annotation (
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-70},{82,-70}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-70},{82,-70}}, color={192,192,192}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,0},{80,0}}), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,0},{80,0}}),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="k=%k")}), 
+            extent={{-150,-150},{150,-110}},
+            textString="k=%k")}),
       Documentation(info="<html>
 <p>
 The Integer output y is a constant signal:
@@ -2452,24 +2452,24 @@ The Integer output y is a constant signal:
   equation
     y = offset + (if time < startTime then 0 else height);
     annotation (
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{-80,68},{-80,-80}}, color={192,192,192}), 
+          Line(points={{-80,68},{-80,-80}}, color={192,192,192}),
           Polygon(
-            points={{-80,90},{-88,68},{-72,68},{-80,90}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-70},{82,-70}}, color={192,192,192}), 
+            points={{-80,90},{-88,68},{-72,68},{-80,90}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-70},{82,-70}}, color={192,192,192}),
           Polygon(
-            points={{90,-70},{68,-62},{68,-78},{90,-70}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-80,-70},{0,-70},{0,50},{80,50}}), 
+            points={{90,-70},{68,-62},{68,-78},{90,-70}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-80,-70},{0,-70},{0,50},{80,50}}),
           Text(
-            extent={{-150,-150},{150,-110}}, 
-            textString="startTime=%startTime")}), 
+            extent={{-150,-150},{150,-110}},
+            textString="startTime=%startTime")}),
       Documentation(info="<html>
 <p>
 The Integer output y is a step signal:
@@ -2482,25 +2482,25 @@ The Integer output y is a step signal:
 </html>"));
   end IntegerStep;
 
-  block IntegerTable 
+  block IntegerTable
     "Generate an Integer output signal based on a table matrix with [time, yi] values"
 
     parameter Real table[:, 2]=fill(0,0,2) "Table matrix (first column: time; second column: y)" annotation(Dialog(group="Table data definition"));
-    parameter Modelica.Blocks.Types.Extrapolation extrapolation=Modelica.Blocks.Types.Extrapolation.HoldLastPoint 
+    parameter Modelica.Blocks.Types.Extrapolation extrapolation=Modelica.Blocks.Types.Extrapolation.HoldLastPoint
       "Extrapolation of data outside the definition range" annotation(Dialog(group="Table data interpretation"));
-    parameter SI.Time startTime=-Modelica.Constants.inf 
+    parameter SI.Time startTime=-Modelica.Constants.inf
       "Output = 0 for time < startTime" annotation(Dialog(group="Table data interpretation"));
-    parameter SI.Time shiftTime=0 
+    parameter SI.Time shiftTime=0
       "Shift time of first table column" annotation(Dialog(group="Table data interpretation"));
 
     extends Interfaces.IntegerSO;
 
     CombiTimeTable combiTimeTable(
-      final table=table, 
-      final smoothness=Modelica.Blocks.Types.Smoothness.ConstantSegments, 
-      final columns={2}, 
-      final extrapolation=extrapolation, 
-      final startTime=startTime, 
+      final table=table,
+      final smoothness=Modelica.Blocks.Types.Smoothness.ConstantSegments,
+      final columns={2},
+      final extrapolation=extrapolation,
+      final startTime=startTime,
       final shiftTime=shiftTime) annotation(Placement(transformation(extent={{-30,-10},{-10,10}})));
     Modelica.Blocks.Math.RealToInteger realToInteger annotation(Placement(transformation(extent={{10,-10},{30,10}})));
 
@@ -2516,16 +2516,16 @@ The Integer output y is a step signal:
           // Check whether time values are strict monotonically increasing
           t_last := table[1, 1];
           for i in 2:n loop
-            assert(table[i, 1] > t_last, 
-              "Time values of table not strict monotonically increasing: table[" 
-               + String(i - 1) + ",1] = " + String(table[i - 1, 1]) + "table[" + 
+            assert(table[i, 1] > t_last,
+              "Time values of table not strict monotonically increasing: table["
+               + String(i - 1) + ",1] = " + String(table[i - 1, 1]) + "table[" +
               String(i) + ",1] = " + String(table[i, 1]));
           end for;
 
           // Check that all values in the second column are Integer values
           for i in 1:n loop
-            assert(rem(table[i, 2], 1) == 0.0, 
-              "Table value is not an Integer: table[" + String(i) + ",2] = " + 
+            assert(rem(table[i, 2], 1) == 0.0,
+              "Table value is not an Integer: table[" + String(i) + ",2] = " +
               String(table[i, 2]));
           end for;
         end if;
@@ -2540,27 +2540,27 @@ The Integer output y is a step signal:
       connect(combiTimeTable.y[1], realToInteger.u) annotation(Line(points={{-9,0},{8,0}}, color={0,0,127}));
       connect(realToInteger.y, y) annotation(Line(points={{31,0},{110,0},{110,0}}, color={255,127,0}));
     annotation (
-      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+      Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
         graphics={
-          Line(points={{-80,64},{-80,-84}}, color={192,192,192}), 
+          Line(points={{-80,64},{-80,-84}}, color={192,192,192}),
           Polygon(
-            points={{-80,86},{-88,64},{-72,64},{-80,86}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-90,-74},{82,-74}}, color={192,192,192}), 
+            points={{-80,86},{-88,64},{-72,64},{-80,86}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-90,-74},{82,-74}}, color={192,192,192}),
           Polygon(
-            points={{90,-74},{68,-66},{68,-82},{90,-74}}, 
-            lineColor={192,192,192}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
+            points={{90,-74},{68,-66},{68,-82},{90,-74}},
+            lineColor={192,192,192},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-46,68},{4,-52}}, 
-            lineColor={255,255,255}, 
-            fillColor={192,192,192}, 
-            fillPattern=FillPattern.Solid), 
-          Line(points={{-46,-52},{-46,68},{54,68},{54,-52},{-46,-52},{-46,-22}, 
-                {54,-22},{54,8},{-46,8},{-46,38},{54,38},{54,68},{4,68},{4,-53}})}), 
+            extent={{-46,68},{4,-52}},
+            lineColor={255,255,255},
+            fillColor={192,192,192},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-46,-52},{-46,68},{54,68},{54,-52},{-46,-52},{-46,-22},
+                {54,-22},{54,8},{-46,8},{-46,38},{54,38},{54,68},{4,68},{4,-53}})}),
       Documentation(info="<html>
 
 <p>

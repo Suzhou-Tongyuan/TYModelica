@@ -3,20 +3,20 @@ model BearingFriction "Coulomb friction in bearings"
   extends 
     Modelica.Mechanics.Rotational.Interfaces.PartialElementaryTwoFlangesAndSupport2;
 
-  parameter Real tau_pos[:, 2]=[0, 1] 
+  parameter Real tau_pos[:, 2]=[0, 1]
     "Positive sliding friction characteristic [N.m] as function of w [rad/s] (w>=0)";
-  parameter Real peak(final min=1) = 1 
+  parameter Real peak(final min=1) = 1
     "Peak for maximum friction torque at w==0 (tau0_max = peak*tau_pos[1,2])";
 
   extends Rotational.Interfaces.PartialFriction;
   extends 
     Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPortWithoutT;
 
-  SI.Angle phi 
+  SI.Angle phi
     "Angle between shaft flanges (flange_a, flange_b) and support";
   SI.Torque tau "Friction torque";
   SI.AngularVelocity w "Absolute angular velocity of flange_a and flange_b";
-  SI.AngularAcceleration a 
+  SI.AngularAcceleration a
     "Absolute angular acceleration of flange_a and flange_b";
 
 equation
@@ -130,51 +130,51 @@ following references, especially (Armstrong and Canudas de Wit 1996):
 <dd><strong>A new model for control of systems with friction.</strong>
     IEEE Transactions on Automatic Control, Vol. 40, No. 3, pp. 419-425.</dd>
 </dl>
-</html>"), 
+</html>"),
        Icon(
-    coordinateSystem(preserveAspectRatio=true, 
-      extent={{-100.0,-100.0},{100.0,100.0}}), 
+    coordinateSystem(preserveAspectRatio=true,
+      extent={{-100.0,-100.0},{100.0,100.0}}),
       graphics={
-    Rectangle(lineColor={64,64,64}, 
-      fillColor={192,192,192}, 
-      fillPattern=FillPattern.HorizontalCylinder, 
-      extent={{-100.0,-10.0},{100.0,10.0}}), 
-    Rectangle(extent={{-60.0,-60.0},{60.0,-10.0}}), 
-    Rectangle(fillColor={192,192,192}, 
-      fillPattern=FillPattern.Solid, 
-      extent={{-60.0,-25.0},{60.0,-10.0}}), 
-    Rectangle(fillColor={192,192,192}, 
-      fillPattern=FillPattern.Solid, 
-      extent={{-60.0,-61.0},{60.0,-45.0}}), 
-    Rectangle(fillColor={255,255,255}, 
-      fillPattern=FillPattern.Solid, 
-      extent={{-50.0,-50.0},{50.0,-18.0}}), 
-    Polygon(fillColor={160,160,164}, 
-      fillPattern=FillPattern.Solid, 
-      points={{60.0,-60.0},{60.0,-70.0},{75.0,-70.0},{75.0,-80.0},{-75.0,-80.0},{-75.0,-70.0},{-60.0,-70.0},{-60.0,-60.0},{60.0,-60.0}}), 
-    Line(points={{-75.0,-10.0},{-75.0,-70.0}}), 
-    Line(points={{75.0,-10.0},{75.0,-70.0}}), 
-    Rectangle(extent={{-60.0,10.0},{60.0,60.0}}), 
-    Rectangle(fillColor={192,192,192}, 
-      fillPattern=FillPattern.Solid, 
-      extent={{-60.0,45.0},{60.0,60.0}}), 
-    Rectangle(fillColor={192,192,192}, 
-      fillPattern=FillPattern.Solid, 
-      extent={{-60.0,10.0},{60.0,25.0}}), 
-    Rectangle(fillColor={255,255,255}, 
-      fillPattern=FillPattern.Solid, 
-      extent={{-50.0,19.0},{50.0,51.0}}), 
-    Line(points={{-75.0,70.0},{-75.0,10.0}}), 
-    Polygon(fillColor={160,160,164}, 
-      fillPattern=FillPattern.Solid, 
-      points={{60.0,60.0},{60.0,70.0},{75.0,70.0},{75.0,80.0},{-75.0,80.0},{-75.0,70.0},{-60.0,70.0},{-60.0,60.0},{60.0,60.0}}), 
-    Line(points={{75.0,70.0},{75.0,10.0}}), 
-    Text(textColor={0,0,255}, 
-      extent={{-150.0,90.0},{150.0,130.0}}, 
-      textString="%name"), 
-    Line(points={{0.0,-80.0},{0.0,-100.0}}), 
-    Line(visible=useHeatPort, 
-      points={{-100.0,-100.0},{-100.0,-35.0},{2.0,-35.0}}, 
-      color={191,0,0}, 
+    Rectangle(lineColor={64,64,64},
+      fillColor={192,192,192},
+      fillPattern=FillPattern.HorizontalCylinder,
+      extent={{-100.0,-10.0},{100.0,10.0}}),
+    Rectangle(extent={{-60.0,-60.0},{60.0,-10.0}}),
+    Rectangle(fillColor={192,192,192},
+      fillPattern=FillPattern.Solid,
+      extent={{-60.0,-25.0},{60.0,-10.0}}),
+    Rectangle(fillColor={192,192,192},
+      fillPattern=FillPattern.Solid,
+      extent={{-60.0,-61.0},{60.0,-45.0}}),
+    Rectangle(fillColor={255,255,255},
+      fillPattern=FillPattern.Solid,
+      extent={{-50.0,-50.0},{50.0,-18.0}}),
+    Polygon(fillColor={160,160,164},
+      fillPattern=FillPattern.Solid,
+      points={{60.0,-60.0},{60.0,-70.0},{75.0,-70.0},{75.0,-80.0},{-75.0,-80.0},{-75.0,-70.0},{-60.0,-70.0},{-60.0,-60.0},{60.0,-60.0}}),
+    Line(points={{-75.0,-10.0},{-75.0,-70.0}}),
+    Line(points={{75.0,-10.0},{75.0,-70.0}}),
+    Rectangle(extent={{-60.0,10.0},{60.0,60.0}}),
+    Rectangle(fillColor={192,192,192},
+      fillPattern=FillPattern.Solid,
+      extent={{-60.0,45.0},{60.0,60.0}}),
+    Rectangle(fillColor={192,192,192},
+      fillPattern=FillPattern.Solid,
+      extent={{-60.0,10.0},{60.0,25.0}}),
+    Rectangle(fillColor={255,255,255},
+      fillPattern=FillPattern.Solid,
+      extent={{-50.0,19.0},{50.0,51.0}}),
+    Line(points={{-75.0,70.0},{-75.0,10.0}}),
+    Polygon(fillColor={160,160,164},
+      fillPattern=FillPattern.Solid,
+      points={{60.0,60.0},{60.0,70.0},{75.0,70.0},{75.0,80.0},{-75.0,80.0},{-75.0,70.0},{-60.0,70.0},{-60.0,60.0},{60.0,60.0}}),
+    Line(points={{75.0,70.0},{75.0,10.0}}),
+    Text(textColor={0,0,255},
+      extent={{-150.0,90.0},{150.0,130.0}},
+      textString="%name"),
+    Line(points={{0.0,-80.0},{0.0,-100.0}}),
+    Line(visible=useHeatPort,
+      points={{-100.0,-100.0},{-100.0,-35.0},{2.0,-35.0}},
+      color={191,0,0},
       pattern=LinePattern.Dot)}));
 end BearingFriction;

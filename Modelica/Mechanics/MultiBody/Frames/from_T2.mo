@@ -1,8 +1,8 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames;
-function from_T2 
+function from_T2
   "Return orientation object R from transformation matrix T and its derivative der(T)"
   extends Modelica.Icons.Function;
-  input Real T[3, 3] 
+  input Real T[3, 3]
     "Transformation matrix to transform vector from frame 1 to frame 2 (v2=T*v1)";
   input Real der_T[3,3] "= der(T)";
   output Orientation R "Orientation object to rotate frame 1 into frame 2";

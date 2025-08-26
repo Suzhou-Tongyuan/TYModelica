@@ -1,45 +1,45 @@
 ﻿within Modelica.Math;
-package FastFourierTransform 
+package FastFourierTransform
   "Library of functions for the Fast Fourier Transform (FFT)"
   extends Modelica.Icons.Package;
   import Modelica.Units.SI;
 
-  package Examples 
+  package Examples
     "Examples demonstrating the usage of the Math.FastFourierTransform functions"
     extends Modelica.Icons.ExamplesPackage;
 
-    model RealFFT1 
+    model RealFFT1
       "Example demonstrating the use of an FFT calculation during simulation (and storing both amplitudes and phases on file)"
       import Modelica.Constants.pi;
       extends Modelica.Icons.Example;
-      parameter SI.Frequency f_max = 4 
+      parameter SI.Frequency f_max = 4
         "Maximum frequency of interest";
-      parameter SI.Frequency f_resolution = 0.2 
+      parameter SI.Frequency f_resolution = 0.2
         "Frequency resolution";
       parameter SI.Frequency f1 = 2 "Frequency of sine";
       parameter SI.Frequency f2 = 3 "Frequency of cosine";
-      parameter String FFT_resultFileName = "RealFFT1_resultFFT.mat" 
+      parameter String FFT_resultFileName = "RealFFT1_resultFFT.mat"
         "File where FFT will be stored as [f,A,Phi], with f in [Hz] and A the amplitudes and Phi the phases in [rad]";
-      final parameter Integer nfi = max(1,min(integer(ceil(f_max/f_resolution))+1,nf)) 
+      final parameter Integer nfi = max(1,min(integer(ceil(f_max/f_resolution))+1,nf))
         "Number of frequency points of the interested frequency range (only up to f_max)";
-      final parameter SI.Frequency fi[nfi](each fixed=false) 
+      final parameter SI.Frequency fi[nfi](each fixed=false)
         "FFT frequencies of interested frequency points";
-      Real y(final start=0, final fixed=true) 
+      Real y(final start=0, final fixed=true)
         "Signal from which FFT is computed";
-      final output Real Ai[nfi](each start=0, each fixed=true) 
+      final output Real Ai[nfi](each start=0, each fixed=true)
         "FFT amplitudes of interested frequency points";
-      final output Real Phii[nfi](each start=0, each fixed=true) 
+      final output Real Phii[nfi](each start=0, each fixed=true)
         "FFT phases of interested frequency points";
-      output Integer info(final start=0, final fixed=true) 
+      output Integer info(final start=0, final fixed=true)
         "Information flag from FFT computation; = 0: FFT successfully computed";
 
     protected
       parameter Integer ns = realFFTsamplePoints(f_max, f_resolution, f_max_factor=5);
-      parameter SI.Frequency f_max_FFT = f_resolution*div(ns, 2) 
+      parameter SI.Frequency f_max_FFT = f_resolution*div(ns, 2)
         "Maximum frequency used by FFT";
       parameter Integer nf = div(ns,2) + 1 "Number of frequency points";
       parameter SI.Time Ts = 1/(2*f_max_FFT) "Sample period";
-      parameter SI.Time T = (ns - 1)*Ts 
+      parameter SI.Time T = (ns - 1)*Ts
         "Simulation time for one FFT calculation";
 
       Integer iTick(start=0, fixed=true);
@@ -63,7 +63,7 @@ package FastFourierTransform
          end if;
       end when;
 
-      annotation (experiment(StopTime=6), preferredView="text", 
+      annotation (experiment(StopTime=6), preferredView="text",
         Documentation(revisions="<html>
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
@@ -74,7 +74,7 @@ package FastFourierTransform
      Martin R. Kuhn and Martin Otter
      (<a href=\"http://www.dlr.de/rmc/sr/en\">DLR Institute of System Dynamics and Control</a>.</td></tr>
 </table>
-</html>", 
+</html>",
       info="<html>
 <p>
 In this example the signal y
@@ -112,36 +112,36 @@ Furthermore, note that the FFT phases are with respect to a cos(..) signal.
 </html>"));
     end RealFFT1;
 
-    model RealFFT2 
+    model RealFFT2
       "Example demonstrating the use of an FFT calculation during simulation (and storing only amplitudes on file)"
       import Modelica.Constants.pi;
       extends Modelica.Icons.Example;
-      parameter SI.Frequency f_max = 4 
+      parameter SI.Frequency f_max = 4
         "Maximum frequency of interest";
-      parameter SI.Frequency f_resolution = 0.2 
+      parameter SI.Frequency f_resolution = 0.2
         "Frequency resolution";
       parameter SI.Frequency f1 = 2 "Frequency of sine";
       parameter SI.Frequency f2 = 3 "Frequency of cosine";
-      parameter String FFT_resultFileName = "RealFFT2_resultFFT.mat" 
+      parameter String FFT_resultFileName = "RealFFT2_resultFFT.mat"
         "File where FFT will be stored as [f,A,Phi], with f in [Hz] and A the amplitudes and Phi the phases in [rad]";
-      final parameter Integer nfi = max(1,min(integer(ceil(f_max/f_resolution))+1,nf)) 
+      final parameter Integer nfi = max(1,min(integer(ceil(f_max/f_resolution))+1,nf))
         "Number of frequency points of the interested frequency range (only up to f_max)";
-      final parameter SI.Frequency fi[nfi](each fixed=false) 
+      final parameter SI.Frequency fi[nfi](each fixed=false)
         "FFT frequencies of interested frequency points";
-      Real y(final start=0, final fixed=true) 
+      Real y(final start=0, final fixed=true)
         "Signal from which FFT is computed";
-      final output Real Ai[nfi](each start=0, each fixed=true) 
+      final output Real Ai[nfi](each start=0, each fixed=true)
         "FFT amplitudes of interested frequency points";
-      output Integer info(final start=0, final fixed=true) 
+      output Integer info(final start=0, final fixed=true)
         "Information flag from FFT computation; = 0: FFT successfully computed";
 
     protected
       parameter Integer ns = realFFTsamplePoints(f_max, f_resolution, f_max_factor=5);
-      parameter SI.Frequency f_max_FFT = f_resolution*div(ns, 2) 
+      parameter SI.Frequency f_max_FFT = f_resolution*div(ns, 2)
         "Maximum frequency used by FFT";
       parameter Integer nf = div(ns,2) + 1 "Number of frequency points";
       parameter SI.Time Ts = 1/(2*f_max_FFT) "Sample period";
-      parameter SI.Time T = (ns - 1)*Ts 
+      parameter SI.Time T = (ns - 1)*Ts
         "Simulation time for one FFT calculation";
 
       Integer iTick(start=0, fixed=true);
@@ -165,7 +165,7 @@ Furthermore, note that the FFT phases are with respect to a cos(..) signal.
          end if;
       end when;
 
-      annotation (experiment(StopTime=6), preferredView="text", 
+      annotation (experiment(StopTime=6), preferredView="text",
         Documentation(revisions="<html>
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
@@ -176,7 +176,7 @@ Furthermore, note that the FFT phases are with respect to a cos(..) signal.
      Martin R. Kuhn and Martin Otter
      (<a href=\"http://www.dlr.de/rmc/sr/en\">DLR Institute of System Dynamics and Control</a>.</td></tr>
 </table>
-</html>", 
+</html>",
       info="<html>
 <p>
 This is the same example as <a href=\"modelica://Modelica.Math.FastFourierTransform.Examples.RealFFT1\">Examples.RealFFT1</a>
@@ -197,13 +197,13 @@ with the only difference that just the amplitudes of the FFT are stored on file 
 </html>"));
   end Examples;
 
-  function realFFTinfo 
+  function realFFTinfo
     "Print information about real FFT for given f_max and f_resolution"
     extends Modelica.Icons.Function;
     import Modelica.Utilities.Streams.print;
     input SI.Frequency f_max "Maximum frequency";
     input SI.Frequency f_resolution "Frequency resolution";
-    input Integer f_max_factor(min=1)=5 
+    input Integer f_max_factor(min=1)=5
       "Maximum FFT frequency >= f_max*f_max_factor (sample frequency = 2*Maximum FFT Frequency)";
   protected
     Integer ns = realFFTsamplePoints(f_max, f_resolution, f_max_factor);
@@ -226,9 +226,9 @@ with the only difference that just the amplitudes of the FFT are stored on file 
     print("    Number of sample points    = " + String(ns) + " (= 2^"+String(e2)+"*3^"+String(e3)+"*5^"+String(e5)+")");
     print("    Sampling frequency         = " + String(fs) + " Hz (= " + String(f_resolution) + "*" + String(ns) + ")");
     print("    Sampling period            = " + String(Ts) + " s (= " + "1/" + String(fs) + ")");
-    print("    Maximum FFT frequency      = " + String(f_max_used) + " Hz (= " + String(f_resolution) + "*" + String(ns) + "/2; " 
-                                                                   + "f={0," + String(f_resolution) + "," 
-                                                                   + String(2*f_resolution) + ",...," 
+    print("    Maximum FFT frequency      = " + String(f_max_used) + " Hz (= " + String(f_resolution) + "*" + String(ns) + "/2; "
+                                                                   + "f={0," + String(f_resolution) + ","
+                                                                   + String(2*f_resolution) + ",...,"
                                                                    + String(f_max_used) + "} Hz)");
     print("    Number of frequency points = " + String(nf) + " (= " + String(ns) + "/2+1)");
     print("    Simulation time            = " + String(T) + " s");
@@ -242,7 +242,7 @@ with the only difference that just the amplitudes of the FFT are stored on file 
      Martin R. Kuhn and Martin Otter
      (<a href=\"http://www.dlr.de/rmc/sr/en\">DLR Institute of System Dynamics and Control</a>.</td></tr>
 </table>
-</html>", 
+</html>",
         info="<html>
 <h4>Syntax</h4>
 
@@ -293,9 +293,9 @@ results in the following output:
      extends Modelica.Icons.Function;
      input SI.Frequency f_max "Maximum frequency of interest";
      input SI.Frequency f_resolution "Frequency resolution";
-     input Integer f_max_factor(min=1)=5 
+     input Integer f_max_factor(min=1)=5
       "Maximum FFT frequency >= f_max*f_max_factor (sample frequency = 2*Maximum FFT Frequency)";
-     output Integer ns 
+     output Integer ns
       "Number of sample points that can be expressed as ns = 2^i*3^j*5^k and ns is even";
   protected
      Integer ns1;
@@ -331,7 +331,7 @@ results in the following output:
      Martin R. Kuhn and Martin Otter
      (<a href=\"http://www.dlr.de/rmc/sr/en\">DLR Institute of System Dynamics and Control</a>.</td></tr>
 </table>
-</html>", 
+</html>",
       info="<html>
 <h4>Syntax</h4>
 
@@ -409,11 +409,11 @@ ns = 5760
 
   function realFFT "Return amplitude and phase vectors for a real FFT"
     extends Modelica.Icons.Function;
-    input Real  u[:] 
+    input Real  u[:]
       "Signal for which FFT shall be computed (size(nu,1) MUST be EVEN and should be an integer multiple of 2,3,5, that is size(nu,1) = 2^a*3^b*5^c, with a,b,c Integer >= 0)";
-    input Integer nfi 
+    input Integer nfi
       "Number of frequency points that shall be returned in amplitudes and phases (typically: nfi = max(1,min(integer(ceil(f_max/f_resolution))+1,nf))); the maximal possible value is nfi=div(size(u,1),2)+1)";
-    output Integer info 
+    output Integer info
       "Information flag (0: FFT computed, 1: nu is not even, 3: another error)";
     output Real amplitudes[nfi] "Amplitudes of FFT";
     output Real phases[nfi] "Phases of FFT in [deg]";
@@ -455,7 +455,7 @@ ns = 5760
      Martin R. Kuhn and Martin Otter
      (<a href=\"http://www.dlr.de/rmc/sr/en\">DLR Institute of System Dynamics and Control</a>.</td></tr>
 </table>
-</html>", 
+</html>",
       info="<html>
 <h4>Syntax</h4>
 
@@ -541,16 +541,16 @@ which is a complete example where an FFT is computed during simulation and store
      import Modelica.Units.Conversions.to_deg;
      import Modelica.Utilities.Streams.writeRealMatrix;
      input Real t_computed "Time instant at which the FFT was computed";
-     input String fileName 
+     input String fileName
       "File where FFT shall be stored (if it exists, it is deleted and then re-created)";
      input SI.Frequency f_max "Maximum frequency";
      input Real amplitudes[:] "Amplitudes of FFT";
-     input Real phases[:] = fill(0.0,0) 
+     input Real phases[:] = fill(0.0,0)
       "Phases of FFT (either provide no argument, or a vector with the same length as amplitudes)";
-     input String format = "4" 
+     input String format = "4"
       "MATLAB MAT-file version: \"4\" -> v4, \"6\" -> v6, \"7\" -> v7" 
-       annotation(choices(choice="4" "MATLAB v4 MAT-file", 
-                          choice="6" "MATLAB v6 MAT-file", 
+       annotation(choices(choice="4" "MATLAB v4 MAT-file",
+                          choice="6" "MATLAB v6 MAT-file",
                           choice="7" "MATLAB v7 MAT-file"));
     output Boolean success "= true, if successful";
   protected
@@ -634,14 +634,14 @@ See detailed example model:
 </html>"));
   end realFFTwriteToFile;
 
-  package Internal 
+  package Internal
     "Internal library that should not be used directly by a user"
     extends Modelica.Icons.InternalPackage;
     pure function rawRealFFT "Compute raw Fast Fourier Transform for real signal vector"
       extends Modelica.Icons.Function;
-      input Real  u[:] 
+      input Real  u[:]
         "Signal for which FFT shall be computed (size(nu,1) MUST be EVEN and should be an integer multiple of 2,3,5, that is size(nu,1) = 2^a*3^b*5^c, with a,b,c Integer >= 0)";
-      output Integer info 
+      output Integer info
         "Information flag (0: FFT computed, 1: nu is not even, 2: nwork is wrong, 3: another error)";
       output Real amplitudes[div(size(u,1),2)+1] "Amplitudes of FFT";
       output Real phases[    div(size(u,1),2)+1] "Phases of FFT";
@@ -659,7 +659,7 @@ See detailed example model:
      Martin R. Kuhn and Martin Otter
      (<a href=\"http://www.dlr.de/rmc/sr/en\">DLR Institute of System Dynamics and Control</a>.</td></tr>
 </table>
-</html>", 
+</html>",
       info="<html>
 <h4>Syntax</h4>
 
@@ -761,7 +761,7 @@ used in this function.
      Martin R. Kuhn and Martin Otter
      (<a href=\"http://www.dlr.de/rmc/sr/en\">DLR Institute of System Dynamics and Control</a>.</td></tr>
 </table>
-</html>", 
+</html>",
       info="<html>
 <h4>Syntax</h4>
 
@@ -840,7 +840,7 @@ resulting in:
      <a href=\"http://www.ep.liu.se/ecp/118/053/ecp15118491.pdf\">http://www.ep.liu.se/ecp/118/053/ecp15118491.pdf</a>
      </dd>
 </dl>
-</html>", 
+</html>",
       revisions="<html>
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
@@ -852,8 +852,8 @@ resulting in:
      (<a href=\"http://www.dlr.de/rmc/sr/en\">DLR Institute of System Dynamics and Control</a>.</td></tr>
 </table>
 </html>"), Icon(graphics={
-        Line(points={{-60,20},{-60,-80}}, color={95,95,95}), 
-        Line(points={{-20,60},{-20,-80}}, color={95,95,95}), 
-        Line(points={{20,40},{20,-80}}, color={95,95,95}), 
+        Line(points={{-60,20},{-60,-80}}, color={95,95,95}),
+        Line(points={{-20,60},{-20,-80}}, color={95,95,95}),
+        Line(points={{20,40},{20,-80}}, color={95,95,95}),
         Line(points={{60,-20},{60,-80}}, color={95,95,95})}));
 end FastFourierTransform;

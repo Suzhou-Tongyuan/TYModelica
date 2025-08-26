@@ -1,28 +1,28 @@
 ﻿within Modelica.Electrical.Analog.Ideal;
 model AD_Converter "Simple n-bit analog to digital converter"
   import L = Modelica.Electrical.Digital.Interfaces.Logic;
-  Modelica.Electrical.Analog.Interfaces.PositivePin p 
+  Modelica.Electrical.Analog.Interfaces.PositivePin p
     "Positive electrical pin (input)" annotation (Placement(transformation(
-          extent={{-110,90},{-90,110}}), 
+          extent={{-110,90},{-90,110}}),
                                        iconTransformation(extent={{-110,90},{-90,110}})));
-  Modelica.Electrical.Analog.Interfaces.NegativePin n 
+  Modelica.Electrical.Analog.Interfaces.NegativePin n
     "Negative electrical pin (input)" annotation (Placement(transformation(
-          extent={{-110,-110},{-90,-90}}), 
+          extent={{-110,-110},{-90,-90}}),
                                          iconTransformation(
           extent={{-110,-110},{-90,-90}})));
   Modelica.Electrical.Digital.Interfaces.DigitalOutput y[N] "Digital output" 
-    annotation (Placement(transformation(extent={{100,-10},{120,10}}), 
+    annotation (Placement(transformation(extent={{100,-10},{120,10}}),
                                                                      iconTransformation(extent={{100,-10},{120,10}})));
   Modelica.Electrical.Digital.Interfaces.DigitalInput trig "Trigger input" 
-    annotation (Placement(transformation(extent={{-8,90},{12,110}}), 
+    annotation (Placement(transformation(extent={{-8,90},{12,110}}),
         iconTransformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=-90, 
+        extent={{-10,-10},{10,10}},
+        rotation=-90,
         origin={0,100})));
-  parameter Integer N(final min=1, start=8) 
+  parameter Integer N(final min=1, start=8)
     "Resolution in bits - output signal width";
   parameter SI.Voltage VRefHigh(start=10) "High reference voltage";
-  parameter SI.Voltage VRefLow(final max=VRefHigh, start=0) 
+  parameter SI.Voltage VRefLow(final max=VRefHigh, start=0)
     "Low reference voltage";
   parameter SI.Resistance Rin(start=10^6) "Input resistance";
   Integer z(start=0, fixed=true);
@@ -35,7 +35,7 @@ initial algorithm
 
 algorithm
   when (trig == L.'1' or trig == L.'H') then
-    z := if u > VRefLow then integer((u - VRefLow)/(VRefHigh - VRefLow)*(2^N 
+    z := if u > VRefLow then integer((u - VRefLow)/(VRefHigh - VRefLow)*(2^N
        - 1) + 0.5) else 0;
     for i in 1:N loop
       y[i] := if mod(z, 2) > 0 then L.'1' else L.'0';
@@ -69,29 +69,29 @@ This is an abstract model of an ADC. Therefore, it can not cover the dynamic beh
 Hence the output will change instantaneously when the trigger signal rises.
 </p>
 
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em> October 13, 2009   </em>
        by Matthias Franke
        </li>
 </ul>
-</html>"), 
-         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
-        Rectangle(extent={{-100,100},{100,-100}}, 
-                                              lineColor={0,0,255}), 
+        Rectangle(extent={{-100,100},{100,-100}},
+                                              lineColor={0,0,255}),
         Polygon(
-          points={{-98,-100},{100,98},{100,-100},{-98,-100}}, 
-          lineColor={0,0,255}, 
-          fillColor={127,0,127}, 
-          fillPattern=FillPattern.Solid), 
+          points={{-98,-100},{100,98},{100,-100},{-98,-100}},
+          lineColor={0,0,255},
+          fillColor={127,0,127},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,50},{60,10}}, 
-          textColor={0,0,255}, 
-          textString="%n-bit"), 
+          extent={{-60,50},{60,10}},
+          textColor={0,0,255},
+          textString="%n-bit"),
         Text(
-          extent={{-60,-10},{60,-50}}, 
-          textColor={0,0,255}, 
+          extent={{-60,-10},{60,-50}},
+          textColor={0,0,255},
           textString="ADC")}));
 end AD_Converter;

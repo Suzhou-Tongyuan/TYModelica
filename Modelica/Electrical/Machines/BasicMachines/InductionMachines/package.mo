@@ -9,7 +9,7 @@ This package contains models of induction machines, based on space phasor theory
 <li>IM_SlipRing: induction machine with wound rotor</li>
 </ul>
 These models use package SpacePhasors.
-</html>", 
+</html>",
       revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

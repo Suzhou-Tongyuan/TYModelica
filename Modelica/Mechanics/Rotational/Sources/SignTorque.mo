@@ -2,15 +2,15 @@
 model SignTorque "Constant torque changing sign with speed"
   extends Rotational.Interfaces.PartialTorque;
   import Modelica.Constants.pi;
-  parameter SI.Torque tau_nominal 
+  parameter SI.Torque tau_nominal
     "Nominal torque (if negative, torque is acting as load)";
-  parameter Modelica.Blocks.Types.Regularization reg=Modelica.Blocks.Types.Regularization.Exp 
+  parameter Modelica.Blocks.Types.Regularization reg=Modelica.Blocks.Types.Regularization.Exp
     "Type of regularization" annotation(Evaluate=true);
-  parameter SI.AngularVelocity w0(final min=Modelica.Constants.eps, start=0.1) 
+  parameter SI.AngularVelocity w0(final min=Modelica.Constants.eps, start=0.1)
     "Regularization below w0";
-  SI.AngularVelocity w 
+  SI.AngularVelocity w
     "Angular velocity of flange with respect to support (= der(phi))";
-  SI.Torque tau 
+  SI.Torque tau
     "Accelerating torque acting at flange (= -flange.tau)";
 equation
   w = der(phi);
@@ -27,15 +27,15 @@ equation
   annotation (
     Icon(
       coordinateSystem(
-        preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}), 
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}}),
         graphics={
           Text(
-            extent={{-120,-50},{120,-20}}, 
-          textString="%tau_nominal"), 
-          Line(points={{-75,24},{75,24}}, 
-                                        color={192,192,192}), 
-          Line(points={{0,66},{0,-20}}, color={192,192,192}), 
+            extent={{-120,-50},{120,-20}},
+          textString="%tau_nominal"),
+          Line(points={{-75,24},{75,24}},
+                                        color={192,192,192}),
+          Line(points={{0,66},{0,-20}}, color={192,192,192}),
         Line(points={{-74,-12},{-8,-12},{-6,-10},{6,58},{8,60},{48,60}})}), Documentation(info="<html>
 <p>Model of constant torque which changes sign with direction of rotation.</p>
 <p>Please note:<br>

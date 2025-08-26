@@ -1,9 +1,9 @@
 ﻿within Modelica.Mechanics.MultiBody.Types;
 type ResolveInFrameA = enumeration(
-    world "Resolve in world frame", 
-    frame_a "Resolve in frame_a", 
-    frame_resolve 
-      "Resolve in frame_resolve (frame_resolve must be connected)") 
+    world "Resolve in world frame",
+    frame_a "Resolve in frame_a",
+    frame_resolve
+      "Resolve in frame_resolve (frame_resolve must be connected)")
   "Enumeration to define the frame in which an absolute vector is resolved (world, frame_a, frame_resolve)" 
                                              annotation (Documentation(info="<html>
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">

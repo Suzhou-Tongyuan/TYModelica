@@ -1,9 +1,9 @@
 ﻿within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
 record PlasticNdFeB "Plastic-bonded NdFeB, exemplary values"
   extends FluxTubes.Material.HardMagnetic.BaseData(
-    H_cBRef=400000, 
-    B_rRef=0.58, 
-    T_ref=20 + 273.15, 
+    H_cBRef=400000,
+    B_rRef=0.58,
+    T_ref=20 + 273.15,
     alpha_Br=-0.001);
   annotation (Documentation(info="<html>
 <p>

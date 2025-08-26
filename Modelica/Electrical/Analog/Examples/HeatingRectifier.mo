@@ -8,21 +8,21 @@ model HeatingRectifier "Heating rectifier"
   annotation (Placement(transformation(extent={{-80,0},{-60,20}})));
   Modelica.Electrical.Analog.Sources.SineVoltage SineVoltage1(V=1, f=1) 
   annotation (Placement(transformation(
-        origin={-70,40}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-70,40},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
 
   Modelica.Electrical.Analog.Basic.Capacitor Capacitor1(C=1, v(start=0, fixed=true)) 
   annotation (Placement(transformation(extent={{20,40},{40,60}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor HeatCapacitor1(C=1) 
   annotation (Placement(transformation(
-        origin={-20,-50}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-20,-50},
+        extent={{-10,-10},{10,10}},
         rotation=180)));
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor ThermalConductor1(G=10) 
   annotation (Placement(transformation(
-        origin={-20,-10}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-20,-10},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Resistor R(R=1) 
   annotation (Placement(transformation(extent={{20,70},{40,90}})));
@@ -42,18 +42,18 @@ equation
                                                           annotation (Line(
         points={{-10,40},{-10,0},{-20,0}}, color={191,0,0}));
   connect(ThermalConductor1.port_b, HeatCapacitor1.port) 
-                                                       annotation (Line(points={{-20,-20}, 
+                                                       annotation (Line(points={{-20,-20},
           {-20,-25.75},{-20,-40}}, color={191,0,0}));
   connect(R.p, Capacitor1.p) 
   annotation (Line(points={{20,80},{20,50}}, color={0,0,255}));
   connect(R.n, Capacitor1.n) 
   annotation (Line(points={{40,80},{40,50}}, color={0,0,255}));
 
-annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{100,100}}), graphics={Text(
-          extent={{-94,102},{0,74}}, 
-          textString="HeatingRectifier", 
-          textColor={0,0,255})}), 
+          extent={{-94,102},{0,74}},
+          textString="HeatingRectifier",
+          textColor={0,0,255})}),
                                 Documentation(info="<html>
 <p>The heating rectifier shows a heat flow always if the electrical capacitor is loaded.</p>
 <p>Simulate until T=5 s.Plot in separate windows:
@@ -61,7 +61,7 @@ annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,
 <br>HeatCapacitor1.port.T and HeatingDiode1.heatPort.T
 <br>HeatingDiode1.heatPort.Q_flow
 </p>
-</html>", 
+</html>",
    revisions="<html>
 <p><strong>Release Notes:</strong></p>
 <ul>

@@ -2,7 +2,7 @@
 function inverseRotation "Return inverse orientation object"
   extends Modelica.Icons.Function;
   input Orientation R "Orientation object to rotate frame 1 into frame 2";
-  output Orientation R_inv 
+  output Orientation R_inv
     "Orientation object to rotate frame 2 into frame 1";
 algorithm
   R_inv := Orientation(T=transpose(R.T),w= -resolve1(R, R.w));

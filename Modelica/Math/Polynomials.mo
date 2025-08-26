@@ -1,11 +1,11 @@
 ﻿within Modelica.Math;
-    package Polynomials 
+    package Polynomials
       "Library of functions operating on polynomials (including polynomial fitting)"
       extends Modelica.Icons.FunctionsPackage;
 
       function evaluate "Evaluate polynomial at a given abscissa value"
         extends Modelica.Icons.Function;
-        input Real p[:] 
+        input Real p[:]
           "Polynomial coefficients (p[1] is coefficient of highest power)";
         input Real u "Abscissa value";
         output Real y "Value of polynomial at u";
@@ -17,39 +17,39 @@
         annotation(derivative(zeroDerivative=p)=evaluate_der);
       end evaluate;
 
-      function evaluateWithRange 
+      function evaluateWithRange
         "Evaluate polynomial at a given abscissa value with linear extrapolation outside of the defined range"
         extends Modelica.Icons.Function;
-        input Real p[:] 
+        input Real p[:]
           "Polynomial coefficients (p[1] is coefficient of highest power)";
         input Real uMin "Polynomial valid in the range uMin .. uMax";
         input Real uMax "Polynomial valid in the range uMin .. uMax";
         input Real u "Abscissa value";
-        output Real y 
+        output Real y
           "Value of polynomial at u. Outside of uMin,uMax, linear extrapolation is used";
       algorithm
         if u < uMin then
           y := evaluate(p, uMin) - evaluate_der(
-                  p, 
-                  uMin, 
+                  p,
+                  uMin,
                   uMin - u);
         elseif u > uMax then
           y := evaluate(p, uMax) + evaluate_der(
-                  p, 
-                  uMax, 
+                  p,
+                  uMax,
                   u - uMax);
         else
           y := evaluate(p, u);
         end if;
         annotation (derivative(
-            zeroDerivative=p, 
-            zeroDerivative=uMin, 
+            zeroDerivative=p,
+            zeroDerivative=uMin,
             zeroDerivative=uMax) = evaluateWithRange_der);
       end evaluateWithRange;
 
       function derivative "Derivative of polynomial"
         extends Modelica.Icons.Function;
-        input Real p1[:] 
+        input Real p1[:]
           "Polynomial coefficients (p1[1] is coefficient of highest power)";
         output Real p2[size(p1, 1) - 1] "Derivative of polynomial p1";
       protected
@@ -60,10 +60,10 @@
         end for;
       end derivative;
 
-      function derivativeValue 
+      function derivativeValue
         "Value of derivative of polynomial at abscissa value u"
         extends Modelica.Icons.Function;
-        input Real p[:] 
+        input Real p[:]
           "Polynomial coefficients (p[1] is coefficient of highest power)";
         input Real u "Abscissa value";
         output Real y "Value of derivative of polynomial at u";
@@ -77,10 +77,10 @@
         annotation(derivative(zeroDerivative=p)=derivativeValue_der);
       end derivativeValue;
 
-      function secondDerivativeValue 
+      function secondDerivativeValue
         "Value of 2nd derivative of polynomial at abscissa value u"
         extends Modelica.Icons.Function;
-        input Real p[:] 
+        input Real p[:]
           "Polynomial coefficients (p[1] is coefficient of highest power)";
         input Real u "Abscissa value";
         output Real y "Value of 2nd derivative of polynomial at u";
@@ -95,9 +95,9 @@
 
       function integral "Indefinite integral of polynomial p(u)"
         extends Modelica.Icons.Function;
-        input Real p1[:] 
+        input Real p1[:]
           "Polynomial coefficients (p1[1] is coefficient of highest power)";
-        output Real p2[size(p1, 1) + 1] 
+        output Real p2[size(p1, 1) + 1]
           "Polynomial coefficients of indefinite integral of polynomial p1 (polynomial p2 + C is the indefinite integral of p1, where C is an arbitrary constant)";
       protected
         Integer n=size(p1, 1) + 1 "Degree of output polynomial";
@@ -113,7 +113,7 @@
         input Real p[:] "Polynomial coefficients";
         input Real u_high "High integrand value";
         input Real u_low=0 "Low integrand value, default 0";
-        output Real integral=0.0 
+        output Real integral=0.0
           "Integral of polynomial p from u_low to u_high";
       protected
         Integer n=size(p, 1) "Degree of integrated polynomial";
@@ -127,14 +127,14 @@
         annotation(derivative(zeroDerivative=p)=integralValue_der);
       end integralValue;
 
-      function fitting 
+      function fitting
         "Computes the coefficients of a polynomial that fits a set of data points in a least-squares sense"
         extends Modelica.Icons.Function;
         input Real u[:] "Abscissa data values";
         input Real y[size(u, 1)] "Ordinate data values";
-        input Integer n(min=1) 
+        input Integer n(min=1)
           "Order of desired polynomial that fits the data points (u,y)";
-        output Real p[n + 1] 
+        output Real p[n + 1]
           "Polynomial coefficients of polynomial that fits the date points";
       protected
         Real V[size(u, 1), n + 1] "Vandermonde matrix";
@@ -160,10 +160,10 @@ p(u) = p[1]*u^n + p[2]*u^(n-1) + ... + p[n]*u + p[n+1];
 </html>"));
       end fitting;
 
-      function evaluate_der 
+      function evaluate_der
         "Evaluate derivative of polynomial at a given abscissa value"
         extends Modelica.Icons.Function;
-        input Real p[:] 
+        input Real p[:]
           "Polynomial coefficients (p[1] is coefficient of highest power)";
         input Real u "Abscissa value";
         input Real du "Delta of abscissa value";
@@ -178,10 +178,10 @@ p(u) = p[1]*u^n + p[2]*u^(n-1) + ... + p[n]*u + p[n+1];
         dy := dy*du;
       end evaluate_der;
 
-      function evaluateWithRange_der 
+      function evaluateWithRange_der
         "Evaluate derivative of polynomial at a given abscissa value with extrapolation outside of the defined range"
         extends Modelica.Icons.Function;
-        input Real p[:] 
+        input Real p[:]
           "Polynomial coefficients (p[1] is coefficient of highest power)";
         input Real uMin "Polynomial valid in the range uMin .. uMax";
         input Real uMax "Polynomial valid in the range uMin .. uMax";
@@ -191,23 +191,23 @@ p(u) = p[1]*u^n + p[2]*u^(n-1) + ... + p[n]*u + p[n+1];
       algorithm
         if u < uMin then
           dy := evaluate_der(
-                  p, 
-                  uMin, 
+                  p,
+                  uMin,
                   du);
         elseif u > uMax then
           dy := evaluate_der(
-                  p, 
-                  uMax, 
+                  p,
+                  uMax,
                   du);
         else
           dy := evaluate_der(
-                  p, 
-                  u, 
+                  p,
+                  u,
                   du);
         end if;
       end evaluateWithRange_der;
 
-      function integralValue_der 
+      function integralValue_der
         "Time derivative of integral of polynomial p(u) from u_low to u_high, assuming only u_high as time-dependent (Leibniz rule)"
         extends Modelica.Icons.Function;
         input Real p[:] "Polynomial coefficients";
@@ -215,20 +215,20 @@ p(u) = p[1]*u^n + p[2]*u^(n-1) + ... + p[n]*u + p[n+1];
         input Real u_low=0 "Low integrand value, default 0";
         input Real du_high "High integrand value";
         input Real du_low=0 "Low integrand value, default 0";
-        output Real dintegral=0.0 
+        output Real dintegral=0.0
           "Integral of polynomial p from u_low to u_high";
       algorithm
         dintegral := evaluate(p,u_high)*du_high;
       end integralValue_der;
 
-      function derivativeValue_der 
+      function derivativeValue_der
         "Time derivative of derivative of polynomial"
         extends Modelica.Icons.Function;
-        input Real p[:] 
+        input Real p[:]
           "Polynomial coefficients (p[1] is coefficient of highest power)";
         input Real u "Abscissa value";
         input Real du "Delta of abscissa value";
-        output Real dy 
+        output Real dy
           "Time-derivative of derivative of polynomial w.r.t. input variable at u";
       protected
         Integer n=size(p, 1);
@@ -236,17 +236,17 @@ p(u) = p[1]*u^n + p[2]*u^(n-1) + ... + p[n]*u + p[n+1];
         dy := secondDerivativeValue(p,u)*du;
       end derivativeValue_der;
 
-      encapsulated function roots 
+      encapsulated function roots
         "Compute zeros of a polynomial where the highest coefficient is assumed as not to be zero"
         import Modelica.Math.Matrices;
         import Modelica;
         extends Modelica.Icons.Function;
-        input Real p[:] 
+        input Real p[:]
           "Vector with polynomial coefficients p[1]*x^n + p[2]*x^(n-1) + p[n]*x +p[n-1]";
         output Real roots[max(0, size(p, 1) - 1), 2]=fill(
-                  0, 
-                  max(0, size(p, 1) - 1), 
-                  2) 
+                  0,
+                  max(0, size(p, 1) - 1),
+                  2)
           "roots[:,1] and roots[:,2] are the real and imaginary parts of the roots of polynomial p";
       protected
         Integer np=size(p, 1);
@@ -255,9 +255,9 @@ p(u) = p[1]*u^n + p[2]*u^(n-1) + ... + p[n]*u + p[n+1];
         Real ev[max(size(p, 1) - 1, 0), 2] "Eigenvalues";
       algorithm
         if n > 0 then
-          assert(abs(p[1]) > 0, 
-            "Computing the roots of a polynomial with function \"Modelica.Math.Polynomials.roots\"\n" 
-             + 
+          assert(abs(p[1]) > 0,
+            "Computing the roots of a polynomial with function \"Modelica.Math.Polynomials.roots\"\n"
+             +
             "failed because the first element of the coefficient vector is zero, but should not be.");
 
           // companion matrix

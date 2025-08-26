@@ -4,7 +4,7 @@ package Losses "Loss models for electric machines"
 
   annotation (Documentation(info="<html>
 This package contains loss models and their parameter records used for machine models.
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

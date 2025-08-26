@@ -1,11 +1,11 @@
 ﻿within Modelica.Mechanics.MultiBody.Visualizers;
-model FixedArrow 
+model FixedArrow
   "Visualizing an arrow with dynamically varying size in frame_a"
 
   import Modelica.Mechanics.MultiBody.Types;
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialVisualizer;
   parameter Boolean animation=true "= true, if animation shall be enabled";
-  input SI.Position r_tail[3]={0,0,0} 
+  input SI.Position r_tail[3]={0,0,0}
     "Vector from frame_a to arrow tail, resolved in frame_a" 
     annotation (Dialog(group="if animation = true", enable=animation));
   input Types.Axis n={1,0,0} "Vector in arrow direction, resolved in frame_a" 
@@ -14,47 +14,47 @@ model FixedArrow
     annotation (Dialog(group="if animation = true", enable=animation));
   input Types.Color color={0,0,255} "Color of arrow" 
     annotation (Dialog(colorSelector=true, group="if animation = true", enable=animation));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  parameter Types.VectorQuantity quantity=Types.VectorQuantity.RelativePosition 
+  parameter Types.VectorQuantity quantity=Types.VectorQuantity.RelativePosition
     "Kind of physical quantity represented by the vector" 
     annotation (Dialog(group="if animation = true", enable=animation));
   input Boolean headAtOrigin=false "= true, if the vector is pointing towards the origin of vector frame" 
     annotation (Dialog(group="if animation = true", enable=animation));
 protected
   Visualizers.Advanced.Vector arrowLine(
-    color=color, 
-    specularCoefficient=specularCoefficient, 
-    coordinates=n*length, 
-    quantity=quantity, 
-    headAtOrigin=headAtOrigin, 
-    r=frame_a.r_0 + Modelica.Mechanics.MultiBody.Frames.TransformationMatrices.resolve1(frame_a.R.T, r_tail), 
+    color=color,
+    specularCoefficient=specularCoefficient,
+    coordinates=n*length,
+    quantity=quantity,
+    headAtOrigin=headAtOrigin,
+    r=frame_a.r_0 + Modelica.Mechanics.MultiBody.Frames.TransformationMatrices.resolve1(frame_a.R.T, r_tail),
     R=frame_a.R) if world.enableAnimation and animation;
 equation
   frame_a.f = zeros(3);
   frame_a.t = zeros(3);
 
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics={
         Rectangle(
-          extent={{-100,28},{20,-28}}, 
-          lineColor={128,128,128}, 
-          fillColor={128,128,128}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-100,28},{20,-28}},
+          lineColor={128,128,128},
+          fillColor={128,128,128},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{20,60},{100,0},{20,-60},{20,60}}, 
-          lineColor={128,128,128}, 
-          fillColor={128,128,128}, 
-          fillPattern=FillPattern.Solid), 
+          points={{20,60},{100,0},{20,-60},{20,60}},
+          lineColor={128,128,128},
+          fillColor={128,128,128},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,105},{150,65}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,105},{150,65}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
-          extent={{-150,-75},{150,-105}}, 
-          textString="%length")}), 
+          extent={{-150,-75},{150,-105}},
+          textString="%length")}),
     Documentation(info="<html>
 <p>
 Model <strong>FixedArrow</strong> defines an arrow that is

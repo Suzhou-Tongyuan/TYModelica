@@ -2,37 +2,37 @@
 partial model PartialFriction "Partial model of Coulomb friction elements"
 
   // parameter SI.AngularVelocity w_small=1 "Relative angular velocity near to zero (see model info text)";
-  parameter SI.AngularVelocity w_small=1.0e10 
+  parameter SI.AngularVelocity w_small=1.0e10
     "Relative angular velocity near to zero if jumps due to a reinit(..) of the velocity can occur (set to low value only if such impulses can occur)" 
     annotation (Dialog(tab="Advanced"));
   // Equations to define the following variables have to be defined in subclasses
-  SI.AngularVelocity w_relfric 
+  SI.AngularVelocity w_relfric
     "Relative angular velocity between frictional surfaces";
-  SI.AngularAcceleration a_relfric 
+  SI.AngularAcceleration a_relfric
     "Relative angular acceleration between frictional surfaces";
   //SI.Torque tau "Friction torque (positive, if directed in opposite direction of w_rel)";
   SI.Torque tau0 "Friction torque for w_relfric=0 and forward sliding";
   SI.Torque tau0_max "Maximum friction torque for w_relfric=0 and locked";
   Boolean free "= true, if frictional element is not active";
   // Equations to define the following variables are given in this class
-  Real sa(final unit="1") 
+  Real sa(final unit="1")
     "Path parameter of friction characteristic tau = f(a_relfric)";
-  Boolean startForward(start=false, fixed=true) 
+  Boolean startForward(start=false, fixed=true)
     "= true, if w_relfric=0 and start of forward sliding";
-  Boolean startBackward(start=false, fixed=true) 
+  Boolean startBackward(start=false, fixed=true)
     "= true, if w_relfric=0 and start of backward sliding";
   Boolean locked(start=false) "= true, if w_rel=0 and not sliding";
   constant Integer Unknown=3 "Value of mode is not known";
   constant Integer Free=2 "Element is not active";
   constant Integer Forward=1 "w_relfric > 0 (forward sliding)";
-  constant Integer Stuck=0 
+  constant Integer Stuck=0
     "w_relfric = 0 (forward sliding, locked or backward sliding)";
   constant Integer Backward=-1 "w_relfric < 0 (backward sliding)";
   Integer mode(
-    final min=Backward, 
-    final max=Unknown, 
-    start=Unknown, 
-    fixed=true) 
+    final min=Backward,
+    final max=Unknown,
+    start=Unknown,
+    fixed=true)
     "Mode of friction (-1: backward sliding, 0: stuck, 1: forward sliding, 2: inactive, 3: unknown)";
 protected
   constant SI.AngularAcceleration unitAngularAcceleration=1 
@@ -55,7 +55,7 @@ equation
 
   a_relfric/unitAngularAcceleration = if locked then 0 else if free then sa 
      else if startForward then sa - tau0_max/unitTorque else if 
-    startBackward then sa + tau0_max/unitTorque else if pre(mode) == 
+    startBackward then sa + tau0_max/unitTorque else if pre(mode) ==
     Forward then sa - tau0_max/unitTorque else sa + tau0_max/unitTorque;
 
   /* Friction torque has to be defined in a subclass. Example for a clutch:
@@ -67,8 +67,8 @@ equation
                                                -Modelica.Math.Vectors.interpolate(mu_pos[:,1], mu_pos[:,2], -w_relfric, 1));
 */
   // finite state machine to determine configuration
-  mode = if free then Free else (if (pre(mode) == Forward or pre(mode) == 
-    Free or startForward) and w_relfric > 0 then Forward else if (pre(mode) 
+  mode = if free then Free else (if (pre(mode) == Forward or pre(mode) ==
+    Free or startForward) and w_relfric > 0 then Forward else if (pre(mode)
      == Backward or pre(mode) == Free or startBackward) and w_relfric < 0 
      then Backward else Stuck);
   annotation (Documentation(info="<html>

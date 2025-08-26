@@ -4,23 +4,23 @@ partial model PartialAirGap "Partial airgap model"
   parameter Integer p(min=1) "Number of pole pairs";
   output SI.Torque tauElectrical;
   SI.Angle gamma "Rotor displacement angle";
-  SI.Current i_ss[2] 
+  SI.Current i_ss[2]
     "Stator current space phasor with respect to the stator fixed frame";
-  SI.Current i_sr[2] 
+  SI.Current i_sr[2]
     "Stator current space phasor with respect to the rotor fixed frame";
-  SI.Current i_rs[2] 
+  SI.Current i_rs[2]
     "Rotor current space phasor with respect to the stator fixed frame";
-  SI.Current i_rr[2] 
+  SI.Current i_rr[2]
     "Rotor current space phasor with respect to the rotor fixed frame";
-  SI.MagneticFlux psi_ms[2] 
+  SI.MagneticFlux psi_ms[2]
     "Magnetizing flux phasor with respect to the stator fixed frame";
-  SI.MagneticFlux psi_mr[2] 
+  SI.MagneticFlux psi_mr[2]
     "Magnetizing flux phasor with respect to the rotor fixed frame";
   Real RotationMatrix[2, 2] "Matrix of rotation from rotor to stator";
 public
   Modelica.Mechanics.Rotational.Interfaces.Flange_a flange annotation (
       Placement(transformation(extent={{-10,110},{10,90}})));
-  Modelica.Mechanics.Rotational.Interfaces.Flange_a support 
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a support
     "Support at which the reaction torque is acting" annotation (
       Placement(transformation(extent={{-10,-110},{10,-90}})));
   Machines.Interfaces.SpacePhasor spacePhasor_s 
@@ -75,21 +75,21 @@ equation
     1]*psi_ms[2]);
   flange.tau = -tauElectrical;
   support.tau = tauElectrical;
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{100,100}}), graphics={
         Ellipse(
-          extent={{-90,90},{90,-92}}, 
-          lineColor={0,0,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
-        Ellipse(extent={{-80,80},{80,-80}}, lineColor={0,0,255}), 
+          extent={{-90,90},{90,-92}},
+          lineColor={0,0,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Ellipse(extent={{-80,80},{80,-80}}, lineColor={0,0,255}),
         Rectangle(
-          extent={{-10,90},{10,-80}}, 
-          fillPattern=FillPattern.VerticalCylinder, 
-          fillColor={128,128,128}), 
+          extent={{-10,90},{10,-80}},
+          fillPattern=FillPattern.VerticalCylinder,
+          fillColor={128,128,128}),
         Text(
-          extent={{-150,-110},{150,-150}}, 
-          textColor={0,0,255}, 
+          extent={{-150,-110},{150,-150}},
+          textColor={0,0,255},
           textString="%name")}), Documentation(info="<html>
 Partial model of the airgap, using only equations.
 </html>"));

@@ -1,14 +1,14 @@
 ﻿within Modelica.Mechanics.Rotational.Examples;
 model CoupledClutches "Drive train with 3 dynamically coupled clutches"
   extends Modelica.Icons.Example;
-  parameter SI.Frequency f=0.2 
+  parameter SI.Frequency f=0.2
     "Frequency of sine function to invoke clutch1";
   parameter SI.Time T2=0.4 "Time when clutch2 is invoked";
   parameter SI.Time T3=0.9 "Time when clutch3 is invoked";
 
   Rotational.Components.Inertia J1(
-    J=1, 
-    phi(fixed=true, start=0), 
+    J=1,
+    phi(fixed=true, start=0),
     w(start=10, fixed=true)) annotation (Placement(transformation(extent={{
             -70,-10},{-50,10}})));
   Rotational.Sources.Torque torque(useSupport=true) annotation (Placement(
@@ -19,39 +19,39 @@ model CoupledClutches "Drive train with 3 dynamically coupled clutches"
       Placement(transformation(extent={{-130,-10},{-110,10}})));
   Modelica.Blocks.Sources.Step step1(startTime=T2) annotation (Placement(
         transformation(
-        origin={25,35}, 
-        extent={{-5,-5},{15,15}}, 
+        origin={25,35},
+        extent={{-5,-5},{15,15}},
         rotation=270)));
   Rotational.Components.Inertia J2(
-    J=1, 
-    phi(fixed=true, start=0), 
-    w(fixed=true, start=0)) annotation (Placement(transformation(extent={{-10, 
+    J=1,
+    phi(fixed=true, start=0),
+    w(fixed=true, start=0)) annotation (Placement(transformation(extent={{-10,
             -10},{10,10}})));
   Rotational.Components.Clutch clutch2(peak=1.1, fn_max=20) annotation (
       Placement(transformation(extent={{20,-10},{40,10}})));
   Rotational.Components.Inertia J3(
-    J=1, 
-    phi(fixed=true, start=0), 
+    J=1,
+    phi(fixed=true, start=0),
     w(fixed=true, start=0)) annotation (Placement(transformation(extent={{
             50,-10},{70,10}})));
   Rotational.Components.Clutch clutch3(peak=1.1, fn_max=20) annotation (
       Placement(transformation(extent={{80,-10},{100,10}})));
   Rotational.Components.Inertia J4(
-    J=1, 
-    phi(fixed=true, start=0), 
+    J=1,
+    phi(fixed=true, start=0),
     w(fixed=true, start=0)) annotation (Placement(transformation(extent={{
             110,-10},{130,10}})));
   Modelica.Blocks.Sources.Sine sin2(
-    amplitude=1, 
-    f=f, 
+    amplitude=1,
+    f=f,
     phase=1.570796326794897) annotation (Placement(transformation(
-        origin={-35,35}, 
-        extent={{-5,-5},{15,15}}, 
+        origin={-35,35},
+        extent={{-5,-5},{15,15}},
         rotation=270)));
   Modelica.Blocks.Sources.Step step2(startTime=T3) annotation (Placement(
         transformation(
-        origin={85,35}, 
-        extent={{-5,-5},{15,15}}, 
+        origin={85,35},
+        extent={{-5,-5},{15,15}},
         rotation=270)));
   Rotational.Components.Fixed fixed annotation (Placement(transformation(
           extent={{-100,-30},{-80,-10}})));
@@ -78,7 +78,7 @@ equation
           30,19},{30,10},{30,11}}, color={0,0,127}));
   connect(step2.y, clutch3.f_normalized) 
     annotation (Line(points={{90,19},{90,19},{90,11}}, color={0,0,127}));
-  connect(fixed.flange, torque.support) annotation (Line(points={{-90,-20}, 
+  connect(fixed.flange, torque.support) annotation (Line(points={{-90,-20},
           {-90,-11},{-90,-10}}));
   annotation (
     Documentation(info="<html>
@@ -102,11 +102,11 @@ frictional mode of clutches (clutchX.mode) where
 mode = -1/0/+1 means backward sliding,
 locked, forward sliding.</p>
 
-</html>"), 
-    __Dymola_Commands(file= 
-          "modelica://Modelica/Resources/Scripts/Dymola/Mechanics/Rotational/CoupledClutches.mos" 
-        "Simulate and Plot"), 
-    experiment(StopTime=1.5, Interval=0.001), 
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140,-100}, 
+</html>"),
+    __Dymola_Commands(file=
+          "modelica://Modelica/Resources/Scripts/Dymola/Mechanics/Rotational/CoupledClutches.mos"
+        "Simulate and Plot"),
+    experiment(StopTime=1.5, Interval=0.001),
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140,-100},
             {140,100}})));
 end CoupledClutches;

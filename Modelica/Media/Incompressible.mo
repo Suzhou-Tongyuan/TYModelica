@@ -1,5 +1,5 @@
 ﻿within Modelica.Media;
-package Incompressible 
+package Incompressible
   "Medium model for T-dependent properties, defined by tables or polynomials"
   extends Modelica.Icons.VariantsPackage;
   import Modelica.Constants;
@@ -10,22 +10,22 @@ package Incompressible
 
   package Glycol47 "1,2-Propylene glycol, 47% mixture with water"
     extends TableBased(
-      mediumName="Glycol-Water 47%", 
-      T_min = Cv.from_degC(-30), T_max = Cv.from_degC(100), 
-      TinK = false, T0=273.15, 
-      tableDensity= 
+      mediumName="Glycol-Water 47%",
+      T_min = Cv.from_degC(-30), T_max = Cv.from_degC(100),
+      TinK = false, T0=273.15,
+      tableDensity=
         [-30, 1066; -20, 1062; -10, 1058; 0, 1054;
-         20, 1044; 40, 1030; 60, 1015; 80, 999; 100, 984], 
-      tableHeatCapacity= 
+         20, 1044; 40, 1030; 60, 1015; 80, 999; 100, 984],
+      tableHeatCapacity=
         [-30, 3450; -20, 3490; -10, 3520; 0, 3560;
-         20, 3620; 40, 3690; 60, 3760; 80, 3820; 100, 3890], 
-      tableConductivity= 
+         20, 3620; 40, 3690; 60, 3760; 80, 3820; 100, 3890],
+      tableConductivity=
         [-30,0.397;  -20,0.396;  -10,0.395;  0,0.395;
-         20,0.394;  40,0.393;  60,0.392;  80,0.391;  100,0.390], 
-      tableViscosity= 
+         20,0.394;  40,0.393;  60,0.392;  80,0.391;  100,0.390],
+      tableViscosity=
         [-30, 0.160; -20, 0.0743; -10, 0.0317; 0, 0.0190;
-         20, 0.00626; 40, 0.00299; 60, 0.00162; 80, 0.00110; 100, 0.00081], 
-      tableVaporPressure= 
+         20, 0.00626; 40, 0.00299; 60, 0.00162; 80, 0.00110; 100, 0.00081],
+      tableVaporPressure=
         [0, 500; 20, 1.9e3; 40, 5.3e3; 60, 16e3; 80, 37e3; 100, 80e3]);
       annotation (Documentation(info="<html>
 
@@ -34,21 +34,21 @@ package Incompressible
 
   package Essotherm650 "Essotherm thermal oil"
     extends TableBased(
-      mediumName="Essotherm 650", 
-      T_min = Cv.from_degC(0), T_max = Cv.from_degC(320), 
-      TinK = false, T0=273.15, 
-      tableDensity= 
+      mediumName="Essotherm 650",
+      T_min = Cv.from_degC(0), T_max = Cv.from_degC(320),
+      TinK = false, T0=273.15,
+      tableDensity=
         [0, 909; 20, 897; 40, 884; 60, 871; 80, 859; 100, 846;
-         150, 813; 200, 781; 250, 748; 300, 715; 320, 702], 
-      tableHeatCapacity= 
+         150, 813; 200, 781; 250, 748; 300, 715; 320, 702],
+      tableHeatCapacity=
         [0, 1770; 20, 1850; 40, 1920; 60, 1990; 80, 2060; 100, 2130;
-         150, 2310; 200, 2490; 250, 2670; 300, 2850; 320, 2920], 
-      tableConductivity= 
+         150, 2310; 200, 2490; 250, 2670; 300, 2850; 320, 2920],
+      tableConductivity=
         [0,0.1302;  20,0.1288;  40,0.1274;  60,0.1260;  80,0.1246;  100,0.1232;
-         150,0.1197;  200,0.1163;  250,0.1128;  300,0.1093;  320,0.1079], 
+         150,0.1197;  200,0.1163;  250,0.1128;  300,0.1093;  320,0.1079],
       tableViscosity = [0, 14370; 20, 1917; 40, 424; 60, 134; 80, 54.5;
-         100, 26.64; 150, 7.47; 200, 3.22; 250, 1.76; 300, 1.10; 320,0.94], 
-      tableVaporPressure= 
+         100, 26.64; 150, 7.47; 200, 3.22; 250, 1.76; 300, 1.10; 320,0.94],
+      tableVaporPressure=
         [160, 3; 180, 10; 200, 40; 220, 100; 240, 300; 260, 600;
          280, 1600; 300, 3e3; 320, 5.5e3]);
       annotation (Documentation(info="<html>
@@ -124,39 +124,39 @@ density and heat capacity as functions of temperature.</li>
 
     extends Modelica.Media.Interfaces.PartialMedium(
        ThermoStates = if enthalpyOfT then Modelica.Media.Interfaces.Choices.IndependentVariables.T 
-                                                                         else Modelica.Media.Interfaces.Choices.IndependentVariables.pT, 
-       final reducedX=true, 
-       final fixedX = true, 
-       mediumName="tableMedium", 
-       redeclare record ThermodynamicState=Common.BaseProps_Tpoly, 
-       singleState=true, 
-       reference_p = 1.013e5, 
+                                                                         else Modelica.Media.Interfaces.Choices.IndependentVariables.pT,
+       final reducedX=true,
+       final fixedX = true,
+       mediumName="tableMedium",
+       redeclare record ThermodynamicState=Common.BaseProps_Tpoly,
+       singleState=true,
+       reference_p = 1.013e5,
        Temperature(min = T_min, max = T_max));
     // Constants to be set in actual Medium
-    constant Boolean enthalpyOfT=true 
+    constant Boolean enthalpyOfT=true
       "True if enthalpy is approximated as a function of T only, (p-dependence neglected)";
-    constant Boolean densityOfT = size(tableDensity,1) > 1 
+    constant Boolean densityOfT = size(tableDensity,1) > 1
       "True if density is a function of temperature";
-    constant SI.Temperature T_min 
+    constant SI.Temperature T_min
       "Minimum temperature valid for medium model";
-    constant SI.Temperature T_max 
+    constant SI.Temperature T_max
       "Maximum temperature valid for medium model";
     constant Temperature T0=273.15 "Reference Temperature";
     constant SpecificEnthalpy h0=0 "Reference enthalpy at T0, reference_p";
     constant SpecificEntropy s0=0 "Reference entropy at T0, reference_p";
     constant MolarMass MM_const=0.1 "Molar mass";
     constant Integer npol=2 "Degree of polynomial used for fitting";
-    constant Integer npolDensity=npol 
+    constant Integer npolDensity=npol
       "Degree of polynomial used for fitting rho(T)";
-    constant Integer npolHeatCapacity=npol 
+    constant Integer npolHeatCapacity=npol
       "Degree of polynomial used for fitting Cp(T)";
-    constant Integer npolViscosity=npol 
+    constant Integer npolViscosity=npol
       "Degree of polynomial used for fitting eta(T)";
-    constant Integer npolVaporPressure=npol 
+    constant Integer npolVaporPressure=npol
       "Degree of polynomial used for fitting pVap(T)";
-    constant Integer npolConductivity=npol 
+    constant Integer npolConductivity=npol
       "Degree of polynomial used for fitting lambda(T)";
-    constant Integer neta=size(tableViscosity,1) 
+    constant Integer neta=size(tableViscosity,1)
       "Number of data points for viscosity";
     constant Real[:,2] tableDensity "Table for rho(T)";
     constant Real[:,2] tableHeatCapacity "Table for Cp(T)";
@@ -165,13 +165,13 @@ density and heat capacity as functions of temperature.</li>
     constant Real[:,2] tableConductivity "Table for lambda(T)";
     //    constant Real[:] TK=tableViscosity[:,1]+T0*ones(neta) "Temperature for Viscosity";
     constant Boolean TinK "True if T[K],Kelvin used for table temperatures";
-    constant Boolean hasDensity = not (size(tableDensity,1)==0) 
+    constant Boolean hasDensity = not (size(tableDensity,1)==0)
       "True if table tableDensity is present";
-    constant Boolean hasHeatCapacity = not (size(tableHeatCapacity,1)==0) 
+    constant Boolean hasHeatCapacity = not (size(tableHeatCapacity,1)==0)
       "True if table tableHeatCapacity is present";
-    constant Boolean hasViscosity = not (size(tableViscosity,1)==0) 
+    constant Boolean hasViscosity = not (size(tableViscosity,1)==0)
       "True if table tableViscosity is present";
-    constant Boolean hasVaporPressure = not (size(tableVaporPressure,1)==0) 
+    constant Boolean hasVaporPressure = not (size(tableVaporPressure,1)==0)
       "True if table tableVaporPressure is present";
     final constant Real invTK[neta] = if size(tableViscosity,1) > 0 then 
         (if TinK then 1 ./ tableViscosity[:,1] else 1 ./ Cv.from_degC(tableViscosity[:,1])) else fill(0,neta);
@@ -203,21 +203,21 @@ density and heat capacity as functions of temperature.</li>
     end invertTemp;
 
     redeclare model extends BaseProperties(
-      final standardOrderComponents=true, 
-      p_bar=Cv.to_bar(p), 
-      T_degC(start = T_start-273.15)=Cv.to_degC(T), 
-      T(start = T_start, 
-        stateSelect=if preferredMediumStates then StateSelect.prefer else StateSelect.default)) 
+      final standardOrderComponents=true,
+      p_bar=Cv.to_bar(p),
+      T_degC(start = T_start-273.15)=Cv.to_degC(T),
+      T(start = T_start,
+        stateSelect=if preferredMediumStates then StateSelect.prefer else StateSelect.default))
       "Base properties of T dependent medium"
 
       SI.SpecificHeatCapacity cp "Specific heat capacity";
       parameter SI.Temperature T_start = 298.15 "Initial temperature";
     equation
-      assert(hasDensity,"Medium " + mediumName + 
+      assert(hasDensity,"Medium " + mediumName +
                         " can not be used without assigning tableDensity.");
-      assert(T >= T_min and T <= T_max, "Temperature T (= " + String(T) + 
-             " K) is not in the allowed range (" + String(T_min) + 
-             " K <= T <= " + String(T_max) + " K) required from medium model \"" 
+      assert(T >= T_min and T <= T_max, "Temperature T (= " + String(T) +
+             " K) is not in the allowed range (" + String(T_min) +
+             " K <= T <= " + String(T_max) + " K) required from medium model \""
              + mediumName + "\".");
       R_s = Modelica.Constants.R/MM_const;
       cp = Polynomials.evaluate(poly_Cp,if TinK then T else T_degC);
@@ -258,14 +258,14 @@ which is only exactly true for a fluid with constant density d=d0.
 </html>"));
     end BaseProperties;
 
-    redeclare function extends setState_pTX 
+    redeclare function extends setState_pTX
       "Returns state record, given pressure and temperature"
     algorithm
       state := ThermodynamicState(p=p,T=T);
       annotation(smoothOrder=3);
     end setState_pTX;
 
-    redeclare function extends setState_dTX 
+    redeclare function extends setState_dTX
       "Returns state record, given pressure and temperature"
     algorithm
       assert(false, "For incompressible media with d(T) only, state can not be set from density and temperature");
@@ -282,7 +282,7 @@ which is only exactly true for a fluid with constant density d=d0.
       annotation(smoothOrder=3);
     end setState_pT;
 
-    redeclare function extends setState_phX 
+    redeclare function extends setState_phX
       "Returns state record, given pressure and specific enthalpy"
     algorithm
       state :=ThermodynamicState(p=p,T=T_ph(p,h));
@@ -299,7 +299,7 @@ which is only exactly true for a fluid with constant density d=d0.
       annotation(Inline=true,smoothOrder=3);
     end setState_ph;
 
-    redeclare function extends setState_psX 
+    redeclare function extends setState_psX
       "Returns state record, given pressure and specific entropy"
     algorithm
       state :=ThermodynamicState(p=p,T=T_ps(p,s));
@@ -316,49 +316,49 @@ which is only exactly true for a fluid with constant density d=d0.
       annotation(Inline=true,smoothOrder=3);
     end setState_ps;
 
-    redeclare function extends setSmoothState 
+    redeclare function extends setSmoothState
       "Return thermodynamic state so that it smoothly approximates: if x > 0 then state_a else state_b"
     algorithm
-      state :=ThermodynamicState(p=Media.Common.smoothStep(x, state_a.p, state_b.p, x_small), 
+      state :=ThermodynamicState(p=Media.Common.smoothStep(x, state_a.p, state_b.p, x_small),
                                  T=Media.Common.smoothStep(x, state_a.T, state_b.T, x_small));
       annotation(Inline=true,smoothOrder=3);
     end setSmoothState;
 
-    redeclare function extends specificHeatCapacityCv 
+    redeclare function extends specificHeatCapacityCv
       "Specific heat capacity at constant volume (or pressure) of medium"
 
     algorithm
-      assert(hasHeatCapacity,"Specific Heat Capacity, Cv, is not defined for medium " 
+      assert(hasHeatCapacity,"Specific Heat Capacity, Cv, is not defined for medium "
                                              + mediumName + ".");
       cv := Polynomials.evaluate(poly_Cp,if TinK then state.T else state.T - 273.15);
      annotation(smoothOrder=2);
     end specificHeatCapacityCv;
 
-    redeclare function extends specificHeatCapacityCp 
+    redeclare function extends specificHeatCapacityCp
       "Specific heat capacity at constant volume (or pressure) of medium"
 
     algorithm
-      assert(hasHeatCapacity,"Specific Heat Capacity, Cv, is not defined for medium " 
+      assert(hasHeatCapacity,"Specific Heat Capacity, Cv, is not defined for medium "
                                              + mediumName + ".");
       cp := Polynomials.evaluate(poly_Cp,if TinK then state.T else state.T - 273.15);
      annotation(smoothOrder=2);
     end specificHeatCapacityCp;
 
-    redeclare function extends dynamicViscosity 
+    redeclare function extends dynamicViscosity
       "Return dynamic viscosity as a function of the thermodynamic state record"
 
     algorithm
-      assert(size(tableViscosity,1)>0,"DynamicViscosity, eta, is not defined for medium " 
+      assert(size(tableViscosity,1)>0,"DynamicViscosity, eta, is not defined for medium "
                                              + mediumName + ".");
       eta := Math.exp(Polynomials.evaluate(poly_eta, 1/state.T));
      annotation(smoothOrder=2);
     end dynamicViscosity;
 
-    redeclare function extends thermalConductivity 
+    redeclare function extends thermalConductivity
       "Return thermal conductivity as a function of the thermodynamic state record"
 
     algorithm
-      assert(size(tableConductivity,1)>0,"ThermalConductivity, lambda, is not defined for medium " 
+      assert(size(tableConductivity,1)>0,"ThermalConductivity, lambda, is not defined for medium "
                                              + mediumName + ".");
       lambda := Polynomials.evaluate(poly_lam,if TinK then state.T else Cv.to_degC(state.T));
      annotation(smoothOrder=2);
@@ -371,19 +371,19 @@ which is only exactly true for a fluid with constant density d=d0.
     algorithm
       s := s0 + (if TinK then 
         Polynomials.integralValue(poly_Cp[1:npol],T, T0) else 
-        Polynomials.integralValue(poly_Cp[1:npol],Cv.to_degC(T),Cv.to_degC(T0))) 
-        + Modelica.Math.log(T/T0)* 
+        Polynomials.integralValue(poly_Cp[1:npol],Cv.to_degC(T),Cv.to_degC(T0)))
+        + Modelica.Math.log(T/T0)*
         Polynomials.evaluate(poly_Cp,if TinK then 0 else Modelica.Constants.T_zero);
      annotation(Inline=true,smoothOrder=2);
     end s_T;
 
-    redeclare function extends specificEntropy 
+    redeclare function extends specificEntropy
       "Return specific entropy as a function of the thermodynamic state record"
 
     protected
       Integer npol=size(poly_Cp,1)-1;
     algorithm
-      assert(hasHeatCapacity,"Specific Entropy, s(T), is not defined for medium " 
+      assert(hasHeatCapacity,"Specific Entropy, s(T), is not defined for medium "
                                              + mediumName + ".");
       s := s_T(state.T);
      annotation(smoothOrder=2);
@@ -421,8 +421,8 @@ which is only exactly true for a fluid with constant density d=d0.
     algorithm
       h :=h0 + Polynomials.integralValue(poly_Cp, if TinK then T else Cv.to_degC(T), if TinK then 
       T0 else Cv.to_degC(T0)) + (p - reference_p)/Polynomials.evaluate(poly_rho, if TinK then 
-              T else Cv.to_degC(T)) 
-        *(if densityOfT then (1 + T/Polynomials.evaluate(poly_rho, if TinK then T else Cv.to_degC(T)) 
+              T else Cv.to_degC(T))
+        *(if densityOfT then (1 + T/Polynomials.evaluate(poly_rho, if TinK then T else Cv.to_degC(T))
       *Polynomials.derivativeValue(poly_rho,if TinK then T else Cv.to_degC(T))) else 1.0);
      annotation(smoothOrder=2);
     end h_pT;
@@ -437,35 +437,35 @@ which is only exactly true for a fluid with constant density d=d0.
       annotation(Inline=true,smoothOrder=2);
     end density_T;
 
-    redeclare function extends temperature 
+    redeclare function extends temperature
       "Return temperature as a function of the thermodynamic state record"
     algorithm
      T := state.T;
      annotation(Inline=true,smoothOrder=2);
     end temperature;
 
-    redeclare function extends pressure 
+    redeclare function extends pressure
       "Return pressure as a function of the thermodynamic state record"
     algorithm
      p := state.p;
      annotation(Inline=true,smoothOrder=2);
     end pressure;
 
-    redeclare function extends density 
+    redeclare function extends density
       "Return density as a function of the thermodynamic state record"
     algorithm
       d := Polynomials.evaluate(poly_rho,if TinK then state.T else Cv.to_degC(state.T));
      annotation(Inline=true,smoothOrder=2);
     end density;
 
-    redeclare function extends specificEnthalpy 
+    redeclare function extends specificEnthalpy
       "Return specific enthalpy as a function of the thermodynamic state record"
     algorithm
       h := specificEnthalpyOfT(state.p, state.T);
      annotation(Inline=true,smoothOrder=2);
     end specificEnthalpy;
 
-    redeclare function extends specificInternalEnergy 
+    redeclare function extends specificInternalEnergy
       "Return specific internal energy as a function of the thermodynamic state record"
     algorithm
       u := specificEnthalpyOfT(state.p,state.T) - (if singleState then reference_p else state.p)/density(state);
@@ -513,7 +513,7 @@ which is only exactly true for a fluid with constant density d=d0.
     end T_ps;
 
   protected
-    function specificEnthalpyOfT 
+    function specificEnthalpyOfT
       "Return specific enthalpy from pressure and temperature, taking the flag enthalpyOfT into account"
       extends Modelica.Icons.Function;
       input AbsolutePressure p "Pressure";

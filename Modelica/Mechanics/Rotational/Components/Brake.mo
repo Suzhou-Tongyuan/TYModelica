@@ -3,11 +3,11 @@ model Brake "Brake based on Coulomb friction"
   extends 
     Modelica.Mechanics.Rotational.Interfaces.PartialElementaryTwoFlangesAndSupport2;
 
-  parameter Real mu_pos[:, 2]=[0, 0.5] 
+  parameter Real mu_pos[:, 2]=[0, 0.5]
     "Positive sliding friction coefficient [-] as function of w_rel [rad/s] (w_rel>=0)";
-  parameter Real peak(final min=1) = 1 
+  parameter Real peak(final min=1) = 1
     "Peak for maximum value of mu at w==0 (mu0_max = peak*mu_pos[1,2])";
-  parameter Real cgeo(final min=0) = 1 
+  parameter Real cgeo(final min=0) = 1
     "Geometry constant containing friction distribution assumption";
   parameter SI.Force fn_max(final min=0, start=1) "Maximum normal force";
 
@@ -15,22 +15,22 @@ model Brake "Brake based on Coulomb friction"
   extends 
     Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPortWithoutT;
 
-  SI.Angle phi 
+  SI.Angle phi
     "Angle between shaft flanges (flange_a, flange_b) and support";
   SI.Torque tau "Brake friction torque";
   SI.AngularVelocity w "Absolute angular velocity of flange_a and flange_b";
-  SI.AngularAcceleration a 
+  SI.AngularAcceleration a
     "Absolute angular acceleration of flange_a and flange_b";
 
   Real mu0 "Friction coefficient for w=0 and forward sliding";
   SI.Force fn "Normal force (=fn_max*f_normalized)";
 
   // Constant auxiliary variable
-  Modelica.Blocks.Interfaces.RealInput f_normalized 
+  Modelica.Blocks.Interfaces.RealInput f_normalized
     "Normalized force signal 0..1 (normal force = fn_max*f_normalized; brake is active if > 0)" 
     annotation (Placement(transformation(
-        origin={0,110}, 
-        extent={{20,-20},{-20,20}}, 
+        origin={0,110},
+        extent={{20,-20},{-20,20}},
         rotation=90)));
 
 equation
@@ -64,51 +64,51 @@ equation
       -Modelica.Math.Vectors.interpolate(mu_pos[:,1], mu_pos[:,2], -w, 1));
   lossPower = tau*w_relfric;
   annotation (Icon(
-        coordinateSystem(preserveAspectRatio=true, 
-        extent={{-100.0,-100.0},{100.0,100.0}}), 
+        coordinateSystem(preserveAspectRatio=true,
+        extent={{-100.0,-100.0},{100.0,100.0}}),
         graphics={
-      Polygon(  lineColor={192,192,192}, 
-        fillColor={192,192,192}, 
-        fillPattern=FillPattern.Solid, 
-        points={{-37.0,-55.0},{-37.0,-90.0},{37.0,-90.0},{37.0,-55.0},{33.0,-55.0},{33.0,-86.0},{-33.0,-86.0},{-33.0,-55.0},{-37.0,-55.0}}), 
-      Rectangle(  lineColor={64,64,64}, 
-        fillColor={192,192,192}, 
-        fillPattern=FillPattern.HorizontalCylinder, 
-        extent={{-100.0,-10.0},{-20.0,10.0}}), 
-      Rectangle(  lineColor={64,64,64}, 
-        fillColor={255,255,255}, 
-        fillPattern=FillPattern.HorizontalCylinder, 
-        extent={{-20.0,-60.0},{20.0,60.0}}, 
-        radius=10.0), 
-      Rectangle(  lineColor={64,64,64}, 
-        extent={{-20.0,-60.0},{20.0,60.0}}, 
-        radius=10.0), 
-      Rectangle(  lineColor={64,64,64}, 
-        fillColor={192,192,192}, 
-        fillPattern=FillPattern.HorizontalCylinder, 
-        extent={{20.0,-10.0},{100.0,10.0}}), 
-      Polygon(  lineColor={0,0,127}, 
-        fillColor={0,0,127}, 
-        fillPattern=FillPattern.Solid, 
-        points={{40.0,-40.0},{70.0,-30.0},{70.0,-50.0},{40.0,-40.0}}), 
-      Rectangle(  fillPattern=FillPattern.Solid, 
-        extent={{30.0,-55.0},{40.0,-25.0}}), 
-      Polygon(  lineColor={0,0,127}, 
-        fillColor={0,0,127}, 
-        fillPattern=FillPattern.Solid, 
-        points={{-40.0,-40.0},{-70.0,-30.0},{-70.0,-50.0},{-40.0,-40.0}}), 
-      Rectangle(  fillPattern=FillPattern.Solid, 
-        extent={{-40.0,-55.0},{-30.0,-25.0}}), 
-      Line(  points={{0.0,90.0},{80.0,70.0},{80.0,-40.0},{70.0,-40.0}}, 
-        color={0,0,127}), 
-      Line(  points={{0.0,90.0},{-80.0,70.0},{-80.0,-40.0},{-70.0,-40.0}}, 
-        color={0,0,127}), 
-      Text(  textColor={0,0,255}, 
-        extent={{-150.0,-180.0},{150.0,-140.0}}, 
-        textString="%name"), 
-      Line(visible=useHeatPort, 
-        points={{-100.0,-98.0},{-100.0,-70.0},{0.0,-70.0},{0.0,-40.0}}, 
-        color={191,0,0}, 
+      Polygon(  lineColor={192,192,192},
+        fillColor={192,192,192},
+        fillPattern=FillPattern.Solid,
+        points={{-37.0,-55.0},{-37.0,-90.0},{37.0,-90.0},{37.0,-55.0},{33.0,-55.0},{33.0,-86.0},{-33.0,-86.0},{-33.0,-55.0},{-37.0,-55.0}}),
+      Rectangle(  lineColor={64,64,64},
+        fillColor={192,192,192},
+        fillPattern=FillPattern.HorizontalCylinder,
+        extent={{-100.0,-10.0},{-20.0,10.0}}),
+      Rectangle(  lineColor={64,64,64},
+        fillColor={255,255,255},
+        fillPattern=FillPattern.HorizontalCylinder,
+        extent={{-20.0,-60.0},{20.0,60.0}},
+        radius=10.0),
+      Rectangle(  lineColor={64,64,64},
+        extent={{-20.0,-60.0},{20.0,60.0}},
+        radius=10.0),
+      Rectangle(  lineColor={64,64,64},
+        fillColor={192,192,192},
+        fillPattern=FillPattern.HorizontalCylinder,
+        extent={{20.0,-10.0},{100.0,10.0}}),
+      Polygon(  lineColor={0,0,127},
+        fillColor={0,0,127},
+        fillPattern=FillPattern.Solid,
+        points={{40.0,-40.0},{70.0,-30.0},{70.0,-50.0},{40.0,-40.0}}),
+      Rectangle(  fillPattern=FillPattern.Solid,
+        extent={{30.0,-55.0},{40.0,-25.0}}),
+      Polygon(  lineColor={0,0,127},
+        fillColor={0,0,127},
+        fillPattern=FillPattern.Solid,
+        points={{-40.0,-40.0},{-70.0,-30.0},{-70.0,-50.0},{-40.0,-40.0}}),
+      Rectangle(  fillPattern=FillPattern.Solid,
+        extent={{-40.0,-55.0},{-30.0,-25.0}}),
+      Line(  points={{0.0,90.0},{80.0,70.0},{80.0,-40.0},{70.0,-40.0}},
+        color={0,0,127}),
+      Line(  points={{0.0,90.0},{-80.0,70.0},{-80.0,-40.0},{-70.0,-40.0}},
+        color={0,0,127}),
+      Text(  textColor={0,0,255},
+        extent={{-150.0,-180.0},{150.0,-140.0}},
+        textString="%name"),
+      Line(visible=useHeatPort,
+        points={{-100.0,-98.0},{-100.0,-70.0},{0.0,-70.0},{0.0,-40.0}},
+        color={191,0,0},
         pattern=LinePattern.Dot)}), Documentation(info="<html>
 <p>
 This component models a <strong>brake</strong>, i.e., a component where a frictional

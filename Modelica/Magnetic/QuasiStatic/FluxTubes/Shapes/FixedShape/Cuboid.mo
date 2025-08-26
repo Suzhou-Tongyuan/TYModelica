@@ -1,12 +1,12 @@
 ﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.FixedShape;
-model Cuboid 
+model Cuboid
 "Flux tube with rectangular cross-section of fixed shape and linear material characteristics"
 
   extends BaseClasses.FixedShape;
   extends Modelica.Magnetic.QuasiStatic.FluxTubes.Icons.Cuboid;
 
   parameter SI.Length l=0.01 "Length in direction of flux" annotation (
-      Dialog(group="Fixed geometry", groupImage= 
+      Dialog(group="Fixed geometry", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/QuasiStatic/FluxTubes/CuboidParallelFlux_qs.png"));
   parameter SI.Length a=0.01 "Width of rectangular cross-section" 
     annotation (Dialog(group="Fixed geometry"));

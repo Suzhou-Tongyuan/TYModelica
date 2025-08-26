@@ -1,10 +1,10 @@
 ﻿within Modelica.Mechanics.Translational.Examples.Utilities;
-function GenerateStribeckFrictionTable 
+function GenerateStribeckFrictionTable
   "Generate Stribeck friction table for example Friction for the SupportFriction"
   extends Modelica.Icons.Function;
-  input Real F_prop(final unit="N.s/m", final min=0) 
+  input Real F_prop(final unit="N.s/m", final min=0)
     "Velocity dependent friction coefficient";
-  input SI.Force F_Coulomb 
+  input SI.Force F_Coulomb
     "Constant friction: Coulomb force";
   input SI.Force F_Stribeck "Stribeck effect";
   input Real fexp(final unit="s/m", final min=0) "Exponential decay";
@@ -14,7 +14,7 @@ function GenerateStribeckFrictionTable
 algorithm
   for i in 1:nTable loop
     table[i, 1] := v_max*(i - 1)/(nTable - 1);
-    table[i, 2] := F_Coulomb + F_prop*table[i, 1] + F_Stribeck*Modelica.Math.exp(-fexp* 
+    table[i, 2] := F_Coulomb + F_prop*table[i, 1] + F_Stribeck*Modelica.Math.exp(-fexp*
       table[i, 1]);
   end for;
   annotation (Documentation(info="<html>

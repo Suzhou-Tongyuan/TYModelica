@@ -1,10 +1,10 @@
 ﻿within Modelica.Electrical.Polyphase.Functions;
-function symmetricBackTransformationMatrix 
+function symmetricBackTransformationMatrix
   "Back transformation matrix for symmetrical components"
   extends Modelica.Icons.Function;
   import Modelica.ComplexMath.fromPolar;
   input Integer m "Number of phases";
-  output Complex bTM[m, m] 
+  output Complex bTM[m, m]
     "Back transformation matrix for m phase symmetrical components";
 protected
   Integer nBase=numberOfSymmetricBaseSystems(m);

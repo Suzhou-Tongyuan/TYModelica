@@ -2,27 +2,27 @@
 model SignConvention "Examples for the used sign conventions"
   extends Modelica.Icons.Example;
   Translational.Components.Mass mass1(
-    L=1, 
-    s(fixed=true), 
-    v(fixed=true), 
+    L=1,
+    s(fixed=true),
+    v(fixed=true),
     m=1) annotation (Placement(transformation(extent={{40,60},{60,80}})));
   Translational.Sources.Force force1 annotation (Placement(transformation(
           extent={{0,60},{20,80}})));
   Modelica.Blocks.Sources.Constant constant1(k=1) annotation (Placement(
         transformation(extent={{-40,60},{-20,80}})));
   Translational.Components.Mass mass2(
-    L=1, 
-    s(fixed=true), 
-    v(fixed=true), 
+    L=1,
+    s(fixed=true),
+    v(fixed=true),
     m=1) annotation (Placement(transformation(extent={{40,0},{60,20}})));
   Translational.Sources.Force force2 annotation (Placement(transformation(
           extent={{0,20},{20,40}})));
   Modelica.Blocks.Sources.Constant constant2(k=1) annotation (Placement(
         transformation(extent={{-40,20},{-20,40}})));
   Translational.Components.Mass mass3(
-    L=1, 
-    s(fixed=true), 
-    v(fixed=true), 
+    L=1,
+    s(fixed=true),
+    v(fixed=true),
     m=1) annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   Translational.Sources.Force force3(useSupport=false) 
                                                       annotation (Placement(
@@ -75,17 +75,17 @@ In the third system the two arrows are opposed which means that the
 force acts in the opposite direction (in the same direction as in
 the two other examples).
 </p>
-</html>"), 
-    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+</html>"),
+    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}),graphics={Text(
-              extent={{-100,80},{-82,60}}, 
-              textString="1)", 
+              extent={{-100,80},{-82,60}},
+              textString="1)",
               lineColor={0,0,255}),Text(
-              extent={{-100,40},{-82,20}}, 
-              textString="2)", 
+              extent={{-100,40},{-82,20}},
+              textString="2)",
               lineColor={0,0,255}),Text(
-              extent={{-100,-20},{-82,-40}}, 
-              textString="3)", 
-              lineColor={0,0,255})}), 
+              extent={{-100,-20},{-82,-40}},
+              textString="3)",
+              lineColor={0,0,255})}),
     experiment(StopTime=1.0, Interval=0.001));
 end SignConvention;

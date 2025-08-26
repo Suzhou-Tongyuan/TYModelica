@@ -4,7 +4,7 @@ package Interfaces "SpacePhasor connector and PartialMachines"
 
   annotation (Documentation(info="<html>
 This package contains the space phasor connector and partial models for machine models.
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

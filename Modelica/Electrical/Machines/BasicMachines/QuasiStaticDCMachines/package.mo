@@ -17,7 +17,7 @@ whereas quasi-static induction machine models are based on time phasor theory,
 see <a href=\"modelica://Modelica.Electrical.QuasiStatic\">QuasiStatic Library</a>,
 where e.g., <code>L*der(i)</code> is replaced by <code>j*omega*L*(I_re+j*I_im)</code>.
 </p>
-</html>", 
+</html>",
       revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

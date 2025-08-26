@@ -3,25 +3,25 @@ model Speed "Forced movement of a flange according to a reference speed"
   extends 
     Modelica.Mechanics.Translational.Interfaces.PartialElementaryOneFlangeAndSupport2(
      s(
-      start=0, 
-      fixed=true, 
+      start=0,
+      fixed=true,
       stateSelect=StateSelect.prefer));
-  parameter Boolean exact=false 
+  parameter Boolean exact=false
     "Is true/false for exact treatment/filtering of the input signal, respectively" 
     annotation (Evaluate=true);
-  parameter SI.Frequency f_crit=50 
+  parameter SI.Frequency f_crit=50
     "If exact=false, critical frequency of filter to filter input signal" 
     annotation (Dialog(enable=not exact));
   SI.Velocity v(stateSelect=if exact then StateSelect.default else 
         StateSelect.prefer) "Absolute velocity of flange";
-  SI.Acceleration a 
+  SI.Acceleration a
     "If exact=false, absolute acceleration of flange else dummy";
-  Modelica.Blocks.Interfaces.RealInput v_ref(unit="m/s") 
+  Modelica.Blocks.Interfaces.RealInput v_ref(unit="m/s")
     "Reference speed of flange as input signal" annotation (Placement(
         transformation(extent={{-140,-20},{-100,20}})));
 
 protected
-  parameter SI.AngularFrequency w_crit=2*Modelica.Constants.pi 
+  parameter SI.AngularFrequency w_crit=2*Modelica.Constants.pi
       *f_crit "Critical frequency";
 initial equation
   if not exact then
@@ -69,28 +69,28 @@ The input signal can be provided from one of the signal generator
 blocks of the block library Modelica.Blocks.Sources.
 </p>
 
-</html>"), 
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+</html>"),
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
       graphics={
-        Line(points={{-30,-32},{30,-32}}, color={0,127,0}), 
-        Line(points={{0,-32},{0,-100}}, color={0,127,0}), 
+        Line(points={{-30,-32},{30,-32}}, color={0,127,0}),
+        Line(points={{0,-32},{0,-100}}, color={0,127,0}),
         Rectangle(
-          extent={{-100,20},{100,-20}}, 
-          lineColor={0,127,0}, 
-          fillColor={160,215,160}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-29,32},{30,32}}, color={0,127,0}), 
-        Line(points={{0,52},{0,32}}, color={0,127,0}), 
+          extent={{-100,20},{100,-20}},
+          lineColor={0,127,0},
+          fillColor={160,215,160},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-29,32},{30,32}}, color={0,127,0}),
+        Line(points={{0,52},{0,32}}, color={0,127,0}),
         Text(
-          extent={{150,60},{-150,100}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
-        Text(extent={{-140,-60},{-40,-30}}, 
-          textColor={128,128,128}, 
-          horizontalAlignment=TextAlignment.Right, 
-          textString="v_ref"), 
-        Text(extent={{30,-60},{150,-30}}, 
-          textString="exact="), 
-        Text(extent={{30,-90},{150,-60}}, 
+          extent={{150,60},{-150,100}},
+          textString="%name",
+          textColor={0,0,255}),
+        Text(extent={{-140,-60},{-40,-30}},
+          textColor={128,128,128},
+          horizontalAlignment=TextAlignment.Right,
+          textString="v_ref"),
+        Text(extent={{30,-60},{150,-30}},
+          textString="exact="),
+        Text(extent={{30,-90},{150,-60}},
           textString="%exact")}));
 end Speed;

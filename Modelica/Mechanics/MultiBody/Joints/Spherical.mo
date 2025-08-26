@@ -1,107 +1,107 @@
 ﻿within Modelica.Mechanics.MultiBody.Joints;
-model Spherical 
+model Spherical
   "Spherical joint (3 constraints and no potential states, or 3 degrees-of-freedom and 3 states)"
 
   import Modelica.Mechanics.MultiBody.Frames;
 
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;
-  parameter Boolean animation=true 
+  parameter Boolean animation=true
     "= true, if animation shall be enabled (show sphere)";
-  parameter SI.Distance sphereDiameter=world.defaultJointLength 
+  parameter SI.Distance sphereDiameter=world.defaultJointLength
     "Diameter of sphere representing the spherical joint" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input Types.Color sphereColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor 
+  input Types.Color sphereColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor
     "Color of sphere representing the spherical joint" 
     annotation (Dialog(colorSelector=true, group="if animation = true", enable=animation));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(group="if animation = true", enable=animation));
 
-  parameter Boolean angles_fixed = false 
+  parameter Boolean angles_fixed = false
     "= true, if angles_start are used as initial values, else as guess values" 
     annotation(Evaluate=true, choices(checkBox=true), Dialog(tab="Initialization"));
-  parameter SI.Angle angles_start[3]={0,0,0} 
+  parameter SI.Angle angles_start[3]={0,0,0}
     "Initial values of angles to rotate frame_a around 'sequence_start' axes into frame_b" 
     annotation (Dialog(tab="Initialization"));
-  parameter Types.RotationSequence sequence_start={1,2,3} 
+  parameter Types.RotationSequence sequence_start={1,2,3}
     "Sequence of rotations to rotate frame_a into frame_b at initial time" 
     annotation (Evaluate=true, Dialog(tab="Initialization"));
 
-  parameter Boolean w_rel_a_fixed = false 
+  parameter Boolean w_rel_a_fixed = false
     "= true, if w_rel_a_start are used as initial values, else as guess values" 
     annotation(Evaluate=true, choices(checkBox=true), Dialog(tab="Initialization"));
-  parameter SI.AngularVelocity w_rel_a_start[3]={0,0,0} 
+  parameter SI.AngularVelocity w_rel_a_start[3]={0,0,0}
     "Initial values of angular velocity of frame_b with respect to frame_a, resolved in frame_a" 
     annotation (Dialog(tab="Initialization"));
 
-  parameter Boolean z_rel_a_fixed = false 
+  parameter Boolean z_rel_a_fixed = false
     "= true, if z_rel_a_start are used as initial values, else as guess values" 
     annotation(Evaluate=true, choices(checkBox=true), Dialog(tab="Initialization"));
-  parameter SI.AngularAcceleration z_rel_a_start[3]={0,0,0} 
+  parameter SI.AngularAcceleration z_rel_a_start[3]={0,0,0}
     "Initial values of angular acceleration z_rel_a = der(w_rel_a)" 
     annotation (Dialog(tab="Initialization"));
 
-  parameter Boolean enforceStates=false 
+  parameter Boolean enforceStates=false
     "= true, if relative variables of spherical joint shall be used as states (StateSelect.always)" 
     annotation (Evaluate=true, Dialog(tab="Advanced"));
-  parameter Boolean useQuaternions=true 
+  parameter Boolean useQuaternions=true
     "= true, if quaternions shall be used as states otherwise use 3 angles as states (provided enforceStates=true)" 
     annotation (Evaluate=true, Dialog(tab="Advanced", enable=enforceStates));
-  parameter Types.RotationSequence sequence_angleStates={1,2,3} 
+  parameter Types.RotationSequence sequence_angleStates={1,2,3}
     "Sequence of rotations to rotate frame_a into frame_b around the 3 angles used as states" 
      annotation (Evaluate=true, Dialog(tab="Advanced", enable=enforceStates 
            and not useQuaternions));
 
-  final parameter Frames.Orientation R_rel_start= 
-      Frames.axesRotations(sequence_start, angles_start, zeros(3)) 
+  final parameter Frames.Orientation R_rel_start=
+      Frames.axesRotations(sequence_start, angles_start, zeros(3))
     "Orientation object from frame_a to frame_b at initial time";
 
 protected
   Visualizers.Advanced.Shape sphere(
-    shapeType="sphere", 
-    color=sphereColor, 
-    specularCoefficient=specularCoefficient, 
-    length=sphereDiameter, 
-    width=sphereDiameter, 
-    height=sphereDiameter, 
-    lengthDirection={1,0,0}, 
-    widthDirection={0,1,0}, 
-    r_shape={-0.5,0,0}*sphereDiameter, 
-    r=frame_a.r_0, 
+    shapeType="sphere",
+    color=sphereColor,
+    specularCoefficient=specularCoefficient,
+    length=sphereDiameter,
+    width=sphereDiameter,
+    height=sphereDiameter,
+    lengthDirection={1,0,0},
+    widthDirection={0,1,0},
+    r_shape={-0.5,0,0}*sphereDiameter,
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
 
   // Declarations for quaternions (dummies, if quaternions are not used)
-  parameter Frames.Quaternions.Orientation Q_start= 
-            Modelica.Mechanics.MultiBody.Frames.to_Q(R_rel_start) 
+  parameter Frames.Quaternions.Orientation Q_start=
+            Modelica.Mechanics.MultiBody.Frames.to_Q(R_rel_start)
     "Quaternion orientation object from frame_a to frame_b at initial time";
   Frames.Quaternions.Orientation Q(start=Q_start, each stateSelect=if 
         enforceStates and useQuaternions then StateSelect.prefer else 
-        StateSelect.never) 
+        StateSelect.never)
     "Quaternion orientation object from frame_a to frame_b (dummy value, if quaternions are not used as states)";
 
   // Declaration for 3 angles
-  parameter SI.Angle phi_start[3]=if sequence_start[1] == 
+  parameter SI.Angle phi_start[3]=if sequence_start[1] ==
       sequence_angleStates[1] and sequence_start[2] == sequence_angleStates[2] 
        and sequence_start[3] == sequence_angleStates[3] then angles_start else 
-       Frames.axesRotationsAngles(R_rel_start, sequence_angleStates) 
+       Frames.axesRotationsAngles(R_rel_start, sequence_angleStates)
     "Potential angle states at initial time";
   SI.Angle phi[3](start=phi_start, each stateSelect=if enforceStates and not 
-        useQuaternions then StateSelect.always else StateSelect.never) 
+        useQuaternions then StateSelect.always else StateSelect.never)
     "Dummy or 3 angles to rotate frame_a into frame_b";
   SI.AngularVelocity phi_d[3](each stateSelect=if enforceStates and not 
-        useQuaternions then StateSelect.always else StateSelect.never) 
+        useQuaternions then StateSelect.always else StateSelect.never)
     "= der(phi)";
   SI.AngularAcceleration phi_dd[3] "= der(phi_d)";
 
   // Other declarations
-  SI.AngularVelocity w_rel[3](start=Frames.resolve2(R_rel_start, w_rel_a_start), 
+  SI.AngularVelocity w_rel[3](start=Frames.resolve2(R_rel_start, w_rel_a_start),
         fixed = fill(w_rel_a_fixed,3), each stateSelect=if 
         enforceStates and useQuaternions then StateSelect.always else 
-        StateSelect.never) 
+        StateSelect.never)
     "Dummy or relative angular velocity of frame_b with respect to frame_a, resolved in frame_b";
-  Frames.Orientation R_rel 
+  Frames.Orientation R_rel
     "Dummy or relative orientation object to rotate from frame_a to frame_b";
-  Frames.Orientation R_rel_inv 
+  Frames.Orientation R_rel_inv
     "Dummy or relative orientation object to rotate from frame_b to frame_a";
 initial equation
   if angles_fixed then
@@ -171,7 +171,7 @@ equation
     zeros(3) = frame_a.f + Frames.resolveRelative(frame_b.f, frame_b.R, frame_a.R);
 
     if w_rel_a_fixed or z_rel_a_fixed then
-      w_rel = Frames.angularVelocity2(frame_b.R) - Frames.resolve2(frame_b.R, 
+      w_rel = Frames.angularVelocity2(frame_b.R) - Frames.resolve2(frame_b.R,
          Frames.angularVelocity1(frame_a.R));
     else
       w_rel = zeros(3);
@@ -234,38 +234,38 @@ frame_b of the joint.
 <div>
 <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Joints/Spherical.png\">
 </div>
-</html>"), 
+</html>"),
          Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Ellipse(
-          extent={{-70,-70},{70,70}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{-70,-70},{70,70}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{-49,-50},{51,50}}, 
-          lineColor={128,128,128}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-49,-50},{51,50}},
+          lineColor={128,128,128},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{30,70},{71,-68}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{30,70},{71,-68}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-100,10},{-68,-10}}, 
-          fillPattern=FillPattern.HorizontalCylinder, 
-          fillColor={192,192,192}), 
+          extent={{-100,10},{-68,-10}},
+          fillPattern=FillPattern.HorizontalCylinder,
+          fillColor={192,192,192}),
         Rectangle(
-          extent={{23,10},{100,-10}}, 
-          fillPattern=FillPattern.HorizontalCylinder, 
-          fillColor={192,192,192}), 
+          extent={{23,10},{100,-10}},
+          fillPattern=FillPattern.HorizontalCylinder,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{-24,25},{26,-25}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={160,160,164}), 
+          extent={{-24,25},{26,-25}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={160,160,164}),
         Text(
-          extent={{-150,-115},{150,-75}}, 
-          textString="%name", 
+          extent={{-150,-115},{150,-75}},
+          textString="%name",
           textColor={0,0,255})}));
 end Spherical;

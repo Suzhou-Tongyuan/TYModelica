@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.Translational.Components;
-model IdealRollingWheel 
+model IdealRollingWheel
   "Simple 1-dim. model of an ideal rolling wheel without inertia"
   extends Modelica.Mechanics.Rotational.Components.IdealRollingWheel;
   annotation (

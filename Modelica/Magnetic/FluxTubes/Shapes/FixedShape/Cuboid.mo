@@ -1,12 +1,12 @@
 ﻿within Modelica.Magnetic.FluxTubes.Shapes.FixedShape;
-model Cuboid 
+model Cuboid
   "Flux tube with rectangular cross-section; fixed shape; linear or non-linear material characteristics"
 
   extends BaseClasses.FixedShape;
   extends Modelica.Magnetic.FluxTubes.Icons.Cuboid;
 
   parameter SI.Length l=0.01 "Length in direction of flux" annotation (
-      Dialog(group="Fixed geometry", groupImage= 
+      Dialog(group="Fixed geometry", groupImage=
           "modelica://Modelica/Resources/Images/Magnetic/FluxTubes/Shapes/CuboidParallelFlux.png"));
   parameter SI.Length a=0.01 "Width of rectangular cross-section" 
     annotation (Dialog(group="Fixed geometry"));
@@ -23,7 +23,7 @@ Please refer to the enclosing sub-package <a href=\"modelica://Modelica.Magnetic
 </p>
 </html>"), Icon(graphics={
         Text(
-          extent={{-150,50},{150,90}}, 
-          textString="%name", 
+          extent={{-150,50},{150,90}},
+          textString="%name",
           textColor={0,0,255})}));
 end Cuboid;

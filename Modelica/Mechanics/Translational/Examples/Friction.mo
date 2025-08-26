@@ -2,30 +2,30 @@
 model Friction "Use of model Stop"
   extends Modelica.Icons.Example;
   Modelica.Mechanics.Translational.Components.MassWithStopAndFriction stop1(
-    L=1, 
-    s(fixed=true), 
-    v(fixed=true), 
-    smax=25, 
-    smin=-25, 
-    m=1, 
-    F_prop=1, 
-    F_Coulomb=5, 
-    F_Stribeck=10, 
+    L=1,
+    s(fixed=true),
+    v(fixed=true),
+    smax=25,
+    smin=-25,
+    m=1,
+    F_prop=1,
+    F_Coulomb=5,
+    F_Stribeck=10,
     fexp=2) annotation (Placement(transformation(extent={{20,60},{40,80}})));
   Translational.Sources.Force force annotation (Placement(transformation(
           extent={{-20,60},{0,80}})));
   Modelica.Blocks.Sources.Sine sineForce(amplitude=25, f=0.25) 
     annotation (Placement(transformation(extent={{-60,60},{-40,80}})));
   Modelica.Mechanics.Translational.Components.MassWithStopAndFriction stop2(
-    L=1, 
-    smax=0.9, 
-    smin=-0.9, 
-    F_Coulomb=3, 
-    F_Stribeck=5, 
-    s(start=0, fixed=true), 
-    m=1, 
-    F_prop=1, 
-    fexp=2, 
+    L=1,
+    smax=0.9,
+    smin=-0.9,
+    F_Coulomb=3,
+    F_Stribeck=5,
+    s(start=0, fixed=true),
+    m=1,
+    F_prop=1,
+    fexp=2,
     v(start=-5, fixed=true)) annotation (Placement(transformation(extent={{38,-60},{58,-40}})));
   Translational.Components.Spring spring(s_rel0=1, c=500) annotation (
       Placement(transformation(extent={{0,-60},{20,-40}})));
@@ -34,17 +34,17 @@ model Friction "Use of model Stop"
   Translational.Sources.Force force2 annotation (Placement(transformation(
           extent={{-20,0},{0,20}})));
   Components.Mass mass(
-    m=1, 
-    L=1, 
-    s(fixed=true), 
+    m=1,
+    L=1,
+    s(fixed=true),
     v(fixed=true)) 
     annotation (Placement(transformation(extent={{10,0},{30,20}})));
   Components.SupportFriction supportFriction(f_pos=Examples.Utilities.GenerateStribeckFrictionTable(
-            F_prop=1, 
-            F_Coulomb=5, 
-            F_Stribeck=10, 
-            fexp=2, 
-            v_max=12, 
+            F_prop=1,
+            F_Coulomb=5,
+            F_Stribeck=10,
+            fexp=2,
+            v_max=12,
             nTable=50)) 
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
 equation
@@ -63,17 +63,17 @@ equation
   connect(sineForce.y, force2.f) annotation (Line(
       points={{-39,70},{-30,70},{-30,10},{-22,10}}, color={0,0,127}));
   annotation (
-    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={Text(
-              extent={{-100,80},{-80,60}}, 
-              textString="1)", 
+              extent={{-100,80},{-80,60}},
+              textString="1)",
               lineColor={0,0,255}),Text(
-              extent={{-100,20},{-80,0}}, 
-              textString="2)", 
+              extent={{-100,20},{-80,0}},
+              textString="2)",
               lineColor={0,0,255}),Text(
-              extent={{-100,-40},{-80,-60}}, 
-              textColor={0,0,255}, 
-              textString="3)")}), 
+              extent={{-100,-40},{-80,-60}},
+              textColor={0,0,255},
+              textString="3)")}),
     Documentation(info="<html>
 <ol>
 <li> Simulate and then plot stop1.f as a function of stop1.v
@@ -89,6 +89,6 @@ equation
      <strong>reinit</strong>(&hellip;), convergence problems). In this case use the ElastoGap
      to model a stop (see example Preload).</li>
 </ol>
-</html>"), 
+</html>"),
     experiment(StopTime=5.0, Interval=0.001));
 end Friction;

@@ -58,7 +58,7 @@ equation
         S.i = smooth(0,if (D.v > S.v) then id else -id);
         B.i = 0;
         LossPower = D.i*(D.v - S.v);
-        annotation (defaultComponentName="pMOS", 
+        annotation (defaultComponentName="pMOS",
           Documentation(info="<html>
 <p>The PMOS model is a simple model of a p-channel metal-oxide semiconductor FET. It differs slightly from the device used in the SPICE simulator. For more details please care for [<a href=\"modelica://Modelica.Electrical.Analog.UsersGuide.References\">Spiro1990</a>].
 <br>A heating port is added for thermal electric simulation. The heating port is defined in the Modelica.Thermal library.
@@ -88,24 +88,24 @@ m       m      A/V^2       V     -      -       m        m
        by Christoph Clauss<br> implemented<br>
        </li>
 </ul>
-</html>"), 
+</html>"),
          Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
-        Line(points={{-90,-60},{-10,-60}}, color={0,0,255}), 
-        Line(points={{-10,-60},{-10,60}}, color={0,0,255}), 
-        Line(points={{10,80},{10,39}}, color={0,0,255}), 
-        Line(points={{10,20},{10,-21}}, color={0,0,255}), 
-        Line(points={{10,-40},{10,-81}}, color={0,0,255}), 
-        Line(points={{10,60},{91,60}}, color={0,0,255}), 
-        Line(points={{10,0},{90,0}}, color={0,0,255}), 
-        Line(points={{10,-60},{90,-60}}, color={0,0,255}), 
+        Line(points={{-90,-60},{-10,-60}}, color={0,0,255}),
+        Line(points={{-10,-60},{-10,60}}, color={0,0,255}),
+        Line(points={{10,80},{10,39}}, color={0,0,255}),
+        Line(points={{10,20},{10,-21}}, color={0,0,255}),
+        Line(points={{10,-40},{10,-81}}, color={0,0,255}),
+        Line(points={{10,60},{91,60}}, color={0,0,255}),
+        Line(points={{10,0},{90,0}}, color={0,0,255}),
+        Line(points={{10,-60},{90,-60}}, color={0,0,255}),
         Polygon(
-          points={{60,0},{40,5},{40,-5},{60,0}}, 
-          fillColor={0,0,255}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
-        Text(     extent={{-150,130},{150,90}}, 
-          textString="%name", 
+          points={{60,0},{40,5},{40,-5},{60,0}},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
+        Text(     extent={{-150,130},{150,90}},
+          textString="%name",
                   textColor={0,0,255})}));
 end PMOS;

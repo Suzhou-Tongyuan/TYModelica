@@ -7,7 +7,7 @@ This package contains basic space phasor models.<br>
 Real and imaginary part of voltage space phasor are the potentials v_[2] of the space phasor connector; (implicit grounded).<br>
 Real and imaginary part of current space phasor are the currents i_[2] at the space phasor connector;
 a ground has to be used where necessary for currents flowing back.
-</html>", 
+</html>",
       revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

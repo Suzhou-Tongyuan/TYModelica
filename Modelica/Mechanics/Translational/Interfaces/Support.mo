@@ -3,33 +3,33 @@ connector Support "Support/housing flange of a one-dimensional translational com
   extends Flange;
 
   annotation (
-    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100}, 
+    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={Rectangle(
-              extent={{-60,60},{60,-60}}, 
-              fillColor={175,190,175}, 
-              fillPattern=FillPattern.Solid, 
+              extent={{-60,60},{60,-60}},
+              fillColor={175,190,175},
+              fillPattern=FillPattern.Solid,
               pattern=LinePattern.None),           Text(
-              extent={{-160,110},{40,50}}, 
-              textColor={0,127,0}, 
+              extent={{-160,110},{40,50}},
+              textColor={0,127,0},
               textString="%name"),Rectangle(
-              extent={{-40,-40},{40,40}}, 
-              lineColor={0,127,0}, 
-              fillColor={0,127,0}, 
-              fillPattern=FillPattern.Solid)}), 
+              extent={{-40,-40},{40,40}},
+              lineColor={0,127,0},
+              fillColor={0,127,0},
+              fillPattern=FillPattern.Solid)}),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={Rectangle(
-              extent={{-90,-90},{90,90}}, 
-              lineColor={0,127,0}, 
-              fillColor={175,175,175}, 
+              extent={{-90,-90},{90,90}},
+              lineColor={0,127,0},
+              fillColor={175,175,175},
               fillPattern=FillPattern.Solid),Rectangle(
-          extent={{-150,150},{150,-150}}, 
-          fillColor={175,190,175}, 
-          fillPattern=FillPattern.Solid, 
+          extent={{-150,150},{150,-150}},
+          fillColor={175,190,175},
+          fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),    Rectangle(
-              extent={{-90,-90},{90,90}}, 
-              lineColor={0,127,0}, 
-              fillColor={0,127,0}, 
-              fillPattern=FillPattern.Solid)}), 
+              extent={{-90,-90},{90,90}},
+              lineColor={0,127,0},
+              fillColor={0,127,0},
+              fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
 This is a connector for 1-dim. translational mechanical systems and models

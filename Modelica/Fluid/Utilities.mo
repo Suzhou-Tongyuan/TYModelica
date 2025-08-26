@@ -1,5 +1,5 @@
 ﻿within Modelica.Fluid;
-package Utilities 
+package Utilities
   "Utility models to construct fluid components (should not be used directly)"
   extends Modelica.Icons.UtilitiesPackage;
 
@@ -24,9 +24,9 @@ define_p = true is required.
 
     for i in 1:nX loop
       assert(X_boundary[i] >= 0.0, "
-Wrong boundary mass fractions in medium \"" 
+Wrong boundary mass fractions in medium \""
   + mediumName + "\" in model \"" + modelName + "\":
-The boundary value X_boundary(" 
+The boundary value X_boundary("
                               + String(i) + ") = " + String(
         X_boundary[i]) + "
 is negative. It must be positive.
@@ -40,23 +40,23 @@ is negative. It must be positive.
           i]) + " \"" + substanceNames[i] + "\"\n";
        end for;
        Modelica.Utilities.Streams.error(
-          "The boundary mass fractions in medium \"" + mediumName + "\" in model \"" + modelName + "\"\n" + 
-          "do not sum up to 1. Instead, sum(X_boundary) = " + String(sum(X_boundary)) + ":\n" 
+          "The boundary mass fractions in medium \"" + mediumName + "\" in model \"" + modelName + "\"\n" +
+          "do not sum up to 1. Instead, sum(X_boundary) = " + String(sum(X_boundary)) + ":\n"
           + X_str);
     end if;
   end checkBoundary;
 
-  function regRoot 
+  function regRoot
     "Anti-symmetric square root approximation with finite derivative in the origin"
     extends Modelica.Icons.Function;
     input Real x;
-    input Real delta=0.01 
+    input Real delta=0.01
       "Range of significant deviation from sqrt(abs(x))*sgn(x)";
     output Real y;
   algorithm
     y := x/(x*x+delta*delta)^0.25;
 
-    annotation(derivative(zeroDerivative=delta)=regRoot_der, 
+    annotation(derivative(zeroDerivative=delta)=regRoot_der,
       Documentation(info="<html>
 <p>
 This function approximates sqrt(abs(x))*sgn(x), such that the derivative is finite and smooth in x=0.
@@ -69,7 +69,7 @@ This function approximates sqrt(abs(x))*sgn(x), such that the derivative is fini
 <p>
 With the default value of delta=0.01, the difference between sqrt(x) and regRoot(x) is 16% around x=0.01, 0.25% around x=0.1 and 0.0025% around x=1.
 </p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>15 Mar 2005</em>
@@ -89,7 +89,7 @@ With the default value of delta=0.01, the difference between sqrt(x) and regRoot
     dy := dx*0.5*(x*x+2*delta*delta)/((x*x+delta*delta)^1.25);
 
   annotation (Documentation(info="<html>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>15 Mar 2005</em>
@@ -99,7 +99,7 @@ With the default value of delta=0.01, the difference between sqrt(x) and regRoot
 </html>"));
   end regRoot_der;
 
-  function regSquare 
+  function regSquare
     "Anti-symmetric square approximation with non-zero derivative in the origin"
     extends Modelica.Icons.Function;
     input Real x;
@@ -120,7 +120,7 @@ This function approximates x^2*sgn(x), such that the derivative is non-zero in x
 <p>
 With the default value of delta=0.01, the difference between x^2 and regSquare(x) is 41% around x=0.01, 0.4% around x=0.1 and 0.005% around x=1.
 </p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>15 Mar 2005</em>
@@ -130,7 +130,7 @@ With the default value of delta=0.01, the difference between x^2 and regSquare(x
 </html>"));
   end regSquare;
 
-  function regPow 
+  function regPow
     "Anti-symmetric power approximation with non-zero derivative in the origin"
     extends Modelica.Icons.Function;
     input Real x;
@@ -149,7 +149,7 @@ This function approximates abs(x)^a*sign(x), such that the derivative is positiv
 <tr><td>y = regPow(x)</td><td>y ~= abs(x)^a*sgn(x)</td><td>abs(x) &gt;&gt;delta</td></tr>
 <tr><td>y = regPow(x)</td><td>y ~= x*delta^(a-1)</td><td>abs(x) &lt;&lt; delta</td></tr>
 </table>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>15 Mar 2005</em>
@@ -159,7 +159,7 @@ This function approximates abs(x)^a*sign(x), such that the derivative is positiv
 </html>"));
   end regPow;
 
-  function regRoot2 
+  function regRoot2
     "Anti-symmetric approximation of square root with discontinuous factor so that the first derivative is finite and continuous"
 
     extends Modelica.Icons.Function;
@@ -173,7 +173,7 @@ This function approximates abs(x)^a*sign(x), such that the derivative is positiv
   protected
     Real sqrt_k1 = if k1 > 0 then sqrt(k1) else 0;
     Real sqrt_k2 = if k2 > 0 then sqrt(k2) else 0;
-    encapsulated function regRoot2_utility 
+    encapsulated function regRoot2_utility
       "Interpolating with two 3-order polynomials with a prescribed derivative at x=0"
       import Modelica;
       extends Modelica.Icons.Function;
@@ -354,11 +354,11 @@ k1=1, k2=3 is shown in the next figure:</p>
 </html>"));
   end regRoot2;
 
-  function regSquare2 
+  function regSquare2
     "Anti-symmetric approximation of square with discontinuous factor so that the first derivative is non-zero and is continuous"
     extends Modelica.Icons.Function;
     input Real x "Abscissa value";
-    input Real x_small(min=0)=0.01 
+    input Real x_small(min=0)=0.01
       "Approximation of function for |x| <= x_small";
     input Real k1(min=0)=1 "y = (if x>=0 then k1 else k2)*x*|x|";
     input Real k2(min=0)=1 "y = (if x>=0 then k1 else k2)*x*|x|";
@@ -366,7 +366,7 @@ k1=1, k2=3 is shown in the next figure:</p>
     input Real yd0(min=0)=1 "Desired derivative at x=0: dy/dx = yd0";
     output Real y "Ordinate value";
   protected
-    encapsulated function regSquare2_utility 
+    encapsulated function regSquare2_utility
       "Interpolating with two 3-order polynomials with a prescribed derivative at x=0"
       import Modelica;
       extends Modelica.Icons.Function;
@@ -495,13 +495,13 @@ k1=1, k2=3 is shown in the next figure:
 </html>"));
   end regSquare2;
 
-  function regStep 
+  function regStep
     "Approximation of a general step, such that the characteristic is continuous and differentiable"
     extends Modelica.Icons.Function;
     input Real x "Abscissa value";
     input Real y1 "Ordinate value for x > 0";
     input Real y2 "Ordinate value for x < 0";
-    input Real x_small(min=0) = 1e-5 
+    input Real x_small(min=0) = 1e-5
       "Approximation of step for -x_small <= x <= x_small; x_small >= 0 required";
     output Real y "Ordinate value to approximate y = if x > 0 then y1 else y2";
   algorithm
@@ -541,7 +541,7 @@ for a smooth transition from y1 to y2.
 </html>"));
   end regStep;
 
-  function evaluatePoly3_derivativeAtZero 
+  function evaluatePoly3_derivativeAtZero
     "Evaluate polynomial of order 3 that passes the origin with a predefined derivative"
     extends Modelica.Icons.Function;
     input Real x "Value for which polynomial shall be evaluated";
@@ -578,7 +578,7 @@ for a smooth transition from y1 to y2.
     input Real y1d "Derivative at upper abscissa value";
 
     output Real y "Ordinate value";
-    output Real c 
+    output Real c
       "Slope of linear section between two cubic polynomials or dummy linear section slope if single cubic is used";
 
   protected
@@ -600,18 +600,18 @@ for a smooth transition from y1 to y2.
     Real const3 "Integration constant of right cubic";
     Real aux01;
     Real aux02;
-    Boolean useSingleCubicPolynomial=false 
+    Boolean useSingleCubicPolynomial=false
       "Indicate to override further logic and use single cubic";
   algorithm
     // Check arguments: Data point position
-    assert(x0 < x1, "regFun3(): Data points not sorted appropriately (x0 = " + 
+    assert(x0 < x1, "regFun3(): Data points not sorted appropriately (x0 = " +
       String(x0) + " > x1 = " + String(x1) + "). Please flip arguments.");
     // Check arguments: Data point derivatives
     if y0d*y1d >= 0 then
       // Derivatives at data points allow co-monotone interpolation, nothing to do
     else
       // Strictly speaking, derivatives at data points do not allow co-monotone interpolation, however, they may be numerically zero so assert this
-      assert(abs(y0d)<Modelica.Constants.eps or abs(y1d)<Modelica.Constants.eps, "regFun3(): Derivatives at data points do not allow co-monotone interpolation, as both are non-zero, of opposite sign and have an absolute value larger than machine eps (y0d = " + 
+      assert(abs(y0d)<Modelica.Constants.eps or abs(y1d)<Modelica.Constants.eps, "regFun3(): Derivatives at data points do not allow co-monotone interpolation, as both are non-zero, of opposite sign and have an absolute value larger than machine eps (y0d = " +
       String(y0d) + ", y1d = " + String(y1d) + "). Please correct arguments.");
     end if;
 
@@ -628,19 +628,19 @@ for a smooth transition from y1 to y2.
       y := y0 + (x-x0)*(y0d + (x-x0)/h0*( (-2*y0d-y1d+3*Delta0) + (x-x0)*(y0d+y1d-2*Delta0)/h0));
       // Provide a "dummy linear section slope" as the slope of the cubic at x:=(x0+x1)/2
       aux01 := (x0 + x1)/2;
-      c := 3*(y0d + y1d - 2*Delta0)*(aux01 - x0)^2/h0^2 + 2*(-2*y0d - y1d + 3*Delta0)*(aux01 - x0)/h0 
+      c := 3*(y0d + y1d - 2*Delta0)*(aux01 - x0)^2/h0^2 + 2*(-2*y0d - y1d + 3*Delta0)*(aux01 - x0)/h0
          + y0d;
     else
       // Points (x0,y0) and (x1,y1) not on horizontal line and inflection point of S0 not at +/- infinity
       // Do actual interpolation
-      xstar := 1/3*(-3*x0*y0d - 3*x0*y1d + 6*x0*Delta0 - 2*h0*y0d - h0*y1d + 3*h0* 
+      xstar := 1/3*(-3*x0*y0d - 3*x0*y1d + 6*x0*Delta0 - 2*h0*y0d - h0*y1d + 3*h0*
         Delta0)/(-y0d - y1d + 2*Delta0);
       mu := xstar - x0;
       eta := x1 - xstar;
-      omega := 3*(y0d + y1d - 2*Delta0)*(xstar - x0)^2/h0^2 + 2*(-2*y0d - y1d + 3* 
+      omega := 3*(y0d + y1d - 2*Delta0)*(xstar - x0)^2/h0^2 + 2*(-2*y0d - y1d + 3*
         Delta0)*(xstar - x0)/h0 + y0d;
 
-      aux01 := 0.25*sign(Delta0)*min(abs(omega), abs(Delta0)) 
+      aux01 := 0.25*sign(Delta0)*min(abs(omega), abs(Delta0))
         "Slope c if not using plain cubic S0";
       if abs(y0d - y1d) <= 100*Modelica.Constants.eps then
         // y0 == y1 (value and sign equal) -> resolve indefinite 0/0
@@ -657,7 +657,7 @@ for a smooth transition from y1 to y2.
           if (y1d + y0d - 2*Delta0) >= 0 then 1 else -1)*Modelica.Constants.inf;
       else
         // Okay, no guarding necessary
-        aux02 := (6*Delta0*(y1d + y0d - 3/2*Delta0) - y1d*y0d - y1d^2 - y0d^2)/(3* 
+        aux02 := (6*Delta0*(y1d + y0d - 3/2*Delta0) - y1d*y0d - y1d^2 - y0d^2)/(3*
           (y1d + y0d - 2*Delta0));
       end if;
 
@@ -717,7 +717,7 @@ for a smooth transition from y1 to y2.
         y := y0 + (x-x0)*(y0d + (x-x0)/h0*( (-2*y0d-y1d+3*Delta0) + (x-x0)*(y0d+y1d-2*Delta0)/h0));
         // Provide a "dummy linear section slope" as the slope of the cubic at x:=(x0+x1)/2
         aux01 := (x0 + x1)/2;
-        c := 3*(y0d + y1d - 2*Delta0)*(aux01 - x0)^2/h0^2 + 2*(-2*y0d - y1d + 3*Delta0)*(aux01 - x0)/h0 
+        c := 3*(y0d + y1d - 2*Delta0)*(aux01 - x0)^2/h0^2 + 2*(-2*y0d - y1d + 3*Delta0)*(aux01 - x0)/h0
            + y0d;
       end if;
     end if;
@@ -830,7 +830,7 @@ The second graph shows the continuous derivative of this regularization function
 </html>"));
   end cubicHermite;
 
-  function cubicHermite_withDerivative 
+  function cubicHermite_withDerivative
     "Evaluate a cubic Hermite spline, return value and derivative"
     extends Modelica.Icons.Function;
 

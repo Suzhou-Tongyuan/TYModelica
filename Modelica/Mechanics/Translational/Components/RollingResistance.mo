@@ -9,20 +9,20 @@ model RollingResistance "Resistance of a rolling wheel"
   parameter Boolean useInclinationInput=false "Enable signal input for inclination";
   parameter Real inclinationConstant=0 "Constant inclination = tan(angle)" 
     annotation(Dialog(enable=not useInclinationInput));
-  parameter Modelica.Blocks.Types.Regularization reg=Modelica.Blocks.Types.Regularization.Exp 
+  parameter Modelica.Blocks.Types.Regularization reg=Modelica.Blocks.Types.Regularization.Exp
     "Type of regularization" annotation(Evaluate=true);
-  parameter SI.Velocity v0(final min=Modelica.Constants.eps)=0.1 
+  parameter SI.Velocity v0(final min=Modelica.Constants.eps)=0.1
     "Regularization below v0";
-  SI.Velocity v 
+  SI.Velocity v
     "Velocity of flange with respect to support (= der(s))";
   SI.Force f_nominal "Nominal rolling resistance without regularization";
-  Blocks.Interfaces.RealInput inclination = inclination_internal if useInclinationInput 
+  Blocks.Interfaces.RealInput inclination = inclination_internal if useInclinationInput
     "Inclination=tan(angle)" 
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, 
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},
         origin={-120,60})));
-  Blocks.Interfaces.RealInput cr = Cr_internal if useCrInput 
+  Blocks.Interfaces.RealInput cr = Cr_internal if useCrInput
     "Rolling resistance coefficient" 
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, 
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},
         origin={-120,-60})));
 protected
   Real Cr_internal "Rolling resistance coefficient";
@@ -46,51 +46,51 @@ equation
     f = -f_nominal*(if abs(v)>=v0 then sign(v) else sign(v)*(1 - Modelica.Math.cos(pi/2*v/v0)));
   end if;
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
       graphics={
-        Ellipse(extent={{-60,60},{60,-60}}, 
-          lineColor={0,127,0}, 
-          fillColor={160,215,160}, 
-          fillPattern=FillPattern.Sphere), 
-        Ellipse(extent={{-40,40},{40,-40}}, 
-          lineColor={0,127,0}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+        Ellipse(extent={{-60,60},{60,-60}},
+          lineColor={0,127,0},
+          fillColor={160,215,160},
+          fillPattern=FillPattern.Sphere),
+        Ellipse(extent={{-40,40},{40,-40}},
+          lineColor={0,127,0},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-100,70},{-60,50}}, 
-          textColor={64,64,64}, 
-          textString="inc."), 
+          extent={{-100,70},{-60,50}},
+          textColor={64,64,64},
+          textString="inc."),
         Text(
-          extent={{-110,-50},{-70,-70}}, 
-          textColor={64,64,64}, 
-          textString="cr"), 
+          extent={{-110,-50},{-70,-70}},
+          textColor={64,64,64},
+          textString="cr"),
         Rectangle(
-          extent={{-2,40},{2,-40}}, 
-          lineColor={0,127,0}, 
-          fillColor={160,215,160}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-2,40},{2,-40}},
+          lineColor={0,127,0},
+          fillColor={160,215,160},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-2,40},{2,-40}}, 
-          lineColor={0,127,0}, 
-          fillColor={160,215,160}, 
-          fillPattern=FillPattern.Solid, 
-          rotation=90), 
+          extent={{-2,40},{2,-40}},
+          lineColor={0,127,0},
+          fillColor={160,215,160},
+          fillPattern=FillPattern.Solid,
+          rotation=90),
         Rectangle(
-          extent={{-2,40},{2,-40}}, 
-          lineColor={0,127,0}, 
-          fillColor={160,215,160}, 
-          fillPattern=FillPattern.Solid, 
-          rotation=135), 
+          extent={{-2,40},{2,-40}},
+          lineColor={0,127,0},
+          fillColor={160,215,160},
+          fillPattern=FillPattern.Solid,
+          rotation=135),
         Rectangle(
-          extent={{-2,40},{2,-40}}, 
-          lineColor={0,127,0}, 
-          fillColor={160,215,160}, 
-          fillPattern=FillPattern.Solid, 
-          rotation=45), 
-        Ellipse(extent={{-10,10},{10,-10}}, 
-          lineColor={0,127,0}, 
-          fillColor={160,215,160}, 
-          fillPattern=FillPattern.Solid)}), 
+          extent={{-2,40},{2,-40}},
+          lineColor={0,127,0},
+          fillColor={160,215,160},
+          fillPattern=FillPattern.Solid,
+          rotation=45),
+        Ellipse(extent={{-10,10},{10,-10}},
+          lineColor={0,127,0},
+          fillColor={160,215,160},
+          fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
 Simplified model of the resistance of a&nbsp;rolling wheel,

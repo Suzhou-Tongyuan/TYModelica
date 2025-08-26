@@ -90,7 +90,7 @@ equation
     vS = 0;
   end if;
   LossPower = vbc*ibc/br_t + vbe*ibe/bf_t + (ibe - ibc)*qbk*(C.v - E.v);
-        annotation (defaultComponentName="npn", 
+        annotation (defaultComponentName="npn",
           Documentation(info="<html>
 <p>This model is a simple model of a bipolar NPN junction transistor according to Ebers-Moll.
 <br>A heating port is added for thermal electric simulation. The heating port is defined in the Modelica.Thermal library.
@@ -110,27 +110,27 @@ Bf  Br  Is     Vak  Tauf    Taur  Ccs   Cje     Cjc     Phie  Me   PHic   Mc    
        by Christoph Clauss<br> implemented<br>
        </li>
 </ul>
-</html>"), 
+</html>"),
          Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
-        Line(points={{-20,40},{-20,-40}}, color={0,0,255}), 
-        Line(points={{-20,0},{-100,0}}, color={0,0,255}), 
-        Line(points={{91,60},{30,60}}, color={0,0,255}), 
-        Line(points={{30,60},{-20,10}}, color={0,0,255}), 
-        Line(points={{-20,-10},{30,-60}}, color={0,0,255}), 
-        Line(points={{30,-60},{91,-60}}, color={0,0,255}), 
+        Line(points={{-20,40},{-20,-40}}, color={0,0,255}),
+        Line(points={{-20,0},{-100,0}}, color={0,0,255}),
+        Line(points={{91,60},{30,60}}, color={0,0,255}),
+        Line(points={{30,60},{-20,10}}, color={0,0,255}),
+        Line(points={{-20,-10},{30,-60}}, color={0,0,255}),
+        Line(points={{30,-60},{91,-60}}, color={0,0,255}),
         Polygon(
-          points={{30,-60},{24,-46},{16,-54},{30,-60}}, 
-          fillColor={0,0,255}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
-        Text(     extent={{-150,130},{150,90}}, 
-          textString="%name", 
-    textColor={0,0,255}), 
+          points={{30,-60},{24,-46},{16,-54},{30,-60}},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
+        Text(     extent={{-150,130},{150,90}},
+          textString="%name",
+    textColor={0,0,255}),
         Line(
-          points={{0,0},{90,0}}, 
-          color={0,0,255}, 
-          pattern=LinePattern.Dash, 
+          points={{0,0},{90,0}},
+          color={0,0,255},
+          pattern=LinePattern.Dash,
           visible = useSubstrate)}));
 end NPN;

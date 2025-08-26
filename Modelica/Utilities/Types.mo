@@ -2,25 +2,25 @@
 package Types "Type definitions used in package Modelica.Utilities"
   extends Modelica.Icons.TypesPackage;
   type Compare = enumeration(
-      Less "String 1 is lexicographically less than string 2", 
-      Equal "String 1 is identical to string 2", 
-      Greater "String 1 is lexicographically greater than string 2") 
+      Less "String 1 is lexicographically less than string 2",
+      Equal "String 1 is identical to string 2",
+      Greater "String 1 is lexicographically greater than string 2")
     "Enumeration defining comparison of two strings";
 
   type FileType = enumeration(
-      NoFile "No file exists", 
-      RegularFile "Regular file", 
-      Directory "Directory", 
-      SpecialFile "Special file (pipe, FIFO, device, etc.)") 
+      NoFile "No file exists",
+      RegularFile "Regular file",
+      Directory "Directory",
+      SpecialFile "Special file (pipe, FIFO, device, etc.)")
     "Enumeration defining the type of a file";
 
   type TokenType = enumeration(
-      RealToken, 
-      IntegerToken, 
-      BooleanToken, 
-      StringToken, 
-      IdentifierToken, 
-      DelimiterToken, 
+      RealToken,
+      IntegerToken,
+      BooleanToken,
+      StringToken,
+      IdentifierToken,
+      DelimiterToken,
       NoToken) "Enumeration defining the token type";
 
   record TokenValue "Value of token"
@@ -29,7 +29,7 @@ package Types "Type definitions used in package Modelica.Utilities"
      Real real "Value if tokenType == TokenType.RealToken";
      Integer integer "Value if tokenType == TokenType.IntegerToken";
      Boolean boolean "Value if tokenType == TokenType.BooleanToken";
-     String string 
+     String string
       "Value if tokenType == TokenType.StringToken/IdentifierToken/DelimiterToken";
     annotation (Documentation(info="<html>
 

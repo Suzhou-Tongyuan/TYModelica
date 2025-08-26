@@ -1,14 +1,14 @@
 ﻿within Modelica.Mechanics.Rotational.Examples;
-model LossyGearDemo3 
+model LossyGearDemo3
   "Example that failed in the previous version of the LossyGear version"
   extends Modelica.Icons.Example;
 
   Modelica.Mechanics.Rotational.Components.LossyGear gear(
-    ratio=1, 
-    lossTable=[0, 0.25, 0.25, 0.625, 2.5], 
-    useSupport=false) annotation (Placement(transformation(extent={{-10,0}, 
+    ratio=1,
+    lossTable=[0, 0.25, 0.25, 0.625, 2.5],
+    useSupport=false) annotation (Placement(transformation(extent={{-10,0},
             {10,20}})));
-  Modelica.Mechanics.Rotational.Components.Inertia Inertia1(w(start=10), J= 
+  Modelica.Mechanics.Rotational.Components.Inertia Inertia1(w(start=10), J=
         0.001) annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
   Modelica.Mechanics.Rotational.Sources.Torque torque1(useSupport=false) 
     annotation (Placement(transformation(extent={{-68,0},{-48,20}})));
@@ -17,15 +17,15 @@ model LossyGearDemo3
   Modelica.Blocks.Sources.Step step(height=0) annotation (Placement(
         transformation(extent={{-100,0},{-80,20}})));
   Modelica.Blocks.Sources.Step step1(
-    startTime=0.5, 
-    height=1, 
+    startTime=0.5,
+    height=1,
     offset=0) annotation (Placement(transformation(
-        origin={90,10}, 
-        extent={{-10,10},{10,-10}}, 
+        origin={90,10},
+        extent={{-10,10},{10,-10}},
         rotation=180)));
   Modelica.Mechanics.Rotational.Components.Inertia Inertia2(
-    J=0.001, 
-    phi(fixed=true, start=0), 
+    J=0.001,
+    phi(fixed=true, start=0),
     w(start=10, fixed=true)) annotation (Placement(transformation(extent={{
             20,0},{40,20}})));
 equation
@@ -49,6 +49,6 @@ LossyGear model is not obvious.
 The version of LossyGear up to version 3.1 of package Modelica failed in this case
 (no convergence of the event iteration).
 </p>
-</html>"), 
+</html>"),
        experiment(StopTime=1.0, Interval=0.001));
 end LossyGearDemo3;

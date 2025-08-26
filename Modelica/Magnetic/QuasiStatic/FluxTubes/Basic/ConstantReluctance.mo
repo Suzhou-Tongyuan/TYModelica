@@ -10,12 +10,12 @@ equation
   V_m = Phi*R_m;
 
   annotation (Icon(coordinateSystem(
-      preserveAspectRatio=false, 
+      preserveAspectRatio=false,
       extent={{-100,-100},{100,100}}), graphics={
-      Line(points={{70,0},{90,0}}, color={255,170,85}), 
+      Line(points={{70,0},{90,0}}, color={255,170,85}),
       Text(
-        extent={{-150,50},{150,90}}, 
-        textString="%name", 
+        extent={{-150,50},{150,90}},
+        textString="%name",
         textColor={0,0,255})}), Documentation(info="<html>
 <p>
 This constant reluctance is provided for test purposes and simple magnetic network models. The reluctance is not calculated from geometry and permeability of a flux tube, but is provided as parameter.

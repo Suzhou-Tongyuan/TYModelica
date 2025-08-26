@@ -6,7 +6,7 @@ package Sensors "Potential, voltage, current, and power sensors"
   annotation (
     Documentation(info="<html>
 <p>This package contains potential, voltage, and current sensors. The sensors can be used to convert voltages or currents into real signal values o be connected to components of the Blocks package. The sensors are designed in such a way that they do not influence the electrical behavior.</p>
-</html>", 
+</html>",
    revisions="<html>
 <dl>
 <dt>

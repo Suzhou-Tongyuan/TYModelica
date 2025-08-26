@@ -20,16 +20,16 @@ equation
   end for;
   annotation (defaultComponentName="plugToPins", Icon(graphics={
         Rectangle(
-          extent={{-20,20},{40,-20}}, 
-          fillColor={170,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-20,20},{40,-20}},
+          fillColor={170,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-40,20},{0,-20}}, 
-          fillColor={170,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-40,20},{0,-20}},
+          fillColor={170,255,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,50},{150,90}}, 
-          textString="%name", 
+          extent={{-150,50},{150,90}},
+          textString="%name",
           textColor={0,0,255})}), Documentation(info="<html>
 <p>
 Connects all <code>m</code> single-phase (positive) pins of the polyphase (positive) plug to an array of <code>m</code> single-phase (positive) pins.

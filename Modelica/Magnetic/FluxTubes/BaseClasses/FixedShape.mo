@@ -3,17 +3,17 @@ partial model FixedShape "Base class for flux tubes with fixed shape during simu
 
   extends Interfaces.TwoPort;
 
-  parameter Boolean nonLinearPermeability=true 
+  parameter Boolean nonLinearPermeability=true
     "= true, if non-linear rel. permeability is used, otherwise constant rel. permeability" 
     annotation (Dialog(group="Material"), Evaluate=true);
-  parameter SI.RelativePermeability mu_rConst=1 
+  parameter SI.RelativePermeability mu_rConst=1
     "Constant relative permeability; used if nonLinearPermeability = false" 
     annotation (Dialog(group="Material", enable=not nonLinearPermeability));
 
-  parameter FluxTubes.Material.SoftMagnetic.BaseData material= 
-      Material.SoftMagnetic.BaseData() 
+  parameter FluxTubes.Material.SoftMagnetic.BaseData material=
+      Material.SoftMagnetic.BaseData()
     "Ferromagnetic material characteristics; used if nonLinearPermeability = true" 
-    annotation (choicesAllMatching=true, Dialog(group="Material", enable= 
+    annotation (choicesAllMatching=true, Dialog(group="Material", enable=
           nonLinearPermeability));
 
   SI.Reluctance R_m "Magnetic reluctance";

@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames;
-function resolveRelative 
+function resolveRelative
   "Transform vector from frame 1 to frame 2 using absolute orientation objects of frame 1 and of frame 2"
 
   extends Modelica.Icons.Function;
@@ -9,8 +9,8 @@ function resolveRelative
   output Real v2[3] "Vector in frame 2";
 algorithm
   v2 := resolve2(R2, resolve1(R1, v1));
-  annotation (derivative(noDerivative=R1, noDerivative=R2) = Internal.resolveRelative_der, 
-      InlineAfterIndexReduction=true, 
+  annotation (derivative(noDerivative=R1, noDerivative=R2) = Internal.resolveRelative_der,
+      InlineAfterIndexReduction=true,
     Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>

@@ -1,15 +1,15 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
-function planarRotationAngle 
+function planarRotationAngle
   "Return angle of a planar rotation, given the rotation axis and the representations of a vector in frame 1 and frame 2"
 
   extends Modelica.Icons.Function;
-  input Real e[3](each final unit="1") 
+  input Real e[3](each final unit="1")
     "Normalized axis of rotation to rotate frame 1 around e into frame 2 (must have length=1)";
-  input Real v1[3] 
+  input Real v1[3]
     "A vector v resolved in frame 1 (shall not be parallel to e)";
-  input Real v2[3] 
+  input Real v2[3]
     "Vector v resolved in frame 2, i.e., v2 = resolve2(planarRotation(e,angle),v1)";
-  output SI.Angle angle 
+  output SI.Angle angle
     "Rotation angle to rotate frame 1 into frame 2 along axis e in the range: -pi <= angle <= pi";
 algorithm
   /* Vector v is resolved in frame 1 and frame 2 according to:

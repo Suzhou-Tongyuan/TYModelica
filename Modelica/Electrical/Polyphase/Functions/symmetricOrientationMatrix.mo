@@ -1,10 +1,10 @@
 ﻿within Modelica.Electrical.Polyphase.Functions;
-function symmetricOrientationMatrix 
+function symmetricOrientationMatrix
   "Matrix symmetric orientation angles for creating the symmetric transformation matrix"
   extends Modelica.Icons.Function;
   import Modelica.Constants.pi;
   input Integer m "Number of phases";
-  output SI.Angle oM[m, m] 
+  output SI.Angle oM[m, m]
     "Angles of symmetric transformation matrix";
 protected
   Integer nBase=numberOfSymmetricBaseSystems(m);

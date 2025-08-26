@@ -3,37 +3,37 @@ package CompressibleLiquids "Compressible liquid models"
   extends Modelica.Icons.VariantsPackage;
   package Common "Base classes for compressible liquids"
     extends Modelica.Icons.Package;
-    partial package LinearWater_pT 
+    partial package LinearWater_pT
       "Base class for liquid, linear compressibility water models"
       extends Media.Interfaces.PartialLinearFluid(
-        constantJacobian=true, 
-        reference_d=Modelica.Media.Water.StandardWater.density(state), 
-        reference_h=Modelica.Media.Water.StandardWater.specificEnthalpy(state), 
-        reference_s=Modelica.Media.Water.StandardWater.specificEntropy(state), 
-        cp_const=Modelica.Media.Water.StandardWater.specificHeatCapacityCp(state), 
-        beta_const= 
-            Modelica.Media.Water.StandardWater.isobaricExpansionCoefficient(state), 
+        constantJacobian=true,
+        reference_d=Modelica.Media.Water.StandardWater.density(state),
+        reference_h=Modelica.Media.Water.StandardWater.specificEnthalpy(state),
+        reference_s=Modelica.Media.Water.StandardWater.specificEntropy(state),
+        cp_const=Modelica.Media.Water.StandardWater.specificHeatCapacityCp(state),
+        beta_const=
+            Modelica.Media.Water.StandardWater.isobaricExpansionCoefficient(state),
         kappa_const=Modelica.Media.Water.StandardWater.isothermalCompressibility(
-            state), 
+            state),
         MM_const=Modelica.Media.Water.StandardWater.molarMass(state));
 
-      constant Modelica.Media.Water.StandardWater.ThermodynamicState state= 
+      constant Modelica.Media.Water.StandardWater.ThermodynamicState state=
           Modelica.Media.Water.StandardWater.setState_pT(reference_p, reference_T);
     end LinearWater_pT;
   end Common;
 
   package LinearColdWater "Cold water model with linear compressibility"
     extends Media.Interfaces.PartialLinearFluid(
-      mediumName="Linear cold water", 
-      constantJacobian=true, 
-      reference_p=101325, 
-      reference_T=278.15, 
-      reference_d=997.05, 
-      reference_h=104929, 
-      reference_s=100.0, 
-      cp_const=4181.9, 
-      beta_const=2.5713e-4, 
-      kappa_const=4.5154e-10, 
+      mediumName="Linear cold water",
+      constantJacobian=true,
+      reference_p=101325,
+      reference_T=278.15,
+      reference_d=997.05,
+      reference_h=104929,
+      reference_s=100.0,
+      cp_const=4181.9,
+      beta_const=2.5713e-4,
+      kappa_const=4.5154e-10,
       MM_const=0.018015268);
 
   redeclare function extends dynamicViscosity "Dynamic viscosity of water"
@@ -41,7 +41,7 @@ package CompressibleLiquids "Compressible liquid models"
     eta := 1.5e-3;
   end dynamicViscosity;
 
-  redeclare function extends thermalConductivity 
+  redeclare function extends thermalConductivity
       "Thermal conductivity of water"
   algorithm
     lambda := 0.572;
@@ -49,18 +49,18 @@ package CompressibleLiquids "Compressible liquid models"
 
   end LinearColdWater;
 
-  package LinearWater_pT_Ambient 
+  package LinearWater_pT_Ambient
     "Liquid, linear compressibility water model at 1.01325 bar and 25 degree Celsius"
     extends Modelica.Media.CompressibleLiquids.Common.LinearWater_pT(
-      mediumName="Liquid linear water", 
-      reference_p = 101325, 
+      mediumName="Liquid linear water",
+      reference_p = 101325,
       reference_T = 298.15);
   redeclare function extends dynamicViscosity "Dynamic viscosity of water"
   algorithm
     eta := 8.9e-4;
   end dynamicViscosity;
 
-  redeclare function extends thermalConductivity 
+  redeclare function extends thermalConductivity
       "Thermal conductivity of water"
   algorithm
     lambda := 0.608;

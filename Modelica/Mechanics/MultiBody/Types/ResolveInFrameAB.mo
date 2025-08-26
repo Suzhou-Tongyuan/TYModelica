@@ -1,10 +1,10 @@
 ﻿within Modelica.Mechanics.MultiBody.Types;
 type ResolveInFrameAB = enumeration(
-    world "Resolve in world frame", 
-    frame_a "Resolve in frame_a", 
-    frame_b "Resolve in frame_b", 
-    frame_resolve 
-      "Resolve in frame_resolve (frame_resolve must be connected)") 
+    world "Resolve in world frame",
+    frame_a "Resolve in frame_a",
+    frame_b "Resolve in frame_b",
+    frame_resolve
+      "Resolve in frame_resolve (frame_resolve must be connected)")
   "Enumeration to define the frame in which a relative vector is resolved (world, frame_a, frame_b, frame_resolve)" 
                                              annotation (Documentation(info="<html>
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">

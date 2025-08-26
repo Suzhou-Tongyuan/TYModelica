@@ -1,10 +1,10 @@
 ﻿within Modelica.Mechanics.Rotational.Components;
-model ElastoBacklash2 
+model ElastoBacklash2
   "Backlash connected in series to linear spring and damper (backlash is modeled with elasticity; at start of contact the flange torque can jump, contrary to the ElastoBacklash model)"
 
-  parameter SI.RotationalSpringConstant c(final min=Modelica.Constants.small, 
+  parameter SI.RotationalSpringConstant c(final min=Modelica.Constants.small,
       start=1.0e5) "Spring constant (c > 0 required)";
-  parameter SI.RotationalDampingConstant d(final min=0, start=0) 
+  parameter SI.RotationalDampingConstant d(final min=0, start=0)
     "Damping constant";
   parameter SI.Angle b(final min=0)=0 "Total backlash";
   parameter SI.Angle phi_rel0=0 "Unstretched spring angle";
@@ -14,9 +14,9 @@ model ElastoBacklash2
   extends 
     Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPortWithoutT;
 protected
-  final parameter SI.Angle bMax=b/2 
+  final parameter SI.Angle bMax=b/2
     "Backlash in range bMin <= phi_rel - phi_rel0 <= bMax";
-  final parameter SI.Angle bMin=-bMax 
+  final parameter SI.Angle bMin=-bMax
     "Backlash in range bMin <= phi_rel - phi_rel0 <= bMax";
   SI.Torque tau_c;
   SI.Torque tau_d;
@@ -94,7 +94,7 @@ equation
                    (if tau_c + tau_d >= 0 then 0 else tau_d*w_rel) 
                 else 0;
   end if;
-  annotation (defaultComponentName="elastoBacklash", 
+  annotation (defaultComponentName="elastoBacklash",
     Documentation(info="<html>
 <p>
 This element consists of a <strong>backlash</strong> element <strong>connected in series</strong>
@@ -189,38 +189,38 @@ See also the discussion
 <a href=\"modelica://Modelica.Mechanics.Rotational.UsersGuide.StateSelection\">State Selection</a>
 in the User's Guide of the Rotational library.
 </p>
-</html>"), 
+</html>"),
     Icon(
-    coordinateSystem(preserveAspectRatio=false, 
-      extent={{-100,-100},{100,100}}), 
+    coordinateSystem(preserveAspectRatio=false,
+      extent={{-100,-100},{100,100}}),
       graphics={
-    Line(points={{-80,32},{-58,32},{-48,0},{-34,61},{-20,0},{-8,60},{0,30},{20,30}}), 
-    Rectangle(extent={{-60,-10},{-10,-50}}, 
-      fillColor={192,192,192}, 
-      fillPattern=FillPattern.Solid), 
-    Line(points={{-60,-50},{0,-50}}), 
-    Line(points={{-60,-10},{0,-10}}), 
-    Line(points={{-10,-30},{20,-30}}), 
-    Line(points={{-80,-30},{-60,-30}}), 
-    Line(points={{-80,32},{-80,-30}}), 
-    Line(points={{20,30},{20,-30}}), 
-    Line(points={{-90,0},{-80,0}}), 
-    Line(points={{90,0},{80,0}}), 
-    Line(points={{20,0},{60,0},{60,-30}}), 
-    Line(points={{40,-12},{40,-40},{80,-40},{80,0}}), 
-    Text(extent={{-150,-130},{150,-90}}, 
-      textString="b=%b"), 
-    Text(extent={{-150,100},{150,60}}, 
-      textColor={0,0,255}, 
-      textString="%name"), 
-    Text(extent={{-152,-92},{148,-52}}, 
-      textString="c=%c"), 
-    Line(visible=useHeatPort, 
-      points={{-100,-100},{-100,-43},{-34,-43}}, 
-      color={191,0,0}, 
-      pattern=LinePattern.Dot), 
+    Line(points={{-80,32},{-58,32},{-48,0},{-34,61},{-20,0},{-8,60},{0,30},{20,30}}),
+    Rectangle(extent={{-60,-10},{-10,-50}},
+      fillColor={192,192,192},
+      fillPattern=FillPattern.Solid),
+    Line(points={{-60,-50},{0,-50}}),
+    Line(points={{-60,-10},{0,-10}}),
+    Line(points={{-10,-30},{20,-30}}),
+    Line(points={{-80,-30},{-60,-30}}),
+    Line(points={{-80,32},{-80,-30}}),
+    Line(points={{20,30},{20,-30}}),
+    Line(points={{-90,0},{-80,0}}),
+    Line(points={{90,0},{80,0}}),
+    Line(points={{20,0},{60,0},{60,-30}}),
+    Line(points={{40,-12},{40,-40},{80,-40},{80,0}}),
+    Text(extent={{-150,-130},{150,-90}},
+      textString="b=%b"),
+    Text(extent={{-150,100},{150,60}},
+      textColor={0,0,255},
+      textString="%name"),
+    Text(extent={{-152,-92},{148,-52}},
+      textString="c=%c"),
+    Line(visible=useHeatPort,
+      points={{-100,-100},{-100,-43},{-34,-43}},
+      color={191,0,0},
+      pattern=LinePattern.Dot),
         Text(
-          extent={{20,48},{80,10}}, 
-          textColor={95,95,95}, 
+          extent={{20,48},{80,10}},
+          textColor={95,95,95},
           textString="2")}));
 end ElastoBacklash2;

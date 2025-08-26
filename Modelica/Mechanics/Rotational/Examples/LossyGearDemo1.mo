@@ -1,19 +1,19 @@
 ﻿within Modelica.Mechanics.Rotational.Examples;
-model LossyGearDemo1 
+model LossyGearDemo1
   "Example to show that gear efficiency may lead to stuck motion"
   extends Modelica.Icons.Example;
-  SI.Power PowerLoss=gear.flange_a.tau*der(gear.flange_a.phi) + gear.flange_b.tau 
+  SI.Power PowerLoss=gear.flange_a.tau*der(gear.flange_a.phi) + gear.flange_b.tau
       *der(gear.flange_b.phi) "Power lost in the gear";
   Rotational.Components.LossyGear gear(
-    ratio=2, 
-    lossTable=[0, 0.5, 0.5, 0, 0], 
+    ratio=2,
+    lossTable=[0, 0.5, 0.5, 0, 0],
     useSupport=true) annotation (Placement(transformation(extent={{-10,0},{
             10,20}})));
   Rotational.Components.Inertia Inertia1(J=1) annotation (Placement(
         transformation(extent={{-40,0},{-20,20}})));
   Rotational.Components.Inertia Inertia2(
-    J=1.5, 
-    phi(fixed=true, start=0, nominal=0.001), 
+    J=1.5,
+    phi(fixed=true, start=0, nominal=0.001),
     w(fixed=true, start=0, nominal=0.01)) annotation (Placement(transformation(extent={{
             20,0},{40,20}})));
   Rotational.Sources.Torque torque1(useSupport=true) annotation (Placement(
@@ -23,8 +23,8 @@ model LossyGearDemo1
   Modelica.Blocks.Sources.Sine DriveSine(amplitude=10, f=1) 
     annotation (Placement(transformation(extent={{-100,0},{-80,20}})));
   Modelica.Blocks.Sources.Ramp load(
-    height=5, 
-    duration=2, 
+    height=5,
+    duration=2,
     offset=-10) annotation (Placement(transformation(extent={{100,0},{80,20}})));
   Rotational.Components.Fixed fixed annotation (Placement(transformation(
           extent={{-10,-30},{10,-10}})));
@@ -80,6 +80,6 @@ should be identical, or the difference should be close to zero, if model
 <a href=\"modelica://Modelica.Mechanics.Rotational.Components.LossyGear\">LossyGear</a>
 is correctly implemented.
 </p>
-</html>"), 
+</html>"),
        experiment(StopTime=0.5, Interval=0.001));
 end LossyGearDemo1;

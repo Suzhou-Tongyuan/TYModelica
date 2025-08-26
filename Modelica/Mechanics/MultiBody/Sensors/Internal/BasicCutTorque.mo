@@ -1,19 +1,19 @@
 ﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
-model BasicCutTorque 
+model BasicCutTorque
   "Basic sensor to measure cut torque vector (frame_resolve must be connected)"
 
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameA;
   import Modelica.Mechanics.MultiBody.Frames;
 
   extends Modelica.Mechanics.MultiBody.Sensors.Internal.PartialCutForceBaseSensor;
-  Modelica.Blocks.Interfaces.RealOutput torque[3](each final quantity="Torque", each final unit= 
+  Modelica.Blocks.Interfaces.RealOutput torque[3](each final quantity="Torque", each final unit=
         "N.m") "Cut torque resolved in frame defined by resolveInFrame" 
        annotation (Placement(transformation(
-        origin={-80,-110}, 
-        extent={{10,-10},{-10,10}}, 
+        origin={-80,-110},
+        extent={{10,-10},{-10,10}},
         rotation=90)));
 
-  parameter Boolean positiveSign=true 
+  parameter Boolean positiveSign=true
     "= true, if torque with positive sign is returned (= frame_a.t), otherwise with negative sign (= frame_b.t)";
 
 protected
@@ -30,13 +30,13 @@ equation
       torque = zeros(3);
    end if;
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
       graphics={
-        Line(points={{-80,-100},{-80,0}}, color={0,0,127}), 
+        Line(points={{-80,-100},{-80,0}}, color={0,0,127}),
         Text(
-          extent={{-50,-14},{50,-54}}, 
-          textColor={64,64,64}, 
-          textString="N.m")}), 
+          extent={{-50,-14},{50,-54}},
+          textColor={64,64,64},
+          textString="N.m")}),
     Documentation(info="<html>
 <p>
 This basic sensor is aimed to be used within advanced sensors where

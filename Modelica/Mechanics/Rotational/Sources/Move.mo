@@ -1,20 +1,20 @@
 ﻿within Modelica.Mechanics.Rotational.Sources;
-model Move 
+model Move
   "Forced movement of a flange according to an angle, speed and angular acceleration signal"
   extends 
     Modelica.Mechanics.Rotational.Interfaces.PartialElementaryOneFlangeAndSupport2;
 
-  SI.Angle phi 
+  SI.Angle phi
     "Rotation angle of flange with respect to support";
-  Modelica.Blocks.Interfaces.RealInput u[3] 
+  Modelica.Blocks.Interfaces.RealInput u[3]
     "Angle, angular velocity and angular acceleration of flange with respect to support as input signals" 
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
 protected
   function position
     extends Modelica.Icons.Function;
-    input Real q_qd_qdd[3] 
+    input Real q_qd_qdd[3]
       "Required values for position, speed, acceleration";
-    input Real dummy 
+    input Real dummy
       "Just to have one input signal that should be differentiated to avoid possible problems in the Modelica tool (is not used)";
     output Real q;
   algorithm
@@ -24,24 +24,24 @@ protected
 
   function position_der
     extends Modelica.Icons.Function;
-    input Real q_qd_qdd[3] 
+    input Real q_qd_qdd[3]
       "Required values for position, speed, acceleration";
-    input Real dummy 
+    input Real dummy
       "Just to have one input signal that should be differentiated to avoid possible problems in the Modelica tool (is not used)";
     input Real dummy_der;
     output Real qd;
   algorithm
     qd := q_qd_qdd[2];
     annotation (derivative(
-        noDerivative=q_qd_qdd, 
+        noDerivative=q_qd_qdd,
         order=2) = position_der2, InlineAfterIndexReduction=true);
   end position_der;
 
   function position_der2
     extends Modelica.Icons.Function;
-    input Real q_qd_qdd[3] 
+    input Real q_qd_qdd[3]
       "Required values for position, speed, acceleration";
-    input Real dummy 
+    input Real dummy
       "Just to have one input signal that should be differentiated to avoid possible problems in the Modelica tool (is not used)";
     input Real dummy_der;
     input Real dummy_der2;
@@ -76,24 +76,24 @@ and the angular acceleration to zero.
 The input signals can be provided from one of the signal generator
 blocks of the block library Modelica.Blocks.Sources.
 </p>
-</html>"), 
+</html>"),
        Icon(
-    coordinateSystem(preserveAspectRatio=true, 
-      extent={{-100.0,-100.0},{100.0,100.0}}), 
+    coordinateSystem(preserveAspectRatio=true,
+      extent={{-100.0,-100.0},{100.0,100.0}}),
       graphics={
-    Rectangle(lineColor={64,64,64}, 
-      fillColor={192,192,192}, 
-      fillPattern=FillPattern.HorizontalCylinder, 
-      extent={{-100.0,-20.0},{100.0,20.0}}), 
-    Line(points={{-30.0,-32.0},{30.0,-32.0}}), 
-    Line(points={{0.0,52.0},{0.0,32.0}}), 
-    Line(points={{-29.0,32.0},{30.0,32.0}}), 
-    Line(points={{0.0,-32.0},{0.0,-100.0}}), 
-    Text(textColor={0,0,255}, 
-      extent={{-150.0,60.0},{150.0,100.0}}, 
-      textString="%name"), 
-    Text(extent={{-140,-60},{-40,-30}}, 
-          textColor={128,128,128}, 
-          horizontalAlignment=TextAlignment.Right, 
+    Rectangle(lineColor={64,64,64},
+      fillColor={192,192,192},
+      fillPattern=FillPattern.HorizontalCylinder,
+      extent={{-100.0,-20.0},{100.0,20.0}}),
+    Line(points={{-30.0,-32.0},{30.0,-32.0}}),
+    Line(points={{0.0,52.0},{0.0,32.0}}),
+    Line(points={{-29.0,32.0},{30.0,32.0}}),
+    Line(points={{0.0,-32.0},{0.0,-100.0}}),
+    Text(textColor={0,0,255},
+      extent={{-150.0,60.0},{150.0,100.0}},
+      textString="%name"),
+    Text(extent={{-140,-60},{-40,-30}},
+          textColor={128,128,128},
+          horizontalAlignment=TextAlignment.Right,
           textString="phi,w,a")}));
 end Move;

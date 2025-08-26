@@ -1,12 +1,12 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames;
-function smallRotation 
+function smallRotation
   "Return rotation angles valid for a small rotation and optionally residues that should be zero"
 
   extends Modelica.Icons.Function;
   input Orientation R "Orientation object to rotate frame 1 into frame 2";
-  input Boolean withResidues=false 
+  input Boolean withResidues=false
     "= false/true, if 'angles'/'angles and residues' are returned in phi";
-  output SI.Angle phi[if withResidues then 6 else 3] 
+  output SI.Angle phi[if withResidues then 6 else 3]
     "The rotation angles around x-, y-, and z-axis of frame 1 to rotate frame 1 into frame 2 for a small rotation + optionally 3 residues that should be zero";
 algorithm
   /* Planar rotation:

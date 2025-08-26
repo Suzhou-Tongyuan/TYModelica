@@ -1,14 +1,14 @@
 ﻿within Modelica.Electrical.Analog.Interfaces;
-partial model PartialConditionalHeatPort 
+partial model PartialConditionalHeatPort
   "Partial model to include a conditional HeatPort in order to dissipate losses, used for graphical modeling, i.e., for building models by drag-and-drop"
   parameter Boolean useHeatPort = false "=true, if HeatPort is enabled" 
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.Temperature T=293.15 
+  parameter SI.Temperature T=293.15
     "Fixed device temperature if useHeatPort = false" 
     annotation(Dialog(enable=not useHeatPort));
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort if useHeatPort 
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort if useHeatPort
     "Optional port to which dissipated losses are transported in form of heat" 
-    annotation (Placement(transformation(extent={{-10,-110},{10,-90}}), 
+    annotation (Placement(transformation(extent={{-10,-110},{10,-90}}),
         iconTransformation(extent={{-10,-110},{10,-90}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(final T=T) if not useHeatPort 
     annotation (Placement(transformation(extent={{40,-90},{20,-70}})));

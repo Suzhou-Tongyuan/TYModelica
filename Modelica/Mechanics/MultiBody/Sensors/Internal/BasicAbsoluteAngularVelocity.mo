@@ -4,14 +4,14 @@ model BasicAbsoluteAngularVelocity "Basic sensor to measure absolute angular vel
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameA;
 
   extends Modelica.Mechanics.MultiBody.Sensors.Internal.PartialAbsoluteBaseSensor;
-  Modelica.Blocks.Interfaces.RealOutput w[3](each final quantity="AngularVelocity",each final unit = "rad/s") 
+  Modelica.Blocks.Interfaces.RealOutput w[3](each final quantity="AngularVelocity",each final unit = "rad/s")
     "Absolute angular velocity vector" 
     annotation (Placement(transformation(
-        origin={110,0}, 
+        origin={110,0},
         extent={{-10,-10},{10,10}})));
   parameter Modelica.Mechanics.MultiBody.Types.ResolveInFrameA 
-    resolveInFrame= 
-  Modelica.Mechanics.MultiBody.Types.ResolveInFrameA.frame_a 
+    resolveInFrame=
+  Modelica.Mechanics.MultiBody.Types.ResolveInFrameA.frame_a
     "Frame in which output vector w is resolved (world, frame_a, or frame_resolve)";
 
 equation
@@ -26,16 +26,16 @@ equation
       w = zeros(3);
    end if;
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
       graphics={
         Text(
-          extent={{-130,76},{131,124}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-130,76},{131,124}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
-          extent={{-50,-14},{50,-54}}, 
-          textColor={64,64,64}, 
-          textString="rad/s")}), 
+          extent={{-50,-14},{50,-54}},
+          textColor={64,64,64},
+          textString="rad/s")}),
     Documentation(info="<html>
 <p>
 This basic sensor is aimed to be used within advanced sensors where

@@ -1,17 +1,17 @@
 ﻿within Modelica.Mechanics.MultiBody.Parts;
-model Body 
+model Body
   "Rigid body with mass, inertia tensor and one frame connector (12 potential states)"
 
   import Modelica.Mechanics.MultiBody.Types;
   import Modelica.Mechanics.MultiBody.Frames;
   import Modelica.Units.Conversions.to_unit1;
 
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a 
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a
     "Coordinate system fixed at body" annotation (Placement(transformation(
           extent={{-116,-16},{-84,16}})));
-  parameter Boolean animation=true 
+  parameter Boolean animation=true
     "= true, if animation shall be enabled (show cylinder and sphere)";
-  parameter SI.Position r_CM[3](start={0,0,0}) 
+  parameter SI.Position r_CM[3](start={0,0,0})
     "Vector from frame_a to center of mass, resolved in frame_a";
   parameter SI.Mass m(min=0, start=1) "Mass of rigid body";
   parameter SI.Inertia I_11(min=0) = 0.001 "Element (1,1) of inertia tensor" 
@@ -28,106 +28,106 @@ model Body
     annotation (Dialog(group="Inertia tensor (resolved in center of mass, parallel to frame_a)"));
 
   SI.Position r_0[3](start={0,0,0}, each stateSelect=if enforceStates then 
-        StateSelect.always else StateSelect.avoid) 
+        StateSelect.always else StateSelect.avoid)
     "Position vector from origin of world frame to origin of frame_a" 
     annotation (Dialog(tab="Initialization",showStartAttribute=true));
   SI.Velocity v_0[3](start={0,0,0}, each stateSelect=if enforceStates then 
-        StateSelect.always else StateSelect.avoid) 
+        StateSelect.always else StateSelect.avoid)
     "Absolute velocity of frame_a, resolved in world frame (= der(r_0))" 
     annotation (Dialog(tab="Initialization",showStartAttribute=true));
-  SI.Acceleration a_0[3](start={0,0,0}) 
+  SI.Acceleration a_0[3](start={0,0,0})
     "Absolute acceleration of frame_a resolved in world frame (= der(v_0))" 
     annotation (Dialog(tab="Initialization",showStartAttribute=true));
 
-  parameter Boolean angles_fixed=false 
+  parameter Boolean angles_fixed=false
     "= true, if angles_start are used as initial values, else as guess values" 
     annotation (
-    Evaluate=true, 
-    choices(checkBox=true), 
+    Evaluate=true,
+    choices(checkBox=true),
     Dialog(tab="Initialization"));
-  parameter SI.Angle angles_start[3]={0,0,0} 
+  parameter SI.Angle angles_start[3]={0,0,0}
     "Initial values of angles to rotate world frame around 'sequence_start' axes into frame_a" 
     annotation (Dialog(tab="Initialization"));
-  parameter Types.RotationSequence sequence_start={1,2,3} 
+  parameter Types.RotationSequence sequence_start={1,2,3}
     "Sequence of rotations to rotate world frame into frame_a at initial time" 
     annotation (Evaluate=true, Dialog(tab="Initialization"));
 
-  parameter Boolean w_0_fixed=false 
+  parameter Boolean w_0_fixed=false
     "= true, if w_0_start are used as initial values, else as guess values" 
     annotation (
-    Evaluate=true, 
-    choices(checkBox=true), 
+    Evaluate=true,
+    choices(checkBox=true),
     Dialog(tab="Initialization"));
-  parameter SI.AngularVelocity w_0_start[3]={0,0,0} 
+  parameter SI.AngularVelocity w_0_start[3]={0,0,0}
     "Initial or guess values of angular velocity of frame_a resolved in world frame" 
     annotation (Dialog(tab="Initialization"));
 
-  parameter Boolean z_0_fixed=false 
+  parameter Boolean z_0_fixed=false
     "= true, if z_0_start are used as initial values, else as guess values" 
     annotation (
-    Evaluate=true, 
-    choices(checkBox=true), 
+    Evaluate=true,
+    choices(checkBox=true),
     Dialog(tab="Initialization"));
-  parameter SI.AngularAcceleration z_0_start[3]={0,0,0} 
+  parameter SI.AngularAcceleration z_0_start[3]={0,0,0}
     "Initial values of angular acceleration z_0 = der(w_0)" 
     annotation (Dialog(tab="Initialization"));
 
-  parameter SI.Diameter sphereDiameter=world.defaultBodyDiameter 
+  parameter SI.Diameter sphereDiameter=world.defaultBodyDiameter
     "Diameter of sphere" annotation (Dialog(
-      tab="Animation", 
-      group="if animation = true", 
+      tab="Animation",
+      group="if animation = true",
       enable=animation));
-  input Types.Color sphereColor=Modelica.Mechanics.MultiBody.Types.Defaults.BodyColor 
+  input Types.Color sphereColor=Modelica.Mechanics.MultiBody.Types.Defaults.BodyColor
     "Color of sphere" annotation (Dialog(
-      colorSelector=true, 
-      tab="Animation", 
-      group="if animation = true", 
+      colorSelector=true,
+      tab="Animation",
+      group="if animation = true",
       enable=animation));
-  parameter SI.Diameter cylinderDiameter=sphereDiameter/Types.Defaults.BodyCylinderDiameterFraction 
+  parameter SI.Diameter cylinderDiameter=sphereDiameter/Types.Defaults.BodyCylinderDiameterFraction
     "Diameter of cylinder" annotation (Dialog(
-      tab="Animation", 
-      group="if animation = true", 
+      tab="Animation",
+      group="if animation = true",
       enable=animation));
   input Types.Color cylinderColor=sphereColor "Color of cylinder" annotation (
      Dialog(
-      colorSelector=true, 
-      tab="Animation", 
-      group="if animation = true", 
+      colorSelector=true,
+      tab="Animation",
+      group="if animation = true",
       enable=animation));
-  input Types.SpecularCoefficient specularCoefficient=world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient=world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(
-      tab="Animation", 
-      group="if animation = true", 
+      tab="Animation",
+      group="if animation = true",
       enable=animation));
-  parameter Boolean enforceStates=false 
+  parameter Boolean enforceStates=false
     "= true, if absolute variables of body object shall be used as states (StateSelect.always)" 
     annotation (Evaluate=true, Dialog(tab="Advanced"));
-  parameter Boolean useQuaternions=true 
+  parameter Boolean useQuaternions=true
     "= true, if quaternions shall be used as potential states otherwise use 3 angles as potential states" 
     annotation (Evaluate=true, Dialog(tab="Advanced"));
-  parameter Types.RotationSequence sequence_angleStates={1,2,3} 
+  parameter Types.RotationSequence sequence_angleStates={1,2,3}
     "Sequence of rotations to rotate world frame into frame_a around the 3 angles used as potential states" 
     annotation (Evaluate=true, Dialog(tab="Advanced", enable=not 
           useQuaternions));
 
   final parameter SI.Inertia I[3, 3]=[I_11, I_21, I_31; I_21, I_22, I_32;
       I_31, I_32, I_33] "Inertia tensor";
-  final parameter Frames.Orientation R_start= 
+  final parameter Frames.Orientation R_start=
       Modelica.Mechanics.MultiBody.Frames.axesRotations(
-        sequence_start, 
-        angles_start, 
-        zeros(3)) 
+        sequence_start,
+        angles_start,
+        zeros(3))
     "Orientation object from world frame to frame_a at initial time";
 
   SI.AngularVelocity w_a[3](
-    start=Frames.resolve2(R_start, w_0_start), 
-    fixed=fill(w_0_fixed, 3), 
+    start=Frames.resolve2(R_start, w_0_start),
+    fixed=fill(w_0_fixed, 3),
     each stateSelect=if enforceStates then (if useQuaternions then 
-        StateSelect.always else StateSelect.never) else StateSelect.avoid) 
+        StateSelect.always else StateSelect.never) else StateSelect.avoid)
     "Absolute angular velocity of frame_a resolved in frame_a";
-  SI.AngularAcceleration z_a[3](start=Frames.resolve2(R_start, z_0_start), 
-      fixed=fill(z_0_fixed, 3)) 
+  SI.AngularAcceleration z_a[3](start=Frames.resolve2(R_start, z_0_start),
+      fixed=fill(z_0_fixed, 3))
     "Absolute angular acceleration of frame_a resolved in frame_a";
   SI.Acceleration g_0[3] "Gravity acceleration resolved in world frame";
 
@@ -135,22 +135,22 @@ protected
   outer Modelica.Mechanics.MultiBody.World world;
 
   // Declarations for quaternions (dummies, if quaternions are not used)
-  parameter Frames.Quaternions.Orientation Q_start=Frames.to_Q(R_start) 
+  parameter Frames.Quaternions.Orientation Q_start=Frames.to_Q(R_start)
     "Quaternion orientation object from world frame to frame_a at initial time";
   Frames.Quaternions.Orientation Q(start=Q_start, each stateSelect=if 
         enforceStates then (if useQuaternions then StateSelect.prefer else 
-        StateSelect.never) else StateSelect.avoid) 
+        StateSelect.never) else StateSelect.avoid)
     "Quaternion orientation object from world frame to frame_a (dummy value, if quaternions are not used as states)";
 
   // Declaration for 3 angles
-  parameter SI.Angle phi_start[3]=if sequence_start[1] == 
+  parameter SI.Angle phi_start[3]=if sequence_start[1] ==
       sequence_angleStates[1] and sequence_start[2] == sequence_angleStates[2] 
        and sequence_start[3] == sequence_angleStates[3] then angles_start 
-       else Frames.axesRotationsAngles(R_start, sequence_angleStates) 
+       else Frames.axesRotationsAngles(R_start, sequence_angleStates)
     "Potential angle states at initial time";
   SI.Angle phi[3](start=phi_start, each stateSelect=if enforceStates then (
         if useQuaternions then StateSelect.never else StateSelect.always) 
-         else StateSelect.avoid) 
+         else StateSelect.avoid)
     "Dummy or 3 angles to rotate world frame into frame_a of body";
   SI.AngularVelocity phi_d[3](each stateSelect=if enforceStates then (if 
         useQuaternions then StateSelect.never else StateSelect.always) else 
@@ -159,30 +159,30 @@ protected
 
   // Declarations for animation
   Visualizers.Advanced.Shape cylinder(
-    shapeType="cylinder", 
-    color=cylinderColor, 
-    specularCoefficient=specularCoefficient, 
+    shapeType="cylinder",
+    color=cylinderColor,
+    specularCoefficient=specularCoefficient,
     length=if Modelica.Math.Vectors.length(r_CM) > sphereDiameter/2 then 
-        Modelica.Math.Vectors.length(r_CM) - (if cylinderDiameter > 1.1* 
-        sphereDiameter then sphereDiameter/2 else 0) else 0, 
-    width=cylinderDiameter, 
-    height=cylinderDiameter, 
-    lengthDirection = to_unit1(r_CM), 
-    widthDirection={0,1,0}, 
-    r=frame_a.r_0, 
+        Modelica.Math.Vectors.length(r_CM) - (if cylinderDiameter > 1.1*
+        sphereDiameter then sphereDiameter/2 else 0) else 0,
+    width=cylinderDiameter,
+    height=cylinderDiameter,
+    lengthDirection = to_unit1(r_CM),
+    widthDirection={0,1,0},
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
   Visualizers.Advanced.Shape sphere(
-    shapeType="sphere", 
-    color=sphereColor, 
-    specularCoefficient=specularCoefficient, 
-    length=sphereDiameter, 
-    width=sphereDiameter, 
-    height=sphereDiameter, 
-    lengthDirection={1,0,0}, 
-    widthDirection={0,1,0}, 
-    r_shape=r_CM - {1,0,0}*sphereDiameter/2, 
-    r=frame_a.r_0, 
-    R=frame_a.R) if world.enableAnimation and animation and sphereDiameter > 
+    shapeType="sphere",
+    color=sphereColor,
+    specularCoefficient=specularCoefficient,
+    length=sphereDiameter,
+    width=sphereDiameter,
+    height=sphereDiameter,
+    lengthDirection={1,0,0},
+    widthDirection={0,1,0},
+    r_shape=r_CM - {1,0,0}*sphereDiameter/2,
+    r=frame_a.r_0,
+    R=frame_a.R) if world.enableAnimation and animation and sphereDiameter >
     0;
 initial equation
   if angles_fixed then
@@ -228,8 +228,8 @@ equation
     phi_d = der(phi);
     phi_dd = der(phi_d);
     frame_a.R = Frames.axesRotations(
-        sequence_angleStates, 
-        phi, 
+        sequence_angleStates,
+        phi,
         phi_d);
 
     // Dummies
@@ -237,7 +237,7 @@ equation
   end if;
 
   // gravity acceleration at center of mass resolved in world frame
-  g_0 = world.gravityAcceleration(frame_a.r_0 + Frames.resolve1(frame_a.R, 
+  g_0 = world.gravityAcceleration(frame_a.r_0 + Frames.resolve1(frame_a.R,
     r_CM));
 
   // translational kinematic differential equations
@@ -256,29 +256,29 @@ equation
        frame_a.t = t_CM + cross(r_CM, f_CM);
     Inserting the first three equations in the last two results in:
   */
-  frame_a.f = m*(Frames.resolve2(frame_a.R, a_0 - g_0) + cross(z_a, r_CM) + 
+  frame_a.f = m*(Frames.resolve2(frame_a.R, a_0 - g_0) + cross(z_a, r_CM) +
     cross(w_a, cross(w_a, r_CM)));
   frame_a.t = I*z_a + cross(w_a, I*w_a) + cross(r_CM, frame_a.f);
   annotation (Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
-          extent={{-100,30},{-3,-30}}, 
-          lineColor={0,24,48}, 
-          fillPattern=FillPattern.HorizontalCylinder, 
-          fillColor={0,127,255}, 
-          radius=10), 
+          extent={{-100,30},{-3,-30}},
+          lineColor={0,24,48},
+          fillPattern=FillPattern.HorizontalCylinder,
+          fillColor={0,127,255},
+          radius=10),
         Text(
-          extent={{150,-100},{-150,-70}}, 
-          textString="m=%m"), 
+          extent={{150,-100},{-150,-70}},
+          textString="m=%m"),
         Text(
-          extent={{-150,110},{150,70}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,110},{150,70}},
+          textString="%name",
+          textColor={0,0,255}),
         Ellipse(
-          extent={{-20,60},{100,-60}}, 
-          lineColor={0,24,48}, 
-          fillPattern=FillPattern.Sphere, 
+          extent={{-20,60},{100,-60}},
+          lineColor={0,24,48},
+          fillPattern=FillPattern.Sphere,
           fillColor={0,127,255})}), Documentation(info="<html>
 <p>
 <strong>Rigid body</strong> with mass and inertia tensor.

@@ -1,10 +1,10 @@
 ﻿within Modelica.Mechanics.Rotational.Interfaces;
-connector Flange_b 
+connector Flange_b
   "One-dimensional rotational flange of a shaft (non-filled circle icon)"
   extends Flange;
 
   annotation (
-    defaultComponentName="flange_b", 
+    defaultComponentName="flange_b",
     Documentation(info="<html>
 <p>
 This is a connector for 1-dim. rotational mechanical systems and models which represents
@@ -38,19 +38,19 @@ differentiation of the flange angle phi:
 w = der(phi);
 a = der(w);
 </pre></blockquote>
-</html>"), 
+</html>"),
     Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={Ellipse(
-              extent={{-100,100},{100,-100}}, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid)}), 
+              extent={{-100,100},{100,-100}},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid)}),
     Diagram(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={Ellipse(
-              extent={{-40,40},{40,-40}}, 
-              fillColor={255,255,255}, 
+              extent={{-40,40},{40,-40}},
+              fillColor={255,255,255},
               fillPattern=FillPattern.Solid),Text(
-              extent={{-40,90},{160,50}}, 
+              extent={{-40,90},{160,50}},
               textString="%name")}));
 end Flange_b;

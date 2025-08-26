@@ -1,5 +1,5 @@
 ﻿within Modelica.Clocked.Examples.Systems;
-model ControlledMixingUnit 
+model ControlledMixingUnit
   "Simple example of a mixing unit where a (discretized) nonlinear inverse plant model is used as feedforward controller"
    extends Modelica.Icons.Example;
 
@@ -26,18 +26,18 @@ model ControlledMixingUnit
   final parameter Real b=b_inv*pro "Process parameter of plant model (see references in help)";
   final parameter Real k0=k0_inv*pro "Process parameter of plant model (see references in help)";
   Clocked.Examples.Systems.Utilities.ComponentsMixingUnit.MixingUnit invMixingUnit(
-    c0=c0, 
-    T0=T0, 
-    a1=a1_inv, 
-    a21=a21_inv, 
-    a22=a22_inv, 
-    b=b_inv, 
-    k0=k0_inv, 
-    eps=eps, 
-    c(start=c_start, fixed=true), 
-    T(start=T_start, 
-      fixed=true, 
-      stateSelect=StateSelect.always), 
+    c0=c0,
+    T0=T0,
+    a1=a1_inv,
+    a21=a21_inv,
+    a22=a22_inv,
+    b=b_inv,
+    k0=k0_inv,
+    eps=eps,
+    c(start=c_start, fixed=true),
+    T(start=T_start,
+      fixed=true,
+      stateSelect=StateSelect.always),
     T_c(start=T_c_start)) 
     annotation (Placement(transformation(extent={{-12,14},{-32,34}})));
   Modelica.Blocks.Math.Add add 
@@ -45,15 +45,15 @@ model ControlledMixingUnit
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints 
     annotation (Placement(transformation(extent={{-54,8},{-2,40}})));
   Clocked.Examples.Systems.Utilities.ComponentsMixingUnit.MixingUnit mixingUnit(
-    c(start=c_start, fixed=true), 
-    T(start=T_start, fixed=true), 
-    c0=c0, 
-    T0=T0, 
-    a1=a1, 
-    a21=a21, 
-    a22=a22, 
-    b=b, 
-    k0=k0, 
+    c(start=c_start, fixed=true),
+    T(start=T_start, fixed=true),
+    c0=c0,
+    T0=T0,
+    a1=a1,
+    a21=a21,
+    a22=a22,
+    b=b,
+    k0=k0,
     eps=eps) 
     annotation (Placement(transformation(extent={{88,-20},{108,0}})));
   Modelica.Blocks.Math.Feedback feedback 
@@ -62,8 +62,8 @@ model ControlledMixingUnit
           extent={{4,-20},{24,0}})));
 
   Utilities.ComponentsMixingUnit.CriticalDamping filter(
-    n=3, 
-    f=freq, 
+    n=3,
+    f=freq,
     x(start={0.49,0.49,0.49}, fixed={true,false,false})) 
     annotation (Placement(transformation(extent={{-86,14},{-66,34}})));
   Clocked.RealSignals.Sampler.Hold hold1(y_start=0) 
@@ -71,69 +71,69 @@ model ControlledMixingUnit
   Clocked.RealSignals.Sampler.Sample sample1 
     annotation (Placement(transformation(extent={{80,-40},{68,-28}})));
   Clocked.ClockSignals.Clocks.PeriodicRealClock periodicClock1(
-    useSolver=true, 
-    period=1, 
+    useSolver=true,
+    period=1,
     solverMethod="ExplicitEuler") 
     annotation (Placement(transformation(extent={{-134,-26},{-122,-14}})));
-  Modelica.Blocks.Sources.Step step(height=c_high_start - c_start, offset= 
+  Modelica.Blocks.Sources.Step step(height=c_high_start - c_start, offset=
         c_start) 
     annotation (Placement(transformation(extent={{-136,14},{-116,34}})));
   RealSignals.Sampler.SampleClocked  sample2 
     annotation (Placement(transformation(extent={{-108,18},{-96,30}})));
 equation
-  connect(feedback.y, gain.u) annotation (Line(points={{-5,-10},{-5,-10}, 
-          {2,-10}}, 
+  connect(feedback.y, gain.u) annotation (Line(points={{-5,-10},{-5,-10},
+          {2,-10}},
         color={0,0,127}));
   connect(gain.y, add.u2) annotation (Line(
-      points={{25,-10},{32,-10},{32,-14.8},{38.4,-14.8}}, 
+      points={{25,-10},{32,-10},{32,-14.8},{38.4,-14.8}},
       color={0,0,127}));
   connect(inverseBlockConstraints.y2, invMixingUnit.T_c) annotation (Line(
-      points={{-5.9,24},{-10,24}}, 
+      points={{-5.9,24},{-10,24}},
       color={0,0,127}));
   connect(invMixingUnit.c, inverseBlockConstraints.u2) annotation (Line(
-      points={{-34,30},{-38,30},{-38,24},{-48.8,24}}, 
+      points={{-34,30},{-38,30},{-38,24},{-48.8,24}},
       color={0,0,127}));
   connect(invMixingUnit.T, feedback.u1) annotation (Line(
-      points={{-34,18},{-46,18},{-46,-10},{-22,-10}}, 
+      points={{-34,18},{-46,18},{-46,-10},{-22,-10}},
       color={0,0,127}));
   connect(filter.y, inverseBlockConstraints.u1) annotation (Line(
-      points={{-65,24},{-56.6,24}}, 
+      points={{-65,24},{-56.6,24}},
       color={0,0,127}));
   connect(hold1.y, mixingUnit.T_c) annotation (Line(
-      points={{78.6,-10},{86,-10}}, 
+      points={{78.6,-10},{86,-10}},
       color={0,0,127}));
   connect(add.y, hold1.u) annotation (Line(
-      points={{56.8,-10},{64.8,-10}}, 
+      points={{56.8,-10},{64.8,-10}},
       color={0,0,127}));
   connect(sample1.u, mixingUnit.T) annotation (Line(
-      points={{81.2,-34},{116,-34},{116,-16},{110,-16}}, 
+      points={{81.2,-34},{116,-34},{116,-16},{110,-16}},
       color={0,0,127}));
   connect(sample1.y, feedback.u2) annotation (Line(
-      points={{67.4,-34},{-14,-34},{-14,-18}}, 
+      points={{67.4,-34},{-14,-34},{-14,-18}},
       color={0,0,127}));
   connect(inverseBlockConstraints.y1, add.u1) annotation (Line(
-      points={{-0.7,24},{30,24},{30,-5.2},{38.4,-5.2}}, 
+      points={{-0.7,24},{30,24},{30,-5.2},{38.4,-5.2}},
       color={0,0,127}));
   connect(sample2.u,step. y) annotation (Line(
-      points={{-109.2,24},{-115,24}}, 
+      points={{-109.2,24},{-115,24}},
       color={0,0,127}));
   connect(filter.u, sample2.y) annotation (Line(
-      points={{-88,24},{-95.4,24}}, 
+      points={{-88,24},{-95.4,24}},
       color={0,0,127}));
   connect(periodicClock1.y, sample2.clock) annotation (Line(
-      points={{-121.4,-20},{-102,-20},{-102,16.8}}, 
-      color={175,175,175}, 
-      pattern=LinePattern.Dot, 
+      points={{-121.4,-20},{-102,-20},{-102,16.8}},
+      color={175,175,175},
+      pattern=LinePattern.Dot,
       thickness=0.5));
-  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140, 
-            -100},{120,100}}),      graphics={Rectangle(extent={{-90,44}, 
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140,
+            -100},{120,100}}),      graphics={Rectangle(extent={{-90,44},
             {60,-44}}, lineColor={255,0,0}), Text(
-        extent={{12,42},{58,34}}, 
-        textColor={255,0,0}, 
-        fillColor={0,0,255}, 
-        fillPattern=FillPattern.Solid, 
-        textString="controller")}), 
-    experiment(StopTime=300), 
+        extent={{12,42},{58,34}},
+        textColor={255,0,0},
+        fillColor={0,0,255},
+        fillPattern=FillPattern.Solid,
+        textString="controller")}),
+    experiment(StopTime=300),
     Documentation(info="<html>
 <p>
 Since a long time, Modelica is used to model advanced nonlinear control systems.

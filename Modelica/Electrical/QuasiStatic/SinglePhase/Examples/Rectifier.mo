@@ -7,13 +7,13 @@ model Rectifier "Rectifier example"
   output SI.Current Itr=iAC.y_rms "Transient current";
   output SI.Current Iqs=iQS.len "QS current";
   Sources.VoltageSource voltageQS(
-    f=50, 
-    V=VAC, 
-    phi=0, 
-    i(re(start=0), im(start=0)), 
+    f=50,
+    V=VAC,
+    phi=0,
+    i(re(start=0), im(start=0)),
     gamma(fixed=true, start=0)) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-80,50})));
   Basic.Resistor resistorQS(R_ref=50E-3) 
     annotation (Placement(transformation(extent={{-72,50},{-52,70}})));
@@ -23,7 +23,7 @@ model Rectifier "Rectifier example"
     annotation (Placement(transformation(extent={{-20,70},{0,90}})));
   Basic.Ground groundQS 
     annotation (Placement(transformation(extent={{-20,10},{0,30}})));
-  Utilities.IdealACDCConverter rectifierQS(conversionFactor= 
+  Utilities.IdealACDCConverter rectifierQS(conversionFactor=
         conversionFactor) 
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Modelica.Electrical.Analog.Basic.Ground groundDC1 
@@ -32,15 +32,15 @@ model Rectifier "Rectifier example"
     annotation (Placement(transformation(extent={{20,70},{40,50}})));
   Modelica.Electrical.Analog.Basic.VariableConductor load1 annotation (
       Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={50,50})));
   Modelica.Electrical.Analog.Sources.SineVoltage voltageAC(
-    V=sqrt(2)*VAC, 
-    f=50, 
+    V=sqrt(2)*VAC,
+    f=50,
     phase=pi/2) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=270, 
+        extent={{-10,10},{10,-10}},
+        rotation=270,
         origin={-80,-50})));
   Modelica.Electrical.Analog.Basic.Resistor resistorAC(R=50E-3) 
     annotation (Placement(transformation(extent={{-70,-50},{-50,-30}})));
@@ -58,12 +58,12 @@ model Rectifier "Rectifier example"
     annotation (Placement(transformation(extent={{40,-30},{60,-10}})));
   Modelica.Electrical.Analog.Basic.VariableConductor load2 annotation (
       Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={50,-50})));
   Modelica.Blocks.Sources.Ramp ramp(
-    height=1, 
-    duration=0.8, 
+    height=1,
+    duration=0.8,
     startTime=0.1) 
     annotation (Placement(transformation(extent={{100,-10},{80,10}})));
 equation
@@ -138,6 +138,6 @@ It can be seen that at the DC side the current is represented by its averaged va
 The quasi-static model needs a grounding at the QS side as well as the DC side,
 whereas the transient model may have only one ground since AC side and DC side are connected via the diodes.
 </p>
-</html>"), 
+</html>"),
        experiment(StopTime=1.0, Interval=0.0001));
 end Rectifier;

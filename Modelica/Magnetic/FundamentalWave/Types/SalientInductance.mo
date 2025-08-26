@@ -1,5 +1,5 @@
 ﻿within Modelica.Magnetic.FundamentalWave.Types;
-record SalientInductance = Salient (redeclare SI.Inductance d, 
+record SalientInductance = Salient (redeclare SI.Inductance d,
       redeclare SI.Inductance q) "Salient inductance" 
   annotation (Documentation(info="<html>
 <p>Type representing the d- and q-axis of an inductance with respect to the fundamental wave.</p>

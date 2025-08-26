@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
-model DoubleArrow 
+model DoubleArrow
   "Visualizing a double arrow with variable size"
 
   import Modelica.Mechanics.MultiBody.Types;
@@ -7,56 +7,56 @@ model DoubleArrow
   import T = Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
   import Modelica.Units.Conversions.to_unit1;
 
-  input Frames.Orientation R=Frames.nullRotation() 
+  input Frames.Orientation R=Frames.nullRotation()
     "Orientation object to rotate the world frame into the arrow frame" annotation(Dialog);
-  input SI.Position r[3]={0,0,0} 
+  input SI.Position r[3]={0,0,0}
     "Position vector from origin of world frame to origin of arrow frame, resolved in world frame" annotation(Dialog);
-  input SI.Position r_tail[3]={0,0,0} 
+  input SI.Position r_tail[3]={0,0,0}
     "Position vector from origin of arrow frame to double arrow tail, resolved in arrow frame" annotation(Dialog);
-  input Real r_head[3]={0,0,0} 
+  input Real r_head[3]={0,0,0}
     "Vector from double arrow tail to the head of the double arrow, resolved in arrow frame" annotation(Dialog);
-  input Types.Color color=Modelica.Mechanics.MultiBody.Types.Defaults.ArrowColor 
+  input Types.Color color=Modelica.Mechanics.MultiBody.Types.Defaults.ArrowColor
     "Color of double arrow" annotation(Dialog(colorSelector=true));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Material property describing the reflecting of ambient light (= 0 means, that light is completely absorbed)"  annotation(Dialog);
-  parameter Types.VectorQuantity quantity=Types.VectorQuantity.Torque 
+  parameter Types.VectorQuantity quantity=Types.VectorQuantity.Torque
     "Kind of physical quantity represented by the vector";
   input Boolean headAtOrigin=true "= true, if the vector is pointing towards the origin of vector frame" annotation(Dialog);
 protected
   outer Modelica.Mechanics.MultiBody.World world;
   SI.Position rvisobj[3] = r + T.resolve1(R.T, r_tail);
   Visualizers.Advanced.Vector arrowLine(
-    coordinates=r_head, 
-    color=color, 
-    specularCoefficient=specularCoefficient, 
-    r=rvisobj, 
-    quantity=quantity, 
-    headAtOrigin=headAtOrigin, 
-    twoHeadedArrow=true, 
+    coordinates=r_head,
+    color=color,
+    specularCoefficient=specularCoefficient,
+    r=rvisobj,
+    quantity=quantity,
+    headAtOrigin=headAtOrigin,
+    twoHeadedArrow=true,
     R=R) if world.enableAnimation;
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={
         Rectangle(
-          extent={{-100,28},{0,-28}}, 
-          lineColor={128,128,128}, 
-          fillColor={128,128,128}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-100,28},{0,-28}},
+          lineColor={128,128,128},
+          fillColor={128,128,128},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{40,60},{100,0},{40,-60},{40,60}}, 
-          lineColor={128,128,128}, 
-          fillColor={128,128,128}, 
-          fillPattern=FillPattern.Solid), 
+          points={{40,60},{100,0},{40,-60},{40,60}},
+          lineColor={128,128,128},
+          fillColor={128,128,128},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,105},{150,65}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,105},{150,65}},
+          textString="%name",
+          textColor={0,0,255}),
         Polygon(
-          points={{0,60},{60,0},{0,-60},{0,60}}, 
-          lineColor={128,128,128}, 
-          fillColor={128,128,128}, 
-          fillPattern=FillPattern.Solid)}), 
+          points={{0,60},{60,0},{0,-60},{0,60}},
+          lineColor={128,128,128},
+          fillColor={128,128,128},
+          fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
 Model <strong>DoubleArrow</strong> defines a double arrow that is dynamically

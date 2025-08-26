@@ -1,5 +1,5 @@
 ﻿within Modelica.Thermal.HeatTransfer.Rankine;
-model PrescribedTemperature 
+model PrescribedTemperature
   "Variable temperature boundary condition in degRankine"
   extends HeatTransfer.Icons.PrescribedTemperature;
   Interfaces.HeatPort_b port annotation (Placement(transformation(extent={{
@@ -12,13 +12,13 @@ equation
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={
         Text(
-          extent={{-150,150},{150,110}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,150},{150,110}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
-          extent={{-100,-40},{-40,-100}}, 
-          textColor={64,64,64}, 
-          textString="degRk")}), 
+          extent={{-100,-40},{-40,-100}},
+          textColor={64,64,64},
+          textString="degRk")}),
     Documentation(info="<html>
 <p>
 This model represents a variable temperature boundary condition

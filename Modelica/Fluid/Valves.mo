@@ -7,9 +7,9 @@ package Valves "Components for the regulation and control of fluid flow"
       import Modelica.Fluid.Types.CvTypes;
       import Modelica.Constants.pi;
 
-      constant SI.ReynoldsNumber Re_turbulent = 4000 
+      constant SI.ReynoldsNumber Re_turbulent = 4000
       "cf. straight pipe for fully open valve -- dp_turbulent increases for closing valve";
-      parameter Boolean use_Re = system.use_eps_Re 
+      parameter Boolean use_Re = system.use_eps_Re
       "= true, if turbulent region is defined by Re, otherwise by m_flow_small" 
         annotation(Dialog(tab="Advanced"), Evaluate=true);
       //SI.MassFlowRate m_flow_turbulent=if not use_Re then m_flow_small else
@@ -19,14 +19,14 @@ package Valves "Components for the regulation and control of fluid flow"
       //  max(dp_small, m_flow_turbulent^2/(max(relativeFlowCoefficient,0.001)^2*Av^2*(Medium.density(state_a) + Medium.density(state_b))/2));
       // substitute m_flow_turbulent into dp_turbulent
       SI.AbsolutePressure dp_turbulent = if not use_Re then dp_small else 
-        max(dp_small, (Medium.dynamicViscosity(state_a) + Medium.dynamicViscosity(state_b))^2*pi/8*Re_turbulent^2 
+        max(dp_small, (Medium.dynamicViscosity(state_a) + Medium.dynamicViscosity(state_b))^2*pi/8*Re_turbulent^2
                       /(max(relativeFlowCoefficient,0.001)*Av*(Medium.density(state_a) + Medium.density(state_b))));
 
   protected
       Real relativeFlowCoefficient;
     initial equation
       if CvData == CvTypes.OpPoint then
-          m_flow_nominal = valveCharacteristic(opening_nominal)*Av*sqrt(rho_nominal)*Utilities.regRoot(dp_nominal, dp_small) 
+          m_flow_nominal = valveCharacteristic(opening_nominal)*Av*sqrt(rho_nominal)*Utilities.regRoot(dp_nominal, dp_small)
         "Determination of Av by the operating point";
       end if;
 
@@ -35,20 +35,20 @@ package Valves "Components for the regulation and control of fluid flow"
 
       relativeFlowCoefficient = valveCharacteristic(opening_actual);
       if checkValve then
-        m_flow = homotopy(relativeFlowCoefficient*Av*sqrt(Medium.density(state_a))* 
-                               Utilities.regRoot2(dp,dp_turbulent,1.0,0.0,use_yd0=true,yd0=0.0), 
+        m_flow = homotopy(relativeFlowCoefficient*Av*sqrt(Medium.density(state_a))*
+                               Utilities.regRoot2(dp,dp_turbulent,1.0,0.0,use_yd0=true,yd0=0.0),
                           relativeFlowCoefficient*m_flow_nominal*dp/dp_nominal);
         /* In Modelica 3.1 (Disadvantage: Unnecessary event at dp=0, and instead of smooth=2)
     m_flow = valveCharacteristic(opening)*Av*sqrt(Medium.density(state_a))*
                   (if dp>=0 then Utilities.regRoot(dp, dp_turbulent) else 0);
     */
       elseif not allowFlowReversal then
-        m_flow = homotopy(relativeFlowCoefficient*Av*sqrt(Medium.density(state_a))* 
-                               Utilities.regRoot(dp, dp_turbulent), 
+        m_flow = homotopy(relativeFlowCoefficient*Av*sqrt(Medium.density(state_a))*
+                               Utilities.regRoot(dp, dp_turbulent),
                           relativeFlowCoefficient*m_flow_nominal*dp/dp_nominal);
       else
-        m_flow = homotopy(relativeFlowCoefficient*Av* 
-                               Utilities.regRoot2(dp,dp_turbulent,Medium.density(state_a),Medium.density(state_b)), 
+        m_flow = homotopy(relativeFlowCoefficient*Av*
+                               Utilities.regRoot2(dp,dp_turbulent,Medium.density(state_a),Medium.density(state_b)),
                           relativeFlowCoefficient*m_flow_nominal*dp/dp_nominal);
         /* In Modelica 3.1 (Disadvantage: Unnecessary event at dp=0, and instead of smooth=2)
     m_flow = smooth(0, Utilities.regRoot(dp, dp_turbulent)*(if dp>=0 then sqrt(Medium.density(state_a)) else sqrt(Medium.density(state_b))));
@@ -80,7 +80,7 @@ explained in detail in the
 <a href=\"modelica://Modelica.Fluid.UsersGuide.ComponentDefinition.ValveCharacteristics\">User's Guide</a>.
 </p>
 
-</html>", 
+</html>",
       revisions="<html>
 <ul>
 <li><em>2 Nov 2005</em>
@@ -90,19 +90,19 @@ explained in detail in the
 </html>"));
     end ValveIncompressible;
 
-  model ValveVaporizing 
+  model ValveVaporizing
     "Valve for possibly vaporizing (almost) incompressible fluids, accounts for choked flow conditions"
     import Modelica.Fluid.Types.CvTypes;
     import Modelica.Constants.pi;
     extends BaseClasses.PartialValve(
-      redeclare replaceable package Medium = 
+      redeclare replaceable package Medium =
           Modelica.Media.Water.WaterIF97_ph                                    constrainedby 
         Modelica.Media.Interfaces.PartialTwoPhaseMedium);
     parameter Real Fl_nominal=0.9 "Liquid pressure recovery factor";
-    replaceable function FlCharacteristic = 
+    replaceable function FlCharacteristic =
         Modelica.Fluid.Valves.BaseClasses.ValveCharacteristics.one 
       constrainedby 
-      Modelica.Fluid.Valves.BaseClasses.ValveCharacteristics.baseFun 
+      Modelica.Fluid.Valves.BaseClasses.ValveCharacteristics.baseFun
       "Pressure recovery characteristic";
     Real Ff "Ff coefficient (see IEC/ISA standard)";
     Real Fl "Pressure recovery coefficient Fl (see IEC/ISA standard)";
@@ -112,14 +112,14 @@ explained in detail in the
     Medium.AbsolutePressure p_in "Inlet pressure";
     Medium.AbsolutePressure p_out "Outlet pressure";
 
-    constant SI.ReynoldsNumber Re_turbulent = 4000 
+    constant SI.ReynoldsNumber Re_turbulent = 4000
       "cf. straight pipe for fully open valve -- dp_turbulent increases for closing valve";
-    parameter Boolean use_Re = system.use_eps_Re 
+    parameter Boolean use_Re = system.use_eps_Re
       "= true, if turbulent region is defined by Re, otherwise by m_flow_small" 
       annotation(Dialog(tab="Advanced"), Evaluate=true);
     //SI.Diameter diameter = Utilities.regRoot(4/pi*valveCharacteristic(opening_actual)*Av, 0.04/pi*valveCharacteristic(opening_nominal)*Av);
     SI.AbsolutePressure dp_turbulent = if not use_Re then dp_small else 
-      max(dp_small, (Medium.dynamicViscosity(state_a) + Medium.dynamicViscosity(state_b))^2*pi/8*Re_turbulent^2 
+      max(dp_small, (Medium.dynamicViscosity(state_a) + Medium.dynamicViscosity(state_b))^2*pi/8*Re_turbulent^2
                     /(valveCharacteristic(opening_actual)*Av*(Medium.density(state_a) + Medium.density(state_b))));
   initial equation
     assert(not CvData == CvTypes.OpPoint, "OpPoint option not supported for vaporizing valve");
@@ -131,24 +131,24 @@ explained in detail in the
     Ff = 0.96 - 0.28*sqrt(p_sat/Medium.fluidConstants[1].criticalPressure);
     Fl = Fl_nominal*FlCharacteristic(opening_actual);
     dpEff = if p_out < (1 - Fl^2)*p_in + Ff*Fl^2*p_sat then 
-              Fl^2*(p_in - Ff*p_sat) else dp 
+              Fl^2*(p_in - Ff*p_sat) else dp
       "Effective pressure drop, accounting for possible choked conditions";
     // m_flow = valveCharacteristic(opening)*Av*sqrt(d)*sqrt(dpEff);
     if checkValve then
-      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*sqrt(Medium.density(state_a))* 
-                             Utilities.regRoot2(dpEff,dp_turbulent,1.0,0.0,use_yd0=true,yd0=0.0), 
+      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*sqrt(Medium.density(state_a))*
+                             Utilities.regRoot2(dpEff,dp_turbulent,1.0,0.0,use_yd0=true,yd0=0.0),
                         valveCharacteristic(opening_actual)*m_flow_nominal*dp/dp_nominal);
      /* In Modelica 3.1 (Disadvantage: Unnecessary event at dpEff=0, and instead of smooth=2)
     m_flow = valveCharacteristic(opening)*Av*sqrt(Medium.density(state_a))*
                   (if dpEff>=0 then Utilities.regRoot(dpEff, dp_turbulent) else 0);
    */
     elseif not allowFlowReversal then
-      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*sqrt(Medium.density(state_a))* 
-                             Utilities.regRoot(dpEff, dp_turbulent), 
+      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*sqrt(Medium.density(state_a))*
+                             Utilities.regRoot(dpEff, dp_turbulent),
                         valveCharacteristic(opening_actual)*m_flow_nominal*dp/dp_nominal);
     else
-      m_flow = homotopy(valveCharacteristic(opening_actual)*Av* 
-                             Utilities.regRoot2(dpEff,dp_turbulent,Medium.density(state_a),Medium.density(state_b)), 
+      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*
+                             Utilities.regRoot2(dpEff,dp_turbulent,Medium.density(state_a),Medium.density(state_b)),
                         valveCharacteristic(opening_actual)*m_flow_nominal*dp/dp_nominal);
       /* In Modelica 3.1 (Disadvantage: Unnecessary event at dp=0, and instead of smooth=2)
      m_flow = valveCharacteristic(opening)*Av*
@@ -177,7 +177,7 @@ explained in detail in the
 <a href=\"modelica://Modelica.Fluid.UsersGuide.ComponentDefinition.ValveCharacteristics\">User's Guide</a>.
 </p>
 
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>2 Nov 2005</em>
@@ -187,7 +187,7 @@ explained in detail in the
 </html>"));
   end ValveVaporizing;
 
-  model ValveCompressible 
+  model ValveCompressible
     "Valve for compressible fluids, accounts for choked flow conditions"
     extends BaseClasses.PartialValve;
     import Modelica.Fluid.Types.CvTypes;
@@ -195,10 +195,10 @@ explained in detail in the
     parameter Medium.AbsolutePressure p_nominal "Nominal inlet pressure" 
     annotation(Dialog(group="Nominal operating point"));
     parameter Real Fxt_full=0.5 "Fk*xt critical ratio at full opening";
-    replaceable function xtCharacteristic = 
+    replaceable function xtCharacteristic =
         Modelica.Fluid.Valves.BaseClasses.ValveCharacteristics.one 
       constrainedby 
-      Modelica.Fluid.Valves.BaseClasses.ValveCharacteristics.baseFun 
+      Modelica.Fluid.Valves.BaseClasses.ValveCharacteristics.baseFun
       "Critical ratio characteristic";
     Real Fxt;
     Real x "Pressure drop ratio";
@@ -206,18 +206,18 @@ explained in detail in the
     Real Y "Compressibility factor";
     Medium.AbsolutePressure p "Inlet pressure";
 
-    constant SI.ReynoldsNumber Re_turbulent = 4000 
+    constant SI.ReynoldsNumber Re_turbulent = 4000
       "cf. straight pipe for fully open valve -- dp_turbulent increases for closing valve";
-    parameter Boolean use_Re = system.use_eps_Re 
+    parameter Boolean use_Re = system.use_eps_Re
       "= true, if turbulent region is defined by Re, otherwise by m_flow_small" 
       annotation(Dialog(tab="Advanced"), Evaluate=true);
     SI.AbsolutePressure dp_turbulent = if not use_Re then dp_small else 
-      max(dp_small, (Medium.dynamicViscosity(state_a) + Medium.dynamicViscosity(state_b))^2*pi/8*Re_turbulent^2 
+      max(dp_small, (Medium.dynamicViscosity(state_a) + Medium.dynamicViscosity(state_b))^2*pi/8*Re_turbulent^2
                     /(max(valveCharacteristic(opening_actual),0.001)*Av*Y*(Medium.density(state_a) + Medium.density(state_b))));
   protected
     parameter Real Fxt_nominal(fixed=false) "Nominal Fxt";
     parameter Real x_nominal(fixed=false) "Nominal pressure drop ratio";
-    parameter Real xs_nominal(fixed=false) 
+    parameter Real xs_nominal(fixed=false)
       "Nominal saturated pressure drop ratio";
     parameter Real Y_nominal(fixed=false) "Nominal compressibility factor";
 
@@ -245,16 +245,16 @@ explained in detail in the
     Y = 1 - abs(xs)/(3*Fxt);
     // m_flow = valveCharacteristic(opening)*Av*Y*sqrt(d)*sqrt(p*xs);
     if checkValve then
-      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*Y*sqrt(Medium.density(state_a))* 
-                             (if xs>=0 then Utilities.regRoot(p*xs, dp_turbulent) else 0), 
+      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*Y*sqrt(Medium.density(state_a))*
+                             (if xs>=0 then Utilities.regRoot(p*xs, dp_turbulent) else 0),
                         valveCharacteristic(opening_actual)*m_flow_nominal*dp/dp_nominal);
     elseif not allowFlowReversal then
-      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*Y*sqrt(Medium.density(state_a))* 
-                             Utilities.regRoot(p*xs, dp_turbulent), 
+      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*Y*sqrt(Medium.density(state_a))*
+                             Utilities.regRoot(p*xs, dp_turbulent),
                         valveCharacteristic(opening_actual)*m_flow_nominal*dp/dp_nominal);
     else
-      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*Y* 
-                             Utilities.regRoot2(p*xs, dp_turbulent, Medium.density(state_a), Medium.density(state_b)), 
+      m_flow = homotopy(valveCharacteristic(opening_actual)*Av*Y*
+                             Utilities.regRoot2(p*xs, dp_turbulent, Medium.density(state_a), Medium.density(state_b)),
                         valveCharacteristic(opening_actual)*m_flow_nominal*dp/dp_nominal);
   /* alternative formulation using smooth(0, ...) -- should not be used as regRoot2 has continuous derivatives
    -- cf. ModelicaTest.Fluid.TestPipesAndValves.DynamicPipeInitialization --
@@ -286,7 +286,7 @@ explained in detail in the
 <a href=\"modelica://Modelica.Fluid.UsersGuide.ComponentDefinition.ValveCharacteristics\">User's Guide</a>.
 </p>
 
-</html>", 
+</html>",
       revisions="<html>
 <ul>
 <li><em>2 Nov 2005</em>
@@ -298,21 +298,21 @@ explained in detail in the
 
   model ValveLinear "Valve for water/steam flows with linear pressure drop"
     extends Modelica.Fluid.Interfaces.PartialTwoPortTransport;
-    parameter SI.AbsolutePressure dp_nominal 
+    parameter SI.AbsolutePressure dp_nominal
       "Nominal pressure drop at full opening" 
       annotation(Dialog(group="Nominal operating point"));
-    parameter Medium.MassFlowRate m_flow_nominal 
+    parameter Medium.MassFlowRate m_flow_nominal
       "Nominal mass flowrate at full opening";
-    final parameter Types.HydraulicConductance k = m_flow_nominal/dp_nominal 
+    final parameter Types.HydraulicConductance k = m_flow_nominal/dp_nominal
       "Hydraulic conductance at full opening";
-    Modelica.Blocks.Interfaces.RealInput opening(min=0,max=1) 
+    Modelica.Blocks.Interfaces.RealInput opening(min=0,max=1)
       "=1: completely open, =0: completely closed" 
     annotation (Placement(transformation(
-          origin={0,90}, 
-          extent={{-20,-20},{20,20}}, 
+          origin={0,90},
+          extent={{-20,-20},{20,20}},
           rotation=270), iconTransformation(
-          extent={{-20,-20},{20,20}}, 
-          rotation=270, 
+          extent={{-20,-20},{20,20}},
+          rotation=270,
           origin={0,80})));
 
   equation
@@ -324,31 +324,31 @@ explained in detail in the
 
   annotation (
     Icon(coordinateSystem(
-          preserveAspectRatio=true, 
+          preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{0,50},{0,0}}), 
+          Line(points={{0,50},{0,0}}),
           Rectangle(
-            extent={{-20,60},{20,50}}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-20,60},{20,50}},
+            fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100,50}}, 
-            fillColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
+            points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100,50}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
           Polygon(
-            points=DynamicSelect({{-100,0},{100,-0},{100,0},{0,0},{-100,-0},{-100, 
+            points=DynamicSelect({{-100,0},{100,-0},{100,0},{0,0},{-100,-0},{-100,
                 0}}, {{-100,50*opening},{-100,50*opening},{100,-50*opening},{
-                100,50*opening},{0,0},{-100,-50*opening},{-100,50*opening}}), 
-            fillColor={0,255,0}, 
-            lineColor={255,255,255}, 
-            fillPattern=FillPattern.Solid), 
-          Polygon(points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100, 
-                50}})}), 
+                100,50*opening},{0,0},{-100,-50*opening},{-100,50*opening}}),
+            fillColor={0,255,0},
+            lineColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Polygon(points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100,
+                50}})}),
     Documentation(info="<html>
 <p>This very simple model provides a pressure drop which is proportional to the flowrate and to the <code>opening</code> input, without computing any fluid property. It can be used for testing purposes, when
 a simple model of a variable pressure loss is needed.</p>
 <p>A medium model must be nevertheless be specified, so that the fluid ports can be connected to other components using the same medium model.</p>
 <p>The model is adiabatic (no heat losses to the ambient) and neglects changes in kinetic energy from the inlet to the outlet.</p>
-</html>", 
+</html>",
       revisions="<html>
 <ul>
 <li><em>2 Nov 2005</em>
@@ -360,19 +360,19 @@ a simple model of a variable pressure loss is needed.</p>
 
   model ValveDiscrete "Valve for water/steam flows with linear pressure drop"
     extends Modelica.Fluid.Interfaces.PartialTwoPortTransport;
-    parameter SI.AbsolutePressure dp_nominal 
+    parameter SI.AbsolutePressure dp_nominal
       "Nominal pressure drop at full opening=1" 
       annotation(Dialog(group="Nominal operating point"));
-    parameter Medium.MassFlowRate m_flow_nominal 
+    parameter Medium.MassFlowRate m_flow_nominal
       "Nominal mass flowrate at full opening=1";
-    final parameter Types.HydraulicConductance k = m_flow_nominal/dp_nominal 
+    final parameter Types.HydraulicConductance k = m_flow_nominal/dp_nominal
       "Hydraulic conductance at full opening=1";
     Modelica.Blocks.Interfaces.BooleanInput open 
     annotation (Placement(transformation(
-          origin={0,80}, 
-          extent={{-20,-20},{20,20}}, 
+          origin={0,80},
+          extent={{-20,-20},{20,20}},
           rotation=270)));
-    parameter Real opening_min(min=0)=0 
+    parameter Real opening_min(min=0)=0
       "Remaining opening if closed, causing small leakage flow";
   equation
     m_flow = if open then 1*k*dp else opening_min*k*dp;
@@ -383,16 +383,16 @@ a simple model of a variable pressure loss is needed.</p>
 
   annotation (
     Icon(coordinateSystem(
-          preserveAspectRatio=false, 
+          preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{0,50},{0,0}}), 
+          Line(points={{0,50},{0,0}}),
           Rectangle(
-            extent={{-20,60},{20,50}}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-20,60},{20,50}},
+            fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100,50}}, 
-            fillColor=DynamicSelect({255,255,255}, if open then {0,255,0} else {255,255,255}), 
-            fillPattern=FillPattern.Solid)}), 
+            points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100,50}},
+            fillColor=DynamicSelect({255,255,255}, if open then {0,255,0} else {255,255,255}),
+            fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
 This very simple model provides a (small) pressure drop which is proportional to the flowrate if the Boolean open signal is <strong>true</strong>. Otherwise, the mass flow rate is zero. If opening_min > 0, a small leakage mass flow rate occurs when open = <strong>false</strong>.
@@ -403,7 +403,7 @@ This very simple model provides a (small) pressure drop which is proportional to
 In a diagram animation, the valve is shown in \"green\", when
 it is open.
 </p>
-</html>", 
+</html>",
       revisions="<html>
 <ul>
 <li><em>Nov 2005</em>
@@ -412,33 +412,33 @@ it is open.
 </html>"));
   end ValveDiscrete;
 
-  model ValveDiscreteRamp 
+  model ValveDiscreteRamp
     "Valve for water/steam flows with discrete opening signal and ramp opening"
     extends Modelica.Fluid.Interfaces.PartialTwoPortTransport;
-    parameter SI.AbsolutePressure dp_nominal 
+    parameter SI.AbsolutePressure dp_nominal
       "Nominal pressure drop at full opening" 
       annotation(Dialog(group="Nominal operating point"));
-    parameter Medium.MassFlowRate m_flow_nominal 
+    parameter Medium.MassFlowRate m_flow_nominal
       "Nominal mass flowrate at full opening";
-    parameter Real opening_min(min=0)=0 
+    parameter Real opening_min(min=0)=0
       "Remaining opening if closed, causing small leakage flow";
-    final parameter Types.HydraulicConductance k = m_flow_nominal/dp_nominal 
+    final parameter Types.HydraulicConductance k = m_flow_nominal/dp_nominal
       "Hydraulic conductance at full opening";
     parameter SI.Time Topen "Time to fully open the valve";
     parameter SI.Time Tclose = Topen "Time to fully close the valve";
 
     Modelica.Blocks.Interfaces.BooleanInput open 
     annotation (Placement(transformation(
-          origin={0,80}, 
-          extent={{-20,-20},{20,20}}, 
+          origin={0,80},
+          extent={{-20,-20},{20,20}},
           rotation=270)));
     Blocks.Logical.TriggeredTrapezoid openingGenerator(
-      amplitude=1 - opening_min,                       rising=Topen, falling= 
-          Tclose, 
+      amplitude=1 - opening_min,                       rising=Topen, falling=
+          Tclose,
       offset=opening_min) 
                   annotation (Placement(transformation(
-          extent={{-10,-10},{10,10}}, 
-          rotation=-90, 
+          extent={{-10,-10},{10,10}},
+          rotation=-90,
           origin={0,30})));
 
 
@@ -449,20 +449,20 @@ it is open.
     // Isenthalpic state transformation (no storage and no loss of energy)
     port_a.h_outflow = inStream(port_b.h_outflow);
     port_b.h_outflow = inStream(port_a.h_outflow);
-    connect(open, openingGenerator.u) annotation (Line(points={{0,80},{0,42},{2.22045e-15, 
+    connect(open, openingGenerator.u) annotation (Line(points={{0,80},{0,42},{2.22045e-15,
             42}}, color={255,0,255}));
     annotation (
     Icon(coordinateSystem(
-          preserveAspectRatio=false, 
+          preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{0,50},{0,0}}), 
+          Line(points={{0,50},{0,0}}),
           Rectangle(
-            extent={{-20,60},{20,50}}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-20,60},{20,50}},
+            fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100,50}}, 
-            fillColor=DynamicSelect({255,255,255}, if open then {0,255,0} else {255,255,255}), 
-            fillPattern=FillPattern.Solid)}), 
+            points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100,50}},
+            fillColor=DynamicSelect({255,255,255}, if open then {0,255,0} else {255,255,255}),
+            fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
 This model is similar to <a href=\"modelica://Modelica.Fluid.Valves.ValveDiscrete\">ValveDiscrete</a>,
@@ -470,7 +470,7 @@ except that the valve opens gradually with an opening time <code>Topen</code> an
 a closing time <code>Tclose</code> instead of doing so abruptly. This can help to avoid unrealistic phenomena such
 as reversing flows when accurate fluid models with small compressiblity are employed.
 </p>
-</html>", 
+</html>",
       revisions="<html>
 <ul>
 <li><em>Mar 2020</em>
@@ -479,64 +479,64 @@ as reversing flows when accurate fluid models with small compressiblity are empl
 </html>"));
   end ValveDiscreteRamp;
 
-  package BaseClasses 
+  package BaseClasses
     "Base classes used in the Valves package (only of interest to build new component models)"
     extends Modelica.Icons.BasesPackage;
     partial model PartialValve "Base model for valves"
 
       import Modelica.Fluid.Types.CvTypes;
       extends Modelica.Fluid.Interfaces.PartialTwoPortTransport(
-        dp_start = dp_nominal, 
-        m_flow_small = if system.use_eps_Re then system.eps_m_flow*m_flow_nominal else system.m_flow_small, 
+        dp_start = dp_nominal,
+        m_flow_small = if system.use_eps_Re then system.eps_m_flow*m_flow_nominal else system.m_flow_small,
         m_flow_start = m_flow_nominal);
 
-      parameter Modelica.Fluid.Types.CvTypes CvData=Modelica.Fluid.Types.CvTypes.OpPoint 
+      parameter Modelica.Fluid.Types.CvTypes CvData=Modelica.Fluid.Types.CvTypes.OpPoint
         "Selection of flow coefficient" 
        annotation(Dialog(group = "Flow coefficient"));
       parameter SI.Area Av(
-        fixed= CvData == Modelica.Fluid.Types.CvTypes.Av, 
+        fixed= CvData == Modelica.Fluid.Types.CvTypes.Av,
         start=m_flow_nominal/(sqrt(rho_nominal*dp_nominal))*valveCharacteristic(
             opening_nominal)) "Av (metric) flow coefficient" 
-       annotation(Dialog(group = "Flow coefficient", 
+       annotation(Dialog(group = "Flow coefficient",
                          enable = (CvData==Modelica.Fluid.Types.CvTypes.Av)));
       parameter Real Kv = 0 "Kv (metric) flow coefficient [m3/h]" 
-      annotation(Dialog(group = "Flow coefficient", 
+      annotation(Dialog(group = "Flow coefficient",
                         enable = (CvData==Modelica.Fluid.Types.CvTypes.Kv)));
       parameter Real Cv = 0 "Cv (US) flow coefficient [USG/min]" 
-      annotation(Dialog(group = "Flow coefficient", 
+      annotation(Dialog(group = "Flow coefficient",
                         enable = (CvData==Modelica.Fluid.Types.CvTypes.Cv)));
       parameter SI.Pressure dp_nominal "Nominal pressure drop" 
       annotation(Dialog(group="Nominal operating point"));
       parameter Medium.MassFlowRate m_flow_nominal "Nominal mass flowrate" 
       annotation(Dialog(group="Nominal operating point"));
-      parameter Medium.Density rho_nominal=Medium.density_pTX(Medium.p_default, Medium.T_default, Medium.X_default) 
+      parameter Medium.Density rho_nominal=Medium.density_pTX(Medium.p_default, Medium.T_default, Medium.X_default)
         "Nominal inlet density" 
-      annotation(Dialog(group="Nominal operating point", 
+      annotation(Dialog(group="Nominal operating point",
                         enable = (CvData==Modelica.Fluid.Types.CvTypes.OpPoint)));
       parameter Real opening_nominal(min=0,max=1)=1 "Nominal opening" 
-      annotation(Dialog(group="Nominal operating point", 
+      annotation(Dialog(group="Nominal operating point",
                         enable = (CvData==Modelica.Fluid.Types.CvTypes.OpPoint)));
 
-      parameter Boolean filteredOpening=false 
+      parameter Boolean filteredOpening=false
         "= true, if opening is filtered with a 2nd order CriticalDamping filter" 
         annotation(Dialog(group="Filtered opening"),choices(checkBox=true));
-      parameter SI.Time riseTime=1 
+      parameter SI.Time riseTime=1
         "Rise time of the filter (time to reach 99.6 % of an opening step)" 
         annotation(Dialog(group="Filtered opening",enable=filteredOpening));
-      parameter Real leakageOpening(min=0,max=1)=1e-3 
+      parameter Real leakageOpening(min=0,max=1)=1e-3
         "The opening signal is limited by leakageOpening (to improve the numerics)" 
         annotation(Dialog(group="Filtered opening",enable=filteredOpening));
       parameter Boolean checkValve=false "Reverse flow stopped" 
         annotation(Dialog(tab="Assumptions"));
 
-      replaceable function valveCharacteristic = 
+      replaceable function valveCharacteristic =
           Modelica.Fluid.Valves.BaseClasses.ValveCharacteristics.linear 
         constrainedby 
-        Modelica.Fluid.Valves.BaseClasses.ValveCharacteristics.baseFun 
+        Modelica.Fluid.Valves.BaseClasses.ValveCharacteristics.baseFun
         "Inherent flow characteristic" 
         annotation(choicesAllMatching=true);
     protected
-      parameter SI.Pressure dp_small=if system.use_eps_Re then dp_nominal/m_flow_nominal*m_flow_small else system.dp_small 
+      parameter SI.Pressure dp_small=if system.use_eps_Re then dp_nominal/m_flow_nominal*m_flow_small else system.dp_small
         "Regularisation of zero flow" 
        annotation(Dialog(tab="Advanced"));
 
@@ -544,22 +544,22 @@ as reversing flows when accurate fluid models with small compressiblity are empl
       constant SI.Area Kv2Av = 27.7e-6 "Conversion factor";
       constant SI.Area Cv2Av = 24.0e-6 "Conversion factor";
 
-      Modelica.Blocks.Interfaces.RealInput opening(min=0, max=1) 
+      Modelica.Blocks.Interfaces.RealInput opening(min=0, max=1)
         "Valve position in the range 0..1" 
                                        annotation (Placement(transformation(
-            origin={0,90}, 
-            extent={{-20,-20},{20,20}}, 
+            origin={0,90},
+            extent={{-20,-20},{20,20}},
             rotation=270), iconTransformation(
-            extent={{-20,-20},{20,20}}, 
-            rotation=270, 
+            extent={{-20,-20},{20,20}},
+            rotation=270,
             origin={0,80})));
 
-      Modelica.Blocks.Interfaces.RealOutput opening_filtered if filteredOpening 
+      Modelica.Blocks.Interfaces.RealOutput opening_filtered if filteredOpening
         "Filtered valve position in the range 0..1" 
-        annotation (Placement(transformation(extent={{60,40},{80,60}}), 
+        annotation (Placement(transformation(extent={{60,40},{80,60}}),
             iconTransformation(extent={{60,50},{80,70}})));
 
-      Modelica.Blocks.Continuous.Filter filter(order=2, f_cut=5/(2*Modelica.Constants.pi 
+      Modelica.Blocks.Continuous.Filter filter(order=2, f_cut=5/(2*Modelica.Constants.pi
             *riseTime)) if filteredOpening 
         annotation (Placement(transformation(extent={{34,44},{48,58}})));
 
@@ -581,59 +581,59 @@ as long as the input is above uMin. If this is not the case,
 y=uMin is passed as output.
 </p>
 </html>"), Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
-        Line(points={{0,-90},{0,68}}, color={192,192,192}), 
+        Line(points={{0,-90},{0,68}}, color={192,192,192}),
         Polygon(
-          points={{0,90},{-8,68},{8,68},{0,90}}, 
-          lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-90,0},{68,0}}, color={192,192,192}), 
+          points={{0,90},{-8,68},{8,68},{0,90}},
+          lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-90,0},{68,0}}, color={192,192,192}),
         Polygon(
-          points={{90,0},{68,-8},{68,8},{90,0}}, 
-          lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-80,-70},{-50,-70},{50,70},{64,90}}), 
+          points={{90,0},{68,-8},{68,8},{90,0}},
+          lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-80,-70},{-50,-70},{50,70},{64,90}}),
         Text(
-          extent={{-150,-150},{150,-110}}, 
-          textString="uMin=%uMin"), 
+          extent={{-150,-150},{150,-110}},
+          textString="uMin=%uMin"),
         Text(
-          extent={{-150,150},{150,110}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
+          extent={{-150,150},{150,110}},
+          textString="%name",
+          textColor={0,0,255})}),
         Diagram(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
-        Line(points={{0,-60},{0,50}}, color={192,192,192}), 
+        Line(points={{0,-60},{0,50}}, color={192,192,192}),
         Polygon(
-          points={{0,60},{-5,50},{5,50},{0,60}}, 
-          lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-60,0},{50,0}}, color={192,192,192}), 
+          points={{0,60},{-5,50},{5,50},{0,60}},
+          lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-60,0},{50,0}}, color={192,192,192}),
         Polygon(
-          points={{60,0},{50,-5},{50,5},{60,0}}, 
-          lineColor={192,192,192}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{-50,-40},{-30,-40},{30,40},{50,40}}), 
+          points={{60,0},{50,-5},{50,5},{60,0}},
+          lineColor={192,192,192},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-50,-40},{-30,-40},{30,40},{50,40}}),
         Text(
-          extent={{46,-6},{68,-18}}, 
-          textColor={128,128,128}, 
-          textString="u"), 
+          extent={{46,-6},{68,-18}},
+          textColor={128,128,128},
+          textString="u"),
         Text(
-          extent={{-30,70},{-5,50}}, 
-          textColor={128,128,128}, 
-          textString="y"), 
+          extent={{-30,70},{-5,50}},
+          textColor={128,128,128},
+          textString="y"),
         Text(
-          extent={{-58,-54},{-28,-42}}, 
-          textColor={128,128,128}, 
-          textString="uMin"), 
+          extent={{-58,-54},{-28,-42}},
+          textColor={128,128,128},
+          textString="uMin"),
         Text(
-          extent={{26,40},{66,56}}, 
-          textColor={128,128,128}, 
+          extent={{26,40},{66,56}},
+          textColor={128,128,128},
           textString="uMax")}));
     end MinLimiter;
 
@@ -666,37 +666,37 @@ y=uMin is passed as output.
           points={{8.6,51},{0,51},{0,90}}, color={0,0,127}));
       annotation (
         Icon(coordinateSystem(
-            preserveAspectRatio=true, 
+            preserveAspectRatio=true,
             extent={{-100,-100},{100,100}}), graphics={
-            Line(points={{0,52},{0,0}}), 
+            Line(points={{0,52},{0,0}}),
             Rectangle(
-              extent={{-20,60},{20,52}}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-20,60},{20,52}},
+              fillPattern=FillPattern.Solid),
             Polygon(
-              points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100,50}}, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100,50}},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Polygon(
               points=DynamicSelect({{-100,0},{100,-0},{100,0},{0,0},{-100,-0},{
-                  -100,0}}, {{-100,50*opening_actual},{-100,50*opening_actual},{100,-50* 
-                  opening},{100,50*opening_actual},{0,0},{-100,-50*opening_actual},{-100,50* 
-                  opening}}), 
-              fillColor={0,255,0}, 
-              lineColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
-            Polygon(points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100, 
-                  50}}), 
-            Ellipse(visible=filteredOpening, 
-              extent={{-40,94},{40,14}}, 
-              lineColor={0,0,127}, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
-            Line(visible=filteredOpening, 
-              points={{-20,25},{-20,63},{0,41},{20,63},{20,25}}, 
-              thickness=0.5), 
-            Line(visible=filteredOpening, 
-              points={{40,60},{60,60}}, 
-              color={0,0,127})}), 
+                  -100,0}}, {{-100,50*opening_actual},{-100,50*opening_actual},{100,-50*
+                  opening},{100,50*opening_actual},{0,0},{-100,-50*opening_actual},{-100,50*
+                  opening}}),
+              fillColor={0,255,0},
+              lineColor={255,255,255},
+              fillPattern=FillPattern.Solid),
+            Polygon(points={{-100,50},{100,-50},{100,50},{0,0},{-100,-50},{-100,
+                  50}}),
+            Ellipse(visible=filteredOpening,
+              extent={{-40,94},{40,14}},
+              lineColor={0,0,127},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
+            Line(visible=filteredOpening,
+              points={{-20,25},{-20,63},{0,41},{20,63},{20,25}},
+              thickness=0.5),
+            Line(visible=filteredOpening,
+              points={{40,60},{60,60}},
+              color={0,0,127})}),
         Documentation(info="<html>
 <p>This is the base model for the <code>ValveIncompressible</code>, <code>ValveVaporizing</code>, and <code>ValveCompressible</code> valve models. The model is based on the IEC 534 / ISA S.75 standards for valve sizing.</p>
 <p>The model optionally supports reverse flow conditions (assuming symmetrical behaviour) or check valve operation, and has been suitably regularized, compared to the equations in the standard, in order to avoid numerical singularities around zero pressure drop operating conditions.</p>
@@ -781,7 +781,7 @@ filteredOpening = <strong>true</strong>, riseTime = 1 s, and leakageOpening = 0.
     extends Modelica.Icons.VariantsPackage;
     partial function baseFun "Base class for valve characteristics"
       extends Modelica.Icons.Function;
-      input Real pos(min=0, max=1) 
+      input Real pos(min=0, max=1)
           "Opening position (0: closed, 1: fully open)";
       output Real rc "Relative flow coefficient (per unit)";
       annotation (Documentation(info="<html>

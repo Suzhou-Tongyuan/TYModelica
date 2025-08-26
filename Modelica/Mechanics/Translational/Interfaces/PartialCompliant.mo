@@ -1,11 +1,11 @@
 ﻿within Modelica.Mechanics.Translational.Interfaces;
-partial model PartialCompliant 
+partial model PartialCompliant
   "Compliant connection of two translational 1D flanges"
 
   extends Translational.Interfaces.PartialTwoFlanges;
-  SI.Position s_rel(start=0) 
+  SI.Position s_rel(start=0)
     "Relative distance (= flange_b.s - flange_a.s)";
-  SI.Force f 
+  SI.Force f
     "Force between flanges (positive in direction of flange axis R)";
 
 equation

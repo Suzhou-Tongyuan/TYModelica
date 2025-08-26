@@ -1,71 +1,71 @@
 ﻿within Modelica.Clocked.RealSignals.Sampler;
-block BackSample 
+block BackSample
   "Shift the clock of the Real input signal backwards in time (and access the most recent value of the input at this new clock)"
   parameter Integer backCounter(min=0)=0 "Numerator of shifting formula" 
         annotation(Evaluate=true, Dialog(group="Shift first clock activation backwards in time for 'shiftCounter/resolution*interval(u)' seconds"));
   parameter Integer resolution(min=1)=1 "Denominator of shifting formula" 
         annotation(Evaluate=true, Dialog(group="Shift first clock activation backwards in time for 'shiftCounter/resolution*interval(u)' seconds"));
-  parameter Real y_start=0 
+  parameter Real y_start=0
     "Value of output y before the first clock tick of the input u";
 
-  Modelica.Blocks.Interfaces.RealInput u(start=y_start) 
+  Modelica.Blocks.Interfaces.RealInput u(start=y_start)
     "Connector of clocked, Real input signal" 
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-  Modelica.Blocks.Interfaces.RealOutput y 
+  Modelica.Blocks.Interfaces.RealOutput y
     "Connector of clocked, Real output signal (clock of y is faster than clock of u)" 
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 equation
   y = backSample(u,backCounter,resolution);
 
   annotation (
-   defaultComponentName="backSample1", 
+   defaultComponentName="backSample1",
    Icon(coordinateSystem(
-        preserveAspectRatio=true, 
-        extent={{-100,-100},{100,100}}, 
-        initialScale=0.06), 
-                     graphics={Line(points={{20,-50},{60,-50},{60,50}}, 
-                                 color={0,0,127}, 
-          pattern=LinePattern.Dot), 
-                               Line(points={{-80,-50},{-40,-50},{-40,50}}, 
-                                 color={0,0,127}, 
-          pattern=LinePattern.Dot), 
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}},
+        initialScale=0.06),
+                     graphics={Line(points={{20,-50},{60,-50},{60,50}},
+                                 color={0,0,127},
+          pattern=LinePattern.Dot),
+                               Line(points={{-80,-50},{-40,-50},{-40,50}},
+                                 color={0,0,127},
+          pattern=LinePattern.Dot),
         Ellipse(
-          extent={{-90,-40},{-70,-60}}, 
-          lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-90,-40},{-70,-60}},
+          lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{-50,60},{-30,40}}, 
-          lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-50,60},{-30,40}},
+          lineColor={0,0,127},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Polygon(
-          points={{-16,0},{4,20},{4,10},{34,10},{34,-10},{4,-10},{4,-20},{-16,0}}, 
-          fillColor={95,95,95}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={95,95,95}), 
+          points={{-16,0},{4,20},{4,10},{34,10},{34,-10},{4,-10},{4,-20},{-16,0}},
+          fillColor={95,95,95},
+          fillPattern=FillPattern.Solid,
+          lineColor={95,95,95}),
         Ellipse(
-          extent={{10,-40},{30,-60}}, 
-          lineColor={0,0,127}, 
-          fillColor={0,0,127}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{10,-40},{30,-60}},
+          lineColor={0,0,127},
+          fillColor={0,0,127},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{50,60},{70,40}}, 
-          lineColor={0,0,127}, 
-          fillColor={0,0,127}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{50,60},{70,40}},
+          lineColor={0,0,127},
+          fillColor={0,0,127},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,-100},{150,-140}}, 
-          textColor={0,0,0}, 
-          textString="y_start=%y_start"), 
+          extent={{-150,-100},{150,-140}},
+          textColor={0,0,0},
+          textString="y_start=%y_start"),
         Text(
-          extent={{-150,-150},{150,-190}}, 
-          textColor={0,0,0}, 
-          textString="%backCounter/%resolution"), 
+          extent={{-150,-150},{150,-190}},
+          textColor={0,0,0},
+          textString="%backCounter/%resolution"),
         Text(
-          extent={{-150,150},{150,110}}, 
-          textString="%name", 
-          textColor={0,0,255})}), 
+          extent={{-150,150},{150,110}},
+          textString="%name",
+          textColor={0,0,255})}),
     Documentation(info="<html>
 <p>
 This block shifts the first activation of the clock of the output y by

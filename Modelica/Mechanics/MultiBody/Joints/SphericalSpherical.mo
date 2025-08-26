@@ -1,124 +1,124 @@
 ﻿within Modelica.Mechanics.MultiBody.Joints;
-model SphericalSpherical 
+model SphericalSpherical
   "Spherical - spherical joint aggregation (1 constraint, no potential states) with an optional point mass in the middle"
 
   import Modelica.Mechanics.MultiBody.Types;
   extends Interfaces.PartialTwoFrames;
 
   parameter Boolean animation=true "= true, if animation shall be enabled";
-  parameter Boolean showMass=true 
+  parameter Boolean showMass=true
     "= true, if mass shall be shown (provided animation = true and m > 0)";
-  parameter Boolean computeRodLength=false 
+  parameter Boolean computeRodLength=false
     "= true, if rodLength shall be computed during initialization (see info)";
   parameter SI.Length rodLength(
-    min=Modelica.Constants.eps, 
-    fixed=not computeRodLength, start = 1) 
+    min=Modelica.Constants.eps,
+    fixed=not computeRodLength, start = 1)
     "Distance between the origins of frame_a and frame_b (if computeRodLength=true, guess value)";
-  parameter SI.Mass m(min=0)=0 
+  parameter SI.Mass m(min=0)=0
     "Mass of rod (= point mass located in middle of rod)";
-  parameter SI.Diameter sphereDiameter=world.defaultJointLength 
+  parameter SI.Diameter sphereDiameter=world.defaultJointLength
     "Diameter of spheres representing the spherical joints" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  input Types.Color sphereColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor 
+  input Types.Color sphereColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor
     "Color of spheres representing the spherical joints" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
-  parameter SI.Diameter rodDiameter=sphereDiameter/Types.Defaults.JointRodDiameterFraction 
+  parameter SI.Diameter rodDiameter=sphereDiameter/Types.Defaults.JointRodDiameterFraction
     "Diameter of rod connecting the two spherical joint" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  input Types.Color rodColor=Modelica.Mechanics.MultiBody.Types.Defaults.RodColor 
+  input Types.Color rodColor=Modelica.Mechanics.MultiBody.Types.Defaults.RodColor
     "Color of rod connecting the two spherical joints" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
-  parameter SI.Diameter massDiameter=sphereDiameter 
+  parameter SI.Diameter massDiameter=sphereDiameter
     "Diameter of sphere representing the mass point" 
-    annotation (Dialog(tab= 
-          "Animation", group="if animation = true and showMass = true and m > 0", 
+    annotation (Dialog(tab=
+          "Animation", group="if animation = true and showMass = true and m > 0",
           enable=animation and showMass and m > 0));
-  input Types.Color massColor=Modelica.Mechanics.MultiBody.Types.Defaults.BodyColor 
+  input Types.Color massColor=Modelica.Mechanics.MultiBody.Types.Defaults.BodyColor
     "Color of sphere representing the mass point" annotation (
-      Dialog(colorSelector=true, tab="Animation", group= 
-          "if animation = true and showMass = true and m > 0", 
+      Dialog(colorSelector=true, tab="Animation", group=
+          "if animation = true and showMass = true and m > 0",
           enable=animation and showMass and m > 0));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
 
-  parameter Boolean kinematicConstraint=true 
+  parameter Boolean kinematicConstraint=true
     "= false, if no constraint shall be defined, due to analytically solving a kinematic loop (\"false\" should not be used by user, but only by MultiBody.Joints.Assemblies joints)" 
     annotation (Dialog(tab="Advanced"));
-  Real constraintResidue = rRod_0*rRod_0 - rodLength*rodLength 
+  Real constraintResidue = rRod_0*rRod_0 - rodLength*rodLength
     "Constraint equation of joint in residue form: Either length constraint (= default) or equation to compute rod force (for analytic solution of loops in combination with Internal.RevoluteWithLengthConstraint/PrismaticWithLengthConstraint)" 
     annotation (Dialog(tab="Advanced", enable=not kinematicConstraint));
-  parameter Boolean checkTotalPower=false 
+  parameter Boolean checkTotalPower=false
     "= true, if total power flowing into this component shall be determined (must be zero)" 
     annotation (Dialog(tab="Advanced"));
 
-  SI.Force f_rod 
+  SI.Force f_rod
     "Constraint force in direction of the rod (positive on frame_a, when directed from frame_a to frame_b)";
-  SI.Position rRod_0[3] 
+  SI.Position rRod_0[3]
     "Position vector from frame_a to frame_b resolved in world frame";
-  SI.Position rRod_a[3] 
+  SI.Position rRod_a[3]
     "Position vector from frame_a to frame_b resolved in frame_a";
-  Real eRod_a[3](each final unit="1") 
+  Real eRod_a[3](each final unit="1")
     "Unit vector in direction from frame_a to frame_b, resolved in frame_a";
-  SI.Position r_CM_0[3] 
+  SI.Position r_CM_0[3]
     "Dummy if m==0, or position vector from world frame to mid-point of rod, resolved in world frame";
   SI.Velocity v_CM_0[3] "First derivative of r_CM_0";
-  SI.Force f_CM_a[3] 
+  SI.Force f_CM_a[3]
     "Dummy if m==0, or inertial force acting at mid-point of rod due to mass point acceleration, resolved in frame_a";
-  SI.Force f_CM_e[3] 
+  SI.Force f_CM_e[3]
     "Dummy if m==0, or projection of f_CM_a onto eRod_a, resolved in frame_a";
-  SI.Force f_b_a1[3] 
+  SI.Force f_b_a1[3]
     "Force acting at frame_b, but without force in rod, resolved in frame_a";
-  SI.Power totalPower 
+  SI.Power totalPower
     "Total power flowing into this element, if checkTotalPower=true (otherwise dummy)";
 
 protected
   Visualizers.Advanced.Shape shape_rod(
-    shapeType="cylinder", 
-    color=rodColor, 
-    specularCoefficient=specularCoefficient, 
-    length=rodLength, 
-    width=rodDiameter, 
-    height=rodDiameter, 
-    lengthDirection=eRod_a, 
-    widthDirection={0,1,0}, 
-    r=frame_a.r_0, 
+    shapeType="cylinder",
+    color=rodColor,
+    specularCoefficient=specularCoefficient,
+    length=rodLength,
+    width=rodDiameter,
+    height=rodDiameter,
+    lengthDirection=eRod_a,
+    widthDirection={0,1,0},
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
   Visualizers.Advanced.Shape shape_a(
-    shapeType="sphere", 
-    color=sphereColor, 
-    specularCoefficient=specularCoefficient, 
-    length=sphereDiameter, 
-    width=sphereDiameter, 
-    height=sphereDiameter, 
-    lengthDirection=eRod_a, 
-    widthDirection={0,1,0}, 
-    r_shape=-eRod_a*(sphereDiameter/2), 
-    r=frame_a.r_0, 
+    shapeType="sphere",
+    color=sphereColor,
+    specularCoefficient=specularCoefficient,
+    length=sphereDiameter,
+    width=sphereDiameter,
+    height=sphereDiameter,
+    lengthDirection=eRod_a,
+    widthDirection={0,1,0},
+    r_shape=-eRod_a*(sphereDiameter/2),
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
   Visualizers.Advanced.Shape shape_b(
-    shapeType="sphere", 
-    color=sphereColor, 
-    specularCoefficient=specularCoefficient, 
-    length=sphereDiameter, 
-    width=sphereDiameter, 
-    height=sphereDiameter, 
-    lengthDirection=eRod_a, 
-    widthDirection={0,1,0}, 
-    r_shape=eRod_a*(rodLength - sphereDiameter/2), 
-    r=frame_a.r_0, 
+    shapeType="sphere",
+    color=sphereColor,
+    specularCoefficient=specularCoefficient,
+    length=sphereDiameter,
+    width=sphereDiameter,
+    height=sphereDiameter,
+    lengthDirection=eRod_a,
+    widthDirection={0,1,0},
+    r_shape=eRod_a*(rodLength - sphereDiameter/2),
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
   Visualizers.Advanced.Shape shape_mass(
-    shapeType="sphere", 
-    color=massColor, 
-    specularCoefficient=specularCoefficient, 
-    length=massDiameter, 
-    width=massDiameter, 
-    height=massDiameter, 
-    lengthDirection=eRod_a, 
-    widthDirection={0,1,0}, 
-    r_shape=eRod_a*(rodLength/2 - sphereDiameter/2), 
-    r=frame_a.r_0, 
+    shapeType="sphere",
+    color=massColor,
+    specularCoefficient=specularCoefficient,
+    length=massDiameter,
+    width=massDiameter,
+    height=massDiameter,
+    lengthDirection=eRod_a,
+    widthDirection={0,1,0},
+    r_shape=eRod_a*(rodLength/2 - sphereDiameter/2),
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation and showMass and m > 0;
 equation
   // Determine relative position vector between the two frames
@@ -166,12 +166,12 @@ equation
   if m > 0 then
     r_CM_0 = frame_a.r_0 + rRod_0/2;
     v_CM_0 = der(r_CM_0);
-    f_CM_a = m*Frames.resolve2(frame_a.R, der(v_CM_0) - 
+    f_CM_a = m*Frames.resolve2(frame_a.R, der(v_CM_0) -
       world.gravityAcceleration(r_CM_0));
     f_CM_e = (f_CM_a*eRod_a)*eRod_a;
     frame_a.f = (f_CM_a - f_CM_e)/2 + f_rod*eRod_a;
     f_b_a1 = (f_CM_a + f_CM_e)/2;
-    frame_b.f = Frames.resolveRelative(f_b_a1 - f_rod*eRod_a, frame_a.R, 
+    frame_b.f = Frames.resolveRelative(f_b_a1 - f_rod*eRod_a, frame_a.R,
       frame_b.R);
   else
     r_CM_0 = zeros(3);
@@ -184,9 +184,9 @@ equation
   end if;
 
   if checkTotalPower then
-    totalPower = frame_a.f*Frames.resolve2(frame_a.R, der(frame_a.r_0)) + 
+    totalPower = frame_a.f*Frames.resolve2(frame_a.R, der(frame_a.r_0)) +
       frame_b.f*Frames.resolve2(frame_b.R, der(frame_b.r_0)) + (-m)*(der(
-      v_CM_0) - world.gravityAcceleration(r_CM_0))*v_CM_0 + frame_a.t* 
+      v_CM_0) - world.gravityAcceleration(r_CM_0))*v_CM_0 + frame_a.t*
       Frames.angularVelocity2(frame_a.R) + frame_b.t*Frames.angularVelocity2(
       frame_b.R);
   else
@@ -194,49 +194,49 @@ equation
   end if;
   annotation (
     Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Ellipse(
-          extent={{-95,-40},{-15,40}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{-95,-40},{-15,40}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{-84,-30},{-24,30}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-84,-30},{-24,30}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Ellipse(
-          extent={{15,-40},{95,40}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{15,-40},{95,40}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{25,-29},{85,30}}, 
-          lineColor={128,128,128}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{25,-29},{85,30}},
+          lineColor={128,128,128},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-150,90},{150,50}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
-          extent={{-40,40},{41,-41}}, 
-          lineColor={255,255,255}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{-40,40},{41,-41}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-51,6},{48,-4}}, 
-          fillPattern=FillPattern.HorizontalCylinder, 
-          fillColor={192,192,192}), 
+          extent={{-51,6},{48,-4}},
+          fillPattern=FillPattern.HorizontalCylinder,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{-68,15},{-39,-13}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{-68,15},{-39,-13}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Ellipse(
-          extent={{39,14},{68,-14}}, 
-          fillPattern=FillPattern.Sphere, 
-          fillColor={192,192,192}), 
+          extent={{39,14},{68,-14}},
+          fillPattern=FillPattern.Sphere,
+          fillColor={192,192,192}),
         Text(
-          extent={{-150,-60},{150,-90}}, 
-          textString="%rodLength")}), 
+          extent={{-150,-60},{150,-90}},
+          textString="%rodLength")}),
     Documentation(info="<html>
 <p>
 Joint that has a spherical joint on each of its two ends.

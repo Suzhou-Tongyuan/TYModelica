@@ -25,7 +25,7 @@ equation
      then s - 1 else 0));
   out.v = smooth(0, if s < -1 then VMin.v else if s > 1 then VMax.v else (
     VMax.v - VMin.v)*s/2 + (VMax.v + VMin.v)/2);
-  annotation (defaultComponentName="opAmp", 
+  annotation (defaultComponentName="opAmp",
     Documentation(info="<html>
 <p>
 The ideal OpAmp with limitation behaves like an ideal OpAmp without limitation,
@@ -34,33 +34,33 @@ the input voltage vin = in_p.v - in_n.v is zero.
 If the input voltage vin less than 0, the output voltage is out.v = VMin.
 If the input voltage is vin larger than 0, the output voltage is out.v = VMax.
 </p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em> 1998   </em>
        by Christoph Clauss<br> initially implemented<br>
        </li>
 </ul>
-</html>"), 
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+</html>"),
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics={
-        Line(points={{60,0},{90,0}}, color={0,0,255}), 
+        Line(points={{60,0},{90,0}}, color={0,0,255}),
         Polygon(
-          points={{70,0},{-70,80},{-70,-80},{70,0}}, 
-          fillColor={255,255,255}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
-        Line(points={{-100,60},{-70,60}}, color={0,0,255}), 
-        Line(points={{-100,-60},{-70,-60}}, color={0,0,255}), 
-        Line(points={{-60,50},{-40,50}}, color={0,0,255}), 
-        Line(points={{-50,-40},{-50,-60}}, color={0,0,255}), 
-        Line(points={{-60,-50},{-40,-50}}, color={0,0,255}), 
-        Line(points={{70,0},{100,0}}, color={0,0,255}), 
-        Line(points={{-45,-10},{-10,-10},{-10,10},{20,10}}, color={0,0,255}), 
+          points={{70,0},{-70,80},{-70,-80},{70,0}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
+        Line(points={{-100,60},{-70,60}}, color={0,0,255}),
+        Line(points={{-100,-60},{-70,-60}}, color={0,0,255}),
+        Line(points={{-60,50},{-40,50}}, color={0,0,255}),
+        Line(points={{-50,-40},{-50,-60}}, color={0,0,255}),
+        Line(points={{-60,-50},{-40,-50}}, color={0,0,255}),
+        Line(points={{70,0},{100,0}}, color={0,0,255}),
+        Line(points={{-45,-10},{-10,-10},{-10,10},{20,10}}, color={0,0,255}),
         Text(
-          extent={{-150,150},{150,110}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
-        Line(points={{0,40},{0,100}}, color={0,0,255}), 
+          extent={{-150,150},{150,110}},
+          textString="%name",
+          textColor={0,0,255}),
+        Line(points={{0,40},{0,100}}, color={0,0,255}),
         Line(points={{0,-100},{0,-40}}, color={0,0,255})}));
 end IdealOpAmpLimited;

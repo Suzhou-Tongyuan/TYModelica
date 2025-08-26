@@ -2,24 +2,24 @@
 model Valve "Simple valve"
   extends FluidHeatFlow.BaseClasses.TwoPort(m(start=0), final tapT=1);
 
-  parameter Boolean LinearCharacteristic(start=true) 
+  parameter Boolean LinearCharacteristic(start=true)
     "Type of characteristic" 
-    annotation(Dialog(group="Standard characteristic"), choices(choice=true "Linear", choice=false 
+    annotation(Dialog(group="Standard characteristic"), choices(choice=true "Linear", choice=false
         "Exponential"));
   parameter Real y1(min=small, start=1) "Max. valve opening" 
     annotation(Dialog(group="Standard characteristic"));
-  parameter SI.VolumeFlowRate Kv1(min=small, start=1) 
+  parameter SI.VolumeFlowRate Kv1(min=small, start=1)
     "Max. flow @ y = y1" 
     annotation(Dialog(group="Standard characteristic"));
-  parameter Real kv0(min=small,max=1-small, start=0.01) 
+  parameter Real kv0(min=small,max=1-small, start=0.01)
     "Leakage flow / max.flow @ y = 0" 
     annotation(Dialog(group="Standard characteristic"));
   parameter SI.Pressure dp0(start=1) "Standard pressure drop" 
     annotation(Dialog(group="Standard characteristic"));
-  parameter SI.Density rho0(start=10) 
+  parameter SI.Density rho0(start=10)
     "Standard medium's density" 
     annotation(Dialog(group="Standard characteristic"));
-  parameter Real frictionLoss(min=0, max=1, start=0) 
+  parameter Real frictionLoss(min=0, max=1, start=0)
     "Part of friction losses fed to medium";
 protected
   constant SI.VolumeFlowRate unitVolumeFlowRate = 1;
@@ -30,8 +30,8 @@ protected
   SI.VolumeFlowRate Kv "Standard flow rate";
 public
   Modelica.Blocks.Interfaces.RealInput y annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}}, 
-        rotation=270, 
+        extent={{-20,-20},{20,20}},
+        rotation=270,
         origin={0,100})));
 initial algorithm
   assert(y1>small, "Valve characteristic: y1 has to be > 0 !");
@@ -68,18 +68,18 @@ Flow resistance under real conditions is calculated by
 <blockquote><pre>
 V_flow**2 * rho / dp = Kv(y)**2 * rho0 / dp0
 </pre></blockquote>
-</html>"), 
-  Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+</html>"),
+  Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics={
         Polygon(
-          points={{-90,10},{-60,10},{-60,60},{0,0},{60,60},{60,10},{90,10}, 
-              {90,-10},{60,-10},{60,-60},{0,0},{-60,-60},{-60,-10},{-90,-10}, 
-              {-90,10}}, 
-          lineColor={255,0,0}, 
-          fillColor={0,0,255}, 
-          fillPattern=FillPattern.Solid), 
-        Line(points={{0,80},{0,0}}, color={0,0,127}), 
-                                          Text(extent={{-150,-70},{150,-110}}, 
-          textString="%name", 
+          points={{-90,10},{-60,10},{-60,60},{0,0},{60,60},{60,10},{90,10},
+              {90,-10},{60,-10},{60,-60},{0,0},{-60,-60},{-60,-10},{-90,-10},
+              {-90,10}},
+          lineColor={255,0,0},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid),
+        Line(points={{0,80},{0,0}}, color={0,0,127}),
+                                          Text(extent={{-150,-70},{150,-110}},
+          textString="%name",
           textColor={0,0,255})}));
 end Valve;

@@ -1,62 +1,62 @@
 ﻿within Modelica.Mechanics.MultiBody.Joints.Internal;
-model PrismaticWithLengthConstraint 
+model PrismaticWithLengthConstraint
   "Prismatic joint where the translational distance is computed from a length constraint (1 degree-of-freedom, no potential state)"
 
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;
-  Modelica.Mechanics.Translational.Interfaces.Flange_a axis 
+  Modelica.Mechanics.Translational.Interfaces.Flange_a axis
     "1-dim. translational flange that drives the joint" 
     annotation (Placement(transformation(extent={{70,80},{90,60}})));
-  Modelica.Mechanics.Translational.Interfaces.Flange_b bearing 
+  Modelica.Mechanics.Translational.Interfaces.Flange_b bearing
     "1-dim. translational flange of the drive bearing" 
     annotation (Placement(transformation(extent={{-30,80},{-50,60}})));
-  Modelica.Blocks.Interfaces.RealInput position_a[3](each final quantity="Length", each final unit="m") 
+  Modelica.Blocks.Interfaces.RealInput position_a[3](each final quantity="Length", each final unit="m")
     "Position vector from frame_a to frame_a side of length constraint, resolved in frame_a of prismatic joint" 
     annotation (Placement(transformation(extent={{-140,-80},{-100,-40}})));
-  Modelica.Blocks.Interfaces.RealInput position_b[3](each final quantity="Length", each final unit="m") 
+  Modelica.Blocks.Interfaces.RealInput position_b[3](each final quantity="Length", each final unit="m")
     "Position vector from frame_b to frame_b side of length constraint, resolved in frame_b of prismatic joint" 
     annotation (Placement(transformation(extent={{140,-80},{100,-40}})));
 
   parameter Boolean animation=true "= true, if animation shall be enabled";
   parameter SI.Position length(start=1) "Fixed length of length constraint";
-  parameter Modelica.Mechanics.MultiBody.Types.Axis n={1,0,0} 
+  parameter Modelica.Mechanics.MultiBody.Types.Axis n={1,0,0}
     "Axis of translation resolved in frame_a (= same as in frame_b)" 
     annotation (Evaluate=true);
-  parameter SI.Position s_offset=0 
+  parameter SI.Position s_offset=0
     "Relative distance offset (distance between frame_a and frame_b = s(t) + s_offset)";
-  parameter SI.Position s_guess=0 
+  parameter SI.Position s_guess=0
     "Select the configuration such that at initial time |s(t0)-s_guess| is minimal";
-  parameter Types.Axis boxWidthDirection={0,1,0} 
+  parameter Types.Axis boxWidthDirection={0,1,0}
     "Vector in width direction of box, resolved in frame_a" 
-    annotation (Evaluate=true, Dialog(tab="Animation", group= 
+    annotation (Evaluate=true, Dialog(tab="Animation", group=
           "if animation = true", enable=animation));
-  parameter SI.Distance boxWidth=world.defaultJointWidth 
+  parameter SI.Distance boxWidth=world.defaultJointWidth
     "Width of prismatic joint box" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
   parameter SI.Distance boxHeight=boxWidth "Height of prismatic joint box" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
-  input Types.Color boxColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor 
+  input Types.Color boxColor=Modelica.Mechanics.MultiBody.Types.Defaults.JointColor
     "Color of prismatic joint box" 
     annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
 
-  final parameter Boolean positiveBranch(fixed=false) 
+  final parameter Boolean positiveBranch(fixed=false)
     "Selection of one of the two solutions of the non-linear constraint equation";
-  final parameter Real e[3](each final unit="1")=Modelica.Math.Vectors.normalizeWithAssert(n) 
+  final parameter Real e[3](each final unit="1")=Modelica.Math.Vectors.normalizeWithAssert(n)
     "Unit vector in direction of translation axis, resolved in frame_a";
-  SI.Position s 
+  SI.Position s
     "Relative distance between frame_a and frame_b along axis n = s + s_offset)";
-  SI.Position distance 
+  SI.Position distance
     "Relative distance between frame_a and frame_b along axis n";
-  SI.Position r_rel_a[3] 
+  SI.Position r_rel_a[3]
     "Position vector from frame_a to frame_b resolved in frame_a";
   SI.Force f "= axis.f (driving force in the axis)";
 
 protected
-  SI.Position r_a[3]=position_a 
+  SI.Position r_a[3]=position_a
     "Position vector from frame_a to frame_a side of length constraint, resolved in frame_a of prismatic joint";
-  SI.Position r_b[3]=position_b 
+  SI.Position r_b[3]=position_b
     "Position vector from frame_b to frame_b side of length constraint, resolved in frame_b of prismatic joint";
   SI.Position rbra[3] "= rb - ra";
   Real B "Coefficient B of equation: s*s + B*s + C = 0";
@@ -67,28 +67,28 @@ protected
   Real k1b;
 
   Visualizers.Advanced.Shape box(
-    shapeType="box", 
-    color=boxColor, 
-    specularCoefficient=specularCoefficient, 
-    length=if noEvent(abs(s + s_offset) > 1.e-6) then s + s_offset else 1.e-6, 
-    width=boxWidth, 
-    height=boxHeight, 
-    lengthDirection=e, 
-    widthDirection=boxWidthDirection, 
-    r=frame_a.r_0, 
+    shapeType="box",
+    color=boxColor,
+    specularCoefficient=specularCoefficient,
+    length=if noEvent(abs(s + s_offset) > 1.e-6) then s + s_offset else 1.e-6,
+    width=boxWidth,
+    height=boxHeight,
+    lengthDirection=e,
+    widthDirection=boxWidthDirection,
+    r=frame_a.r_0,
     R=frame_a.R) if world.enableAnimation and animation;
 
-  function selectBranch 
+  function selectBranch
     "Determine branch which is closest to initial angle=0"
     extends Modelica.Icons.Function;
     input SI.Length L "Length of length constraint";
-    input Real e[3](each final unit="1") 
+    input Real e[3](each final unit="1")
       "Unit vector along axis of translation, resolved in frame_a (= same in frame_b)";
-    input SI.Position d_guess 
+    input SI.Position d_guess
       "Select the configuration such that at initial time |d-d_guess| is minimal (d: distance between origin of frame_a and origin of frame_b)";
-    input SI.Position r_a[3] 
+    input SI.Position r_a[3]
       "Position vector from frame_a to frame_a side of length constraint, resolved in frame_a of prismatic joint";
-    input SI.Position r_b[3] 
+    input SI.Position r_b[3]
       "Position vector from frame_b to frame_b side of length constraint, resolved in frame_b of prismatic joint";
     output Boolean positiveBranch "Branch of the initial solution";
   protected
@@ -188,44 +188,44 @@ degree of freedom is lost.
   distance = -k1 + (if positiveBranch then k2 else -k2);
   annotation (
     Icon(coordinateSystem(
-        preserveAspectRatio=true, 
+        preserveAspectRatio=true,
         extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
-          extent={{-30,-40},{100,30}}, 
-          pattern=LinePattern.None, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
-        Rectangle(extent={{-30,40},{100,-40}}), 
+          extent={{-30,-40},{100,30}},
+          pattern=LinePattern.None,
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
+        Rectangle(extent={{-30,40},{100,-40}}),
         Rectangle(
-          extent={{-100,-60},{-30,50}}, 
-          pattern=LinePattern.None, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
+          extent={{-100,-60},{-30,50}},
+          pattern=LinePattern.None,
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
         Rectangle(
-          extent={{-100,50},{-30,60}}, 
-          pattern=LinePattern.None, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
+          extent={{-100,50},{-30,60}},
+          pattern=LinePattern.None,
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
         Rectangle(
-          extent={{-30,30},{100,40}}, 
-          pattern=LinePattern.None, 
-          fillPattern=FillPattern.Solid, 
-          lineColor={0,0,255}), 
+          extent={{-30,30},{100,40}},
+          pattern=LinePattern.None,
+          fillPattern=FillPattern.Solid,
+          lineColor={0,0,255}),
         Text(
-          extent={{-136,-170},{140,-113}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
-        Rectangle(extent={{-100,60},{-30,-60}}), 
-        Line(points={{100,-40},{100,-60}}, color={0,0,255}), 
+          extent={{-136,-170},{140,-113}},
+          textString="%name",
+          textColor={0,0,255}),
+        Rectangle(extent={{-100,60},{-30,-60}}),
+        Line(points={{100,-40},{100,-60}}, color={0,0,255}),
         Rectangle(
-          extent={{100,40},{90,80}}, 
-          fillColor={192,192,192}, 
-          fillPattern=FillPattern.Solid), 
+          extent={{100,40},{90,80}},
+          fillColor={192,192,192},
+          fillPattern=FillPattern.Solid),
         Text(
-          extent={{-136,-116},{153,-77}}, 
-          textString="n=%n")}), 
+          extent={{-136,-116},{153,-77}},
+          textString="n=%n")}),
     Documentation(info="<html>
 <p>
 Joint where frame_b is translated along axis n which is fixed in frame_a.

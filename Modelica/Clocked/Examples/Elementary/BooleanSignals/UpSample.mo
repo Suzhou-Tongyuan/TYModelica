@@ -18,23 +18,23 @@ Modelica.Blocks.Logical.And and1
   annotation (Placement(transformation(extent={{0,20},{20,40}})));
 equation
   connect(periodicClock.y, sample1.clock) annotation (Line(
-      points={{-55.4,0},{-42,0},{-42,22.8}}, 
-      color={175,175,175}, 
-      pattern=LinePattern.Dot, 
+      points={{-55.4,0},{-42,0},{-42,22.8}},
+      color={175,175,175},
+      pattern=LinePattern.Dot,
       thickness=0.5));
   connect(table1.y, sample1.u) 
     annotation (Line(points={{-61,30},{-49.2,30}}, color={255,0,255}));
-  connect(upSample1.u, sample1.y) annotation (Line(points={{-27.2,40},{-30,40}, 
+  connect(upSample1.u, sample1.y) annotation (Line(points={{-27.2,40},{-30,40},
           {-30,30},{-35.4,30}}, color={255,0,255}));
-  connect(upSample2.u, sample1.y) annotation (Line(points={{-27.2,20},{-30,20}, 
+  connect(upSample2.u, sample1.y) annotation (Line(points={{-27.2,20},{-30,20},
           {-30,30},{-35.4,30}}, color={255,0,255}));
 connect(upSample1.y, and1.u1) annotation (Line(
-    points={{-13.4,40},{-8,40},{-8,30},{-2,30}}, 
+    points={{-13.4,40},{-8,40},{-8,30},{-2,30}},
     color={255,0,255}));
 connect(upSample2.y, and1.u2) annotation (Line(
-    points={{-13.4,20},{-8,20},{-8,22},{-2,22}}, 
+    points={{-13.4,20},{-8,20},{-8,22},{-2,22}},
     color={255,0,255}));
-  annotation (experiment(StopTime=0.09), 
+  annotation (experiment(StopTime=0.09),
   Documentation(info="<html>
 <p>
 Elementary example for the documentation of block

@@ -1,20 +1,20 @@
 ﻿within Modelica.Electrical.Machines.Utilities;
-block ToDQ 
+block ToDQ
   "Transform instantaneous stator inputs to rotor fixed space phasor"
   extends Modelica.Blocks.Interfaces.MIMO(final nin=m, final nout=2);
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);
   parameter Integer p "Number of pole pairs";
   Modelica.Blocks.Math.Gain toGamma(final k=p) annotation (Placement(
         transformation(
-        origin={0,-50}, 
-        extent={{10,-10},{-10,10}}, 
+        origin={0,-50},
+        extent={{10,-10},{-10,10}},
         rotation=270)));
   Modelica.Electrical.Machines.SpacePhasors.Blocks.Rotator rotator 
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Blocks.Interfaces.RealInput phi(unit="rad") annotation (Placement(
         transformation(
-        origin={0,-120}, 
-        extent={{20,-20},{-20,20}}, 
+        origin={0,-120},
+        extent={{20,-20},{-20,20}},
         rotation=270)));
   Modelica.Electrical.Machines.SpacePhasors.Blocks.ToSpacePhasor toSpacePhasor(final m=m) 
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));

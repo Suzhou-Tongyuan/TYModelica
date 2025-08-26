@@ -9,25 +9,25 @@ model HighPass "High-pass filter"
     annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
   Modelica.Electrical.Analog.Sensors.VoltageSensor vOut annotation (Placement(
         transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=270, 
+        extent={{-10,10},{10,-10}},
+        rotation=270,
         origin={40,0})));
-  OpAmpCircuits.Derivative derivative(T=1/(2*pi*fG), 
+  OpAmpCircuits.Derivative derivative(T=1/(2*pi*fG),
     v(fixed=true)) 
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Sources.TrapezoidVoltage vIn(
-    V=Vin, 
-    rising=0.2/f, 
-    width=0.3/f, 
-    falling=0.2/f, 
-    period=1/f, 
-    nperiod=-1, 
-    offset=0, 
+    V=Vin,
+    rising=0.2/f,
+    width=0.3/f,
+    falling=0.2/f,
+    period=1/f,
+    nperiod=-1,
+    offset=0,
     startTime=-(vIn.rising + vIn.width/2)) 
     annotation (Placement(
         transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-40,0})));
 equation
   connect(derivative.n1, ground.p) 
@@ -44,10 +44,10 @@ equation
 <p>This is a (inverting) high pass filter. Resistance R1 can be chosen, resistance R2 is defined by the desired amplification k, capacitance C is defined by the desired cut-off frequency.</p>
 <p>The example is taken from: U. Tietze and C. Schenk, Halbleiter-Schaltungstechnik (German), 11th edition, Springer 1999, Chapter 13.3</p>
 <p>Note: <code>vOut</code> measure the negative output voltage.</p>
-</html>"), 
+</html>"),
     experiment(
-      StartTime=0, 
-      StopTime=1, 
-      Tolerance=1e-006, 
+      StartTime=0,
+      StopTime=1,
+      Tolerance=1e-006,
       Interval=0.001));
 end HighPass;

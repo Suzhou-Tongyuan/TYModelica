@@ -4,44 +4,44 @@ model MultiSensor "Sensor to measure current, voltage and power"
   import Modelica.ComplexMath.conj;
   import Modelica.ComplexMath.abs;
   import Modelica.ComplexMath.arg;
-  QuasiStatic.SinglePhase.Interfaces.PositivePin pc 
+  QuasiStatic.SinglePhase.Interfaces.PositivePin pc
     "Positive pin, current path" 
     annotation (Placement(transformation(extent={{-90,-10},{-110,10}})));
-  QuasiStatic.SinglePhase.Interfaces.NegativePin nc 
+  QuasiStatic.SinglePhase.Interfaces.NegativePin nc
     "Negative pin, current path" 
     annotation (Placement(transformation(extent={{110,-10},{90,10}})));
-  QuasiStatic.SinglePhase.Interfaces.PositivePin pv 
+  QuasiStatic.SinglePhase.Interfaces.PositivePin pv
     "Positive pin, voltage path" 
     annotation (Placement(transformation(extent={{-10,110},{10,90}})));
-  QuasiStatic.SinglePhase.Interfaces.NegativePin nv 
+  QuasiStatic.SinglePhase.Interfaces.NegativePin nv
     "Negative pin, voltage path" 
     annotation (Placement(transformation(extent={{10,-110},{-10,-90}})));
   Modelica.ComplexBlocks.Interfaces.ComplexOutput i(
-    redeclare final SI.Current re, redeclare final SI.Current im) 
+    redeclare final SI.Current re, redeclare final SI.Current im)
     "Current as complex output signal" annotation (Placement(transformation(
-        origin={-60,-110}, 
-        extent={{10,10},{-10,-10}}, 
+        origin={-60,-110},
+        extent={{10,10},{-10,-10}},
         rotation=90), iconTransformation(
-        extent={{10,10},{-10,-10}}, 
-        rotation=90, 
+        extent={{10,10},{-10,-10}},
+        rotation=90,
         origin={-60,-110})));
   Modelica.ComplexBlocks.Interfaces.ComplexOutput v(
-    redeclare final SI.Voltage re, redeclare final SI.Voltage im) 
+    redeclare final SI.Voltage re, redeclare final SI.Voltage im)
     "Voltage as complex output signal" annotation (Placement(transformation(
-        origin={60,-110}, 
-        extent={{10,10},{-10,-10}}, 
+        origin={60,-110},
+        extent={{10,10},{-10,-10}},
         rotation=90), iconTransformation(
-        extent={{10,10},{-10,-10}}, 
-        rotation=90, 
+        extent={{10,10},{-10,-10}},
+        rotation=90,
         origin={60,-110})));
   Modelica.ComplexBlocks.Interfaces.ComplexOutput apparentPower(
-    redeclare final SI.ActivePower re, redeclare final SI.ReactivePower im) 
+    redeclare final SI.ActivePower re, redeclare final SI.ReactivePower im)
     "Instantaneous apparent power as complex output signal" annotation (Placement(transformation(
-        origin={-110,-60}, 
-        extent={{-10,10},{10,-10}}, 
+        origin={-110,-60},
+        extent={{-10,10},{10,-10}},
         rotation=180), iconTransformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=180, 
+        extent={{-10,10},{10,-10}},
+        rotation=180,
         origin={-110,-60})));
   output SI.Current abs_i=abs(i) "Absolute of complex current";
   output SI.Angle arg_i=arg(i) "Argument of complex current";
@@ -65,32 +65,32 @@ equation
   apparentPower = v*conj(i);
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
-      Line(points = {{0,100},{0,70}}, color={85,170,255}), 
-      Line(points = {{0,-70},{0,-100}}, color={85,170,255}), 
-      Line(points = {{-100,0},{100,0}}, color={85,170,255}), 
-      Line(points = {{0,70},{0,40}}), 
+      Line(points = {{0,100},{0,70}}, color={85,170,255}),
+      Line(points = {{0,-70},{0,-100}}, color={85,170,255}),
+      Line(points = {{-100,0},{100,0}}, color={85,170,255}),
+      Line(points = {{0,70},{0,40}}),
         Text(
-          extent={{-150,110},{150,150}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
-        Line(points={{-100,-60},{-80,-60},{-56,-42}}, 
-                                                   color={85,170,255}), 
-        Line(points={{-60,-100},{-60,-80},{-42,-56}}, 
-                                                   color={85,170,255}), 
-        Line(points={{60,-100},{60,-80},{42,-56}}, 
-                                                color={85,170,255}), 
+          extent={{-150,110},{150,150}},
+          textString="%name",
+          textColor={0,0,255}),
+        Line(points={{-100,-60},{-80,-60},{-56,-42}},
+                                                   color={85,170,255}),
+        Line(points={{-60,-100},{-60,-80},{-42,-56}},
+                                                   color={85,170,255}),
+        Line(points={{60,-100},{60,-80},{42,-56}},
+                                                color={85,170,255}),
         Text(
-          extent={{-100,-20},{-60,-60}}, 
-            textColor={64,64,64}, 
-            textString="V.A"), 
+          extent={{-100,-20},{-60,-60}},
+            textColor={64,64,64},
+            textString="V.A"),
         Text(
-          extent={{-80,-60},{-40,-100}}, 
-            textString="A", 
-            textColor={64,64,64}), 
+          extent={{-80,-60},{-40,-100}},
+            textString="A",
+            textColor={64,64,64}),
         Text(
-          extent={{40,-60},{80,-100}}, 
-            textString="V", 
-            textColor={64,64,64})}), 
+          extent={{40,-60},{80,-100}},
+            textString="V",
+            textColor={64,64,64})}),
     Documentation(info="<html>
 <p>This multi sensor measures current, voltage and instantaneous electrical power of a single-phase system and has a separated voltage and current path.
 The pins of the voltage path are pv and nv, the pins of the current path are pc and nc.

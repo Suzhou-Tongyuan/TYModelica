@@ -10,82 +10,82 @@ model Rectifier "Test example with polyphase components"
   parameter SI.Capacitance C=0.005 "Total DC-Capacitance";
   parameter SI.Resistance RE=1E6 "Earthing Resistance";
   parameter SI.Resistance Ron=1e-5 "Closed diode resistance";
-  parameter SI.Conductance Goff=1e-5 
+  parameter SI.Conductance Goff=1e-5
     "Opened diode conductance";
   parameter SI.Voltage Vknee=0 "Threshold diode voltage";
   final parameter SI.Voltage VDC=factorY2DC(m)*V "Estimated average DC voltage";
   final parameter SI.Current IDC=VDC/RL "Estimated average DC current";
   Sources.SineVoltage sineVoltage(
-    m=m, 
-    f=fill(f, m), 
+    m=m,
+    f=fill(f, m),
     V=sqrt(2)*fill(V, m)) 
-                       annotation (Placement(transformation(extent={{10,10},{-10, 
-            -10}}, 
-        rotation=90, 
+                       annotation (Placement(transformation(extent={{10,10},{-10,
+            -10}},
+        rotation=90,
         origin={-90,-50})));
   Basic.Star starS(m=m) annotation (Placement(transformation(
-        origin={-90,-80}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={-90,-80},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Basic.Inductor supplyL(m=m, L=fill(L, m)) annotation (Placement(
-        transformation(extent={{-10,-10},{10,10}}, 
-        rotation=90, 
+        transformation(extent={{-10,-10},{10,10}},
+        rotation=90,
         origin={-90,-20})));
   Ideal.IdealDiode idealDiode1(
-    m=m, 
-    Ron=fill(Ron, m), 
-    Goff=fill(Goff, m), 
+    m=m,
+    Ron=fill(Ron, m),
+    Goff=fill(Goff, m),
     Vknee=fill(Vknee, m)) annotation (Placement(transformation(
-        origin={40,20}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={40,20},
+        extent={{-10,-10},{10,10}},
         rotation=90)));
   Basic.Star star1(m=m) annotation (Placement(transformation(
-        origin={40,50}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={40,50},
+        extent={{-10,-10},{10,10}},
         rotation=90)));
   Ideal.IdealDiode idealDiode2(
-    m=m, 
-    Ron=fill(Ron, m), 
-    Goff=fill(Goff, m), 
+    m=m,
+    Ron=fill(Ron, m),
+    Goff=fill(Goff, m),
     Vknee=fill(Vknee, m)) annotation (Placement(transformation(
-        origin={40,-20}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={40,-20},
+        extent={{-10,-10},{10,10}},
         rotation=90)));
   Basic.Star star2(m=m) annotation (Placement(transformation(
-        origin={40,-50}, 
-        extent={{-10,10},{10,-10}}, 
+        origin={40,-50},
+        extent={{-10,10},{10,-10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Resistor loadR(R=RL) annotation (
       Placement(transformation(
-        origin={60,0}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={60,0},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Capacitor cDC1(C=2*C) annotation (
       Placement(transformation(
-        origin={80,30}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={80,30},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Capacitor cDC2(C=2*C) annotation (
       Placement(transformation(
-        origin={80,-30}, 
-        extent={{-10,-10},{10,10}}, 
+        origin={80,-30},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Ground groundDC annotation (Placement(
         transformation(extent={{80,-80},{100,-60}})));
   Modelica.Electrical.Machines.Sensors.ElectricalPowerSensor powerSensorSpacePhasor 
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={-40, 
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={-40,
             0})));
   Sensors.AronSensor aronSensor annotation (Placement(transformation(
-        extent={{10,10},{-10,-10}}, 
-        rotation=180, 
+        extent={{10,10},{-10,-10}},
+        rotation=180,
         origin={-12,0})));
   Sensors.PowerSensor powerSensor(m=m) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={-70,0})));
   Sensors.ReactivePowerSensor reactivePowerSensor annotation (Placement(
         transformation(
-        extent={{10,10},{-10,-10}}, 
-        rotation=180, 
+        extent={{10,10},{-10,-10}},
+        rotation=180,
         origin={20,0})));
 initial equation
   cDC1.v = VDC/2;
@@ -96,21 +96,21 @@ initial equation
 equation
   connect(cDC1.n, cDC2.p) 
     annotation (Line(points={{80,20},{80,-20}}, color={0,0,255}));
-  connect(cDC1.n, groundDC.p) annotation (Line(points={{80,20},{80,0},{90,0},{90, 
+  connect(cDC1.n, groundDC.p) annotation (Line(points={{80,20},{80,0},{90,0},{90,
           -60}},     color={0,0,255}));
   connect(starS.plug_p, sineVoltage.plug_n) 
-    annotation (Line(points={{-90,-70},{-90,-60}}, 
+    annotation (Line(points={{-90,-70},{-90,-60}},
                                                  color={0,0,255}));
   connect(sineVoltage.plug_p, supplyL.plug_p) 
-    annotation (Line(points={{-90,-40},{-90,-30}}, 
+    annotation (Line(points={{-90,-40},{-90,-30}},
                                                color={0,0,255}));
   connect(idealDiode1.plug_n, star1.plug_p) 
     annotation (Line(points={{40,30},{40,40}}, color={0,0,255}));
-  connect(idealDiode2.plug_p, star2.plug_p) annotation (Line(points={{40,-30},{40, 
+  connect(idealDiode2.plug_p, star2.plug_p) annotation (Line(points={{40,-30},{40,
           -40}},              color={0,0,255}));
-  connect(star2.pin_n, loadR.n) annotation (Line(points={{40,-60},{60,-60},{60,-10}}, 
+  connect(star2.pin_n, loadR.n) annotation (Line(points={{40,-60},{60,-60},{60,-10}},
                      color={0,0,255}));
-  connect(star2.pin_n, cDC2.n) annotation (Line(points={{40,-60},{80,-60},{80,-40}}, 
+  connect(star2.pin_n, cDC2.n) annotation (Line(points={{40,-60},{80,-60},{80,-40}},
                     color={0,0,255}));
   connect(star1.pin_n, loadR.p) 
     annotation (Line(points={{40,60},{60,60},{60,10}}, color={0,0,255}));
@@ -142,6 +142,6 @@ Using f=50 Hz, simulate for 0.1 second and compare voltages and currents of sour
 We may also compare: Active power measured by powerSensor, powerSensorSpacePhasor and aronSensor,
 as well as reactive power measured by powerSensorSpacePhasor and reactivePowerSensor.
 </p>
-</html>"), 
+</html>"),
        experiment(StopTime=0.1, Interval=1e-005));
 end Rectifier;

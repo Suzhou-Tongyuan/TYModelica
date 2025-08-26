@@ -1,9 +1,9 @@
 ﻿within Modelica.Electrical.Analog.Interfaces;
 partial model IdealSwitch "Ideal electrical switch"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;
-  parameter SI.Resistance Ron(final min=0) = 1e-5 
+  parameter SI.Resistance Ron(final min=0) = 1e-5
     "Closed switch resistance";
-  parameter SI.Conductance Goff(final min=0) = 1e-5 
+  parameter SI.Conductance Goff(final min=0) = 1e-5
     "Opened switch conductance";
   extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T=293.15);
 protected
@@ -34,7 +34,7 @@ where a description with zero Ron or zero Goff is not possible.
 In case of useHeatPort=true the temperature dependence of the electrical
 behavior is <strong>not</strong> modelled. The parameters are not temperature dependent.
 </p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em> March 11, 2009   </em>
@@ -44,20 +44,20 @@ behavior is <strong>not</strong> modelled. The parameters are not temperature de
        by Christoph Clauss<br> initially implemented<br>
        </li>
 </ul>
-</html>"), 
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+</html>"),
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics={
-        Ellipse(extent={{-44,4},{-36,-4}}, lineColor={0,0,255}), 
-        Line(points={{-90,0},{-44,0}}, color={0,0,255}), 
-        Line(points={{-37,2},{40,40}}, color={0,0,255}), 
-        Line(points={{40,0},{90,0}}, color={0,0,255}), 
+        Ellipse(extent={{-44,4},{-36,-4}}, lineColor={0,0,255}),
+        Line(points={{-90,0},{-44,0}}, color={0,0,255}),
+        Line(points={{-37,2},{40,40}}, color={0,0,255}),
+        Line(points={{40,0},{90,0}}, color={0,0,255}),
         Line(
-          visible=useHeatPort, 
-          points={{0,-100},{0,25}}, 
-          color={127,0,0}, 
-          pattern=LinePattern.Dot), 
+          visible=useHeatPort,
+          points={{0,-100},{0,25}},
+          color={127,0,0},
+          pattern=LinePattern.Dot),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textString="%name", 
+          extent={{-150,90},{150,50}},
+          textString="%name",
           textColor={0,0,255})}));
 end IdealSwitch;

@@ -4,7 +4,7 @@ package Sensors "Sensors for machine modelling"
 
   annotation (Documentation(info="<html>
 This package contains sensors that are useful when modelling machines.
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

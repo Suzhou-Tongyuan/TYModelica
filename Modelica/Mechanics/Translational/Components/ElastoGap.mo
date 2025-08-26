@@ -1,12 +1,12 @@
 ﻿within Modelica.Mechanics.Translational.Components;
 model ElastoGap "1D translational spring damper combination with gap"
   extends Modelica.Mechanics.Translational.Interfaces.PartialCompliantWithRelativeStates;
-  parameter SI.TranslationalSpringConstant c(final min=0, start=1) 
+  parameter SI.TranslationalSpringConstant c(final min=0, start=1)
     "Spring constant";
-  parameter SI.TranslationalDampingConstant d(final min=0, start=1) 
+  parameter SI.TranslationalDampingConstant d(final min=0, start=1)
     "Damping constant";
   parameter SI.Position s_rel0=0 "Unstretched spring length";
-  parameter Real n(final min=1) = 1 
+  parameter Real n(final min=1) = 1
     "Exponent of spring force ( f_c = -c*|s_rel-s_rel0|^n )";
   extends Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPortWithoutT;
 
@@ -20,7 +20,7 @@ if a positive force is acting on the element and no other force balances this fo
 protected
   SI.Force f_c "Spring force";
   SI.Force f_d2 "Linear damping force";
-  SI.Force f_d 
+  SI.Force f_d
     "Linear damping force which is limited by spring force (|f_d| <= |f_c|)";
 equation
   // Modify contact force, so that it is only "pushing" and not
@@ -134,40 +134,40 @@ where the different effects are visualized:
 <div>
 <img src=\"modelica://Modelica/Resources/Images/Mechanics/Translational/Components/ElastoGap.png\" alt=\"Elasto gap\">
 </div>
-</html>"), 
+</html>"),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-            100,100}}), graphics={Line(points={{-98,0},{-48,0}}, color={0,127,0}), 
+            100,100}}), graphics={Line(points={{-98,0},{-48,0}}, color={0,127,0}),
           Line(
-              points={{-48,36},{-48,-38}}, 
-              thickness=1, 
+              points={{-48,36},{-48,-38}},
+              thickness=1,
           color={0,127,0}),                Line(
-              points={{-12,-38},{-12,36}}, 
-              thickness=1, 
-          color={0,127,0}),Line(points={{-12,-28},{70,-28},{70,24}}, color={0,127,0}), 
-                                          Line(points={{70,0},{98,0}}, 
-                   color={0,127,0}), 
-          Line(points={{-12,24},{0,24},{6,34},{18,14},{30,34},{42,14},{54,34},{60,24},{70,24}}, color={0,127,0}), 
+              points={{-12,-38},{-12,36}},
+              thickness=1,
+          color={0,127,0}),Line(points={{-12,-28},{70,-28},{70,24}}, color={0,127,0}),
+                                          Line(points={{70,0},{98,0}},
+                   color={0,127,0}),
+          Line(points={{-12,24},{0,24},{6,34},{18,14},{30,34},{42,14},{54,34},{60,24},{70,24}}, color={0,127,0}),
           Rectangle(
-              extent={{10,-6},{50,-50}}, 
-              fillColor={192,192,192}, 
-              fillPattern=FillPattern.Solid, 
-          lineColor={0,127,0}),              Line(points={{-52,-70},{28,-70}}, color={95,127,95}), 
+              extent={{10,-6},{50,-50}},
+              fillColor={192,192,192},
+              fillPattern=FillPattern.Solid,
+          lineColor={0,127,0}),              Line(points={{-52,-70},{28,-70}}, color={95,127,95}),
                                                                                Polygon(
-          points={{58,-70},{28,-60},{28,-80},{58,-70}}, 
-          lineColor={95,127,95}, 
-          fillColor={95,127,95}, 
+          points={{58,-70},{28,-60},{28,-80},{58,-70}},
+          lineColor={95,127,95},
+          fillColor={95,127,95},
           fillPattern=FillPattern.Solid),    Text(
-              extent={{-150,100},{150,60}}, 
-              textString="%name", 
+              extent={{-150,100},{150,60}},
+              textString="%name",
               textColor={0,0,255}), Text(
-              extent={{-150,-125},{150,-95}}, 
+              extent={{-150,-125},{150,-95}},
               textString="c=%c"),Text(
-              extent={{-150,-160},{150,-130}}, 
-              textString="d=%d"), 
+              extent={{-150,-160},{150,-130}},
+              textString="d=%d"),
           Line(
-              visible=useHeatPort, 
-              points={{-100,-100},{-100,-44},{22,-44},{22,-28}}, 
-              color={191,0,0}, 
-              pattern=LinePattern.Dot), 
+              visible=useHeatPort,
+              points={{-100,-100},{-100,-44},{22,-44},{22,-28}},
+              color={191,0,0},
+              pattern=LinePattern.Dot),
           Line(points={{0,-50},{50,-50},{50,-6},{0,-6}}, color={0,127,0})}));
 end ElastoGap;

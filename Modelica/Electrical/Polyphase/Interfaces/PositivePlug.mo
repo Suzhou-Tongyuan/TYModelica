@@ -4,16 +4,16 @@ connector PositivePlug "Positive polyphase electrical plug with m pins"
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}), graphics={Ellipse(
-          extent={{-100,100},{100,-100}}, 
-          lineColor={0,0,255}, 
-          fillColor={0,0,255}, 
-          fillPattern=FillPattern.Solid)}), 
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100}, 
+          extent={{-100,100},{100,-100}},
+          lineColor={0,0,255},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid)}),
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics={Ellipse(
-          extent={{-40,40},{40,-40}}, 
-          lineColor={0,0,255}, 
-          fillColor={0,0,255}, 
-          fillPattern=FillPattern.Solid)}), 
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
 Connectors PositivePlug and NegativePlug are nearly identical.

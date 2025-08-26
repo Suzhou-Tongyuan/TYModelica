@@ -4,18 +4,18 @@ connector PositivePin "Positive quasi-static single-phase pin"
   QuasiStatic.Types.Reference reference "Reference";
   annotation (
     Diagram(graphics={Text(
-          extent={{-100,100},{100,60}}, 
-          textColor={0,0,255}, 
+          extent={{-100,100},{100,60}},
+          textColor={0,0,255},
           textString="%name"), Rectangle(
-          extent={{-40,40},{40,-40}}, 
-          lineColor={85,170,255}, 
-          fillColor={85,170,255}, 
-          fillPattern=FillPattern.Solid)}), 
+          extent={{-40,40},{40,-40}},
+          lineColor={85,170,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid)}),
     Icon(graphics={Rectangle(
-          extent={{-100,100},{100,-100}}, 
-          lineColor={85,170,255}, 
-          fillColor={85,170,255}, 
-          fillPattern=FillPattern.Solid)}), 
+          extent={{-100,100},{100,-100}},
+          lineColor={85,170,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 
 <p>

@@ -1,9 +1,9 @@
 ﻿within Modelica.Magnetic.FundamentalWave.Components;
-model EddyCurrent 
+model EddyCurrent
   "Constant loss model under sinusoidal magnetic conditions"
   import Modelica.Constants.pi;
   extends Magnetic.FundamentalWave.Interfaces.TwoPort;
-  parameter SI.Conductance G(min=0) 
+  parameter SI.Conductance G(min=0)
     "Equivalent symmetric loss conductance";
   extends 
     Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPort(
@@ -17,19 +17,19 @@ equation
     V_m.re = 0;
     V_m.im = 0;
   end if;
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100, 
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{100,100}}), graphics={Rectangle(
-              extent={{-70,30},{70,-30}}, 
-              lineColor={255,128,0}, 
-              fillColor={255,128,0}, 
-              fillPattern=FillPattern.Solid),Line(points={{-96,0},{-70,0}}, 
-          color={255,128,0}),Line(points={{70,0},{96,0}}, color={255,128,0}), 
+              extent={{-70,30},{70,-30}},
+              lineColor={255,128,0},
+              fillColor={255,128,0},
+              fillPattern=FillPattern.Solid),Line(points={{-96,0},{-70,0}},
+          color={255,128,0}),Line(points={{70,0},{96,0}}, color={255,128,0}),
                                   Text(
-              extent={{0,-40},{0,-80}}, 
-              textString="G=%G"), 
+              extent={{0,-40},{0,-80}},
+              textString="G=%G"),
           Text(
-              extent={{-150,50},{150,90}}, 
-              textColor={0,0,255}, 
+              extent={{-150,50},{150,90}},
+              textColor={0,0,255},
               textString="%name")}),Documentation(info="<html>
 <p>
 The eddy current loss model with respect to fundamental wave effects is designed in accordance to

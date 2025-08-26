@@ -1,7 +1,7 @@
 ﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function to_vector "Map rotation object into vector"
   extends Modelica.Icons.Function;
-  input TransformationMatrices.Orientation T 
+  input TransformationMatrices.Orientation T
     "Orientation object to rotate frame 1 into frame 2";
   output Real vec[9] "Elements of T in one vector";
 algorithm

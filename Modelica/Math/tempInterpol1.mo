@@ -1,4 +1,4 @@
-﻿function tempInterpol1 
+﻿function tempInterpol1
   "Temporary function for linear interpolation "
   extends Modelica.Icons.Function;
 
@@ -54,6 +54,6 @@ algorithm
 
   annotation (Documentation(info="<html>
 
-</html>"), 
+</html>"),
   obsolete = "Obsolete function");
 end tempInterpol1;

@@ -1,5 +1,5 @@
 ﻿within Modelica.Mechanics.MultiBody.Sensors;
-model Distance 
+model Distance
   "Measure the distance between the origins of two frame connectors"
 
   import Modelica.Mechanics.MultiBody.Frames;
@@ -7,33 +7,33 @@ model Distance
 
   extends Interfaces.PartialTwoFrames;
   extends Modelica.Icons.RectangularSensor;
-  Modelica.Blocks.Interfaces.RealOutput distance 
+  Modelica.Blocks.Interfaces.RealOutput distance
     "Distance between the origin of frame_a and the origin of frame_b" 
     annotation (Placement(transformation(
-        origin={0,-110}, 
-        extent={{10,-10},{-10,10}}, 
+        origin={0,-110},
+        extent={{10,-10},{-10,10}},
         rotation=90)));
 
-  parameter Boolean animation=true 
+  parameter Boolean animation=true
     "= true, if animation shall be enabled (show arrow)";
-  input Types.Color arrowColor=Modelica.Mechanics.MultiBody.Types.Defaults.SensorColor 
+  input Types.Color arrowColor=Modelica.Mechanics.MultiBody.Types.Defaults.SensorColor
     "Color of relative arrow from frame_a to frame_b" 
     annotation (Dialog(colorSelector=true, group="if animation = true", enable=animation));
-  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient 
+  input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
     "Reflection of ambient light (= 0: light is completely absorbed)" 
     annotation (Dialog(group="if animation = true", enable=animation));
-  input SI.Position s_small(min=sqrt(Modelica.Constants.small))=1e-10 
+  input SI.Position s_small(min=sqrt(Modelica.Constants.small))=1e-10
     "Prevent zero-division if distance between frame_a and frame_b is zero" 
     annotation (Dialog(tab="Advanced"));
 protected
   Modelica.Mechanics.MultiBody.Visualizers.Advanced.Arrow arrow(
-    r=frame_a.r_0, 
-    r_head=frame_b.r_0 - frame_a.r_0, 
-    color=arrowColor, 
+    r=frame_a.r_0,
+    r_head=frame_b.r_0 - frame_a.r_0,
+    color=arrowColor,
     specularCoefficient=specularCoefficient) if world.enableAnimation and animation;
 
 protected
-  SI.Position r_rel_0[3] = frame_b.r_0 - frame_a.r_0 
+  SI.Position r_rel_0[3] = frame_b.r_0 - frame_a.r_0
     "Position vector from frame_a to frame_b resolved in world frame";
   SI.Area L2 = r_rel_0*r_rel_0;
   SI.Area s_small2 = s_small^2;
@@ -45,19 +45,19 @@ equation
 
   distance =  smooth(1,if noEvent(L2 > s_small2) then sqrt(L2) else L2/(2*s_small)*(3-L2/s_small2));
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics={
-        Line(points={{0,-60},{0,-100}}, color={0,0,127}), 
-        Line(points={{-70,0},{-101,0}}), 
-        Line(points={{70,0},{100,0}}), 
+        Line(points={{0,-60},{0,-100}}, color={0,0,127}),
+        Line(points={{-70,0},{-101,0}}),
+        Line(points={{70,0},{100,0}}),
         Text(
-          extent={{-128,30},{133,78}}, 
-          textString="%name", 
-          textColor={0,0,255}), 
+          extent={{-128,30},{133,78}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
-          extent={{-30,10},{70,-30}}, 
-          textColor={64,64,64}, 
-          textString="m")}), 
+          extent={{-30,10},{70,-30}},
+          textColor={64,64,64},
+          textString="m")}),
     Documentation(info="<html>
 <p>
 The <strong>distance</strong> between the origins of frame_a

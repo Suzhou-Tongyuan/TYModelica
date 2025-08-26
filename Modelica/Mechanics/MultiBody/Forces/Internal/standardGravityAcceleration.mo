@@ -1,14 +1,14 @@
 ﻿within Modelica.Mechanics.MultiBody.Forces.Internal;
-function standardGravityAcceleration 
+function standardGravityAcceleration
   "Standard gravity fields (no/parallel/point field)"
   extends Modelica.Icons.Function;
   extends Modelica.Mechanics.MultiBody.Interfaces.partialGravityAcceleration;
   import Modelica.Mechanics.MultiBody.Types.GravityTypes;
   input GravityTypes gravityType "Type of gravity field" annotation(Dialog);
-  input SI.Acceleration g[3] 
+  input SI.Acceleration g[3]
     "Constant gravity acceleration, resolved in world frame, if gravityType=UniformGravity" 
     annotation(Dialog);
-  input Real mu(unit="m3/s2") 
+  input Real mu(unit="m3/s2")
     "Field constant of point gravity field, if gravityType=PointGravity" annotation(Dialog);
 algorithm
 gravity := if gravityType == GravityTypes.UniformGravity then g else 

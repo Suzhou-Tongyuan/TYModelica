@@ -1,8 +1,8 @@
 ﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Interfaces;
 connector MagneticPort "Quasi-static magnetic port of fundamental wave machines"
-  SI.ComplexMagneticPotential V_m 
+  SI.ComplexMagneticPotential V_m
     "Complex magnetic potential at the port";
-  flow SI.ComplexMagneticFlux Phi 
+  flow SI.ComplexMagneticFlux Phi
     "Complex magnetic flux flowing into the port";
   annotation (Documentation(info="<html>
 <p>Base definition of complex quasi-static magnetic port. The potential variable is the complex magnetic potential

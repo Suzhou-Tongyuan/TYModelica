@@ -1,17 +1,17 @@
 ﻿within Modelica.Mechanics.MultiBody.Types;
-type ShapeType = Modelica.Icons.TypeString 
+type ShapeType = Modelica.Icons.TypeString
   "Type of shape (box, sphere, cylinder, pipecylinder, cone, pipe, beam, gearwheel, spring, <external shape>)" 
    annotation ( choices(
-    choice="box" "\"box\"", 
-    choice="sphere" "\"sphere\"", 
-    choice="cylinder" "\"cylinder\"", 
-    choice="pipecylinder" "\"pipecylinder\"", 
-    choice="cone" "\"cone\"", 
-    choice="pipe" "\"pipe\"", 
-    choice="beam" "\"beam\"", 
-    choice="gearwheel" "\"gearwheel\"", 
-    choice="spring" "\"spring\"", 
-    choice="modelica://PackageName/PathName.dxf"), 
+    choice="box" "\"box\"",
+    choice="sphere" "\"sphere\"",
+    choice="cylinder" "\"cylinder\"",
+    choice="pipecylinder" "\"pipecylinder\"",
+    choice="cone" "\"cone\"",
+    choice="pipe" "\"pipe\"",
+    choice="beam" "\"beam\"",
+    choice="gearwheel" "\"gearwheel\"",
+    choice="spring" "\"spring\"",
+    choice="modelica://PackageName/PathName.dxf"),
   Documentation(info="<html>
 <p>
 Type <strong>ShapeType</strong> is used to define the shape of the

@@ -2,10 +2,10 @@
 block BooleanChange "Indicate Boolean signal changing"
   extends Clocked.ClockSignals.Interfaces.ClockedBlockIcon;
 
-  Modelica.Blocks.Interfaces.BooleanInput u 
+  Modelica.Blocks.Interfaces.BooleanInput u
     "Connector of Boolean input signal." 
     annotation (Placement(transformation(extent = {{-140,-20},{-100,20}})));
-  Modelica.Blocks.Interfaces.BooleanOutput y 
+  Modelica.Blocks.Interfaces.BooleanOutput y
     "Connector of Boolean output signal." 
     annotation (Placement(transformation(extent = {{100,-10},{120,10}})));
 
@@ -19,9 +19,9 @@ equation
   annotation (
     Icon(graphics={
       Text(
-        extent = {{-90,36},{90,-36}}, 
-        textColor = {160,160,164}, 
-        textString = "change()")}), 
+        extent = {{-90,36},{90,-36}},
+        textColor = {160,160,164},
+        textString = "change()")}),
     Documentation(info="<html><p>
 This block is a synchronous version of
 <a href=\"modelica://Modelica.Blocks.Math.BooleanChange\">Modelica.Blocks.Math.BooleanChange</a>.

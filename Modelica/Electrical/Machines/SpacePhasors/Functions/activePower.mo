@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical.Machines.SpacePhasors.Functions;
-function activePower 
+function activePower
   "Calculate active power of voltage and current input"
   import Modelica.Constants.pi;
   extends Modelica.Icons.Function;

@@ -2,8 +2,8 @@
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 
-  annotation (preferredView="info", 
-    DocumentationClass=true, 
+  annotation (preferredView="info",
+    DocumentationClass=true,
     Documentation(info="<html>
 <p>
 This library contains components for modelling of polyphase electrical circuits.

@@ -1,8 +1,8 @@
 ﻿within Modelica.Fluid;
-package Machines 
+package Machines
   "Devices for converting between energy held in a fluid and mechanical energy"
   extends Modelica.Icons.VariantsPackage;
-  model SweptVolume 
+  model SweptVolume
     "Varying cylindric volume depending on the position of the piston"
     import Modelica.Constants.pi;
 
@@ -13,10 +13,10 @@ package Machines
 
     // Mass and energy balance, ports
     extends Modelica.Fluid.Vessels.BaseClasses.PartialLumpedVessel(
-      final fluidVolume = V, 
+      final fluidVolume = V,
       heatTransfer(surfaceAreas={pistonCrossArea+2*sqrt(pistonCrossArea*pi)*(flange.s+clearance/pistonCrossArea)}));
 
-    Modelica.Mechanics.Translational.Interfaces.Flange_b flange 
+    Modelica.Mechanics.Translational.Interfaces.Flange_b flange
       "Translation flange for piston" annotation (Placement(transformation(
             extent={{-10,90},{10,110}})));
 
@@ -36,55 +36,55 @@ package Machines
       vessel_ps_static[i] = medium.p;
     end for;
 
-    annotation (Icon(coordinateSystem(preserveAspectRatio=true, 
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true,
             extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
-            extent={{-50,36},{50,-90}}, 
-            lineColor={0,0,255}, 
-            pattern=LinePattern.None, 
-            lineThickness=1, 
-            fillColor={170,213,255}, 
-            fillPattern=FillPattern.Solid), 
+            extent={{-50,36},{50,-90}},
+            lineColor={0,0,255},
+            pattern=LinePattern.None,
+            lineThickness=1,
+            fillColor={170,213,255},
+            fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-52,62},{-48,62},{-48,-30},{-52,-30},{-52,62}}, 
-            lineColor={95,95,95}, 
-            fillColor={135,135,135}, 
-            fillPattern=FillPattern.Backward), 
+            points={{-52,62},{-48,62},{-48,-30},{-52,-30},{-52,62}},
+            lineColor={95,95,95},
+            fillColor={135,135,135},
+            fillPattern=FillPattern.Backward),
           Polygon(
-            points={{48,60},{52,60},{52,-34},{48,-34},{48,60}}, 
-            lineColor={95,95,95}, 
-            fillColor={135,135,135}, 
-            fillPattern=FillPattern.Backward), 
+            points={{48,60},{52,60},{52,-34},{48,-34},{48,60}},
+            lineColor={95,95,95},
+            fillColor={135,135,135},
+            fillPattern=FillPattern.Backward),
           Rectangle(
-            extent={{-48,40},{48,30}}, 
-            lineColor={95,95,95}, 
-            fillColor={135,135,135}, 
-            fillPattern=FillPattern.Forward), 
+            extent={{-48,40},{48,30}},
+            lineColor={95,95,95},
+            fillColor={135,135,135},
+            fillPattern=FillPattern.Forward),
           Rectangle(
-            extent={{-6,92},{6,40}}, 
-            lineColor={95,95,95}, 
-            fillColor={135,135,135}, 
-            fillPattern=FillPattern.Forward), 
+            extent={{-6,92},{6,40}},
+            lineColor={95,95,95},
+            fillColor={135,135,135},
+            fillPattern=FillPattern.Forward),
           Polygon(
-            points={{-48,-90},{48,-90},{48,70},{52,70},{52,-94},{-52,-94},{-52, 
-                70},{-48,70},{-48,-90}}, 
-            lineColor={95,95,95}, 
-            fillColor={135,135,135}, 
-            fillPattern=FillPattern.Backward), 
+            points={{-48,-90},{48,-90},{48,70},{52,70},{52,-94},{-52,-94},{-52,
+                70},{-48,70},{-48,-90}},
+            lineColor={95,95,95},
+            fillColor={135,135,135},
+            fillPattern=FillPattern.Backward),
           Line(
-            visible=use_HeatTransfer, 
-            points={{-100,0},{-52,0}}, 
-            color={198,0,0}), 
-          Line(points={{-40,0},{40,0}},     color={95,127,95}, 
-            origin={-70,32}, 
-            rotation=90), 
+            visible=use_HeatTransfer,
+            points={{-100,0},{-52,0}},
+            color={198,0,0}),
+          Line(points={{-40,0},{40,0}},     color={95,127,95},
+            origin={-70,32},
+            rotation=90),
           Polygon(
-            points={{15,0},{-15,10},{-15,-10},{15,0}}, 
-            lineColor={95,127,95}, 
-            fillColor={95,127,95}, 
-            fillPattern=FillPattern.Solid, 
-            origin={-70,84}, 
-            rotation=90)}), 
+            points={{15,0},{-15,10},{-15,-10},{15,0}},
+            lineColor={95,127,95},
+            fillColor={95,127,95},
+            fillPattern=FillPattern.Solid,
+            origin={-70,84},
+            rotation=90)}),
       Documentation(info="<html>
 <p> Mixing volume with varying size. The size of the volume is given by:</p>
 <ul>
@@ -97,7 +97,7 @@ package Machines
 <p> The flange position has to be equal or greater than zero. Otherwise the simulation stops. The force of the flange results from the pressure difference between medium and ambient pressure and the cross sectional piston area. For using the component, a top level instance of the ambient model with the inner attribute is needed.</p>
 <p> The pressure at both fluid ports equals the medium pressure in the volume. No suction nor discharge valve is included in the model.</p>
 <p>The thermal port is directly connected to the medium. The temperature of the thermal port equals the medium temperature. The heat capacity of the cylinder and the piston are not includes in the model.</p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>29 Oct 2007</em>
@@ -119,15 +119,15 @@ package Machines
     N = Modelica.Units.Conversions.to_rpm(omega);
     W_single = omega*shaft.tau;
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100, 
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={Rectangle(
-            extent={{-10,100},{10,78}}, 
-            fillPattern=FillPattern.VerticalCylinder, 
-            fillColor={95,95,95})}), 
+            extent={{-10,100},{10,78}},
+            fillPattern=FillPattern.VerticalCylinder,
+            fillColor={95,95,95})}),
     Documentation(info="<html>
 <p>This model describes a centrifugal pump (or a group of <code>nParallel</code> pumps) with a mechanical rotational connector for the shaft, to be used when the pump drive has to be modelled explicitly. In the case of <code>nParallel</code> pumps, the mechanical connector is relative to a single pump.</p>
 <p>The model extends <code>PartialPump</code></p>
- </html>", 
+ </html>",
        revisions="<html>
 <ul>
 <li><em>31 Oct 2005</em>
@@ -137,59 +137,59 @@ package Machines
 </html>"));
   end Pump;
 
-  model ControlledPump 
+  model ControlledPump
     "Centrifugal pump with ideally controlled mass flow rate"
     import Modelica.Units.NonSI.AngularVelocity_rpm;
     extends Modelica.Fluid.Machines.BaseClasses.PartialPump(
-      N_nominal=1500, 
-      N(start=N_nominal), 
-      redeclare replaceable function flowCharacteristic = 
+      N_nominal=1500,
+      N(start=N_nominal),
+      redeclare replaceable function flowCharacteristic =
           Modelica.Fluid.Machines.BaseClasses.PumpCharacteristics.quadraticFlow
-          ( V_flow_nominal={0, V_flow_op, 1.5*V_flow_op}, 
+          ( V_flow_nominal={0, V_flow_op, 1.5*V_flow_op},
             head_nominal={2*head_op, head_op, 0}));
 
     // nominal values
-    parameter Medium.AbsolutePressure p_a_nominal 
+    parameter Medium.AbsolutePressure p_a_nominal
       "Nominal inlet pressure for predefined pump characteristics";
-    parameter Medium.AbsolutePressure p_b_nominal 
+    parameter Medium.AbsolutePressure p_b_nominal
       "Nominal outlet pressure, fixed if not control_m_flow and not use_p_set";
-    parameter Medium.MassFlowRate m_flow_nominal 
+    parameter Medium.MassFlowRate m_flow_nominal
       "Nominal mass flow rate, fixed if control_m_flow and not use_m_flow_set";
 
     // what to control
-    parameter Boolean control_m_flow = true 
+    parameter Boolean control_m_flow = true
       "= false to control outlet pressure port_b.p instead of m_flow" 
       annotation(Evaluate = true);
-    parameter Boolean use_m_flow_set = false 
+    parameter Boolean use_m_flow_set = false
       "= true to use input signal m_flow_set instead of m_flow_nominal" 
       annotation (Dialog(enable = control_m_flow));
-    parameter Boolean use_p_set = false 
+    parameter Boolean use_p_set = false
       "= true to use input signal p_set instead of p_b_nominal" 
       annotation (Dialog(enable = not control_m_flow));
 
     // exemplary characteristics
-    final parameter SI.VolumeFlowRate V_flow_op = m_flow_nominal/rho_nominal 
+    final parameter SI.VolumeFlowRate V_flow_op = m_flow_nominal/rho_nominal
       "Operational volume flow rate according to nominal values";
-    final parameter SI.Position head_op = (p_b_nominal-p_a_nominal)/(rho_nominal*g) 
+    final parameter SI.Position head_op = (p_b_nominal-p_a_nominal)/(rho_nominal*g)
       "Operational pump head according to nominal values";
 
-    Modelica.Blocks.Interfaces.RealInput m_flow_set(unit="kg/s") if use_m_flow_set 
+    Modelica.Blocks.Interfaces.RealInput m_flow_set(unit="kg/s") if use_m_flow_set
       "Prescribed mass flow rate" 
       annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}}, 
-          rotation=-90, 
+          extent={{-20,-20},{20,20}},
+          rotation=-90,
           origin={-50,82})));
-    Modelica.Blocks.Interfaces.RealInput p_set(unit="Pa") if use_p_set 
+    Modelica.Blocks.Interfaces.RealInput p_set(unit="Pa") if use_p_set
       "Prescribed outlet pressure" 
       annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}}, 
-          rotation=-90, 
+          extent={{-20,-20},{20,20}},
+          rotation=-90,
           origin={50,82})));
 
   protected
-    Modelica.Blocks.Interfaces.RealInput m_flow_set_internal(unit="kg/s") 
+    Modelica.Blocks.Interfaces.RealInput m_flow_set_internal(unit="kg/s")
       "Needed to connect to conditional connector";
-    Modelica.Blocks.Interfaces.RealInput p_set_internal(unit="Pa") 
+    Modelica.Blocks.Interfaces.RealInput p_set_internal(unit="Pa")
       "Needed to connect to conditional connector";
   equation
     // Ideal control
@@ -209,15 +209,15 @@ package Machines
     connect(m_flow_set, m_flow_set_internal);
     connect(p_set, p_set_internal);
 
-    annotation (defaultComponentName="pump", 
-      Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100, 
+    annotation (defaultComponentName="pump",
+      Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,
               100}}), graphics={Text(
-            visible=use_p_set, 
-            extent={{82,108},{176,92}}, 
+            visible=use_p_set,
+            extent={{82,108},{176,92}},
             textString="p_set"), Text(
-            visible=use_m_flow_set, 
-            extent={{-20,108},{170,92}}, 
-            textString="m_flow_set")}), 
+            visible=use_m_flow_set,
+            extent={{-20,108},{170,92}},
+            textString="m_flow_set")}),
       Documentation(info="<html>
 <p>
 This model describes a centrifugal pump (or a group of <code>nParallel</code> pumps)
@@ -232,7 +232,7 @@ Use this model if the pump characteristics is of secondary interest.
 The actual characteristics can be configured later on for the appropriate rotational speed N.
 Then the model can be replaced with a Pump with rotational shaft or with a PrescribedPump.
 </p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>15 Dec 2008</em>
@@ -244,23 +244,23 @@ Then the model can be replaced with a Pump with rotational shaft or with a Presc
 
   model PrescribedPump "Centrifugal pump with ideally controlled speed"
     extends Modelica.Fluid.Machines.BaseClasses.PartialPump;
-    parameter Boolean use_N_in = false 
+    parameter Boolean use_N_in = false
       "Get the rotational speed from the input connector";
     parameter Modelica.Units.NonSI.AngularVelocity_rpm 
-      N_const =                                                                     N_nominal 
+      N_const =                                                                     N_nominal
       "Constant rotational speed" annotation(Dialog(enable = not use_N_in));
-    Modelica.Blocks.Interfaces.RealInput N_in(unit="rev/min") if use_N_in 
+    Modelica.Blocks.Interfaces.RealInput N_in(unit="rev/min") if use_N_in
       "Prescribed rotational speed" 
       annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}}, 
-          rotation=-90, 
+          extent={{-20,-20},{20,20}},
+          rotation=-90,
           origin={0,100}), iconTransformation(
-          extent={{-20,-20},{20,20}}, 
-          rotation=-90, 
+          extent={{-20,-20},{20,20}},
+          rotation=-90,
           origin={0,100})));
 
   protected
-    Modelica.Blocks.Interfaces.RealInput N_in_internal(unit="rev/min") 
+    Modelica.Blocks.Interfaces.RealInput N_in_internal(unit="rev/min")
       "Needed to connect to conditional connector";
   equation
     // Connect statement active only if use_p_in = true
@@ -272,17 +272,17 @@ Then the model can be replaced with a Pump with rotational shaft or with a Presc
     // Set N with a lower limit to avoid singularities at zero speed
     N = max(N_in_internal,1e-3) "Rotational speed";
 
-    annotation (defaultComponentName="pump", 
-      Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100, 
+    annotation (defaultComponentName="pump",
+      Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,
               100}}), graphics={Text(
-            visible=use_N_in, 
-            extent={{14,98},{178,82}}, 
-            textString="N_in [rpm]")}), 
+            visible=use_N_in,
+            extent={{14,98},{178,82}},
+            textString="N_in [rpm]")}),
       Documentation(info="<html>
 <p>This model describes a centrifugal pump (or a group of <code>nParallel</code> pumps) with prescribed speed, either fixed or provided by an external signal.</p>
 <p>The model extends <code>PartialPump</code></p>
 <p>If the <code>N_in</code> input connector is wired, it provides rotational speed of the pumps (rpm); otherwise, a constant rotational speed equal to <code>n_const</code> (which can be different from <code>N_nominal</code>) is assumed.</p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>31 Oct 2005</em>
@@ -292,7 +292,7 @@ Then the model can be replaced with a Pump with rotational shaft or with a Presc
 </html>"));
   end PrescribedPump;
 
-  package BaseClasses 
+  package BaseClasses
     "Base classes used in the Machines package (only of interest to build new component models)"
     extends Modelica.Icons.BasesPackage;
 
@@ -301,60 +301,60 @@ Then the model can be replaced with a Pump with rotational shaft or with a Presc
       import Modelica.Constants;
 
     extends Modelica.Fluid.Interfaces.PartialTwoPort(
-      port_b_exposesState = energyDynamics<>Types.Dynamics.SteadyState or massDynamics<>Types.Dynamics.SteadyState, 
+      port_b_exposesState = energyDynamics<>Types.Dynamics.SteadyState or massDynamics<>Types.Dynamics.SteadyState,
       port_a(
-        p(start=p_a_start), 
-        m_flow(start = m_flow_start, 
-               min = if allowFlowReversal and not checkValve then -Constants.inf else 0)), 
+        p(start=p_a_start),
+        m_flow(start = m_flow_start,
+               min = if allowFlowReversal and not checkValve then -Constants.inf else 0)),
       port_b(
-        p(start=p_b_start), 
-        m_flow(start = -m_flow_start, 
+        p(start=p_b_start),
+        m_flow(start = -m_flow_start,
                max = if allowFlowReversal and not checkValve then +Constants.inf else 0)));
 
     // Initialization
-    parameter Medium.AbsolutePressure p_a_start=system.p_start 
+    parameter Medium.AbsolutePressure p_a_start=system.p_start
         "Guess value for inlet pressure" 
       annotation(Dialog(tab="Initialization"));
-    parameter Medium.AbsolutePressure p_b_start=p_a_start 
+    parameter Medium.AbsolutePressure p_b_start=p_a_start
         "Guess value for outlet pressure" 
       annotation(Dialog(tab="Initialization"));
-    parameter Medium.MassFlowRate m_flow_start = system.m_flow_start 
+    parameter Medium.MassFlowRate m_flow_start = system.m_flow_start
         "Guess value of m_flow = port_a.m_flow" 
       annotation(Dialog(tab = "Initialization"));
     parameter Types.CheckValveHomotopyType checkValveHomotopy = Types.CheckValveHomotopyType.NoHomotopy "= whether the valve is Closed, Open, or unknown at initialization" 
       annotation(Dialog(tab = "Initialization"));
-    final parameter SI.VolumeFlowRate V_flow_single_init = m_flow_start/rho_nominal/nParallel 
+    final parameter SI.VolumeFlowRate V_flow_single_init = m_flow_start/rho_nominal/nParallel
         "Used for simplified initialization model";
-    final parameter SI.Position delta_head_init = flowCharacteristic(V_flow_single_init*1.1)-flowCharacteristic(V_flow_single_init) 
+    final parameter SI.Position delta_head_init = flowCharacteristic(V_flow_single_init*1.1)-flowCharacteristic(V_flow_single_init)
         "Delta head for a 10% increase of flow at the initialization point";
 
     // Characteristic curves
     parameter Integer nParallel(min=1) = 1 "Number of pumps in parallel" 
       annotation(Dialog(group="Characteristics"));
-    replaceable function flowCharacteristic = 
-        PumpCharacteristics.baseFlow 
+    replaceable function flowCharacteristic =
+        PumpCharacteristics.baseFlow
         "Head vs. V_flow characteristic at nominal speed and density" 
       annotation(Dialog(group="Characteristics"), choicesAllMatching=true);
-    parameter NonSI.AngularVelocity_rpm N_nominal 
+    parameter NonSI.AngularVelocity_rpm N_nominal
         "Nominal rotational speed for flow characteristic" 
       annotation(Dialog(group="Characteristics"));
-    parameter Medium.Density rho_nominal = Medium.density_pTX(Medium.p_default, Medium.T_default, Medium.X_default) 
+    parameter Medium.Density rho_nominal = Medium.density_pTX(Medium.p_default, Medium.T_default, Medium.X_default)
         "Nominal fluid density for characteristic" 
       annotation(Dialog(group="Characteristics"));
-    parameter Boolean use_powerCharacteristic = false 
+    parameter Boolean use_powerCharacteristic = false
         "Use powerCharacteristic (vs. efficiencyCharacteristic)" 
        annotation(Evaluate=true,Dialog(group="Characteristics"));
-    replaceable function powerCharacteristic = 
+    replaceable function powerCharacteristic =
           PumpCharacteristics.quadraticPower (
-         V_flow_nominal={0,0,0},W_nominal={0,0,0}) 
+         V_flow_nominal={0,0,0},W_nominal={0,0,0})
         "Power consumption vs. V_flow at nominal speed and density" 
-      annotation(Dialog(group="Characteristics", enable = use_powerCharacteristic), 
+      annotation(Dialog(group="Characteristics", enable = use_powerCharacteristic),
                  choicesAllMatching=true);
-    replaceable function efficiencyCharacteristic = 
+    replaceable function efficiencyCharacteristic =
       PumpCharacteristics.constantEfficiency(eta_nominal = 0.8) constrainedby 
-        PumpCharacteristics.baseEfficiency 
+        PumpCharacteristics.baseEfficiency
         "Efficiency vs. V_flow at nominal speed and density" 
-      annotation(Dialog(group="Characteristics",enable = not use_powerCharacteristic), 
+      annotation(Dialog(group="Characteristics",enable = not use_powerCharacteristic),
                  choicesAllMatching=true);
 
     // Assumptions
@@ -366,30 +366,30 @@ Then the model can be replaced with a Pump with rotational shaft or with a Presc
 
     // Energy and mass balance
     extends Modelica.Fluid.Interfaces.PartialLumpedVolume(
-        final fluidVolume = V, 
-        energyDynamics = Types.Dynamics.SteadyState, 
-        massDynamics = Types.Dynamics.SteadyState, 
+        final fluidVolume = V,
+        energyDynamics = Types.Dynamics.SteadyState,
+        massDynamics = Types.Dynamics.SteadyState,
         final p_start = p_b_start);
 
     // Heat transfer through boundary, e.g., to add a housing
-    parameter Boolean use_HeatTransfer = false 
+    parameter Boolean use_HeatTransfer = false
         "= true to use a HeatTransfer model, e.g., for a housing" 
         annotation (Dialog(tab="Assumptions",group="Heat transfer"));
-    replaceable model HeatTransfer = 
+    replaceable model HeatTransfer =
         Modelica.Fluid.Vessels.BaseClasses.HeatTransfer.IdealHeatTransfer 
       constrainedby 
-        Modelica.Fluid.Vessels.BaseClasses.HeatTransfer.PartialVesselHeatTransfer 
+        Modelica.Fluid.Vessels.BaseClasses.HeatTransfer.PartialVesselHeatTransfer
         "Wall heat transfer" 
         annotation (Dialog(tab="Assumptions",group="Heat transfer",enable=use_HeatTransfer),choicesAllMatching=true);
     HeatTransfer heatTransfer(
-      redeclare final package Medium = Medium, 
-      final n=1, 
-      surfaceAreas={4*Modelica.Constants.pi*(3/4*V/Modelica.Constants.pi)^(2/3)}, 
-      final states = {medium.state}, 
+      redeclare final package Medium = Medium,
+      final n=1,
+      surfaceAreas={4*Modelica.Constants.pi*(3/4*V/Modelica.Constants.pi)^(2/3)},
+      final states = {medium.state},
       final use_k = use_HeatTransfer) 
         annotation (Placement(transformation(
-          extent={{-10,-10},{30,30}}, 
-          rotation=180, 
+          extent={{-10,-10},{30,30}},
+          rotation=180,
           origin={50,-10})));
     Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort if use_HeatTransfer 
       annotation (Placement(transformation(extent={{30,-70},{50,-50}})));
@@ -400,29 +400,29 @@ Then the model can be replaced with a Pump with rotational shaft or with a Presc
     SI.Pressure dp_pump = port_b.p - port_a.p "Pressure change";
     SI.Position head = dp_pump/(rho*g) "Pump head";
     SI.MassFlowRate m_flow = port_a.m_flow "Mass flow rate (total)";
-    SI.MassFlowRate m_flow_single = m_flow/nParallel 
+    SI.MassFlowRate m_flow_single = m_flow/nParallel
         "Mass flow rate (single pump)";
     SI.VolumeFlowRate V_flow "Volume flow rate (total)";
-    SI.VolumeFlowRate V_flow_single(start = m_flow_start/rho_nominal/nParallel) 
+    SI.VolumeFlowRate V_flow_single(start = m_flow_start/rho_nominal/nParallel)
         "Volume flow rate (single pump)";
     NonSI.AngularVelocity_rpm N(start = N_nominal) "Shaft rotational speed";
     SI.Power W_single "Power Consumption (single pump)";
     SI.Power W_total = W_single*nParallel "Power Consumption (total)";
     Real eta "Global Efficiency";
     final constant Medium.MassFlowRate unit_m_flow=1 annotation (HideResult=true);
-    Real s(start = m_flow_start/unit_m_flow) 
+    Real s(start = m_flow_start/unit_m_flow)
         "Curvilinear abscissa for the flow curve in parametric form (either mass flow rate or head)";
 
     // Diagnostics
-    replaceable model Monitoring = 
+    replaceable model Monitoring =
       Modelica.Fluid.Machines.BaseClasses.PumpMonitoring.PumpMonitoringBase 
       constrainedby 
-        Modelica.Fluid.Machines.BaseClasses.PumpMonitoring.PumpMonitoringBase 
+        Modelica.Fluid.Machines.BaseClasses.PumpMonitoring.PumpMonitoringBase
         "Optional pump monitoring" 
         annotation(Dialog(tab="Advanced", group="Diagnostics"), choicesAllMatching=true);
     Monitoring monitoring(
-            redeclare final package Medium = Medium, 
-            final state_in = Medium.setState_phX(port_a.p, inStream(port_a.h_outflow), inStream(port_a.Xi_outflow)), 
+            redeclare final package Medium = Medium,
+            final state_in = Medium.setState_phX(port_a.p, inStream(port_a.h_outflow), inStream(port_a.Xi_outflow)),
             final state = medium.state) "Monitoring model" 
        annotation (Placement(transformation(extent={{-64,-42},{-20,0}})));
     protected
@@ -431,13 +431,13 @@ Then the model can be replaced with a Pump with rotational shaft or with a Presc
 
   equation
     // Flow equations
-     V_flow = homotopy(m_flow/rho, 
+     V_flow = homotopy(m_flow/rho,
                        m_flow/rho_nominal);
      V_flow_single = V_flow/nParallel;
     if not checkValve then
       // Regular flow characteristics without check valve
       // The simplified model uses an approximation of the tangent to the head curve in the initialization point
-      head = homotopy((N/N_nominal)^2*flowCharacteristic(V_flow_single*N_nominal/N), 
+      head = homotopy((N/N_nominal)^2*flowCharacteristic(V_flow_single*N_nominal/N),
                        N/N_nominal*(flowCharacteristic(V_flow_single_init)+(V_flow_single-V_flow_single_init)*noEvent(if abs(V_flow_single_init)>0 then delta_head_init/(0.1*V_flow_single_init) else 0)));
       s = 0;
     else
@@ -450,48 +450,48 @@ Then the model can be replaced with a Pump with rotational shaft or with a Presc
         V_flow_single = if s > 0 then s*unitMassFlowRate/rho else 0;
       else
         head = homotopy(if s > 0 then (N/N_nominal)^2*flowCharacteristic(V_flow_single*N_nominal/N) 
-                               else (N/N_nominal)^2*flowCharacteristic(0) - s*unitHead, 
+                               else (N/N_nominal)^2*flowCharacteristic(0) - s*unitHead,
                       if checkValveHomotopy == Types.CheckValveHomotopyType.Open then 
                         N/N_nominal*(flowCharacteristic(V_flow_single_init)+(V_flow_single-V_flow_single_init)*noEvent(if abs(V_flow_single_init)>0 then delta_head_init/(0.1*V_flow_single_init) else 0)) 
                       else 
                         N/N_nominal*flowCharacteristic(0) - s*unitHead);
-        V_flow_single = homotopy(if s > 0 then s*unitMassFlowRate/rho else 0, 
+        V_flow_single = homotopy(if s > 0 then s*unitMassFlowRate/rho else 0,
                                if checkValveHomotopy == Types.CheckValveHomotopyType.Open then s*unitMassFlowRate/rho_nominal else 0);
       end if;
     end if;
     // Power consumption
     if use_powerCharacteristic then
-      W_single = homotopy((N/N_nominal)^3*(rho/rho_nominal)*powerCharacteristic(V_flow_single*N_nominal/N), 
+      W_single = homotopy((N/N_nominal)^3*(rho/rho_nominal)*powerCharacteristic(V_flow_single*N_nominal/N),
                           N/N_nominal*V_flow_single/V_flow_single_init*powerCharacteristic(V_flow_single_init));
       eta = dp_pump*V_flow_single/W_single;
     else
-      eta = homotopy(efficiencyCharacteristic(V_flow_single*(N_nominal/N)), 
+      eta = homotopy(efficiencyCharacteristic(V_flow_single*(N_nominal/N)),
                      efficiencyCharacteristic(V_flow_single_init));
-      W_single = homotopy(dp_pump*V_flow_single/eta, 
+      W_single = homotopy(dp_pump*V_flow_single/eta,
                           dp_pump*V_flow_single_init/eta);
     end if;
 
     // Energy balance
     Wb_flow = W_total;
     Qb_flow = heatTransfer.Q_flows[1];
-    Hb_flow = port_a.m_flow*actualStream(port_a.h_outflow) + 
+    Hb_flow = port_a.m_flow*actualStream(port_a.h_outflow) +
               port_b.m_flow*actualStream(port_b.h_outflow);
 
     // Ports
     port_a.h_outflow = medium.h;
     port_b.h_outflow = medium.h;
-    port_b.p = medium.p 
+    port_b.p = medium.p
         "Outlet pressure is equal to medium pressure, which includes Wb_flow";
 
     // Mass balance
     mb_flow = port_a.m_flow + port_b.m_flow;
 
-    mbXi_flow = port_a.m_flow*actualStream(port_a.Xi_outflow) + 
+    mbXi_flow = port_a.m_flow*actualStream(port_a.Xi_outflow) +
                 port_b.m_flow*actualStream(port_b.Xi_outflow);
     port_a.Xi_outflow = medium.Xi;
     port_b.Xi_outflow = medium.Xi;
 
-    mbC_flow = port_a.m_flow*actualStream(port_a.C_outflow) + 
+    mbC_flow = port_a.m_flow*actualStream(port_a.C_outflow) +
                port_b.m_flow*actualStream(port_b.C_outflow);
     port_a.C_outflow = C;
     port_b.C_outflow = C;
@@ -499,26 +499,26 @@ Then the model can be replaced with a Pump with rotational shaft or with a Presc
     connect(heatTransfer.heatPorts[1], heatPort) annotation (Line(
         points={{40,-34},{40,-60}}, color={127,0,0}));
     annotation (
-      Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100, 
+      Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,
                 100}}), graphics={
             Rectangle(
-              extent={{-100,46},{100,-46}}, 
-              fillColor={0,127,255}, 
-              fillPattern=FillPattern.HorizontalCylinder), 
+              extent={{-100,46},{100,-46}},
+              fillColor={0,127,255},
+              fillPattern=FillPattern.HorizontalCylinder),
             Polygon(
-              points={{-48,-60},{-72,-100},{72,-100},{48,-60},{-48,-60}}, 
-              lineColor={0,0,255}, 
-              pattern=LinePattern.None, 
-              fillPattern=FillPattern.VerticalCylinder), 
+              points={{-48,-60},{-72,-100},{72,-100},{48,-60},{-48,-60}},
+              lineColor={0,0,255},
+              pattern=LinePattern.None,
+              fillPattern=FillPattern.VerticalCylinder),
             Ellipse(
-              extent={{-80,80},{80,-80}}, 
-              fillPattern=FillPattern.Sphere, 
-              fillColor={0,100,199}), 
+              extent={{-80,80},{80,-80}},
+              fillPattern=FillPattern.Sphere,
+              fillColor={0,100,199}),
             Polygon(
-              points={{-28,30},{-28,-30},{50,-2},{-28,30}}, 
-              pattern=LinePattern.None, 
-              fillPattern=FillPattern.HorizontalCylinder, 
-              fillColor={255,255,255})}), 
+              points={{-28,30},{-28,-30},{50,-2},{-28,30}},
+              pattern=LinePattern.None,
+              fillPattern=FillPattern.HorizontalCylinder,
+              fillColor={255,255,255})}),
       Documentation(info="<html>
 <p>This is the base model for pumps.</p>
 <p>The model describes a centrifugal pump, or a group of <code>nParallel</code> identical pumps. The pump model is based on the theory of kinematic similarity: the pump characteristics are given for nominal operating conditions (rotational speed and fluid density), and then adapted to actual operating condition, according to the similarity equations.</p>
@@ -560,7 +560,7 @@ should be taken into account or to model a housing. This might be desirable if a
 in order to compute the Net Positive Suction Head available and check for cavitation,
 provided a two-phase medium model is used (see Advanced tab).
 </p>
-</html>", 
+</html>",
         revisions="<html>
 <ul>
 <li><em>8 Jan 2013</em>
@@ -590,7 +590,7 @@ provided a two-phase medium model is used (see Advanced tab).
       output SI.Position head "Pump head";
     end baseFlow;
 
-    partial function basePower 
+    partial function basePower
         "Base class for pump power consumption characteristics"
       extends Modelica.Icons.Function;
       input SI.VolumeFlowRate V_flow "Volumetric flow rate";
@@ -605,7 +605,7 @@ provided a two-phase medium model is used (see Advanced tab).
 
     function linearFlow "Linear flow characteristic"
       extends baseFlow;
-      input SI.VolumeFlowRate V_flow_nominal[2] 
+      input SI.VolumeFlowRate V_flow_nominal[2]
           "Volume flow rate for two operating points (single pump)" annotation(Dialog);
       input SI.Position head_nominal[2] "Pump head for two operating points" annotation(Dialog);
       /* Linear system to determine the coefficients:
@@ -613,37 +613,37 @@ provided a two-phase medium model is used (see Advanced tab).
   head_nominal[2] = c[1] + V_flow_nominal[2]*c[2];
   */
       protected
-      Real c[2] = Modelica.Math.Matrices.solve([ones(2),V_flow_nominal],head_nominal) 
+      Real c[2] = Modelica.Math.Matrices.solve([ones(2),V_flow_nominal],head_nominal)
           "Coefficients of linear head curve";
     algorithm
-      assert(c[2] <= -Modelica.Constants.small, 
-             "Wrong pump curve -- head_nominal must be monotonically decreasing with increasing V_flow_nominal", 
+      assert(c[2] <= -Modelica.Constants.small,
+             "Wrong pump curve -- head_nominal must be monotonically decreasing with increasing V_flow_nominal",
              level=AssertionLevel.warning);
       // Flow equation: head = q*c[1] + c[2];
       head := c[1] + V_flow*c[2];
     end linearFlow;
 
-    function quadraticFlow 
+    function quadraticFlow
         "Quadratic flow characteristic, including linear extrapolation"
       extends baseFlow;
-      input SI.VolumeFlowRate V_flow_nominal[3] 
+      input SI.VolumeFlowRate V_flow_nominal[3]
           "Volume flow rate for three operating points (single pump)" annotation(Dialog);
       input SI.Position head_nominal[3] "Pump head for three operating points" annotation(Dialog);
       protected
-      Real V_flow_nominal2[3] = {V_flow_nominal[1]^2,V_flow_nominal[2]^2, V_flow_nominal[3]^2} 
+      Real V_flow_nominal2[3] = {V_flow_nominal[1]^2,V_flow_nominal[2]^2, V_flow_nominal[3]^2}
           "Squared nominal flow rates";
       /* Linear system to determine the coefficients:
   head_nominal[1] = c[1] + V_flow_nominal[1]*c[2] + V_flow_nominal[1]^2*c[3];
   head_nominal[2] = c[1] + V_flow_nominal[2]*c[2] + V_flow_nominal[2]^2*c[3];
   head_nominal[3] = c[1] + V_flow_nominal[3]*c[2] + V_flow_nominal[3]^2*c[3];
   */
-      Real c[3] = Modelica.Math.Matrices.solve([ones(3), V_flow_nominal, V_flow_nominal2],head_nominal) 
+      Real c[3] = Modelica.Math.Matrices.solve([ones(3), V_flow_nominal, V_flow_nominal2],head_nominal)
           "Coefficients of quadratic head curve";
       SI.VolumeFlowRate V_flow_min = min(V_flow_nominal);
       SI.VolumeFlowRate V_flow_max = max(V_flow_nominal);
     algorithm
-      assert(max(c[2].+2*c[3]*V_flow_nominal) <= -Modelica.Constants.small, 
-             "Wrong pump curve -- head_nominal must be monotonically decreasing with increasing V_flow_nominal", 
+      assert(max(c[2].+2*c[3]*V_flow_nominal) <= -Modelica.Constants.small,
+             "Wrong pump curve -- head_nominal must be monotonically decreasing with increasing V_flow_nominal",
              level=AssertionLevel.warning);
       if V_flow < V_flow_min then
         head := max(head_nominal) + (V_flow-V_flow_min)*(c[2]+2*c[3]*V_flow_min);
@@ -663,30 +663,30 @@ provided a two-phase medium model is used (see Advanced tab).
 </html>"));
     end quadraticFlow;
 
-    function polynomialFlow 
+    function polynomialFlow
         "Polynomial flow characteristic, including linear extrapolation"
       extends baseFlow;
-      input SI.VolumeFlowRate V_flow_nominal[:] 
+      input SI.VolumeFlowRate V_flow_nominal[:]
           "Volume flow rate for N operating points (single pump)" annotation(Dialog);
       input SI.Position head_nominal[:] "Pump head for N operating points" annotation(Dialog);
       protected
       Integer N = size(V_flow_nominal,1) "Number of nominal operating points";
-      Real V_flow_nominal_pow[N,N] = {{if j > 1 then V_flow_nominal[i]^(j-1) else 1 for j in 1:N} for i in 1:N} 
+      Real V_flow_nominal_pow[N,N] = {{if j > 1 then V_flow_nominal[i]^(j-1) else 1 for j in 1:N} for i in 1:N}
           "Rows: different operating points; columns: increasing powers";
       /* Linear system to determine the coefficients (example N=3):
   head_nominal[1] = c[1] + V_flow_nominal[1]*c[2] + V_flow_nominal[1]^2*c[3];
   head_nominal[2] = c[1] + V_flow_nominal[2]*c[2] + V_flow_nominal[2]^2*c[3];
   head_nominal[3] = c[1] + V_flow_nominal[3]*c[2] + V_flow_nominal[3]^2*c[3];
   */
-      Real c[size(V_flow_nominal,1)] = Modelica.Math.Matrices.solve(V_flow_nominal_pow,head_nominal) 
+      Real c[size(V_flow_nominal,1)] = Modelica.Math.Matrices.solve(V_flow_nominal_pow,head_nominal)
           "Coefficients of polynomial head curve";
       SI.VolumeFlowRate V_flow_min = min(V_flow_nominal);
       SI.VolumeFlowRate V_flow_max = max(V_flow_nominal);
       Real max_dhdV = c[2] + max(sum((i-1)*V_flow_nominal.^(i-2)*c[i] for i in 3:N));
       Real poly;
     algorithm
-      assert(max_dhdV <= -Modelica.Constants.small, 
-             "Wrong pump curve -- head_nominal must be monotonically decreasing with increasing V_flow_nominal", 
+      assert(max_dhdV <= -Modelica.Constants.small,
+             "Wrong pump curve -- head_nominal must be monotonically decreasing with increasing V_flow_nominal",
              level=AssertionLevel.warning);
       if V_flow < V_flow_min then
         //head := max(head_nominal) + (V_flow-V_flow_min)*(c[2]+sum((i-1)*V_flow_min^(i-2)*c[i] for i in 3:N));
@@ -731,7 +731,7 @@ provided a two-phase medium model is used (see Advanced tab).
 
     function linearPower "Linear power consumption characteristic"
       extends basePower;
-      input SI.VolumeFlowRate V_flow_nominal[2] 
+      input SI.VolumeFlowRate V_flow_nominal[2]
           "Volume flow rate for two operating points (single pump)" annotation(Dialog);
       input SI.Power W_nominal[2] "Power consumption for two operating points" annotation(Dialog);
       /* Linear system to determine the coefficients:
@@ -739,7 +739,7 @@ provided a two-phase medium model is used (see Advanced tab).
   W_nominal[2] = c[1] + V_flow_nominal[2]*c[2];
   */
       protected
-      Real c[2] = Modelica.Math.Matrices.solve([ones(3),V_flow_nominal],W_nominal) 
+      Real c[2] = Modelica.Math.Matrices.solve([ones(3),V_flow_nominal],W_nominal)
           "Coefficients of linear power consumption curve";
     algorithm
       consumption := c[1] + V_flow*c[2];
@@ -747,20 +747,20 @@ provided a two-phase medium model is used (see Advanced tab).
 
     function quadraticPower "Quadratic power consumption characteristic"
       extends basePower;
-      input SI.VolumeFlowRate V_flow_nominal[3] 
+      input SI.VolumeFlowRate V_flow_nominal[3]
           "Volume flow rate for three operating points (single pump)" 
                                                                     annotation(Dialog);
-      input SI.Power W_nominal[3] 
+      input SI.Power W_nominal[3]
           "Power consumption for three operating points" annotation(Dialog);
       protected
-      Real V_flow_nominal2[3] = {V_flow_nominal[1]^2,V_flow_nominal[2]^2, V_flow_nominal[3]^2} 
+      Real V_flow_nominal2[3] = {V_flow_nominal[1]^2,V_flow_nominal[2]^2, V_flow_nominal[3]^2}
           "Squared nominal flow rates";
       /* Linear system to determine the coefficients:
   W_nominal[1] = c[1] + V_flow_nominal[1]*c[2] + V_flow_nominal[1]^2*c[3];
   W_nominal[2] = c[1] + V_flow_nominal[2]*c[2] + V_flow_nominal[2]^2*c[3];
   W_nominal[3] = c[1] + V_flow_nominal[3]*c[2] + V_flow_nominal[3]^2*c[3];
   */
-      Real c[3] = Modelica.Math.Matrices.solve([ones(3),V_flow_nominal,V_flow_nominal2],W_nominal) 
+      Real c[3] = Modelica.Math.Matrices.solve([ones(3),V_flow_nominal,V_flow_nominal2],W_nominal)
           "Coefficients of quadratic power consumption curve";
     algorithm
       consumption := c[1] + V_flow*c[2] + V_flow^2*c[3];
@@ -776,29 +776,29 @@ provided a two-phase medium model is used (see Advanced tab).
         // Internal interface
         // (not exposed to GUI; needs to be hard coded when using this model
         //
-        replaceable package Medium = 
+        replaceable package Medium =
           Modelica.Media.Interfaces.PartialMedium "Medium in the component" 
             annotation(Dialog(tab="Internal Interface",enable=false));
 
         // Inputs
-        input Medium.ThermodynamicState state_in 
+        input Medium.ThermodynamicState state_in
           "Thermodynamic state of inflow";
         input Medium.ThermodynamicState state "Thermodynamic state in the pump";
 
       end PumpMonitoringBase;
 
       model PumpMonitoringNPSH "Monitor Net Positive Suction Head (NPSH)"
-        extends PumpMonitoringBase(redeclare replaceable package Medium = 
+        extends PumpMonitoringBase(redeclare replaceable package Medium =
           Modelica.Media.Interfaces.PartialTwoPhaseMedium);
-        Medium.Density rho_in = Medium.density(state_in) 
+        Medium.Density rho_in = Medium.density(state_in)
           "Liquid density at the inlet port_a";
-        SI.Position NPSHa=NPSPa/(rho_in*system.g) 
+        SI.Position NPSHa=NPSPa/(rho_in*system.g)
           "Net Positive Suction Head available";
-        SI.Pressure NPSPa=assertPositiveDifference(Medium.pressure(state_in), Medium.saturationPressure(Medium.temperature(state_in)), 
-                                                   "Cavitation occurs at the pump inlet") 
+        SI.Pressure NPSPa=assertPositiveDifference(Medium.pressure(state_in), Medium.saturationPressure(Medium.temperature(state_in)),
+                                                   "Cavitation occurs at the pump inlet")
           "Net Positive Suction Pressure available";
-        SI.Pressure NPDPa=assertPositiveDifference(Medium.pressure(state), Medium.saturationPressure(Medium.temperature(state)), 
-                                                   "Cavitation occurs in the pump") 
+        SI.Pressure NPDPa=assertPositiveDifference(Medium.pressure(state), Medium.saturationPressure(Medium.temperature(state)),
+                                                   "Cavitation occurs in the pump")
           "Net Positive Discharge Pressure available";
       end PumpMonitoringNPSH;
 

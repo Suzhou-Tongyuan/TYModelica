@@ -1,20 +1,20 @@
 ﻿within Modelica.Electrical.Analog.Basic;
-model GeneralCurrentToVoltageAdaptor 
+model GeneralCurrentToVoltageAdaptor
   "Signal adaptor for an Electrical OnePort with voltage and derivative of voltage as outputs and current and derivative of current as inputs (especially useful for FMUs)"
   extends Modelica.Blocks.Interfaces.Adaptors.FlowToPotentialAdaptor(
-    final Name_p="v", 
-    final Name_pder="dv", 
-    final Name_pder2="d2v", 
-    final Name_f="i", 
-    final Name_fder="di", 
-    final Name_fder2="d2i", 
-    final use_pder2=false, 
-    final use_fder2=false, 
-    final p(unit="V"), 
-    final pder(unit="V/s"), 
-    final pder2(unit="V/s2"), 
-    final f(unit="A"), 
-    final fder(unit="A/s"), 
+    final Name_p="v",
+    final Name_pder="dv",
+    final Name_pder2="d2v",
+    final Name_f="i",
+    final Name_fder="di",
+    final Name_fder2="d2i",
+    final use_pder2=false,
+    final use_fder2=false,
+    final p(unit="V"),
+    final pder(unit="V/s"),
+    final pder2(unit="V/s2"),
+    final f(unit="A"),
+    final fder(unit="A/s"),
     final fder2(unit="A/s2"));
   SI.Voltage v "Voltage drop between the two pins (= p.v - n.v)";
   SI.Current i "Current flowing from pin p to pin n";
@@ -49,8 +49,8 @@ Bear in mind that separating physical components and connecting them via adaptor
 </p>
 </html>"), Icon(graphics={
             Rectangle(
-              extent={{-20,100},{20,-100}}, 
-              lineColor={0,0,255}, 
-              radius=10, 
+              extent={{-20,100},{20,-100}},
+              lineColor={0,0,255},
+              radius=10,
           lineThickness=0.5)}));
 end GeneralCurrentToVoltageAdaptor;

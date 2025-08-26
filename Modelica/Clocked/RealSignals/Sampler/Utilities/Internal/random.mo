@@ -2,10 +2,10 @@
 function random "Pseudo random number generator"
   extends Modelica.Icons.Function;
 
-  input Integer seedIn[3] 
+  input Integer seedIn[3]
     "Integer vector defining random number sequence, e.g., {23,87,187}";
   output Real x "Random number between 0 and 1";
-  output Integer seedOut[3] 
+  output Integer seedOut[3]
     "Modified seed to be used for next call of random()";
 algorithm
   seedOut[1] := rem((171*seedIn[1]), 30269);
@@ -109,7 +109,7 @@ Copyright &copy; Hubertus Tummescheit and Department of Automatic Control, Lund 
 <em>This Modelica function is <strong>free</strong> software; it can be redistributed and/or modified
 under the terms of the BSD-3-Clause license.</em>
 </p>
-</html>", 
+</html>",
   revisions="<html>
 <p>2019-05-20: Changed license to BSD-3-Clause after consultation with Hubertus Tummescheit.</p>
 </html>"));

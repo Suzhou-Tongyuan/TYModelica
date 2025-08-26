@@ -7,7 +7,7 @@ package Examples "Polyphase test examples"
 This package contains test examples of analog electrical polyphase circuits.
 </p>
 
-</html>", 
+</html>",
         revisions="<html>
 <dl>
   <dt><strong>Main Authors:</strong></dt>

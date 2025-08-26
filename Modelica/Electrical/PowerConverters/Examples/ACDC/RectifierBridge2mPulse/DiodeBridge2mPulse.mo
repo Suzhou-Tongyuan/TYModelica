@@ -1,5 +1,5 @@
 ﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2mPulse;
-model DiodeBridge2mPulse 
+model DiodeBridge2mPulse
   "2*m pulse diode rectifier bridge with resistive load"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;
@@ -9,49 +9,49 @@ model DiodeBridge2mPulse
   parameter SI.Resistance R=20 "Load resistance";
 
   Modelica.Electrical.Polyphase.Sources.SineVoltage sineVoltage(
-    final m=m, 
-    V=fill(sqrt(2)*Vrms, m), 
+    final m=m,
+    V=fill(sqrt(2)*Vrms, m),
     phase=-
-        Modelica.Electrical.Polyphase.Functions.symmetricOrientation(m), 
+        Modelica.Electrical.Polyphase.Functions.symmetricOrientation(m),
     f=fill(f, m)) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-80,-30})));
   PowerConverters.ACDC.DiodeBridge2mPulse rectifier(final m=m) 
     annotation (Placement(transformation(extent={{-40,24},{-20,44}})));
   Modelica.Electrical.Analog.Sensors.VoltageSensor voltagesensor 
     annotation (Placement(transformation(
-        origin={50,10}, 
-        extent={{10,-10},{-10,10}}, 
+        origin={50,10},
+        extent={{10,-10},{-10,10}},
         rotation=90)));
   Modelica.Blocks.Math.Mean meanVoltage(f=2*m*f) annotation (Placement(
         transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={80,40})));
   Modelica.Blocks.Math.RootMeanSquare rootMeanSquareVoltage(f=2*m*f) 
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={80,10})));
   Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor 
     annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}}, 
-        rotation=180, 
+        extent={{-10,10},{10,-10}},
+        rotation=180,
         origin={0,-40})));
   Modelica.Blocks.Math.Mean meanCurrent(f=2*m*f) annotation (Placement(
         transformation(
-        extent={{-10,-10},{10,10}}, 
+        extent={{-10,-10},{10,10}},
         origin={80,-60})));
   Modelica.Electrical.Polyphase.Basic.MultiStarResistance 
     multiStarResistance(final m=m) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}}, 
-        rotation=270, 
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={-80,-60})));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
         transformation(extent={{-90,-100},{-70,-80}})));
   Modelica.Electrical.Analog.Basic.Resistor resistor(R=R) annotation (
       Placement(transformation(
-        origin={30,30}, 
-        extent={{10,-10},{-10,10}}, 
+        origin={30,30},
+        extent={{10,-10},{-10,10}},
         rotation=90)));
 equation
   connect(meanCurrent.u, currentSensor.i) annotation (Line(
@@ -79,9 +79,9 @@ equation
       points={{30,40},{-20,40}}, color={0,0,255}));
   annotation (
     experiment(
-      StopTime=0.1, 
-      Tolerance=1e-06, 
-      Interval=0.0002), 
+      StopTime=0.1,
+      Tolerance=1e-06,
+      Interval=0.0002),
     Documentation(info="<html>
 <p>This example shows an uncontrolled <code>2*m</code> pulse diode bridge rectifier with resistive load, where <code>m</code> is the number of phases.</p>
 

@@ -1,18 +1,18 @@
 ﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors.Transient;
-model Permeability 
+model Permeability
 "Determines permeability from flux and magnetic potential difference"
 
-  parameter SI.Area A 
+  parameter SI.Area A
   "Area of cross section penetrated by flux";
-  parameter SI.Length l 
+  parameter SI.Length l
   "Length associated with magnetic potential difference";
 
   Modelica.Blocks.Interfaces.RealInput Phi(unit="Wb") "Magnetic flux" 
                     annotation (Placement(
         transformation(extent={{-140,40},{-100,80}})));
-  Modelica.Blocks.Interfaces.RealInput V_m(unit="A") 
+  Modelica.Blocks.Interfaces.RealInput V_m(unit="A")
   "Magnetic potential difference" annotation (
-      Placement(transformation(extent={{-140,-80}, 
+      Placement(transformation(extent={{-140,-80},
             {-100,-40}})));
   Modelica.Blocks.Interfaces.RealOutput mu(unit="H/m") "Absolute permeability" 
                    annotation (Placement(
@@ -31,16 +31,16 @@ equation
   end if;
 
   annotation ( Icon(
-        coordinateSystem(preserveAspectRatio=false), 
+        coordinateSystem(preserveAspectRatio=false),
         graphics={Rectangle(
-          extent={{-100,100},{100,-100}}, 
-          lineColor={0,0,127}, 
-          fillColor={255,255,255}, 
+          extent={{-100,100},{100,-100}},
+          lineColor={0,0,127},
+          fillColor={255,255,255},
           fillPattern=FillPattern.Solid), Text(
-          extent={{60,-60},{-60,60}}, 
-          fillColor={255,170,85}, 
-          fillPattern=FillPattern.Solid, 
-          textString="μ")}), 
+          extent={{60,-60},{-60,60}},
+          fillColor={255,170,85},
+          fillPattern=FillPattern.Solid,
+          textString="μ")}),
   Documentation(info="<html>
 <p>This model determines the absolute and relative permeability from two real inputs:</p>
 <ul>

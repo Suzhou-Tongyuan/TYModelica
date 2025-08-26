@@ -1,11 +1,11 @@
 ﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model Impedance "Polyphase linear impedance"
   extends Interfaces.TwoPlug;
-  parameter SI.ComplexImpedance Z_ref[m](re(start=fill(1,m)),im(start=fill(0,m))) 
+  parameter SI.ComplexImpedance Z_ref[m](re(start=fill(1,m)),im(start=fill(0,m)))
     "Complex impedances R_ref + j*X_ref";
-  parameter SI.Temperature T_ref[m]=fill(293.15, m) 
+  parameter SI.Temperature T_ref[m]=fill(293.15, m)
     "Reference temperatures";
-  parameter SI.LinearTemperatureCoefficient alpha_ref[m]=zeros(m) 
+  parameter SI.LinearTemperatureCoefficient alpha_ref[m]=zeros(m)
     "Temperature coefficient of resistance (R_actual = R_ref*(1 + alpha_ref*(heatPort.T - T_ref))";
   extends Modelica.Electrical.Polyphase.Interfaces.ConditionalHeatPort(final mh=m, T=T_ref);
   parameter Boolean frequencyDependent = false "Consider frequency dependency, if true" 
@@ -13,12 +13,12 @@ model Impedance "Polyphase linear impedance"
   parameter SI.Frequency f_ref = 1 "Reference frequency, if frequency dependency is considered" 
     annotation(Dialog(enable=frequencyDependent));
   QuasiStatic.SinglePhase.Basic.Impedance impedance[m](
-    final Z_ref=Z_ref, 
-    final T_ref=T_ref, 
-    final alpha_ref=alpha_ref, 
-    final useHeatPort=fill(useHeatPort, m), 
-    final frequencyDependent=fill(frequencyDependent, m), 
-    final f_ref=fill(f_ref, m), 
+    final Z_ref=Z_ref,
+    final T_ref=T_ref,
+    final alpha_ref=alpha_ref,
+    final useHeatPort=fill(useHeatPort, m),
+    final frequencyDependent=fill(frequencyDependent, m),
+    final f_ref=fill(f_ref, m),
     final T=T_ref) 
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 equation
@@ -28,22 +28,22 @@ equation
   connect(impedance.heatPort, heatPort) annotation (Line(points={{0,-10},{0,-10},{0,-100}}, color={191,0,0}));
   annotation (Icon(graphics={
                 Text(
-              extent={{150,-80},{-150,-40}}, 
-              textString="m=%m"), Line(points={{60,0},{90,0}}, color={85,170,255}), 
-          Line(points={{-90,0},{-60,0}}, color={85,170,255}), 
+              extent={{150,-80},{-150,-40}},
+              textString="m=%m"), Line(points={{60,0},{90,0}}, color={85,170,255}),
+          Line(points={{-90,0},{-60,0}}, color={85,170,255}),
           Rectangle(
-              extent={{-70,30},{70,-30}}, 
-              lineColor={85,170,255}, 
-              fillColor={255,255,255}, 
-              fillPattern=FillPattern.Solid), 
+              extent={{-70,30},{70,-30}},
+              lineColor={85,170,255},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
                                  Polygon(
-              points={{-70,-30},{70,30},{70,-30},{-70,-30}}, 
-              lineColor={85,170,255}, 
-              fillColor={85,170,255}, 
-              fillPattern=FillPattern.Solid), 
+              points={{-70,-30},{70,30},{70,-30},{-70,-30}},
+              lineColor={85,170,255},
+              fillColor={85,170,255},
+              fillPattern=FillPattern.Solid),
         Text(
-          extent={{-150,90},{150,50}}, 
-          textString="%name", 
+          extent={{-150,90},{150,50}},
+          textString="%name",
           textColor={0,0,255})}), Documentation(info="<html>
 <p>The impedance model represents a <strong>series</strong> connection of a resistor and either an inductor or capacitor
 in each phase.<br>
