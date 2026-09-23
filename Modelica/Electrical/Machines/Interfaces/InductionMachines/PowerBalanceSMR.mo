@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
+within Modelica.Electrical.Machines.Interfaces.InductionMachines;
 record PowerBalanceSMR
   "Power balance of synchronous machines with reluctance rotor"
   extends 

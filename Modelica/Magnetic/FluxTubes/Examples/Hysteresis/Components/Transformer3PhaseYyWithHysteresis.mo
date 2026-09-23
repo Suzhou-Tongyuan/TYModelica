@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.Hysteresis.Components;
+within Modelica.Magnetic.FluxTubes.Examples.Hysteresis.Components;
 model Transformer3PhaseYyWithHysteresis
   "Three-phase transformer in Yy configuration"
 

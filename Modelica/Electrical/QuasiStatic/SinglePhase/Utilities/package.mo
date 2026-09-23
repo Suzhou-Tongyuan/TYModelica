@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase;
+within Modelica.Electrical.QuasiStatic.SinglePhase;
 package Utilities "Library with auxiliary models for testing"
   extends Modelica.Icons.UtilitiesPackage;
   annotation (Documentation(info="<html>

@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks;
+within Modelica.ComplexBlocks;
 package Interfaces "Library of connectors and partial models for input/output blocks"
   extends Modelica.Icons.InterfacesPackage;
 

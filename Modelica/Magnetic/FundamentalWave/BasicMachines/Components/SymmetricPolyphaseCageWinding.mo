@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.BasicMachines.Components;
+within Modelica.Magnetic.FundamentalWave.BasicMachines.Components;
 model SymmetricPolyphaseCageWinding "Symmetrical rotor cage"
   import Modelica.Constants.pi;
   extends Magnetic.FundamentalWave.Interfaces.TwoPortExtended;

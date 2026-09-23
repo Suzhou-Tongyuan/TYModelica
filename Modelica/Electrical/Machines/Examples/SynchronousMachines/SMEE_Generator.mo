@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMEE_Generator
   "Test example: ElectricalExcitedSynchronousMachine as Generator"
   extends Modelica.Icons.Example;

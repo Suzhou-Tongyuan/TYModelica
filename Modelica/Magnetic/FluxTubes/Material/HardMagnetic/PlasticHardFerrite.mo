@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
+within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
 record PlasticHardFerrite "Plastic-bonded hard ferrite, exemplary values"
   extends FluxTubes.Material.HardMagnetic.BaseData(
     H_cBRef=130000,

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.Force;
+within Modelica.Magnetic.FluxTubes.Shapes.Force;
 model HollowCylinderRadialFlux
   "Hollow cylinder with radial flux; constant permeability"
 

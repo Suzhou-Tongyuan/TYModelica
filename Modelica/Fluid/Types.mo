@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid;
+within Modelica.Fluid;
 package Types "Common types for fluid models"
   extends Modelica.Icons.TypesPackage;
 

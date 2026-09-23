@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples;
+within Modelica.Thermal.FluidHeatFlow.Examples;
 model ParallelCooling "Cooling circuit with parallel branches"
   extends Modelica.Icons.Example;
 

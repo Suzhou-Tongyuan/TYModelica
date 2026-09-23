@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
 partial model Source "Partial magnetic voltage or flux source"
   FluxTubes.Interfaces.PositiveMagneticPort port_p "Positive magnetic port" annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
   FluxTubes.Interfaces.NegativeMagneticPort port_n "Negative magnetic port" annotation (Placement(transformation(extent={{90,-10},{110,10}})));

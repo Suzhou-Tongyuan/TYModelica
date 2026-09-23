@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Interfaces;
+within Modelica.Thermal.FluidHeatFlow.Interfaces;
 connector FlowPort "Connector flow port"
 
   parameter FluidHeatFlow.Media.Medium medium "Medium in the connector";

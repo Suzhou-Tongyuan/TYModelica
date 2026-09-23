@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Sin "Output the sine of the input"
   extends Interfaces.ComplexSISO;
 equation

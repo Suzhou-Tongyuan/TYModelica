@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems;
+within Modelica.Clocked.Examples.Systems;
 package Utilities "Utilities for the examples"
   extends Modelica.Icons.UtilitiesPackage;
 

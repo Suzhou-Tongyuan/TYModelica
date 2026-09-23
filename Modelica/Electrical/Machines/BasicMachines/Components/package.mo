@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines;
+within Modelica.Electrical.Machines.BasicMachines;
 package Components "Machine components like AirGaps"
   extends Modelica.Icons.Package;
 

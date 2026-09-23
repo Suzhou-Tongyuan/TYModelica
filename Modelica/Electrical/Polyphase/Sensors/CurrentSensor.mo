@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Sensors;
+within Modelica.Electrical.Polyphase.Sensors;
 model CurrentSensor "Polyphase current sensor"
   extends Modelica.Icons.RoundSensor;
   parameter Integer m(final min=1) = 3 "Number of phases" annotation(Evaluate=true);

@@ -1,4 +1,4 @@
-﻿within Modelica.Utilities;
+within Modelica.Utilities;
 package System "Interaction with environment"
   extends Modelica.Icons.FunctionsPackage;
 

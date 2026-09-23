@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Icons;
+within Modelica.Electrical.Analog.Icons;
 partial model CurrentSource "Icon for current sources"
   annotation (
     Icon(coordinateSystem(

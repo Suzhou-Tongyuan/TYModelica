@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Icons;
+within Modelica.Mechanics.Rotational.Icons;
 partial class Gear "Icon of a rotational gear"
 
   annotation (Icon(

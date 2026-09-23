@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2mPulse;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2mPulse;
 model ThyristorBridge2mPulse_DC_Drive
   "2*m pulse thyristor bridge feeding a DC drive"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model Capacitor "Ideal linear electrical capacitor"
   extends Interfaces.OnePort(v(start=0));
   parameter SI.Capacitance C(start=1) "Capacitance";

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces.Internal;
+within Modelica.Mechanics.MultiBody.Forces.Internal;
 model BasicWorldTorque
   "External torque acting at frame_b, defined by 3 input signals"
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameB;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 model FixedFrame
   "Visualizing a coordinate system including axes labels (visualization data may vary dynamically)"
 

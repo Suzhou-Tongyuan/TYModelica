@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 model MultiTerminalBox "Terminal box Y/D-connection"
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);
   final parameter Integer mSystems=

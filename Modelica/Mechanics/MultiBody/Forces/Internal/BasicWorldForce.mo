@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces.Internal;
+within Modelica.Mechanics.MultiBody.Forces.Internal;
 model BasicWorldForce
   "External force acting at frame_b, defined by 3 input signals"
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameB;

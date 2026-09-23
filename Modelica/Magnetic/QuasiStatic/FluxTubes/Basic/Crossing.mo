@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Basic;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Basic;
 model Crossing "Crossing of two branches"
 
   FluxTubes.Interfaces.PositiveMagneticPort port_p1 "Positive port_p1 connected with port_p2" annotation (Placement(transformation(extent={{-110,90},{-90,110}})));

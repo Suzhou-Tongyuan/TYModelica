@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Asin "Output the arc sine of the input"
   extends Interfaces.ComplexSISO;
 equation

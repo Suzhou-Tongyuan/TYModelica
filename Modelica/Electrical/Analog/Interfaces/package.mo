@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog;
+within Modelica.Electrical.Analog;
 package Interfaces "Connectors and partial models for Analog electrical components"
   extends Modelica.Icons.InterfacesPackage;
 

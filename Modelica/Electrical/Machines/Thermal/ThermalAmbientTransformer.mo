@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal;
+within Modelica.Electrical.Machines.Thermal;
 model ThermalAmbientTransformer "Thermal ambient for transformers"
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);
   parameter Boolean useTemperatureInputs=false

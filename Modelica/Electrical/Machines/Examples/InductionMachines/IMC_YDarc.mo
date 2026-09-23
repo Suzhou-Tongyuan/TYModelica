@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.InductionMachines;
+within Modelica.Electrical.Machines.Examples.InductionMachines;
 model IMC_YDarc "Test example: InductionMachineSquirrelCage Y-D"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

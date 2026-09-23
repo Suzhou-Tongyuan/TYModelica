@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Icons;
+within Modelica.Thermal.HeatTransfer.Icons;
 model PrescribedTemperature "Icon of prescribed temperature source"
   extends FixedTemperature;
   annotation (Icon(graphics={Line(points={{-100,0},{-42,0}}, color={191,0,0})}), Documentation(info="<html>

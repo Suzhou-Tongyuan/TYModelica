@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model TransformAbsoluteVector "Transform absolute vector in to another frame"
   extends Modelica.Icons.RoundSensor;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model IdealOpAmp3Pin
   "Ideal operational amplifier (norator-nullator pair), but 3 pins"
   Interfaces.PositivePin in_p "Positive pin of the input port" annotation (

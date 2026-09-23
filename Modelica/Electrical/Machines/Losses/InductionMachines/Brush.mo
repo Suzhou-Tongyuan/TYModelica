@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses.InductionMachines;
+within Modelica.Electrical.Machines.Losses.InductionMachines;
 model Brush "Model considering voltage drop of carbon brushes"
   extends Modelica.Electrical.Polyphase.Interfaces.TwoPlug;
   parameter Machines.Losses.BrushParameters brushParameters

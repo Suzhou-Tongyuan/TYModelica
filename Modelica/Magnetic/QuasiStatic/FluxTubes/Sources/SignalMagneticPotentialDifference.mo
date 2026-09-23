@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sources;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sources;
 model SignalMagneticPotentialDifference
 "Signal-controlled magnetomotive force"
 

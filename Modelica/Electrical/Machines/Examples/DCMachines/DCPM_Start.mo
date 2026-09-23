@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.DCMachines;
+within Modelica.Electrical.Machines.Examples.DCMachines;
 model DCPM_Start
   "Test example: DC with permanent magnet starting with voltage ramp"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Media.Air;
+within Modelica.Media.Air;
 package MoistAir "Air: Moist air model (190 ... 647 K)"
   extends Interfaces.PartialCondensingGases(
     mediumName="Moist air",

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
 model Conductor "Single-phase linear conductor"
   extends Interfaces.OnePort;
   import Modelica.ComplexMath.real;

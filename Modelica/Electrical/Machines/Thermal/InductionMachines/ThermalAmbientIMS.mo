@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal.InductionMachines;
+within Modelica.Electrical.Machines.Thermal.InductionMachines;
 model ThermalAmbientIMS
   "Thermal ambient for induction machine with slipring"
   extends 

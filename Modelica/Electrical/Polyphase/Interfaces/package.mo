@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase;
+within Modelica.Electrical.Polyphase;
 package Interfaces "Interfaces for electrical polyphase models"
   extends Modelica.Icons.InterfacesPackage;
 

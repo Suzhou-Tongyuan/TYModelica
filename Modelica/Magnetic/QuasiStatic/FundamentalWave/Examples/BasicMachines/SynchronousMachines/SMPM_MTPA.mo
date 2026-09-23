@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.SynchronousMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.SynchronousMachines;
 model SMPM_MTPA "Test example: PermanentMagnetSynchronousMachine, investigating maximum torque per Amps"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model ResonanceCircuits
   "Resonance circuits: example to demonstrate generation of FMUs (Functional Mock-up Units)"
   import Modelica.Constants.pi;

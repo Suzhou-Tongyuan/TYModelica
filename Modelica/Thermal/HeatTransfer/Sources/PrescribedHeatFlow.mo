@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Sources;
+within Modelica.Thermal.HeatTransfer.Sources;
 model PrescribedHeatFlow "Prescribed heat flow boundary condition"
   parameter SI.Temperature T_ref=293.15
     "Reference temperature";

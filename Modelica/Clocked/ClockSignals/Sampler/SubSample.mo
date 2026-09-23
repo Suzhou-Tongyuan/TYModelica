@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Sampler;
+within Modelica.Clocked.ClockSignals.Sampler;
 block SubSample "Sub-sample the input clock and provide it as output clock"
   parameter Integer factor(min=1) "Sub-sampling factor (>= 1)" annotation(Evaluate=true);
 

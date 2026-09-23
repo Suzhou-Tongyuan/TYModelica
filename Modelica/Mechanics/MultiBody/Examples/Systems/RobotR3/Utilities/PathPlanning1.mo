@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
 model PathPlanning1
   "Generate reference angles for fastest kinematic movement"
   extends Blocks.Icons.Block;

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.UsersGuide;
+within Modelica.Magnetic.FundamentalWave.UsersGuide;
 class Contact "Contact"
   extends Modelica.Icons.Contact;
   annotation (Documentation(info="<html>

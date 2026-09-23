@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Interfaces;
+within Modelica.Mechanics.Translational.Interfaces;
 partial model PartialFriction "Base model of Coulomb friction elements"
 
   //extends Translational.Interfaces.PartialRigid;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMPM_Braking
   "Test example: PermanentMagnetSynchronousMachine acting as brake"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿package Modelica "Modelica Standard Library-Version4.0.0.TY.1"
+package Modelica "Modelica Standard Library-Version4.0.0.TY.1"
   parameter Boolean MediumTransfer = true "= true, if medium will transmit";
   extends Modelica.Icons.Package;
 package UsersGuide "User's Guide"
@@ -2348,6 +2348,89 @@ more of the following changes.
 </ul>
 </html>"));
 end VersionManagement;
+  class Version_4_0_0_TY_1_build_11 "Version 4.0.0.TY.1 build 11 (September 30, 2026)"
+    extends Modelica.Icons.ReleaseNotes;
+
+    annotation(Documentation(info="<html><p>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
+</p>
+<p>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 11，2026.09.30</strong></span>
+</p>
+<p>
+<br>1. Added 2 Blocks models, ExternalInput and ExternalOutpu. They can be used as top-level input/output connectors inside models and automatically inherit the type of the connected port. Details are listed in the table below:
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">ExternalInput</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Interfaces.ExternalInput</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Can be used as a top-level input connector inside a model and automatically inherit the type of the connected port</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">ExternalOutput</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Interfaces.ExternalOutput</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Can be used as a top-level output connector inside a model and automatically inherit the type of the connected port</td></tr></tbody></table><p>
+2. Optimized one Blocks model CombiTimeTable. Added vectorization parameter to improve the calculation efficiency of multi-column data interpolation. Details are shown in the table below:
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.CombiTimeTable</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Table look-up with respect to time and linear/periodic extrapolation methods (data from matrix/file)</td></tr></tbody></table><p>
+3. Fixed display errors in the documentation browser for all functions under the path: <span style=\"color: rgb(51, 51, 51);\">Modelica.Math.Matrices.LAPACK.</span>
+</p>
+<p>
+4. Revised the description shown in the documentation browser for model: <span style=\"color: rgb(51, 51, 51);\">Modelica.Electrical.Machines.BasicMachines.Components.PartialAirGapDC.</span>
+</p>
+</html>"));
+  end Version_4_0_0_TY_1_build_11;
+  class Version_4_0_0_TY_1_build_10 "Version 4.0.0.TY.1 build 10 (May 30, 2026)"
+    extends Modelica.Icons.ReleaseNotes;
+
+    annotation(Documentation(info="<html><p>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
+</p>
+<p>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 10，2026.05.30</strong></span>
+</p>
+<p>
+<br>1. Added 5 new Blocks models, enabling parameter adjustment for interpolation data tables and file paths after FMU export. Detailed specifications are presented in the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTimeTableT</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.CombiTimeTableT</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Parameter tunable. Table look-up with respect to time and linear/periodic extrapolation methods (data from matrix/file)</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable1DTs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable1DTs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Parameter tunable. Table look-up in one dimension (matrix/file) with one input and n outputs</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable1DTv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable1DTv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Parameter tunable. Table look-up in one dimension (matrix/file) with n inputs and n outputs</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable2DTs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable2DTs</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Parameter tunable. Table look-up in two dimensions (matrix/file)</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">CombiTable2DTv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.CombiTable2DTv</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Parameter tunable. Table look-up in two dimensions (matrix/file) with vector inputs and vector output of size n</td></tr></tbody></table><p>
+<br>2. Adapted modifications to the underlying kernel and optimized external functions for table interpolation. The 4 compatible models are listed in the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"384.33\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">One-dimensional linear interpolation table</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Two-dimensional linear interpolation table</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Three-dimensional linear interpolation table</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable4D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable4D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Four-dimensional linear interpolation table</td></tr></tbody></table><p>
+<br>
+</p>
+</html>"));
+  end Version_4_0_0_TY_1_build_10;
+  class Version_4_0_0_TY_1_build_9 "Version 4.0.0.TY.1 build 9 (March 30, 2026)"
+    extends Modelica.Icons.ReleaseNotes;
+
+    annotation(Documentation(info="<html><p>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
+</p>
+<p>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 9，2026.03.30</strong></span>
+</p>
+<p>
+<br>1. One new model has been added, as detailed in the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable4D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable4D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Four-dimensional linear interpolation table</td></tr></tbody></table><p>
+<br>2. 4 New Blocks Example Models Added, see the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Example Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"384.33\">Example Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Example Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable2D_File</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable2D_File</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Example for the two-dimensional linear interpolation table which is defined on file</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable3D_File</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable3D_File</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Example for the three-dimensional linear interpolation table which is defined on file</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable4D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable4D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Example for the four-dimensional linear interpolation table which is defined by model-parameters</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable4D_File</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Examples.LookupTable4D_File</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Example for the four-dimensional linear interpolation table which is defined on file</td></tr></tbody></table><p>
+<br>
+</p>
+</html>"));
+  end Version_4_0_0_TY_1_build_9;
+  class Version_4_0_0_TY_1_build_8 "Version 4.0.0.TY.1 build 8 (December 30, 2025)"
+    extends Modelica.Icons.ReleaseNotes;
+
+    annotation(Documentation(info="<html><p>
+<span style=\"font-size: 22px;\"><strong>Version Description</strong></span>
+</p>
+<p>
+<span style=\"font-size: 19px;\"><strong>Version 4.0.0.TY.1 build 8，2025.12.30</strong></span>
+</p>
+<p>
+<br>1. Two new models has been added, as detailed in the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"293.36\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">KinematicPTPJerk</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Sources.KinematicPTPJerk</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Move as fast as possible along a distance within given kinematic constraints</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">TYAdapters</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Interfaces.TYAdapters</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Used to avoid the problem of model differentiation failure</td></tr></tbody></table><p>
+<br>2. Optimizations have been made to LookupTable1D, LookupTable2D, LookupTable3D, Equality, Add, Add3, Product, as detailed in the table below:<br>
+</p>
+<table style=\"width: 100%;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"100\">Model Name</th><th colSpan=\"1\" rowSpan=\"1\" width=\"384.33\">Model Path</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Description</th></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable1D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Protected variables by adding the parameter modifier to avoid slow translation efficiency issues.</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable2D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Protected variables by adding the parameter modifier to avoid slow translation efficiency issues.</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Tables.NTables.LookupTable3D</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Protected variables by adding the parameter modifier to avoid slow translation efficiency issues.</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Equality</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Logical.Equality</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Used to eliminate warnings.</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Add</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.Add</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optional integer and boolean types are introduced to expand the range of usage.</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Add3</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.Add3</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optional integer and boolean types are introduced to expand the range of usage.</td></tr><tr><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Product</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Modelica.Blocks.Math.Product</td><td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">Optional integer and boolean types are introduced to expand the range of usage.</td></tr></tbody></table><p>
+<br>
+</p>
+</html>"));
+  end Version_4_0_0_TY_1_build_8;
   class Version_4_0_0_TY_1_build_7 "Version 4.0.0.TY.1 build 7 (August 30, 2025)"
     extends Modelica.Icons.ReleaseNotes;
 

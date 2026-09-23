@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.InductionMachines;
+within Modelica.Electrical.Machines.BasicMachines.InductionMachines;
 model IM_SquirrelCage
   "Induction machine with squirrel cage rotor"
   extends Machines.Interfaces.PartialBasicInductionMachine(

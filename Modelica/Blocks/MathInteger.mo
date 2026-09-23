@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package MathInteger
   "Library of Integer mathematical functions as input/output blocks"
   extends Modelica.Icons.Package;

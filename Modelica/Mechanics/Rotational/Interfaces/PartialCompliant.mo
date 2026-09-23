@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Interfaces;
+within Modelica.Mechanics.Rotational.Interfaces;
 partial model PartialCompliant
   "Partial model for the compliant connection of two rotational 1-dim. shaft flanges"
 

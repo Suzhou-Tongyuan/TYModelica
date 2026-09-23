@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.Hysteresis;
+within Modelica.Magnetic.FluxTubes.Examples.Hysteresis;
 model ThreePhaseTransformerWithRectifier
   "Three-phase transformer (including hysteresis effect) with rectifier"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Types;
+within Modelica.Clocked.Types;
 type Resolution = enumeration(
     y "y (year)",
     d "d (day)",

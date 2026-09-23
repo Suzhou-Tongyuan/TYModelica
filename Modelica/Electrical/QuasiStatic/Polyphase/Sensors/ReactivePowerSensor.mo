@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
 model ReactivePowerSensor "Three-phase sensor for reactive power"
   extends Modelica.Icons.RoundSensor;
   final parameter Integer m(final min=1) = 3 "Number of phases" annotation(Evaluate=true);

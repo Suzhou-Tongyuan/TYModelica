@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses.DCMachines;
+within Modelica.Electrical.Machines.Losses.DCMachines;
 model StrayLoad
   "Model of stray load losses dependent on current and speed"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;

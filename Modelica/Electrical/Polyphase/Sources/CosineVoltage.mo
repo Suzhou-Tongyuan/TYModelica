@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Sources;
+within Modelica.Electrical.Polyphase.Sources;
 model CosineVoltage "Polyphase cosine voltage source"
   extends Interfaces.TwoPlug;
   parameter SI.Voltage V[m](start=fill(1, m))

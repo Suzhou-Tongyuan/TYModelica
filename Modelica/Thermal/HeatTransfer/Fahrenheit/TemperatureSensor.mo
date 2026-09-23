@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Fahrenheit;
+within Modelica.Thermal.HeatTransfer.Fahrenheit;
 model TemperatureSensor "Absolute temperature sensor in degFahrenheit"
 
   Modelica.Blocks.Interfaces.RealOutput T annotation (Placement(

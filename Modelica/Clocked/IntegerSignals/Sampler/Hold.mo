@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Sampler;
+within Modelica.Clocked.IntegerSignals.Sampler;
 block Hold
   "Hold the clocked, Integer input signal and provide it as continuous-time output signal (zero order hold)"
   extends Clocked.IntegerSignals.Interfaces.PartialSISOHold;

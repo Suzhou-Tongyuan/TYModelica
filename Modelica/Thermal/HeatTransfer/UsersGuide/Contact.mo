@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.UsersGuide;
+within Modelica.Thermal.HeatTransfer.UsersGuide;
 class Contact "Contact"
   extends Modelica.Icons.Contact;
   annotation (preferredView="info",Documentation(info="<html>

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
+within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
 record Sm2Co17 "Sm2Co17 sintered, exemplary values"
   extends FluxTubes.Material.HardMagnetic.BaseData(
     H_cBRef=750000,

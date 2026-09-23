@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
 model FrequencySensor "Frequency sensor"
   extends FluxTubes.Interfaces.AbsoluteSensor;
   import Modelica.Constants.pi;

@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Gain "Output the product of a gain value with the input signal"
 
   parameter Complex k(re(start=1), im(start=0))

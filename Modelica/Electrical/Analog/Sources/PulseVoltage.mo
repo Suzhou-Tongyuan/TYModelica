@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model PulseVoltage "Pulse voltage source"
   parameter SI.Voltage V(start=1) "Amplitude of pulse";
   parameter Real width(

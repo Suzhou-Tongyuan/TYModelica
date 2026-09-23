@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.IntegerSignals;
+within Modelica.Clocked.Examples.Elementary.IntegerSignals;
 model TimeBasedStep
   "Example of using the clocked simulation time based Integer Step source block"
    extends Modelica.Icons.Example;

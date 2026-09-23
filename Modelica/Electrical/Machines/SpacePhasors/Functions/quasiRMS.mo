@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Functions;
+within Modelica.Electrical.Machines.SpacePhasors.Functions;
 function quasiRMS "Calculate quasi-RMS value of input"
   extends Modelica.Icons.Function;
   import Modelica.Constants.pi;

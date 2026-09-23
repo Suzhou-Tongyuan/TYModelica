@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Sources;
+within Modelica.Magnetic.FundamentalWave.Sources;
 model SignalMagneticPotentialDifference
   "Source of magnetic potential difference with signal input"
   extends Magnetic.FundamentalWave.Interfaces.TwoPortElementary;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational;
+within Modelica.Mechanics.Translational;
 package Components "Components for 1D translational mechanical drive trains"
   extends Modelica.Icons.Package;
 

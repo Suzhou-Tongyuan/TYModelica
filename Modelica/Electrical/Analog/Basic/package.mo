@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog;
+within Modelica.Electrical.Analog;
 package Basic "Basic electrical components"
 
   extends Modelica.Icons.Package;

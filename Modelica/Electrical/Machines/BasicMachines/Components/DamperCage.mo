@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model DamperCage "Squirrel Cage"
   parameter SI.Inductance Lrsigmad
     "Stray inductance in d-axis per phase translated to stator";

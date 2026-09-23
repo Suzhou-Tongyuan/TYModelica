@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Fahrenheit;
+within Modelica.Thermal.HeatTransfer.Fahrenheit;
 model PrescribedTemperature
   "Variable temperature boundary condition in degFahrenheit"
   extends HeatTransfer.Icons.PrescribedTemperature;

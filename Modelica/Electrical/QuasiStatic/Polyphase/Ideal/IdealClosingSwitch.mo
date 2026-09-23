@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Ideal;
+within Modelica.Electrical.QuasiStatic.Polyphase.Ideal;
 model IdealClosingSwitch "Polyphase ideal closer"
   extends QuasiStatic.Polyphase.Interfaces.TwoPlug;
   parameter SI.Resistance Ron[m](final min=zeros(m), start=

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes;
+within Modelica.Magnetic.FluxTubes.Shapes;
 package Leakage "Leakage flux tubes with position-independent permeance and hence no force generation; mu_r=1"
   extends Modelica.Icons.VariantsPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Blocks;
+within Modelica.Electrical.Machines.SpacePhasors.Blocks;
 block FromPolar "Converts a space phasor from polar coordinates"
   extends Modelica.Blocks.Interfaces.MIMOs(final n=2);
 equation

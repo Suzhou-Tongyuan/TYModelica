@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC;
+within Modelica.Electrical.PowerConverters.ACDC;
 package Control "Control components for rectifiers"
   extends Modelica.Icons.Package;
   annotation (Documentation(info="<html>

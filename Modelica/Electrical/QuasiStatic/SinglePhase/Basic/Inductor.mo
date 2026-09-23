@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
 model Inductor "Single-phase linear inductor"
   extends Interfaces.OnePort;
   import Modelica.ComplexMath.j;

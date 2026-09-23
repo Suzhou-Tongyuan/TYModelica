@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
 model Ground "Electrical ground"
 
   Interfaces.PositivePin pin annotation (Placement(transformation(extent={{

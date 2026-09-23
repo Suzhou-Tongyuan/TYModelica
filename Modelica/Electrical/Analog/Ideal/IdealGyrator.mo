@@ -1,4 +1,4 @@
-﻿model IdealGyrator "Ideal gyrator"
+model IdealGyrator "Ideal gyrator"
   extends Interfaces.TwoPort;
   parameter SI.Conductance G(start=1) "Gyration conductance";
 

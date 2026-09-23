@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
 block IntakeManifold "Dynamics of the intake manifold"
   extends Modelica.Blocks.Icons.Block;
 

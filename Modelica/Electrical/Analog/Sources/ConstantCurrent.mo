@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model ConstantCurrent "Source for constant current"
   parameter SI.Current I(start=1) "Value of constant current";
   extends Interfaces.OnePort;

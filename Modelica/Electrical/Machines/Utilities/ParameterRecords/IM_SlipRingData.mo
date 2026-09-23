@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities.ParameterRecords;
+within Modelica.Electrical.Machines.Utilities.ParameterRecords;
 record IM_SlipRingData
   "Common parameters for induction machines with slip ring"
   extends InductionMachineData;

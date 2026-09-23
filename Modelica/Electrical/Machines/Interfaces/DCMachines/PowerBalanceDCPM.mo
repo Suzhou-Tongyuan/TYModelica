@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.DCMachines;
+within Modelica.Electrical.Machines.Interfaces.DCMachines;
 record PowerBalanceDCPM
   "Power balance of DC machines with permanent magnet"
   extends Machines.Interfaces.DCMachines.PartialPowerBalanceDCMachines(final

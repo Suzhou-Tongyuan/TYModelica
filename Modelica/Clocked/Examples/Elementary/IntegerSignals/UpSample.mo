@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.IntegerSignals;
+within Modelica.Clocked.Examples.Elementary.IntegerSignals;
 model UpSample "Example of an UpSample block for Integer signals"
    extends Modelica.Icons.Example;
 

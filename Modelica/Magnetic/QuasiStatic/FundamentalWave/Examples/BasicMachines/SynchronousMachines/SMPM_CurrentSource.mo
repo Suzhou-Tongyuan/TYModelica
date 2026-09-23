@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.SynchronousMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.SynchronousMachines;
 model SMPM_CurrentSource
   "Test example: PermanentMagnetSynchronousMachine fed by current source"
   extends Modelica.Icons.Example;

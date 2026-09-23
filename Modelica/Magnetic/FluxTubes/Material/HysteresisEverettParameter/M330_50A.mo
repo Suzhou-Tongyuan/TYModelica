@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HysteresisEverettParameter;
+within Modelica.Magnetic.FluxTubes.Material.HysteresisEverettParameter;
 record M330_50A "M330-50A"
   extends BaseData(
     Hsat = 650,

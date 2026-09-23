@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational;
+within Modelica.Mechanics.Rotational;
 package Sources "Sources to drive 1D rotational mechanical components"
   extends Modelica.Icons.SourcesPackage;
 

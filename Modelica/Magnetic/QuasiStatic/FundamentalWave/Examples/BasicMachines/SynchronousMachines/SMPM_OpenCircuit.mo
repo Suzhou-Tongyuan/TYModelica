@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.SynchronousMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.SynchronousMachines;
 model SMPM_OpenCircuit
   "Test example: PermanentMagnetSynchronousMachine with inverter"
   extends Modelica.Icons.Example;

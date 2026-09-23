@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.SolenoidActuator.Components;
+within Modelica.Magnetic.FluxTubes.Examples.SolenoidActuator.Components;
 model AdvancedSolenoid
   "Advanced network model of a lifting magnet with planar armature end face, split magnetomotive force"
 

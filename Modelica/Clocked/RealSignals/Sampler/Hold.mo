@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler;
+within Modelica.Clocked.RealSignals.Sampler;
 block Hold
   "Hold the clocked, Real input signal and provide it as continuous-time output signal (zero order hold)"
 extends Clocked.RealSignals.Interfaces.PartialSISOHold;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog;
+within Modelica.Electrical.Analog;
 package Lines "Lossy and lossless segmented transmission lines, and LC distributed line models"
   extends Modelica.Icons.Package;
 

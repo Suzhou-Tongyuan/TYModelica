@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Interfaces.ACDC;
+within Modelica.Electrical.PowerConverters.Interfaces.ACDC;
 partial model ACtwoPin "Positive and negative AC pin"
 
   Modelica.Electrical.Analog.Interfaces.PositivePin ac_p

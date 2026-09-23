@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Functions;
+within Modelica.Electrical.Polyphase.Functions;
 function numberOfSymmetricBaseSystems
   "Determines the number of symmetric base systems of m phase symmetric system"
   extends Modelica.Icons.Function;

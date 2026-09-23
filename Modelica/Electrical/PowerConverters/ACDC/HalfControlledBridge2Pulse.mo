@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC;
+within Modelica.Electrical.PowerConverters.ACDC;
 model HalfControlledBridge2Pulse
   "Two pulse Graetz half controlled rectifier bridge"
   import Modelica.Constants.pi;

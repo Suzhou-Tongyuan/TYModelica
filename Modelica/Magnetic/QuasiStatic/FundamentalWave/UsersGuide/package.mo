@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>

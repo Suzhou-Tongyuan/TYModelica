@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Basic;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Basic;
 model Ground "Zero magnetic potential"
 
   FluxTubes.Interfaces.PositiveMagneticPort port annotation (Placement(transformation(extent={{-10,110},{10,90}}, rotation=-0)));

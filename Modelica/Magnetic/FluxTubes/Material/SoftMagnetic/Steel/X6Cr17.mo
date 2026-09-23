@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.Steel;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.Steel;
 record X6Cr17 "X6Cr17 (1.4016)"
   extends FluxTubes.Material.SoftMagnetic.BaseData(
     mu_i=274,

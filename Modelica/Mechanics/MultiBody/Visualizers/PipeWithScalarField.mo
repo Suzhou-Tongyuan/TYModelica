@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 model PipeWithScalarField
   "Visualizing a pipe with scalar field quantities along the pipe axis"
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialVisualizer;

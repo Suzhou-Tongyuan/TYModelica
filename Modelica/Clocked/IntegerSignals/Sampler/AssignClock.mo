@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Sampler;
+within Modelica.Clocked.IntegerSignals.Sampler;
 block AssignClock "Assign a clock to a clocked Integer signal"
   Modelica.Blocks.Interfaces.IntegerInput u
     "Connector of clocked, Integer input signal" 

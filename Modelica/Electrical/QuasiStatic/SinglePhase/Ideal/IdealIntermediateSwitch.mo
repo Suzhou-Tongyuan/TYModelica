@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Ideal;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Ideal;
 model IdealIntermediateSwitch "Ideal intermediate switch"
   import Modelica.ComplexMath.real;
   import Modelica.ComplexMath.conj;

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler;
+within Modelica.Clocked.RealSignals.Sampler;
 block AssignClock "Assign a clock to a clocked Real signal"
 
   Modelica.Blocks.Interfaces.RealInput u

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sources;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sources;
 model ConstantMagneticFlux "Source of constant magnetic flux"
 
   extends FluxTubes.Interfaces.Source;

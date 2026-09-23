@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced.SurfaceCharacteristics;
+within Modelica.Mechanics.MultiBody.Visualizers.Advanced.SurfaceCharacteristics;
 function pipeWithScalarField
   "Function defining the surface characteristic of a pipe where a scalar field value is displayed with color along the pipe axis"
   extends Modelica.Mechanics.MultiBody.Interfaces.partialSurfaceCharacteristic(

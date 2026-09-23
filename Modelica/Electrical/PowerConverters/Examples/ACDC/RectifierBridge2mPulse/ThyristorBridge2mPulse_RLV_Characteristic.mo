@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2mPulse;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2mPulse;
 model ThyristorBridge2mPulse_RLV_Characteristic
   "Characteristic of 2*m pulse thyristor rectifier bridge with R-L load and voltage"
   extends ExampleTemplates.ThyristorBridge2mPulse(pulse2m(

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMPM_VoltageSource
   "Test example: PermanentMagnetSynchronousMachine fed by FOC"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACAC.Control;
+within Modelica.Electrical.PowerConverters.ACAC.Control;
 block VoltageToAngle "Reference voltage to firing angle converter"
   extends Modelica.Blocks.Icons.Block;
   import Modelica.Constants.pi;

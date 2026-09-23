@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
 model EngineV6_analytic "V6 engine with analytic loop handling"
   parameter Boolean animation=true "= true, if animation shall be enabled";
   replaceable model Cylinder = Cylinder_analytic_CAD constrainedby CylinderBase

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal.InductionMachines;
+within Modelica.Electrical.Machines.Thermal.InductionMachines;
 model ThermalAmbientIMC
   "Thermal ambient for induction machine with squirrel cage"
   extends 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model Conductor "Ideal linear electrical conductors"
   extends Interfaces.TwoPlug;
   parameter SI.Conductance G[m](start=fill(1, m))

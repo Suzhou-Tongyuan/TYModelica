@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 model Cylindrical
   "Cylindrical joint (2 degrees-of-freedom, 4 potential states)"
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;

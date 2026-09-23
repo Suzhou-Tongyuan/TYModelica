@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.Utilities;
+within Modelica.Electrical.Analog.Examples.Utilities;
 model DirectInductor "Input/output block of a direct inductor model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.Inductance L(min=0)=1 "Inductance";

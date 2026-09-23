@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic;
+within Modelica.Magnetic;
 package FluxTubes "Library for modelling of electromagnetic devices with lumped magnetic networks"
 
   import Modelica.Constants.pi;

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Utilities;
+within Modelica.Magnetic.FluxTubes.Utilities;
 function initPreisach
   "Function used for the initialization of the Preisach hysteresis model GenericHystPreisachEverett"
   extends Modelica.Icons.Function;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model ExponentialsCurrent "Rising and falling exponential current source"
   parameter Real iMax(start=1) "Upper bound for rising edge";
   parameter SI.Time riseTime(min=0, start=0.5) "Rise time";

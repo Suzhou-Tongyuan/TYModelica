@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.DCAC.Control;
+within Modelica.Electrical.PowerConverters.DCAC.Control;
 block IntersectivePWM "Intersective PWM"
   extends Modelica.Blocks.Icons.Block;
   import Modelica.Electrical.PowerConverters.Types.ReferenceType;

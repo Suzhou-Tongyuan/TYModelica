@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sensors;
+within Modelica.Electrical.Analog.Sensors;
 model PotentialSensor "Sensor to measure the potential"
   extends Modelica.Icons.RoundSensor;
 

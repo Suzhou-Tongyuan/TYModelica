@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic;
+within Modelica.Magnetic;
 package QuasiStatic "Quasi-static magnetic package"
 extends Modelica.Icons.Package;
 

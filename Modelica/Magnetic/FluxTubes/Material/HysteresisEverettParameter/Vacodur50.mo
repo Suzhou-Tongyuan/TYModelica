@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HysteresisEverettParameter;
+within Modelica.Magnetic.FluxTubes.Material.HysteresisEverettParameter;
 record Vacodur50 "Vacodur50"
   extends BaseData(
     M = 1.002,

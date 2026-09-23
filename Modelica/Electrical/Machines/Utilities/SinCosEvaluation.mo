@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 block SinCosEvaluation "Evaluation of the signals of a sin-cos-resolver"
   extends Modelica.Blocks.Icons.Block;
   Blocks.Interfaces.RealInput u[4] "Signal from sin-cos-resolver" 

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.NonPeriodic;
+within Modelica.Clocked.IntegerSignals.NonPeriodic;
 block IntegerChange "Indicate Integer signal changing"
   extends Clocked.ClockSignals.Interfaces.ClockedBlockIcon;
 

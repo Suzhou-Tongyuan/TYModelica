@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples;
+within Modelica.Electrical.Machines.Examples;
 package SynchronousMachines "Test examples of synchronous machines"
   extends Modelica.Icons.ExamplesPackage;
 

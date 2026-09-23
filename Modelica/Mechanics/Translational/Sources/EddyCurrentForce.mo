@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sources;
+within Modelica.Mechanics.Translational.Sources;
 model EddyCurrentForce "Simple model of a translational eddy current brake"
   import Modelica.Electrical.Machines.Thermal.linearTemperatureDependency;
   parameter SI.Force f_nominal

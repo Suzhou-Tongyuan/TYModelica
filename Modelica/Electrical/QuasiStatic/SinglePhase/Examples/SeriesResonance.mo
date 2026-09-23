@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Examples;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Examples;
 model SeriesResonance "Series resonance circuit"
   extends Modelica.Icons.Example;
   output SI.Current I_abs=complexToPolar.len "Current";

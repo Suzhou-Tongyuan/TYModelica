@@ -1,4 +1,4 @@
-﻿within Modelica.Math;
+within Modelica.Math;
 function wrapAngle "Wrap angle to interval ]-pi,pi] or [0,2*pi["
   extends Modelica.Math.Icons.AxisCenter;
   import Modelica.Constants.pi;

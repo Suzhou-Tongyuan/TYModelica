@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial;
+within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial;
 class OverView "Overview of MultiBody library"
   extends Modelica.Icons.Information;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.UsersGuide;
+within Modelica.Mechanics.Rotational.UsersGuide;
 class Overview "Overview"
   extends Modelica.Icons.Information;
 

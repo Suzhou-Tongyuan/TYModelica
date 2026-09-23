@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody;
+within Modelica.Mechanics.MultiBody;
 package Sensors "Sensors to measure variables"
   extends Modelica.Icons.SensorsPackage;
 

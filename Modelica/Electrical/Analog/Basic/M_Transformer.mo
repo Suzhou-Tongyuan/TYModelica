@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model M_Transformer "Generic transformer with free number of inductors"
 
   parameter Integer N(final min=1) = 3 "Number of inductors";

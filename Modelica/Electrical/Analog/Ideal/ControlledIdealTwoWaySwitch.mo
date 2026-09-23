@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model ControlledIdealTwoWaySwitch "Controlled ideal two-way switch"
   parameter SI.Voltage level=0.5 "Switch level";
   parameter SI.Resistance Ron(final min=0) = 1e-5 "Closed switch resistance";

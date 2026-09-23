@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sources;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sources;
 model VariableCurrentSource "Variable polyphase AC current"
   extends Interfaces.Source;
   Modelica.Blocks.Interfaces.RealInput f(unit="Hz") annotation (Placement(

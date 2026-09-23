@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.Transformers;
+within Modelica.Electrical.Machines.Examples.Transformers;
 model TransformerTestbench "Transformer test bench"
   extends Modelica.Icons.Example;
   parameter SI.Resistance RL[3]=fill(1/3, 3)

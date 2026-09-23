@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3;
 model OneAxis
   "Model of one axis of robot (controller, motor, gearbox) with simple load"
 

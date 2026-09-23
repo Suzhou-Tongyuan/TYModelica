@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.ParameterRecords;
+within Modelica.Electrical.Batteries.ParameterRecords;
 record StackData "Parameters for stacks including degradation"
   extends Modelica.Electrical.Batteries.BaseClasses.BaseStackData(
     redeclare Modelica.Electrical.Batteries.ParameterRecords.CellData cellDataOriginal,

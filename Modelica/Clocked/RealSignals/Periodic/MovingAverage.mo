@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Periodic;
+within Modelica.Clocked.RealSignals.Periodic;
 block MovingAverage
   "Moving average filter (= FIR filter with coefficients a = fill(1/n,n), but implemented recursively)"
   extends Clocked.RealSignals.Interfaces.PartialClockedSISO;

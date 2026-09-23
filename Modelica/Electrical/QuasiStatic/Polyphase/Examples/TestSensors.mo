@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Examples;
+within Modelica.Electrical.QuasiStatic.Polyphase.Examples;
 model TestSensors
   extends Modelica.Icons.Example;
   constant Integer m=3 "Number of phases";

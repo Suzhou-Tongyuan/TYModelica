@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.DCMachines;
+within Modelica.Electrical.Machines.Examples.DCMachines;
 model DC_CompareCharacteristics
   "Test example: Compare torque-speed characteristic of DC motors"
   extends Modelica.Icons.Example;

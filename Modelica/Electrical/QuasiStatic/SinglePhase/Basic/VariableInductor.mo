@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
 model VariableInductor "Single-phase variable inductor"
   extends Interfaces.OnePort;
   import Modelica.ComplexMath.j;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Icons;
+within Modelica.Electrical.Batteries.Icons;
 partial record BaseCellRecord "Indicates base cell data"
   parameter String CellType="Cell Data" "Indicates cell type";
   annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={

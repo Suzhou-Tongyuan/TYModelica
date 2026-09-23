@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Interfaces;
+within Modelica.Thermal.FluidHeatFlow.Interfaces;
 partial model FlowSensor "Partial model of flow sensor"
   extends Modelica.Icons.RoundSensor;
   extends FluidHeatFlow.BaseClasses.TwoPort(

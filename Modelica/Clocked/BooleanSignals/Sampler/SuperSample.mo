@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.Sampler;
+within Modelica.Clocked.BooleanSignals.Sampler;
 block SuperSample
   "Super-sample the clocked Boolean input signal and provide it as clocked output signal"
   parameter Boolean inferFactor=true

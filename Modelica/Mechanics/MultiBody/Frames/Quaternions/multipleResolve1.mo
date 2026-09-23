@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
+within Modelica.Mechanics.MultiBody.Frames.Quaternions;
 function multipleResolve1
   "Transform several vectors from frame 2 to frame 1"
   extends Modelica.Icons.Function;

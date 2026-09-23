@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sensors;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sensors;
 model RotorDisplacementAngle "Rotor lagging angle"
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   parameter Integer p(min=1) "Number of pole pairs";

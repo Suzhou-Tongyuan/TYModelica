@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model RelativeSensor
   "Measure relative kinematic quantities between two frame connectors"
 

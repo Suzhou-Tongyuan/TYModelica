@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model QuadraticSpeedDependentTorque
   "Quadratic dependency of torque versus speed"
   extends Modelica.Mechanics.Rotational.Interfaces.PartialTorque;

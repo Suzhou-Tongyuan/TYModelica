@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Interfaces;
+within Modelica.Mechanics.Translational.Interfaces;
 partial model PartialTwoFlangesAndSupport
   "Partial model for a component with two translational 1-dim. shaft flanges and a support used for graphical modeling, i.e., the model is build up by drag-and-drop from elementary components"
   parameter Boolean useSupport=false

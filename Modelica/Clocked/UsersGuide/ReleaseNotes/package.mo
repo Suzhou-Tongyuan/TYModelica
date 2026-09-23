@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.UsersGuide;
+within Modelica.Clocked.UsersGuide;
 package ReleaseNotes "Release notes"
   extends Modelica.Icons.ReleaseNotes;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.BooleanSignals;
+within Modelica.Clocked.Examples.Elementary.BooleanSignals;
 model BackSample "Example of a BackSample block for Boolean signals"
    extends Modelica.Icons.Example;
 

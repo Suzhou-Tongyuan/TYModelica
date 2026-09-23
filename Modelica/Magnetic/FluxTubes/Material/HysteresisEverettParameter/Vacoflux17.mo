@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HysteresisEverettParameter;
+within Modelica.Magnetic.FluxTubes.Material.HysteresisEverettParameter;
 record Vacoflux17 "Vacoflux17"
   extends BaseData(
     M = 0.919590,

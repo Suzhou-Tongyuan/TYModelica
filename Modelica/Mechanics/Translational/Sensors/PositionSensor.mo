@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sensors;
+within Modelica.Mechanics.Translational.Sensors;
 model PositionSensor "Ideal sensor to measure the absolute position"
   extends Translational.Interfaces.PartialAbsoluteSensor;
   Modelica.Blocks.Interfaces.RealOutput s(unit="m")

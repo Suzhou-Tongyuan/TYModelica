@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Interfaces;
+within Modelica.Thermal.FluidHeatFlow.Interfaces;
 partial model AbsoluteSensor "Partial model of absolute sensor"
   extends Modelica.Icons.RoundSensor;
   parameter FluidHeatFlow.Media.Medium medium=FluidHeatFlow.Media.Medium()

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Interfaces;
+within Modelica.Electrical.Analog.Interfaces;
 partial model IdealSwitch "Ideal electrical switch"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;
   parameter SI.Resistance Ron(final min=0) = 1e-5

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Examples;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Examples;
 model ParallelResonance "Parallel resonance circuit"
   extends Modelica.Icons.Example;
   output SI.Voltage V_abs=complexToPolar.len "Voltage";

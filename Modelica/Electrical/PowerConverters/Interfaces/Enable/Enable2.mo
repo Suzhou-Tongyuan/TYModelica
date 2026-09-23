@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Interfaces.Enable;
+within Modelica.Electrical.PowerConverters.Interfaces.Enable;
 partial model Enable2
   "Partial model providing enable parameter and optional enable input for two firing signals"
   extends PowerConverters.Interfaces.Enable.Enable1;

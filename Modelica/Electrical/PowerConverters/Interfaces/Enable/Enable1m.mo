@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Interfaces.Enable;
+within Modelica.Electrical.PowerConverters.Interfaces.Enable;
 partial model Enable1m
   "Partial model providing enable parameter and optional enable input for m firing signals"
   parameter Boolean useConstantEnable=true

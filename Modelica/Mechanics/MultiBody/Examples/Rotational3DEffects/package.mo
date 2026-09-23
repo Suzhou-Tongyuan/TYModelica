@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples;
+within Modelica.Mechanics.MultiBody.Examples;
 package Rotational3DEffects "Demonstrates the usage of 1-dim. rotational elements with all 3-dim. effects included"
   extends Modelica.Icons.ExamplesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function angularVelocity1
   "Return angular velocity resolved in frame 1 from orientation object and its derivative"
 

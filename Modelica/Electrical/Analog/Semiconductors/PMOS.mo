@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Semiconductors;
+within Modelica.Electrical.Analog.Semiconductors;
 model PMOS "Simple PMOS transistor with heating port"
 
         Modelica.Electrical.Analog.Interfaces.Pin D "Drain" 

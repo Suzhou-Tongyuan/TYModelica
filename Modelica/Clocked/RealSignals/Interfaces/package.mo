@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals;
+within Modelica.Clocked.RealSignals;
 package Interfaces "Library of partial blocks for components with clocked Real signals"
   extends Modelica.Icons.InterfacesPackage;
 

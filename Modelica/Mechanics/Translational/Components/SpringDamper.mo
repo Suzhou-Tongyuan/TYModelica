@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model SpringDamper "Linear 1D translational spring and damper in parallel"
   extends Translational.Interfaces.PartialCompliantWithRelativeStates;
   parameter SI.TranslationalSpringConstant c(final min=0, start=1)

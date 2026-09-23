@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 model RollingWheelSetDriving
   "Rolling wheel set that is driven by torques driving the wheels"
    extends Modelica.Icons.Example;

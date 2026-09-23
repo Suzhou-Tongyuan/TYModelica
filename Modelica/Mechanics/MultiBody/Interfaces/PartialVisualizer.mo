@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 partial model PartialVisualizer
   "Base model for visualizers (has a frame_a on the left side + outer world + assert to guarantee that the component is connected)"
 

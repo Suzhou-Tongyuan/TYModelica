@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
 model Motor "Motor model including current controller of r3 motors"
   extends Electrical.Machines.Icons.Machine;
   parameter SI.Inertia J(min=0)=0.0013 "Moment of inertia of motor";

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Interfaces;
+within Modelica.Mechanics.Rotational.Interfaces;
 connector Support "Support/housing flange of a one-dimensional rotational shaft"
   extends Flange;
 

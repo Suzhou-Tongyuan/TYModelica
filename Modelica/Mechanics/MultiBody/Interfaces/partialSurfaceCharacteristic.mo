@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 partial function partialSurfaceCharacteristic "Interface for a function returning surface characteristics"
   extends Modelica.Icons.Function;
    input Integer nu "Number of points in u-Dimension";

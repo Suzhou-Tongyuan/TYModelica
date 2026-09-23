@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model ConstantTorque "Constant torque, not dependent on speed"
   extends Rotational.Interfaces.PartialTorque;
   parameter SI.Torque tau_constant

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
+within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
 block Limiter "Limit the range of a signal"
 extends Clocked.RealSignals.Interfaces.PartialClockedSISO;
   parameter Real uMax(start=1) "Upper limits of input signals";

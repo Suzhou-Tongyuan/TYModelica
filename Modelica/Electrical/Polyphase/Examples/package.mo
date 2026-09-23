@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase;
+within Modelica.Electrical.Polyphase;
 package Examples "Polyphase test examples"
   extends Modelica.Icons.ExamplesPackage;
 

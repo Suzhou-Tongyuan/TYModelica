@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model SaturatingInductor "Simple model of inductors with saturation"
   extends Interfaces.TwoPlug;
   parameter SI.Current Inom[m](start=fill(1, m))

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function axisRotation
   "Return rotation object to rotate around an angle along one frame axis"
 

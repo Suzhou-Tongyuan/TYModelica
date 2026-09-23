@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sensors;
+within Modelica.Mechanics.Rotational.Sensors;
 model RelSpeedSensor
   "Ideal sensor to measure the relative angular velocity between two flanges"
 

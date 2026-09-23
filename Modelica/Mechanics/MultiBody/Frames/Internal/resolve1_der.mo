@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Internal;
+within Modelica.Mechanics.MultiBody.Frames.Internal;
 function resolve1_der "Derivative of function Frames.resolve1(..)"
   import Modelica.Mechanics.MultiBody.Frames;
   extends Modelica.Icons.Function;

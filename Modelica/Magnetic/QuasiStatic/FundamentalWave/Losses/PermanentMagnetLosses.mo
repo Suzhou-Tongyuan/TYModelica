@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Losses;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Losses;
 model PermanentMagnetLosses
   "Model of permanent magnet losses dependent on current and speed"
   extends Modelica.Electrical.Machines.Interfaces.FlangeSupport;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Interfaces;
+within Modelica.Mechanics.Rotational.Interfaces;
 partial model PartialElementaryRotationalToTranslational
   "Partial model to transform rotational into translational motion"
   parameter Boolean useSupportR=false

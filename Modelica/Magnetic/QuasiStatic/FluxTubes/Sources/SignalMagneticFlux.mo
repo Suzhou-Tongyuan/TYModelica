@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sources;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sources;
 model SignalMagneticFlux "Signal-controlled magnetic flux source"
 
   extends FluxTubes.Interfaces.Source;

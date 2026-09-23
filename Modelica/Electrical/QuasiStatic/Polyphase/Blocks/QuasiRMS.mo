@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Blocks;
+within Modelica.Electrical.QuasiStatic.Polyphase.Blocks;
 block QuasiRMS
   extends Modelica.Blocks.Interfaces.SO;
   parameter Integer m(min=2) = 3 "Number of phases" annotation(Evaluate=true);

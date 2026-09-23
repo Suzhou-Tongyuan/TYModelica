@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 model SwitchedRheostat "Rheostat which is shortened after a given time"
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   Modelica.Electrical.Polyphase.Interfaces.PositivePlug plug_p(final m=m)

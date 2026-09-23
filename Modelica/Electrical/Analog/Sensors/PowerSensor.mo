@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sensors;
+within Modelica.Electrical.Analog.Sensors;
 model PowerSensor "Sensor to measure the power"
   extends Modelica.Icons.RoundSensor;
   Modelica.Electrical.Analog.Interfaces.PositivePin pc

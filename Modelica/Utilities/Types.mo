@@ -1,4 +1,4 @@
-﻿within Modelica.Utilities;
+within Modelica.Utilities;
 package Types "Type definitions used in package Modelica.Utilities"
   extends Modelica.Icons.TypesPackage;
   type Compare = enumeration(

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Icons;
+within Modelica.Electrical.Machines.Icons;
 partial model Drive "Generic icon of an electric drive"
 
   annotation (Icon(graphics={

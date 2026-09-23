@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model UniformNoise "Example of a UniformNoise block for Real signals"
    extends Modelica.Icons.Example;
 

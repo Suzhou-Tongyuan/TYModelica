@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
 model SymmetricPolyphaseWinding
   "Symmetric winding model coupling electrical and magnetic domain"
   // Orientation changed

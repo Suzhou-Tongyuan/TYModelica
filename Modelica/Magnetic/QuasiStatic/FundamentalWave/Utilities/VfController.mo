@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Utilities;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Utilities;
 block VfController "Voltage-Frequency-Controller"
   import Modelica.Constants.pi;
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 package TransformationMatrices "Functions for transformation matrices"
   extends Modelica.Icons.FunctionsPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 partial model LineForceBase "Base model for line force elements"
   extends PartialTwoFrames;
   parameter SI.Distance s_small=1e-10

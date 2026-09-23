@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.InductionMachines;
+within Modelica.Electrical.Machines.Examples.InductionMachines;
 model IMC_DCBraking "Induction machine with DC current braking"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

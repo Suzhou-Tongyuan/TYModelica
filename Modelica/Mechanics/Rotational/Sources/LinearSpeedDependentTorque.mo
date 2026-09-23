@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model LinearSpeedDependentTorque "Linear dependency of torque versus speed"
   extends Modelica.Mechanics.Rotational.Interfaces.PartialTorque;
   parameter SI.Torque tau_nominal

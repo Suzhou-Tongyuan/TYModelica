@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model Transformer "Polyphase Transformer"
   extends Interfaces.FourPlug;
   parameter SI.Inductance L1[m](start=fill(1, m))

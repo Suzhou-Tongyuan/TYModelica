@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Interfaces.DCAC;
+within Modelica.Electrical.PowerConverters.Interfaces.DCAC;
 partial model DCtwoPin "Positive and negative DC pins"
 
   Modelica.Electrical.Analog.Interfaces.PositivePin dc_p

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler;
+within Modelica.Clocked.RealSignals.Sampler;
 block AssignClockVectorized
   "Assign a clock to a clocked Real signal vector"
 

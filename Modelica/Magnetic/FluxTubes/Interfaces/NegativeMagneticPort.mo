@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Interfaces;
+within Modelica.Magnetic.FluxTubes.Interfaces;
 connector NegativeMagneticPort "Negative magnetic port"
   extends FluxTubes.Interfaces.MagneticPort;
 

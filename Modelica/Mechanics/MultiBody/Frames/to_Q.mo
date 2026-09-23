@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function to_Q
   "Return quaternion orientation object Q from orientation object R"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Ideal;
+within Modelica.Electrical.Polyphase.Ideal;
 model IdealThyristor "Polyphase ideal thyristor"
   extends Interfaces.TwoPlug;
   parameter SI.Resistance Ron[m](final min=zeros(m), start=

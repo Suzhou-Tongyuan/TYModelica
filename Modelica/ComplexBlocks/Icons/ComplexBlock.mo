@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Icons;
+within Modelica.ComplexBlocks.Icons;
 partial block ComplexBlock "Basic graphical layout of Complex input/output block"
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{

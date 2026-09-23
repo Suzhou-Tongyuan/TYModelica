@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HysteresisEverettParameter;
+within Modelica.Magnetic.FluxTubes.Material.HysteresisEverettParameter;
 record M400_50AP "M400-50AP"
   extends BaseData(
     Hsat = 600,

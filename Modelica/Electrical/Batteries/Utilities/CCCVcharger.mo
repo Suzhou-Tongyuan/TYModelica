@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Utilities;
+within Modelica.Electrical.Batteries.Utilities;
 model CCCVcharger
   "Charger with constant current - constant voltage characteristic"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;

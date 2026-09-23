@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3;
 model FullRobot
   "Six degree of freedom robot with path planning, controllers, motors, brakes, gears and mechanics"
   extends Modelica.Icons.Example;

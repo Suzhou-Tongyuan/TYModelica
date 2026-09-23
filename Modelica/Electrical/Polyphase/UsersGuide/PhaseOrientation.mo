@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.UsersGuide;
+within Modelica.Electrical.Polyphase.UsersGuide;
 class PhaseOrientation "Orientation of phases"
   extends Modelica.Icons.Information;
   annotation (preferredView="info",

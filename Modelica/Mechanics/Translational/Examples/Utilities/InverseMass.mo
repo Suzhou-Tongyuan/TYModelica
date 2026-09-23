@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples.Utilities;
+within Modelica.Mechanics.Translational.Examples.Utilities;
 model InverseMass "Input/output block of an inverse mass model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.Mass m=1 "Mass";

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries;
+within Modelica.Electrical.Batteries;
 package Interfaces "Interfaces of battery models"
 extends Modelica.Icons.InterfacesPackage;
 

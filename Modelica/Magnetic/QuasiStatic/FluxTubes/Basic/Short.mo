@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Basic;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Basic;
 model Short "Short cut branch"
   extends Interfaces.TwoPort;
 equation

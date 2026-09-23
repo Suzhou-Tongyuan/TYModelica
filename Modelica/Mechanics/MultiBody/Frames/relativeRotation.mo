@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function relativeRotation "Return relative orientation object"
   extends Modelica.Icons.Function;
   input Orientation R1 "Orientation object to rotate frame 0 into frame 1";

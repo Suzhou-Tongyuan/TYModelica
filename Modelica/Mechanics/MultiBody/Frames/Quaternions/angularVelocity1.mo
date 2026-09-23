@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
+within Modelica.Mechanics.MultiBody.Frames.Quaternions;
 function angularVelocity1
   "Compute angular velocity resolved in frame 1 from quaternions orientation object and its derivative"
 

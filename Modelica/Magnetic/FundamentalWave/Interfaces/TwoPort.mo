@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Interfaces;
+within Modelica.Magnetic.FundamentalWave.Interfaces;
 partial model TwoPort "Two magnetic ports for textual modeling"
   extends Magnetic.FundamentalWave.Interfaces.TwoPortExtended;
 equation

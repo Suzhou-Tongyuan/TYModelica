@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.UsersGuide;
+within Modelica.Electrical.QuasiStatic.UsersGuide;
 class Glossar "Glossar"
   extends Modelica.Icons.Information;
 

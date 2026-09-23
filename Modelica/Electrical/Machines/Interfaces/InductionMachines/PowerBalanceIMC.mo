@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
+within Modelica.Electrical.Machines.Interfaces.InductionMachines;
 record PowerBalanceIMC
   "Power balance of induction machines with squirrel cage"
   extends 

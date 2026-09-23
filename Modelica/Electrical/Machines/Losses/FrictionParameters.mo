@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses;
+within Modelica.Electrical.Machines.Losses;
 record FrictionParameters "Parameter record for friction losses"
   extends Modelica.Icons.Record;
   parameter SI.Power PRef(min=0) = 0

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Fahrenheit;
+within Modelica.Thermal.HeatTransfer.Fahrenheit;
 model FixedTemperature
   "Fixed temperature boundary condition in degFahrenheit"
   extends HeatTransfer.Icons.FixedTemperature;

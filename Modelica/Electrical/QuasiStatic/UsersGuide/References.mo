@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.UsersGuide;
+within Modelica.Electrical.QuasiStatic.UsersGuide;
 class References "References"
   extends Modelica.Icons.References;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Periodic;
+within Modelica.Clocked.RealSignals.Periodic;
 block TransferFunction "Discrete-time Transfer Function block"
   extends Clocked.RealSignals.Interfaces.PartialClockedSISO;
   parameter Real b[:]={1} "Numerator coefficients of transfer function.";

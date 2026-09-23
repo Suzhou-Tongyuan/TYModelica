@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes;
+within Modelica.Magnetic.FluxTubes;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 

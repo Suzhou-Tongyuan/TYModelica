@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sources;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sources;
 model ReferenceCurrentSource
   "Variable polyphase AC current with reference angle input"
   extends Interfaces.ReferenceSource;

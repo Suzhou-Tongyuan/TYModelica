@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.BaseClasses;
+within Modelica.Magnetic.FluxTubes.BaseClasses;
 partial model Generic "Partial Tellinen hysteresis model"
   extends Interfaces.TwoPort;
   extends Modelica.Magnetic.FluxTubes.Icons.Reluctance;

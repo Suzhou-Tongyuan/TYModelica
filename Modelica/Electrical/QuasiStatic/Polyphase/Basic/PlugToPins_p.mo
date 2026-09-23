@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model PlugToPins_p "Connect all (positive) pins"
   parameter Integer m(final min=1) = 3 "Number of phases" annotation(Evaluate=true);
   Interfaces.PositivePlug plug_p(final m=m) annotation (Placement(

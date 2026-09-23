@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic;
 package ElectricSheet "Various electric sheets"
   extends Modelica.Icons.MaterialPropertiesPackage;
 

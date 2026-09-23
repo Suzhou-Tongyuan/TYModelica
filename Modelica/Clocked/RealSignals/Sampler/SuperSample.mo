@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler;
+within Modelica.Clocked.RealSignals.Sampler;
 block SuperSample
   "Super-sample the clocked Real input signal and provide it as clocked output signal"
   parameter Boolean inferFactor=true

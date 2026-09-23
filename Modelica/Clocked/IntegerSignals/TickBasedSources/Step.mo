@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.TickBasedSources;
+within Modelica.Clocked.IntegerSignals.TickBasedSources;
 block Step "Generate step signal of type Integer"
     extends Interfaces.PartialClockedSO;
   parameter Integer height = 1 "Height of step";

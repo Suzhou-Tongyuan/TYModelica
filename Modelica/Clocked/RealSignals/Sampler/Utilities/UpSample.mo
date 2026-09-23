@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler.Utilities;
+within Modelica.Clocked.RealSignals.Sampler.Utilities;
 block UpSample
   "Upsample the clocked Real input signal and provide it as clocked output signal"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Sensors;
+within Modelica.Electrical.Polyphase.Sensors;
 model CurrentQuasiRMSSensor
   "Continuous quasi current RMS sensor for polyphase system"
   extends Modelica.Icons.RoundSensor;

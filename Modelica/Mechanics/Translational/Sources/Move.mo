@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sources;
+within Modelica.Mechanics.Translational.Sources;
 model Move
   "Forced movement of a flange according to a position, velocity and acceleration signal"
   extends 

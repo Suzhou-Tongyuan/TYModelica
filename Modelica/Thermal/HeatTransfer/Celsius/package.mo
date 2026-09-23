@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer;
+within Modelica.Thermal.HeatTransfer;
 package Celsius "Components with Celsius input and/or output"
   extends Modelica.Icons.VariantsPackage;
 

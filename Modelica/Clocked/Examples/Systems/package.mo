@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples;
+within Modelica.Clocked.Examples;
 package Systems "Examples of complete systems"
   extends Modelica.Icons.ExamplesPackage;
 

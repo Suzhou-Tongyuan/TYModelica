@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses.DCMachines;
+within Modelica.Electrical.Machines.Losses.DCMachines;
 model Core "Model of core losses"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;
   parameter Machines.Losses.CoreParameters coreParameters(m=1)

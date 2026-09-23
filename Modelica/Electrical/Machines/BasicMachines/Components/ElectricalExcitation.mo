@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model ElectricalExcitation "Electrical excitation"
   parameter Real turnsRatio(start=1)
     "Ratio stator current / excitation current";

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples;
+within Modelica.Thermal.FluidHeatFlow.Examples;
 package Utilities "Utility models for examples"
   extends Modelica.Icons.UtilitiesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model PermanentMagnet "Permanent magnet excitation"
   parameter SI.Current Ie "Equivalent excitation current";
   Machines.Interfaces.SpacePhasor spacePhasor_r 

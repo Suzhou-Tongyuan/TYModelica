@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Functions;
+within Modelica.Electrical.Polyphase.Functions;
 function indexNonPositiveSequence
   "Determines the indices of all non positive sequences"
   extends Modelica.Icons.Function;

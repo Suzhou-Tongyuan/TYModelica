@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.BaseClasses;
+within Modelica.Electrical.Batteries.BaseClasses;
 partial model BaseStackWithSensors "Partial stack with sensors"
   extends Modelica.Electrical.Batteries.Icons.BatteryIcon(final displaySOC=SOC);
   replaceable parameter BaseStackData stackData 

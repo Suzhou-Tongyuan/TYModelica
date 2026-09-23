@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function absoluteRotation
   "Return absolute orientation object from another absolute and a relative orientation object"
 

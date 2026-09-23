@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC.Control;
+within Modelica.Electrical.PowerConverters.ACDC.Control;
 block Signal2mPulse "Generic control of 2*m pulse rectifiers"
   import Modelica.Constants.pi;
   extends PowerConverters.Icons.Control;

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Basic;
+within Modelica.Magnetic.FluxTubes.Basic;
 model ElectroMagneticConverterWithLeakageInductance
   "Electromagnetic energy conversion with a leakage inductance"
 

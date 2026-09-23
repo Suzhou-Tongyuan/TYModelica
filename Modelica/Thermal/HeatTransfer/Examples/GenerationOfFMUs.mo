@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Examples;
+within Modelica.Thermal.HeatTransfer.Examples;
 model GenerationOfFMUs
   "Example to demonstrate variants to generate FMUs (Functional Mock-up Units)"
   extends Modelica.Icons.Example;

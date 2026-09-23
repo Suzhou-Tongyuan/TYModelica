@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model OvervoltageProtection "Example for Zener diodes"
   extends Modelica.Icons.Example;
 

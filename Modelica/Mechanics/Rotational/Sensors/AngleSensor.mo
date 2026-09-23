@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sensors;
+within Modelica.Mechanics.Rotational.Sensors;
 model AngleSensor "Ideal sensor to measure the absolute flange angle"
 
   extends Rotational.Interfaces.PartialAbsoluteSensor;

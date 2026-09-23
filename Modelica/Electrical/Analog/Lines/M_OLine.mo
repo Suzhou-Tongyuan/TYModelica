@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Lines;
+within Modelica.Electrical.Analog.Lines;
 model M_OLine "Multiple OLine"
 
   parameter SI.Length length(final min=Modelica.Constants.small)=

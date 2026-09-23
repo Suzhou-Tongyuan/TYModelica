@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.UsersGuide;
+within Modelica.Electrical.QuasiStatic.UsersGuide;
 class ReleaseNotes "Release notes"
   extends Modelica.Icons.ReleaseNotes;
 

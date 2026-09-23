@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Sources;
+within Modelica.Electrical.Polyphase.Sources;
 model SignalCurrent "Polyphase signal current source"
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);
   SI.Voltage v[m]=plug_p.pin.v - plug_n.pin.v

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 model DoublePendulumInitTip
   "Demonstrate how to initialize a double pendulum so that its tip starts at a predefined position"
   extends Modelica.Icons.Example;

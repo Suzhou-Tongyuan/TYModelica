@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid;
+within Modelica.Fluid;
 package Valves "Components for the regulation and control of fluid flow"
     extends Modelica.Icons.VariantsPackage;
 

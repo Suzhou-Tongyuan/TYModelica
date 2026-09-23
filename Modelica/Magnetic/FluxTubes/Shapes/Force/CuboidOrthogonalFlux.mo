@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.Force;
+within Modelica.Magnetic.FluxTubes.Shapes.Force;
 model CuboidOrthogonalFlux
   "Cuboid with flux orthogonal to direction of motion; constant permeability"
 

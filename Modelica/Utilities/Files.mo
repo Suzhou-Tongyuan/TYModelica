@@ -1,4 +1,4 @@
-﻿within Modelica.Utilities;
+within Modelica.Utilities;
 package Files "Functions to work with files and directories"
   extends Modelica.Icons.FunctionsPackage;
 

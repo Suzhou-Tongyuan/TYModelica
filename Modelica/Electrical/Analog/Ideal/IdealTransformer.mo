@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model IdealTransformer "Ideal transformer core with or without magnetization"
   extends Modelica.Electrical.Analog.Interfaces.TwoPort;
   parameter Real n(start=1) "Turns ratio primary:secondary voltage";

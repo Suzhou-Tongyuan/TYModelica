@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
+within Modelica.Mechanics.MultiBody.Frames.Quaternions;
 function smallRotation "Return rotation angles valid for a small rotation"
   extends Modelica.Icons.Function;
   input Quaternions.Orientation Q

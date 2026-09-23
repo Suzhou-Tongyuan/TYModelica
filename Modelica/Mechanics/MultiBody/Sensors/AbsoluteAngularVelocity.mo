@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model AbsoluteAngularVelocity
   "Measure absolute angular velocity of frame connector"
   extends Internal.PartialAbsoluteSensor;

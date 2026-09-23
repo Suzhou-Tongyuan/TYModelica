@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.Steel;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.Steel;
 record DC03 "DC03 (1.0347, previously St3)"
   extends FluxTubes.Material.SoftMagnetic.BaseData(
     mu_i=0,

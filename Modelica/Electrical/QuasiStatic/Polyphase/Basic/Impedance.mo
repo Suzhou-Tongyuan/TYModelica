@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model Impedance "Polyphase linear impedance"
   extends Interfaces.TwoPlug;
   parameter SI.ComplexImpedance Z_ref[m](re(start=fill(1,m)),im(start=fill(0,m)))

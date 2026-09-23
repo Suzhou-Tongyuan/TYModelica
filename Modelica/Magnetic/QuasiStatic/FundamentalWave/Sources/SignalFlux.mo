@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sources;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sources;
 model SignalFlux "Source of time varying magnetic flux"
   extends Interfaces.TwoPortElementary;
   SI.ComplexMagneticPotentialDifference V_m

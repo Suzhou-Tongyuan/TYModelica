@@ -1,4 +1,4 @@
-﻿within Modelica.Media.IdealGases;
+within Modelica.Media.IdealGases;
 package Common "Common packages and data for the ideal gas models"
   extends Modelica.Icons.Package;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.Transformers;
+within Modelica.Electrical.Machines.Examples.Transformers;
 model AsymmetricalLoad "Asymmetrical load"
   extends Modelica.Icons.Example;
   parameter SI.Resistance RL=1 "Load resistance";

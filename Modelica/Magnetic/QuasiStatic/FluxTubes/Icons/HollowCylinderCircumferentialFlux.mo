@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Icons;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Icons;
 partial model HollowCylinderCircumferentialFlux "Icon for cylinder with circumferential flux"
   annotation (Icon(graphics={
         Text(

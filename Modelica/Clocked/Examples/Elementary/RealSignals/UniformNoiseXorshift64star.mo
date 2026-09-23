@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model UniformNoiseXorshift64star
   "Example of a UniformNoiseXorshift64star block for Real signals"
    extends Modelica.Icons.Example;

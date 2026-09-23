@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
+within Modelica.Mechanics.MultiBody.Sensors.Internal;
 model BasicCutForce
   "Basic sensor to measure cut force vector (frame_resolve must be connected)"
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameA;

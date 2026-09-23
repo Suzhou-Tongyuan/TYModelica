@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model TorqueStep "Constant torque, not dependent on speed"
   extends Modelica.Mechanics.Rotational.Interfaces.PartialTorque;
   parameter SI.Torque stepTorque(start=1)

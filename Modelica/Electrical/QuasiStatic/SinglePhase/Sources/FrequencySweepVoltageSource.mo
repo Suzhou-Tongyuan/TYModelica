@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Sources;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Sources;
 model FrequencySweepVoltageSource "Voltage source with integrated frequency sweep"
   extends Interfaces.TwoPin;
   import Modelica.Constants.eps;

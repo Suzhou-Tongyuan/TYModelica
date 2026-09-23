@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sensors;
+within Modelica.Electrical.Analog.Sensors;
 model CurrentSensor "Sensor to measure the current in a branch"
   extends Modelica.Icons.RoundSensor;
 

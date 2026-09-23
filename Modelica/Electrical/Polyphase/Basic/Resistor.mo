@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model Resistor "Ideal linear electrical resistors"
   extends Interfaces.TwoPlug;
   parameter SI.Resistance R[m](start=fill(1, m))

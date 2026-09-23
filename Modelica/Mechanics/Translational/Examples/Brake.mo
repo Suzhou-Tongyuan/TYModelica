@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model Brake "Demonstrate braking of a translational moving mass"
   extends Modelica.Icons.Example;
 

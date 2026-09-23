@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model SignalVoltage
   "Generic voltage source using the input signal as source voltage"
   extends Modelica.Electrical.Analog.Icons.VoltageSource;

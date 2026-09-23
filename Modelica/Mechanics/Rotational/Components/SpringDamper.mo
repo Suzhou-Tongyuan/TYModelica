@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model SpringDamper "Linear 1D rotational spring and damper in parallel"
   parameter SI.RotationalSpringConstant c(final min=0, start=1.0e5)
     "Spring constant";

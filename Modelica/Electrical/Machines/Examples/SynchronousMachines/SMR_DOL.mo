@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMR_DOL
   "Test example: SynchronousMachineReluctanceRotor direct-on-line"
   extends Modelica.Icons.Example;

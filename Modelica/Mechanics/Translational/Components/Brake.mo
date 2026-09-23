@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model Brake "Brake based on Coulomb friction"
 
   extends Modelica.Mechanics.Translational.Interfaces.PartialElementaryTwoFlangesAndSupport2;

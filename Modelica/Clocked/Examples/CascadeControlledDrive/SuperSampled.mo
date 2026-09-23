@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.CascadeControlledDrive;
+within Modelica.Clocked.Examples.CascadeControlledDrive;
 model SuperSampled
   "Drive with clocked cascade controller where fastest partition is defined with a clock and slower partition is defined with super-sampling"
 

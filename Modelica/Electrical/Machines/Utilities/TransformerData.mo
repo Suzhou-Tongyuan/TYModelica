@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 record TransformerData "Calculates Impedances from nominal values"
   extends Modelica.Icons.Record;
   parameter SI.Frequency f(start=50) "Nominal frequency";

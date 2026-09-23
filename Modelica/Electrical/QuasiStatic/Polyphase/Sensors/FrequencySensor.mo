@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
 model FrequencySensor "Frequency sensor"
   extends Interfaces.AbsoluteSensor;
   SinglePhase.Sensors.FrequencySensor frequencySensor annotation (Placement(

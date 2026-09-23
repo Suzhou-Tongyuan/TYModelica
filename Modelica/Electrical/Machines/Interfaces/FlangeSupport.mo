@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces;
+within Modelica.Electrical.Machines.Interfaces;
 partial model FlangeSupport "Shaft and support"
   Modelica.Mechanics.Rotational.Interfaces.Flange_a flange "Shaft end" 
     annotation (Placement(transformation(extent={{-10,110},{10,90}})));

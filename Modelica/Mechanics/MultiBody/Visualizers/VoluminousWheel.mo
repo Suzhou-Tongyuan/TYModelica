@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 model VoluminousWheel "Visualizing a voluminous wheel"
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialVisualizer;
 

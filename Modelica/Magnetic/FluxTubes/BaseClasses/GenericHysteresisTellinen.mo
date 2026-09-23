@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.BaseClasses;
+within Modelica.Magnetic.FluxTubes.BaseClasses;
 partial model GenericHysteresisTellinen "Partial Tellinen hysteresis model"
   extends BaseClasses.GenericHysteresis;
 

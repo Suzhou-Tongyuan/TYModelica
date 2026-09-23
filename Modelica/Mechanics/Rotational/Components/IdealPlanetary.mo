@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model IdealPlanetary "Ideal planetary gear box"
   parameter Real ratio(start=100/50)
     "Number of ring_teeth/sun_teeth (e.g., ratio=100/50)";

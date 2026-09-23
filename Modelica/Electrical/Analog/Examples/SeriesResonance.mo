@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model SeriesResonance "Series resonance circuit"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

@@ -1,4 +1,4 @@
-﻿within Modelica.Math;
+within Modelica.Math;
 package BooleanVectors "Library of functions operating on Boolean vectors"
  extends Modelica.Icons.Package;
 function allTrue

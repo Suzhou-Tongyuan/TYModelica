@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.BooleanSignals;
+within Modelica.Clocked.Examples.Elementary.BooleanSignals;
 model TimeBasedPulse
   "Example of using the clocked simulation time based Boolean Pulse source block"
    extends Modelica.Icons.Example;

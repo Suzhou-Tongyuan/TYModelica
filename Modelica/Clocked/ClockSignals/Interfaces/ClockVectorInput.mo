@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Interfaces;
+within Modelica.Clocked.ClockSignals.Interfaces;
 connector ClockVectorInput = input Clock
   "Clock input connector used for vector of connectors." 
   annotation (

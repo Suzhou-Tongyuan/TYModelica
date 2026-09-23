@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.TickBasedSources;
+within Modelica.Clocked.BooleanSignals.TickBasedSources;
 block Step "Generate step signal of type Boolean"
   extends BooleanSignals.Interfaces.PartialClockedSO;
 

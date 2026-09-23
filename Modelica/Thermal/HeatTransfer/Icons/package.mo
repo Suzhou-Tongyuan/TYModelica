@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer;
+within Modelica.Thermal.HeatTransfer;
 package Icons "Icons"
   extends Modelica.Icons.IconsPackage;
 

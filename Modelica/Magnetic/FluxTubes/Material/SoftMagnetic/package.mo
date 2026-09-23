@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material;
+within Modelica.Magnetic.FluxTubes.Material;
 package SoftMagnetic "Characteristics mu_r(B) of common soft magnetic materials; hysteresis neglected"
   extends Modelica.Icons.MaterialPropertiesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Clocks;
+within Modelica.Clocked.ClockSignals.Clocks;
 block EventClock
   "Generate a clock signal when the Boolean input changes from false to true"
   extends Clocked.ClockSignals.Interfaces.PartialClock;

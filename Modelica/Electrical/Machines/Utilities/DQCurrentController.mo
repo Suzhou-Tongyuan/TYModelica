@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 model DQCurrentController
   "Current controller in dq coordinate system"
   import Modelica.Constants.pi;

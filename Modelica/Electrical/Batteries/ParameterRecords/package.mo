@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries;
+within Modelica.Electrical.Batteries;
 package ParameterRecords "Parameter records for batteries"
   extends Modelica.Icons.RecordsPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package Nonlinear
   "Library of discontinuous or non-differentiable algebraic control blocks"
   import Modelica.Blocks.Interfaces;

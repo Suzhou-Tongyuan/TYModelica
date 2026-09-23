@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic;
 package Steel "Various ferromagnetic steels"
   extends Modelica.Icons.MaterialPropertiesPackage;
 

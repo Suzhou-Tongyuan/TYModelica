@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.DCDC;
+within Modelica.Electrical.PowerConverters.DCDC;
 model HBridge "H bridge (four quadrant converter)"
   extends Icons.Converter;
   extends PowerConverters.Interfaces.DCDC.DCtwoPin1;

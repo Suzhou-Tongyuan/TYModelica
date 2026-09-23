@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
+within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
 model PipeWithScalarField "Visualizing a pipe with a scalar field"
   input Frames.Orientation R=Frames.nullRotation()
     "Orientation object to rotate the world frame into the surface frame" 

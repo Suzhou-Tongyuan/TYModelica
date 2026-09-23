@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Interfaces;
+within Modelica.ComplexBlocks.Interfaces;
 connector ComplexInput = input Complex "'input Complex' as connector" 
   annotation (
   IconMap(primitivesVisible=false),

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Interfaces.ACDC;
+within Modelica.Electrical.PowerConverters.Interfaces.ACDC;
 partial model ACplug "AC polyphase plug"
   parameter Integer m(final min=3) = 3 "Number of phases" annotation(Evaluate=true);
   Modelica.Electrical.Polyphase.Interfaces.PositivePlug ac(final m=m)

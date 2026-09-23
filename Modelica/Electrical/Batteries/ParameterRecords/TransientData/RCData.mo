@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.ParameterRecords.TransientData;
+within Modelica.Electrical.Batteries.ParameterRecords.TransientData;
 record RCData "Parameters of RC-elements"
   extends Modelica.Electrical.Batteries.Icons.TransientCellRecord(
     CellType="RC elements");

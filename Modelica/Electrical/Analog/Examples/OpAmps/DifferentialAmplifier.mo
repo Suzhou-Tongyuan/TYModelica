@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps;
+within Modelica.Electrical.Analog.Examples.OpAmps;
 model DifferentialAmplifier "Differential amplifier"
   extends Modelica.Icons.Example;
   parameter

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
 model VariableCapacitor "Single-phase variable capacitor"
   extends Interfaces.OnePort;
   import Modelica.ComplexMath.j;

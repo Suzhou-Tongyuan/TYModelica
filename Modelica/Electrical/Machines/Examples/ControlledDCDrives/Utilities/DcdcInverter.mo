@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
+within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
 model DcdcInverter "DC-DC inverter"
   parameter Boolean useIdealInverter=true "Use ideal averaging inverter, otherwise switching inverter";
   parameter SI.Frequency fS "Switching frequency";

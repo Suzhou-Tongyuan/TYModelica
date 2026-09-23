@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.Sampler;
+within Modelica.Clocked.BooleanSignals.Sampler;
 block AssignClock "Assign a clock to a clocked Boolean signal"
   Modelica.Blocks.Interfaces.BooleanInput u
     "Connector of clocked, Boolean input signal" 

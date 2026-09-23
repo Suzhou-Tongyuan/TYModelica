@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.DCAC;
+within Modelica.Electrical.PowerConverters.DCAC;
 model SinglePhase2Level "Single-phase DC to AC converter"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.Resistance RonTransistor=1e-05

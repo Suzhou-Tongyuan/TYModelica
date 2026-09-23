@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Interfaces;
+within Modelica.Magnetic.FundamentalWave.Interfaces;
 partial model TwoPortElementary "Two magnetic ports for graphical modeling"
   PositiveMagneticPort port_p "Positive magnetic port of fundamental wave machines" annotation (
       Placement(transformation(extent={{-110,-10},{-90,10}})));

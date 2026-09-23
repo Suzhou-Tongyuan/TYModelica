@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
 partial model TwoPortElementary "Two magnetic ports for graphical modeling"
 
   FluxTubes.Interfaces.PositiveMagneticPort port_p "Positive quasi-static magnetic port" annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));

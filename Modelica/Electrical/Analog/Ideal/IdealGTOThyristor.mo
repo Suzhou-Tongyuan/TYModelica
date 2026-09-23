@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model IdealGTOThyristor "Ideal GTO thyristor"
   extends Modelica.Electrical.Analog.Interfaces.IdealSemiconductor;
   Modelica.Blocks.Interfaces.BooleanInput fire annotation (Placement(

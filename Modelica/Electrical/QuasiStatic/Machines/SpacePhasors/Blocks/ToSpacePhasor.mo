@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.SpacePhasors.Blocks;
+within Modelica.Electrical.QuasiStatic.Machines.SpacePhasors.Blocks;
 block ToSpacePhasor "Conversion: three-phase -> space phasor"
   extends Modelica.Blocks.Icons.Block;
   import Modelica.ComplexMath.j;

@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.UsersGuide;
+within Modelica.ComplexBlocks.UsersGuide;
 class Contact "Contact"
   extends Modelica.Icons.Contact;
   annotation (Documentation(info="<html>

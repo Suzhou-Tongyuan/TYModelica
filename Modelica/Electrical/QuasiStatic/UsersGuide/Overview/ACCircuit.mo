@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.UsersGuide.Overview;
+within Modelica.Electrical.QuasiStatic.UsersGuide.Overview;
 class ACCircuit "AC circuit"
   extends Modelica.Icons.Information;
 

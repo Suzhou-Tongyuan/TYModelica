@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Ideal;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Ideal;
 model Idle "Idle branch"
   extends Interfaces.OnePort;
 equation

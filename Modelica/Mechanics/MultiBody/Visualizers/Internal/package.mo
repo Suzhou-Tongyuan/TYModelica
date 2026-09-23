@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 package Internal "Makeshift visualizers for display of three-dimensional fonts using cylinders"
 
   extends Modelica.Icons.InternalPackage;

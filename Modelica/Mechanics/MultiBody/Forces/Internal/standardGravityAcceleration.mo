@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces.Internal;
+within Modelica.Mechanics.MultiBody.Forces.Internal;
 function standardGravityAcceleration
   "Standard gravity fields (no/parallel/point field)"
   extends Modelica.Icons.Function;

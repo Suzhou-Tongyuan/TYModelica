@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.Examples;
+within Modelica.Electrical.QuasiStatic.Machines.Examples;
 model TransformerTestbench "Transformer test bench"
   extends Modelica.Icons.Example;
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);

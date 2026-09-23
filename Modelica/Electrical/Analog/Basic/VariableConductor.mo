@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model VariableConductor
   "Ideal linear electrical conductor with variable conductance"
   parameter SI.Temperature T_ref=300.15 "Reference temperature";

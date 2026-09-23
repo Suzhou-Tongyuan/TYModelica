@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sources;
+within Modelica.Mechanics.Translational.Sources;
 model ConstantForce "Constant force, not dependent on speed"
   extends Modelica.Mechanics.Translational.Interfaces.PartialForce;
   parameter SI.Force f_constant

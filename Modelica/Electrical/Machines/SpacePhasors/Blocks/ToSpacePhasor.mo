@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Blocks;
+within Modelica.Electrical.Machines.SpacePhasors.Blocks;
 block ToSpacePhasor
   "Conversion of polyphase instantaneous values to space phasors"
   extends Modelica.Blocks.Interfaces.MIMO(final nin=m, final nout=2);

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model SawToothCurrent "Saw tooth current source"
   parameter SI.Current I(start=1) "Amplitude of saw tooth";
   parameter SI.Time period(start=1) "Time for one period";

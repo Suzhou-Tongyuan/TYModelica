@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC.Control;
+within Modelica.Electrical.PowerConverters.ACDC.Control;
 model VoltageCenterTap2mPulse "Control of 2*m pulse center tap rectifier"
   extends Icons.Control;
   import Modelica.Constants.pi;

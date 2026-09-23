@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Examples;
+within Modelica.Electrical.Polyphase.Examples;
 model TransformerYY "Test example with polyphase components"
   extends Modelica.Icons.Example;
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);

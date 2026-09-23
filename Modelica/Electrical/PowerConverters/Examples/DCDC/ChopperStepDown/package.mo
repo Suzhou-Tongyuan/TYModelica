@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCDC;
+within Modelica.Electrical.PowerConverters.Examples.DCDC;
 package ChopperStepDown "Step down chopper"
   extends Modelica.Icons.ExamplesPackage;
 

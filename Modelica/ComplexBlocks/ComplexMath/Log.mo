@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Log
   "Output the natural (base e) logarithm of the input (input <> '0' required)"
   extends Interfaces.ComplexSISO;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Icons;
+within Modelica.Mechanics.Rotational.Icons;
 model Clutch "Icon of a clutch"
 
   annotation (Icon(graphics={

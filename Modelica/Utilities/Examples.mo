@@ -1,4 +1,4 @@
-﻿within Modelica.Utilities;
+within Modelica.Utilities;
 package Examples
   "Examples to demonstrate the usage of package Modelica.Utilities"
   extends Modelica.Icons.ExamplesPackage;

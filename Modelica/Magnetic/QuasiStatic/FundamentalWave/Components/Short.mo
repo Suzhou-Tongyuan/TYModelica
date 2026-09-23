@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
 model Short "Short connection"
   extends Interfaces.TwoPortElementary;
 equation

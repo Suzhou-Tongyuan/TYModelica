@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function from_nxz "Return fixed orientation object from n_x and n_z vectors"
   extends Modelica.Icons.Function;
   input Real n_x[3](each final unit="1")

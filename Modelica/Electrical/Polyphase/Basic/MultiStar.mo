@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model MultiStar
   "Star connection of polyphase systems consisting of multiple base systems"
   import Modelica.Electrical.Polyphase.Functions.numberOfSymmetricBaseSystems;

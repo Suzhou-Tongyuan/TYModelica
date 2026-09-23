@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Ideal;
+within Modelica.Electrical.QuasiStatic.Polyphase.Ideal;
 model Short "Short cut branch"
   extends Interfaces.TwoPlug;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Functions;
+within Modelica.Electrical.Machines.SpacePhasors.Functions;
 function activePower
   "Calculate active power of voltage and current input"
   import Modelica.Constants.pi;

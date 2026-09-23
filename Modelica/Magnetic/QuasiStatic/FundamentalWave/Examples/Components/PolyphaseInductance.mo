@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.Components;
 model PolyphaseInductance "Polyphase inductance"
   extends Modelica.Icons.Example;
   parameter Integer m=5 "Number of phases" annotation(Evaluate=true);

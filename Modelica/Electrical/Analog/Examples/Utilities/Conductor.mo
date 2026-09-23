@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.Utilities;
+within Modelica.Electrical.Analog.Examples.Utilities;
 model Conductor "Input/output block of a conductance model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.Conductance G=1 "Conductance";

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
 model EighthOfSphere
 "Leakage flux through one edge and the opposite plane of an eighth of a sphere"
 

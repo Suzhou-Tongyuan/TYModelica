@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HysteresisEverettParameter;
+within Modelica.Magnetic.FluxTubes.Material.HysteresisEverettParameter;
 record BaseData "Base Data Record"
   extends Modelica.Icons.Record;
   parameter SI.MagneticFieldStrength Hsat=100

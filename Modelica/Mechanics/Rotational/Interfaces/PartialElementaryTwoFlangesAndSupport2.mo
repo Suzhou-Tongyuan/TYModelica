@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Interfaces;
+within Modelica.Mechanics.Rotational.Interfaces;
 partial model PartialElementaryTwoFlangesAndSupport2
   "Partial model for a component with two rotational 1-dim. shaft flanges and a support used for textual modeling, i.e., for elementary models"
   parameter Boolean useSupport=false

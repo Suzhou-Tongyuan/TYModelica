@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
 model Controller "P-PI cascade controller for one axis"
   extends Blocks.Icons.Block;
 

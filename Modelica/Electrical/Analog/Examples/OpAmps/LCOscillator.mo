@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps;
+within Modelica.Electrical.Analog.Examples.OpAmps;
 model LCOscillator "LC oscillator"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

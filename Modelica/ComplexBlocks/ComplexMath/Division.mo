@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Division "Output first input divided by second input"
   extends Interfaces.ComplexSI2SO;
   parameter Boolean useConjugateInput1=false

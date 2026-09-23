@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sensors;
+within Modelica.Mechanics.Rotational.Sensors;
 model MultiSensor
   "Ideal sensor to measure the torque and power between two flanges (= flange_a.tau*der(flange_a.phi)) and the absolute angular velocity"
   extends .Modelica.Mechanics.Rotational.Interfaces.PartialRelativeSensor;

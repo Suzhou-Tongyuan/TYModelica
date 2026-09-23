@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsMixingUnit;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsMixingUnit;
 model MixingUnit
   "Mixing unit demo from Foellinger, Nichtlineare Regelungen II, p. 280"
 

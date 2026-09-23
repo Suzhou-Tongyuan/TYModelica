@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics;
+within Modelica.Mechanics;
 package Translational "Library to model 1-dimensional, translational mechanical systems"
   extends Modelica.Icons.Package;
 

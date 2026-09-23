@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Transformers.Yy;
+within Modelica.Electrical.Machines.BasicMachines.Transformers.Yy;
 model Yy04 "Transformer Yy4"
   extends Machines.Interfaces.PartialBasicTransformer(final VectorGroup="Yy04");
   Modelica.Electrical.Polyphase.Basic.Star star1(final m=m) 

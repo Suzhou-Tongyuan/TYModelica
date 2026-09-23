@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
 model MagneticPotentialSensor "Potential sensor"
   extends FluxTubes.Interfaces.AbsoluteSensor;
   Modelica.ComplexBlocks.Interfaces.ComplexOutput y annotation (Placement(

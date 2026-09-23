@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCDC.ExampleTemplates;
+within Modelica.Electrical.PowerConverters.Examples.DCDC.ExampleTemplates;
 partial model ChopperStepDown "Step down chopper including control"
   extends Icons.ExampleTemplate;
   parameter SI.Frequency f=1000 "Switching frequency";

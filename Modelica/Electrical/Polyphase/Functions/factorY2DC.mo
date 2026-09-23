@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Functions;
+within Modelica.Electrical.Polyphase.Functions;
 function factorY2DC "Calculates factor of DC-voltage from RMS Y-voltage"
   extends Modelica.Icons.Function;
   import Modelica.Constants.pi;

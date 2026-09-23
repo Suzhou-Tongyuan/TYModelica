@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Examples;
+within Modelica.Electrical.Polyphase.Examples;
 model PolyphaseRectifier "Demonstrate a polyphase diode rectifier"
   extends Icons.Example;
   parameter Utilities.PolyphaseRectifierData data 

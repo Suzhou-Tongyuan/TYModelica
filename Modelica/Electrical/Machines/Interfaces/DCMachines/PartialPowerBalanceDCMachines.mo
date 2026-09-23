@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.DCMachines;
+within Modelica.Electrical.Machines.Interfaces.DCMachines;
 record PartialPowerBalanceDCMachines
   "Partial power balance of DC machines"
   extends Modelica.Icons.Record;

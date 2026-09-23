@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
+within Modelica.Mechanics.MultiBody.Frames.Quaternions;
 function relativeRotation "Return relative quaternions orientation object"
   extends Modelica.Icons.Function;
   input Quaternions.Orientation Q1

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal;
+within Modelica.Electrical.Machines.Thermal;
 package SynchronousMachines "Thermal parts of synchronous machines"
   extends Modelica.Icons.VariantsPackage;
 

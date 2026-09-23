@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material;
+within Modelica.Magnetic.FluxTubes.Material;
 package HysteresisTableData
   extends Modelica.Icons.MaterialPropertiesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Lines;
+within Modelica.Electrical.Analog.Lines;
 model ULine "Lossy RC Line"
   //extends Interfaces.ThreePol;
   Modelica.Electrical.Analog.Interfaces.Pin p1 annotation (Placement(

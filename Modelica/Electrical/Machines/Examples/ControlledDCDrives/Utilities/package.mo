@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.ControlledDCDrives;
+within Modelica.Electrical.Machines.Examples.ControlledDCDrives;
 package Utilities "Utilities for controlled drives"
   extends Modelica.Icons.UtilitiesPackage;
 

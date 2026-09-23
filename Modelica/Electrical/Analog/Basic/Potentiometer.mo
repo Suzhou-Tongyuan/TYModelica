@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model Potentiometer "Adjustable resistor"
   parameter SI.Resistance R(start=1)
     "Resistance at temperature T_ref";

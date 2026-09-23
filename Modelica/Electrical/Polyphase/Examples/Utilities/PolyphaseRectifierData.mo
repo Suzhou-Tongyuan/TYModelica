@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Examples.Utilities;
+within Modelica.Electrical.Polyphase.Examples.Utilities;
 record PolyphaseRectifierData "Data record for polyphase rectifier"
   extends Icons.Record;
   import Modelica.Electrical.Polyphase.Functions.numberOfSymmetricBaseSystems;

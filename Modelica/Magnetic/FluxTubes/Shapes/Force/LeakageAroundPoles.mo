@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.Force;
+within Modelica.Magnetic.FluxTubes.Shapes.Force;
 model LeakageAroundPoles
   "Leakage flux tube around cylindrical or prismatic poles"
 

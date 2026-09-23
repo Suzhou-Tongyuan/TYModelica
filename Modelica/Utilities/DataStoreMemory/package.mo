@@ -1,4 +1,4 @@
-﻿package DataStoreMemory"Data Store Memory of Utilities"
+package DataStoreMemory"Data Store Memory of Utilities"
   annotation(Icon(coordinateSystem(extent={{-100,-100},{100,100}},
 grid={2,2}),graphics = {Rectangle(origin={-7.10543e-15,0},
 lineColor={200,200,200},

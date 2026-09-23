@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
 model Reluctance "Salient reluctance"
   import Modelica.Constants.pi;
   extends Interfaces.TwoPort;

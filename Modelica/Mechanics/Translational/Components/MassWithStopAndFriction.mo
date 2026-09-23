@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model MassWithStopAndFriction
   "Sliding mass with hard stop and Stribeck friction"
   extends PartialFrictionWithStop;

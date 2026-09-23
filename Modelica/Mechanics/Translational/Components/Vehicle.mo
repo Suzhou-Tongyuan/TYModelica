@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model Vehicle "Simple vehicle model"
   parameter SI.Mass m "Total mass of vehicle";
   parameter SI.Acceleration g=Modelica.Constants.g_n "Constant gravity acceleration";

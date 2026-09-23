@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.BaseClasses;
+within Modelica.Thermal.FluidHeatFlow.BaseClasses;
 partial model SimpleFriction "Simple friction model"
   parameter SI.VolumeFlowRate V_flowLaminar(min=Modelica.Constants.small, start=0.1)
     "Laminar volume flow" 

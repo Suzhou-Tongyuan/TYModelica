@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Components;
+within Modelica.Thermal.HeatTransfer.Components;
 model ConvectiveResistor
   "Lumped thermal element for heat convection (dT = Rc*Q_flow)"
   SI.HeatFlowRate Q_flow "Heat flow rate from solid -> fluid";

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sensors;
+within Modelica.Mechanics.Rotational.Sensors;
 model AccSensor
   "Ideal sensor to measure the absolute flange angular acceleration"
 

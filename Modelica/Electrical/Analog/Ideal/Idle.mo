@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model Idle "Idle branch"
   extends Interfaces.OnePort;
 equation

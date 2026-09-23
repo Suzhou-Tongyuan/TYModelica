@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
 model GearType1 "Motor inertia and gearbox model for r3 joints 1,2,3"
   extends Modelica.Mechanics.Rotational.Icons.Gearbox;
   extends Modelica.Mechanics.Rotational.Interfaces.PartialTwoFlanges;

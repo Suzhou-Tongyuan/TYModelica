@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 type ShapeType = Modelica.Icons.TypeString
   "Type of shape (box, sphere, cylinder, pipecylinder, cone, pipe, beam, gearwheel, spring, <external shape>)" 
    annotation ( choices(

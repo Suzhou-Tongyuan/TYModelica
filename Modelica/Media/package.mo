@@ -1,4 +1,4 @@
-﻿within Modelica;
+within Modelica;
 package Media "Library of media property models"
   extends Modelica.Icons.Package;
   import Modelica.Units.SI;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses;
+within Modelica.Electrical.Machines.Losses;
 record BrushParameters "Parameter record for brush losses"
   extends Modelica.Icons.Record;
   parameter SI.Voltage V=0

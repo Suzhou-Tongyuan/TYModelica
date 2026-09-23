@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks;
+within Modelica.ComplexBlocks;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 

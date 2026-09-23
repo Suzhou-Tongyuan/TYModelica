@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 package Utilities "Utility classes used by rotational example models"
   extends Modelica.Icons.UtilitiesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps;
+within Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps;
 function spring "Returns the \"spring\" color map"
 extends Modelica.Mechanics.MultiBody.Interfaces.partialColorMap;
 algorithm

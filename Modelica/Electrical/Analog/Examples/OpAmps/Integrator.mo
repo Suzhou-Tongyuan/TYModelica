@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps;
+within Modelica.Electrical.Analog.Examples.OpAmps;
 model Integrator "Integrating amplifier"
   extends Modelica.Icons.Example;
   parameter SI.Voltage Vin=5 "Amplitude of input voltage";

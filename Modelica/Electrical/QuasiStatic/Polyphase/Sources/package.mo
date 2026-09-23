@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase;
+within Modelica.Electrical.QuasiStatic.Polyphase;
 package Sources "AC polyphase sources"
   extends Modelica.Icons.SourcesPackage;
 

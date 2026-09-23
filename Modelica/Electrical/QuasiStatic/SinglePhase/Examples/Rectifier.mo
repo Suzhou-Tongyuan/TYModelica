@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Examples;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Examples;
 model Rectifier "Rectifier example"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

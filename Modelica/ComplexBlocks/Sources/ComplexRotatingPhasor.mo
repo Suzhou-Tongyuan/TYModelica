@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Sources;
+within Modelica.ComplexBlocks.Sources;
 block ComplexRotatingPhasor
   "Generate a phasor with constant magnitude and constant angular velocity of type Complex"
   parameter Real magnitude=1 "Magnitude of complex phasor";

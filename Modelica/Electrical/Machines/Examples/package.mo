@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines;
+within Modelica.Electrical.Machines;
 package Examples "Test examples"
   extends Modelica.Icons.ExamplesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model IdealGear "Ideal gear without inertia"
   extends Modelica.Mechanics.Rotational.Icons.Gear;
   extends 

@@ -1,4 +1,4 @@
-﻿connector InnerIntegerMemory = OuterIntegerMemory annotation(__MWORKS(hide = true,Memory), defaultComponentName = "X", defaultComponentPrefixes = "inner", Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+connector InnerIntegerMemory = OuterIntegerMemory annotation(__MWORKS(hide = true,Memory), defaultComponentName = "X", defaultComponentPrefixes = "inner", Icon(coordinateSystem(extent={{-100,-100},{100,100}},
 grid={2,2}),graphics = {Rectangle(origin={0,0},
 fillColor={255,255,255},
 fillPattern=FillPattern.Solid,

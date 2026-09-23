@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Sensors;
+within Modelica.Electrical.Machines.Sensors;
 model SinCosResolver "Sin-Cos-Resolver"
   import Modelica.Constants.pi;
   extends 

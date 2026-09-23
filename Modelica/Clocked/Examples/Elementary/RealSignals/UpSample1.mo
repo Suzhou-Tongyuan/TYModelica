@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model UpSample1 "Example of an UpSample block for Real signals"
    extends Modelica.Icons.Example;
 

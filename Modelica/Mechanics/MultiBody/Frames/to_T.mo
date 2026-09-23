@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function to_T "Return transformation matrix T from orientation object R"
   extends Modelica.Icons.Function;
   input Orientation R "Orientation object to rotate frame 1 into frame 2";

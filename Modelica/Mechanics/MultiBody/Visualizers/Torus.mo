@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 model Torus "Visualizing a torus"
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialVisualizer;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
 model HalfHollowCylinder
 "Leakage flux in circumferential direction through a half hollow cylinder"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples.Utilities;
+within Modelica.Mechanics.Translational.Examples.Utilities;
 model Spring "Input/output block of a spring model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.TranslationalSpringConstant c=1e4

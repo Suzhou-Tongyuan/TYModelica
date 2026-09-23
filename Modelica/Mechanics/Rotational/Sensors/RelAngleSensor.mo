@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sensors;
+within Modelica.Mechanics.Rotational.Sensors;
 model RelAngleSensor
   "Ideal sensor to measure the relative angle between two flanges"
 

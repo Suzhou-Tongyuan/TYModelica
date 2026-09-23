@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACAC;
+within Modelica.Electrical.PowerConverters.Examples.ACAC;
 model SoftStarter "Soft start of an induction machine"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
 connector PositiveMagneticPort "Positive quasi-static magnetic port"
   extends Magnetic.QuasiStatic.FundamentalWave.Interfaces.MagneticPort;
   Modelica.Electrical.QuasiStatic.Types.Reference reference "Reference";

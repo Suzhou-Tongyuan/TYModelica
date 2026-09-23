@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model Rod "Rod without inertia"
   extends Translational.Interfaces.PartialRigid;
 

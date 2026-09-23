@@ -1,4 +1,4 @@
-﻿connector InnerBooleanMemory = OuterBooleanMemory annotation(__MWORKS(hide = true,Memory), defaultComponentName = "X", defaultComponentPrefixes = "inner",Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+connector InnerBooleanMemory = OuterBooleanMemory annotation(__MWORKS(hide = true,Memory), defaultComponentName = "X", defaultComponentPrefixes = "inner",Icon(coordinateSystem(extent={{-100,-100},{100,100}},
 grid={2,2}),graphics = {Rectangle(origin={0,-7.10543e-15},
 fillColor={255,255,255},
 fillPattern=FillPattern.Solid,

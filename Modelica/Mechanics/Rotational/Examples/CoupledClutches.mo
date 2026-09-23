@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model CoupledClutches "Drive train with 3 dynamically coupled clutches"
   extends Modelica.Icons.Example;
   parameter SI.Frequency f=0.2

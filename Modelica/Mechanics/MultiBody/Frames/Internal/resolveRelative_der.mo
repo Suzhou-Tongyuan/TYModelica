@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Internal;
+within Modelica.Mechanics.MultiBody.Frames.Internal;
 function resolveRelative_der
   "Derivative of function Frames.resolveRelative(..)"
   import Modelica.Mechanics.MultiBody.Frames;

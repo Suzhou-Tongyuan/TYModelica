@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
 model MagneticFluxSensor "Sensor to measure magnetic flux"
   extends FluxTubes.Interfaces.RelativeSensor;
 

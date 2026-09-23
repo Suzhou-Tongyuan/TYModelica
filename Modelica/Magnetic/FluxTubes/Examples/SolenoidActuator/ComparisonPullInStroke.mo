@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.SolenoidActuator;
+within Modelica.Magnetic.FluxTubes.Examples.SolenoidActuator;
 model ComparisonPullInStroke
   "Pull-in stroke of both solenoid models after a voltage step at time t=0"
 

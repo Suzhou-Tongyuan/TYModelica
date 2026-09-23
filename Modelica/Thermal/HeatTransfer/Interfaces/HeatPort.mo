@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Interfaces;
+within Modelica.Thermal.HeatTransfer.Interfaces;
 partial connector HeatPort "Thermal port for 1-dim. heat transfer"
   SI.Temperature T "Port temperature";
   flow SI.HeatFlowRate Q_flow

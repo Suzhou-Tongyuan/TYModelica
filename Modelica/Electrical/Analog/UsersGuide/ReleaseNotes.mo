@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.UsersGuide;
+within Modelica.Electrical.Analog.UsersGuide;
 class ReleaseNotes "Release Notes"
   extends Modelica.Icons.ReleaseNotes;
   annotation (preferredView="info",Documentation(info="<html>

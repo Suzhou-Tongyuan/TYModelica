@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model Sample3
   "Example of a Sample block for Real signals with direct feed-through in the continuous-time and the clocked partition"
  extends Modelica.Icons.Example;

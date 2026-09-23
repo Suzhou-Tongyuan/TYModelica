@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical;
+within Modelica.Electrical;
 package Polyphase "Library for electrical components of one or more phases"
   extends Modelica.Icons.Package;
 

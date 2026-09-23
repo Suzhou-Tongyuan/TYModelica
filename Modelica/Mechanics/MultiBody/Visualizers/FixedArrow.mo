@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 model FixedArrow
   "Visualizing an arrow with dynamically varying size in frame_a"
 

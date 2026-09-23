@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function planarRotationAngle
   "Return angle of a planar rotation, given the rotation axis and the representations of a vector in frame 1 and frame 2"
 

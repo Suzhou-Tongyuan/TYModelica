@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
+within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
 partial model PartialOpAmp
   "Partial circuit of operational amplifiers"
   extends Modelica.Electrical.Analog.Interfaces.FourPin;

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Fahrenheit;
+within Modelica.Thermal.HeatTransfer.Fahrenheit;
 model ToKelvin "Conversion from degree Fahrenheit to Kelvin"
   extends HeatTransfer.Icons.Conversion;
   Modelica.Blocks.Interfaces.RealInput Fahrenheit(unit="degF") annotation (Placement(

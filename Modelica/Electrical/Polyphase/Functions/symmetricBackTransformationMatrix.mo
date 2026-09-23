@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Functions;
+within Modelica.Electrical.Polyphase.Functions;
 function symmetricBackTransformationMatrix
   "Back transformation matrix for symmetrical components"
   extends Modelica.Icons.Function;

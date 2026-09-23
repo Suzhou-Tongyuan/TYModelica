@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
+within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
 model Surface
   "Visualizing a moveable, parameterized surface; the surface characteristic is provided by a function"
   extends Modelica.Mechanics.MultiBody.Icons.Surface;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model Accelerate
   "Forced movement of a flange according to an acceleration signal"
   extends 

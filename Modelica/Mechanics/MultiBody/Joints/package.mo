@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody;
+within Modelica.Mechanics.MultiBody;
 package Joints "Components that constrain the motion between two frames"
   extends Modelica.Icons.Package;
 

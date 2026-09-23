@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Parts;
+within Modelica.Mechanics.MultiBody.Parts;
 model Mounting1D
   "Propagate 1-dim. support torque to 3-dim. system (provided world.driveTrainMechanics3D=true)"
   parameter SI.Angle phi0=0 "Fixed offset angle of housing";

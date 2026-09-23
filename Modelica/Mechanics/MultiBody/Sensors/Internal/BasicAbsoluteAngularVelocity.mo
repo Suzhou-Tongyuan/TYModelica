@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
+within Modelica.Mechanics.MultiBody.Sensors.Internal;
 model BasicAbsoluteAngularVelocity "Basic sensor to measure absolute angular velocity"
   import Modelica.Mechanics.MultiBody.Frames;
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameA;

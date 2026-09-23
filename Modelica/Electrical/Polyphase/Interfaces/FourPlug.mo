@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Interfaces;
+within Modelica.Electrical.Polyphase.Interfaces;
 partial model FourPlug "Component with two polyphase electrical ports"
   parameter Integer m(final min=1) = 3 "Number of phases" annotation(Evaluate=true);
   SI.Voltage v1[m] "Voltage drops of port 1";

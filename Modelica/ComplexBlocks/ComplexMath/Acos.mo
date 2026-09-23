@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Acos "Output the arc cosine of the input"
   extends Interfaces.ComplexSISO;
 equation

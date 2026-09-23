@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples;
+within Modelica.Thermal.FluidHeatFlow.Examples;
 model ParallelPumpDropOut
   "Cooling circuit with parallel branches and drop out of pump"
   extends Modelica.Icons.Example;

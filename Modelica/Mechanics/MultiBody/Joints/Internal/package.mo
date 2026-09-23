@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 package Internal "Components used for analytic solution of kinematic loops (use only if you know what you are doing)"
 
   extends Modelica.Icons.InternalPackage;

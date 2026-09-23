@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Functions;
+within Modelica.Electrical.Machines.SpacePhasors.Functions;
 function ToPolar "Converts a space phasor to polar coordinates"
   extends Modelica.Icons.Function;
   input Real x[2] "Real and imaginary part of space phasor";

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.UsersGuide;
+within Modelica.Clocked.UsersGuide;
 class GettingStarted "Getting started"
   extends Modelica.Icons.Information;
 

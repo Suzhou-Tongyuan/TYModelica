@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals;
+within Modelica.Clocked.IntegerSignals;
 package Interfaces "Library of partial blocks for components with clocked Integer signals"
   extends Modelica.Icons.InterfacesPackage;
 

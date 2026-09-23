@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Interfaces;
+within Modelica.Clocked.IntegerSignals.Interfaces;
 partial block SamplerIcon
   "Basic graphical layout of block used for of Integer signals"
   annotation (

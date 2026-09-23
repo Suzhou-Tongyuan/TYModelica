@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 type RotationSequence = Modelica.Icons.TypeInteger[3] (min={1,1,1}, max={3,3,3})
   "Sequence of planar frame rotations with choices" annotation (
   preferredView="text",

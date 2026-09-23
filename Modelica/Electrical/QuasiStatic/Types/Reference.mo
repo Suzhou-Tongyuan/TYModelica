@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Types;
+within Modelica.Electrical.QuasiStatic.Types;
 record Reference "Reference angle"
   SI.Angle gamma;
   function equalityConstraint "Equality constraint for reference angle"

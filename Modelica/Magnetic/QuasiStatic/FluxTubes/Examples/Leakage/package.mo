@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples;
 package Leakage "Examples of magnetic circuits with leakage"
 extends Modelica.Icons.ExamplesPackage;
 

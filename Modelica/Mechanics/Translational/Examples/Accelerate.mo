@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model Accelerate "Use of model accelerate"
 
   extends Modelica.Icons.Example;

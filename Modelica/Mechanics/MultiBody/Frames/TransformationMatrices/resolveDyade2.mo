@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function resolveDyade2
   "Transform second order tensor from frame 1 to frame 2"
   extends Modelica.Icons.Function;

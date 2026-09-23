@@ -1,4 +1,4 @@
-﻿function tempInterpol1
+function tempInterpol1
   "Temporary function for linear interpolation "
   extends Modelica.Icons.Function;
 

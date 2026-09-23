@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 type RotationTypes = enumeration(
     RotationAxis "Rotating frame_a around an angle with a fixed axis",
     TwoAxesVectors "Resolve two vectors of frame_b in frame_a",

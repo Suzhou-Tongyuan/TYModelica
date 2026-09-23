@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3;
 package Utilities "Utility classes for robot examples"
   extends Modelica.Icons.UtilitiesPackage;
 

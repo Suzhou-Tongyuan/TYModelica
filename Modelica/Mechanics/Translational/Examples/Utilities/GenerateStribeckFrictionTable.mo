@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples.Utilities;
+within Modelica.Mechanics.Translational.Examples.Utilities;
 function GenerateStribeckFrictionTable
   "Generate Stribeck friction table for example Friction for the SupportFriction"
   extends Modelica.Icons.Function;

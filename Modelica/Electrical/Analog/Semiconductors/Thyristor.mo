@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Semiconductors;
+within Modelica.Electrical.Analog.Semiconductors;
 model Thyristor "Simple Thyristor Model"
   parameter SI.Voltage VDRM(final min=0) = 100
     "Forward breakthrough voltage";

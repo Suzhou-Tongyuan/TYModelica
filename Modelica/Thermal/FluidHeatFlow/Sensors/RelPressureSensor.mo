@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Sensors;
+within Modelica.Thermal.FluidHeatFlow.Sensors;
 model RelPressureSensor "Pressure difference sensor"
 
   extends FluidHeatFlow.Interfaces.RelativeSensorBase;

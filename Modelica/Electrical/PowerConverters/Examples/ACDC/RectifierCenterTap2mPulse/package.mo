@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC;
+within Modelica.Electrical.PowerConverters.Examples.ACDC;
 package RectifierCenterTap2mPulse "2*m pulse rectifier with center tap"
   extends Modelica.Icons.ExamplesPackage;
   annotation (Documentation(info="<html>

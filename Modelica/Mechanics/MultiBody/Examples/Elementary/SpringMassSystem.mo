@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 model SpringMassSystem "Mass attached with a spring to the world frame"
   extends Modelica.Icons.Example;
   parameter Boolean animation=true "= true, if animation shall be enabled";

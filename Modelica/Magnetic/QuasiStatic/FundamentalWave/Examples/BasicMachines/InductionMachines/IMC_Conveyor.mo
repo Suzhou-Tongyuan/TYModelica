@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines;
 model IMC_Conveyor "Induction machine with squirrel cage and inverter driving a conveyor"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

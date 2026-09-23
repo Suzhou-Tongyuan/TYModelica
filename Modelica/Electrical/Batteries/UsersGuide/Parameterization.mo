@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.UsersGuide;
+within Modelica.Electrical.Batteries.UsersGuide;
 class Parameterization "Parameterization of battery models"
   extends Modelica.Icons.Information;
   annotation (DocumentationClass=true, Documentation(info="<html>

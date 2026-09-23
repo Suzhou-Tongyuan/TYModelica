@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
 model QuasiStaticAnalogElectroMagneticConverter
   "Electromagnetic converter to only (!) quasi-static analog, neglecting induced voltage"
   // Note: It has not whether the transient voltage induction and the

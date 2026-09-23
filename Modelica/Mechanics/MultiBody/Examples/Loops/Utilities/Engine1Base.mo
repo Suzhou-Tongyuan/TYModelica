@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
 partial block Engine1Base
   "Base model for one cylinder engine"
 

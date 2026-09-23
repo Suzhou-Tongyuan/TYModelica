@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines;
+within Modelica.Electrical.Machines.BasicMachines;
 package SynchronousMachines "Models of synchronous machines"
   extends Modelica.Icons.VariantsPackage;
 

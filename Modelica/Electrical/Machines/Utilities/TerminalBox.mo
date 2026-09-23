@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 model TerminalBox "Terminal box Y/D-connection"
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   parameter String terminalConnection(start="Y") "Choose \"Y\" for star or \"D\" for delta connection" 

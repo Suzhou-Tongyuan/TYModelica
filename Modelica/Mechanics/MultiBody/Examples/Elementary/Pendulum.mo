@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 model Pendulum "Simple pendulum with one revolute joint and one body"
   extends Modelica.Icons.Example;
   inner Modelica.Mechanics.MultiBody.World world(gravityType=Modelica.Mechanics.MultiBody.Types.GravityTypes.

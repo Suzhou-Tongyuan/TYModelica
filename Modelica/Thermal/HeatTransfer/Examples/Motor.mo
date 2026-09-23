@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Examples;
+within Modelica.Thermal.HeatTransfer.Examples;
 model Motor "Second order thermal model of a motor"
   extends Modelica.Icons.Example;
   parameter SI.Temperature TAmb(displayUnit="degC") = 293.15

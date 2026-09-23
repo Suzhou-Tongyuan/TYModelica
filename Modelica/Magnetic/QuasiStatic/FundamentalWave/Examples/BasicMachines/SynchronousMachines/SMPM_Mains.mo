@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.SynchronousMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.SynchronousMachines;
 model SMPM_Mains
   "Permanent magnet synchronous machine operated at mains with step torque load"
   extends Modelica.Icons.Example;

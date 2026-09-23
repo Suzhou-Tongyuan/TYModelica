@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sensors;
+within Modelica.Electrical.Analog.Sensors;
 model VoltageSensor "Sensor to measure the voltage between two pins"
   extends Modelica.Icons.RoundSensor;
 

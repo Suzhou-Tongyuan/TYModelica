@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Types;
+within Modelica.Electrical.PowerConverters.Types;
 type SoftStarterModeOfOperation = enumeration(
     Off "v = 0",
     Up "v = 0 -> 1",

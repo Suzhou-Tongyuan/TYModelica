@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sensors;
+within Modelica.Electrical.Analog.Sensors;
 model MultiSensor "Sensor to measure current, voltage and power"
   extends Modelica.Icons.RoundSensor;
   Modelica.Electrical.Analog.Interfaces.PositivePin pc

@@ -1,4 +1,4 @@
-﻿within Modelica;
+within Modelica;
 package Blocks "Library of basic input/output control blocks (continuous, discrete, logical, table blocks)"
 
   extends Modelica.Icons.Package;
@@ -1660,13 +1660,7 @@ Basic Test Example for SlidingModeController Model.
       extends Modelica.Icons.Example;
       parameter Real x[:] = linspace(0, 2, 6) * Modelica.Constants.pi;
       parameter Real y[size(x, 1)] = Modelica.Math.sin(x);
-      annotation(experiment(Algorithm = Euler, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001), __MWorks(ResultViewerManager(resultViewers = {
-        ResultViewer(name = "Figure1_compare", executeTrigger = executeTrigger.SimulationFinished, commands = {
-        CreatePlot(id = 1, position = [881, 66, 600, 400], y = ["hold.y", "nearest.y", "linear.y", "akima.y", "fritsch_butland.y", "steffen.y"], x_display_unit = "s", y_axis = [1, 1, 1, 1, 1, 1], legend_layout = 7, legend_frame = True, fix_time_range_value = 6.95184e-310)})})), Documentation(info = "<html><p>
-<span style=\"color: rgb(51, 51, 51); background-color: rgb(243, 243, 243);\">in this example, we </span>demonstrate a one-dimensional interpolation table lookup which both the table value and breakpoints data are defined by model-parameters.
-</p>
-</html>"    ));
-      Tables.NTables.LookupTable1D liner(tableDataOnFile = false, breakPoints1 = x, tableData = y, extrapMethod = Tables.Types.ExtrapolationMethod.Linear, breakPointsOnFile = false) 
+      Modelica.Blocks.Tables.NTables.LookupTable1D liner(tableDataOnFile = false, breakPoints1 = x, tableData = y, extrapMethod = Tables.Types.ExtrapolationMethod.Linear, breakPointsOnFile = false) 
         annotation(Placement(transformation(origin = {39.561, 0.536585},
         extent = {{-10, -10}, {10, 10}})));
       Modelica.Blocks.Sources.Sine sine(amplitude = 10) 
@@ -1677,38 +1671,40 @@ Basic Test Example for SlidingModeController Model.
         annotation(Line(origin = {-56, 0},
         points = {{37, 0.496005}, {83.5494, 0.4960054}},
         color = {0, 0, 127}));
+
+      annotation(experiment(Algorithm = Euler, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001), __MWorks(ResultViewerManager(resultViewers = {
+        ResultViewer(name = "Figure1_compare", executeTrigger = executeTrigger.SimulationFinished, commands = {
+        CreatePlot(id = 1, position = [881, 66, 600, 400], y = ["hold.y", "nearest.y", "linear.y", "akima.y", "fritsch_butland.y", "steffen.y"], x_display_unit = "s", y_axis = [1, 1, 1, 1, 1, 1], legend_layout = 7, legend_frame = True, fix_time_range_value = 6.95184e-310)})})), Documentation(info = "<html><p>
+In this example, we demonstrate a one-dimensional interpolation table lookup which both the table value and breakpoints data are defined by model-parameters.
+</p>
+</html>"                ));
+
     end LookupTable1D;
     model LookupTable1D_File "Example for the one-dimensional linear interpolation table which is defined on file"
       extends Modelica.Icons.Example;
 
-      annotation(experiment(Algorithm=Euler,Interval=0.001,StartTime=0,StopTime=1,Tolerance=0.0001,InlineIntegrator=false,InlineStepSize=false,IntegratorStep=0.001), __MWorks(ResultViewerManager(resultViewers = {
-    ResultViewer(name = "Figure1_compare", executeTrigger = executeTrigger.SimulationFinished, commands = {
-    CreatePlot(id = 1, position = [881, 66, 600, 400], y = ["hold.y", "nearest.y", "linear.y", "akima.y", "fritsch_butland.y", "steffen.y"], x_display_unit = "s", y_axis = [1, 1, 1, 1, 1, 1], legend_layout = 7, legend_frame = True, fix_time_range_value = 6.95184e-310)})})),Documentation(info="<html><p>
-<span style=\"color: rgb(51, 51, 51); background-color: rgb(243, 243, 243);\">in this example, we </span>demonstrate a one-dimensional interpolation table lookup which both the table value and breakpoints data are defined on file。
-</p>
-</html>"    ));
-      Modelica.Blocks.Tables.NTables.LookupTable1D liner(tableDataOnFile=true, extrapMethod=Tables.Types.ExtrapolationMethod.Linear, filePath=loadResource("modelica://Modelica/Resources/Data/Examples/Test.csv"), tableData_col=2, bp_cols={1}, breakPointsOnFile=true) 
-        annotation(Placement(transformation(origin={30.9756,-1.02439},
-    extent={{-10,-10},{10,10}})));
-      Modelica.Blocks.Sources.Sine sine(amplitude=10) 
-        annotation (Placement(transformation(origin={-44,-1.02439},
-    extent={{-10,-10},{10,10}})));
+      Modelica.Blocks.Tables.NTables.LookupTable1D liner(tableDataOnFile = true, extrapMethod = Tables.Types.ExtrapolationMethod.Linear, filePath = loadResource("modelica://Modelica/Resources/Data/Examples/lookup1d_example.csv"), tableData_col = 2, bp_cols = {1}, breakPointsOnFile = true) 
+        annotation(Placement(transformation(origin = {30.9756, -1.02439},
+        extent = {{-10, -10}, {10, 10}})));
+      Modelica.Blocks.Sources.Sine sine(amplitude = 10) 
+        annotation(Placement(transformation(origin = {-44, -1.02439},
+        extent = {{-10, -10}, {10, 10}})));
     equation
       connect(sine.y, liner.u) 
-      annotation(Line(origin={-7,-1},
-      points={{-26,-0.02439},{25.964,-0.0649696}},
-      color={0,0,127}));
-      end LookupTable1D_File;
+        annotation(Line(origin = {-7, -1},
+        points = {{-26, -0.02439}, {25.964, -0.0649696}},
+        color = {0, 0, 127}));
+
+      annotation(experiment(Algorithm = Euler, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001), __MWorks(ResultViewerManager(resultViewers = {
+        ResultViewer(name = "Figure1_compare", executeTrigger = executeTrigger.SimulationFinished, commands = {
+        CreatePlot(id = 1, position = [881, 66, 600, 400], y = ["hold.y", "nearest.y", "linear.y", "akima.y", "fritsch_butland.y", "steffen.y"], x_display_unit = "s", y_axis = [1, 1, 1, 1, 1, 1], legend_layout = 7, legend_frame = True, fix_time_range_value = 6.95184e-310)})})), Documentation(info = "<html><p>
+In this example, we demonstrate a one-dimensional interpolation table lookup which both the table value and breakpoints data are defined on file。
+</p>
+</html>"                ));
+
+    end LookupTable1D_File;
     model LookupTable2D "Example for the two-dimensional linear interpolation table which is defined by model-parameters"
       extends Modelica.Icons.Example;
-      annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
-        grid = {1, 1})),
-        Icon(coordinateSystem(extent = {{-100.0, -100.0}, {100.0, 100.0}},
-        preserveAspectRatio = false,
-        grid = {2.0, 2.0})), Documentation(info = "<html><p>
-<span style=\"color: rgb(51, 51, 51); background-color: rgb(243, 243, 243);\">in this example, we </span>demonstrate a two-dimensional interpolation table lookup which both the table value and breakpoints data are defined by model-parameters.
-</p>
-</html>"        ), experiment(Algorithm = Euler, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001));
       Modelica.Blocks.Tables.NTables.LookupTable2D tY2DTable(breakPoints1 = linspace(0, 2, 3), tableDataOnFile = false, breakPoints2 = linspace(10, 11, 2), tableData = {{11, 14}, {12, 15}, {13, 16}}, extrapMethod = Tables.Types.ExtrapolationMethod.Linear) 
         annotation(Placement(transformation(origin = {43.295, 1.53096},
         extent = {{-23.5, -24.5}, {23.5, 24.5}})));
@@ -1727,11 +1723,59 @@ Basic Test Example for SlidingModeController Model.
         annotation(Line(origin = {-20, 19},
         points = {{-87, -7.639248}, {34.84637, -7.639248}},
         color = {0, 0, 127}));
+
+      annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
+        grid = {1, 1})),
+        Icon(coordinateSystem(extent = {{-100.0, -100.0}, {100.0, 100.0}},
+        preserveAspectRatio = false,
+        grid = {2.0, 2.0})), Documentation(info = "<html><p>
+In this example, we demonstrate a two-dimensional interpolation table lookup which both the table value and breakpoints data are defined by model-parameters.
+</p>
+</html>"    ), experiment(Algorithm = Euler, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001));
+
+
     end LookupTable2D;
+    model LookupTable2D_File "Example for the two-dimensional linear interpolation table which is defined on file"
+      extends Modelica.Icons.Example;
+
+      Modelica.Blocks.Tables.NTables.LookupTable2D tY2DTable(breakPoints1 = {0}, breakPoints2 = {0}, tableData = {{0}}, extrapMethod = Tables.Types.ExtrapolationMethod.Linear, breakPointsOnFile = true, filePath = loadResource("modelica://Modelica/Resources/Data/Examples/lookup2d_example.csv"), bp_cols = {1, 2}, tableData_col = 3, tableDataOnFile = true) 
+        annotation(Placement(transformation(origin = {43.295, 1.53096},
+        extent = {{-23.5, -24.5}, {23.5, 24.5}})));
+      Modelica.Blocks.Sources.Sine sine(amplitude = 5, offset = 15) 
+        annotation(Placement(transformation(origin = {-118, 11.360752},
+        extent = {{-10, -10}, {10, 10}})));
+      Modelica.Blocks.Sources.Sine sine1(amplitude = 1, offset = 2) 
+        annotation(Placement(transformation(origin = {-69, -8.2443},
+        extent = {{-10, -10}, {10, 10}})));
+    equation
+      connect(sine1.y, tY2DTable.u2) 
+        annotation(Line(origin = {-22, -8},
+        points = {{-36, -0.244295}, {36.72323, -0.244295}},
+        color = {0, 0, 127}));
+      connect(sine.y, tY2DTable.u1) 
+        annotation(Line(origin = {-20, 19},
+        points = {{-87, -7.639248}, {34.84637, -7.639248}},
+        color = {0, 0, 127}));
+
+      annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
+        grid = {1, 1})),
+        Icon(coordinateSystem(extent = {{-100.0, -100.0}, {100.0, 100.0}},
+        preserveAspectRatio = false,
+        grid = {2.0, 2.0})), Documentation(info = "<html><p>
+In this example, we demonstrate a two-dimensional interpolation table lookup which both the table value and breakpoints data are defined on file。
+</p>
+</html>"            ), experiment(Algorithm = Euler, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001));
+
+    end LookupTable2D_File;
     model LookupTable3D "Example for the three-dimensional linear interpolation table which is defined by model-parameters"
       extends Modelica.Icons.Example;
 
-      Modelica.Blocks.Tables.NTables.LookupTable3D tY3DTable(breakPoints1 = linspace(0, 2, 3), breakPoints2 = linspace(10, 11, 2), breakPoints3 = linspace(5, 6, 2), tableDataOnFile = false, tableData = {{{11, 14}, {12, 15}, {13, 16}}, {{17, 20}, {18, 21}, {19, 22}}}, extrapMethod = Modelica.Blocks.Tables.Types.ExtrapolationMethod.Linear) 
+      Modelica.Blocks.Tables.NTables.LookupTable3D tY3DTable(breakPoints1 = linspace(0, 2, 3),
+        breakPoints2 = linspace(10, 11, 2),
+        breakPoints3 = linspace(5, 6, 2),
+        tableDataOnFile = false,
+        tableData = {{{11, 14}, {12, 15}, {13, 16}}, {{17, 20}, {18, 21}, {19, 22}}},
+        extrapMethod = Modelica.Blocks.Tables.Types.ExtrapolationMethod.Linear) 
         annotation(Placement(transformation(origin = {40.0, 0.0},
         extent = {{-10.0, -10.0}, {10.0, 10.0}})));
       Modelica.Blocks.Sources.Sine sine(amplitude = 10) 
@@ -1743,11 +1787,6 @@ Basic Test Example for SlidingModeController Model.
       Modelica.Blocks.Sources.Sine sine2(amplitude = 10) 
         annotation(Placement(transformation(origin = {-110, -36.0628},
         extent = {{-10, -10}, {10, 10}})));
-      annotation(Documentation(info = "<html><p>
-<span style=\"color: rgb(51, 51, 51); background-color: rgb(243, 243, 243);\">in this example, we </span>demonstrate a three-dimensional interpolation table lookup which both the table value and breakpoints data are defined by model-parameters.
-</p>
-</html>"            ), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
-        grid = {2, 2})), experiment(Algorithm = Euler, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001));
     equation
       connect(sine.y, tY3DTable.u1) 
         annotation(Line(origin = {-29, 12},
@@ -1761,8 +1800,176 @@ Basic Test Example for SlidingModeController Model.
         annotation(Line(origin = {-4, -13},
         points = {{-95, -23.0628}, {-46, -23.0628}, {-46, 7.03086}, {31.9675, 7.03086}},
         color = {0, 0, 127}));
+      annotation(Documentation(info = "<html><p>
+In this example, we demonstrate a three-dimensional interpolation table lookup which both the table value and breakpoints data are defined by model-parameters.
+</p>
+</html>"        ), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
+        grid = {2, 2})), experiment(Algorithm = Euler, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001));
     end LookupTable3D;
+    model LookupTable3D_File "Example for the three-dimensional linear interpolation table which is defined on file"
+      extends Modelica.Icons.Example;
 
+      Modelica.Blocks.Tables.NTables.LookupTable3D tY3DTable(breakPoints1 = {0},
+        breakPoints2 = {0},
+        breakPoints3 = {0},
+        tableDataOnFile = true,
+        tableData = {{{0}}},
+        extrapMethod = Modelica.Blocks.Tables.Types.ExtrapolationMethod.Linear,
+        breakPointsOnFile = true,
+        filePath = loadResource("modelica://Modelica/Resources/Data/Examples/lookup3d_example.csv"),
+        bp_cols = {1, 2, 3},
+        tableData_col = 4) 
+        annotation(Placement(transformation(origin = {127.5, -41.9419},
+        extent = {{-33.5, -30.631352}, {33.5, 30.631352}})));
+      Modelica.Blocks.Sources.Sine sine(amplitude = 5, offset = 15) 
+        annotation(Placement(transformation(origin={-26,6},
+extent={{-10,-10},{10,10}})));
+      Modelica.Blocks.Sources.Sine sine1(amplitude = 1, offset = 2) 
+        annotation(Placement(transformation(origin={-26,-42.9078},
+extent={{-10,-10},{10,10}})));
+      Modelica.Blocks.Sources.Sine sine2(amplitude = 10, offset = 150) 
+        annotation(Placement(transformation(origin = {-26, -91.8156},
+        extent = {{-10, -10}, {10, 10}})));
+      annotation(Documentation(info = "<html><p>
+In this example, we demonstrate a three-dimensional interpolation table lookup which both the table value and breakpoints data are defined on file。
+</p>
+</html>"            ), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
+        grid = {2, 2})), experiment(Algorithm = Euler, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001));
+    equation
+      connect(sine.y, tY3DTable.u1) 
+        annotation(Line(origin={-29,12},
+points={{14,-6},{85,-6},{85,-35.5894},{116.156,-35.5894}},
+color={0,0,127}));
+      connect(tY3DTable.u2, sine1.y) 
+        annotation(Line(origin={-20,0},
+points={{107.191125,-42.0381},{5,-42.0381},{5,-42.9078}},
+color={0,0,127}));
+      connect(sine2.y, tY3DTable.u3) 
+        annotation(Line(origin={-4,-13},
+points={{-11,-78.8156},{60,-78.8156},{60,-47.2262},{91.191125,-47.2262}},
+color={0,0,127}));
+    end LookupTable3D_File;
+    model LookupTable4D "Example for the four-dimensional linear interpolation table which is defined by model-parameters"
+      extends Modelica.Icons.Example;
+
+      Modelica.Blocks.Tables.NTables.LookupTable4D tY4DTable(
+        breakPoints1 = {0, 1},
+        breakPoints2 = {10, 11},
+        breakPoints3 = {5, 6},
+        breakPoints4 = {100, 101},
+        tableDataOnFile = false,
+        extrapMethod = Modelica.Blocks.Tables.Types.ExtrapolationMethod.Linear,
+        tableData =
+        {
+          {  // i1=1 -> u1=0
+            {  // i2=1 -> u2=10
+              {330, 338},   // i3=1 -> u3=5,  i4=100/101
+              {334, 342}  // i3=2 -> u3=6,  i4=100/101
+            },
+            {  // i2=2 -> u2=11
+            {332, 340},   // i3=1 -> u3=5
+            {336, 344}  // i3=2 -> u3=6
+            }
+          },
+          {  // i1=2 -> u1=1
+            {  // i2=1 -> u2=10
+              {331, 339},
+              {335, 343}
+            },
+            {  // i2=2 -> u2=11
+              {333, 341},
+              {337, 345}
+            }
+          }
+        }
+        ) annotation(Placement(transformation(origin = {-150, -40},
+        extent = {{-10, -10}, {10, 10}})));
+      Modelica.Blocks.Sources.Constant const(k = 0.5) 
+        annotation(Placement(transformation(origin = {-262, 20},
+        extent = {{-10, -10}, {10, 10}})));
+      Modelica.Blocks.Sources.Constant const1(k = 10.5) 
+        annotation(Placement(transformation(origin = {-262, -19},
+        extent = {{-10, -10}, {10, 10}})));
+      Modelica.Blocks.Sources.Constant const2(k = 5.5) 
+        annotation(Placement(transformation(origin = {-262, -58},
+        extent = {{-10, -10}, {10, 10}})));
+      Modelica.Blocks.Sources.Constant const3(k = 100.5) 
+        annotation(Placement(transformation(origin = {-262, -102},
+        extent = {{-10, -10}, {10, 10}})));
+    equation
+      connect(const.y, tY4DTable.u1) 
+        annotation(Line(origin = {-158, -5},
+        points = {{-93, 25}, {-52, 25}, {-52, -29}, {-4.1, -29}},
+        color = {0, 0, 127}));
+      connect(const1.y, tY4DTable.u2) 
+        annotation(Line(origin = {-156, -26},
+        points = {{-95, 7}, {-68, 7}, {-68, -12}, {-6.1, -12}},
+        color = {0, 0, 127}));
+      connect(const2.y, tY4DTable.u3) 
+        annotation(Line(origin = {-149, -50},
+        points = {{-102, -8}, {-75, -8}, {-75, 8}, {-13.1, 8}},
+        color = {0, 0, 127}));
+      connect(const3.y, tY4DTable.u4) 
+        annotation(Line(origin = {-147, -74},
+        points = {{-104, -28}, {-63, -28}, {-63, 28}, {-15.1, 28}},
+        color = {0, 0, 127}));
+      annotation(Documentation(info = "<html><p>
+In this example, we demonstrate a four-dimensional interpolation table lookup which both the table value and breakpoints data are defined by model-parameters.
+</p>
+</html>"                    ), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
+        grid = {2, 2})), experiment(Algorithm = Euler, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001));
+    end LookupTable4D;
+    model LookupTable4D_File "Example for the four-dimensional linear interpolation table which is defined on file"
+      extends Modelica.Icons.Example;
+
+      Modelica.Blocks.Tables.NTables.LookupTable4D tY4DTable(
+        breakPoints1 = {0},
+        breakPoints2 = {0},
+        breakPoints3 = {0},
+        breakPoints4 = {0},
+        tableDataOnFile = true,
+        extrapMethod = Modelica.Blocks.Tables.Types.ExtrapolationMethod.Linear,
+        tableData = {{{{0}}}},
+        filePath = loadResource("modelica://Modelica/Resources/Data/Examples/lookup4d_example.csv"),
+        breakPointsOnFile = true,
+        bp_cols = {1, 2, 3, 4},
+        tableData_col = 5) annotation(Placement(transformation(origin={-116,-48},
+extent={{-10,-10},{10,10}})));
+      Modelica.Blocks.Sources.Sine sine(amplitude = 5, offset = 15) 
+        annotation(Placement(transformation(origin = {-240, 4},
+        extent = {{-10, -10}, {10, 10}})));
+      Modelica.Blocks.Sources.Sine sine1(amplitude = 0.5, offset = 1.5) 
+        annotation(Placement(transformation(origin = {-240, -30},
+        extent = {{-10, -10}, {10, 10}})));
+      Modelica.Blocks.Sources.Sine sine2(amplitude = 20, offset = 150) 
+        annotation(Placement(transformation(origin = {-240, -64},
+        extent = {{-10, -10}, {10, 10}})));
+      Modelica.Blocks.Sources.Sine sine3(amplitude = 200, offset = 1500) 
+        annotation(Placement(transformation(origin = {-240, -98},
+        extent = {{-10, -10}, {10, 10}})));
+    equation
+      connect(sine.y, tY4DTable.u1) 
+        annotation(Line(origin={-189,-15},
+points={{-40,19},{22.9,19},{22.9,-27},{60.9,-27}},
+color={0,0,127}));
+      connect(sine1.y, tY4DTable.u2) 
+        annotation(Line(origin={-196,-34},
+points={{-33,4},{24,4},{24,-12},{67.9,-12}},
+color={0,0,127}));
+      connect(sine2.y, tY4DTable.u3) 
+        annotation(Line(origin={-196,-53},
+points={{-33,-11},{24,-11},{24,3},{67.9,3}},
+color={0,0,127}));
+      connect(sine3.y, tY4DTable.u4) 
+        annotation(Line(origin={-196,-78},
+points={{-33,-20},{29.9,-20},{29.9,24},{67.9,24}},
+color={0,0,127}));
+      annotation(Documentation(info = "<html><p>
+In this example, we demonstrate a four-dimensional interpolation table lookup which both the table value and breakpoints data are defined on file。
+</p>
+</html>"    ), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
+        grid = {2, 2})), experiment(Algorithm = Euler, InlineIntegrator = false, InlineStepSize = false, IntegratorStep = 0.001, Interval = 0.001, StartTime = 0, StopTime = 1, Tolerance = 0.0001));
+    end LookupTable4D_File;
   package Noise "Library of examples to demonstrate the usage of package Blocks.Noise"
     extends Modelica.Icons.ExamplesPackage;
 

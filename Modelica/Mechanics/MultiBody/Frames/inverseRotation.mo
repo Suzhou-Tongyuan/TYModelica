@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function inverseRotation "Return inverse orientation object"
   extends Modelica.Icons.Function;
   input Orientation R "Orientation object to rotate frame 1 into frame 2";

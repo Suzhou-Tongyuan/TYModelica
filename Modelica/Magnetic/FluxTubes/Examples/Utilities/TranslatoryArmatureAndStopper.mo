@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.Utilities;
+within Modelica.Magnetic.FluxTubes.Examples.Utilities;
 model TranslatoryArmatureAndStopper
   "Mass with free travel between two stoppers"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.UsersGuide;
+within Modelica.Mechanics.Translational.UsersGuide;
 class FlangeConnectors "Flange Connectors"
   extends Modelica.Icons.Information;
 

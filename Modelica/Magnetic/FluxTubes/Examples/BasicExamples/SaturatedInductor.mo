@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.BasicExamples;
+within Modelica.Magnetic.FluxTubes.Examples.BasicExamples;
 model SaturatedInductor "Inductor with saturation in the ferromagnetic core"
   extends Modelica.Icons.Example;
 

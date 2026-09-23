@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.FixedShape;
+within Modelica.Magnetic.FluxTubes.Shapes.FixedShape;
 model HollowCylinderAxialFlux
   "(Hollow) cylinder with axial flux; fixed shape; linear or non-linear material characteristics"
 

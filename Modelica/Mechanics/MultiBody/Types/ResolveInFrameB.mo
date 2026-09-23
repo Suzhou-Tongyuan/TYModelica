@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 type ResolveInFrameB = enumeration(
     world "Resolve in world frame",
     frame_b "Resolve in frame_b",

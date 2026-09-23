@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid.Examples;
+within Modelica.Fluid.Examples;
 package TraceSubstances "Library demonstrating the usage of trace substances"
   extends Modelica.Icons.ExamplesPackage;
   model RoomCO2 "Demonstrates a room volume with CO2 accumulation"

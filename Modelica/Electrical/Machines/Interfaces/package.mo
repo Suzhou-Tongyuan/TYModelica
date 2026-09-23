@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines;
+within Modelica.Electrical.Machines;
 package Interfaces "SpacePhasor connector and PartialMachines"
   extends Modelica.Icons.InterfacesPackage;
 

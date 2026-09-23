@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
+within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
 record DriveDataDCPM
   "Parameters of a controlled DC permanent magnet drive"
   extends Modelica.Icons.Record;

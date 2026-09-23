@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model VariableCapacitor
   "Ideal linear electrical capacitors with variable capacitance"
   extends Interfaces.TwoPlug;

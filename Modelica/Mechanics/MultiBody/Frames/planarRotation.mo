@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function planarRotation "Return orientation object of a planar rotation"
   import Modelica.Math;
   extends Modelica.Icons.Function;

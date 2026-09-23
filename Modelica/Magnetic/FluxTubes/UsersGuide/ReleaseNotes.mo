@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.UsersGuide;
+within Modelica.Magnetic.FluxTubes.UsersGuide;
 class ReleaseNotes "Release Notes"
   extends Modelica.Icons.ReleaseNotes;
   annotation (Documentation(info="<html>

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines;
 model IMS_Characteristics "Characteristic curves of induction machine with slip rings"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

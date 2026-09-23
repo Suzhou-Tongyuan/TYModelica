@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.Sampler;
+within Modelica.Clocked.BooleanSignals.Sampler;
 block SampleClocked
   "Sample the continuous-time, Boolean input signal and provide it as clocked output signal. The clock is provided as input signal"
   extends Clocked.BooleanSignals.Interfaces.SamplerIcon;

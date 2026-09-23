@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
 block CylinderAirCharge
   "Integrates the air mass flow into a cylinder. After the charge for one
    cylinder is complete, resets the mass to 0."

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model MutualInductor "Linear mutual inductor"
   extends QuasiStatic.Polyphase.Interfaces.OnePort;
   import Modelica.ComplexMath.j;

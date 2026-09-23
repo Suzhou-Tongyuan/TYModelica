@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.UsersGuide;
+within Modelica.Mechanics.Translational.UsersGuide;
 class StateSelection "State Selection"
   extends Modelica.Icons.Information;
 

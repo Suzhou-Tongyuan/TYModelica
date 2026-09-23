@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes;
 package FixedShape "Flux tubes with fixed shape during simulation and linear material characteristics"
   extends Modelica.Icons.VariantsPackage;
 

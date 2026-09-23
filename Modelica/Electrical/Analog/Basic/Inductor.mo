@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model Inductor "Ideal linear electrical inductor"
   extends Interfaces.OnePort(i(start=0));
   parameter SI.Inductance L(start=1) "Inductance";

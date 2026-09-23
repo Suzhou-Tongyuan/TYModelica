@@ -1,4 +1,4 @@
-﻿within Modelica.Media;
+within Modelica.Media;
 package Incompressible
   "Medium model for T-dependent properties, defined by tables or polynomials"
   extends Modelica.Icons.VariantsPackage;

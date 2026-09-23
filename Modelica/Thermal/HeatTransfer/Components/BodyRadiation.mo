@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Components;
+within Modelica.Thermal.HeatTransfer.Components;
 model BodyRadiation "Lumped thermal element for radiation heat transfer"
   extends Interfaces.Element1D;
   parameter Real Gr(unit="m2")

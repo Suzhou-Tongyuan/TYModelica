@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model GeneralAngleToTorqueAdaptor
   "Signal adaptor for a rotational flange with torque as output and angle, speed and acceleration as input (especially useful for FMUs)"
   extends 

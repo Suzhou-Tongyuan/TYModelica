@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Ideal;
+within Modelica.Electrical.Polyphase.Ideal;
 model IdealTransformer "Polyphase ideal transformer"
   extends Interfaces.FourPlug;
   parameter Real n[m](start=fill(1, m)) "Turns ratio primary:secondary voltage";

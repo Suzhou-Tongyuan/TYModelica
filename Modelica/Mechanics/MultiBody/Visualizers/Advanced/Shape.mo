@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
+within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
 model Shape
   "Visualizing an elementary object with variable size; all data have to be set as modifiers (see info layer)"
 

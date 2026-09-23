@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals;
+within Modelica.Clocked.ClockSignals;
 package Interfaces "Library of connectors and partial blocks with clock signals"
   extends Modelica.Icons.InterfacesPackage;
 

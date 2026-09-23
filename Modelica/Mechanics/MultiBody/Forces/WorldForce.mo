@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces;
+within Modelica.Mechanics.MultiBody.Forces;
 model WorldForce
   "External force acting at frame_b, defined by 3 input signals and resolved in frame world, frame_b or frame_resolve"
 

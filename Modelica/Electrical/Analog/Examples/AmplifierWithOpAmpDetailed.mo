@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model AmplifierWithOpAmpDetailed
   "Simple Amplifier circuit which uses OpAmpDetailed"
   extends Modelica.Icons.Example;

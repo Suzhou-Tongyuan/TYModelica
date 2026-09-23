@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces;
 partial model TwoPinElementary "Elementary two pins with reference connection, without declaration of voltage and current"
   import Modelica.Constants.eps;
   SI.AngularVelocity omega "Angular velocity of reference frame";

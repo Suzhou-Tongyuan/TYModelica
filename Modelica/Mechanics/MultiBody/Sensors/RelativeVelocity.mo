@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model RelativeVelocity
   "Measure relative velocity vector between the origins of two frame connectors"
   extends Internal.PartialRelativeSensor;

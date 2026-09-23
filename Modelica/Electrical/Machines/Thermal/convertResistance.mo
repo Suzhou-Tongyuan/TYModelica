@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal;
+within Modelica.Electrical.Machines.Thermal;
 function convertResistance
   "Converts resistance from reference temperature to an actual temperature"
   extends Modelica.Icons.Function;

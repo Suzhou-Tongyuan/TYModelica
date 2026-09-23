@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 block VfController "Voltage-Frequency-Controller"
   import Modelica.Constants.pi;
   extends Modelica.Blocks.Interfaces.SIMO(u(unit="Hz"), final nout=m);

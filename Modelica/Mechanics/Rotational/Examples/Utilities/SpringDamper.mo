@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples.Utilities;
+within Modelica.Mechanics.Rotational.Examples.Utilities;
 model SpringDamper "Input/output block of a spring/damper model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.RotationalSpringConstant c=1e4

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase;
+within Modelica.Electrical.QuasiStatic.SinglePhase;
 package Sources "AC single-phase sources"
   extends Modelica.Icons.SourcesPackage;
   annotation (Documentation(info="<html>

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model IdealOpAmp "Ideal operational amplifier (norator-nullator pair)"
   SI.Voltage v1 "Voltage drop over the left port";
   SI.Voltage v2 "Voltage drop over the right port";

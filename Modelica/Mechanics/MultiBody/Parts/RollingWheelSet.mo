@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Parts;
+within Modelica.Mechanics.MultiBody.Parts;
 model RollingWheelSet
   "Ideal rolling wheel set consisting of two ideal rolling wheels connected together by an axis"
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a frameMiddle

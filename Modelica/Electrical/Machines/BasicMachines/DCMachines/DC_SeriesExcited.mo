@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.DCMachines;
+within Modelica.Electrical.Machines.BasicMachines.DCMachines;
 model DC_SeriesExcited "Series excited linear DC machine"
   extends Machines.Interfaces.PartialBasicDCMachine(
     wNominal(start=1410*2*pi/60),

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.UsersGuide;
+within Modelica.Mechanics.Translational.UsersGuide;
 class UserDefinedComponents "User Defined Components"
   extends Modelica.Icons.Information;
 

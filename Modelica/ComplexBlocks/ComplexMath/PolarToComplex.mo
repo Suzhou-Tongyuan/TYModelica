@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block PolarToComplex "Converts polar representation to complex"
   extends Modelica.ComplexBlocks.Interfaces.ComplexSO;
   Blocks.Interfaces.RealInput len annotation (Placement(transformation(

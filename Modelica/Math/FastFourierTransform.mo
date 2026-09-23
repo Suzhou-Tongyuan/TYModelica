@@ -1,4 +1,4 @@
-﻿within Modelica.Math;
+within Modelica.Math;
 package FastFourierTransform
   "Library of functions for the Fast Fourier Transform (FFT)"
   extends Modelica.Icons.Package;

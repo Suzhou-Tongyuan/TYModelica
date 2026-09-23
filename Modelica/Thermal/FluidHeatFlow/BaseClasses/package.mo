@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow;
+within Modelica.Thermal.FluidHeatFlow;
 package BaseClasses "Base classes of FluidHeatFlow models"
   extends Modelica.Icons.BasesPackage;
   annotation (Documentation(info="<html>

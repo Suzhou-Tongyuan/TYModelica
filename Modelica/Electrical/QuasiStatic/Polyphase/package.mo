@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic;
+within Modelica.Electrical.QuasiStatic;
 package Polyphase "Polyphase AC components"
   extends Modelica.Icons.Package;
 

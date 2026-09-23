@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
+within Modelica.Electrical.Machines.Interfaces.InductionMachines;
 model PartialThermalAmbientInductionMachines
   "Partial thermal ambience for induction machines"
   parameter Integer m=3 "Number of stator phases" annotation(Evaluate=true);

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Examples.Utilities;
+within Modelica.Thermal.HeatTransfer.Examples.Utilities;
 model Conduction "Input/output block of a conduction model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.ThermalConductance G=1 "Thermal conductance";

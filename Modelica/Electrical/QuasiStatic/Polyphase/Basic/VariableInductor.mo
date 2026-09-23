@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model VariableInductor "Polyphase variable inductor"
   extends Interfaces.TwoPlug;
   Modelica.Blocks.Interfaces.RealInput L[m](each unit="H")

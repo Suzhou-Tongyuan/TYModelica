@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package Noise "Library of noise blocks"
   extends Modelica.Icons.Package;
 

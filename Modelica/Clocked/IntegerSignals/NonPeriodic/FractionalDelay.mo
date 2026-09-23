@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.NonPeriodic;
+within Modelica.Clocked.IntegerSignals.NonPeriodic;
 block FractionalDelay
   "Delay the clocked input signal for a fractional multiple of the sample period"
 extends Clocked.IntegerSignals.Interfaces.PartialClockedSISO;

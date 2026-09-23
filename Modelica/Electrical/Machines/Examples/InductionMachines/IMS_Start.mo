@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.InductionMachines;
+within Modelica.Electrical.Machines.Examples.InductionMachines;
 model IMS_Start "Test example: InductionMachineSlipRing"
   extends Modelica.Icons.Example;
   constant Integer m=3 "Number of phases";

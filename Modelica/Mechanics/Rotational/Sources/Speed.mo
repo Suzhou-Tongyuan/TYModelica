@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model Speed
   "Forced movement of a flange according to a reference angular velocity signal"
   extends 

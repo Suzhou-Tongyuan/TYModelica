@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function axesRotations
   "Return fixed rotation object to rotate in sequence around fixed angles along 3 axes"
 

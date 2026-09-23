@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.BasicMachines.SynchronousMachines;
+within Modelica.Magnetic.FundamentalWave.BasicMachines.SynchronousMachines;
 model SM_ReluctanceRotor "Reluctance machine with optional damper cage"
   extends Magnetic.FundamentalWave.BaseClasses.Machine(
     is(start=zeros(m)),

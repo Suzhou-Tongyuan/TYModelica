@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC;
+within Modelica.Electrical.PowerConverters.ACDC;
 model HalfControlledBridge2mPulse
   "2*m pulse half controlled rectifier bridge"
   extends Icons.Converter;

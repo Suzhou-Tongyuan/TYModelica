@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
+within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
 model DoubleArrow
   "Visualizing a double arrow with variable size"
 

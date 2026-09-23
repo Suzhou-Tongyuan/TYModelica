@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.UsersGuide;
+within Modelica.Electrical.PowerConverters.UsersGuide;
 class References "References"
   extends Modelica.Icons.References;
   annotation (Documentation(info="<html>

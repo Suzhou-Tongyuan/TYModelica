@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
+within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
 model Arrow
   "Visualizing an arrow with variable size"
 

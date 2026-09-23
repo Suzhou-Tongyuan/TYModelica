@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model TimeBasedStep
   "Example of using the clocked simulation time based Step source block"
    extends Modelica.Icons.Example;

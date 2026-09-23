@@ -1,4 +1,4 @@
-﻿within Modelica.Utilities;
+within Modelica.Utilities;
 package Strings "Operations on strings"
   extends Modelica.Icons.FunctionsPackage;
 

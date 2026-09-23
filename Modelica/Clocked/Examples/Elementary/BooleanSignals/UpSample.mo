@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.BooleanSignals;
+within Modelica.Clocked.Examples.Elementary.BooleanSignals;
 model UpSample "Example of an UpSample block for Boolean signals"
    extends Modelica.Icons.Example;
 

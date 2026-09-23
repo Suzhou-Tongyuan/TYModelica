@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
+within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
 partial model RelativeSensorElementary "Elementary partial voltage / current sensor"
   extends Modelica.Icons.RoundSensor;
   extends TwoPlugElementary;

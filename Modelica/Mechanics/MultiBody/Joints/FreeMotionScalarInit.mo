@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 model FreeMotionScalarInit
   "Free motion joint with scalar initialization and state selection (6 degrees-of-freedom, 12 potential states)"
 

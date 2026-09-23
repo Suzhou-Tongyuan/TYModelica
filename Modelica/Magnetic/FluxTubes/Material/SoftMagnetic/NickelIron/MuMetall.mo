@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.NickelIron;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.NickelIron;
 record MuMetall "MUMETALL (77% NiFe)"
   extends FluxTubes.Material.SoftMagnetic.BaseData(
     mu_i=27300,

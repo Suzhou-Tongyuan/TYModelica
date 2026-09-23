@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
+within Modelica.Electrical.Machines.Interfaces.InductionMachines;
 connector ThermalPortIMS
   "Thermal port of induction machine with slipring"
   extends 

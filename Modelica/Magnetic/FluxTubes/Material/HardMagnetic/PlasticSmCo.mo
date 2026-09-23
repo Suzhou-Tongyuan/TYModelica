@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
+within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
 record PlasticSmCo "Plastic-bonded Sm-Co, exemplary values"
   extends FluxTubes.Material.HardMagnetic.BaseData(
     H_cBRef=385000,

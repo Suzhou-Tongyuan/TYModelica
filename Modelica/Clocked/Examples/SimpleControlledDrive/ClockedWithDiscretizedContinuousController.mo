@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.SimpleControlledDrive;
+within Modelica.Clocked.Examples.SimpleControlledDrive;
 model ClockedWithDiscretizedContinuousController
   "Simple controlled drive with discretized continuous-time controller"
  extends Modelica.Icons.Example;

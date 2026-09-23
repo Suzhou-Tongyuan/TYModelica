@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Sampler.Utilities;
+within Modelica.Clocked.IntegerSignals.Sampler.Utilities;
 block AssignClockToSquareWaveHold
 "Generate a Boolean continuous-time square signal from a clocked Integer input"
   extends Clocked.ClockSignals.Interfaces.ClockedBlockIcon;

@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Routing;
+within Modelica.ComplexBlocks.Routing;
 block ExtractSignal "Extract signals from an input signal vector"
   extends Modelica.ComplexBlocks.Interfaces.ComplexMIMO;
   parameter Integer extract[nout]=1:nout "Extracting vector";

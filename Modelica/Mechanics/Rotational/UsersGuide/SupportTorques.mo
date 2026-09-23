@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.UsersGuide;
+within Modelica.Mechanics.Rotational.UsersGuide;
 class SupportTorques "Support Torques"
   extends Modelica.Icons.Information;
 

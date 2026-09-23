@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples.Utilities;
+within Modelica.Mechanics.Rotational.Examples.Utilities;
 model SpringDamperNoRelativeStates
   "Linear 1D rotational spring and damper in parallel (phi and w are not used as states)"
   parameter SI.RotationalSpringConstant c(final min=0, start=1.0e5) "Spring constant";

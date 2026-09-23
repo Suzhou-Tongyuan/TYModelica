@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.UsersGuide;
+within Modelica.Thermal.HeatTransfer.UsersGuide;
 class ReleaseNotes "Release Notes"
   extends Modelica.Icons.ReleaseNotes;
   annotation (preferredView="info",Documentation(info="<html>

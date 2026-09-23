@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops;
+within Modelica.Mechanics.MultiBody.Examples.Loops;
 model Engine1a "Model of one cylinder engine"
   extends Modelica.Icons.Example;
   extends Utilities.Engine1Base;

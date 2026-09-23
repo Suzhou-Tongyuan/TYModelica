@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Utilities;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Utilities;
 model GraetzRectifier "Graetz rectifier bridge"
   SI.Voltage vAC=pin_pAC.v - pin_nAC.v "AC voltage";
   SI.Current iAC=pin_pAC.i "AC current";

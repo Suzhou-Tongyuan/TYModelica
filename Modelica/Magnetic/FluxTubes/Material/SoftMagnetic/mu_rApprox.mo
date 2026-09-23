@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic;
 function mu_rApprox
   "Approximation of relative permeability mu_r as a function of flux density B for soft magnetic materials"
 

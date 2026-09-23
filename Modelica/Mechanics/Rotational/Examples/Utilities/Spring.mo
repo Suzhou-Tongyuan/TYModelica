@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples.Utilities;
+within Modelica.Mechanics.Rotational.Examples.Utilities;
 model Spring "Input/output block of a spring model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.RotationalSpringConstant c=1e4

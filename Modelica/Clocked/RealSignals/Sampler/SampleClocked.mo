@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler;
+within Modelica.Clocked.RealSignals.Sampler;
 block SampleClocked
   "Sample the continuous-time, Real input signal and provide it as clocked output signal. The clock is provided as input signal"
   extends Clocked.RealSignals.Interfaces.SamplerIcon;

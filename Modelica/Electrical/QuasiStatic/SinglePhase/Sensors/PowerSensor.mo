@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Sensors;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Sensors;
 model PowerSensor "Power sensor"
   import Modelica.ComplexMath.conj;
   extends Modelica.Icons.RoundSensor;

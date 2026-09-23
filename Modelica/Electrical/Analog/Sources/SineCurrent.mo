@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model SineCurrent "Sine current source"
   parameter SI.Current I(start=1) "Amplitude of sine wave";
   parameter SI.Angle phase=0 "Phase of sine wave";

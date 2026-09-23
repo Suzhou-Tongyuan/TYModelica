@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
+within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
 record DifferentialAmplifierData "Data record for differential amplifier"
   extends Modelica.Icons.Record;
   parameter SI.Voltage VSource=400 "Source RMS voltage line-to-line" 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical;
+within Modelica.Electrical;
 package QuasiStatic "Library for quasi-static electrical single-phase and polyphase AC simulation"
   extends Modelica.Icons.Package;
   annotation (

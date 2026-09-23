@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
+within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
 partial model TwoPlug "Two plugs with pin-adapter, reference connection and declaration of voltage and current"
   extends Modelica.Electrical.QuasiStatic.Polyphase.Interfaces.TwoPlugElementary;
 

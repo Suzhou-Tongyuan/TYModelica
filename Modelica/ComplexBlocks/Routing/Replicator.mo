@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Routing;
+within Modelica.ComplexBlocks.Routing;
 block Replicator "Signal replicator"
   extends Modelica.ComplexBlocks.Interfaces.ComplexSIMO;
 equation

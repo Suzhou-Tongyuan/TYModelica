@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Interfaces;
+within Modelica.Electrical.Analog.Interfaces;
 partial model CurrentSource "Interface for current sources"
   extends Modelica.Electrical.Analog.Icons.CurrentSource;
   extends OnePort;

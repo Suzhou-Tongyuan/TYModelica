@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities.ParameterRecords;
+within Modelica.Electrical.Machines.Utilities.ParameterRecords;
 record DcSeriesExcitedData "Common parameters for DC machines"
   extends DcPermanentMagnetData(wNominal=1410*2*pi/60);
   import Modelica.Constants.pi;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints.Internal;
+within Modelica.Mechanics.MultiBody.Joints.Internal;
 model InitPosition
  "Internal model to initialize r_rel_a for Joints.FreeMotionScalarInit"
   extends Modelica.Blocks.Icons.Block;

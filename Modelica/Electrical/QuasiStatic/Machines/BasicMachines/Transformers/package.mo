@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.BasicMachines;
+within Modelica.Electrical.QuasiStatic.Machines.BasicMachines;
 package Transformers "Library for technical 3phase transformers"
   extends Modelica.Icons.Package;
   annotation (Documentation(info="<html>

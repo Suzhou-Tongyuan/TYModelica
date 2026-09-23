@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 model PointGravityWithPointMasses
   "Two point masses in a point gravity field (rotation of bodies is neglected)"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCDC.ChopperStepDown;
+within Modelica.Electrical.PowerConverters.Examples.DCDC.ChopperStepDown;
 model ChopperStepDown_RL "Step down chopper with R-L load"
   extends ExampleTemplates.ChopperStepDown(signalPWM(useConstantDutyCycle=false));
   extends Modelica.Icons.Example;

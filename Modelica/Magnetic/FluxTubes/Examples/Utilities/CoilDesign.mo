@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.Utilities;
+within Modelica.Magnetic.FluxTubes.Examples.Utilities;
 record CoilDesign
   "Calculation of winding parameters (wire diameter, number of turns et al.) and recalculation with optionally chosen parameters; to be adapted to particular design tasks"
   extends Modelica.Icons.Record;

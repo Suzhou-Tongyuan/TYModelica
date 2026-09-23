@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid.Examples;
+within Modelica.Fluid.Examples;
 model PumpingSystem "Model of a pumping system for drinking water"
   extends Modelica.Icons.Example;
 

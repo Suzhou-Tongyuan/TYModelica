@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 connector Frame
   "Coordinate system fixed to the component with one cut-force and cut-torque (no icon)"
 

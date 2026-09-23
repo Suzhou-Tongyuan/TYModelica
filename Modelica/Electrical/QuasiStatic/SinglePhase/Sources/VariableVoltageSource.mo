@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Sources;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Sources;
 model VariableVoltageSource "Variable AC voltage"
   extends Interfaces.Source;
   Modelica.Blocks.Interfaces.RealInput f(unit="Hz") annotation (Placement(

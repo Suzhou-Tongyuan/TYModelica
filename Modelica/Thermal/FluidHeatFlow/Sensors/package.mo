@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow;
+within Modelica.Thermal.FluidHeatFlow;
 package Sensors "Ideal sensors to measure port properties"
   extends Modelica.Icons.SensorsPackage;
   annotation (Documentation(info="<html>

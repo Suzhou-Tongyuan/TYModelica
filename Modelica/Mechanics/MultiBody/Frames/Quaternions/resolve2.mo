@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
+within Modelica.Mechanics.MultiBody.Frames.Quaternions;
 function resolve2 "Transform vector from frame 1 to frame 2"
   extends Modelica.Icons.Function;
   input Quaternions.Orientation Q

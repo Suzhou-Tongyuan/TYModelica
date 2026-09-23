@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Internal;
+within Modelica.Mechanics.MultiBody.Frames.Internal;
 function maxWithoutEvent_dd
   "First derivative of function maxWithoutEvent_d(..)"
   extends Modelica.Icons.Function;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints.Internal;
+within Modelica.Mechanics.MultiBody.Joints.Internal;
 model RollingConstraintVerticalWheel
  "Rolling constraint for wheel that is always perpendicular to x-y plane"
  import Modelica.Mechanics.MultiBody.Frames;

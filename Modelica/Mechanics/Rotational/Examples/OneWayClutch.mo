@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model OneWayClutch "Drive train with actively engaged one-way clutch"
   extends Modelica.Icons.Example;
 

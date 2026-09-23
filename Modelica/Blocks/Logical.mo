@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package Logical "Library of components with Boolean input and output signals"
   extends Modelica.Icons.Package;
 
@@ -376,39 +376,40 @@ Real input u2, otherwise the output is <strong>false</strong>.
   end LessEqual;
   block Equality "Output y is true, if input u1 is equal to input u2"
     Blocks.Interfaces.RealInput u1 "Connector of first Real input signal" 
-      annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
+      annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
     Blocks.Interfaces.RealInput u2 "Connector of second Real input signal" 
-      annotation (Placement(transformation(extent={{-140,-100},{-100,-60}})));
+      annotation(Placement(transformation(extent = {{-140, -100}, {-100, -60}})));
     Blocks.Interfaces.BooleanOutput y "Connector of Boolean output signal" 
-      annotation (Placement(transformation(extent={{100,-10},{120,10}})));
+      annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
 
   equation
-    y = u1 == u2;
-    annotation (Icon(coordinateSystem(extent={{-100,-100},{100,100}},
-grid={2,2}),graphics = {Rectangle(origin={0,0},
-fillColor={210,210,210},
-fillPattern=FillPattern.Solid,
-borderPattern=BorderPattern.Raised,
-extent={{-100,100},{100,-100}}), Ellipse(origin={42,0},
-lineColor={0,0,127},
-extent={{-10,10},{10,-10}}), Line(origin={-29,-40},
-points={{-71,-40},{71,-40},{71,40}},
-color={0,0,127}), Line(origin={-30,16},
-points={{-24,0},{24,0}},
-thickness=0.5), Line(origin={-30,-14},
-points={{-24,0},{24,0}},
-thickness=0.5), Text(origin={0,130},
-lineColor={0,0,255},
-extent={{-150,20},{150,-20}},
-textString="%name",
-textColor={0,0,255}), Ellipse(origin={76,0},
-lineColor=DynamicSelect({235,235,235}, if y then {0,255,0} else {235,235,235}),
-fillColor=DynamicSelect({235,235,235}, if y then {0,255,0} else {235,235,235}),
-fillPattern=FillPattern.Solid,
-extent={{-7,7},{7,-7}})}), Documentation(info="<html><p>
+    //y = u1 == u2;
+    y = if abs(u1 - u2) < Modelica.Constants.eps then true else false;
+    annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}},
+      grid = {2, 2}), graphics = {Rectangle(origin = {0, 0},
+      fillColor = {210, 210, 210},
+      fillPattern = FillPattern.Solid,
+      borderPattern = BorderPattern.Raised,
+      extent = {{-100, 100}, {100, -100}}), Ellipse(origin = {42, 0},
+      lineColor = {0, 0, 127},
+      extent = {{-10, 10}, {10, -10}}), Line(origin = {-29, -40},
+      points = {{-71, -40}, {71, -40}, {71, 40}},
+      color = {0, 0, 127}), Line(origin = {-30, 16},
+      points = {{-24, 0}, {24, 0}},
+      thickness = 0.5), Line(origin = {-30, -14},
+      points = {{-24, 0}, {24, 0}},
+      thickness = 0.5), Text(origin = {0, 130},
+      lineColor = {0, 0, 255},
+      extent = {{-150, 20}, {150, -20}},
+      textString = "%name",
+      textColor = {0, 0, 255}), Ellipse(origin = {76, 0},
+      lineColor = DynamicSelect({235, 235, 235}, if y then {0, 255, 0} else {235, 235, 235}),
+      fillColor = DynamicSelect({235, 235, 235}, if y then {0, 255, 0} else {235, 235, 235}),
+      fillPattern = FillPattern.Solid,
+      extent = {{-7, 7}, {7, -7}})}), Documentation(info = "<html><p>
 The output is <strong>true</strong> if Real input u1 is equal to Real input u2, otherwise the output is <strong>false</strong>.
 </p>
-</html>"));
+</html>"  ));
   end Equality;
   block IntegerEquality "Output y is true, if input u1 is equal to input u2"
     Interfaces.IntegerInput u1 "Connector of first Real input signal" 

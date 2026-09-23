@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines;
+within Modelica.Electrical.Machines.BasicMachines;
 package Transformers "Library for technical 3phase transformers"
   extends Modelica.Icons.Package;
 

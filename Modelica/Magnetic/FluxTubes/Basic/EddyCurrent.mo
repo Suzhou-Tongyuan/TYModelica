@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Basic;
+within Modelica.Magnetic.FluxTubes.Basic;
 model EddyCurrent
   "For modelling of eddy current in a conductive magnetic flux tube"
 

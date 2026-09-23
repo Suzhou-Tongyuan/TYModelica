@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines;
+within Modelica.Electrical.QuasiStatic.Machines;
 package Examples "Test examples"
   extends Modelica.Icons.ExamplesPackage;
 

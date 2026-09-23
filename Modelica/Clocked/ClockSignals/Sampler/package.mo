@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals;
+within Modelica.Clocked.ClockSignals;
 package Sampler "Library of blocks that sub-, super-, shift-sample clock signals"
   extends Modelica.Icons.Package;
 

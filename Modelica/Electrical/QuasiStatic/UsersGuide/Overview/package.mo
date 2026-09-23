@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.UsersGuide;
+within Modelica.Electrical.QuasiStatic.UsersGuide;
 package Overview "Overview"
   extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>

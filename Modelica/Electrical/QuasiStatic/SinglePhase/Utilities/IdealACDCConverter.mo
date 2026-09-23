@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Utilities;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Utilities;
 model IdealACDCConverter "Ideal AC DC converter"
   parameter Real conversionFactor "Ratio of DC voltage / QS rms voltage";
   import Modelica.ComplexMath.real;

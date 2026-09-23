@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model AD_DA_conversion "Conversion circuit"
   extends Modelica.Icons.Example;
   parameter Integer N=7 "Digital signal width";

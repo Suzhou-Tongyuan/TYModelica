@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model HoldWithDAeffects2
   "Example of a HoldWithDAeffects block for Real signals (with a computational delay of one sample period)"
    extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Interfaces;
+within Modelica.Thermal.FluidHeatFlow.Interfaces;
 partial model RelativeSensor "Partial model of relative sensor"
   extends RelativeSensorBase;
   Modelica.Blocks.Interfaces.RealOutput y 

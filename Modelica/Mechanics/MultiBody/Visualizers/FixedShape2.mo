@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 model FixedShape2
   "Visualizing an elementary shape with dynamically varying shape attributes (has two frame connectors)"
 

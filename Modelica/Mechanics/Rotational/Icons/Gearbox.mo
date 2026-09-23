@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Icons;
+within Modelica.Mechanics.Rotational.Icons;
 model Gearbox "Icon of a gear box"
 
   annotation (Icon(

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model IdealDiode "Ideal diode"
   extends Modelica.Electrical.Analog.Interfaces.IdealSemiconductor;
 equation

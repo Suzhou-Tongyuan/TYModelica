@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters;
+within Modelica.Electrical.PowerConverters;
 package DCAC "DC to AC converters"
   extends Modelica.Icons.Package;
   annotation (Documentation(info="<html>

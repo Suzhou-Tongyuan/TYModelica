@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
+within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
 model Quantization "DAC quantization effects"
 extends Clocked.RealSignals.Interfaces.PartialClockedSISO;
 

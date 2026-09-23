@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model RollingResistance "Resistance of a rolling wheel"
   extends Modelica.Mechanics.Translational.Interfaces.PartialForce;
   import Modelica.Constants.pi;

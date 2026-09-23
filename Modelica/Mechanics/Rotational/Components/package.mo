@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational;
+within Modelica.Mechanics.Rotational;
 package Components "Components for 1D rotational mechanical drive trains"
   extends Modelica.Icons.Package;
 

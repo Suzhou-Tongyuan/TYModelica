@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
 model SaliencyCageWinding "Rotor cage with saliency in d- and q-axis"
   extends Magnetic.QuasiStatic.FundamentalWave.Interfaces.TwoPortExtended;
   parameter Boolean useHeatPort=false

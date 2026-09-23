@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model ElasticBearing "Example to show possible usage of support flange"
   extends Modelica.Icons.Example;
   Rotational.Components.Inertia shaft(

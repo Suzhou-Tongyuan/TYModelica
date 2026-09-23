@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model ThyristorBehaviourTest "Thyristor demonstration example"
   extends Modelica.Icons.Example;
 

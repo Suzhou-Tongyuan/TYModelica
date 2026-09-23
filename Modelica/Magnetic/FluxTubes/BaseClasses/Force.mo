@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.BaseClasses;
+within Modelica.Magnetic.FluxTubes.BaseClasses;
 partial model Force "Base class for flux tubes with reluctance force generation; constant permeability"
 
   extends Interfaces.TwoPort;

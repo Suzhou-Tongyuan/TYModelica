@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
 model Ground "Magnetic ground"
 
   FundamentalWave.Interfaces.PositiveMagneticPort port_p

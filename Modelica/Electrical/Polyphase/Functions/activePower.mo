@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Functions;
+within Modelica.Electrical.Polyphase.Functions;
 function activePower "Calculate active power of voltage and current input"
   extends Modelica.Icons.Function;
   input SI.Voltage v[:] "Phase voltages";

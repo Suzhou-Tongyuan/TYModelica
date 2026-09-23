@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Interfaces;
+within Modelica.Electrical.Batteries.Interfaces;
 expandable connector CellBus "Measurement signal bus for a single cell"
   extends Modelica.Icons.SignalSubBus;
   SI.Voltage v "Cell voltage";

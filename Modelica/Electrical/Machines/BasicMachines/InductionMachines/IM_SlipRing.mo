@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.InductionMachines;
+within Modelica.Electrical.Machines.BasicMachines.InductionMachines;
 model IM_SlipRing "Induction machine with slipring rotor"
   extends Machines.Interfaces.PartialBasicInductionMachine(
     final idq_ss=airGap.i_ss,

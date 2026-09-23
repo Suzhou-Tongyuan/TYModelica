@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Semiconductors;
+within Modelica.Electrical.Analog.Semiconductors;
 model ZDiode "Zener diode with 3 working areas"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;
   parameter SI.Current Ids=1e-6 "Saturation current";

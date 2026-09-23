@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines;
+within Modelica.Electrical.Machines.BasicMachines;
 package InductionMachines "Models of induction machines"
   extends Modelica.Icons.VariantsPackage;
 

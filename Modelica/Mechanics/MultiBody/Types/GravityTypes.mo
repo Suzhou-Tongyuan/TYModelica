@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 type GravityTypes = enumeration(
     NoGravity "No gravity field",
     UniformGravity "Uniform gravity field",

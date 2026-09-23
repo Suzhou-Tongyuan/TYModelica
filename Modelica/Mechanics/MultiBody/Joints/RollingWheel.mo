@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 model RollingWheel
   "Joint (no mass, no inertia) that describes an ideal rolling wheel (rolling on the plane z=0)"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model RelativeStates "Definition of relative state variables"
   extends Translational.Interfaces.PartialTwoFlanges;
   parameter StateSelect stateSelect=StateSelect.prefer

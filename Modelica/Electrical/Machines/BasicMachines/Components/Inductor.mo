@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model Inductor "Space phasor inductor"
   parameter SI.Inductance L[2] "Inductance of both axes";
   SI.Voltage v_[2];

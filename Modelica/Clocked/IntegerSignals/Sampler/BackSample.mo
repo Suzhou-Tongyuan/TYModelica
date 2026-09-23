@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Sampler;
+within Modelica.Clocked.IntegerSignals.Sampler;
 block BackSample
   "Shift clock of Integer input signal backwards in time (and access the most recent value of the input at this new clock)"
   parameter Integer backCounter(min=0)=0 "Numerator of shifting formula" 

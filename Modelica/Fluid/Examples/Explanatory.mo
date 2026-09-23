@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid.Examples;
+within Modelica.Fluid.Examples;
 package Explanatory
   "A set of examples illustrating when special attention has to be paid"
   extends Modelica.Icons.ExamplesPackage;

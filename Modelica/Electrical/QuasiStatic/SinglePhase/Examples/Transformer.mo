@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Examples;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Examples;
 model Transformer "Example of transformer with short circuit impedance, transmission resistances and load"
   extends Modelica.Icons.Example;
   Sources.VoltageSource voltageSource(

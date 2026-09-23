@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid.Examples;
+within Modelica.Fluid.Examples;
 model InverseParameterization
   "Demonstrates the parameterization of a pump and a pipe for given nominal values"
   extends Modelica.Icons.Example;

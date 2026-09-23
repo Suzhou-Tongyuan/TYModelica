@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.FixedShape;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.FixedShape;
 model HollowCylinderRadialFlux
 "Hollow cylinder with radial flux of fixed shape and linear material characteristics"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model Backlash "Example to demonstrate backlash"
   extends Modelica.Icons.Example;
   Rotational.Components.Fixed fixed1 

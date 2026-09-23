@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors;
+within Modelica.Electrical.Machines.SpacePhasors;
 package Components "Basic space phasor models"
   extends Modelica.Icons.Package;
 

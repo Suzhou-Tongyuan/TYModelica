@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model OneWayClutch "Parallel connection of freewheel and clutch"
   extends Modelica.Mechanics.Rotational.Icons.Clutch;
   extends 

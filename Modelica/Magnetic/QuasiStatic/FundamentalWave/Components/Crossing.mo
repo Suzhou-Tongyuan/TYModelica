@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
 model Crossing "Crossing of connections"
 
   Interfaces.PositiveMagneticPort port_p1 "Connected with port_p2" 

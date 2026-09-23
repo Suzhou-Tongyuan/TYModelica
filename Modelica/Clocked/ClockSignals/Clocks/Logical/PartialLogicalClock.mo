@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Clocks.Logical;
+within Modelica.Clocked.ClockSignals.Clocks.Logical;
 partial block PartialLogicalClock
   "Logical clock combining arbitrary many input clock signals according to a replaceable logical combinator"
   extends Interfaces.PartialClock;

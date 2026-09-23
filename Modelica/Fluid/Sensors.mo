@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid;
+within Modelica.Fluid;
 package Sensors
   "Ideal sensor components to extract signals from a fluid connector"
   extends Modelica.Icons.SensorsPackage;

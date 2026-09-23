@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
+within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
 model Buffer "Non inverting operational amplifier circuit"
   extends PartialOpAmp;
   parameter Real k(final min=0)=1 "Desired amplification";

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Interfaces;
+within Modelica.Magnetic.FluxTubes.Interfaces;
 partial model TwoPort "Interface component including flux balance equation"
 
   extends TwoPortExtended;

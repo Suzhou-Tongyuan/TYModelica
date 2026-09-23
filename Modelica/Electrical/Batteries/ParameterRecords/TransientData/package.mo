@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.ParameterRecords;
+within Modelica.Electrical.Batteries.ParameterRecords;
 package TransientData "Parameter records for transient battery models"
   extends Modelica.Electrical.Batteries.Icons.TransientRecordsPackage;
 

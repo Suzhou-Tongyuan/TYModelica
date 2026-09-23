@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Sampler;
+within Modelica.Clocked.ClockSignals.Sampler;
 block SuperSample
   "Super-sample the input clock and provide it as output clock"
   parameter Integer factor(min=1) "Super-sampling factor (>= 1)" annotation(Evaluate=true);

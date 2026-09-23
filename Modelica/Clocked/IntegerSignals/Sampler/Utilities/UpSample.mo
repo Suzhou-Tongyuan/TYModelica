@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Sampler.Utilities;
+within Modelica.Clocked.IntegerSignals.Sampler.Utilities;
 block UpSample
   "Upsample the clocked Integer input signal and provide it as clocked output signal"
   parameter Boolean inferFactor=true

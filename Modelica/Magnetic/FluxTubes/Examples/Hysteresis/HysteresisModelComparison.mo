@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.Hysteresis;
+within Modelica.Magnetic.FluxTubes.Examples.Hysteresis;
 model HysteresisModelComparison
   "Comparison of the different hysteresis models"
   extends Modelica.Icons.Example;

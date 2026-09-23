@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sensors;
+within Modelica.Mechanics.Translational.Sensors;
 model ForceSensor "Ideal sensor to measure the force between two flanges"
   extends Translational.Interfaces.PartialRelativeSensor;
   Modelica.Blocks.Interfaces.RealOutput f(unit="N")

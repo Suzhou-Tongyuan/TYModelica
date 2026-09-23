@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Interfaces;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Interfaces;
 partial model TwoPortElementary "Partial two port for graphical programming"
   SI.AngularVelocity omega=der(port_p.reference.gamma)
     "Reference angular velocity (= der(port_p.reference.gamma))";

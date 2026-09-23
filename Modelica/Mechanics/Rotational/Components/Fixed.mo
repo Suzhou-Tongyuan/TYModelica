@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model Fixed "Flange fixed in housing at a given angle"
   parameter SI.Angle phi0=0 "Fixed offset angle of housing";
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Functions;
+within Modelica.Electrical.Machines.SpacePhasors.Functions;
 function FromPolar "Converts a space phasor from polar coordinates"
   extends Modelica.Icons.Function;
   input Real absolute "Magnitude of space phasor";

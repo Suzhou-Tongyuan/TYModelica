@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.CascadeControlledDrive;
+within Modelica.Clocked.Examples.CascadeControlledDrive;
 model AbsoluteClocks
   "Drive with clocked cascade controller where all partitions are defined with exact (integer) clock that need to be compatible to each other"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.UsersGuide;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.UsersGuide;
 class Contact "Contact"
   extends Modelica.Icons.Contact;
 

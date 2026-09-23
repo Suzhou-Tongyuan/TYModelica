@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model Ground "Ground node"
 
   Interfaces.Pin p annotation (Placement(transformation(

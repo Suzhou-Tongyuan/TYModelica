@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMPM_ResistiveBraking
   "PermanentMagnetSynchronousMachine braking with a resistor"
   extends Modelica.Icons.Example;

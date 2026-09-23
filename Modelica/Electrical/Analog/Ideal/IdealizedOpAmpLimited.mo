@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model IdealizedOpAmpLimited "Idealized operational amplifier with limitation"
   parameter Real V0=15000.0 "No-load amplification";
   parameter Boolean useSupply=false

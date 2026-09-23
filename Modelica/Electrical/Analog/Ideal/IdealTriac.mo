@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model IdealTriac "Ideal triac, based on ideal thyristors"
 
   parameter SI.Resistance Ron(final min=0) = 1e-5 "Closed triac resistance";

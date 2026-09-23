@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.DCAC;
+within Modelica.Electrical.PowerConverters.DCAC;
 model Polyphase2Level "Polyphase DC to AC converter"
   extends Modelica.Blocks.Icons.Block;
   extends Interfaces.Enable.Enable2m;

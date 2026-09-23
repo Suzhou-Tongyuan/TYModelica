@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Sensors;
+within Modelica.Electrical.Polyphase.Sensors;
 model PowerSensor "Polyphase instantaneous power sensor"
   extends Modelica.Icons.RoundSensor;
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);

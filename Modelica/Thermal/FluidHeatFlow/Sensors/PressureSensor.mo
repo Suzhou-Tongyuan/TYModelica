@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Sensors;
+within Modelica.Thermal.FluidHeatFlow.Sensors;
 model PressureSensor "Absolute pressure sensor"
 
   extends FluidHeatFlow.Interfaces.AbsoluteSensor(y(unit="Pa", displayUnit=

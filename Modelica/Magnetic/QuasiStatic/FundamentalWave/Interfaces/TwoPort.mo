@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Interfaces;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Interfaces;
 partial model TwoPort "Elementary partial two port for textual programming"
   extends Magnetic.QuasiStatic.FundamentalWave.Interfaces.TwoPortExtended;
 

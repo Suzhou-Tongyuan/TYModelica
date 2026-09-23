@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.UsersGuide;
+within Modelica.Mechanics.MultiBody.UsersGuide;
 class Literature "Literature"
   extends Modelica.Icons.References;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 package Assemblies "Components that aggregate several joints for analytic loop handling"
   extends Modelica.Icons.Package;
 

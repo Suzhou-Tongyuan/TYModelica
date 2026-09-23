@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces;
 connector Pin "Quasi-static single-phase pin"
   SI.ComplexElectricPotential v "Complex potential at the quasi-static single-phase pin";
   flow SI.ComplexCurrent i "Complex current flowing into the quasi-static single-phase pin";

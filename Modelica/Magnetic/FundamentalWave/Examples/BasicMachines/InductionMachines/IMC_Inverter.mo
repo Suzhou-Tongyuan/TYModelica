@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Examples.BasicMachines.InductionMachines;
+within Modelica.Magnetic.FundamentalWave.Examples.BasicMachines.InductionMachines;
 model IMC_Inverter
   "Induction machine with squirrel cage and inverter"
   extends Modelica.Icons.Example;

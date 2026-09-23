@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow;
+within Modelica.Thermal.FluidHeatFlow;
 package Examples "Examples that demonstrate the usage of the FluidHeatFlow components"
   extends Modelica.Icons.ExamplesPackage;
   annotation (Documentation(info="<html>

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Examples;
+within Modelica.Electrical.Batteries.Examples;
 model ShowImpedance "Show complex cell impedance"
   extends Modelica.Icons.Example;
   Blocks.Sources.LogFrequencySweep logSweep(

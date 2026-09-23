@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Interfaces;
+within Modelica.Clocked.ClockSignals.Interfaces;
 partial block ClockedBlockIcon
   "Basic graphical layout of block where at least one input or output is a clocked variable"
   annotation (

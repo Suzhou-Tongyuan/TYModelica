@@ -1,4 +1,4 @@
-﻿connector OuterBooleanMemory = Boolean annotation(__MWORKS(hide = true,MemoryRef), defaultComponentName = "X", defaultComponentPrefixes = "outer", Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+connector OuterBooleanMemory = Boolean annotation(__MWORKS(hide = true,MemoryRef), defaultComponentName = "X", defaultComponentPrefixes = "outer", Icon(coordinateSystem(extent={{-100,-100},{100,100}},
 grid={2,2}),graphics = {Rectangle(origin={0,0},
 lineColor={255,0,255},
 fillColor={255,255,255},

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
+within Modelica.Mechanics.MultiBody.Visualizers.Advanced;
 package SurfaceCharacteristics "Functions returning surface descriptions"
     extends Modelica.Icons.FunctionsPackage;
 

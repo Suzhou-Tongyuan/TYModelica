@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal.SynchronousMachines;
+within Modelica.Electrical.Machines.Thermal.SynchronousMachines;
 model ThermalAmbientSMEE
   "Thermal ambient for synchronous machine with electrical excitation"
   parameter Boolean useDamperCage(start=true)

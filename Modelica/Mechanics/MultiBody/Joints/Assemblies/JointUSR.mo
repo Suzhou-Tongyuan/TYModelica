@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints.Assemblies;
+within Modelica.Mechanics.MultiBody.Joints.Assemblies;
 model JointUSR
   "Universal - spherical - revolute joint aggregation (no constraints, no potential states)"
 

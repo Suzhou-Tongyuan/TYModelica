@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary;
+within Modelica.Clocked.Examples.Elementary;
 package IntegerSignals "Examples that are used for the documentation of the Modelica.Clocked.IntegerSignals sub-library"
   extends Modelica.Icons.ExamplesPackage;
 

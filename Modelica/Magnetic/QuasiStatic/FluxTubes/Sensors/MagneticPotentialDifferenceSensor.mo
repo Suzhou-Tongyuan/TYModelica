@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
 model MagneticPotentialDifferenceSensor
 "Sensor to measure magnetic potential difference"
   extends FluxTubes.Interfaces.RelativeSensor;

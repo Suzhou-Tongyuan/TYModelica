@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCDC.HBridge;
+within Modelica.Electrical.PowerConverters.Examples.DCDC.HBridge;
 model HBridge_R "H bridge DC/DC converter with resistive load"
   extends ExampleTemplates.HBridge;
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model Spring "Linear 1D translational spring"
   extends Translational.Interfaces.PartialCompliant;
   parameter SI.TranslationalSpringConstant c(final min=0, start=1)

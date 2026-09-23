@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Interfaces;
+within Modelica.Magnetic.FundamentalWave.Interfaces;
 partial model TwoPortExtended "Two magnetic ports for graphical modeling with additional variables"
   extends TwoPortElementary;
   SI.ComplexMagneticPotentialDifference V_m = port_p.V_m - port_n.V_m

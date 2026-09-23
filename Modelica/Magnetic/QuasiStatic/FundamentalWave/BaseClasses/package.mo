@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave;
 package BaseClasses "Base classes of fundamental wave machines"
   extends Modelica.Icons.BasesPackage;
 

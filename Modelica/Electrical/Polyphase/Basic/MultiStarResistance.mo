@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model MultiStarResistance "Resistance connection of star points"
   import Modelica.Electrical.Polyphase.Functions.numberOfSymmetricBaseSystems;
   parameter Integer m(final min=2) = 3 "Number of phases" annotation(Evaluate=true);

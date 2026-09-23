@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model TickBasedSine
   "Example of using the clocked tick based Sine source block"
    extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 type RealColor =
              Modelica.Icons.TypeReal[3] (each min=0, each max=255)
   "RGB representation of color as Real type" 

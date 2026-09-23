@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Icons;
+within Modelica.Electrical.Machines.Icons;
 model TransientTransformer
   annotation (Icon(graphics={Polygon(
               points={{-70,60},{-50,40},{-50,-40},{-70,-60},{-70,60}},

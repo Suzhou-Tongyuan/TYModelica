@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model VariableInductor
   "Ideal linear electrical inductors with variable inductance"
   extends Interfaces.TwoPlug;

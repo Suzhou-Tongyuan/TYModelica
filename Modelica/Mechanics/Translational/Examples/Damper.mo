@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model Damper "Use of damper models"
 
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.MovingCoilActuator.Components;
+within Modelica.Magnetic.FluxTubes.Examples.MovingCoilActuator.Components;
 model PermeanceActuator
   "Detailed actuator model for rough magnetic design of actuator and system simulation"
 

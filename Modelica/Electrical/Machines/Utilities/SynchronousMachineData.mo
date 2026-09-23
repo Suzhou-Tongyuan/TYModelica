@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 record SynchronousMachineData
   "Computes machine parameter from usual datasheet"
   extends Modelica.Icons.Record;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal.DCMachines;
+within Modelica.Electrical.Machines.Thermal.DCMachines;
 model ThermalAmbientDCPM
   "Thermal ambient for DC machine with permanent magnets"
   extends Machines.Interfaces.DCMachines.PartialThermalAmbientDCMachines(

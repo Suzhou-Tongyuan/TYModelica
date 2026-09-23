@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Interfaces;
+within Modelica.Electrical.Polyphase.Interfaces;
 partial model TwoPort
   "Component with two polyphase electrical ports, including currents"
   extends FourPlug;

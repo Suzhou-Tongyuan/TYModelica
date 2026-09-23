@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
+within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
 model GenericLinearPermanentMagnet
   "Permanent Magnet with linear characteristic"
   extends BaseClasses.Generic;

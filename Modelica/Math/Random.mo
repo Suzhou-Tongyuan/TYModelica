@@ -1,4 +1,4 @@
-﻿within Modelica.Math;
+within Modelica.Math;
 package Random "Library of functions for generating random numbers"
    extends Modelica.Icons.Package;
 

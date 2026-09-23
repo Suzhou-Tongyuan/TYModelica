@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
+within Modelica.Mechanics.MultiBody.Sensors.Internal;
 model BasicRelativePosition
   "Basic sensor to measure relative position vector"
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB;

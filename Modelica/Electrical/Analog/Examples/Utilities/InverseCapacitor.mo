@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.Utilities;
+within Modelica.Electrical.Analog.Examples.Utilities;
 model InverseCapacitor "Input/output block of an inverse capacitor model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.Capacitance C(min=0)=1 "Capacitance";

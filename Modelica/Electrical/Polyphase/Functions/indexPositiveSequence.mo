@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Functions;
+within Modelica.Electrical.Polyphase.Functions;
 function indexPositiveSequence
   "Determines the indices of all positive sequences"
   extends Modelica.Icons.Function;

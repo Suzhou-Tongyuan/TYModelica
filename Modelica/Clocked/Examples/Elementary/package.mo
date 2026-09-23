@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples;
+within Modelica.Clocked.Examples;
 package Elementary "Examples that are used for the documentation of the blocks"
   extends Modelica.Icons.ExamplesPackage;
 

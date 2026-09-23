@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Blocks;
+within Modelica.Electrical.Machines.SpacePhasors.Blocks;
 block QuasiRMS
   extends Modelica.Blocks.Interfaces.MISO(final nin=2);
   Modelica.Electrical.Machines.SpacePhasors.Blocks.ToPolar toPolar 

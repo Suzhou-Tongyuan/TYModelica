@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Interfaces;
+within Modelica.Magnetic.FluxTubes.Interfaces;
 partial model TwoPortElementary "Interface component with two magnetic ports for textual programming"
 
   FluxTubes.Interfaces.PositiveMagneticPort port_p "Positive magnetic port" 

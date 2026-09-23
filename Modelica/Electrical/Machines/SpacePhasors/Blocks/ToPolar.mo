@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Blocks;
+within Modelica.Electrical.Machines.SpacePhasors.Blocks;
 block ToPolar "Converts a space phasor to polar coordinates"
   extends Modelica.Blocks.Interfaces.MIMOs(final n=2);
   constant Real small=Modelica.Constants.small;

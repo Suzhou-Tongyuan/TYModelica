@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples;
+within Modelica.Thermal.FluidHeatFlow.Examples;
 model SimpleCooling "Simple cooling circuit"
   extends Modelica.Icons.Example;
 

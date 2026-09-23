@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model AbsoluteAngles
   "Measure absolute angles between frame connector and the world frame"
   extends Internal.PartialAbsoluteSensor;

@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid;
+within Modelica.Fluid;
 package Pipes "Devices for conveying fluid"
     extends Modelica.Icons.VariantsPackage;
 

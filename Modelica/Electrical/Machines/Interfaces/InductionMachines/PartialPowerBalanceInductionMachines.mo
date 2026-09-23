@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
+within Modelica.Electrical.Machines.Interfaces.InductionMachines;
 record PartialPowerBalanceInductionMachines
   "Partial power balance of induction machines"
   extends Modelica.Icons.Record;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries;
+within Modelica.Electrical.Batteries;
 package BaseClasses "Base classes for battery models"
   extends Modelica.Icons.BasesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model Hold "Example of a Hold block for Real signals"
    extends Modelica.Icons.Example;
 

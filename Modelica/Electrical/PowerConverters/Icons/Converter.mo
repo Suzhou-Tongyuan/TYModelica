@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Icons;
+within Modelica.Electrical.PowerConverters.Icons;
 partial model Converter "Converter icon"
 
   annotation (Icon(graphics={

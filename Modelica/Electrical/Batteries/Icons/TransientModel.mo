@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Icons;
+within Modelica.Electrical.Batteries.Icons;
 class TransientModel "Indicates transient model"
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(

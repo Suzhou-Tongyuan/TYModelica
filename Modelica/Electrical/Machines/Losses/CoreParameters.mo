@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses;
+within Modelica.Electrical.Machines.Losses;
 record CoreParameters "Parameter record for core losses"
   extends Modelica.Icons.Record;
   parameter Integer m

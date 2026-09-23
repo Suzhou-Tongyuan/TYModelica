@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Sensors;
+within Modelica.Electrical.Machines.Sensors;
 model RotorDisplacementAngle "Rotor lagging angle"
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   parameter Integer p(min=1) "Number of pole pairs";

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Rankine;
+within Modelica.Thermal.HeatTransfer.Rankine;
 model FromKelvin "Conversion from Kelvin to degree Rankine"
   extends HeatTransfer.Icons.Conversion;
   Modelica.Blocks.Interfaces.RealInput Kelvin(unit="K") 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model Gearbox "Realistic model of a gearbox (based on LossyGear)"
   extends Modelica.Mechanics.Rotational.Icons.Gearbox;
   extends Modelica.Mechanics.Rotational.Interfaces.PartialTwoFlangesAndSupport;

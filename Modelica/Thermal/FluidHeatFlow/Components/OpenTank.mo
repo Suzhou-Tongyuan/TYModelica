@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Components;
+within Modelica.Thermal.FluidHeatFlow.Components;
 model OpenTank "Model of a tank under ambient pressure"
   extends FluidHeatFlow.BaseClasses.SinglePortBottom(final Exchange=true);
 

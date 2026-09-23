@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational;
+within Modelica.Mechanics.Rotational;
 package Examples "Demonstration examples of the components of this package"
 
   extends Modelica.Icons.ExamplesPackage;

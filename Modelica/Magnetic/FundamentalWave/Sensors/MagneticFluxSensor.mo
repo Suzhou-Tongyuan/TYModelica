@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Sensors;
+within Modelica.Magnetic.FundamentalWave.Sensors;
 model MagneticFluxSensor "Sensor to measure magnetic flux"
   extends Modelica.Icons.RoundSensor;
   extends Magnetic.FundamentalWave.Interfaces.TwoPortElementary;

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sources;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sources;
 model ConstantFlux "Source of constant magnetic flux"
   extends Interfaces.TwoPortElementary;
   parameter SI.Frequency f(start=1) "Frequency of the source";

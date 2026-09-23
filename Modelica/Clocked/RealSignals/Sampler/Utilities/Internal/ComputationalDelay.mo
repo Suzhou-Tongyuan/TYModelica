@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
+within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
 block ComputationalDelay
   "Delay a clocked signal for at most one period, in order to model a computational delay"
 extends Clocked.RealSignals.Interfaces.PartialClockedSISO;

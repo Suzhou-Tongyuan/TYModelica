@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Media;
+within Modelica.Thermal.FluidHeatFlow.Media;
 record Air_70degC "Medium: properties of air at 70 degC and 1 bar"
 extends FluidHeatFlow.Media.Medium(
     rho=1.015,

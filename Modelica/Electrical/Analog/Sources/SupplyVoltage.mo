@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model SupplyVoltage "Supply voltage (positive and negative)"
   parameter SI.Voltage Vps=+15 "Positive supply";
   parameter SI.Voltage Vns=-15 "Negative supply";

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model InitializeFlange
   "Initializes a flange with pre-defined position, speed and acceleration (usually, this is reference data from a control bus)"
   extends Modelica.Blocks.Icons.Block;

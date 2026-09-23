@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 package Utilities "Utility classes used by translational example models"
   extends Modelica.Icons.UtilitiesPackage;
 

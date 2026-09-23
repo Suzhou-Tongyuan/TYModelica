@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model RollingWheel "Demonstrate coupling Rotational - Translational"
   extends Modelica.Icons.Example;
   Rotational.Components.IdealRollingWheel idealRollingWheel(radius=1) 

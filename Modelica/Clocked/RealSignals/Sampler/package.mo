@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals;
+within Modelica.Clocked.RealSignals;
 package Sampler "Library of sampler and hold blocks for Real signals"
   extends Modelica.Icons.Package;
 

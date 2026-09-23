@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Ideal;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Ideal;
 model IdealTransformer "Ideal transformer"
   parameter Real n=1 "Ratio of primary to secondary voltage";
   SI.ComplexVoltage v1=pin_p1.v - pin_n1.v "Voltage drop of side 1";

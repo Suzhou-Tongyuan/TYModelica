@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model CompoundDCExcitation "Compound excitation = shunt + series"
   parameter Real excitationTurnsRatio
     "Ratio of series excitation turns over shunt excitation turns";

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.UsersGuide;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.UsersGuide;
 class FluxTubeConcept "Flux tube concept"
   extends Modelica.Icons.Information;
 

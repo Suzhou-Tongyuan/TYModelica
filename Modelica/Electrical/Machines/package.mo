@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical;
+within Modelica.Electrical;
 package Machines "Library for electric machines"
   extends Modelica.Icons.Package;
 

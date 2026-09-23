@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.ParameterRecords;
+within Modelica.Electrical.Batteries.ParameterRecords;
 record CellData "Parameters of a battery cell"
   extends Modelica.Electrical.Batteries.Icons.BaseCellRecord;
   parameter SI.ElectricCharge Qnom(displayUnit="A.h")

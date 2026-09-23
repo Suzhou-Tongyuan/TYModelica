@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Components;
+within Modelica.Electrical.Machines.SpacePhasors.Components;
 model Rotator "Rotates space phasor"
   import Modelica.Constants.pi;
 protected

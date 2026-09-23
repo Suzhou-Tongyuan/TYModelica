@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC;
+within Modelica.Electrical.PowerConverters.ACDC;
 model ThyristorBridge2mPulse "2*m pulse thyristor rectifier bridge"
   extends Icons.Converter;
   import Modelica.Constants.pi;

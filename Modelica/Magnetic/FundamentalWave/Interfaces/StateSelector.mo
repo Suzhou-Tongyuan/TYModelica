@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Interfaces;
+within Modelica.Magnetic.FundamentalWave.Interfaces;
 model StateSelector
   "Transform instantaneous values to space phasors and select states"
   import Modelica.Constants.pi;

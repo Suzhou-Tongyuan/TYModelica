@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Icons;
+within Modelica.Electrical.Machines.Icons;
 partial model TransientMachine
   annotation (Icon(graphics={
         Rectangle(

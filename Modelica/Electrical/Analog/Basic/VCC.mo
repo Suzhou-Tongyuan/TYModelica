@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model VCC "Linear voltage-controlled current source"
   extends Interfaces.TwoPort;
   parameter SI.Conductance transConductance(start=1) "Transconductance";

@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Cos "Output the cosine of the input"
   extends Interfaces.ComplexSISO;
 equation

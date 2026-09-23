@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Sensors;
+within Modelica.Thermal.HeatTransfer.Sensors;
 model ConditionalFixedHeatFlowSensor
   "HeatFlowSensor, conditional fixed temperature"
   extends Modelica.Icons.RoundSensor;

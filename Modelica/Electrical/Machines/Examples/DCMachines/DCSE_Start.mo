@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.DCMachines;
+within Modelica.Electrical.Machines.Examples.DCMachines;
 model DCSE_Start
   "Test example: DC with serial excitation starting with voltage ramp"
   extends Modelica.Icons.Example;

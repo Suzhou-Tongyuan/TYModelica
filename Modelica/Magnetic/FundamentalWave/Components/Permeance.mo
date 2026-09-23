@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Components;
+within Modelica.Magnetic.FundamentalWave.Components;
 model Permeance "Salient Permeance"
   import Modelica.Constants.pi;
   extends Magnetic.FundamentalWave.Interfaces.TwoPort;

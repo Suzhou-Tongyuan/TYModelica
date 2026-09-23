@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model CutForce "Measure cut force vector"
 
   Modelica.Blocks.Interfaces.RealOutput force[3](each final quantity="Force", each final unit="N")

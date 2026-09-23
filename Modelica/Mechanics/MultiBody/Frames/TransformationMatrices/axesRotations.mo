@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function axesRotations
   "Return rotation object to rotate in sequence around 3 axes"
   extends Modelica.Icons.Function;

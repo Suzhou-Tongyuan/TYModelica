@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package Types
   "Library of constants, external objects and types with choices, especially to build menus"
   extends Modelica.Icons.TypesPackage;

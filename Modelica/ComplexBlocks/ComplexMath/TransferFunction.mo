@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block TransferFunction "Complex Transfer Function"
   extends Modelica.ComplexBlocks.Interfaces.ComplexSISO;
   import Modelica.ComplexMath.j;

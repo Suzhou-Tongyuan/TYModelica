@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
+within Modelica.Mechanics.MultiBody.Frames.Quaternions;
 function from_T_inv
   "Return quaternion orientation object Q from inverse transformation matrix T_inv"
 

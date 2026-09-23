@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow;
+within Modelica.Thermal.FluidHeatFlow;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
   annotation (DocumentationClass=true,

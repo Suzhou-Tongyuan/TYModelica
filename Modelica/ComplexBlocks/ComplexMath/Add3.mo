@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Add3 "Output the sum of the three inputs"
   extends Modelica.ComplexBlocks.Icons.ComplexBlock;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.InductionMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.InductionMachines;
 model IM_SquirrelCage "Induction machine with squirrel cage"
   // Removed from extension of FUNDAMENTAL WAVE model: is(start=zeros(m)) ##
   extends BaseClasses.Machine(

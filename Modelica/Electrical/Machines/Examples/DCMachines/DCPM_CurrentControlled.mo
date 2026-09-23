@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.DCMachines;
+within Modelica.Electrical.Machines.Examples.DCMachines;
 model DCPM_CurrentControlled
   "Test example: DC with permanent magnet starting with current controller"
   extends Modelica.Icons.Example;

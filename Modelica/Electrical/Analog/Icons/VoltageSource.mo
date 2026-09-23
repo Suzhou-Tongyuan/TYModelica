@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Icons;
+within Modelica.Electrical.Analog.Icons;
 partial model VoltageSource "Icon for voltage sources"
   annotation (
     Icon(coordinateSystem(

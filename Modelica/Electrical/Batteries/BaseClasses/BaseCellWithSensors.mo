@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.BaseClasses;
+within Modelica.Electrical.Batteries.BaseClasses;
 partial model BaseCellWithSensors "Partial cell with sensors"
   extends Modelica.Electrical.Batteries.Icons.BatteryIcon(final displaySOC=SOC);
   replaceable parameter Modelica.Electrical.Batteries.ParameterRecords.CellData cellData

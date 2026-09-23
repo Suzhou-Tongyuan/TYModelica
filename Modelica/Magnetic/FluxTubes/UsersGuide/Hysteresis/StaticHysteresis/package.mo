@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.UsersGuide.Hysteresis;
+within Modelica.Magnetic.FluxTubes.UsersGuide.Hysteresis;
 package StaticHysteresis "Static Hysteresis"
   extends Modelica.Icons.Information;
 

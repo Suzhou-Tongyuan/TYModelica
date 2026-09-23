@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model GeneralPositionToForceAdaptor
   "Signal adaptor for a Translational flange with force as output and position, speed and acceleration as input (especially useful for FMUs)"
   extends Modelica.Blocks.Interfaces.Adaptors.PotentialToFlowAdaptor(

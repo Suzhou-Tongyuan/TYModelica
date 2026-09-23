@@ -1,4 +1,4 @@
-﻿within Modelica.Utilities;
+within Modelica.Utilities;
 package Streams "Read from files and write to files"
   extends Modelica.Icons.FunctionsPackage;
 

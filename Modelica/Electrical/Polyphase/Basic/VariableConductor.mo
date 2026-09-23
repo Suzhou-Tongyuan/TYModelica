@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model VariableConductor
   "Ideal linear electrical conductors with variable conductance"
   extends Interfaces.TwoPlug;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces;
+within Modelica.Mechanics.MultiBody.Forces;
 model Spring "Linear translational spring with optional mass"
   import Modelica.Mechanics.MultiBody.Types;
   extends Interfaces.PartialTwoFrames;

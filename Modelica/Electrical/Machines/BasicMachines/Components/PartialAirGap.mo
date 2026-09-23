@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 partial model PartialAirGap "Partial airgap model"
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   parameter Integer p(min=1) "Number of pole pairs";

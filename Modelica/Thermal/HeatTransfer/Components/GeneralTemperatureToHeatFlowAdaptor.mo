@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Components;
+within Modelica.Thermal.HeatTransfer.Components;
 model GeneralTemperatureToHeatFlowAdaptor
   "Signal adaptor for a HeatTransfer port with heat flow as output and temperature and derivative of temperature as input (especially useful for FMUs)"
   extends Modelica.Blocks.Interfaces.Adaptors.PotentialToFlowAdaptor(

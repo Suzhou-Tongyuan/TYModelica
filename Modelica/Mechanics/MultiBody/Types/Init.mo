@@ -1,4 +1,4 @@
-﻿type Init = enumeration(
+type Init = enumeration(
       Free,
       PositionVelocity,
       SteadyState,

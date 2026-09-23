@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Interfaces;
+within Modelica.Mechanics.Rotational.Interfaces;
 connector Flange_a
   "One-dimensional rotational flange of a shaft (filled circle icon)"
   extends Flange;

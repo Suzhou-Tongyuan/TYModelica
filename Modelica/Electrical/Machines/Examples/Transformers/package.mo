@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples;
+within Modelica.Electrical.Machines.Examples;
 package Transformers "Test examples of transformers"
   extends Modelica.Icons.ExamplesPackage;
 

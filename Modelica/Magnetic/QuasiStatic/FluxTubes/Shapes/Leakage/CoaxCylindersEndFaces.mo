@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
 model CoaxCylindersEndFaces
 "Leakage flux between the end planes of a inner solid cylinder and a coaxial outer hollow cylinder"
 

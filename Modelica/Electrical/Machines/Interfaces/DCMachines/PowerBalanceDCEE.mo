@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.DCMachines;
+within Modelica.Electrical.Machines.Interfaces.DCMachines;
 record PowerBalanceDCEE
   "Power balance of DC machines with electrical excitation"
   extends Machines.Interfaces.DCMachines.PartialPowerBalanceDCMachines(final

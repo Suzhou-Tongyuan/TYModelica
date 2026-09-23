@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCAC;
+within Modelica.Electrical.PowerConverters.Examples.DCAC;
 package ExampleTemplates "Templates of examples"
   extends Modelica.Icons.Package;
 

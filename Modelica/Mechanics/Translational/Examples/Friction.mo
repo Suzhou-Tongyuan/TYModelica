@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model Friction "Use of model Stop"
   extends Modelica.Icons.Example;
   Modelica.Mechanics.Translational.Components.MassWithStopAndFriction stop1(

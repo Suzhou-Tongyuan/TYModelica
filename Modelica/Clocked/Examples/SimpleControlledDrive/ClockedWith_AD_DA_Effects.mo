@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.SimpleControlledDrive;
+within Modelica.Clocked.Examples.SimpleControlledDrive;
 model ClockedWith_AD_DA_Effects
   "Simple controlled drive with discrete controller and simulated AD and DA effects"
  extends Modelica.Icons.Example;

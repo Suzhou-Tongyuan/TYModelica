@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.UsersGuide.ReleaseNotes;
+within Modelica.Clocked.UsersGuide.ReleaseNotes;
 class Version_0_9 "Version 0.9 (Aug. 28, 2012)"
   extends Modelica.Icons.ReleaseNotes;
   annotation (Documentation(info="<html>

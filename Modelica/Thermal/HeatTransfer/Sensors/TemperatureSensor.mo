@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Sensors;
+within Modelica.Thermal.HeatTransfer.Sensors;
 model TemperatureSensor "Absolute temperature sensor in Kelvin"
 
   Modelica.Blocks.Interfaces.RealOutput T(unit="K")

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters;
+within Modelica.Electrical.PowerConverters;
 package DCDC "DC to DC converters"
   extends Modelica.Icons.Package;
   annotation (Documentation(info="<html>

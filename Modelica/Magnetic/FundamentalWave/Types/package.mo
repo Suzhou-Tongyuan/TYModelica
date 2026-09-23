@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave;
+within Modelica.Magnetic.FundamentalWave;
 package Types "Definition of salient types"
   extends Modelica.Icons.TypesPackage;
 

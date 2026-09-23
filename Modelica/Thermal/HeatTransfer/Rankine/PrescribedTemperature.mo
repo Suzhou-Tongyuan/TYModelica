@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Rankine;
+within Modelica.Thermal.HeatTransfer.Rankine;
 model PrescribedTemperature
   "Variable temperature boundary condition in degRankine"
   extends HeatTransfer.Icons.PrescribedTemperature;

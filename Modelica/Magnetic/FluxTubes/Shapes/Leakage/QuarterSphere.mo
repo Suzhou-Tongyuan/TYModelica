@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.Leakage;
+within Modelica.Magnetic.FluxTubes.Shapes.Leakage;
 model QuarterSphere
   "Leakage flux through the corners of a quarter sphere"
 

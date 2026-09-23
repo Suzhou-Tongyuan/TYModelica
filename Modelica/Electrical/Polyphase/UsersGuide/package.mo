@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase;
+within Modelica.Electrical.Polyphase;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 

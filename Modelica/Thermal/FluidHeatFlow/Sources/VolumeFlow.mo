@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Sources;
+within Modelica.Thermal.FluidHeatFlow.Sources;
 model VolumeFlow "Enforces constant volume flow"
 
   extends FluidHeatFlow.BaseClasses.TwoPort(final tapT=1);

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model HeatingNPN_NORGate "Heating NPN NOR Gate"
   extends Modelica.Icons.Example;
   parameter SI.Capacitance CapVal=0 "Value for capacitances" annotation(Evaluate=true);

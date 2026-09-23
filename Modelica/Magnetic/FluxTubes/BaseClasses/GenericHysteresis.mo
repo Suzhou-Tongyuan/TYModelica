@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.BaseClasses;
+within Modelica.Magnetic.FluxTubes.BaseClasses;
 partial model GenericHysteresis "Partial hysteresis model"
   extends BaseClasses.Generic;
   extends Interfaces.ConditionalHeatPort(final T=293.15);

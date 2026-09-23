@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Interfaces;
+within Modelica.Mechanics.Translational.Interfaces;
 partial model PartialForce
   "Partial model of a force acting at the flange (accelerates the flange)"
   extends PartialElementaryOneFlangeAndSupport2;

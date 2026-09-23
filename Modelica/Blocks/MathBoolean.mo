@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package MathBoolean
   "Library of Boolean mathematical functions as input/output blocks"
   extends Modelica.Icons.Package;

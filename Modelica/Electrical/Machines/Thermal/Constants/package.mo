@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal;
+within Modelica.Electrical.Machines.Thermal;
 package Constants "Material Constants"
   extends Modelica.Icons.Package;
   constant SI.LinearTemperatureCoefficient alpha20Zero=0

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Parts;
+within Modelica.Mechanics.MultiBody.Parts;
 model RollingWheel
   "Ideal rolling wheel on flat surface z=0 (5 positional, 3 velocity degrees of freedom)"
 

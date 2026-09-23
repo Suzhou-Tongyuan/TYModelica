@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Components;
+within Modelica.Thermal.HeatTransfer.Components;
 model ThermalCollector "Collects m heat flows"
   parameter Integer m(min=1)=3 "Number of collected heat flows";
   Interfaces.HeatPort_a port_a[m] 

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow;
+within Modelica.Thermal.FluidHeatFlow;
 package Components "Basic components (pipes, valves)"
   extends Modelica.Icons.Package;
   annotation (Documentation(info="<html>

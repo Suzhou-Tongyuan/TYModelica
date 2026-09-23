@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Colors;
+within Modelica.Mechanics.MultiBody.Visualizers.Colors;
 function colorMapToSvg
   "Save a color map on file in svg (scalable vector graphics) format"
   extends Modelica.Icons.Function;

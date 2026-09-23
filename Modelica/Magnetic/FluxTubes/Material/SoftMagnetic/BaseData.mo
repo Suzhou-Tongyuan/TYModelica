@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic;
 record BaseData
   "Coefficients for approximation of soft magnetic materials"
 

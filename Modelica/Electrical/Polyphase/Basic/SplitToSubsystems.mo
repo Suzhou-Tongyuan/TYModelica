@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model SplitToSubsystems "Split m phases to subsystems"
   import Modelica.Electrical.Polyphase.Functions.numberOfSymmetricBaseSystems;
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);

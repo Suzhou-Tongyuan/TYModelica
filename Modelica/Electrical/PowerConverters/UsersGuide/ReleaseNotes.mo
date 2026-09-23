@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.UsersGuide;
+within Modelica.Electrical.PowerConverters.UsersGuide;
 class ReleaseNotes "Release Notes"
   extends Modelica.Icons.ReleaseNotes;
   annotation (Documentation(info="<html>

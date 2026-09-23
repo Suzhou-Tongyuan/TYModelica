@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses.InductionMachines;
+within Modelica.Electrical.Machines.Losses.InductionMachines;
 model PermanentMagnetLosses
   "Model of permanent magnet losses dependent on current and speed"
   extends Machines.Interfaces.FlangeSupport;

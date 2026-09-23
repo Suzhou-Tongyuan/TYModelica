@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Interfaces;
+within Modelica.Clocked.RealSignals.Interfaces;
 partial block PartialSISOSampler
   "Basic block used for sampling of Real signals"
 extends Clocked.RealSignals.Interfaces.SamplerIcon;

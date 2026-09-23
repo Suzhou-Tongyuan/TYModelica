@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.TimeBasedSources;
+within Modelica.Clocked.RealSignals.TimeBasedSources;
 block Ramp "Generate ramp signal"
   extends Interfaces.PartialClockedSO;
   parameter Real height=1 "Height of ramps";

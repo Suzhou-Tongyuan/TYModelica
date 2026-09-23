@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.BaseClasses;
+within Modelica.Magnetic.FundamentalWave.BaseClasses;
 partial model Machine "Base model of machines"
   constant SI.Angle pi = Modelica.Constants.pi;
   extends Modelica.Electrical.Machines.Icons.FundamentalWaveMachine;

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Components;
+within Modelica.Thermal.HeatTransfer.Components;
 model HeatCapacitor "Lumped thermal element storing heat"
   parameter SI.HeatCapacity C
     "Heat capacity of element (= cp*m)";

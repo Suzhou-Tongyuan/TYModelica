@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model AbsolutePosition
   "Measure absolute position vector of the origin of a frame connector"
   extends Internal.PartialAbsoluteSensor;

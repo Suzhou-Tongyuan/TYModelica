@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.ElectricSheet;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.ElectricSheet;
 record M940_100A "M940-100A @ 50Hz"
   extends FluxTubes.Material.SoftMagnetic.BaseData(
     mu_i=680,

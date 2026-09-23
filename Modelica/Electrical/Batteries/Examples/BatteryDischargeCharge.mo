@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Examples;
+within Modelica.Electrical.Batteries.Examples;
 model BatteryDischargeCharge "Discharge and charge idealized battery"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Batteries.Utilities.PulseSeries pulseSeries(

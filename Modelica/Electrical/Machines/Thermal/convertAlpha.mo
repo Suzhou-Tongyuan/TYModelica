@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal;
+within Modelica.Electrical.Machines.Thermal;
 function convertAlpha
   "Converts alpha from temperature 1 (default 20 degC) to temperature 2"
   extends Modelica.Icons.Function;

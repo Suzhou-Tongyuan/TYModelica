@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Celsius;
+within Modelica.Thermal.HeatTransfer.Celsius;
 model FixedTemperature
   "Fixed temperature boundary condition in degree Celsius"
   extends HeatTransfer.Icons.FixedTemperature;

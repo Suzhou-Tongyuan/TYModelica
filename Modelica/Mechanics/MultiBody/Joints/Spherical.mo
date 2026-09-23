@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 model Spherical
   "Spherical joint (3 constraints and no potential states, or 3 degrees-of-freedom and 3 states)"
 

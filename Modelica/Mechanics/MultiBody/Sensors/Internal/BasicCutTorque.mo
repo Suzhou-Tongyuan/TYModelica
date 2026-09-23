@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
+within Modelica.Mechanics.MultiBody.Sensors.Internal;
 model BasicCutTorque
   "Basic sensor to measure cut torque vector (frame_resolve must be connected)"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Semiconductors;
+within Modelica.Electrical.Analog.Semiconductors;
 model Diode "Simple diode with heating port"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;
   parameter SI.Current Ids=1e-6 "Saturation current";

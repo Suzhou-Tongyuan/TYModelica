@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops;
+within Modelica.Mechanics.MultiBody.Examples.Loops;
 model Fourbar1
   "One kinematic loop with four bars (with only revolute joints; 5 non-linear equations)"
   extends Modelica.Icons.Example;

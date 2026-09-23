@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Interfaces;
+within Modelica.ComplexBlocks.Interfaces;
 partial block ComplexMI2MO
   "2 Multiple Input / Multiple Output continuous control block"
   extends Modelica.ComplexBlocks.Icons.ComplexBlock;

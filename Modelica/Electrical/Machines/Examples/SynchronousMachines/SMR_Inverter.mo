@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMR_Inverter
   "Test example: SynchronousMachineReluctanceRotor with inverter"
   extends Modelica.Icons.Example;

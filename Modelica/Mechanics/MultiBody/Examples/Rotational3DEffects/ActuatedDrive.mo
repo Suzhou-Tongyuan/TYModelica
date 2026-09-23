@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Rotational3DEffects;
+within Modelica.Mechanics.MultiBody.Examples.Rotational3DEffects;
 model ActuatedDrive "Demonstrates usage of models Rotor1D and Mounting1D"
   extends Modelica.Icons.Example;
   Parts.BodyShape bodyCylinder(

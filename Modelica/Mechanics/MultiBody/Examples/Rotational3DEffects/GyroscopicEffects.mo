@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Rotational3DEffects;
+within Modelica.Mechanics.MultiBody.Examples.Rotational3DEffects;
 model GyroscopicEffects
   "Demonstrates that a cylindrical body can be replaced by Rotor1D model"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Semiconductors;
+within Modelica.Electrical.Analog.Semiconductors;
 model Diode2 "Improved diode model"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;
   extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(T=293.15);

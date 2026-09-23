@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.UsersGuide.Hysteresis.StaticHysteresis;
+within Modelica.Magnetic.FluxTubes.UsersGuide.Hysteresis.StaticHysteresis;
 class Preisach "Preisach Hysteresis Model"
   extends Modelica.Icons.Information;
 

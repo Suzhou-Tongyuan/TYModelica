@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Icons;
+within Modelica.Electrical.Machines.Icons;
 partial model QuasiStaticFundamentalWaveMachine
   "Icon of quasi-static fundamental wave machine"
 

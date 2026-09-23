@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Periodic;
+within Modelica.Clocked.RealSignals.Periodic;
 block PI "Discrete-time PI controller"
   extends Clocked.RealSignals.Interfaces.PartialClockedSISO;
   parameter Real kd "Gain of discrete PI controller";

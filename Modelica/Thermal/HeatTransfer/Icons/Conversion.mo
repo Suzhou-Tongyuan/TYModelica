@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Icons;
+within Modelica.Thermal.HeatTransfer.Icons;
 model Conversion "Conversion of temperatures"
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={

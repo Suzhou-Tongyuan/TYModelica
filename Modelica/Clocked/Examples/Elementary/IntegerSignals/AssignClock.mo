@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.IntegerSignals;
+within Modelica.Clocked.Examples.Elementary.IntegerSignals;
 model AssignClock "Example of an AssignClock block for Integer signals"
    extends Modelica.Icons.Example;
 

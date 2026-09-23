@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody;
+within Modelica.Mechanics.MultiBody;
 package Icons "Icons for MultiBody package"
   extends Modelica.Icons.IconsPackage;
 

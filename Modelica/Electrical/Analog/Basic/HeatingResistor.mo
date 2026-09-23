@@ -1,4 +1,4 @@
-﻿model HeatingResistor "Temperature dependent electrical resistor"
+model HeatingResistor "Temperature dependent electrical resistor"
   parameter SI.Resistance R_ref(start=1)
     "Resistance at temperature T_ref";
   parameter SI.Temperature T_ref=300.15 "Reference temperature";

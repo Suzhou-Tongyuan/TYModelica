@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical;
+within Modelica.Electrical;
 package Spice3 "Library for components of the Berkeley SPICE3 simulator"
   extends Modelica.Icons.Package;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces.Internal;
+within Modelica.Mechanics.MultiBody.Forces.Internal;
 model BasicTorque
   "Torque acting between two frames, defined by 3 input signals"
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB;

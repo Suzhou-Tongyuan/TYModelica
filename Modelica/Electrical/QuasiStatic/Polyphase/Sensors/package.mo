@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase;
+within Modelica.Electrical.QuasiStatic.Polyphase;
 package Sensors "AC polyphase sensors"
   extends Modelica.Icons.SensorsPackage;
 

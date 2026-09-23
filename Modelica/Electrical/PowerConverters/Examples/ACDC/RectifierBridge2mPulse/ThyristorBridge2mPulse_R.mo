@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2mPulse;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2mPulse;
 model ThyristorBridge2mPulse_R
   "2*m pulse thyristor rectifier bridge with resistive load"
   extends ExampleTemplates.ThyristorBridge2mPulse(pulse2m(

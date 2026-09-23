@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function nullRotation
   "Return orientation object that does not rotate a frame"
   extends Modelica.Icons.Function;

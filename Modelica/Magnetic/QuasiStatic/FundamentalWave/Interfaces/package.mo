@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave;
 package Interfaces "Interfaces"
   extends Modelica.Icons.InterfacesPackage;
 end Interfaces;

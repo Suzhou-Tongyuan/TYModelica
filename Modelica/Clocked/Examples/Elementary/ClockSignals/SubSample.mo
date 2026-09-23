@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.ClockSignals;
+within Modelica.Clocked.Examples.Elementary.ClockSignals;
 model SubSample "Example of a SubSample block for Clock signals"
    extends Modelica.Icons.Example;
 

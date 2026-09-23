@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Interfaces;
+within Modelica.ComplexBlocks.Interfaces;
 partial block ComplexSIMO
   "Single Input Multiple Output continuous control block"
   extends Modelica.ComplexBlocks.Icons.ComplexBlock;

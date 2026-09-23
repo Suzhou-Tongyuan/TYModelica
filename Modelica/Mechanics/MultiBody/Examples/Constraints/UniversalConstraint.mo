@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Constraints;
+within Modelica.Mechanics.MultiBody.Examples.Constraints;
 model UniversalConstraint
   "Body attached by one spring and universal joint or constrained to environment"
   extends Modelica.Icons.Example;

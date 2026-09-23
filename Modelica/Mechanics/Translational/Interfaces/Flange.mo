@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Interfaces;
+within Modelica.Mechanics.Translational.Interfaces;
 connector Flange "One-dimensional translational flange"
 
   SI.Position s "Absolute position of flange";

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model EddyCurrentTorque "Simple model of a rotational eddy current brake"
   import Modelica.Electrical.Machines.Thermal.linearTemperatureDependency;
   parameter SI.Torque tau_nominal

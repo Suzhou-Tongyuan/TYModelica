@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACAC.ExampleTemplates;
+within Modelica.Electrical.PowerConverters.Examples.ACAC.ExampleTemplates;
 partial model Dimmer "Dimmer including control"
   extends Icons.ExampleTemplate;
   import Modelica.Constants.pi;

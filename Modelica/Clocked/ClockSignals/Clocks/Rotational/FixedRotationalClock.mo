@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Clocks.Rotational;
+within Modelica.Clocked.ClockSignals.Clocks.Rotational;
 model FixedRotationalClock
   "Event clock generating a clock tick each time an observed input angle changed for a certain, constant rotational-interval"
   extends PartialRotationalClock;

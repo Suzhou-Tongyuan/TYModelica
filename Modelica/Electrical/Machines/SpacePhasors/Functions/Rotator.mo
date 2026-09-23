@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Functions;
+within Modelica.Electrical.Machines.SpacePhasors.Functions;
 function Rotator "Rotates space phasor"
   extends Modelica.Icons.Function;
   input Real x[2] "Input space phasor";

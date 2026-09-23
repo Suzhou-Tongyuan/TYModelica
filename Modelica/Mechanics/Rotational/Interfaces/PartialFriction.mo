@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Interfaces;
+within Modelica.Mechanics.Rotational.Interfaces;
 partial model PartialFriction "Partial model of Coulomb friction elements"
 
   // parameter SI.AngularVelocity w_small=1 "Relative angular velocity near to zero (see model info text)";

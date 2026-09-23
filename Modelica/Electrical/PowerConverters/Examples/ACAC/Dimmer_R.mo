@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACAC;
+within Modelica.Electrical.PowerConverters.Examples.ACAC;
 model Dimmer_R "Dimmer with resistive load"
   extends PowerConverters.Examples.ACAC.ExampleTemplates.Dimmer(powerFactor=1);
   extends Modelica.Icons.Example;

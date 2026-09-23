@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Interfaces;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Interfaces;
 connector NegativeMagneticPort "Negative quasi-static magnetic port of fundamental wave machines"
   extends FundamentalWave.Interfaces.MagneticPort;
   Modelica.Electrical.QuasiStatic.Types.Reference reference "Reference";

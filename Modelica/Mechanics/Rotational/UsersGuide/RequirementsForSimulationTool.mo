@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.UsersGuide;
+within Modelica.Mechanics.Rotational.UsersGuide;
 class RequirementsForSimulationTool "Requirements for Simulation Tools"
   extends Modelica.Icons.Information;
 

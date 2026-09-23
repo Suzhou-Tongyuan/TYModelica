@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Utilities;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Utilities;
 model SwitchedRheostat "Rheostat which is shortened after a given time"
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   Modelica.Electrical.QuasiStatic.Polyphase.Interfaces.PositivePlug 

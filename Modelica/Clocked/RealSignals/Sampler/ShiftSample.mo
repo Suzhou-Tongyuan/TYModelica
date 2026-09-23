@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler;
+within Modelica.Clocked.RealSignals.Sampler;
 block ShiftSample
   "Shift the clocked Real input signal by a fraction of the last interval and and provide it as clocked output signal"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model CosineVoltage "Cosine voltage source"
   parameter SI.Voltage V(start=1) "Amplitude of cosine wave";
   parameter SI.Angle phase=0 "Phase of cosine wave";

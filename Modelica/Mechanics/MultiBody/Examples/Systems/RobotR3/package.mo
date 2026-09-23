@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems;
+within Modelica.Mechanics.MultiBody.Examples.Systems;
 package RobotR3 "Library to demonstrate robot system models based on the Manutec r3 robot"
   extends Modelica.Icons.ExamplesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
 model PermanentMagnet
   "Permanent magnet model without intrinsic reluctance, represented by magnetic potential difference"
   extends FundamentalWave.Losses.PermanentMagnetLosses;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Interfaces;
+within Modelica.Electrical.Batteries.Interfaces;
 expandable connector StackBus "Measurement signal bus for a stack"
   extends Modelica.Icons.SignalBus;
   parameter Integer Ns(final min = 1) = 1 "Number of series connected cells";

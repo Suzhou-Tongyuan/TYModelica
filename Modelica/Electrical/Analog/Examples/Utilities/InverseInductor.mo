@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.Utilities;
+within Modelica.Electrical.Analog.Examples.Utilities;
 model InverseInductor "Input/output block of an inverse inductor model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.Inductance L(min=0)=1 "Inductance";

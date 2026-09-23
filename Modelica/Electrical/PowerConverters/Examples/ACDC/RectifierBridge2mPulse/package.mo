@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC;
+within Modelica.Electrical.PowerConverters.Examples.ACDC;
 package RectifierBridge2mPulse "2*m pulse rectifier bridge"
   extends Modelica.Icons.ExamplesPackage;
   annotation (Documentation(info="<html>

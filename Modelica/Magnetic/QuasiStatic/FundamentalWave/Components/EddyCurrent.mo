@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
 model EddyCurrent
   "Constant loss model under sinusoidal magnetic conditions"
   import Modelica.Constants.pi;

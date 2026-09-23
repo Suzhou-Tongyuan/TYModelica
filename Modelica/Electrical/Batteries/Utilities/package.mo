@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries;
+within Modelica.Electrical.Batteries;
 package Utilities "Utilities for battery applications"
   extends Modelica.Icons.UtilitiesPackage;
 

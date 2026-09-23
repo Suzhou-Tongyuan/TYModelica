@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal.DCMachines;
+within Modelica.Electrical.Machines.Thermal.DCMachines;
 model ThermalAmbientDCEE
   "Thermal ambient for DC machine with electrical excitation"
   extends Machines.Interfaces.DCMachines.PartialThermalAmbientDCMachines(

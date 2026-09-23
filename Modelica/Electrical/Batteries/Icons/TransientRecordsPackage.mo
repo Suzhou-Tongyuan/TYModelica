@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Icons;
+within Modelica.Electrical.Batteries.Icons;
 partial package TransientRecordsPackage
   "Icon for package containing records with transient data"
 

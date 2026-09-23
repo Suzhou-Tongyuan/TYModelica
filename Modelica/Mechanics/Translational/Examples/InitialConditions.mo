@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model InitialConditions "Setting of initial conditions"
 
   extends Modelica.Icons.Example;

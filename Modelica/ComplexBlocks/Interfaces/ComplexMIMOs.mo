@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Interfaces;
+within Modelica.ComplexBlocks.Interfaces;
 partial block ComplexMIMOs
   "Multiple Input Multiple Output continuous control block with same number of inputs and outputs"
   extends Modelica.ComplexBlocks.Icons.ComplexBlock;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints.Internal;
+within Modelica.Mechanics.MultiBody.Joints.Internal;
 model PrismaticWithLengthConstraint
   "Prismatic joint where the translational distance is computed from a length constraint (1 degree-of-freedom, no potential state)"
 

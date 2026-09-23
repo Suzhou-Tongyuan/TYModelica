@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked;
+within Modelica.Clocked;
 package RealSignals "Library of clocked blocks for Real signals"
   extends Modelica.Icons.Package;
   import Modelica.Units.SI;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model SaturatingInductor "Simple model of an inductor with saturation"
   extends Modelica.Electrical.Analog.Interfaces.OnePort(i(start=0));
   import Modelica.Constants.pi;

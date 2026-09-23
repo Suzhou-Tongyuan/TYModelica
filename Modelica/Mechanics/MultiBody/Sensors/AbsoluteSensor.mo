@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model AbsoluteSensor
   "Measure absolute kinematic quantities of frame connector"
 

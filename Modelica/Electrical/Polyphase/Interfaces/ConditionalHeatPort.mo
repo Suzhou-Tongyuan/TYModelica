@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Interfaces;
+within Modelica.Electrical.Polyphase.Interfaces;
 partial model ConditionalHeatPort
   "Partial model to include conditional HeatPorts in order to describe the power loss via a thermal network"
   parameter Integer mh(min=1) = 3 "Number of heatPorts=number of phases";

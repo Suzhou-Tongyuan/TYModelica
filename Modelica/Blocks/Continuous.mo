@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package Continuous "Library of continuous control blocks with internal states"
 
   import Modelica.Blocks.Interfaces;

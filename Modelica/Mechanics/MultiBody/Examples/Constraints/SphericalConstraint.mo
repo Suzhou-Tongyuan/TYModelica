@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Constraints;
+within Modelica.Mechanics.MultiBody.Examples.Constraints;
 model SphericalConstraint
   "Body attached by one spring and spherical joint or constrained to environment"
   extends Modelica.Icons.Example;

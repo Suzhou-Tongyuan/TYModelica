@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Interfaces;
+within Modelica.Magnetic.FundamentalWave.Interfaces;
 connector PositiveMagneticPort "Positive magnetic port of fundamental wave machines"
   extends Magnetic.FundamentalWave.Interfaces.MagneticPort;
   annotation (

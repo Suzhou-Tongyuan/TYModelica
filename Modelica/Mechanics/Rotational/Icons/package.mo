@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational;
+within Modelica.Mechanics.Rotational;
 package Icons "Icons for Rotational package"
   extends Modelica.Icons.IconsPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Icons;
+within Modelica.Electrical.Machines.Icons;
 partial model QuasiStaticMachine
   annotation (Icon(graphics={Rectangle(
               extent={{-40,60},{80,-60}},

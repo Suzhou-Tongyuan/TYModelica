@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.ParameterRecords;
+within Modelica.Electrical.Batteries.ParameterRecords;
 record ExampleData "Example parameters of a battery cell"
   extends CellData(
     CellType="Example data",

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 type AxisLabel = Modelica.Icons.TypeString
   "Label of axis with choices" annotation (
     preferredView="text", choices(

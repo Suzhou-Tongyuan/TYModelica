@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic;
+within Modelica.Electrical.QuasiStatic;
 package Machines "Quasi-static machine models"
   extends Modelica.Icons.Package;
   annotation (Icon(graphics={

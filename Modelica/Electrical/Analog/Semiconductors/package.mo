@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog;
+within Modelica.Electrical.Analog;
 package Semiconductors "Semiconductor devices such as diode, MOS and bipolar transistor"
   extends Modelica.Icons.Package;
   import Modelica.Constants.k "Boltzmann's constant, [J/K]";

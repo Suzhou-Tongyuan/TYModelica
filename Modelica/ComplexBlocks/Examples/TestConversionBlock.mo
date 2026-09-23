@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Examples;
+within Modelica.ComplexBlocks.Examples;
 model TestConversionBlock "Test the conversion blocks"
   extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Ramp len(duration=1, offset=1E-6) annotation (

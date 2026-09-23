@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
 model RotorSaliencyAirGap "Air gap model with rotor saliency"
   import Modelica.Constants.pi;
   Interfaces.PositiveMagneticPort port_sp

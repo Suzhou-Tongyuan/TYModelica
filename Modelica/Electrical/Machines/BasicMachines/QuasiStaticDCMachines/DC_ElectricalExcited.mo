@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.QuasiStaticDCMachines;
+within Modelica.Electrical.Machines.BasicMachines.QuasiStaticDCMachines;
 model DC_ElectricalExcited
   "Quasi-static electrical shunt/separate excited linear DC machine"
   extends Machines.BasicMachines.DCMachines.DC_ElectricalExcited(final

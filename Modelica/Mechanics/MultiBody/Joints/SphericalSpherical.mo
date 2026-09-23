@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 model SphericalSpherical
   "Spherical - spherical joint aggregation (1 constraint, no potential states) with an optional point mass in the middle"
 

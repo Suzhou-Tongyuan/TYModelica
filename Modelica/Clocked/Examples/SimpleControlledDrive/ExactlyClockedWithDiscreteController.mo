@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.SimpleControlledDrive;
+within Modelica.Clocked.Examples.SimpleControlledDrive;
 model ExactlyClockedWithDiscreteController
   "Simple controlled drive with discrete controller and exact periodic clocks (period is used in the controller)"
  extends Modelica.Icons.Example;

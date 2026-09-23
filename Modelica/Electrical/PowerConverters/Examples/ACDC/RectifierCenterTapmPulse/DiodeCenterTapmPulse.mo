@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierCenterTapmPulse;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierCenterTapmPulse;
 model DiodeCenterTapmPulse
   "2*m pulse diode rectifier with center tap with resistive load"
   extends Modelica.Icons.Example;

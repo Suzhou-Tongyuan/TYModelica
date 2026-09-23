@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.Sampler.Utilities;
+within Modelica.Clocked.BooleanSignals.Sampler.Utilities;
 block AssignClockToTriggerHold
 "Generate a Boolean continuous-time trigger signal from a clocked Boolean input"
   extends Clocked.ClockSignals.Interfaces.ClockedBlockIcon;

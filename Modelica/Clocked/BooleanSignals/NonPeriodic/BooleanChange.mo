@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.NonPeriodic;
+within Modelica.Clocked.BooleanSignals.NonPeriodic;
 block BooleanChange "Indicate Boolean signal changing"
   extends Clocked.ClockSignals.Interfaces.ClockedBlockIcon;
 

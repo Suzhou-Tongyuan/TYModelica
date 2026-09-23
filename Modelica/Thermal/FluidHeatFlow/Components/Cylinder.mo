@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Components;
+within Modelica.Thermal.FluidHeatFlow.Components;
 model Cylinder "Simple model of a piston in a cylinder"
   import Modelica.Constants.small;
   extends FluidHeatFlow.BaseClasses.SinglePortLeft(final Exchange=true);

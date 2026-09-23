@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model OpenerWithArc "Ideal opening switch with simple arc model"
   extends Modelica.Electrical.Analog.Interfaces.IdealSwitchWithArc;
   Modelica.Blocks.Interfaces.BooleanInput control

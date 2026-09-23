@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
+within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
 block LimitedPI
   "Limited PI-controller with anti-windup and feed-forward"
   extends Modelica.Blocks.Interfaces.SISO;

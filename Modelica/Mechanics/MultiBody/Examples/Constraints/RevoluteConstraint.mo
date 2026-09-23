@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Constraints;
+within Modelica.Mechanics.MultiBody.Examples.Constraints;
 model RevoluteConstraint
   "Body attached by one spring and revolute joint or constrained to environment"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Interfaces;
+within Modelica.Electrical.Analog.Interfaces;
 partial model OnePort
   "Component with two electrical pins p and n and current i from p to n"
   extends TwoPin;

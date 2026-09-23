@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Ideal;
+within Modelica.Electrical.Polyphase.Ideal;
 model OpenerWithArc "Polyphase opener with arc"
   extends Interfaces.TwoPlug;
   parameter SI.Resistance Ron[m](final min=zeros(m), start=

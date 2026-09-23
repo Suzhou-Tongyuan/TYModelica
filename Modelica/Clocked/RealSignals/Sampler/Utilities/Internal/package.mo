@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler.Utilities;
+within Modelica.Clocked.RealSignals.Sampler.Utilities;
 package Internal "Internal blocks and functions that are usually of no interest for the user"
   extends Modelica.Icons.InternalPackage;
 

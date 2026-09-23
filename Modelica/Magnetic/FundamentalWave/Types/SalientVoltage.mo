@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Types;
+within Modelica.Magnetic.FundamentalWave.Types;
 record SalientVoltage = Salient (redeclare SI.Voltage d,
       redeclare SI.Voltage q) "Salient voltage" annotation (
     Documentation(info="<html>

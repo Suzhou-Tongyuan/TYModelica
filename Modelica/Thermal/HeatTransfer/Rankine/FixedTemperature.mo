@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Rankine;
+within Modelica.Thermal.HeatTransfer.Rankine;
 model FixedTemperature "Fixed temperature boundary condition in degRankine"
   extends HeatTransfer.Icons.FixedTemperature;
   parameter Modelica.Units.NonSI.Temperature_degRk T

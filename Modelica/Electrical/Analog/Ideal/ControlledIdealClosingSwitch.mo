@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model ControlledIdealClosingSwitch "Controlled ideal electrical closer"
   parameter SI.Voltage level=0.5 "Switch level";
   extends Modelica.Electrical.Analog.Interfaces.IdealSwitch;

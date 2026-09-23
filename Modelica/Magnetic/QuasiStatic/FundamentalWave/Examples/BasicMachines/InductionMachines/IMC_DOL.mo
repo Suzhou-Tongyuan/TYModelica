@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines;
 model IMC_DOL
   "Induction machine with squirrel cage started directly on line (DOL)"
   extends Modelica.Icons.Example;

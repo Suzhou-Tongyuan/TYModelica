@@ -1,4 +1,4 @@
-﻿within Modelica;
+within Modelica;
 package Electrical "Library of electrical models (analog, digital, machines, polyphase)"
   extends Modelica.Icons.Package;
   import Modelica.Units.SI;

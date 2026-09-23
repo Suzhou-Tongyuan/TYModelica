@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked;
+within Modelica.Clocked;
 package Types "Library of types with choices, especially to build menus"
 extends Modelica.Icons.TypesPackage;
 

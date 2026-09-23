@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model IdealOpAmpLimited "Ideal operational amplifier with limitation"
   Interfaces.PositivePin in_p "Positive pin of the input port" annotation (
       Placement(transformation(extent={{-110,-70},{-90,-50}}), iconTransformation(extent={{-110,-70},{-90,-50}})));

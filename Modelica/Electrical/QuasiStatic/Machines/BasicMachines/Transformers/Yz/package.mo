@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.BasicMachines.Transformers;
+within Modelica.Electrical.QuasiStatic.Machines.BasicMachines.Transformers;
 package Yz "Transformers: primary Y / secondary zig-zag"
   extends Modelica.Icons.VariantsPackage;
   annotation (Documentation(info="<html>

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACAC;
+within Modelica.Electrical.PowerConverters.ACAC;
 model PolyphaseTriac "Triodes for alternating current"
   extends Modelica.Electrical.Polyphase.Interfaces.TwoPlug;
   parameter SI.Resistance Ron(final min=0)=1e-5

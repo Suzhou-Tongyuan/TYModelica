@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical;
+within Modelica.Electrical;
 package Analog "Library for analog electrical models"
 
   extends Modelica.Icons.Package;

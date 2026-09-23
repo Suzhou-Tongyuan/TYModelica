@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model Damper "Linear 1D rotational damper"
   extends 
     Modelica.Mechanics.Rotational.Interfaces.PartialCompliantWithRelativeStates;

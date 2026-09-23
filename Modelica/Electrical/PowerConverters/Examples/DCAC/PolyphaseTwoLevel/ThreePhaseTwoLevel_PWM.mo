@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCAC.PolyphaseTwoLevel;
+within Modelica.Electrical.PowerConverters.Examples.DCAC.PolyphaseTwoLevel;
 model ThreePhaseTwoLevel_PWM "Test of pulse width modulation methods"
   extends Modelica.Icons.Example;
   import Modelica.Electrical.Polyphase.Functions.factorY2DC;

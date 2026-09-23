@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
 model AxisType1 "Axis model of the r3 joints 1,2,3"
   extends AxisType2(redeclare GearType1 gear(c=c, d=cd)) 
     annotation(IconMap(primitivesVisible=false));

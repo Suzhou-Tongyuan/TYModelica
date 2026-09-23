@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model Clutch "Clutch based on Coulomb friction"
   extends Modelica.Mechanics.Rotational.Icons.Clutch;
   extends 

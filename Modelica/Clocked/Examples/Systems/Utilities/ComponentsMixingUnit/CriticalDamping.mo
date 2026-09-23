@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsMixingUnit;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsMixingUnit;
 block CriticalDamping
   "Output the input signal filtered with an n-th order filter with critical damping"
 

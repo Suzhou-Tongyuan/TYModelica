@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.UsersGuide;
+within Modelica.Electrical.Batteries.UsersGuide;
 class ReleaseNotes "Release Notes"
   extends Modelica.Icons.ReleaseNotes;
   annotation (Documentation(info="<html>

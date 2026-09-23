@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
 block ThrottleBody "Basic throttle body equations"
   extends Modelica.Blocks.Icons.Block;
 

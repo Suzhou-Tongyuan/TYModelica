@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.ClockSignals;
+within Modelica.Clocked.Examples.Elementary.ClockSignals;
 model LogicalSample
   "Simple example of conjunctive and disjunctive logical clocks, combining clock signals to derive new event driven clocks."
   extends Modelica.Icons.Example;

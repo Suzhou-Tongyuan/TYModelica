@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 package Colors "Library of functions operating on color"
   extends Modelica.Icons.FunctionsPackage;
 

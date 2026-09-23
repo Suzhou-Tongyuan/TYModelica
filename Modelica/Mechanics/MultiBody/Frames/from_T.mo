@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function from_T "Return orientation object R from transformation matrix T"
   extends Modelica.Icons.Function;
   input Real T[3, 3]

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Interfaces;
+within Modelica.Thermal.FluidHeatFlow.Interfaces;
 partial model RelativeSensorBase "Partial model of relative sensor without signal output"
   extends Modelica.Icons.RoundSensor;
   parameter FluidHeatFlow.Media.Medium medium=FluidHeatFlow.Media.Medium()

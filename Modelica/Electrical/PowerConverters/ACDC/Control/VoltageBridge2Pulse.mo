@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC.Control;
+within Modelica.Electrical.PowerConverters.ACDC.Control;
 model VoltageBridge2Pulse "Control of 2 pulse bridge rectifier"
   import Modelica.Constants.pi;
   extends Icons.Control;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model Resistor "Polyphase linear resistor"
   extends Interfaces.TwoPlug;
   parameter SI.Resistance R_ref[m](start=fill(1, m))

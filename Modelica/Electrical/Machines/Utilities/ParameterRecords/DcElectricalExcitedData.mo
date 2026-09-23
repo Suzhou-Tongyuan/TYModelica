@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities.ParameterRecords;
+within Modelica.Electrical.Machines.Utilities.ParameterRecords;
 record DcElectricalExcitedData "Common parameters for DC machines"
   extends DcPermanentMagnetData;
   parameter SI.Current IeNominal=1

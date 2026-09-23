@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Sensors;
+within Modelica.Thermal.FluidHeatFlow.Sensors;
 model VolumeFlowSensor "Volume flow sensor"
 
   extends FluidHeatFlow.Interfaces.FlowSensor(y(unit="m3/s")

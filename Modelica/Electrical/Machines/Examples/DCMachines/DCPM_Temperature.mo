@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.DCMachines;
+within Modelica.Electrical.Machines.Examples.DCMachines;
 model DCPM_Temperature
   "Test example: Investigate temperature dependency of a DCPM motor"
   extends Modelica.Icons.Example;

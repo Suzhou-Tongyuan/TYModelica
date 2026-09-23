@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Blocks;
+within Modelica.Electrical.QuasiStatic.Polyphase.Blocks;
 block SingleToPolyphase
   "Extends complex phase signal to complex polyphase signals using symmetricOrientation"
   extends Modelica.ComplexBlocks.Interfaces.ComplexSIMO(final nout=m,final useConjugateInput=false);

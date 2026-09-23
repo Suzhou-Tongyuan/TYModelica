@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Icons;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Icons;
 partial model HollowCylinderAxialFlux "Icon for cylinder with axial flux"
   annotation (Icon(graphics={
         Ellipse(

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals;
+within Modelica.Clocked.IntegerSignals;
 package Sampler "Library of sampler and hold blocks for Integer signals"
   extends Modelica.Icons.Package;
 

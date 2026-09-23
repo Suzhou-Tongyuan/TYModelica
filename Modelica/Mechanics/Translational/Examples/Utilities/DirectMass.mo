@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples.Utilities;
+within Modelica.Mechanics.Translational.Examples.Utilities;
 model DirectMass "Input/output block of a direct mass model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.Mass m(min=0)=1 "Mass";

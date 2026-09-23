@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model ControlledOpenerWithArc
   "Controlled ideal electrical opener with simple arc model"
   parameter SI.Voltage level=0.5 "Switch level";

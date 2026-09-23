@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.NonPeriodic;
+within Modelica.Clocked.RealSignals.NonPeriodic;
 block PI
   "Discrete-time PI controller with clocked input and output signals (for periodic and aperiodic systems using the parameterization of the continuous PI controller)"
   extends Clocked.RealSignals.Interfaces.PartialClockedSISO;

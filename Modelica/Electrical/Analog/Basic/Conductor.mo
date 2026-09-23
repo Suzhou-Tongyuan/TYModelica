@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model Conductor "Ideal linear electrical conductor"
   parameter SI.Conductance G(start=1)
     "Conductance at temperature T_ref";

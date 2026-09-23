@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
+within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
 model GenericHystTellinenHard
   "Generic flux tube with hard magnetic hysteresis based on the Tellinen model and simple tanh()-functions"
 

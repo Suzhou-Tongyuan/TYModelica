@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Sensors;
+within Modelica.Thermal.HeatTransfer.Sensors;
 model HeatFlowSensor "Heat flow rate sensor"
   extends Modelica.Icons.RoundSensor;
   Modelica.Blocks.Interfaces.RealOutput Q_flow(unit="W")

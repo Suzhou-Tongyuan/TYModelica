@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Sum "Output the sum of the elements of the input vector"
   extends Interfaces.ComplexMISO;
   parameter Complex k[nin]=fill(Complex(1, 0), nin)

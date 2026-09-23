@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples;
+within Modelica.Thermal.FluidHeatFlow.Examples;
 model OneMass "Cooling of one hot mass"
   extends Modelica.Icons.Example;
   parameter FluidHeatFlow.Media.Medium medium=FluidHeatFlow.Media.Medium()

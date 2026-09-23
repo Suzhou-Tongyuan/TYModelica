@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.ControlledDCDrives;
+within Modelica.Electrical.Machines.Examples.ControlledDCDrives;
 model PositionControlledDCPM
   "Position controlled DC PM drive with H-bridge from battery"
   extends Utilities.PartialControlledDCPM;

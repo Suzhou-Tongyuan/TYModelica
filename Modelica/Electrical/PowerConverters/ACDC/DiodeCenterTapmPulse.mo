@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC;
+within Modelica.Electrical.PowerConverters.ACDC;
 model DiodeCenterTapmPulse "m pulse diode rectifier with center tap"
   import Modelica.Constants.pi;
   extends Icons.Converter;

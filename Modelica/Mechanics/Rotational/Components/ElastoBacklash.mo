@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model ElastoBacklash
   "Backlash connected in series to linear spring and damper (backlash is modeled with elasticity)"
 

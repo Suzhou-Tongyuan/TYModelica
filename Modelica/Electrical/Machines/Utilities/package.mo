@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines;
+within Modelica.Electrical.Machines;
 package Utilities "Library with auxiliary models for testing"
   extends Modelica.Icons.UtilitiesPackage;
 

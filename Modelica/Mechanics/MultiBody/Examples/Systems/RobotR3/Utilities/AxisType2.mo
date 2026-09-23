@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
 model AxisType2 "Axis model of the r3 joints 4,5,6"
   parameter Real kp=10 "Gain of position controller" 
     annotation (Dialog(group="Controller"));

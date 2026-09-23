@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.BaseClasses;
+within Modelica.Magnetic.FluxTubes.BaseClasses;
 partial model FixedShape "Base class for flux tubes with fixed shape during simulation; linear or non-linear material characteristics"
 
   extends Interfaces.TwoPort;

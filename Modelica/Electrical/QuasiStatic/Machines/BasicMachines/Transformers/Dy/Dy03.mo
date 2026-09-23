@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.BasicMachines.Transformers.Dy;
+within Modelica.Electrical.QuasiStatic.Machines.BasicMachines.Transformers.Dy;
 model Dy03 "Transformer Dy3"
 
   extends QuasiStatic.Machines.Interfaces.PartialBasicTransformer(final

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.DCMachines;
+within Modelica.Electrical.Machines.Interfaces.DCMachines;
 model PartialThermalAmbientDCMachines
   "Partial thermal ambience for DC machines"
   parameter Boolean useTemperatureInputs=false

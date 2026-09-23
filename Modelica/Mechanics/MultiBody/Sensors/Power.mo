@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model Power "Measure power flowing from frame_a to frame_b"
   extends Modelica.Icons.RoundSensor;
 

@@ -198,6 +198,9 @@ MODELICA_EXPORT double ModelicaStandardTables_CombiTimeTable_getValue(void* tabl
                                                       int icol, double t,
                                                       double nextTimeEvent,
                                                       double preNextTimeEvent);
+
+MODELICA_EXPORT double ModelicaStandardTables_CombiTimeTable_getValue_vec(void* tableID, int ncols, double t, double nextTimeEvent, double preNextTimeEvent, double* ycols);
+
   /* Interpolate in table
 
      -> tableID: Pointer to table defined with ModelicaStandardTables_CombiTimeTable_init
@@ -214,6 +217,9 @@ MODELICA_EXPORT double ModelicaStandardTables_CombiTimeTable_getDerValue(void* t
                                                          double nextTimeEvent,
                                                          double preNextTimeEvent,
                                                          double der_t);
+														 
+MODELICA_EXPORT double ModelicaStandardTables_CombiTimeTable_getDerValue_vec(void* _tableID, int ncols, double t, double nextTimeEvent, double preNextTimeEvent, double der_t, double* dy);														 
+														 
   /* Interpolated derivative in table
 
      -> tableID: Pointer to table defined with ModelicaStandardTables_CombiTimeTable_init
@@ -232,6 +238,8 @@ MODELICA_EXPORT double ModelicaStandardTables_CombiTimeTable_getDer2Value(void* 
                                                          double preNextTimeEvent,
                                                          double der_t,
                                                          double der2_t);
+														 
+MODELICA_EXPORT double ModelicaStandardTables_CombiTimeTable_getDer2Value_vec(void* _tableID, int ncols, double t, double nextTimeEvent, double preNextTimeEvent, double der_t, double der2_t, double* d2y);
   /* Interpolated second derivative in table
 
      -> tableID: Pointer to table defined with ModelicaStandardTables_CombiTimeTable_init

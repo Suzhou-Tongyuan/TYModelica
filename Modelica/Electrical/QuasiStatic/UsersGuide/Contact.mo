@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.UsersGuide;
+within Modelica.Electrical.QuasiStatic.UsersGuide;
 class Contact "Contact"
   extends Modelica.Icons.Contact;
 

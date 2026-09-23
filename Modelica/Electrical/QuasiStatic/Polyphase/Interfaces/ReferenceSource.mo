@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
+within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
 partial model ReferenceSource
   "Partial of voltage or current source with reference input"
   extends QuasiStatic.Polyphase.Interfaces.OnePort;

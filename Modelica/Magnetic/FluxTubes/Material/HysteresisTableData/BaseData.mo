@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HysteresisTableData;
+within Modelica.Magnetic.FluxTubes.Material.HysteresisTableData;
 record BaseData "Hysteresis table data"
 
   extends Modelica.Icons.Record;

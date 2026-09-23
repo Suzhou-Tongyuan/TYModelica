@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.Steel;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.Steel;
 record Steel_9SMnPb28 "9SMnPb28 (1.0718)"
   extends FluxTubes.Material.SoftMagnetic.BaseData(
     mu_i=400,

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals;
+within Modelica.Clocked.BooleanSignals;
 package TickBasedSources "Package of signal source blocks generating clocked tick/sample based Boolean signals"
    extends Modelica.Icons.SourcesPackage;
 

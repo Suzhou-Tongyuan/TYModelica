@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Interfaces;
+within Modelica.Clocked.IntegerSignals.Interfaces;
 partial block PartialClockedSISO
   "Block with clocked single input and clocked single output Integer signals"
   extends Clocked.ClockSignals.Interfaces.ClockedBlockIcon;

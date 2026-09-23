@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational;
+within Modelica.Mechanics.Translational;
 package Examples "Demonstration examples of the components of this package"
 
   extends Modelica.Icons.ExamplesPackage;

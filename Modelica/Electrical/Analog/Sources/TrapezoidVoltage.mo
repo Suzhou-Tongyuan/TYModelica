@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model TrapezoidVoltage "Trapezoidal voltage source"
   parameter SI.Voltage V(start=1) "Amplitude of trapezoid";
   parameter SI.Time rising(final min=0, start=0)

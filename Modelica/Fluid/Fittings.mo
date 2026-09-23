@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid;
+within Modelica.Fluid;
 package Fittings
   "Adaptors for connections of fluid components and the regulation of fluid flow"
   package Bends "Flow models for bends"

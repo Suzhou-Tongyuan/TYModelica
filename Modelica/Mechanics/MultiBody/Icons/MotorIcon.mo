@@ -1,4 +1,4 @@
-﻿partial class MotorIcon "Icon of an electrical motor."
+partial class MotorIcon "Icon of an electrical motor."
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
         Rectangle(

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
+within Modelica.Mechanics.MultiBody.Frames.Quaternions;
 function orientationConstraint
   "Return residues of orientation constraints (shall be zero)"
   extends Modelica.Icons.Function;

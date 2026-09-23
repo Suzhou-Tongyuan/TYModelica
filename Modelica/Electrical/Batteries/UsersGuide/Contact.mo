@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.UsersGuide;
+within Modelica.Electrical.Batteries.UsersGuide;
 class Contact "Contact"
   extends Modelica.Icons.Contact;
   annotation (Documentation(info="<html>

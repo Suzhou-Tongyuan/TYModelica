@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Media;
+within Modelica.Thermal.FluidHeatFlow.Media;
 record MineralOil "Medium: properties of mineral oil at 60 degC and 1 bar"
 extends FluidHeatFlow.Media.Medium(
     rho=868,

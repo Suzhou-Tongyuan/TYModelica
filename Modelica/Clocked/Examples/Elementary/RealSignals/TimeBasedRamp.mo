@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model TimeBasedRamp
   "Example of using the clocked time based Ramp source block"
    extends Modelica.Icons.Example;

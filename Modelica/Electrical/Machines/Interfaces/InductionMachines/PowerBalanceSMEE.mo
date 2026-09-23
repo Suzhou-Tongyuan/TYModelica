@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
+within Modelica.Electrical.Machines.Interfaces.InductionMachines;
 record PowerBalanceSMEE
   "Power balance of synchronous machines with electrical excitation"
   extends 

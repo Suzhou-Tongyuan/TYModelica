@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.Interfaces;
+within Modelica.Clocked.BooleanSignals.Interfaces;
 partial block PartialClockedSO
   "Block with clocked single output Boolean signals"
   extends Clocked.ClockSignals.Interfaces.ClockedBlockIcon;

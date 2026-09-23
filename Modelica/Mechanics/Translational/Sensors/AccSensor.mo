@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sensors;
+within Modelica.Mechanics.Translational.Sensors;
 model AccSensor "Ideal sensor to measure the absolute acceleration"
   extends Translational.Interfaces.PartialAbsoluteSensor;
   SI.Velocity v "Absolute velocity of flange";

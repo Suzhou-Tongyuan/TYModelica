@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model AirGapDC "Linear airgap model of a DC machine"
   extends PartialAirGapDC;
   parameter SI.Inductance Le "Excitation inductance";

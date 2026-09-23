@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Basic;
+within Modelica.Magnetic.FluxTubes.Basic;
 model LeakageWithCoefficient
   "Leakage reluctance with respect to the reluctance of a useful flux path (not for dynamic simulation of actuators)"
   extends BaseClasses.Leakage;

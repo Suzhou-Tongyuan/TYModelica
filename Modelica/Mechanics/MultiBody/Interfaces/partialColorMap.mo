@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 partial function partialColorMap
   "Interface for a function returning a color map"
   extends Modelica.Icons.Function;

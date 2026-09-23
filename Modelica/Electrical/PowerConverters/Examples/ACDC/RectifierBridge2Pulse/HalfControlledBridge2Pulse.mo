@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2Pulse;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2Pulse;
 model HalfControlledBridge2Pulse
   "Two pulse Graetz half controlled bridge with resistive load"
   extends Modelica.Icons.Example;

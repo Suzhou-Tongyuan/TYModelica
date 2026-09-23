@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
+within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
 model Battery "Simple battery model"
   parameter SI.Voltage V0 "No-load voltage";
   parameter SI.Current INominal "Nominal current";

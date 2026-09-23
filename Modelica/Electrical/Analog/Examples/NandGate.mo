@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model NandGate "CMOS NAND Gate (see Tietze/Schenk, page 157)"
   extends Modelica.Icons.Example;
 

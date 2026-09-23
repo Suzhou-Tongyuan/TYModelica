@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps;
+within Modelica.Mechanics.MultiBody.Visualizers.Colors.ColorMaps;
 function summer "Returns the \"summer\" color map"
 extends Modelica.Mechanics.MultiBody.Interfaces.partialColorMap;
 algorithm

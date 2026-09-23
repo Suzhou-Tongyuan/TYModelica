@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block ComplexToReal "Converts complex to Cartesian representation"
   extends Modelica.ComplexBlocks.Icons.ComplexBlock;
   Blocks.Interfaces.RealOutput re annotation (Placement(transformation(

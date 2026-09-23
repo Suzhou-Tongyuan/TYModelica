@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.FixedShape;
+within Modelica.Magnetic.FluxTubes.Shapes.FixedShape;
 model Toroid
   "Toroid with circular cross section; fixed shape; linear or non-linear material characteristics"
 

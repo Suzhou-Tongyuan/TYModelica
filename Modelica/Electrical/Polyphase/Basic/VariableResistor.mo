@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model VariableResistor
   "Ideal linear electrical resistors with variable resistance"
   extends Interfaces.TwoPlug;

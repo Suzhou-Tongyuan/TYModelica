@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Parts;
+within Modelica.Mechanics.MultiBody.Parts;
 model Body
   "Rigid body with mass, inertia tensor and one frame connector (12 potential states)"
 

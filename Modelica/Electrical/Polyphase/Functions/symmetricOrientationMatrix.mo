@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Functions;
+within Modelica.Electrical.Polyphase.Functions;
 function symmetricOrientationMatrix
   "Matrix symmetric orientation angles for creating the symmetric transformation matrix"
   extends Modelica.Icons.Function;

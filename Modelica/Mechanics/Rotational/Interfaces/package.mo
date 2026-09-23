@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational;
+within Modelica.Mechanics.Rotational;
 package Interfaces "Connectors and partial models for 1D rotational mechanical components"
 
   extends Modelica.Icons.InterfacesPackage;

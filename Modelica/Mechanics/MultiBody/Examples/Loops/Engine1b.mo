@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops;
+within Modelica.Mechanics.MultiBody.Examples.Loops;
 model Engine1b
   "Model of one cylinder engine with gas force and preparation for assembly joint JointRRP"
   extends Modelica.Icons.Example;

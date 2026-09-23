@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Interfaces;
+within Modelica.Clocked.IntegerSignals.Interfaces;
 partial block PartialSISOSampler
   "Basic block used for sampling of Integer signals"
 extends Clocked.IntegerSignals.Interfaces.SamplerIcon;

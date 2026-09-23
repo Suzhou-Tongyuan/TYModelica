@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals;
+within Modelica.Clocked.IntegerSignals;
 package TimeBasedSources "Package of signal source blocks generating clocked simulation time based Integer signals"
    extends Modelica.Icons.SourcesPackage;
 

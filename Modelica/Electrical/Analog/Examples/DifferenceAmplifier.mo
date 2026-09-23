@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model DifferenceAmplifier
   "Simple NPN transistor amplifier circuit"
   extends Modelica.Icons.Example;

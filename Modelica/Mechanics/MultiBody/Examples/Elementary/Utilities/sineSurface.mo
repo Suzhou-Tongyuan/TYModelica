@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Elementary.Utilities;
 function sineSurface
   "Function defining the characteristic of a moving sine in three dimensions"
    extends Modelica.Mechanics.MultiBody.Interfaces.partialSurfaceCharacteristic;

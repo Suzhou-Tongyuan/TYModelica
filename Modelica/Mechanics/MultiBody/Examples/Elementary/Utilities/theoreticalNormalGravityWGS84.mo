@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Elementary.Utilities;
 function theoreticalNormalGravityWGS84
   "WGS84 normal gravity over earth ellipsoid in negative y-direction"
    extends Modelica.Mechanics.MultiBody.Interfaces.partialGravityAcceleration;

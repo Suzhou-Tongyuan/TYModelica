@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Interfaces;
+within Modelica.Magnetic.FundamentalWave.Interfaces;
 model NegativePortInterface "Negative port interface to FluxTubes"
 
   Magnetic.FundamentalWave.Interfaces.NegativeMagneticPort port

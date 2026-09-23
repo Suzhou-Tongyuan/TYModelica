@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.Transformers;
+within Modelica.Electrical.Machines.Examples.Transformers;
 model Rectifier12pulse "12-pulse rectifier with 2 transformers"
   extends Machines.Examples.Transformers.Rectifier6pulse(RL=0.2);
   Modelica.Electrical.Polyphase.Ideal.IdealDiode diode3(

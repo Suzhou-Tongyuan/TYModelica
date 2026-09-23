@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model FractionalDelay
   "Example of a FractionalDelay block for Real signals"
    extends Modelica.Icons.Example;

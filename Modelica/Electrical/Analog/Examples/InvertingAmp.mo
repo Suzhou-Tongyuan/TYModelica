@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model InvertingAmp "Inverting amplifier"
   extends Modelica.Icons.Example;
   parameter SI.Voltage Vps=+15 "Positive supply";

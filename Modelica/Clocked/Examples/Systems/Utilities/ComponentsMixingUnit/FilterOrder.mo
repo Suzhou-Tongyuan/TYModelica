@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsMixingUnit;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsMixingUnit;
 model FilterOrder "Block to determine the minimum filter order"
    extends Modelica.Icons.Example;
   MixingUnit mixingUnit 

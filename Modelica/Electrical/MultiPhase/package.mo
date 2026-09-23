@@ -1,4 +1,4 @@
-﻿package MultiPhase "Library for electrical components of one or more phases"
+package MultiPhase "Library for electrical components of one or more phases"
   extends Modelica.Icons.Package;
 
   package UsersGuide "User's Guide"

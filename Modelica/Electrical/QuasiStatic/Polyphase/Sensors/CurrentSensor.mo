@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
 model CurrentSensor "Current Sensor"
   extends Modelica.Electrical.QuasiStatic.Polyphase.Interfaces.RelativeSensorElementary;
 

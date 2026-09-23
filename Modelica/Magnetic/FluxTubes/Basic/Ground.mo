@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Basic;
+within Modelica.Magnetic.FluxTubes.Basic;
 model Ground "Zero magnetic potential"
 
   FluxTubes.Interfaces.PositiveMagneticPort port annotation (Placement(

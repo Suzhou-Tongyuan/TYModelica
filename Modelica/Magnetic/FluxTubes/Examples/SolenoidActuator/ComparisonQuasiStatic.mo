@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.SolenoidActuator;
+within Modelica.Magnetic.FluxTubes.Examples.SolenoidActuator;
 model ComparisonQuasiStatic
   "Slow forced armature motion of both solenoid models so that electromagnetic field and current are quasi-static"
 

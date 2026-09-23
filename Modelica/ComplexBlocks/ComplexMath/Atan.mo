@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Atan "Output the arc tangent of the input"
   extends Interfaces.ComplexSISO;
 equation

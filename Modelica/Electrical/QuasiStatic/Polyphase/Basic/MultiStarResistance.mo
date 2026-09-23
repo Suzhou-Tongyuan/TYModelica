@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model MultiStarResistance "Resistance connection of star points"
   parameter Integer m(final min=3) = 3 "Number of phases" annotation(Evaluate=true);
   final parameter Integer mBasic=

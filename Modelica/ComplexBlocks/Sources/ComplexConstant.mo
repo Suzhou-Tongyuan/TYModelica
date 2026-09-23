@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Sources;
+within Modelica.ComplexBlocks.Sources;
 block ComplexConstant "Generate constant signal of type Complex"
   parameter Complex k(re(start=1),im(start=0)) "Constant output value";
   extends Modelica.ComplexBlocks.Interfaces.ComplexSO;

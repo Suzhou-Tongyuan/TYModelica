@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples;
+within Modelica.Thermal.FluidHeatFlow.Examples;
 model TestOpenTank "Test the OpenTank model"
   extends Modelica.Icons.Example;
   output SI.VolumeFlowRate V_flow=volumeFlow.V_flow "Volume flow rate to tank";

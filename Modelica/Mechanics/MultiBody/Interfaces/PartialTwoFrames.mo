@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 partial model PartialTwoFrames
   "Base model for components providing two frame connectors + outer world + assert to guarantee that the component is connected"
 

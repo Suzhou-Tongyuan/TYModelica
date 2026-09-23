@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Sources;
+within Modelica.Magnetic.FundamentalWave.Sources;
 model ConstantFlux "Source of constant magnetic flux"
   extends Magnetic.FundamentalWave.Interfaces.TwoPortElementary;
   SI.ComplexMagneticPotentialDifference V_m

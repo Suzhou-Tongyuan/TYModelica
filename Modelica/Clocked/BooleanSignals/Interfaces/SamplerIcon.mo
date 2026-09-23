@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.Interfaces;
+within Modelica.Clocked.BooleanSignals.Interfaces;
 partial block SamplerIcon
   "Basic graphical layout of block used for sampling of Boolean signals"
   annotation (

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Icons;
+within Modelica.Electrical.Machines.Icons;
 partial model FundamentalWaveMachine
   annotation (Icon(graphics={
         Rectangle(

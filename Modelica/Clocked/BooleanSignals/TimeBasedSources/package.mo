@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals;
+within Modelica.Clocked.BooleanSignals;
 package TimeBasedSources "Package of signal source blocks generating clocked simulation time based Boolean signals"
    extends Modelica.Icons.SourcesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces;
+within Modelica.Mechanics.MultiBody.Forces;
 package Internal "Internal package, should not be used by user"
   extends Modelica.Icons.InternalPackage;
 

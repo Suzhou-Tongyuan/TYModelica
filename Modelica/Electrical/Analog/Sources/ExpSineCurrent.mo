@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model ExpSineCurrent "Exponentially damped sine current source"
   parameter Real I(start=1) "Amplitude of sine wave";
   parameter SI.Frequency f(start=2) "Frequency of sine wave";

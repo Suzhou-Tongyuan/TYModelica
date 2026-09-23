@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.UsersGuide.Hysteresis.StaticHysteresis;
+within Modelica.Magnetic.FluxTubes.UsersGuide.Hysteresis.StaticHysteresis;
 class Tellinen "Tellinen Hysteresis Model"
   extends Modelica.Icons.Information;
 

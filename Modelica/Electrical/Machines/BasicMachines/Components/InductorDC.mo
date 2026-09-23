@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model InductorDC
   "Ideal linear electrical inductor for electrical DC machines"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;

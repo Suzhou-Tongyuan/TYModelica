@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Interfaces;
+within Modelica.Mechanics.Translational.Interfaces;
 partial model PartialCompliant
   "Compliant connection of two translational 1D flanges"
 

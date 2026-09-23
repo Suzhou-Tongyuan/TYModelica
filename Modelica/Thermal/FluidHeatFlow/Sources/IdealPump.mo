@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Sources;
+within Modelica.Thermal.FluidHeatFlow.Sources;
 model IdealPump "Model of an ideal pump"
 
   extends FluidHeatFlow.BaseClasses.TwoPort(final tapT=1);

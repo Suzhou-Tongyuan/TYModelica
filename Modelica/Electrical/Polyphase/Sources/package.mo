@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase;
+within Modelica.Electrical.Polyphase;
 package Sources "Polyphase voltage and current sources"
   extends Modelica.Icons.SourcesPackage;
 

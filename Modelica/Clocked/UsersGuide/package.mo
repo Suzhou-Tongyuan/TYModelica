@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked;
+within Modelica.Clocked;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
+within Modelica.Electrical.Machines.Interfaces.InductionMachines;
 connector ThermalPortSMPM
   "Thermal port of synchronous machine with permanent magnets"
   extends 

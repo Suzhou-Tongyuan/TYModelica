@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.SynchronousMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.SynchronousMachines;
 model SMR_CurrentSource
   "Test example: Synchronous reluctance machine fed by current source"
   extends Modelica.Icons.Example;

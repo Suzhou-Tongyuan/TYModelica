@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.Interfaces;
+within Modelica.Clocked.BooleanSignals.Interfaces;
 partial block PartialSISOSampler
   "Basic block used for sampling of Boolean signals"
 extends Clocked.BooleanSignals.Interfaces.SamplerIcon;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses.InductionMachines;
+within Modelica.Electrical.Machines.Losses.InductionMachines;
 model Core "Model of core losses"
   parameter Machines.Losses.CoreParameters coreParameters(m=3)
     "Core parameters";

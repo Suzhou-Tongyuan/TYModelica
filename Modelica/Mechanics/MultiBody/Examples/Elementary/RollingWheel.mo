@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 model RollingWheel
   "Single wheel rolling on ground starting from an initial speed"
    extends Modelica.Icons.Example;

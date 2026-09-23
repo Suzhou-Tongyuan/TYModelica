@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
 model VariableAdmittance "Single-phase variable admittance"
   extends Interfaces.OnePort;
   import Modelica.ComplexMath.real;

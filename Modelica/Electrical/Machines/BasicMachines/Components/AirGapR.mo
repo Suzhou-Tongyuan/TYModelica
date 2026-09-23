@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model AirGapR "Airgap in rotor-fixed coordinate system"
   parameter SI.Inductance Lmd
     "Main field inductance d-axis";

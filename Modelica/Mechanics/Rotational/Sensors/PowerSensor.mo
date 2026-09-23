@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sensors;
+within Modelica.Mechanics.Rotational.Sensors;
 model PowerSensor
   "Ideal sensor to measure the power between two flanges (= flange_a.tau*der(flange_a.phi))"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave;
+within Modelica.Magnetic.FundamentalWave;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
   annotation (DocumentationClass=true, Documentation(info="<html>

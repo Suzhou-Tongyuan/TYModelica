@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals;
+within Modelica.Clocked.RealSignals;
 package TickBasedSources "Package of signal source blocks generating clocked ticked/sample based Real signals"
    extends Modelica.Icons.SourcesPackage;
 

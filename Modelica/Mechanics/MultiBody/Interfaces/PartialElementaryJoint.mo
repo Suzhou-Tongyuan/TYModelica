@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 partial model PartialElementaryJoint
   "Base model for elementary joints (has two frames + outer world + assert to guarantee that the joint is connected)"
 

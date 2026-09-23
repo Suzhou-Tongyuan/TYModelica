@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Transformers.Dd;
+within Modelica.Electrical.Machines.BasicMachines.Transformers.Dd;
 model Dd04 "Transformer Dd4"
   extends Machines.Interfaces.PartialBasicTransformer(final VectorGroup="Dd04");
   Modelica.Electrical.Polyphase.Basic.Delta Delta1(final m=m) 

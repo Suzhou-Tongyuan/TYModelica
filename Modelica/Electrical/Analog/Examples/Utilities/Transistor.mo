@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.Utilities;
+within Modelica.Electrical.Analog.Examples.Utilities;
 model Transistor "Transistor with resistance an capacitance"
 
   Basic.Resistor rtb(R=0.05) annotation (Placement(transformation(extent={{-80,

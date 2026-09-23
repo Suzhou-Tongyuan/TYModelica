@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Utilities;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Utilities;
 model CurrentController "Current controller"
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   parameter Integer p "Number of pole pairs";

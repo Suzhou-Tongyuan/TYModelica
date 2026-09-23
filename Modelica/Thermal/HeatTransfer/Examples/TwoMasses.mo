@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Examples;
+within Modelica.Thermal.HeatTransfer.Examples;
 model TwoMasses "Simple conduction demo"
   extends Modelica.Icons.Example;
   parameter SI.Temperature T_final_K(fixed=false)

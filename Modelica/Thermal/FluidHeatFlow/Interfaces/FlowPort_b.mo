@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Interfaces;
+within Modelica.Thermal.FluidHeatFlow.Interfaces;
 connector FlowPort_b "Hollow flow port (used downstream)"
 
   extends FluidHeatFlow.Interfaces.FlowPort;

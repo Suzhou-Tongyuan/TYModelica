@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Types;
+within Modelica.Magnetic.FundamentalWave.Types;
 record Salient "Base record of saliency with d and q component"
   replaceable Real d "Component of d (direct) axis, aligned to real part";
   replaceable Real q

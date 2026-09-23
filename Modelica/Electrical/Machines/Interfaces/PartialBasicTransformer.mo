@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces;
+within Modelica.Electrical.Machines.Interfaces;
 partial model PartialBasicTransformer
   "Partial model of three-phase transformer"
   extends Machines.Icons.TransientTransformer;

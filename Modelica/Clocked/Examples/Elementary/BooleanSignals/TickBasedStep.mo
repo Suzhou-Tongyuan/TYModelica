@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.BooleanSignals;
+within Modelica.Clocked.Examples.Elementary.BooleanSignals;
 model TickBasedStep
   "Example of using the clocked simulation tick/sample based Boolean Step source block"
    extends Modelica.Icons.Example;

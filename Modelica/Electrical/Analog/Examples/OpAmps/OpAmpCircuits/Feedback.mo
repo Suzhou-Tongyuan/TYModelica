@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
+within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
 model Feedback "Subtracting operational amplifier circuit"
   extends PartialOpAmp;
   SI.Voltage v1_2=p1_2.v - n1.v "Voltage drop of port 1_2 (= p1_2.v - n1.v)";

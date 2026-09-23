@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.UsersGuide;
+within Modelica.Electrical.Polyphase.UsersGuide;
 class References "References"
   extends Modelica.Icons.References;
   annotation (preferredView="info",

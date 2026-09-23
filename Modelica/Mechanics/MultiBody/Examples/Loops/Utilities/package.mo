@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops;
+within Modelica.Mechanics.MultiBody.Examples.Loops;
 package Utilities "Utility classes for examples of kinematic loops"
   extends Modelica.Icons.UtilitiesPackage;
 

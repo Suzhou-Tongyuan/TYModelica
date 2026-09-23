@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Examples;
+within Modelica.Electrical.QuasiStatic.Polyphase.Examples;
 model UnsymmetricalLoad "Unsymmetrical three-phase load"
   extends Modelica.Icons.Example;
   import Modelica.ComplexMath.abs;

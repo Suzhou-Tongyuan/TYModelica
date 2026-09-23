@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes;
+within Modelica.Magnetic.FluxTubes.Shapes;
 package HysteresisAndMagnets "Flux tube elements for modelling ferromagnetic hysteresis, eddy currents and permanent magnets"
   extends Modelica.Icons.VariantsPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Components;
+within Modelica.Magnetic.FundamentalWave.Components;
 model Ground "Magnetic ground"
   Interfaces.PositiveMagneticPort port_p "Complex magnetic port" 
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));

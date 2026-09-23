@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model AssignClockVectorized
   "Example of a AssignClockVectorized block for Real signals"
    extends Modelica.Icons.Example;

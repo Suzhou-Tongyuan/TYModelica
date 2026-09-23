@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model First "First example: simple drive train"
   extends Modelica.Icons.Example;
   parameter SI.Torque amplitude=10

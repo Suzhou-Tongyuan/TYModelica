@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces;
+within Modelica.Electrical.Machines.Interfaces;
 partial model PartialBasicInductionMachine
   "Partial model for induction machine"
   final parameter Integer m=3 "Number of phases" annotation(Evaluate=true);

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC;
+within Modelica.Electrical.PowerConverters.Examples.ACDC;
 package Rectifier1Pulse "Single pulse rectifier"
   extends Modelica.Icons.ExamplesPackage;
 

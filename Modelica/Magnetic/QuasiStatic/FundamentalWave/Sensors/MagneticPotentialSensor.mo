@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sensors;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sensors;
 model MagneticPotentialSensor "Sensor to measure magnetic potential"
   extends Modelica.Icons.RoundSensor;
   Modelica.ComplexBlocks.Interfaces.ComplexOutput V_m

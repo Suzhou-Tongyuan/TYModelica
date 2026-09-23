@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.InductionMachines;
+within Modelica.Electrical.Machines.Examples.InductionMachines;
 model IMC_Conveyor
   "Test example: InductionMachineSquirrelCage with inverter driving a conveyor"
   extends Modelica.Icons.Example;

@@ -90,7 +90,13 @@ int NDTable_evaluate(NDTable_h table, int nparams, const double params[], NDTabl
 	int		 nsubs [MAX_NDIMS];	// the neighboring subscripts
 	double	 derivatives [MAX_NDIMS];
 
-	// TODO: add null check
+	if (table == NULL || params == NULL || value == NULL) {
+		return -1;
+	}
+
+	if (nparams != table->ndims) {
+		return NDTABLE_INTERPSTATUS_WRONGNPARAMS;
+	}
 
 	// if the dataset is scalar return the value
 	if (table->ndims == 0) {
@@ -113,7 +119,13 @@ int NDTable_evaluate_derivative(NDTable_h table, int nparams, const double param
 	int		 nsubs[MAX_NDIMS];	// the neighboring subscripts
 	double	 derivatives[MAX_NDIMS];
 
-	// TODO: add null check
+	if (table == NULL || params == NULL || delta_params == NULL || value == NULL) {
+		return -1;
+	}
+
+	if (nparams != table->ndims) {
+		return NDTABLE_INTERPSTATUS_WRONGNPARAMS;
+	}
 
 	// if the dataset is scalar return the value
 	if (table->ndims == 0) {

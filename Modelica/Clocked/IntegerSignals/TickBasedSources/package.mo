@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals;
+within Modelica.Clocked.IntegerSignals;
 package TickBasedSources "Package of signal source blocks generating clocked tick/sample based Integer signals"
    extends Modelica.Icons.SourcesPackage;
 

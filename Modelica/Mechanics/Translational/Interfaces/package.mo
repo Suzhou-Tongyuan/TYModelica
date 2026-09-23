@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational;
+within Modelica.Mechanics.Translational;
 package Interfaces "Interfaces for 1-dim. translational mechanical components"
   extends Modelica.Icons.InterfacesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.UsersGuide.Overview;
+within Modelica.Electrical.QuasiStatic.UsersGuide.Overview;
 class Introduction "Introduction to phasors"
   extends Modelica.Icons.Information;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.MovingCoilActuator;
+within Modelica.Magnetic.FluxTubes.Examples.MovingCoilActuator;
 model ForceStrokeBehaviour
   "Force-stroke characteristic of the permeance model at constant current"
 

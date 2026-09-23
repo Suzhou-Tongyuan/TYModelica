@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.Rectifier1Pulse;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.Rectifier1Pulse;
 model Thyristor1Pulse_R
   "One pulse rectifier with resistive load and constant firing angle"
   extends ExampleTemplates.Thyristor1Pulse(pulse2(

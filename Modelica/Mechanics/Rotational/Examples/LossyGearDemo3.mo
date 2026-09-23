@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model LossyGearDemo3
   "Example that failed in the previous version of the LossyGear version"
   extends Modelica.Icons.Example;

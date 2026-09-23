@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model Friction "Drive train with clutch and brake"
   import Modelica.Constants.pi;
   extends Modelica.Icons.Example;

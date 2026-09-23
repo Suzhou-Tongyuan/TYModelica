@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase;
+within Modelica.Electrical.Polyphase;
 package Basic "Basic components for electrical polyphase models"
   extends Modelica.Icons.Package;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.Interfaces;
+within Modelica.Electrical.QuasiStatic.Machines.Interfaces;
 partial model PartialBasicTransformer
   "Partial model of three-phase transformer"
   extends Modelica.Electrical.Machines.Icons.QuasiStaticTransformer;

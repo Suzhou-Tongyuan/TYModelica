@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.DCMachines;
+within Modelica.Electrical.Machines.Interfaces.DCMachines;
 connector ThermalPortDCCE
   "Thermal port of DC machine with compound excitation"
   extends Machines.Interfaces.DCMachines.PartialThermalPortDCMachines;

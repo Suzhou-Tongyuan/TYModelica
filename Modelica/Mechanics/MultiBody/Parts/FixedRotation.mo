@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Parts;
+within Modelica.Mechanics.MultiBody.Parts;
 model FixedRotation
   "Fixed translation followed by a fixed rotation of frame_b with respect to frame_a"
 

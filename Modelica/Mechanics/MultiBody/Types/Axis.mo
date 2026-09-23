@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 type Axis = Modelica.Icons.TypeReal[3](each final unit="1")
   "Axis vector with choices" annotation (
   preferredView="text",

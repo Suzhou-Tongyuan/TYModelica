@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes;
+within Modelica.Magnetic.QuasiStatic.FluxTubes;
 package BaseClasses "Base classes containing partial models"
   extends Modelica.Icons.BasesPackage;
 

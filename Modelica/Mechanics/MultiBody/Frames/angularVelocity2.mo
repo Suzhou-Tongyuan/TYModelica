@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function angularVelocity2
   "Return angular velocity resolved in frame 2 from orientation object"
 

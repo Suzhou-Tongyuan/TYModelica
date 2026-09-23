@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
+within Modelica.Mechanics.MultiBody.Frames.Quaternions;
 function planarRotation
   "Return quaternion orientation object of a planar rotation"
   import Modelica.Math;

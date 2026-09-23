@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Periodic;
+within Modelica.Clocked.RealSignals.Periodic;
 block FIRbyCoefficients "FIR filter defined by coefficients"
   extends Clocked.RealSignals.Interfaces.PartialClockedSISO;
   input Real a[:]={1/2,1/2} "Coefficients of FIR filter" annotation(Dialog);

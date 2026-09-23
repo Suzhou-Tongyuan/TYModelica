@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.IntegerSignals;
+within Modelica.Clocked.Examples.Elementary.IntegerSignals;
 model ShiftSample "Example of a ShiftSample block for Integer signals"
    extends Modelica.Icons.Example;
 

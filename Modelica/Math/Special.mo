@@ -1,4 +1,4 @@
-﻿within Modelica.Math;
+within Modelica.Math;
 package Special "Library of special mathematical functions"
   extends Modelica.Icons.Package;
 

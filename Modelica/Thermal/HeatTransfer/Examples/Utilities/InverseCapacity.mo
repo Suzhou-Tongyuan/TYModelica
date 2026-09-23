@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Examples.Utilities;
+within Modelica.Thermal.HeatTransfer.Examples.Utilities;
 model InverseCapacity
   "Input/output block of an inverse heatCapacity model"
   extends Modelica.Blocks.Icons.Block;

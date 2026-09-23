@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Basic;
 model Impedance "Single-phase linear impedance"
   extends Interfaces.OnePort;
   import Modelica.ComplexMath.j;

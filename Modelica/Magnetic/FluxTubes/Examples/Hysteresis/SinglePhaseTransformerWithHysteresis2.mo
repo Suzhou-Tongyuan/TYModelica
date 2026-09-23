@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.Hysteresis;
+within Modelica.Magnetic.FluxTubes.Examples.Hysteresis;
 model SinglePhaseTransformerWithHysteresis2
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Basic.Ground el_ground1 

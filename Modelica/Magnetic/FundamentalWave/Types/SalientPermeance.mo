@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Types;
+within Modelica.Magnetic.FundamentalWave.Types;
 record SalientPermeance = Salient (redeclare SI.Permeance d,
       redeclare SI.Permeance q) "Salient permeance" 
   annotation (Documentation(info="<html>

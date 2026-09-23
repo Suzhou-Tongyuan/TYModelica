@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.UsersGuide.Overview;
+within Modelica.Electrical.QuasiStatic.UsersGuide.Overview;
 class Power "Real and reactive power"
   extends Modelica.Icons.Information;
 

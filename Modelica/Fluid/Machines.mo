@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid;
+within Modelica.Fluid;
 package Machines
   "Devices for converting between energy held in a fluid and mechanical energy"
   extends Modelica.Icons.VariantsPackage;

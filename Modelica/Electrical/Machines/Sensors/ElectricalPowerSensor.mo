@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Sensors;
+within Modelica.Electrical.Machines.Sensors;
 model ElectricalPowerSensor "Instantaneous power from space phasors"
   extends Modelica.Icons.RoundSensor;
   constant Integer m(final min=1) = 3 "Number of phases";

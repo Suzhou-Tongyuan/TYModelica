@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Ideal;
+within Modelica.Electrical.Polyphase.Ideal;
 model Idle "Polyphase idle branch"
   extends Interfaces.TwoPlug;
   Modelica.Electrical.Analog.Ideal.Idle idle[m] annotation (Placement(

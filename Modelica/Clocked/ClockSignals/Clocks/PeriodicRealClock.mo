@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Clocks;
+within Modelica.Clocked.ClockSignals.Clocks;
 block PeriodicRealClock
   "Generate a periodic clock signal with a period defined by a Real number"
   parameter SI.Time period

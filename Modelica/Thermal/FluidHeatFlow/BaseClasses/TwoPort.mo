@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.BaseClasses;
+within Modelica.Thermal.FluidHeatFlow.BaseClasses;
 partial model TwoPort "Partial model of two port"
   parameter FluidHeatFlow.Media.Medium medium=FluidHeatFlow.Media.Medium()
     "Medium in the component" annotation (choicesAllMatching=true);

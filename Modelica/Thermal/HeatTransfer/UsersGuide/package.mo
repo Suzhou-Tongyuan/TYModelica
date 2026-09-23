@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer;
+within Modelica.Thermal.HeatTransfer;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 

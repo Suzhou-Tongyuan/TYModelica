@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples.FixedShapes;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples.FixedShapes;
 model CuboidSections "Magnetic circuit using different cuboid sections"
   extends Modelica.Icons.Example;
   parameter SI.RelativePermeability mu_rConst = 100

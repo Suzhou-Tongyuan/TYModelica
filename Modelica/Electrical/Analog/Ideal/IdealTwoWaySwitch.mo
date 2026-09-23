@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model IdealTwoWaySwitch "Ideal two-way switch"
   parameter SI.Resistance Ron(final min=0) = 1e-5 "Closed switch resistance";
   parameter SI.Conductance Goff(final min=0) = 1e-5

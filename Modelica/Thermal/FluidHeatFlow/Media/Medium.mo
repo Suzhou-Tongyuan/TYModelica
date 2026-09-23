@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Media;
+within Modelica.Thermal.FluidHeatFlow.Media;
 record Medium "Record containing media properties"
   extends Modelica.Icons.Record;
   parameter SI.Density rho = 1 "Density";

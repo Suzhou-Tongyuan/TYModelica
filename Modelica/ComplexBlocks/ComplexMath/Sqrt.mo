@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Sqrt
   "Output the square root of the input (= principal square root of complex number)"
   extends Interfaces.ComplexSISO;

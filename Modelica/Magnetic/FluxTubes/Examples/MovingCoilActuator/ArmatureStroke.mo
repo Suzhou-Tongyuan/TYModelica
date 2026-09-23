@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.MovingCoilActuator;
+within Modelica.Magnetic.FluxTubes.Examples.MovingCoilActuator;
 model ArmatureStroke
   "Armature stroke of both moving coil actuator models after a voltage step at time t=0"
 

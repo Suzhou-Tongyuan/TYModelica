@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 model SignalArrow
   "Visualizing an arrow with dynamically varying size in frame_a based on input signal"
 

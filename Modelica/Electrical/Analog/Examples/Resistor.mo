@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model Resistor "Resistor with simple thermal network"
   extends Modelica.Icons.Example;
   Basic.Resistor resistor(

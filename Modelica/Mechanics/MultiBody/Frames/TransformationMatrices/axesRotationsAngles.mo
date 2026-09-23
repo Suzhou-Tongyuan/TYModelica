@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function axesRotationsAngles
   "Return the 3 angles to rotate in sequence around 3 axes to construct the given orientation object"
 

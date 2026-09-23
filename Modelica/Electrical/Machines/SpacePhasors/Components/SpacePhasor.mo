@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Components;
+within Modelica.Electrical.Machines.SpacePhasors.Components;
 model SpacePhasor
   "Physical transformation: three-phase <-> space phasors"
   import Modelica.Constants.pi;

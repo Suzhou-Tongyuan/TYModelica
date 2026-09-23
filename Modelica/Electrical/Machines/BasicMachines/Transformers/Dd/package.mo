@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Transformers;
+within Modelica.Electrical.Machines.BasicMachines.Transformers;
 package Dd "Transformers: primary D / secondary d"
   extends Modelica.Icons.VariantsPackage;
 

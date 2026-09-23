@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational;
+within Modelica.Mechanics.Rotational;
 package Sensors "Sensors to measure variables in 1D rotational mechanical components"
   extends Modelica.Icons.SensorsPackage;
 

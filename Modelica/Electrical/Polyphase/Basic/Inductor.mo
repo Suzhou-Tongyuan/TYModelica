@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model Inductor "Ideal linear electrical inductors"
   extends Interfaces.TwoPlug;
   parameter SI.Inductance L[m](start=fill(1, m)) "Inductance";

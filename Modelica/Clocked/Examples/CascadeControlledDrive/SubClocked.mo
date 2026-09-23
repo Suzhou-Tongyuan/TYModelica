@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.CascadeControlledDrive;
+within Modelica.Clocked.Examples.CascadeControlledDrive;
 model SubClocked
   "Drive with clocked cascade controller where clocks are defined with sub-sampling and partitions with super-sampling"
  extends Modelica.Icons.Example;

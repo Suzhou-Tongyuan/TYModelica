@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.BaseClasses;
+within Modelica.Electrical.Batteries.BaseClasses;
 partial model BaseCellStack
   "Battery with open-circuit voltage dependent on state of charge, self-discharge and inner resistance"
   extends Modelica.Electrical.Batteries.Icons.BatteryIcon(final displaySOC=SOC);

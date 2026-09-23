@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples;
+within Modelica.Thermal.FluidHeatFlow.Examples;
 model WaterPump "Water pumping station"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

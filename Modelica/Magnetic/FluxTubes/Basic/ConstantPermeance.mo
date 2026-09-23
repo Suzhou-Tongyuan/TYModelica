@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Basic;
+within Modelica.Magnetic.FluxTubes.Basic;
 model ConstantPermeance "Constant permeance"
 
   extends Interfaces.TwoPort;

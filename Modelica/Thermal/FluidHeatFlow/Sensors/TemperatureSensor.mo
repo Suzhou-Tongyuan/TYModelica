@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Sensors;
+within Modelica.Thermal.FluidHeatFlow.Sensors;
 model TemperatureSensor "Absolute temperature sensor"
 
   extends FluidHeatFlow.Interfaces.AbsoluteSensor(y(unit="K")

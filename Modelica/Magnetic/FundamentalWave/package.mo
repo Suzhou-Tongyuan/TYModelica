@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic;
+within Modelica.Magnetic;
 package FundamentalWave "Library for magnetic fundamental wave effects in electric machines"
   extends Modelica.Icons.Package;
   annotation (preferredView="info", Documentation(revisions="<html>

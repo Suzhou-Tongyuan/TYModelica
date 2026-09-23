@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Components;
+within Modelica.Thermal.FluidHeatFlow.Components;
 model Pipe "Pipe with optional heat exchange"
   extends FluidHeatFlow.BaseClasses.TwoPort;
   extends FluidHeatFlow.BaseClasses.SimpleFriction;

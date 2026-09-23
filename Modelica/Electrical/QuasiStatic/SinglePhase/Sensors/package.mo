@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase;
+within Modelica.Electrical.QuasiStatic.SinglePhase;
 package Sensors "AC single-phase sensors"
   extends Modelica.Icons.SensorsPackage;
 

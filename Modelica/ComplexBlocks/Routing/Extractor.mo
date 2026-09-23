@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Routing;
+within Modelica.ComplexBlocks.Routing;
 block Extractor
   "Extract scalar signal out of signal vector dependent on IntegerRealInput index"
 

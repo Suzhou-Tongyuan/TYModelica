@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples;
+within Modelica.Clocked.Examples;
 package CascadeControlledDrive "Examples based on a simple drive with cascade controller and different ways to define the sampling and super-sampling"
   extends Modelica.Icons.ExamplesPackage;
 

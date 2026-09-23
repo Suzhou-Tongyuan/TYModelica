@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
 model PotentialSensor "Potential sensor"
   extends Interfaces.AbsoluteSensor;
   QuasiStatic.SinglePhase.Sensors.PotentialSensor potentialSensor[m] 

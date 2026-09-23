@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model ControlledSwitchWithArc
   "Comparison of controlled switch models both with and without arc"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function to_vector "Map rotation object into vector"
   extends Modelica.Icons.Function;
   input TransformationMatrices.Orientation T

@@ -1,4 +1,4 @@
-﻿within Modelica.Media.IdealGases.Common;
+within Modelica.Media.IdealGases.Common;
 package Functions
   "Basic Functions for ideal gases: cp, h, s, thermal conductivity, viscosity"
   extends Modelica.Icons.FunctionsPackage;

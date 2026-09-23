@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model CutTorque "Measure cut torque vector"
 
   Modelica.Blocks.Interfaces.RealOutput torque[3]

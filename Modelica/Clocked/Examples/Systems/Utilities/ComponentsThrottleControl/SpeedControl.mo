@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
 block SpeedControl
   "Discrete control of crankshaft speed by throttle actuation"
 

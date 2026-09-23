@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
 model QuarterHollowSphere
 "Leakage flux through the edges of a quarter hollow sphere"
 

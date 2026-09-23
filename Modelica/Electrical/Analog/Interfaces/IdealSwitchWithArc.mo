@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Interfaces;
+within Modelica.Electrical.Analog.Interfaces;
 partial model IdealSwitchWithArc "Ideal switch with simple arc model"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;
   parameter SI.Resistance Ron=1E-5 "Closed switch resistance";

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model IdealRollingWheel
   "Simple 1-dim. model of an ideal rolling wheel without inertia"
 

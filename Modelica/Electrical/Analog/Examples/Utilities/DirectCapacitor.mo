@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.Utilities;
+within Modelica.Electrical.Analog.Examples.Utilities;
 model DirectCapacitor "Input/output block of a direct capacitor model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.Capacitance C(min=0)=1 "Capacitance";

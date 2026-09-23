@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.DCMachines;
+within Modelica.Electrical.Machines.BasicMachines.DCMachines;
 model DC_ElectricalExcited
   "Electrical shunt/separate excited linear DC machine"
   extends Machines.Interfaces.PartialBasicDCMachine(

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
+within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
 model IdealDcDc "Ideal DC-DC inverter"
   parameter SI.Time Td "Dead time";
   parameter SI.Time Ti=1e-6 "Time constant of integral power controller";

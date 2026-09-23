@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Sensors;
+within Modelica.Thermal.FluidHeatFlow.Sensors;
 model EnthalpyFlowSensor "Enthalpy flow sensor"
 
   extends FluidHeatFlow.Interfaces.FlowSensor(y(unit="W")

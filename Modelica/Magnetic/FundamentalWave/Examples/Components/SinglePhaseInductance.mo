@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Examples.Components;
+within Modelica.Magnetic.FundamentalWave.Examples.Components;
 model SinglePhaseInductance "Single-phase inductance"
   extends Modelica.Icons.Example;
   parameter SI.Frequency f=1 "Supply frequency";

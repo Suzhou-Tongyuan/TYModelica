@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces;
+within Modelica.Mechanics.MultiBody.Forces;
 model SpringDamperSeries
   "Linear spring and linear damper in series connection"
   import Modelica.Mechanics.MultiBody.Types;

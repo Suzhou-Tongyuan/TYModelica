@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
 model CylinderBase "One cylinder with analytic handling of kinematic loop"
   parameter Boolean animation=true "= true, if animation shall be enabled";
   parameter SI.Length cylinderTopPosition=0.42

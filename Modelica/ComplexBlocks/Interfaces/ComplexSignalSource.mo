@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Interfaces;
+within Modelica.ComplexBlocks.Interfaces;
 partial block ComplexSignalSource "Base class for continuous signal source"
   extends ComplexBlocks.Interfaces.ComplexSO;
   parameter Complex offset=Complex(0) "Offset of output signal y";

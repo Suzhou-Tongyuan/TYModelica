@@ -1,4 +1,4 @@
-﻿within Modelica.Math;
+within Modelica.Math;
 package Nonlinear "Library of functions operating on nonlinear equations"
   extends Modelica.Icons.Package;
   package Examples

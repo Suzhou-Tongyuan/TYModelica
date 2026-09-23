@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
 block TorqueGeneration "Torque generation"
 extends Modelica.Blocks.Icons.Block;
   parameter Real AFR = 14.6

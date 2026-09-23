@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.Transformers;
+within Modelica.Electrical.Machines.Examples.Transformers;
 model Rectifier6pulse "6-pulse rectifier with 1 transformer"
   extends Modelica.Icons.Example;
   constant Integer m=3 "Number of phases";

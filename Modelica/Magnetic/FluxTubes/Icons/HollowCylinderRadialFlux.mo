@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Icons;
+within Modelica.Magnetic.FluxTubes.Icons;
 partial model HollowCylinderRadialFlux "Icon for cylinder with radial flux"
   annotation (Icon(graphics={
         Ellipse(

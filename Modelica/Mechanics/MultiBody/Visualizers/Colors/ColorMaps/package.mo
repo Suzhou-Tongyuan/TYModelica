@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Colors;
+within Modelica.Mechanics.MultiBody.Visualizers.Colors;
 package ColorMaps "Library of functions returning color maps"
   extends Modelica.Icons.FunctionsPackage;
 

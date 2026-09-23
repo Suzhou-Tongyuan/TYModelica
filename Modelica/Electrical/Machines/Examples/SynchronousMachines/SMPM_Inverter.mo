@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMPM_Inverter
   "Test example: PermanentMagnetSynchronousMachine with inverter"
   extends Modelica.Icons.Example;

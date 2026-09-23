@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples;
+within Modelica.Mechanics.MultiBody.Examples;
 package Constraints "Examples with constraint joints"
 extends Modelica.Icons.ExamplesPackage;
 

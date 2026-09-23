@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Quaternions;
+within Modelica.Mechanics.MultiBody.Frames.Quaternions;
 function absoluteRotation
   "Return absolute quaternions orientation object from another absolute and a relative quaternions orientation object"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Components;
+within Modelica.Magnetic.FundamentalWave.Components;
 model Short "Short cut branch"
   extends Magnetic.FundamentalWave.Interfaces.TwoPortElementary;
 equation

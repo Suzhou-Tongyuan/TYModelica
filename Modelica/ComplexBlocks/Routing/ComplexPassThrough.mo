@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Routing;
+within Modelica.ComplexBlocks.Routing;
 model ComplexPassThrough
   "Pass a Complex signal through without modification"
   extends Modelica.ComplexBlocks.Interfaces.ComplexSISO;

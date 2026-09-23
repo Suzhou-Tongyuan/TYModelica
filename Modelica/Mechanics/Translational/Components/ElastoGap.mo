@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model ElastoGap "1D translational spring damper combination with gap"
   extends Modelica.Mechanics.Translational.Interfaces.PartialCompliantWithRelativeStates;
   parameter SI.TranslationalSpringConstant c(final min=0, start=1)

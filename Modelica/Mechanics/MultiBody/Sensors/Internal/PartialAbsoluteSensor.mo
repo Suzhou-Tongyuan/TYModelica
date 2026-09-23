@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
+within Modelica.Mechanics.MultiBody.Sensors.Internal;
 partial model PartialAbsoluteSensor "Base class for absolute sensor models"
   extends Modelica.Icons.RoundSensor;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.Sampler;
+within Modelica.Clocked.BooleanSignals.Sampler;
 block AssignClockVectorized
   "Assign a clock to a clocked Boolean signal vector"
   parameter Integer n(min=1)=1

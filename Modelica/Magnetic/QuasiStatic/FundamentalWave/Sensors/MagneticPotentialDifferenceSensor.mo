@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sensors;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sensors;
 model MagneticPotentialDifferenceSensor
   "Sensor to measure magnetic potential difference"
   extends Modelica.Icons.RoundSensor;

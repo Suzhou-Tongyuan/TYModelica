@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model DA_Converter "Simple digital to analog converter"
   import L = Modelica.Electrical.Digital.Interfaces.Logic;
   Modelica.Electrical.Digital.Interfaces.DigitalInput trig "Trigger input" 

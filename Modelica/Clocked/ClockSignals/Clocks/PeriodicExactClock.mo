@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Clocks;
+within Modelica.Clocked.ClockSignals.Clocks;
 block PeriodicExactClock
   "Generate a periodic clock signal with a period defined by an Integer number with resolution"
   import Modelica.Clocked.Types.Resolution;

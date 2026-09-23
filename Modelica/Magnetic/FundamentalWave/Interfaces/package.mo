@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave;
+within Modelica.Magnetic.FundamentalWave;
 package Interfaces "Interfaces and partial models"
   extends Modelica.Icons.InterfacesPackage;
   annotation (Documentation(info="<html>

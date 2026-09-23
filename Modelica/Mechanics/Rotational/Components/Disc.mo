@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model Disc
   "1-dim. rotational rigid component without inertia, where right flange is rotated by a fixed angle with respect to left flange"
   extends Rotational.Interfaces.PartialTwoFlanges;

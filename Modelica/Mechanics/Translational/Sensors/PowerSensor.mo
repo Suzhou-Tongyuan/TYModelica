@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sensors;
+within Modelica.Mechanics.Translational.Sensors;
 model PowerSensor
   "Ideal sensor to measure the power between two flanges (= flange_a.f*der(flange_a.s))"
   extends Translational.Interfaces.PartialRelativeSensor;

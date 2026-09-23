@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples;
+within Modelica.Electrical.Machines.Examples;
 package InductionMachines "Test examples of induction machines"
   extends Modelica.Icons.ExamplesPackage;
 

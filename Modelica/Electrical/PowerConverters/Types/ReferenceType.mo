@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Types;
+within Modelica.Electrical.PowerConverters.Types;
 type ReferenceType = enumeration(
     Sawtooth1 "Sawtooth signal single-phase",
     Sawtooth3 "Sawtooth signal three-phase",

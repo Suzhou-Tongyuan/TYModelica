@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.UsersGuide;
+within Modelica.Electrical.PowerConverters.UsersGuide;
 class DCDCConcept "DC/DC converter concept"
   extends Modelica.Icons.Information;
   annotation (DocumentationClass=true, Documentation(info="<html>

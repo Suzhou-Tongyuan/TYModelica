@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Sources;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Sources;
 model CurrentSource "Constant AC current"
   extends Interfaces.Source;
   parameter SI.Frequency f(start=1) "Frequency of the source";

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Functions;
+within Modelica.Electrical.QuasiStatic.Polyphase.Functions;
 function activePower
   "Calculate active power of complex input voltage and current"
   extends Modelica.Icons.Function;

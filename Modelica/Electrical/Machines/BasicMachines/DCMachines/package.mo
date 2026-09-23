@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines;
+within Modelica.Electrical.Machines.BasicMachines;
 package DCMachines "Models of DC machines"
   extends Modelica.Icons.VariantsPackage;
 

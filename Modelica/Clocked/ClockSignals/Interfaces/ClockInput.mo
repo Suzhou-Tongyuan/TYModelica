@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Interfaces;
+within Modelica.Clocked.ClockSignals.Interfaces;
 connector ClockInput = input Clock "'input Clock' as connector" 
   annotation (defaultComponentName="u",
        Icon(graphics={Polygon(

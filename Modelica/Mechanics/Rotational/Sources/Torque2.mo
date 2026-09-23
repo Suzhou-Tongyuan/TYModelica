@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model Torque2 "Input signal acting as torque on two flanges"
   extends Rotational.Interfaces.PartialTwoFlanges;
 

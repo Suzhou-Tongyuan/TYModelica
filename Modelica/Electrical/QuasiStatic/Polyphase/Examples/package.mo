@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase;
+within Modelica.Electrical.QuasiStatic.Polyphase;
 package Examples "Test examples"
   extends Modelica.Icons.ExamplesPackage;
 

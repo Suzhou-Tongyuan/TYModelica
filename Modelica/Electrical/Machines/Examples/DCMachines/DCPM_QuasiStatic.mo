@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.DCMachines;
+within Modelica.Electrical.Machines.Examples.DCMachines;
 model DCPM_QuasiStatic
   "Test example: Compare DCPM motors transient - quasi-static"
   extends Modelica.Icons.Example;

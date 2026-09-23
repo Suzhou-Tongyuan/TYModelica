@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sources;
+within Modelica.Mechanics.Translational.Sources;
 model SignForce "Constant force changing sign with speed"
   extends Modelica.Mechanics.Translational.Interfaces.PartialForce;
   import Modelica.Constants.pi;

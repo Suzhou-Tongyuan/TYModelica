@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Types;
+within Modelica.Magnetic.FundamentalWave.Types;
 record SalientResistance = Salient (redeclare SI.Resistance d,
       redeclare SI.Resistance q) "Salient resistance" 
   annotation (Documentation(info="<html>

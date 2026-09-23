@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical;
+within Modelica.Electrical;
 package Batteries "Simple battery models"
   extends Modelica.Icons.Package;
 

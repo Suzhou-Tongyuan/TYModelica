@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.TimeBasedSources;
+within Modelica.Clocked.RealSignals.TimeBasedSources;
 block Sine "Generate sine signal"
   extends Interfaces.PartialClockedSO;
   parameter Real amplitude=1 "Amplitude of sine wave";

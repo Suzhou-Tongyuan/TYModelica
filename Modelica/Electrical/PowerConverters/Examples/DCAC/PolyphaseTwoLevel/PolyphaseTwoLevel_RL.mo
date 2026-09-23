@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCAC.PolyphaseTwoLevel;
+within Modelica.Electrical.PowerConverters.Examples.DCAC.PolyphaseTwoLevel;
 model PolyphaseTwoLevel_RL
   "Polyphase DC to AC converter with R-L load"
   extends Modelica.Icons.Example;

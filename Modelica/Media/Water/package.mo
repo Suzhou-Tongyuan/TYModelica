@@ -1,4 +1,4 @@
-﻿within Modelica.Media;
+within Modelica.Media;
 package Water "Medium models for water"
 
 extends Modelica.Icons.VariantsPackage;

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave;
+within Modelica.Magnetic.FundamentalWave;
 package Components "Basic fundamental wave components"
   extends Modelica.Icons.Package;
 

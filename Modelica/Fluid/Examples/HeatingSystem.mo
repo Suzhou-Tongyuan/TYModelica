@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid.Examples;
+within Modelica.Fluid.Examples;
 model HeatingSystem "Simple model of a heating system"
   extends Modelica.Icons.Example;
    replaceable package Medium =

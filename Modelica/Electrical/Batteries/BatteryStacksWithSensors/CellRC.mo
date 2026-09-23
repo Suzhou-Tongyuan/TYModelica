@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.BatteryStacksWithSensors;
+within Modelica.Electrical.Batteries.BatteryStacksWithSensors;
 model CellRC "Cell with measurement"
   extends Modelica.Electrical.Batteries.BaseClasses.BaseCellWithSensors(
     redeclare Modelica.Electrical.Batteries.ParameterRecords.TransientData.CellData cellData,

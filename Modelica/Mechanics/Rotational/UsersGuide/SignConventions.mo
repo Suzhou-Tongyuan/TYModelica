@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.UsersGuide;
+within Modelica.Mechanics.Rotational.UsersGuide;
 class SignConventions "Sign Conventions"
   extends Modelica.Icons.Information;
 

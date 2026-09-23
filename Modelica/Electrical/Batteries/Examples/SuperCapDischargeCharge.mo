@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Examples;
+within Modelica.Electrical.Batteries.Examples;
 model SuperCapDischargeCharge "Discharge and charge idealized supercap"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Batteries.Utilities.PulseSeries pulseSeries(

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.BaseClasses;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.BaseClasses;
 partial model Leakage "Base class for leakage flux tubes with position-independent permeance and hence no force generation; mu_r=1"
 
   extends Interfaces.TwoPort;

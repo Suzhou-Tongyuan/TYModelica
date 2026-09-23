@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
+within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
 partial model OnePort "Two plugs, reference connection and declaration of voltage and current"
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);
   SI.ComplexVoltage v[m] "Complex voltage";

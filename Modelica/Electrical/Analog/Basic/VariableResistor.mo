@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model VariableResistor
   "Ideal linear electrical resistor with variable resistance"
   parameter SI.Temperature T_ref=300.15 "Reference temperature";

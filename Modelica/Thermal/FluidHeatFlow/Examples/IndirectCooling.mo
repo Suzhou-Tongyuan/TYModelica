@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples;
+within Modelica.Thermal.FluidHeatFlow.Examples;
 model IndirectCooling "Indirect cooling circuit"
   extends Modelica.Icons.Example;
   parameter FluidHeatFlow.Media.Medium outerMedium=FluidHeatFlow.Media.Medium()

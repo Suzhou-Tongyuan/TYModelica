@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Components;
+within Modelica.Magnetic.FundamentalWave.Components;
 model Crossing "Crossing of two branches"
 
   Interfaces.PositiveMagneticPort port_p1

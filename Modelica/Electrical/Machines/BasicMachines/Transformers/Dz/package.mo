@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Transformers;
+within Modelica.Electrical.Machines.BasicMachines.Transformers;
 package Dz "Transformers: primary D / secondary zig-zag"
   extends Modelica.Icons.VariantsPackage;
 

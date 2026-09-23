@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Interfaces.ACDC;
+within Modelica.Electrical.PowerConverters.Interfaces.ACDC;
 partial model DCpin "Single DC pin"
 
   Modelica.Electrical.Analog.Interfaces.PositivePin dc_p

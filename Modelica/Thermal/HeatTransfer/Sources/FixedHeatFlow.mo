@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Sources;
+within Modelica.Thermal.HeatTransfer.Sources;
 model FixedHeatFlow "Fixed heat flow boundary condition"
   parameter SI.HeatFlowRate Q_flow
     "Fixed heat flow rate at port";

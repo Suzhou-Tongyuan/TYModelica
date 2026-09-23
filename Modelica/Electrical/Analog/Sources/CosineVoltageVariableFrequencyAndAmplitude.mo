@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model CosineVoltageVariableFrequencyAndAmplitude
   "Cosine voltage source with variable frequency and amplitude"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;

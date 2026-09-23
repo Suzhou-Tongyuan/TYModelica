@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC;
+within Modelica.Electrical.PowerConverters.Examples.ACDC;
 package RectifierBridge2Pulse "Two pulse Graetz bridge"
   extends Modelica.Icons.ExamplesPackage;
   annotation (Documentation(info="<html>

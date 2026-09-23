@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model Oscillator "Oscillator demonstrates the use of initial conditions"
 
   extends Modelica.Icons.Example;

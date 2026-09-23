@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.MovingCoilActuator.Components;
+within Modelica.Magnetic.FluxTubes.Examples.MovingCoilActuator.Components;
 model ConstantActuator
   "Simple behavioural actuator model for system simulation"
 

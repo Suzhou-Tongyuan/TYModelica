@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCDC.HBridge;
+within Modelica.Electrical.PowerConverters.Examples.DCDC.HBridge;
 model HBridge_DC_Drive "H bridge DC/DC converter with DC drive"
   extends ExampleTemplates.HBridge(signalPWM(useConstantDutyCycle=false),
       constantVoltage(V=120));

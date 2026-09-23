@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Sources;
+within Modelica.ComplexBlocks.Sources;
 block ComplexRampPhasor "Generate a phasor with ramped magnitude and constant angle"
   extends Modelica.ComplexBlocks.Interfaces.ComplexSO;
   import Modelica.Constants.eps;

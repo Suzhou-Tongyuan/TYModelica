@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
+within Modelica.Electrical.Machines.Interfaces.InductionMachines;
 connector ThermalPortSMR
   "Thermal port of synchronous machine with reluctance rotor"
   extends 

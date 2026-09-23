@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Sources;
+within Modelica.Thermal.FluidHeatFlow.Sources;
 model PressureIncrease "Enforces constant pressure increase"
 
   extends FluidHeatFlow.BaseClasses.TwoPort(final tapT=1);

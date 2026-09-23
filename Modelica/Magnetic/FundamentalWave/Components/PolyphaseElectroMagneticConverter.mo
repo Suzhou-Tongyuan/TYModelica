@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Components;
+within Modelica.Magnetic.FundamentalWave.Components;
 model PolyphaseElectroMagneticConverter
   "Polyphase electromagnetic converter"
 

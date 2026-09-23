@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces;
+within Modelica.Electrical.Machines.Interfaces;
 partial model PartialBasicMachine "Partial model for all machines"
   import Modelica.Constants.pi;
   extends Machines.Icons.TransientMachine;

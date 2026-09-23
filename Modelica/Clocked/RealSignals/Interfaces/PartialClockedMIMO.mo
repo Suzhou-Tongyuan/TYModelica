@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Interfaces;
+within Modelica.Clocked.RealSignals.Interfaces;
 partial block PartialClockedMIMO
   "Block with multiple clocked input and multiple clocked output Real signals"
   extends Clocked.ClockSignals.Interfaces.ClockedBlockIcon;

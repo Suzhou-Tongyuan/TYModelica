@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Interfaces;
+within Modelica.Thermal.HeatTransfer.Interfaces;
 connector HeatPort_a
   "Thermal port for 1-dim. heat transfer (filled rectangular icon)"
 

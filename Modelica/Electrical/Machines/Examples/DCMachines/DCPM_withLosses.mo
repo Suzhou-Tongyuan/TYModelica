@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.DCMachines;
+within Modelica.Electrical.Machines.Examples.DCMachines;
 model DCPM_withLosses
   "Test example: Investigate influence of losses on DCPM motor performance"
   extends Modelica.Icons.Example;

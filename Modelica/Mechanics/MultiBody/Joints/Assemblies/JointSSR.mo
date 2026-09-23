@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints.Assemblies;
+within Modelica.Mechanics.MultiBody.Joints.Assemblies;
 model JointSSR
   "Spherical - spherical - revolute joint aggregation with mass (no constraints, no potential states)"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package Math "Library of Real mathematical functions as input/output blocks"
 
   import Modelica.Blocks.Interfaces;
@@ -871,13 +871,35 @@ results in the following equations:
   end Feedback;
 
   block Add "Output the sum of the two inputs"
-    extends Interfaces.SI2SO;
+    extends Modelica.Blocks.Icons.Block;
 
     parameter Real k1 = +1 "Gain of input signal 1";
     parameter Real k2 = +1 "Gain of input signal 2";
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u1 if dataType == Modelica.Blocks.Types.BasicDataTypes.Real "Connector of Real input signal 1" 
+      annotation(Placement(transformation(extent = {{-140, 40}, {-100, 80}})));
+    Modelica.Blocks.Interfaces.RealInput u2 if dataType == Modelica.Blocks.Types.BasicDataTypes.Real "Connector of Real input signal 2" 
+      annotation(Placement(transformation(extent = {{-140, -80}, {-100, -40}})));
+    Modelica.Blocks.Interfaces.IntegerInput u1_Integer if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer "Connector of Integer input signal 1" 
+      annotation(Placement(transformation(extent = {{-140, 40}, {-100, 80}})));
+    Modelica.Blocks.Interfaces.IntegerInput u2_Integer if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer "Connector of Integer input signal 2" 
+      annotation(Placement(transformation(extent = {{-140, -80}, {-100, -40}})));
+    Modelica.Blocks.Interfaces.BooleanInput u1_Boolean if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean "Connector of Boolean input signal 1" 
+      annotation(Placement(transformation(extent = {{-140, 40}, {-100, 80}})));
+    Modelica.Blocks.Interfaces.BooleanInput u2_Boolean if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean "Connector of Boolean input signal 2" 
+      annotation(Placement(transformation(extent = {{-140, -80}, {-100, -40}})));
+    Modelica.Blocks.Interfaces.RealOutput y "Connector of Real output signal" 
+      annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
 
   equation
-    y = k1 * u1 + k2 * u2;
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      y = k1 * u1 + k2 * u2;
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      y = k1 * u1_Integer + k2 * u2_Integer;
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      y = k1 * (if u1_Boolean then 1 else 0) + k2 * (if u2_Boolean then 1 else 0);
+    end if;
     annotation(
       Documentation(info = "<html>
 <p>
@@ -898,12 +920,16 @@ results in the following equations:
    y = 2 * u1 - 3 * u2
 </pre></blockquote>
 
-</html>"  ),
+</html>"    ),
       Icon(coordinateSystem(
       preserveAspectRatio = true,
       extent = {{-100, -100}, {100, 100}}), graphics = {
-      Line(points = {{-100, 60}, {-74, 24}, {-44, 24}}, color = {0, 0, 127}),
-      Line(points = {{-100, -60}, {-74, -24}, {-44, -24}}, color = {0, 0, 127}),
+      Line(points = {{-100, 60}, {-74, 24}, {-44, 24}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, 60}, {-74, 24}, {-44, 24}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, 60}, {-74, 24}, {-44, 24}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{-100, -60}, {-74, -24}, {-44, -24}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, -60}, {-74, -24}, {-44, -24}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, -60}, {-74, -24}, {-44, -24}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
       Ellipse(lineColor = {0, 0, 127}, extent = {{-50, -50}, {50, 50}}),
       Line(points = {{50, 0}, {100, 0}}, color = {0, 0, 127}),
       Text(extent = {{-40, 40}, {40, -40}}, textString = "+"),
@@ -933,17 +959,37 @@ results in the following equations:
     parameter Real k1 = +1 "Gain of input signal 1";
     parameter Real k2 = +1 "Gain of input signal 2";
     parameter Real k3 = +1 "Gain of input signal 3";
-    Interfaces.RealInput u1 "Connector of Real input signal 1" annotation(
-      Placement(transformation(extent = {{-140, 60}, {-100, 100}})));
-    Interfaces.RealInput u2 "Connector of Real input signal 2" annotation(
-      Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
-    Interfaces.RealInput u3 "Connector of Real input signal 3" annotation(
-      Placement(transformation(extent = {{-140, -100}, {-100, -60}})));
-    Interfaces.RealOutput y "Connector of Real output signal" annotation(
-      Placement(transformation(extent = {{100, -10}, {120, 10}})));
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Interfaces.RealInput u1 if dataType == Modelica.Blocks.Types.BasicDataTypes.Real "Connector of Real input signal 1" 
+      annotation(Placement(transformation(extent = {{-140, 60}, {-100, 100}})));
+    Interfaces.RealInput u2 if dataType == Modelica.Blocks.Types.BasicDataTypes.Real "Connector of Real input signal 2" 
+      annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Interfaces.RealInput u3 if dataType == Modelica.Blocks.Types.BasicDataTypes.Real "Connector of Real input signal 3" 
+      annotation(Placement(transformation(extent = {{-140, -100}, {-100, -60}})));
+    Interfaces.IntegerInput u1_Integer if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer "Connector of Integer input signal 1" 
+      annotation(Placement(transformation(extent = {{-140, 60}, {-100, 100}})));
+    Interfaces.IntegerInput u2_Integer if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer "Connector of Integer input signal 2" 
+      annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Interfaces.IntegerInput u3_Integer if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer "Connector of Integer input signal 3" 
+      annotation(Placement(transformation(extent = {{-140, -100}, {-100, -60}})));
+    Interfaces.BooleanInput u1_Boolean if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean "Connector of Boolean input signal 1" 
+      annotation(Placement(transformation(extent = {{-140, 60}, {-100, 100}})));
+    Interfaces.BooleanInput u2_Boolean if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean "Connector of Boolean input signal 2" 
+      annotation(Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
+    Interfaces.BooleanInput u3_Boolean if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean "Connector of Boolean input signal 3" 
+      annotation(Placement(transformation(extent = {{-140, -100}, {-100, -60}})));
+    Interfaces.RealOutput y "Connector of Real output signal" 
+      annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
 
   equation
-    y = k1 * u1 + k2 * u2 + k3 * u3;
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      y = k1 * u1 + k2 * u2 + k3 * u3;
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      y = k1 * u1_Integer + k2 * u2_Integer + k3 * u3_Integer;
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      y = k1 * (if u1_Boolean then 1 else 0) + k2 * (if u2_Boolean then 1 else 0) + k3 * (if u3_Boolean then 1 else 0);
+    end if;
     annotation(
       Documentation(info = "<html>
 <p>
@@ -996,10 +1042,33 @@ results in the following equations:
   end Add3;
 
   block Product "Output product of the two inputs"
-    extends Interfaces.SI2SO;
+    extends Modelica.Blocks.Icons.Block;
+
+    parameter Modelica.Blocks.Types.BasicDataTypes dataType = Modelica.Blocks.Types.BasicDataTypes.Real "Interface data type";
+
+    Modelica.Blocks.Interfaces.RealInput u1 if dataType == Modelica.Blocks.Types.BasicDataTypes.Real "Connector of Real input signal 1" 
+      annotation(Placement(transformation(extent = {{-140, 40}, {-100, 80}})));
+    Modelica.Blocks.Interfaces.RealInput u2 if dataType == Modelica.Blocks.Types.BasicDataTypes.Real "Connector of Real input signal 2" 
+      annotation(Placement(transformation(extent = {{-140, -80}, {-100, -40}})));
+    Modelica.Blocks.Interfaces.IntegerInput u1_Integer if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer "Connector of Integer input signal 1" 
+      annotation(Placement(transformation(extent = {{-140, 40}, {-100, 80}})));
+    Modelica.Blocks.Interfaces.IntegerInput u2_Integer if dataType == Modelica.Blocks.Types.BasicDataTypes.Integer "Connector of Integer input signal 2" 
+      annotation(Placement(transformation(extent = {{-140, -80}, {-100, -40}})));
+    Modelica.Blocks.Interfaces.BooleanInput u1_Boolean if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean "Connector of Boolean input signal 1" 
+      annotation(Placement(transformation(extent = {{-140, 40}, {-100, 80}})));
+    Modelica.Blocks.Interfaces.BooleanInput u2_Boolean if dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean "Connector of Boolean input signal 2" 
+      annotation(Placement(transformation(extent = {{-140, -80}, {-100, -40}})));
+    Modelica.Blocks.Interfaces.RealOutput y "Connector of Real output signal" 
+      annotation(Placement(transformation(extent = {{100, -10}, {120, 10}})));
 
   equation
-    y = u1 * u2;
+    if dataType == Modelica.Blocks.Types.BasicDataTypes.Real then
+      y = u1 * u2;
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Integer then
+      y = u1_Integer * u2_Integer;
+    elseif dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean then
+      y = (if u1_Boolean then 1 else 0) * (if u2_Boolean then 1 else 0);
+    end if;
     annotation(
       Documentation(info = "<html>
 <p>
@@ -1014,8 +1083,12 @@ y = u1 * u2;
       Icon(coordinateSystem(
       preserveAspectRatio = true,
       extent = {{-100, -100}, {100, 100}}), graphics = {
-      Line(points = {{-100, 60}, {-40, 60}, {-30, 40}}, color = {0, 0, 127}),
-      Line(points = {{-100, -60}, {-40, -60}, {-30, -40}}, color = {0, 0, 127}),
+      Line(points = {{-100, 60}, {-40, 60}, {-30, 40}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, 60}, {-40, 60}, {-30, 40}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, 60}, {-40, 60}, {-30, 40}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
+      Line(points = {{-100, -60}, {-40, -60}, {-30, -40}}, color = {0, 0, 127}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Real),
+      Line(points = {{-100, -60}, {-40, -60}, {-30, -40}}, color = {255, 128, 0}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Integer),
+      Line(points = {{-100, -60}, {-40, -60}, {-30, -40}}, color = {255, 0, 255}, visible = dataType == Modelica.Blocks.Types.BasicDataTypes.Boolean),
       Line(points = {{50, 0}, {100, 0}}, color = {0, 0, 127}),
       Line(points = {{-30, 0}, {30, 0}}),
       Line(points = {{-15, 25.99}, {15, -25.99}}),

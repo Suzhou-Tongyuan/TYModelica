@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
 model ReferenceSensor "Sensor of reference angle gamma"
   extends QuasiStatic.Polyphase.Interfaces.AbsoluteSensor;
   Modelica.Blocks.Interfaces.RealOutput gamma "Reference angle" annotation (Placement(transformation(extent={{100,-10},{120,10}})));

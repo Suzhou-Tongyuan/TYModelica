@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACAC;
+within Modelica.Electrical.PowerConverters.ACAC;
 model SinglePhaseTriac "Triode for alternating current"
   extends Modelica.Electrical.Analog.Interfaces.TwoPin;
   SI.Current i=p.i "Current flowing from pin p to pin n";

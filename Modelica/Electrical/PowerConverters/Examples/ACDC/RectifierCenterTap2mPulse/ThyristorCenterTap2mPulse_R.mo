@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierCenterTap2mPulse;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierCenterTap2mPulse;
 model ThyristorCenterTap2mPulse_R
   "2*m pulse thyristor center tap rectifier with resistive load"
   extends ExampleTemplates.ThyristorCenterTap2mPulse(pulse2m(

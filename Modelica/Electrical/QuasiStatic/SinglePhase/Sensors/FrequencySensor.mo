@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Sensors;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Sensors;
 model FrequencySensor "Frequency sensor"
   extends Interfaces.AbsoluteSensor;
   import Modelica.Constants.pi;

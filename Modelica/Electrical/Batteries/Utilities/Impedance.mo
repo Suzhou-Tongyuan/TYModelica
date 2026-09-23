@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Utilities;
+within Modelica.Electrical.Batteries.Utilities;
 block Impedance "Calculate complex impedance"
   extends Blocks.Icons.Block;
   import Modelica.Constants.pi;

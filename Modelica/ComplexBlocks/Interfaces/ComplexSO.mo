@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Interfaces;
+within Modelica.ComplexBlocks.Interfaces;
 partial block ComplexSO "Single Output continuous control block"
   extends Modelica.ComplexBlocks.Icons.ComplexBlock;
   ComplexOutput y "Connector of Complex output signal" annotation (

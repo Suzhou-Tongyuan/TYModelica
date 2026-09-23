@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces.Internal;
+within Modelica.Mechanics.MultiBody.Forces.Internal;
 model BasicForce
   "Force acting between two frames, defined by 3 input signals"
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;

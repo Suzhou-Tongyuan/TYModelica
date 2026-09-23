@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 connector FlangeWithBearing
   "Connector consisting of 1-dim. rotational flange and its bearing frame"
   parameter Boolean includeBearingConnector=false

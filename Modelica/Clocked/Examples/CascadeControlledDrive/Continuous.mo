@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.CascadeControlledDrive;
+within Modelica.Clocked.Examples.CascadeControlledDrive;
 model Continuous "Drive with continuous-time cascade controller"
  extends Modelica.Icons.Example;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 type SpecularCoefficient = Modelica.Icons.TypeReal(min=0)
   "Reflection of ambient light (= 0: light is completely absorbed)" 
      annotation (choices(

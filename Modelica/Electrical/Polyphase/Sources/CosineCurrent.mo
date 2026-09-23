@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Sources;
+within Modelica.Electrical.Polyphase.Sources;
 model CosineCurrent "Polyphase cosine current source"
   extends Interfaces.TwoPlug;
   parameter SI.Current I[m](start=fill(1, m))

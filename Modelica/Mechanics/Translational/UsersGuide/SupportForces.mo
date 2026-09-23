@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.UsersGuide;
+within Modelica.Mechanics.Translational.UsersGuide;
 class SupportForces "Support Forces"
   extends Modelica.Icons.Information;
 

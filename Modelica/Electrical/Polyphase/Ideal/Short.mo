@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Ideal;
+within Modelica.Electrical.Polyphase.Ideal;
 model Short "Polyphase short cut branch"
   extends Interfaces.TwoPlug;
   Modelica.Electrical.Analog.Ideal.Short short[m] annotation (Placement(

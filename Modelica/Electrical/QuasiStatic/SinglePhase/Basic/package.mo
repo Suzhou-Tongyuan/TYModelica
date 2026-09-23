@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase;
+within Modelica.Electrical.QuasiStatic.SinglePhase;
 package Basic "Basic components for AC single-phase models"
   extends Modelica.Icons.Package;
   annotation (Icon(graphics={

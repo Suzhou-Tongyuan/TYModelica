@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Enable;
+within Modelica.Electrical.PowerConverters.Enable;
 model EnableLogic
   "Partial model providing enable parameter and optional enable input"
   parameter Boolean useConstantEnable=true

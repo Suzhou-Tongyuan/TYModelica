@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
+within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
 partial model PartialControlledDCPM
   "Partial controlled DC PM drive with H-bridge from battery"
   extends Modelica.Icons.Example;

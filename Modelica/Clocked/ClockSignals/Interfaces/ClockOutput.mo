@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Interfaces;
+within Modelica.Clocked.ClockSignals.Interfaces;
 connector ClockOutput = output Clock "'output Clock' as connector" 
                                   annotation (defaultComponentName="y",
   Icon(coordinateSystem(

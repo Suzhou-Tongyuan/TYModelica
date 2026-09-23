@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Ideal;
+within Modelica.Electrical.QuasiStatic.Polyphase.Ideal;
 model IdealIntermediateSwitch "Polyphase ideal intermediate switch"
   parameter Integer m(final min=1) = 3 "Number of phases" annotation(Evaluate=true);
   parameter SI.Resistance Ron[m](final min=zeros(m), start=

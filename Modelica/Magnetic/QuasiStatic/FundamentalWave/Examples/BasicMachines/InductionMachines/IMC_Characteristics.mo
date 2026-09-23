@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines;
 model IMC_Characteristics "Characteristic curves of Induction machine with squirrel cage"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

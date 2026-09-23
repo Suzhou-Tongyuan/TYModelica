@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors;
+within Modelica.Electrical.Machines.SpacePhasors;
 package Functions "Functions for space phasor transformation"
   extends Modelica.Icons.FunctionsPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC.Control;
+within Modelica.Electrical.PowerConverters.ACDC.Control;
 block Filter "PT1 + all-pass filter"
   extends Modelica.Blocks.Interfaces.SISO;
   import Modelica.Constants.pi;

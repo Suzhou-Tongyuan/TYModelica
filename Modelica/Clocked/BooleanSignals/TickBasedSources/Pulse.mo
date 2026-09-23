@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.TickBasedSources;
+within Modelica.Clocked.BooleanSignals.TickBasedSources;
 block Pulse "Generate pulse signal of type Boolean"
   extends BooleanSignals.Interfaces.PartialClockedSO;
   parameter Integer widthTicks(min=1,max=periodTicks) = 1

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model CCV "Linear current-controlled voltage source"
   extends Interfaces.TwoPort;
 

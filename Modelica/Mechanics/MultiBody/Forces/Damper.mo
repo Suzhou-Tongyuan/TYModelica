@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces;
+within Modelica.Mechanics.MultiBody.Forces;
 model Damper "Linear (velocity dependent) damper"
   import Modelica.Mechanics.MultiBody.Types;
   parameter Boolean animation=true "= true, if animation shall be enabled";

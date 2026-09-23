@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 model HeatLosses "Demonstrate the modeling of heat losses"
    extends Modelica.Icons.Example;
   inner World                              world annotation (Placement(

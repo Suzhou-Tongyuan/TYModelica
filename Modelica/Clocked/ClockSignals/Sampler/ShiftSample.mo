@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Sampler;
+within Modelica.Clocked.ClockSignals.Sampler;
 block ShiftSample
   "Shift the input clock by a fraction of the last interval and provide it as output clock"
   parameter Integer shiftCounter(min=0)=0 "Numerator of shifting formula" 

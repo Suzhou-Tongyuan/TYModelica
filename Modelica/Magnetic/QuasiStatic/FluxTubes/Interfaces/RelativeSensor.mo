@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
 partial model RelativeSensor "Partial magnetic voltage or flux sensor"
   extends Modelica.Icons.RoundSensor;
   extends TwoPort;

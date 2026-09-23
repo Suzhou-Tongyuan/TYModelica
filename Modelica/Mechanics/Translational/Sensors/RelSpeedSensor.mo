@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sensors;
+within Modelica.Mechanics.Translational.Sensors;
 model RelSpeedSensor "Ideal sensor to measure the relative speed"
   extends Translational.Interfaces.PartialRelativeSensor;
   SI.Position s_rel "Distance between the two flanges (flange_b.s - flange_a.s)";

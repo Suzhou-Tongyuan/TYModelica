@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes;
+within Modelica.Magnetic.FluxTubes.Shapes;
 package Force "Flux tubes with reluctance force generation; constant permeability"
   extends Modelica.Icons.VariantsPackage;
 

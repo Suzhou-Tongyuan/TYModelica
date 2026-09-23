@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model ElastoGap "Demonstrate usage of ElastoGap"
   extends Modelica.Icons.Example;
   Components.Fixed fixed 

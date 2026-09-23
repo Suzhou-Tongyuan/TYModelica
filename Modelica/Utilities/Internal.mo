@@ -1,4 +1,4 @@
-﻿within Modelica.Utilities;
+within Modelica.Utilities;
 package Internal
   "Internal components that a user should usually not directly utilize"
   extends Modelica.Icons.InternalPackage;

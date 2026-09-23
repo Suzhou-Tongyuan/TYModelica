@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Parts;
+within Modelica.Mechanics.MultiBody.Parts;
 model BodyBox
   "Rigid body with box shape. Mass and animation properties are computed from box data and density (12 potential states)"
 

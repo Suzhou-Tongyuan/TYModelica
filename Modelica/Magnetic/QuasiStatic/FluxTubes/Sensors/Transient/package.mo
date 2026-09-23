@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
 package Transient "Transient fundamental wave sensors"
   extends Modelica.Icons.SensorsPackage;
 

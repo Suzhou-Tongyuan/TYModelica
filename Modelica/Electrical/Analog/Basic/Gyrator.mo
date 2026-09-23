@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model Gyrator "Gyrator"
   extends Interfaces.TwoPort;
   parameter SI.Conductance G1(start=1) "Primary gyration conductance";

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model SuperSampleInterpolated
   "Example of a SuperSampleInterpolated block for Real signals"
    extends Modelica.Icons.Example;

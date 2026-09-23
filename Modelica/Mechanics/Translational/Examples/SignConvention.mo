@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model SignConvention "Examples for the used sign conventions"
   extends Modelica.Icons.Example;
   Translational.Components.Mass mass1(

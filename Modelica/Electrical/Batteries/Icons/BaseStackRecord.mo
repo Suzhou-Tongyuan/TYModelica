@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Icons;
+within Modelica.Electrical.Batteries.Icons;
 partial record BaseStackRecord "Indicates base stack data"
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={

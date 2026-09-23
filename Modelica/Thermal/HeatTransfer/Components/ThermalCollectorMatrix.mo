@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Components;
+within Modelica.Thermal.HeatTransfer.Components;
 model ThermalCollectorMatrix "Collects Ns x Np heat flows"
   parameter Integer Ns(min=1) "Number of rows";
   parameter Integer Np(min=1) "Number of columns";

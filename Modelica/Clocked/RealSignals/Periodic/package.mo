@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals;
+within Modelica.Clocked.RealSignals;
 package Periodic "Library of blocks that are designed to operate only on periodically clocked signals (mainly described by z transforms)"
 extends Modelica.Icons.Package;
 

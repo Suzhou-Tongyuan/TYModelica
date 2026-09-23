@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities.ParameterRecords;
+within Modelica.Electrical.Machines.Utilities.ParameterRecords;
 record IM_SquirrelCageData
   "Common parameters for induction machines with squirrel cage"
   extends InductionMachineData;

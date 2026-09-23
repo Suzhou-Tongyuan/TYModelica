@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Sampler;
+within Modelica.Clocked.IntegerSignals.Sampler;
 block Sample
   "Sample the continuous-time, Integer input signal and provide it as clocked output signal (clock is inferred)"
   extends Clocked.IntegerSignals.Interfaces.PartialSISOSampler;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Examples;
+within Modelica.Electrical.QuasiStatic.Polyphase.Examples;
 model BalancingStar "Balancing an unsymmetrical star-connected load"
   extends Modelica.Icons.Example;
   constant Integer m=3 "Number of phases";

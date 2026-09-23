@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced.SurfaceCharacteristics;
+within Modelica.Mechanics.MultiBody.Visualizers.Advanced.SurfaceCharacteristics;
 function rectangle "Function defining the surface characteristic of a planar rectangle"
   extends Modelica.Mechanics.MultiBody.Interfaces.partialSurfaceCharacteristic(
     final multiColoredSurface=false);

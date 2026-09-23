@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Sensors;
+within Modelica.Electrical.Machines.Sensors;
 model MechanicalPowerSensor "Mechanical power = torque x speed"
   extends Modelica.Icons.RoundSensor;
   extends Modelica.Mechanics.Rotational.Interfaces.PartialTwoFlanges;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.Internal;
+within Modelica.Mechanics.MultiBody.Frames.Internal;
 function maxWithoutEvent
   "Maximum of the input arguments, without event and function can be differentiated"
   extends Modelica.Icons.Function;

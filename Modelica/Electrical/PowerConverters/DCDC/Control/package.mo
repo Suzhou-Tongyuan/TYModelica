@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.DCDC;
+within Modelica.Electrical.PowerConverters.DCDC;
 package Control "Control components for DC to DC converters"
   extends Modelica.Icons.Package;
 

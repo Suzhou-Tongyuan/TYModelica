@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sensors;
+within Modelica.Mechanics.Rotational.Sensors;
 model RelAccSensor
   "Ideal sensor to measure the relative angular acceleration between two flanges"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model TableVoltage "Voltage source by linear interpolation in a table"
   parameter Real table[:, :]=[0, 0; 1, 1; 2, 4]
     "Table matrix (time = first column, voltage = second column)";

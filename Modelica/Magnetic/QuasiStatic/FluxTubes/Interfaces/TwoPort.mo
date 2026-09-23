@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
 partial model TwoPort "Two magnetic ports for textual modeling"
   extends TwoPortElementary;
 

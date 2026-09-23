@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples.Utilities;
+within Modelica.Thermal.FluidHeatFlow.Examples.Utilities;
 model DoubleRamp "Ramp going up and down"
   extends Modelica.Blocks.Interfaces.SO;
   parameter Real offset=1 "Offset of ramps";

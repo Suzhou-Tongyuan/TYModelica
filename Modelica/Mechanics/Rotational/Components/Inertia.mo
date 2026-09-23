@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model Inertia "1D-rotational component with inertia"
   extends Rotational.Interfaces.PartialTwoFlanges;
   parameter SI.Inertia J(min=0, start=1) "Moment of inertia";

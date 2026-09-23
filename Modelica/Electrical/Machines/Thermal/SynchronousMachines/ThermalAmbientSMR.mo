@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal.SynchronousMachines;
+within Modelica.Electrical.Machines.Thermal.SynchronousMachines;
 model ThermalAmbientSMR
   "Thermal ambient for synchronous machine with reluctance rotor"
   parameter Boolean useDamperCage(start=true)

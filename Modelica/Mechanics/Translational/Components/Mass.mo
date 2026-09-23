@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model Mass "Sliding mass with inertia"
   parameter SI.Mass m(min=0, start=1) "Mass of the sliding mass";
   parameter StateSelect stateSelect=StateSelect.default

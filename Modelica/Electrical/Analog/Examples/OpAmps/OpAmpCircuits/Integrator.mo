@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
+within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
 model Integrator "Integrating operational amplifier circuit"
   extends PartialOpAmp(v2(start=0));
   import Modelica.Constants.pi;

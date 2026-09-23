@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
+within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
 connector NegativePlug "Negative quasi-static polyphase plug"
   extends Plug;
   QuasiStatic.Types.Reference reference;

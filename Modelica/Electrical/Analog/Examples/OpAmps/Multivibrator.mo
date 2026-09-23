@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps;
+within Modelica.Electrical.Analog.Examples.OpAmps;
 model Multivibrator "Multivibrator with Schmitt trigger"
   extends Modelica.Icons.Example;
   parameter SI.Voltage Vps=+15 "Positive supply";

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial;
+within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial;
 class FirstExample "A first example"
   extends Modelica.Icons.Information;
 

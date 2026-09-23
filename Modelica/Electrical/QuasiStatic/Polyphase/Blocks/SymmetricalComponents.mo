@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Blocks;
+within Modelica.Electrical.QuasiStatic.Polyphase.Blocks;
 block SymmetricalComponents
   "Creates symmetrical components from signals representing quasi-static phasors"
   extends Modelica.ComplexBlocks.Interfaces.ComplexMIMOs(final n=m,final useConjugateInput=fill(false,m));

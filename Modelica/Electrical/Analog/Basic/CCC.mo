@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model CCC "Linear current-controlled current source"
   extends Interfaces.TwoPort;
   parameter Real gain(start=1) "Current gain";

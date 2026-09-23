@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
 model PathToAxisControlBus "Map path planning to one axis control bus"
   extends Modelica.Blocks.Icons.Block;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Interfaces;
+within Modelica.Magnetic.FluxTubes.Interfaces;
 partial model ConditionalHeatPort
   "Partial model to include a conditional HeatPort in order to describe the power loss via a thermal network"
 

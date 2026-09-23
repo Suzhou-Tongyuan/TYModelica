@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Examples;
+within Modelica.ComplexBlocks.Examples;
 model ShowTransferFunction "Test Complex Transfer Function Block"
   extends Modelica.Icons.Example;
   parameter Real d=1/sqrt(2) "Damping coefficient";

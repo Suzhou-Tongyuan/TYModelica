@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 partial model PartialCore
   "Partial model of transformer core with 3 windings"
   parameter Integer m(final min=1) = 3 "Number of phases" annotation(Evaluate=true);

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.UsersGuide;
+within Modelica.Clocked.UsersGuide;
 class Literature "Literature"
   extends Modelica.Icons.References;
   annotation (Documentation(info="<html>

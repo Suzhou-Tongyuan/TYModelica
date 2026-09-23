@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples;
+within Modelica.Magnetic.FluxTubes.Examples;
 package MovingCoilActuator "Two translatory electrodynamic actuator models of different modelling depth and their comparison"
   extends Modelica.Icons.ExamplesPackage;
 

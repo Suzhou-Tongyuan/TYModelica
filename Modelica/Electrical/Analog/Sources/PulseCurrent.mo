@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model PulseCurrent "Pulse current source"
   parameter SI.Current I(start=1) "Amplitude of pulse";
   parameter Real width(

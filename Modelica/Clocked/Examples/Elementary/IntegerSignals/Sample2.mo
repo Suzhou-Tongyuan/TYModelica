@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.IntegerSignals;
+within Modelica.Clocked.Examples.Elementary.IntegerSignals;
 model Sample2
   "Example of a Sample block for Integer signals with direct feed-through in the continuous-time and the clocked partition"
  extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Basic;
+within Modelica.Electrical.Polyphase.Basic;
 model MutualInductor "Linear mutual inductor"
   extends Polyphase.Interfaces.OnePort;
   parameter Real epsilon=1e-9 "Relative accuracy tolerance of matrix symmetry";

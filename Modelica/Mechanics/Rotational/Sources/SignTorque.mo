@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model SignTorque "Constant torque changing sign with speed"
   extends Rotational.Interfaces.PartialTorque;
   import Modelica.Constants.pi;

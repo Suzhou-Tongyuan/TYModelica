@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines;
+within Modelica.Electrical.Machines;
 package Losses "Loss models for electric machines"
   extends Modelica.Icons.Package;
 

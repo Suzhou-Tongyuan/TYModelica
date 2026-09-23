@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.Steel;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.Steel;
 record AISI_1008 "AISI 1008 (1.0204)"
   extends FluxTubes.Material.SoftMagnetic.BaseData(
     mu_i=200,

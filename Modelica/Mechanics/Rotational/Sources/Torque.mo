@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model Torque "Input signal acting as external torque on a flange"
   extends Modelica.Mechanics.Rotational.Interfaces.PartialElementaryOneFlangeAndSupport2;
   Modelica.Blocks.Interfaces.RealInput tau(unit="N.m")

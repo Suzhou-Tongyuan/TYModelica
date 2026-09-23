@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Basic;
+within Modelica.Magnetic.FluxTubes.Basic;
 model Crossing "Crossing of two branches"
 
   FluxTubes.Interfaces.PositiveMagneticPort port_p1

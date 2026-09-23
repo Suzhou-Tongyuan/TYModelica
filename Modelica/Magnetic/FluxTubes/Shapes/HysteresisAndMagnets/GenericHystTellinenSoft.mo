@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
+within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
 model GenericHystTellinenSoft
   "Generic flux tube with soft magnetic hysteresis based on the Tellinen model and simple tanh()-functions"
   // Dialog Group Hysteresis

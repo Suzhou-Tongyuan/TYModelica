@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 package Utilities "Utility classes for elementary multi-body example models"
   extends Modelica.Icons.UtilitiesPackage;
 

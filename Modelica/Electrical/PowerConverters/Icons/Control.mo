@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Icons;
+within Modelica.Electrical.PowerConverters.Icons;
 partial block Control "Control icon"
 
   annotation (Icon(graphics={Rectangle(

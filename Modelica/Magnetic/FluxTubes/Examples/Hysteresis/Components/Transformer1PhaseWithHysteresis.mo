@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.Hysteresis.Components;
+within Modelica.Magnetic.FluxTubes.Examples.Hysteresis.Components;
 model Transformer1PhaseWithHysteresis
   "Single-phase transformer with ferromagnetic core and hysteresis"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.SynchronousMachines;
+within Modelica.Electrical.Machines.BasicMachines.SynchronousMachines;
 model SM_ReluctanceRotor
   "Synchronous machine with reluctance rotor and damper cage"
   extends Machines.Interfaces.PartialBasicInductionMachine(

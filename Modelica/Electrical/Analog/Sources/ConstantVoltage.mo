@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model ConstantVoltage "Source for constant voltage"
   parameter SI.Voltage V(start=1) "Value of constant voltage";
   extends Interfaces.OnePort;

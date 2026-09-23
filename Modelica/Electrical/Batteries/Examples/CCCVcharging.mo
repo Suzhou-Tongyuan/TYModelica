@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Examples;
+within Modelica.Electrical.Batteries.Examples;
 model CCCVcharging
   "Charge a battery with constant current - constant voltage characteristic"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sources;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sources;
 model FrequencySweepCurrentSource "Current source with integrated frequency sweep"
   extends Interfaces.TwoPlug;
   import Modelica.Constants.eps;

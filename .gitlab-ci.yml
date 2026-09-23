@@ -1,0 +1,43 @@
+stages:
+  - validate
+  - publish
+
+default:
+  image: alpine:3.20
+  tags:
+    - docker-linux-x86_64
+
+variables:
+  GIT_DEPTH: "0"
+  GIT_LFS_SKIP_SMUDGE: "1"
+
+validate-resource:
+  stage: validate
+  script:
+    - test -s Modelica/package.mo
+    - test -s Modelica/package.order
+    - test -d Modelica/Resources
+    - 'test "$(find Modelica -type f | wc -l)" -ge 4000'
+
+publish-github:
+  stage: publish
+  resource_group: github-main
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main" && $CI_COMMIT_REF_PROTECTED == "true"'
+  script:
+    - |
+      set -eu
+      sed -i 's/dl-cdn.alpinelinux.org/mirrors-dev.tongyuan.cc/g' /etc/apk/repositories
+      apk add --no-cache git git-lfs openssh-client
+      test -f "$GITHUB_DEPLOY_KEY"
+      install -d -m 700 "$HOME/.ssh"
+      install -m 600 "$GITHUB_DEPLOY_KEY" "$HOME/.ssh/id_ed25519"
+      ssh-keyscan -T 10 -t ed25519 github.com > "$HOME/.ssh/known_hosts"
+      ssh-keygen -lf "$HOME/.ssh/known_hosts" | grep -Fq 'SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU'
+      chmod 600 "$HOME/.ssh/known_hosts"
+      git remote add github git@github.com:Suzhou-Tongyuan/TYModelica.git
+      git lfs install --local
+      git lfs fetch origin "$CI_COMMIT_SHA"
+      git lfs push github "$CI_COMMIT_SHA"
+      git push github "$CI_COMMIT_SHA:refs/heads/main"
+      test "$(git ls-remote github refs/heads/main | cut -f1)" = "$CI_COMMIT_SHA"

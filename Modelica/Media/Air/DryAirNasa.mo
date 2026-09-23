@@ -1,4 +1,4 @@
-﻿within Modelica.Media.Air;
+within Modelica.Media.Air;
 package DryAirNasa "Air: Detailed dry air model as ideal gas (200..6000 K)"
   extends Modelica.Icons.MaterialProperty;
   extends IdealGases.Common.SingleGasNasa(

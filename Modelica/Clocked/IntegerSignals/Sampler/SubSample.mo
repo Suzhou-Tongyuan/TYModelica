@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Sampler;
+within Modelica.Clocked.IntegerSignals.Sampler;
 block SubSample
   "Sub-sample the clocked Integer input signal and provide it as clocked output signal"
   parameter Boolean inferFactor=true

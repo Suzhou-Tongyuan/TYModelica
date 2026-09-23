@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples;
 package FixedShapes "Examples of fixed shape magnetic circuits"
 extends Modelica.Icons.ExamplesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.UsersGuide;
+within Modelica.Electrical.Machines.UsersGuide;
 class References "References"
   extends Modelica.Icons.References;
   annotation (preferredView="info",Documentation(info="<html>

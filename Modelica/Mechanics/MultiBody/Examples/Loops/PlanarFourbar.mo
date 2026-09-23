@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops;
+within Modelica.Mechanics.MultiBody.Examples.Loops;
 model PlanarFourbar "Planar four bars mechanism with one kinematic loop (with RevolutePlanarLoopConstraint joint)"
   extends Modelica.Icons.Example;
 

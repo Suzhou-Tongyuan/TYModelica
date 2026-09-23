@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces;
 connector NegativePin "Negative quasi-static single-phase pin"
   extends Pin;
   QuasiStatic.Types.Reference reference "Reference";

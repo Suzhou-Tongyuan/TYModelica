@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Lines;
+within Modelica.Electrical.Analog.Lines;
 model TLine1
   "Lossless transmission line with characteristic impedance Z0 and transmission delay TD"
 

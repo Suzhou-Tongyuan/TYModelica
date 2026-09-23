@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
+within Modelica.Electrical.Machines.Interfaces.InductionMachines;
 connector ThermalPortSMEE
   "Thermal port of synchronous machine with electrical excitation"
   extends 

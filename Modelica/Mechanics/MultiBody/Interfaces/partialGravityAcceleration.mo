@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 partial function partialGravityAcceleration "Interface for the gravity function used in the World object"
   extends Modelica.Icons.Function;
    input SI.Position r[3]

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog;
+within Modelica.Electrical.Analog;
 package Sources "Time-dependent and controlled voltage and current sources"
 
   extends Modelica.Icons.SourcesPackage;

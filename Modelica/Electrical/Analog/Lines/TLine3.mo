@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Lines;
+within Modelica.Electrical.Analog.Lines;
 model TLine3
   "Lossless transmission line with characteristic impedance Z0 and frequency F"
   extends Modelica.Electrical.Analog.Interfaces.TwoPort;

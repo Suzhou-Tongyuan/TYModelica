@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model SimpleGearShift "Simple Gearshift"
   extends Modelica.Icons.Example;
   output SI.AngularVelocity wEngine=engine.w

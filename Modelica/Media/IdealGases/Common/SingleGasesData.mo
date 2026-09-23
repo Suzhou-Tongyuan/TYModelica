@@ -1,4 +1,4 @@
-﻿within Modelica.Media.IdealGases.Common;
+within Modelica.Media.IdealGases.Common;
 package SingleGasesData "Ideal gas data based on the NASA Glenn coefficients"
   extends Modelica.Icons.Package;
 

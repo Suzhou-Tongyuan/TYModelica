@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sensors;
+within Modelica.Mechanics.Translational.Sensors;
 model SpeedSensor "Ideal sensor to measure the absolute velocity"
   extends Translational.Interfaces.PartialAbsoluteSensor;
   Modelica.Blocks.Interfaces.RealOutput v(unit="m/s")

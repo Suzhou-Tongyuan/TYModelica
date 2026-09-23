@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic;
+within Modelica.Electrical.QuasiStatic;
 package Types "Definition of types for quasi-static AC models"
   extends Modelica.Icons.TypesPackage;
 

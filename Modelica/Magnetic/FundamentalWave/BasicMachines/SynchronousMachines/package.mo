@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.BasicMachines;
+within Modelica.Magnetic.FundamentalWave.BasicMachines;
 package SynchronousMachines "Synchronous machines"
   extends Modelica.Icons.VariantsPackage;
   annotation (Documentation(info="<html>

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples.FixedShapes;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples.FixedShapes;
 model CylinderSections
 "Magnetic circuit using different cylinder sections"
   extends Modelica.Icons.Example;

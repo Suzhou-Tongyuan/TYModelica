@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model PermanentMagnetWithLosses "Permanent magnet excitation"
   extends Machines.BasicMachines.Components.PermanentMagnet;
   extends Machines.Losses.InductionMachines.PermanentMagnetLosses;

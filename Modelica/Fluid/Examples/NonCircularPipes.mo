@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid.Examples;
+within Modelica.Fluid.Examples;
 model NonCircularPipes "Comparing a circular with a non-circular pipe"
   extends Modelica.Icons.Example;
   replaceable package Medium = Modelica.Media.Water.StandardWater;

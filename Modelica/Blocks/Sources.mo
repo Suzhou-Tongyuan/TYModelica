@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package Sources
   "Library of signal source blocks generating Real, Integer and Boolean signals"
   import Modelica.Blocks.Interfaces;
@@ -1492,6 +1492,113 @@ a flange according to a given acceleration.
 </ul>
 </html>"));
   end KinematicPTP2;
+  block KinematicPTPJerk "Move as fast as possible along a distance within given kinematic constraints"
+
+    parameter Real deltaq = 1 "Delta position";
+    parameter Real qd_max(min = Modelica.Constants.small) = 1
+      "Maximum velocities der(q)";
+    parameter Real qdd_max(min = Modelica.Constants.small) = 1
+      "Maximum accelerations der(qd)";
+    parameter Real qddd_max(min = Modelica.Constants.small) = 1
+      "Maximum accelerations der(qdd)";
+    parameter Modelica.Units.SI.Time startTime = 0
+      "Time instant at which movement starts";
+    parameter Modelica.Units.SI.Time Tdwell = 0.1
+      "Time instant at which position holds after movement ends";
+
+    extends Modelica.Blocks.Icons.Block;
+    output Modelica.Units.SI.Time DynamicTime "Time instant at which step ends";
+
+    Modelica.Blocks.Interfaces.RealOutput q
+      "Reference position of path planning" annotation(Placement(transformation(origin = {110, 80},
+      extent = {{-10, -10}, {10, 10}})));
+    Modelica.Blocks.Interfaces.RealOutput qd
+      "Reference speed of path planning" annotation(Placement(transformation(origin = {110, 40},
+      extent = {{-10, -10}, {10, 10}})));
+    Modelica.Blocks.Interfaces.RealOutput qdd
+      "Reference acceleration of path planning" annotation(Placement(transformation(origin = {110, 0},
+      extent = {{-10, -10}, {10, 10}})));
+    Modelica.Blocks.Interfaces.RealOutput qddd
+      "Reference jerk of path planning" annotation(Placement(transformation(origin = {110, -40},
+      extent = {{-10, -10}, {10, 10}})));
+    Modelica.Blocks.Interfaces.BooleanOutput moving(start = false)
+      "= true, if end position not yet reached; = false, if end position reached" 
+      annotation(Placement(transformation(origin = {110, -80},
+      extent = {{-10, -10}, {10, 10}})));
+
+  protected
+    final parameter Modelica.Blocks.Sources.Functions.STrajParameter para = Modelica.Blocks.Sources.Functions.GetSTrajectoryPara(deltaq, qd_max, qdd_max, qddd_max, Tdwell);
+    final parameter Modelica.Units.SI.Time Ta = para.Ta;
+    final parameter Modelica.Units.SI.Time Tv = para.Tv;
+    final parameter Modelica.Units.SI.Time Td = para.Td;
+    final parameter Modelica.Units.SI.Time To = para.Tdwell;
+
+  equation
+    DynamicTime = Ta + Tv + Td + To;
+
+    q = Modelica.Blocks.Sources.Functions.GenerateSPosition(time - startTime, para);
+    qd = Modelica.Blocks.Sources.Functions.GenerateSVelocity(time - startTime, para);
+    qdd = Modelica.Blocks.Sources.Functions.GenerateSAcceleration(time - startTime, para);
+    qddd = Modelica.Blocks.Sources.Functions.GenerateSJerk(time - startTime, para);
+
+    moving = time > startTime and time < startTime + Ta + Tv + Td;
+
+    annotation(
+      defaultComponentName = "kinematicPTP3",
+      Dialog(groupImage = "modelica://Modelica/Resources/Images/Blocks/Sources/KinematicPTP.png"), Documentation(info = "<html><p>
+The goal is to move as <strong>fast</strong> as possible along a distance <strong>deltaq</strong> under given <strong>kinematical constraints</strong>. The distance can be a positional or angular range. In robotics such a movement is called <strong>PTP</strong> (Point-To-Point). This source block generates This source block generates the <strong>position</strong> q(t), the <strong>speed</strong> qd(t) = der(q), the <strong>acceleration</strong> qdd = der(qd), and the <strong>jerk</strong> qddd = der(qdd) as output. The signals are constructed in such a way that it is not possible to move faster, given the maximally allowed velocity qd_max, the maximally allowed acceleration qdd_max and the maximally allowed jerk qddd_max:
+</p>
+
+<div>
+<img src=\"modelica://Modelica/Resources/Images/Blocks/Sources/KinematicPTPJerk.png\"
+     alt=\"KinematicPTPJerk.png\">
+</div>
+
+<p>
+This element is useful to generate a reference signal for a controller which controls, e.g., a drive train, or to drive a flange according to a given acceleration.
+</p>
+</html>"              ),
+      Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}},
+      preserveAspectRatio = true,
+      grid = {2, 2}), graphics = {Line(origin = {0, 0},
+      points = {{-80, 78}, {-80, -82}},
+      color = {192, 192, 192}), Polygon(origin = {0, 0},
+      lineColor = {192, 192, 192},
+      fillColor = {192, 192, 192},
+      fillPattern = FillPattern.Solid,
+      points = {{-80, 90}, {-88, 68}, {-72, 68}, {-80, 88}, {-80, 90}}), Line(origin = {0, 0},
+      points = {{-90, 0}, {17, 0}},
+      color = {192, 192, 192}), Line(origin = {0, 0},
+      points = {{-80, 0}, {-70, 0}, {-70, 70}, {-50, 70}, {-50, 0}, {-15, 0}, {-15, -70}, {5, -70}, {5, 0}, {18, 0}}), Text(origin = {68, 80},
+      extent = {{-30, 15}, {30, -15}},
+      textString = "q"), Text(origin = {68, 40},
+      extent = {{-30, 15}, {30, -15}},
+      textString = "qd",
+      textStyle = {TextStyle.None}), Text(origin = {68, 0},
+      extent = {{-30, 13}, {30, -13}},
+      textString = "qdd",
+      textStyle = {TextStyle.None}), Text(origin = {68, -80},
+      extent = {{-30, 11}, {30, -11}},
+      textString = "moving",
+      textStyle = {TextStyle.None}), Text(origin = {8, 54},
+      lineColor = {176, 176, 176},
+      extent = {{-50, 20}, {50, -20}},
+      textString = "jerk",
+      textStyle = {TextStyle.None},
+      textColor = {176, 176, 176}), Text(origin = {68, -40},
+      extent = {{-30, 13}, {30, -13}},
+      textString = "qddd",
+      textStyle = {TextStyle.None}), Polygon(origin = {-50, -80},
+      rotation = -90,
+      lineColor = {192, 192, 192},
+      fillColor = {192, 192, 192},
+      fillPattern = FillPattern.Solid,
+      points = {{-80, 90}, {-88, 68}, {-72, 68}, {-80, 88}, {-80, 90}}), Text(origin = {0, -120},
+      extent = {{-50, -20}, {50, 20}},
+      textString = "deltaq=%deltaq",
+      textStyle = {TextStyle.None})}), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}},
+      grid = {2, 2})));
+  end KinematicPTPJerk;
 
   block TimeTable
     "Generate a (possibly discontinuous) signal by linear interpolation in a table"
@@ -1706,78 +1813,80 @@ parameter Real table[:, <strong>2</strong>]=[0, 0; 1, 1; 2, 4];
   block CombiTimeTable
     "Table look-up with respect to time and linear/periodic extrapolation methods (data from matrix/file)"
     import Modelica.Blocks.Tables.Internal;
-    extends Modelica.Blocks.Interfaces.MO(final nout=max([size(columns, 1); size(offset, 1)]));
-    parameter Boolean tableOnFile=false
+    extends Modelica.Blocks.Interfaces.MO(final nout = max([size(columns, 1); size(offset, 1)]));
+    parameter Boolean tableOnFile = false
       "= true, if table is defined on file or in function usertab" 
-      annotation (Dialog(group="Table data definition"));
-    parameter Real table[:, :] = fill(0.0, 0, 2)
+      annotation(Dialog(group = "Table data definition"));
+    parameter Real table[:,:] = fill(0.0, 0, 2)
       "Table matrix (time = first column; e.g., table=[0, 0; 1, 1; 2, 4])" 
-      annotation (Dialog(group="Table data definition",enable=not tableOnFile));
-    parameter String tableName="NoName"
+      annotation(Dialog(group = "Table data definition", enable = not tableOnFile));
+    parameter String tableName = "NoName"
       "Table name on file or in function usertab (see docu)" 
-      annotation (Dialog(group="Table data definition",enable=tableOnFile));
-    parameter String fileName="NoName" "File where matrix is stored" 
-      annotation (Dialog(
-        group="Table data definition",
-        enable=tableOnFile,
-        loadSelector(filter="Text files (*.txt);;MATLAB MAT-files (*.mat);;csv files (*.csv)",
-            caption="Open file in which table is present")));
-    parameter Boolean verboseRead=true
+      annotation(Dialog(group = "Table data definition", enable = tableOnFile));
+    parameter String fileName = "NoName" "File where matrix is stored" 
+      annotation(Dialog(
+      group = "Table data definition",
+      enable = tableOnFile,
+      loadSelector(filter = "Text files (*.txt);;MATLAB MAT-files (*.mat);;csv files (*.csv)",
+      caption = "Open file in which table is present")));
+    parameter Boolean verboseRead = true
       "= true, if info message that file is loading is to be printed" 
-      annotation (Dialog(group="Table data definition",enable=tableOnFile));
-    parameter Integer columns[:]=2:size(table, 2)
+      annotation(Dialog(group = "Table data definition", enable = tableOnFile));
+    parameter Boolean vectorize = true "If true, perform vectorized interpolation; otherwise use column-wise interpolation" 
+      annotation(Evaluate = true, HideResult = true, Dialog(group = "Table data interpretation"));
+    parameter Integer columns[:] = 2:size(table, 2)
       "Columns of table to be interpolated" 
-      annotation (Dialog(group="Table data interpretation",
-      groupImage="modelica://Modelica/Resources/Images/Blocks/Sources/CombiTimeTable.png"));
-    parameter Modelica.Blocks.Types.Smoothness smoothness=Modelica.Blocks.Types.Smoothness.LinearSegments
+      annotation(Dialog(group = "Table data interpretation",
+      groupImage = "modelica://Modelica/Resources/Images/Blocks/Sources/CombiTimeTable.png"));
+    parameter Modelica.Blocks.Types.Smoothness smoothness = Modelica.Blocks.Types.Smoothness.LinearSegments
       "Smoothness of table interpolation" 
-      annotation (Dialog(group="Table data interpretation"));
-    parameter Modelica.Blocks.Types.Extrapolation extrapolation=Modelica.Blocks.Types.Extrapolation.LastTwoPoints
+      annotation(Dialog(group = "Table data interpretation"));
+    parameter Modelica.Blocks.Types.Extrapolation extrapolation = Modelica.Blocks.Types.Extrapolation.LastTwoPoints
       "Extrapolation of data outside the definition range" 
-      annotation (Dialog(group="Table data interpretation"));
+      annotation(Dialog(group = "Table data interpretation"));
     parameter SI.Time timeScale(
-      min=Modelica.Constants.eps)=1 "Time scale of first table column" 
-      annotation (Dialog(group="Table data interpretation"), Evaluate=true);
-    parameter Real offset[:]={0} "Offsets of output signals" 
-      annotation (Dialog(group="Table data interpretation"));
-    parameter SI.Time startTime=0
+      min = Modelica.Constants.eps) = 1 "Time scale of first table column" 
+      annotation(Dialog(group = "Table data interpretation"), Evaluate = true);
+    parameter Real offset[:] = {0} "Offsets of output signals" 
+      annotation(Dialog(group = "Table data interpretation"));
+    parameter SI.Time startTime = 0
       "Output = offset for time < startTime" 
-      annotation (Dialog(group="Table data interpretation"));
-    parameter SI.Time shiftTime=startTime
+      annotation(Dialog(group = "Table data interpretation"));
+    parameter SI.Time shiftTime = startTime
       "Shift time of first table column" 
-      annotation (Dialog(group="Table data interpretation"));
-    parameter Modelica.Blocks.Types.TimeEvents timeEvents=Modelica.Blocks.Types.TimeEvents.Always
+      annotation(Dialog(group = "Table data interpretation"));
+    parameter Modelica.Blocks.Types.TimeEvents timeEvents = Modelica.Blocks.Types.TimeEvents.Always
       "Time event handling of table interpolation" 
-      annotation (Dialog(group="Table data interpretation", enable=smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments));
-    parameter Boolean verboseExtrapolation=false
+      annotation(Dialog(group = "Table data interpretation", enable = smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments));
+    parameter Boolean verboseExtrapolation = false
       "= true, if warning messages are to be printed if time is outside the table definition range" 
-      annotation (Dialog(group="Table data interpretation", enable=extrapolation == Modelica.Blocks.Types.Extrapolation.LastTwoPoints or extrapolation == Modelica.Blocks.Types.Extrapolation.HoldLastPoint));
-    final parameter SI.Time t_min=t_minScaled*timeScale
+      annotation(Dialog(group = "Table data interpretation", enable = extrapolation == Modelica.Blocks.Types.Extrapolation.LastTwoPoints or extrapolation == Modelica.Blocks.Types.Extrapolation.HoldLastPoint));
+    final parameter SI.Time t_min = t_minScaled * timeScale
       "Minimum abscissa value defined in table";
-    final parameter SI.Time t_max=t_maxScaled*timeScale
+    final parameter SI.Time t_max = t_maxScaled * timeScale
       "Maximum abscissa value defined in table";
-    final parameter Real t_minScaled=Internal.getTimeTableTmin(tableID)
+    final parameter Real t_minScaled = Internal.getTimeTableTmin(tableID)
       "Minimum (scaled) abscissa value defined in table";
-    final parameter Real t_maxScaled=Internal.getTimeTableTmax(tableID)
+    final parameter Real t_maxScaled = Internal.getTimeTableTmax(tableID)
       "Maximum (scaled) abscissa value defined in table";
   protected
-    final parameter Real p_offset[nout]=(if size(offset, 1) == 1 then ones(nout)*offset[1] else offset)
+    final parameter Real p_offset[nout] = (if size(offset, 1) == 1 then ones(nout) * offset[1] else offset)
       "Offsets of output signals";
-    parameter Modelica.Blocks.Types.ExternalCombiTimeTable tableID=
-        Modelica.Blocks.Types.ExternalCombiTimeTable(
-          if tableOnFile then tableName else "NoName",
-          if tableOnFile and fileName <> "NoName" and not Modelica.Utilities.Strings.isEmpty(fileName) then fileName else "NoName",
-          table,
-          startTime/timeScale,
-          columns,
-          smoothness,
-          extrapolation,
-          shiftTime/timeScale,
-          if smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments then timeEvents else if smoothness == Modelica.Blocks.Types.Smoothness.ConstantSegments then Modelica.Blocks.Types.TimeEvents.Always else Modelica.Blocks.Types.TimeEvents.NoTimeEvents,
-          if tableOnFile then verboseRead else false) "External table object";
-    discrete SI.Time nextTimeEvent(start=0, fixed=true)
+    parameter Modelica.Blocks.Types.ExternalCombiTimeTable tableID =
+      Modelica.Blocks.Types.ExternalCombiTimeTable(
+      if tableOnFile then tableName else "NoName",
+      if tableOnFile and fileName <> "NoName" and not Modelica.Utilities.Strings.isEmpty(fileName) then fileName else "NoName",
+      table,
+      startTime / timeScale,
+      columns,
+      smoothness,
+      extrapolation,
+      shiftTime / timeScale,
+      if smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments then timeEvents else if smoothness == Modelica.Blocks.Types.Smoothness.ConstantSegments then Modelica.Blocks.Types.TimeEvents.Always else Modelica.Blocks.Types.TimeEvents.NoTimeEvents,
+      if tableOnFile then verboseRead else false) "External table object";
+    discrete SI.Time nextTimeEvent(start = 0, fixed = true)
       "Next time event instant";
-    discrete Real nextTimeEventScaled(start=0, fixed=true)
+    discrete Real nextTimeEventScaled(start = 0, fixed = true)
       "Next scaled time event instant";
     Real timeScaled "Scaled time";
   equation
@@ -1793,35 +1902,47 @@ parameter Real table[:, <strong>2</strong>]=[0, 0; 1, 1; 2, 4];
       extrapolation == Modelica.Blocks.Types.Extrapolation.LastTwoPoints or 
       extrapolation == Modelica.Blocks.Types.Extrapolation.HoldLastPoint) then
       assert(noEvent(time >= t_min), "
-Extrapolation warning: Time (="       + String(time) + ") must be greater or equal
-than the minimum abscissa value t_min (="       + String(t_min) + ") defined in the table.
-"      , level=AssertionLevel.warning);
+Extrapolation warning: Time (="   + String(time) + ") must be greater or equal
+than the minimum abscissa value t_min (="   + String(t_min) + ") defined in the table.
+"  , level = AssertionLevel.warning);
       assert(noEvent(time <= t_max), "
-Extrapolation warning: Time (="       + String(time) + ") must be less or equal
-than the maximum abscissa value t_max (="       + String(t_max) + ") defined in the table.
-"      , level=AssertionLevel.warning);
+Extrapolation warning: Time (="   + String(time) + ") must be less or equal
+than the maximum abscissa value t_max (="   + String(t_max) + ") defined in the table.
+"  , level = AssertionLevel.warning);
     end if;
 
-    timeScaled = time/timeScale;
+    timeScaled = time / timeScale;
     when {time >= pre(nextTimeEvent), initial()} then
       nextTimeEventScaled = Internal.getNextTimeEvent(tableID, timeScaled);
-      nextTimeEvent = if nextTimeEventScaled < Modelica.Constants.inf then nextTimeEventScaled*timeScale else Modelica.Constants.inf;
+      nextTimeEvent = if nextTimeEventScaled < Modelica.Constants.inf then nextTimeEventScaled * timeScale else Modelica.Constants.inf;
     end when;
     if smoothness == Modelica.Blocks.Types.Smoothness.ConstantSegments then
-      for i in 1:nout loop
-        y[i] = p_offset[i] + Internal.getTimeTableValueNoDer(tableID, i, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
-      end for;
+      if vectorize then
+        y = p_offset + Internal.getTimeTableValueNoDer_vec(tableID, nout, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
+      else
+        for i in 1:nout loop
+          y[i] = p_offset[i] + Internal.getTimeTableValueNoDer(tableID, i, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
+        end for;
+      end if;
     elseif smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments then
-      for i in 1:nout loop
-        y[i] = p_offset[i] + Internal.getTimeTableValueNoDer2(tableID, i, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
-      end for;
+      if vectorize then
+        y = p_offset + Internal.getTimeTableValueNoDer2_vec(tableID, nout, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
+      else
+        for i in 1:nout loop
+          y[i] = p_offset[i] + Internal.getTimeTableValueNoDer2(tableID, i, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
+        end for;
+      end if;
     else
-      for i in 1:nout loop
-        y[i] = p_offset[i] + Internal.getTimeTableValue(tableID, i, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
-      end for;
+      if vectorize then
+        y = p_offset + Internal.getTimeTableValue_vec(tableID, nout, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
+      else
+        for i in 1:nout loop
+          y[i] = p_offset[i] + Internal.getTimeTableValue(tableID, i, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
+        end for;
+      end if;
     end if;
-    annotation (
-      Documentation(info="<html>
+    annotation(
+      Documentation(info = "<html>
 <p>
 This block generates an output signal y[:] by <strong>constant</strong>,
 <strong>linear</strong> or <strong>cubic Hermite spline interpolation</strong>
@@ -2042,7 +2163,7 @@ Other characters, like trailing non comments, are not allowed in the file.
 <p>
 MATLAB is a registered trademark of The MathWorks, Inc.
 </p>
-</html>"      , revisions="<html>
+</html>"  , revisions = "<html>
 <p><strong>Release Notes:</strong></p>
 <ul>
 <li><em>April 09, 2013</em>
@@ -2054,29 +2175,426 @@ MATLAB is a registered trademark of The MathWorks, Inc.
        arguments <strong>extrapolation, columns, startTime</strong>.
        This allows periodic function definitions.</li>
 </ul>
-</html>"      ),
+</html>"  ),
       Icon(
-      coordinateSystem(preserveAspectRatio=true,
-        extent={{-100.0,-100.0},{100.0,100.0}}),
-        graphics={
-      Polygon(lineColor={192,192,192},
-        fillColor={192,192,192},
-        fillPattern=FillPattern.Solid,
-        points={{-80.0,90.0},{-88.0,68.0},{-72.0,68.0},{-80.0,90.0}}),
-      Line(points={{-80.0,68.0},{-80.0,-80.0}},
-        color={192,192,192}),
-      Line(points={{-90.0,-70.0},{82.0,-70.0}},
-        color={192,192,192}),
-      Polygon(lineColor={192,192,192},
-        fillColor={192,192,192},
-        fillPattern=FillPattern.Solid,
-        points={{90.0,-70.0},{68.0,-62.0},{68.0,-78.0},{90.0,-70.0}}),
-      Rectangle(lineColor={255,255,255},
-        fillColor={255,215,136},
-        fillPattern=FillPattern.Solid,
-        extent={{-48.0,-50.0},{2.0,70.0}}),
-      Line(points={{-48.0,-50.0},{-48.0,70.0},{52.0,70.0},{52.0,-50.0},{-48.0,-50.0},{-48.0,-20.0},{52.0,-20.0},{52.0,10.0},{-48.0,10.0},{-48.0,40.0},{52.0,40.0},{52.0,70.0},{2.0,70.0},{2.0,-51.0}})}));
+      coordinateSystem(preserveAspectRatio = true,
+      extent = {{-100.0, -100.0}, {100.0, 100.0}}),
+      graphics = {
+      Polygon(lineColor = {192, 192, 192},
+      fillColor = {192, 192, 192},
+      fillPattern = FillPattern.Solid,
+      points = {{-80.0, 90.0}, {-88.0, 68.0}, {-72.0, 68.0}, {-80.0, 90.0}}),
+      Line(points = {{-80.0, 68.0}, {-80.0, -80.0}},
+      color = {192, 192, 192}),
+      Line(points = {{-90.0, -70.0}, {82.0, -70.0}},
+      color = {192, 192, 192}),
+      Polygon(lineColor = {192, 192, 192},
+      fillColor = {192, 192, 192},
+      fillPattern = FillPattern.Solid,
+      points = {{90.0, -70.0}, {68.0, -62.0}, {68.0, -78.0}, {90.0, -70.0}}),
+      Rectangle(lineColor = {255, 255, 255},
+      fillColor = {255, 215, 136},
+      fillPattern = FillPattern.Solid,
+      extent = {{-48.0, -50.0}, {2.0, 70.0}}),
+      Line(points = {{-48.0, -50.0}, {-48.0, 70.0}, {52.0, 70.0}, {52.0, -50.0}, {-48.0, -50.0}, {-48.0, -20.0}, {52.0, -20.0}, {52.0, 10.0}, {-48.0, 10.0}, {-48.0, 40.0}, {52.0, 40.0}, {52.0, 70.0}, {2.0, 70.0}, {2.0, -51.0}})}));
   end CombiTimeTable;
+  block CombiTimeTableT
+    "Parameter tunable. Table look-up with respect to time and linear/periodic extrapolation methods (data from matrix/file)"
+    import Modelica.Blocks.Tables.Internal;
+    extends Modelica.Blocks.Interfaces.MO(final nout = max([size(columns, 1); size(offset, 1)]));
+    parameter Boolean tableOnFile = false
+      "= true, if table is defined on file or in function usertab" 
+      annotation(Dialog(group = "Table data definition"));
+    parameter Real table[:,:] = fill(0.0, 0, 2)
+      "Table matrix (time = first column; e.g., table=[0, 0; 1, 1; 2, 4])" 
+      annotation(Dialog(group = "Table data definition", enable = not tableOnFile));
+    parameter String tableName = "NoName"
+      "Table name on file or in function usertab (see docu)" 
+      annotation(Dialog(group = "Table data definition", enable = tableOnFile));
+    parameter String fileName = "NoName"
+      "File where matrix is storedFile where matrix is stored" 
+      annotation(Dialog(
+      group = "Table data definition",
+      enable = tableOnFile,
+      loadSelector(filter = "Text files (*.txt);;MATLAB MAT-files (*.mat);;csv files (*.csv)",
+      caption = "Open file in which table is present")));
+    parameter Boolean verboseRead = true
+      "= true, if info message that file is loading is to be printed" 
+      annotation(Dialog(group = "Table data definition", enable = tableOnFile));
+    parameter Integer columns[:] = 2:size(table, 2)
+      "Columns of table to be interpolated" 
+      annotation(Dialog(group = "Table data interpretation",
+      groupImage = "modelica://Modelica/Resources/Images/Blocks/Sources/CombiTimeTable.png"));
+    parameter Modelica.Blocks.Types.Smoothness smoothness = Modelica.Blocks.Types.Smoothness.LinearSegments
+      "Smoothness of table interpolation" 
+      annotation(Dialog(group = "Table data interpretation"));
+    parameter Modelica.Blocks.Types.Extrapolation extrapolation = Modelica.Blocks.Types.Extrapolation.LastTwoPoints
+      "Extrapolation of data outside the definition range" 
+      annotation(Dialog(group = "Table data interpretation"));
+    parameter Units.SI.Time timeScale(
+      min = Modelica.Constants.eps) = 1 "Time scale of first table column" 
+      annotation(Dialog(group = "Table data interpretation"), Evaluate = true);
+    parameter Real offset[:] = {0} "Offsets of output signals" 
+      annotation(Dialog(group = "Table data interpretation"));
+    parameter Units.SI.Time startTime = 0
+      "Output = offset for time < startTime" 
+      annotation(Dialog(group = "Table data interpretation"));
+    parameter Units.SI.Time shiftTime = startTime
+      "Shift time of first table column" 
+      annotation(Dialog(group = "Table data interpretation"));
+    parameter Modelica.Blocks.Types.TimeEvents timeEvents = Modelica.Blocks.Types.TimeEvents.Always
+      "Time event handling of table interpolation" 
+      annotation(Dialog(group = "Table data interpretation", enable = smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments));
+    parameter Boolean verboseExtrapolation = false
+      "= true, if warning messages are to be printed if time is outside the table definition range" 
+      annotation(Dialog(group = "Table data interpretation", enable = extrapolation == Modelica.Blocks.Types.Extrapolation.LastTwoPoints or extrapolation == Modelica.Blocks.Types.Extrapolation.HoldLastPoint));
+    final parameter Units.SI.Time t_min = t_minScaled * timeScale
+      "Minimum abscissa value defined in table";
+    final parameter Units.SI.Time t_max = t_maxScaled * timeScale
+      "Maximum abscissa value defined in table";
+    final parameter Real t_minScaled(fixed = false)
+      "Minimum (scaled) abscissa value defined in table";
+    final parameter Real t_maxScaled(fixed = false)
+      "Maximum (scaled) abscissa value defined in table";
+    final parameter Units.SI.Time timeScaleTwin(fixed = false);
+    final parameter Real tableT[:,:] = fill(0.0, 0, 2);
+    final parameter Integer columnsT[:] = 2:size(table, 2);
+  protected
+    final parameter Real p_offset[nout] = (if size(offset, 1) == 1 then ones(nout) * offset[1] else offset)
+      "Offsets of output signals";
+    parameter Modelica.Blocks.Types.ExternalCombiTimeTable tableID=
+        Modelica.Blocks.Types.ExternalCombiTimeTable(
+          "tunable",
+          "tunable",
+          tableT,
+          0,
+          columnsT,
+          0,
+          0,
+          0,
+          Modelica.Blocks.Types.TimeEvents.NoTimeEvents,
+          false) "External table object";
+    discrete Units.SI.Time nextTimeEvent(start = 0, fixed = true)
+      "Next time event instant";
+    discrete Real nextTimeEventScaled(start = 0, fixed = true)
+      "Next scaled time event instant";
+    Real timeScaled "Scaled time";
+  initial algorithm
+    timeScaleTwin := Internal.initCombiTimeTableT(
+      if tableOnFile then tableName else "NoName",
+      if tableOnFile and loadResource(fileName) <> "NoName" and not Modelica.Utilities.Strings.isEmpty(fileName) then loadResource(fileName) else "NoName",
+      table,
+      startTime / timeScale,
+      columns,
+      smoothness,
+      extrapolation,
+      shiftTime / timeScale,
+      if smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments then timeEvents else if smoothness == Modelica.Blocks.Types.Smoothness.ConstantSegments then Modelica.Blocks.Types.TimeEvents.Always else Modelica.Blocks.Types.TimeEvents.NoTimeEvents,
+      if tableOnFile then verboseRead else false,
+      tableID,
+      timeScale);
+    t_minScaled := Internal.getTimeTableTmin(tableID);
+    t_maxScaled := Internal.getTimeTableTmax(tableID);
+  equation
+    if tableOnFile then
+      assert(tableName <> "NoName",
+        "tableOnFile = true and no table name given");
+    else
+      assert(size(table, 1) > 0 and size(table, 2) > 0,
+        "tableOnFile = false and parameter table is an empty matrix");
+    end if;
+
+    if verboseExtrapolation and (
+      extrapolation == Modelica.Blocks.Types.Extrapolation.LastTwoPoints or 
+      extrapolation == Modelica.Blocks.Types.Extrapolation.HoldLastPoint) then
+      assert(noEvent(time >= t_min), "
+Extrapolation warning: Time (="                                                                       + String(time) + ") must be greater or equal
+than the minimum abscissa value t_min (="                                                                       + String(t_min) + ") defined in the table.
+"                                                                      , level = AssertionLevel.warning);
+      assert(noEvent(time <= t_max), "
+Extrapolation warning: Time (="                                                                       + String(time) + ") must be less or equal
+than the maximum abscissa value t_max (="                                                                       + String(t_max) + ") defined in the table.
+"                                                                      , level = AssertionLevel.warning);
+    end if;
+
+    timeScaled = time / timeScaleTwin;
+    when {time >= pre(nextTimeEvent), initial()} then
+      nextTimeEventScaled = Internal.getNextTimeEvent(tableID, timeScaled);
+      nextTimeEvent = if nextTimeEventScaled < Modelica.Constants.inf then nextTimeEventScaled * timeScale else Modelica.Constants.inf;
+    end when;
+    if smoothness == Modelica.Blocks.Types.Smoothness.ConstantSegments then
+      for i in 1:nout loop
+        y[i] = p_offset[i] + Internal.getTimeTableValueNoDer(tableID, i, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
+      end for;
+    elseif smoothness == Modelica.Blocks.Types.Smoothness.LinearSegments then
+      for i in 1:nout loop
+        y[i] = p_offset[i] + Internal.getTimeTableValueNoDer2(tableID, i, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
+      end for;
+    else
+      for i in 1:nout loop
+        y[i] = p_offset[i] + Internal.getTimeTableValue(tableID, i, timeScaled, nextTimeEventScaled, pre(nextTimeEventScaled));
+      end for;
+    end if;
+    annotation(
+      Documentation(info = "<html>
+<p>
+Parameters of the FMU exported from this table are tunable.  
+This feature can only be used when parameter estimation is not enabled.
+</p>
+<p>
+This block generates an output signal y[:] by <strong>constant</strong>,
+<strong>linear</strong> or <strong>cubic Hermite spline interpolation</strong>
+in a table. The time points and function values are stored in a matrix
+<strong>table[i,j]</strong>, where the first column table[:,1] contains the
+time points and the other columns contain the data to be interpolated.
+</p>
+
+<div>
+<img src=\"modelica://Modelica/Resources/Images/Blocks/Sources/CombiTimeTable.png\"
+     alt=\"CombiTimeTable.png\">
+</div>
+
+<p>
+Via parameter <strong>columns</strong> it can be defined which columns of the
+table are interpolated. If, e.g., columns={2,4}, it is assumed that
+2 output signals are present and that the first output is computed
+by interpolation of column 2 and the second output is computed
+by interpolation of column 4 of the table matrix.
+The table interpolation has the following properties:
+</p>
+<ul>
+<li>The interpolation interval is found by a binary search where the interval used in the
+    last call is used as start interval.</li>
+<li>The time points need to be <strong>strictly increasing</strong> for cubic Hermite
+    spline interpolation, otherwise <strong>monotonically increasing</strong>.</li>
+<li><strong>Discontinuities</strong> are allowed for (constant or) linear interpolation,
+    by providing the same time point twice in the table.</li>
+<li>Via parameter <strong>smoothness</strong> it is defined how the data is interpolated:
+<blockquote><pre>
+smoothness = 1: Linear interpolation
+           = 2: Akima interpolation: Smooth interpolation by cubic Hermite
+                splines such that der(y) is continuous, also if extrapolated.
+           = 3: Constant segments
+           = 4: Fritsch-Butland interpolation: Smooth interpolation by cubic
+                Hermite splines such that y preserves the monotonicity and
+                der(y) is continuous, also if extrapolated.
+           = 5: Steffen interpolation: Smooth interpolation by cubic Hermite
+                splines such that y preserves the monotonicity and der(y)
+                is continuous, also if extrapolated.
+           = 6: Modified Akima interpolation: Smooth interpolation by cubic
+                Hermite splines such that der(y) is continuous, also if
+                extrapolated. Additionally, overshoots and edge cases of the
+                original Akima interpolation method are avoided.
+</pre></blockquote></li>
+<li>First and second <strong>derivatives</strong> are provided, with exception of the following two smoothness options.
+<ol>
+<li>No derivatives are provided for interpolation by constant segments.</li>
+<li>No second derivative is provided for linear interpolation.<br>There is a design inconsistency, that it is possible
+to model a signal consisting of constant segments using linear interpolation and duplicated sample points.
+In contrast to interpolation by constant segments, the first derivative is provided as zero.</li>
+</ol></li>
+<li>Values <strong>outside</strong> of the table range, are computed by
+    extrapolation according to the setting of parameter <strong>extrapolation</strong>:
+<blockquote><pre>
+extrapolation = 1: Hold the first or last value of the table,
+                   if outside of the table scope.
+              = 2: Extrapolate by using the derivative at the first/last table
+                   points if outside of the table scope.
+                   (If smoothness is LinearSegments or ConstantSegments
+                   this means to extrapolate linearly through the first/last
+                   two table points.).
+              = 3: Periodically repeat the table data (periodical function).
+              = 4: No extrapolation, i.e. extrapolation triggers an error
+</pre></blockquote></li>
+<li>If the table has only <strong>one row</strong>, no interpolation is performed and
+    the table values of this row are just returned.</li>
+<li>Via parameters <strong>shiftTime</strong> and <strong>offset</strong> the curve defined
+    by the table can be shifted both in time and in the ordinate value.
+    The time instants stored in the table are therefore <strong>relative</strong>
+    to <strong>shiftTime</strong>.</li>
+<li>If time &lt; startTime, no interpolation is performed and the offset
+    is used as ordinate value for all outputs.</li>
+<li>The table is implemented in a numerically sound way by
+    generating <strong>time events</strong> at interval boundaries, in case of
+    interpolation by linear segments.
+    This generates continuously differentiable values for the integrator.
+    Via parameter <strong>timeEvents</strong> it is defined how the time events are generated:
+<blockquote><pre>
+timeEvents = 1: Always generate time events at interval boundaries
+           = 2: Generate time events at discontinuities (defined by duplicated sample points)
+           = 3: No time events at interval boundaries
+</pre></blockquote>
+    For interpolation by constant segments time events are always generated at interval boundaries.
+    For smooth interpolation by cubic Hermite splines no time events are generated at interval boundaries.</li>
+<li>Via parameter <strong>timeScale</strong> the first column of the table array can
+    be scaled, e.g., if the table array is given in hours (instead of seconds)
+    <strong>timeScale</strong> shall be set to 3600.</li>
+<li>For special applications it is sometimes needed to know the minimum
+    and maximum time instant defined in the table as a parameter. For this
+    reason parameters <strong>t_min</strong>/<strong>t_minScaled</strong> and
+    <strong>t_max</strong>/<strong>t_maxScaled</strong> are provided and can be
+    accessed from the outside of the table object. Whereas <strong>t_min</strong> and
+    <strong>t_max</strong> define the scaled abscissa values (using parameter
+    <strong>timeScale</strong>) in SI.Time, <strong>t_minScaled</strong> and
+    <strong>t_maxScaled</strong> define the unitless original abscissa values of
+    the table.</li>
+</ul>
+<p>
+Example:
+</p>
+<blockquote><pre>
+table = [0, 0;
+         1, 0;
+         1, 1;
+         2, 4;
+         3, 9;
+         4, 16];
+extrapolation = 2 (default), timeEvents = 2
+If, e.g., time = 1.0, the output y =  0.0 (before event), 1.0 (after event)
+    e.g., time = 1.5, the output y =  2.5,
+    e.g., time = 2.0, the output y =  4.0,
+    e.g., time = 5.0, the output y = 23.0 (i.e., extrapolation via last 2 points).
+</pre></blockquote>
+<p>
+The table matrix can be defined in the following ways:
+</p>
+<ol>
+<li>Explicitly supplied as <strong>parameter matrix</strong> \"table\",
+    and the other parameters have the following values:
+<blockquote><pre>
+tableName is \"NoName\" or has only blanks,
+fileName  is \"NoName\" or has only blanks.
+</pre></blockquote></li>
+<li><strong>Read</strong> from a <strong>file</strong> \"fileName\" where the matrix is stored as
+    \"tableName\". Both text and MATLAB MAT-file format is possible.
+    (The text format is described below).
+    The MAT-file format comes in four different versions: v4, v6, v7 and v7.3.
+    The library supports at least v4, v6 and v7 whereas v7.3 is optional.
+    It is most convenient to generate the MAT-file from FreeMat or MATLAB&reg;
+    by command
+<blockquote><pre>
+save tables.mat tab1 tab2 tab3
+</pre></blockquote>
+    or Scilab by command
+<blockquote><pre>
+savematfile tables.mat tab1 tab2 tab3
+</pre></blockquote>
+    when the three tables tab1, tab2, tab3 should be used from the model.<br>
+    Note, a fileName can be defined as URI.</li>
+<li>Statically stored in function \"usertab\" in file \"usertab.c\".
+    The matrix is identified by \"tableName\". Parameter
+    fileName = \"NoName\" or has only blanks. Row-wise storage is always to be
+    preferred as otherwise the table is reallocated and transposed.</li>
+</ol>
+<p>
+When the constant \"NO_FILE_SYSTEM\" is defined, all file I/O related parts of the
+source code are removed by the C-preprocessor, such that no access to files takes place.
+</p>
+<p>
+If tables are read from a text file, the file needs to have the
+following structure (\"-----\" is not part of the file content):
+</p>
+<blockquote><pre>
+-----------------------------------------------------
+#1
+double tab1(6,2)   # comment line
+  0   0
+  1   0
+  1   1
+  2   4
+  3   9
+  4  16
+double tab2(6,2)   # another comment line
+  0   0
+  2   0
+  2   2
+  4   8
+  6  18
+  8  32
+-----------------------------------------------------
+</pre></blockquote>
+<p>
+If tables are read from a csv file, the file needs to have the
+following structure to be opened using text editor (\"-----\" is not part of the file content):
+</p>
+<blockquote><pre>
+-----------------------------------------------------
+#1
+double tab1(5,2)
+0,0
+1,1
+2,4
+3,9
+4,16
+double tab2(5,2)
+0,0
+2,2
+4,8
+6,18
+8,32
+-----------------------------------------------------
+</pre></blockquote>
+<p>
+This csv file is opened with Excel, and the data format is displayed as shown in the following image:
+</p>
+<div>
+<img src=\"modelica://Modelica/Resources/Images/Blocks/Sources/CombiTimeTable2.png\"
+     alt=\"CombiTimeTable2.png\">
+</div>
+<p>
+Note, that the first two characters in the file need to be
+\"#1\" (a line comment defining the version number of the file format).
+Afterwards, the corresponding matrix has to be declared
+with type (= \"double\" or \"float\"), name and actual dimensions.
+Finally, in successive rows of the file, the elements of the matrix
+have to be given. The elements have to be provided as a sequence of
+numbers in row-wise order (therefore a matrix row can span several
+lines in the file and need not start at the beginning of a line).
+Numbers have to be given according to C syntax (such as 2.3, -2, +2.e4).
+Number separators are spaces, tab (\\t), comma (,), or semicolon (;).
+Several matrices may be defined one after another. Line comments start
+with the hash symbol (#) and can appear everywhere.
+Text files should either be ASCII or UTF-8 encoded, where UTF-8 encoded strings are only allowed in line comments and an optional UTF-8 BOM at the start of the text file is ignored.
+Other characters, like trailing non comments, are not allowed in the file.
+</p>
+<p>
+MATLAB is a registered trademark of The MathWorks, Inc.
+</p>
+</html>"                                                                      , revisions = "<html>
+<p><strong>Release Notes:</strong></p>
+<ul>
+<li><em>April 09, 2013</em>
+       by Thomas Beutlich:<br>
+       Implemented as external object.</li>
+<li><em>March 31, 2001</em>
+       by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a>:<br>
+       Used CombiTableTime as a basis and added the
+       arguments <strong>extrapolation, columns, startTime</strong>.
+       This allows periodic function definitions.</li>
+</ul>
+</html>"                                                                      ),
+      Icon(
+      coordinateSystem(preserveAspectRatio = true,
+      extent = {{-100.0, -100.0}, {100.0, 100.0}}),
+      graphics = {
+      Polygon(lineColor = {192, 192, 192},
+      fillColor = {192, 192, 192},
+      fillPattern = FillPattern.Solid,
+      points = {{-80.0, 90.0}, {-88.0, 68.0}, {-72.0, 68.0}, {-80.0, 90.0}}),
+      Line(points = {{-80.0, 68.0}, {-80.0, -80.0}},
+      color = {192, 192, 192}),
+      Line(points = {{-90.0, -70.0}, {82.0, -70.0}},
+      color = {192, 192, 192}),
+      Polygon(lineColor = {192, 192, 192},
+      fillColor = {192, 192, 192},
+      fillPattern = FillPattern.Solid,
+      points = {{90.0, -70.0}, {68.0, -62.0}, {68.0, -78.0}, {90.0, -70.0}}),
+      Rectangle(lineColor = {255, 255, 255},
+      fillColor = {255, 215, 136},
+      fillPattern = FillPattern.Solid,
+      extent = {{-48.0, -50.0}, {2.0, 70.0}}),
+      Line(points = {{-48.0, -50.0}, {-48.0, 70.0}, {52.0, 70.0}, {52.0, -50.0}, {-48.0, -50.0}, {-48.0, -20.0}, {52.0, -20.0}, {52.0, 10.0}, {-48.0, 10.0}, {-48.0, 40.0}, {52.0, 40.0}, {52.0, 70.0}, {2.0, 70.0}, {2.0, -51.0}})}));
+  end CombiTimeTableT;
 
   block BooleanConstant "Generate constant signal of type Boolean"
     parameter Boolean k=true "Constant output value" 
@@ -2671,4 +3189,402 @@ usually requires a trimming calculation.
        of Dieter Moormann and Hilding Elmqvist.</li>
 </ul>
 </html>"));
+  package Functions
+    annotation(__MWORKS(version="2025b"));
+    record STrajParameter
+      annotation(__MWORKS(version="2025b"));
+      Modelica.Units.SI.Time Ta(start = 0);
+      Modelica.Units.SI.Time Tv(start = 0);
+      Modelica.Units.SI.Time Td(start = 0);
+      Modelica.Units.SI.Time Tdwell(start = 0);
+      Modelica.Units.SI.Time Tj1(start = 0);
+      Modelica.Units.SI.Time Tj2(start = 0);
+
+      Real qmax(start = 0);
+      Real vlim(start = 0);
+
+      Real a_max(start = 0);
+      Real a_min(start = 0);
+
+      Real a_lima(start = 0);
+      Real a_limd(start = 0);
+
+      Real j_max(start = 0);
+      Real j_min(start = 0);
+
+    end STrajParameter;
+    function GenerateSAcceleration
+      annotation(__MWORKS(version = "2025b"));
+
+      input Modelica.Units.SI.Time t;
+      input Modelica.Blocks.Sources.Functions.STrajParameter Para;
+
+      output Real qdd;
+
+    protected
+      Modelica.Units.SI.Time T;
+      Modelica.Units.SI.Time Ta = Para.Ta;
+      Modelica.Units.SI.Time Tv = Para.Tv;
+      Modelica.Units.SI.Time Td = Para.Td;
+      Modelica.Units.SI.Time To = Para.Tdwell;
+      Modelica.Units.SI.Time Tj1 = Para.Tj1;
+      Modelica.Units.SI.Time Tj2 = Para.Tj2;
+
+      Real qmax = Para.qmax;
+      Real vlim = Para.vlim;
+
+      Real amax = Para.a_max;
+      Real amin = Para.a_min;
+
+      Real alima = Para.a_lima;
+      Real alimd = Para.a_limd;
+
+      Real jmax = Para.j_max;
+      Real jmin = Para.j_min;
+
+    algorithm
+      T := Ta + Tv + Td + To;
+      // Acceleration phase
+      if (t >= 0 and t < Tj1) then
+        qdd := jmax * t;
+      elseif (t >= Tj1 and t < Ta - Tj1) then
+        qdd := alima;
+      elseif (t >= Ta - Tj1 and t < Ta) then
+        qdd := -jmin * (Ta - t);
+      // Constant speed phase
+      elseif (t >= Ta and t < Ta + Tv) then
+        qdd := 0;
+      // Deceleration phase
+      elseif (t >= Ta + Tv and t < T - Td + Tj2 - To) then
+        qdd := -jmax * (t - T + Td + To);
+      elseif (t >= T - Td + Tj2 - To and t < T - Tj2 - To) then
+        qdd := alimd;
+      elseif (t >= T - Tj2 - To and t <= T - To) then
+        qdd := -jmax * (T - t - To);
+      elseif (t >= T - To and t <= T) then
+        qdd := 0;
+      end if;
+
+    end GenerateSAcceleration;
+    function GenerateSJerk
+      annotation(__MWORKS(version = "2025b"));
+
+      input Modelica.Units.SI.Time t;
+      input Modelica.Blocks.Sources.Functions.STrajParameter Para;
+
+      output Real qddd;
+
+    protected
+      Modelica.Units.SI.Time T;
+      Modelica.Units.SI.Time Ta = Para.Ta;
+      Modelica.Units.SI.Time Tv = Para.Tv;
+      Modelica.Units.SI.Time Td = Para.Td;
+      Modelica.Units.SI.Time To = Para.Tdwell;
+      Modelica.Units.SI.Time Tj1 = Para.Tj1;
+      Modelica.Units.SI.Time Tj2 = Para.Tj2;
+
+      Real qmax = Para.qmax;
+      Real vlim = Para.vlim;
+
+      Real amax = Para.a_max;
+      Real amin = Para.a_min;
+
+      Real alima = Para.a_lima;
+      Real alimd = Para.a_limd;
+
+      Real jmax = Para.j_max;
+      Real jmin = Para.j_min;
+
+    algorithm
+      T := Ta + Tv + Td + To;
+      // Acceleration phase
+      if (t >= 0 and t < Tj1) then
+        qddd := jmax;
+      elseif (t >= Tj1 and t < Ta - Tj1) then
+        qddd := 0;
+      elseif (t >= Ta - Tj1 and t < Ta) then
+        qddd := jmin;
+      // Constant speed phase
+      elseif (t >= Ta and t < Ta + Tv) then
+        qddd := 0;
+      // Deceleration phase
+      elseif (t >= Ta + Tv and t < T - Td + Tj2 - To) then
+        qddd := -jmax;
+      elseif (t >= T - Td + Tj2 - To and t < T - Tj2 - To) then
+        qddd := 0;
+      elseif (t >= T - Tj2 - To and t <= T - To) then
+        qddd := jmax;
+      elseif (t >= T - To and t <= T) then
+        qddd := 0;
+      end if;
+
+    end GenerateSJerk;
+    function GenerateSPosition
+      annotation(__MWORKS(version = "2025b"));
+
+      input Modelica.Units.SI.Time t;
+      input Modelica.Blocks.Sources.Functions.STrajParameter Para;
+
+      output Real q;
+
+    protected
+      Modelica.Units.SI.Time T;
+      Modelica.Units.SI.Time Ta = Para.Ta;
+      Modelica.Units.SI.Time Tv = Para.Tv;
+      Modelica.Units.SI.Time Td = Para.Td;
+      Modelica.Units.SI.Time To = Para.Tdwell;
+      Modelica.Units.SI.Time Tj1 = Para.Tj1;
+      Modelica.Units.SI.Time Tj2 = Para.Tj2;
+
+      Real qmax = Para.qmax;
+      Real vlim = Para.vlim;
+
+      Real amax = Para.a_max;
+      Real amin = Para.a_min;
+
+      Real alima = Para.a_lima;
+      Real alimd = Para.a_limd;
+
+      Real jmax = Para.j_max;
+      Real jmin = Para.j_min;
+
+    algorithm
+      T := Ta + Tv + Td + To;
+      // Acceleration phase
+      if (t >= 0 and t < Tj1) then
+        q := jmax * t ^ 3 / 6;
+      elseif (t >= Tj1 and t < Ta - Tj1) then
+        q := (alima / 6) * (3 * t ^ 2 - 3 * Tj1 * t + Tj1 ^ 2);
+      elseif (t >= Ta - Tj1 and t < Ta) then
+        q := (vlim) * (Ta / 2) - vlim * (Ta - t) - jmin * ((Ta - t) ^ 3 / 6);
+      // Constant speed phase
+      elseif (t >= Ta and t < Ta + Tv) then
+        q := (vlim) * (Ta / 2) + vlim * (t - Ta);
+      // Deceleration phase
+      elseif (t >= Ta + Tv and t < T - Td + Tj2 - To) then
+        q := qmax - (vlim) * (Td / 2) + vlim * (t - T + Td + To) - jmax * ((t - T + Td + To) ^ 3 / 6);
+      elseif (t >= T - Td + Tj2 - To and t < T - Tj2 - To) then
+        q := qmax - (vlim) * (Td / 2) + vlim * (t - T + Td + To) + (alimd / 6) * (3 * (t - T + Td + To) ^ 2 - 3 * Tj2 * (t - T + Td + To) + Tj2 ^ 2);
+      elseif (t >= T - Tj2 - To and t <= T - To) then
+        q := qmax - jmax * ((T - t - To) ^ 3 / 6);
+      else
+        // (t >=T - To and t <= T)
+        q := qmax;
+      end if;
+
+    end GenerateSPosition;
+    function GenerateSVelocity
+      annotation(__MWORKS(version = "2025b"));
+
+      input Modelica.Units.SI.Time t;
+      input Modelica.Blocks.Sources.Functions.STrajParameter Para;
+
+      output Real qd;
+
+    protected
+      Modelica.Units.SI.Time T;
+      Modelica.Units.SI.Time Ta = Para.Ta;
+      Modelica.Units.SI.Time Tv = Para.Tv;
+      Modelica.Units.SI.Time Td = Para.Td;
+      Modelica.Units.SI.Time To = Para.Tdwell;
+      Modelica.Units.SI.Time Tj1 = Para.Tj1;
+      Modelica.Units.SI.Time Tj2 = Para.Tj2;
+
+      Real qmax = Para.qmax;
+      Real vlim = Para.vlim;
+
+      Real amax = Para.a_max;
+      Real amin = Para.a_min;
+
+      Real alima = Para.a_lima;
+      Real alimd = Para.a_limd;
+
+      Real jmax = Para.j_max;
+      Real jmin = Para.j_min;
+
+    algorithm
+      T := Ta + Tv + Td + To;
+      // Acceleration phase
+      if (t >= 0 and t < Tj1) then
+        qd := jmax * (t ^ 2 / 2);
+      elseif (t >= Tj1 and t < Ta - Tj1) then
+        qd := alima * (t - Tj1 / 2);
+      elseif (t >= Ta - Tj1 and t < Ta) then
+        qd := vlim + jmin * ((Ta - t) ^ 2 / 2);
+      // Constant speed phase
+      elseif (t >= Ta and t < Ta + Tv) then
+        qd := vlim;
+      // Deceleration phase
+      elseif (t >= Ta + Tv and t < T - Td + Tj2 - To) then
+        qd := vlim - jmax * ((t - T + Td + To) ^ 2 / 2);
+      elseif (t >= T - Td + Tj2 - To and t < T - Tj2 - To) then
+        qd := vlim + alimd * (t - T + Td - Tj2 / 2 + To);
+      elseif (t >= T - Tj2 - To and t <= T - To) then
+        qd := jmax * ((t - T + To) ^ 2 / 2);
+      elseif (t >= T - To and t <= T) then
+        qd := 0;
+      end if;
+
+    end GenerateSVelocity;
+    function GetSTrajectoryPara
+      annotation(__MWORKS(version = "2025b"));
+
+      input Real deltaq;
+      input Real qd_max;
+      input Real qdd_max;
+      input Real qddd_max;
+      input Real Tdwell;
+
+      output Modelica.Blocks.Sources.Functions.STrajParameter Para;
+
+    protected
+      constant Real eps = 10 * Modelica.Constants.eps;
+      constant Real qmax = deltaq;
+
+      Real qd_min;
+      Real qdd_min;
+      Real qddd_min;
+
+      Real q_max;
+
+      Real sigma;
+
+      Real v_max;
+      Real v_min;
+
+      Modelica.Units.SI.Time Tj;
+      Modelica.Units.SI.Time T;
+
+      Real delta;
+      Real lambda;
+
+      Real a_max;
+      Real a_min;
+      Real j_max;
+      Real j_min;
+
+      Modelica.Units.SI.Time Tj1;
+      Modelica.Units.SI.Time Tj2;
+      Modelica.Units.SI.Time Ta;
+      Modelica.Units.SI.Time Tv;
+      Modelica.Units.SI.Time Td;
+
+      Real a_lima;
+      Real a_limd;
+      Real vlim;
+
+    algorithm
+
+      qd_min := -qd_max;
+      qdd_min := -qdd_max;
+      qddd_min := -qddd_max;
+
+      sigma := sign(qmax);
+      q_max := sigma * qmax;
+      v_max := ((sigma + 1) / 2) * qd_max + ((sigma - 1) / 2) * qd_min;
+      v_min := ((sigma + 1) / 2) * qd_min + ((sigma - 1) / 2) * qd_max;
+      a_max := ((sigma + 1) / 2) * qdd_max + ((sigma - 1) / 2) * qdd_min;
+      a_min := ((sigma + 1) / 2) * qdd_min + ((sigma - 1) / 2) * qdd_max;
+      j_max := ((sigma + 1) / 2) * qddd_max + ((sigma - 1) / 2) * qddd_min;
+      j_min := ((sigma + 1) / 2) * qddd_min + ((sigma - 1) / 2) * qddd_max;
+
+      if ((v_max) * j_max < a_max ^ 2) then
+        Tj1 := sqrt((v_max) / j_max);
+        Ta := 2 * Tj1;
+        a_lima := j_max * Tj1;
+      else
+        Tj1 := a_max / j_max;
+        Ta := Tj1 + (v_max) / a_max;
+        a_lima := a_max;
+      end if;
+
+      if ((v_max) * j_max < a_max ^ 2) then
+        Tj2 := sqrt((v_max) / j_max);
+        Td := 2 * Tj2;
+        a_limd := -j_max * Tj2;
+      else
+        Tj2 := a_max / j_max;
+        Td := Tj2 + (v_max) / a_max;
+        a_limd := -a_max;
+      end if;
+
+      Tv := (q_max) / v_max - (Ta / 2) - (Td / 2);
+
+      if (Tv > 0) then
+        vlim := v_max;
+        T := Ta + Tv + Td + Tdwell;
+
+      else
+        Tv := 0;
+        Tj := a_max / j_max;
+        Tj1 := Tj;
+        Tj2 := Tj;
+        delta := (a_max ^ 4 / j_max ^ 2) + a_max * (4 * (q_max));
+        Ta := ((a_max ^ 2 / j_max) + sqrt(delta)) / (2.0 * a_max);
+        Td := ((a_max ^ 2 / j_max) + sqrt(delta)) / (2.0 * a_max);
+        if (Ta < 0 or Td < 0) then
+          if (Ta < 0) then
+            Ta := 0;
+            Tj1 := 0;
+            Td := 0;
+            Tj2 := 0;
+            a_lima := 0;
+            a_limd := -j_max * Tj2;
+            vlim := 0;
+          else
+            Td := 0;
+            Tj2 := 0;
+            Ta := 0;
+            Tj1 := 0;
+            a_lima := j_max * Tj1;
+            a_limd := 0;
+            vlim := a_lima * (Ta - Tj1);
+          end if;
+        elseif (Ta >= 2 * Tj and Td >= 2 * Tj) then
+          a_lima := a_max;
+          a_limd := -a_max;
+          vlim := a_lima * (Ta - Tj);
+        else
+          lambda := 0.99;
+          while (Ta < 2 * Tj or Td < 2 * Tj) loop
+            a_max := lambda * a_max;
+            Tv := 0;
+            Tj := a_max / j_max;
+            Tj1 := Tj;
+            Tj2 := Tj;
+            delta := (a_max ^ 4 / j_max ^ 2) + a_max * (4 * (q_max));
+            Ta := ((a_max ^ 2 / j_max) + sqrt(delta)) / (2.0 * a_max);
+            Td := ((a_max ^ 2 / j_max) + sqrt(delta)) / (2.0 * a_max);
+            if (Ta < 0 or Td < 0) then
+              if (Ta < 0) then
+                Ta := 0;
+                Tj1 := 0;
+                Td := 0;
+                Tj2 := 0;
+                a_lima := 0;
+                a_limd := -j_max * Tj2;
+                vlim := 0;
+              else
+                Td := 0;
+                Tj2 := 0;
+                Ta := 0;
+                Tj1 := 0;
+                a_lima := j_max * Tj1;
+                a_limd := 0;
+                vlim := a_lima * (Ta - Tj1);
+              end if;
+            elseif (Ta >= 2 * Tj and Td >= 2 * Tj) then
+              a_lima := a_max;
+              a_limd := -a_max;
+              vlim := a_lima * (Ta - Tj);
+            end if;
+          end while;
+        end if;
+      end if;
+
+      Para := Modelica.Blocks.Sources.Functions.STrajParameter(Ta, Tv, Td, Tdwell, Tj1, Tj2, q_max, vlim, a_max, a_min, a_lima, a_limd, j_max, j_min);
+
+
+    end GetSTrajectoryPara;
+  end Functions;
 end Sources;

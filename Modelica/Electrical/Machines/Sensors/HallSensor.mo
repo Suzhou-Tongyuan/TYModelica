@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Sensors;
+within Modelica.Electrical.Machines.Sensors;
 model HallSensor "Hall sensor"
   import Modelica.Constants.pi;
   extends 

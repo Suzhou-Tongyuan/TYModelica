@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples;
+within Modelica.Thermal.FluidHeatFlow.Examples;
 model TestCylinder "Two cylinder system"
   extends Modelica.Icons.Example;
   output SI.Force f1=-10*cylinder1.f "10 x Force on piston 1";

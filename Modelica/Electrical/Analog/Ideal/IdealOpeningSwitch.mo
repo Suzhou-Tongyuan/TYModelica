@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model IdealOpeningSwitch "Ideal electrical opener"
   extends Modelica.Electrical.Analog.Interfaces.IdealSwitch;
   Modelica.Blocks.Interfaces.BooleanInput control

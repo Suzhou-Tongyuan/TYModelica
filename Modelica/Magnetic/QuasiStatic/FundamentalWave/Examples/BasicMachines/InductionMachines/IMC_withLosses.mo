@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines;
 model IMC_withLosses "Induction machine with squirrel cage and losses"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

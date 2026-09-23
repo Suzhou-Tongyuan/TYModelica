@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model GenerationOfFMUs
   "Example to demonstrate variants to generate FMUs (Functional Mock-up Units)"
   extends Modelica.Icons.Example;

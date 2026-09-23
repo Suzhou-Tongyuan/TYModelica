@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model CompareTransformers
   "Transformer circuit to show the magnetization facilities"
   import Modelica.Constants.pi;

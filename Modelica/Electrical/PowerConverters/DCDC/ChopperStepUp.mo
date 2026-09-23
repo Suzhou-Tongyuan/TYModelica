@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.DCDC;
+within Modelica.Electrical.PowerConverters.DCDC;
 model ChopperStepUp "Step up chopper"
   import Modelica.Constants.pi;
   extends Icons.Converter;

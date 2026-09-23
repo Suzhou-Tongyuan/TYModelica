@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Utilities;
+within Modelica.Electrical.Batteries.Utilities;
 block BusTranscription "Transcribe bus signals"
   extends Modelica.Blocks.Icons.Block;
   parameter Integer Ns(final min = 1) = 1 "Number of series connected cells";

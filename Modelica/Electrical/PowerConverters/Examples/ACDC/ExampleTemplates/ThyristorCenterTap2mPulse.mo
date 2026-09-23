@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.ExampleTemplates;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.ExampleTemplates;
 partial model ThyristorCenterTap2mPulse
   "Template of 2*m pulse thyristor rectifier with center tap"
   extends Icons.ExampleTemplate;

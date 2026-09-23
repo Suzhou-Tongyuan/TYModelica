@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Functions;
+within Modelica.Electrical.Machines.SpacePhasors.Functions;
 function FromSpacePhasor
   "Conversion from space phasor and zero sequence component to polyphase"
   import Modelica.Constants.pi;

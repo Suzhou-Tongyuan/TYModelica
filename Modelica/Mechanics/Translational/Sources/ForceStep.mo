@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sources;
+within Modelica.Mechanics.Translational.Sources;
 model ForceStep "Constant force, not dependent on speed"
   extends Modelica.Mechanics.Translational.Interfaces.PartialForce;
   parameter SI.Force stepForce(start=1)

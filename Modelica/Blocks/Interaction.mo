@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package Interaction
   "Library of user interaction blocks to input and to show variables in a diagram animation"
   extends Modelica.Icons.Package;

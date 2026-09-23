@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.BaseClasses;
+within Modelica.Thermal.FluidHeatFlow.BaseClasses;
 partial model SinglePortLeft "Partial model of a single port at the left"
   parameter FluidHeatFlow.Media.Medium medium=FluidHeatFlow.Media.Medium()
     "Medium" annotation (choicesAllMatching=true);

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
+within Modelica.Mechanics.MultiBody.Sensors.Internal;
 model BasicAbsolutePosition
   "Basic sensor to measure absolute position vector"
   import Modelica.Mechanics.MultiBody.Types.ResolveInFrameA;

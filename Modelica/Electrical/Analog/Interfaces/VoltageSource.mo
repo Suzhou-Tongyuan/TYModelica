@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Interfaces;
+within Modelica.Electrical.Analog.Interfaces;
 partial model VoltageSource "Interface for voltage sources"
   extends Modelica.Electrical.Analog.Icons.VoltageSource;
   extends OnePort;

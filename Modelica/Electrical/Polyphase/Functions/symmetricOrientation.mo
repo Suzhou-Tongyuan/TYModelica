@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Functions;
+within Modelica.Electrical.Polyphase.Functions;
 function symmetricOrientation
   "Orientations of the resulting fundamental wave field phasors"
   extends Modelica.Icons.Function;

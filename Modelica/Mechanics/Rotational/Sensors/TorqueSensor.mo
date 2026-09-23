@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sensors;
+within Modelica.Mechanics.Rotational.Sensors;
 model TorqueSensor
   "Ideal sensor to measure the torque between two flanges (= flange_a.tau)"
 

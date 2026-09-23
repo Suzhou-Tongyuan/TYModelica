@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function from_T_inv
   "Return orientation object R from inverse transformation matrix T_inv"
 

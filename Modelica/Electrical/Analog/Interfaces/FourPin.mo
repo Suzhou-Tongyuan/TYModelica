@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Interfaces;
+within Modelica.Electrical.Analog.Interfaces;
 partial model FourPin "Component with two pairs of each two electrical pins"
   SI.Voltage v1 "Voltage drop of port 1 (= p1.v - n1.v)";
   SI.Voltage v2 "Voltage drop of port 2 (= p2.v - n2.v)";

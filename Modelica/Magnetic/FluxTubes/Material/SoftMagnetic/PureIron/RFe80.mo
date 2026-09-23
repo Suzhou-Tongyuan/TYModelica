@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.PureIron;
+within Modelica.Magnetic.FluxTubes.Material.SoftMagnetic.PureIron;
 record RFe80 "Hyperm 0 (RFe80)"
   extends FluxTubes.Material.SoftMagnetic.BaseData(
     mu_i=123,

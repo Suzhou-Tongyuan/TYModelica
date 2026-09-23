@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.BatteryStacks;
+within Modelica.Electrical.Batteries.BatteryStacks;
 model CellRCStack
   "Battery with open-circuit voltage dependent on state of charge, self-discharge, inner resistance and a series of RC-elements"
   extends Modelica.Electrical.Batteries.BaseClasses.BaseCellStack(r0(final R=Ns*cellData.R0/Np),

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.NonPeriodic;
+within Modelica.Clocked.BooleanSignals.NonPeriodic;
 block UnitDelay "Delay the clocked input signal for one sample period"
   extends Clocked.BooleanSignals.Interfaces.PartialClockedSISO(u(final
         start=y_start));

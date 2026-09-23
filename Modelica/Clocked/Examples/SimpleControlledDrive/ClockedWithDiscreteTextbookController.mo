@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.SimpleControlledDrive;
+within Modelica.Clocked.Examples.SimpleControlledDrive;
 model ClockedWithDiscreteTextbookController
   "Simple controlled drive with discrete textbook controller (period is not used in the controller)"
  extends Modelica.Icons.Example;

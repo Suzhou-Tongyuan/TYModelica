@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Examples.Utilities;
+within Modelica.Electrical.Polyphase.Examples.Utilities;
 model AnalysatorDC "Analyze DC voltage, current and power"
   extends Icons.RoundSensor;
   extends Modelica.Electrical.Analog.Interfaces.TwoPin;

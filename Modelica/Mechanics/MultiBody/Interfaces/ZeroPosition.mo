@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 model ZeroPosition
   "Set absolute position vector of frame_resolve to a zero vector and the orientation object to a null rotation"
    extends Modelica.Blocks.Icons.Block;

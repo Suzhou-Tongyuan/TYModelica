@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Colors;
+within Modelica.Mechanics.MultiBody.Visualizers.Colors;
 function scalarToColor "Map a scalar to a color using a color map"
   extends Modelica.Icons.Function;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses;
+within Modelica.Electrical.Machines.Losses;
 record PermanentMagnetLossParameters
   "Parameter record for permanent magnet losses"
   extends Modelica.Icons.Record;

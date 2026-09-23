@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model SimpleTriacCircuit "Simple triac test circuit"
   extends Modelica.Icons.Example;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model Fixed "Fixed flange"
   parameter SI.Position s0=0 "Fixed offset position of housing";
 

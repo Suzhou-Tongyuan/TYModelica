@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Media;
+within Modelica.Thermal.FluidHeatFlow.Media;
 record Water_10degC "Medium: properties of water at 10 degC and 1 bar"
 extends FluidHeatFlow.Media.Medium(
     rho=999.7,

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer;
+within Modelica.Thermal.HeatTransfer;
 package Sensors "Thermal sensors"
   extends Modelica.Icons.SensorsPackage;
 

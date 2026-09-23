@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model CauerLowPassAnalog "Cauer low pass filter with analog components"
   extends Modelica.Icons.Example;
 

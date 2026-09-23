@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sources;
+within Modelica.Mechanics.Translational.Sources;
 model LinearSpeedDependentForce "Linear dependency of force versus speed"
   extends Modelica.Mechanics.Translational.Interfaces.PartialForce;
   parameter SI.Force f_nominal

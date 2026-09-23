@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Interfaces;
+within Modelica.Electrical.Analog.Interfaces;
 partial model TwoPin "Component with two electrical pins"
   SI.Voltage v "Voltage drop of the two pins (= p.v - n.v)";
 

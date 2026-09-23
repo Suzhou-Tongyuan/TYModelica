@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops;
+within Modelica.Mechanics.MultiBody.Examples.Loops;
 model Engine1b_analytic
   "Model of one cylinder engine with gas force and analytic loop handling"
   extends Modelica.Icons.Example;

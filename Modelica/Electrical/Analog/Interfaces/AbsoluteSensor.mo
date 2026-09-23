@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Interfaces;
+within Modelica.Electrical.Analog.Interfaces;
 partial model AbsoluteSensor
   "Base class to measure the absolute value of a pin variable"
   extends Modelica.Icons.RoundSensor;

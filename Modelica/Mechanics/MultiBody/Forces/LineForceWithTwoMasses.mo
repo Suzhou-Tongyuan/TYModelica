@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces;
+within Modelica.Mechanics.MultiBody.Forces;
 model LineForceWithTwoMasses
   "General line force component with two optional point masses on the connection line"
 

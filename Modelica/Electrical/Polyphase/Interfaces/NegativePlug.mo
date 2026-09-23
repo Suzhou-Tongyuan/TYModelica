@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Interfaces;
+within Modelica.Electrical.Polyphase.Interfaces;
 connector NegativePlug "Negative polyphase electrical plug with m pins"
   extends Plug;
   annotation (

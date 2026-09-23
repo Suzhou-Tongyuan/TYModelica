@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Interfaces;
+within Modelica.Mechanics.Rotational.Interfaces;
 partial model PartialTwoFlanges
   "Partial model for a component with two rotational 1-dim. shaft flanges"
 

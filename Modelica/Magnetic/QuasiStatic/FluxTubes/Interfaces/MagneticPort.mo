@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
 connector MagneticPort "Quasi-static magnetic port"
   SI.ComplexMagneticPotential V_m
   "Complex magnetic potential at the port";

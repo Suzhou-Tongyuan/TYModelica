@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function resolveRelative
   "Transform vector from frame 1 to frame 2 using absolute orientation objects of frame 1 and of frame 2"
 

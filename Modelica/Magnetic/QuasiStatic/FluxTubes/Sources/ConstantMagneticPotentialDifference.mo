@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sources;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sources;
 model ConstantMagneticPotentialDifference "Constant magnetomotive force"
 
   extends FluxTubes.Interfaces.Source;

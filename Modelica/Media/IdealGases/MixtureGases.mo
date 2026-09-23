@@ -1,4 +1,4 @@
-﻿within Modelica.Media.IdealGases;
+within Modelica.Media.IdealGases;
 package MixtureGases "Medium models consisting of mixtures of ideal gases"
   extends Modelica.Icons.VariantsPackage;
 

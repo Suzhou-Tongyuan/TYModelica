@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Icons;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Icons;
 partial model Toroid "Icon for toroid"
   annotation (Icon(graphics={
         Text(

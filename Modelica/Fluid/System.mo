@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid;
+within Modelica.Fluid;
 model System
   "System properties and default values (ambient, flow direction, initialization)"
 

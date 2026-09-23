@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 partial model PartialAirGapDC "Partial airgap model of a DC machine"
   parameter Boolean quasiStatic(start=false)
     "No electrical transients if true" annotation (Evaluate=true);
@@ -71,7 +71,7 @@ equation
                 fillColor={170,213,255})}), Documentation(info="<html>
 Linear model of the airgap (without saturation effects) of a DC machine, using only equations.<br>
 Induced excitation voltage is calculated from der(flux), where flux is defined by excitation inductance times excitation current.
-If <code>quasiStatic == false</code>, the electrical transients are neglected, i.e., the induced excitation voltage is zero.<br>
+If <code>quasiStatic == true</code>, the electrical transients are neglected, i.e., the induced excitation voltage is zero.<br>
 Induced armature voltage is calculated from flux times angular velocity.
 </html>"));
 end PartialAirGapDC;

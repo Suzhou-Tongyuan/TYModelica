@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal;
+within Modelica.Electrical.Machines.Thermal;
 package DCMachines "Thermal parts of DC machines"
   extends Modelica.Icons.VariantsPackage;
 

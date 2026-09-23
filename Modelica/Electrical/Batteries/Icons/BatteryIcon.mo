@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Icons;
+within Modelica.Electrical.Batteries.Icons;
 model BatteryIcon "Icon for cells and stacks"
   input Real displaySOC "SOC for display" 
     annotation(HideResult=true);

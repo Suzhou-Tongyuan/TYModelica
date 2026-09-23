@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.BasicExamples;
+within Modelica.Magnetic.FluxTubes.Examples.BasicExamples;
 model ToroidalCoreAirgap "Educational example: iron core with airgap"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

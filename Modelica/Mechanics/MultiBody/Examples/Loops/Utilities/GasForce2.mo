@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
 model GasForce2 "Rough approximation of gas force in a combustion engine's cylinder"
   import Modelica.Constants.pi;
 

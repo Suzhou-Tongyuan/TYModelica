@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces;
 partial model AbsoluteSensor "Partial potential sensor"
   extends Modelica.Icons.RoundSensor;
   SI.AngularVelocity omega;

@@ -1,4 +1,4 @@
-﻿package SIunits
+package SIunits
   "Library of type and unit definitions based on SI units according to ISO 31-1992"
   extends Modelica.Icons.Package;
 package UsersGuide "User's Guide of SIunits Library"

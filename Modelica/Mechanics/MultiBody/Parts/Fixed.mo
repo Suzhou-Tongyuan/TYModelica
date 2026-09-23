@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Parts;
+within Modelica.Mechanics.MultiBody.Parts;
 model Fixed "Frame fixed in the world frame at a given position"
   import Modelica.Mechanics.MultiBody.Types;
   import Modelica.Units.Conversions.to_unit1;

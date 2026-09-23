@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks;
+within Modelica.ComplexBlocks;
 package ComplexMath "Library of mathematical functions as input/output blocks"
   extends Modelica.Icons.Package;
 

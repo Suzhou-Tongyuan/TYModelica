@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Examples.Utilities;
+within Modelica.Electrical.Polyphase.Examples.Utilities;
 model AnalysatorAC "Analyze AC voltage, current and power"
   extends Icons.RoundSensor;
   extends Modelica.Electrical.Polyphase.Interfaces.TwoPlug;

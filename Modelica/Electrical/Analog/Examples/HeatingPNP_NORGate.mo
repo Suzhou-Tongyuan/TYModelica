@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model HeatingPNP_NORGate "Heating PNP NOR Gate"
   extends Modelica.Icons.Example;
   parameter SI.Capacitance CapVal=0 "Value for capacitances" annotation (Evaluate=true);
@@ -66,7 +66,7 @@ model HeatingPNP_NORGate "Heating PNP NOR Gate"
         origin={-70,38},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Capacitor C2(final C=CapVal) 
+  Modelica.Electrical.Analog.Basic.Capacitor C2(final C=CapVal,v(start=0)) 
   annotation (Placement(transformation(
         origin={60,42},
         extent={{-10,-10},{10,10}},

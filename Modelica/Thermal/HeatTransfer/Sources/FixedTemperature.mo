@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Sources;
+within Modelica.Thermal.HeatTransfer.Sources;
 model FixedTemperature "Fixed temperature boundary condition in Kelvin"
 
   parameter SI.Temperature T "Fixed temperature at port";

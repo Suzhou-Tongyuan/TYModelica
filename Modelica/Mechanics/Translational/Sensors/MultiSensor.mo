@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sensors;
+within Modelica.Mechanics.Translational.Sensors;
 model MultiSensor
   "Ideal sensor to measure the absolute velocity, force and power between two flanges"
   extends Translational.Interfaces.PartialRelativeSensor;

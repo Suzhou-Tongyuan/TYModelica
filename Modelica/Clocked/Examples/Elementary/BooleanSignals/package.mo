@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary;
+within Modelica.Clocked.Examples.Elementary;
 package BooleanSignals "Examples that are used for the documentation of the Modelica.Clocked.BooleanSignals sub-library"
   extends Modelica.Icons.ExamplesPackage;
 

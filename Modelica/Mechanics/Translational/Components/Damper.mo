@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Components;
+within Modelica.Mechanics.Translational.Components;
 model Damper "Linear 1D translational damper"
   extends Translational.Interfaces.PartialCompliantWithRelativeStates;
   parameter SI.TranslationalDampingConstant d(final min=0, start=0)

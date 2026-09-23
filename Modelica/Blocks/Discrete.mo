@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package Discrete
   "Library of discrete input/output blocks with fixed sample period"
 

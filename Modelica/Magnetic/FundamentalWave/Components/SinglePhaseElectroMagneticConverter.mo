@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Components;
+within Modelica.Magnetic.FundamentalWave.Components;
 model SinglePhaseElectroMagneticConverter
   "Single-phase electromagnetic converter"
   import Modelica.Constants.pi;

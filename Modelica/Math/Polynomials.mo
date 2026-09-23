@@ -1,4 +1,4 @@
-﻿within Modelica.Math;
+within Modelica.Math;
     package Polynomials
       "Library of functions operating on polynomials (including polynomial fitting)"
       extends Modelica.Icons.FunctionsPackage;

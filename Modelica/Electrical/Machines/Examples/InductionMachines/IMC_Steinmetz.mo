@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.InductionMachines;
+within Modelica.Electrical.Machines.Examples.InductionMachines;
 model IMC_Steinmetz
   "InductionMachineSquirrelCage Steinmetz-connection"
   extends Modelica.Icons.Example;

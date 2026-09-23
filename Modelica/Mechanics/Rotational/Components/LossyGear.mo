@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model LossyGear
   "Gear with mesh efficiency and bearing friction (stuck/rolling possible)"
 

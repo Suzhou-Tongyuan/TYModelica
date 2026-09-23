@@ -1,4 +1,4 @@
-﻿connector InnerMemory = OuterMemory "'inner memory' as connector"  annotation(__MWORKS(Memory), defaultComponentName = "X", defaultComponentPrefixes = "inner",Icon(coordinateSystem(extent={{-100,-100},{100,100}},
+connector InnerMemory = OuterMemory "'inner memory' as connector"  annotation(__MWORKS(Memory), defaultComponentName = "X", defaultComponentPrefixes = "inner",Icon(coordinateSystem(extent={{-100,-100},{100,100}},
 grid={2,2}),graphics = {Rectangle(origin={0,0},
 lineColor={0,0,127},
 fillColor={255,255,255},

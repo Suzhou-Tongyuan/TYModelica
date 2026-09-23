@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Functions;
+within Modelica.Electrical.Polyphase.Functions;
 function factorY2D "Calculates factor Y voltage to polygon (delta) voltage"
   extends Modelica.Icons.Function;
   import Modelica.Electrical.Polyphase.Functions.numberOfSymmetricBaseSystems;

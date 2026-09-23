@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Lines;
+within Modelica.Electrical.Analog.Lines;
 model TLine2
   "Lossless transmission line with characteristic impedance Z0, frequency F and normalized length NL"
 

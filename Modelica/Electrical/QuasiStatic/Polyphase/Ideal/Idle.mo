@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Ideal;
+within Modelica.Electrical.QuasiStatic.Polyphase.Ideal;
 model Idle "Idle branch"
   extends Interfaces.TwoPlug;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Sampler;
+within Modelica.Clocked.IntegerSignals.Sampler;
 package Utilities "Utility components that are usually not directly used"
    extends Modelica.Icons.UtilitiesPackage;
 

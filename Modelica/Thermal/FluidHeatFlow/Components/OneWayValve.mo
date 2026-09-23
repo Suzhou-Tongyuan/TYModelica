@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Components;
+within Modelica.Thermal.FluidHeatFlow.Components;
 model OneWayValve "Simple one-way valve"
   extends FluidHeatFlow.BaseClasses.TwoPort(m(start=0), final tapT=1);
 

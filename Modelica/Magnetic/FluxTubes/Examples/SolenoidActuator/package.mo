@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples;
+within Modelica.Magnetic.FluxTubes.Examples;
 package SolenoidActuator "Two models of a reluctance actuator of different modelling depth and their comparison and usage"
   extends Modelica.Icons.ExamplesPackage;
 

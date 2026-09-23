@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Constraints;
+within Modelica.Mechanics.MultiBody.Examples.Constraints;
 model PrismaticConstraint
   "Body attached by one spring and two prismatic joints or constrained to environment"
   extends Modelica.Icons.Example;

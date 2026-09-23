@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCDC.ExampleTemplates;
+within Modelica.Electrical.PowerConverters.Examples.DCDC.ExampleTemplates;
 partial model HBridge "H bridge DC/DC converter"
   extends Icons.ExampleTemplate;
   parameter SI.Frequency f=1000 "Switching frequency";

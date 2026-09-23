@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model CosineCurrent "Cosine current source"
   parameter SI.Current I(start=1) "Amplitude of cosine wave";
   parameter SI.Angle phase=0 "Phase of cosine wave";

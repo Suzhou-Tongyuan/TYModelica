@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes;
+within Modelica.Magnetic.FluxTubes;
 package Interfaces "Interfaces of magnetic network components"
   extends Modelica.Icons.InterfacesPackage;
 

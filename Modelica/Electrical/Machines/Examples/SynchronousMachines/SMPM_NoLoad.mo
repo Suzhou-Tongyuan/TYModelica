@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMPM_NoLoad "SMPM at no-load"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

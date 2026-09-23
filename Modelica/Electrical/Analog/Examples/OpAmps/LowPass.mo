@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps;
+within Modelica.Electrical.Analog.Examples.OpAmps;
 model LowPass "Low-pass filter"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

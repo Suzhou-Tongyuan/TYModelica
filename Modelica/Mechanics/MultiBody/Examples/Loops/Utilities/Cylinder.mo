@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
 model Cylinder "Cylinder with rod and crank of a combustion engine"
   parameter Boolean animation=true "= true, if animation shall be enabled";
   parameter SI.Length cylinderTopPosition=0.42

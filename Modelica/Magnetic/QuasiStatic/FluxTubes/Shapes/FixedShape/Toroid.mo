@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.FixedShape;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.FixedShape;
 model Toroid "Toroid with circular cross section; fixed shape"
 
   extends Modelica.Magnetic.QuasiStatic.FluxTubes.BaseClasses.FixedShape;

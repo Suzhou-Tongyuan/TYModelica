@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial.LoopStructures;
+within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial.LoopStructures;
 class Introduction "Introduction"
   extends Modelica.Icons.Information;
 

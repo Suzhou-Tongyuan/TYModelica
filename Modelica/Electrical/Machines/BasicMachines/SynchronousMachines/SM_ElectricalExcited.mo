@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.SynchronousMachines;
+within Modelica.Electrical.Machines.BasicMachines.SynchronousMachines;
 model SM_ElectricalExcited
   "Electrical excited synchronous machine with damper cage"
   extends Machines.Interfaces.PartialBasicInductionMachine(

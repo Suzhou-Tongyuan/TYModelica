@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase;
+within Modelica.Electrical.QuasiStatic.SinglePhase;
 package Interfaces "Interfaces for AC single-phase models"
   extends Modelica.Icons.InterfacesPackage;
 

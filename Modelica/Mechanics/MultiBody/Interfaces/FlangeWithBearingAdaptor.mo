@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 model FlangeWithBearingAdaptor
   "Adaptor to allow direct connections to the sub-connectors of FlangeWithBearing"
   parameter Boolean includeBearingConnector=false

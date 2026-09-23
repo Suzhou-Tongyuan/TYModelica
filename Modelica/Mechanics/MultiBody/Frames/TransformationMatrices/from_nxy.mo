@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function from_nxy "Return orientation object from n_x and n_y vectors"
   extends Modelica.Icons.Function;
   import Modelica.Math.Vectors.length;

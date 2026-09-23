@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial;
+within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial;
 class ConnectionOfLineForces "Connection of LineForces"
   extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>

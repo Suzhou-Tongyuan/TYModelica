@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody;
+within Modelica.Mechanics.MultiBody;
 package Parts "Rigid components such as bodies with mass and inertia and massless rods"
   extends Modelica.Icons.Package;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals;
+within Modelica.Clocked.BooleanSignals;
 package Sampler "Library of sampler and hold blocks for Boolean signals"
   extends Modelica.Icons.Package;
 

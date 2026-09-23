@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Periodic;
+within Modelica.Clocked.RealSignals.Periodic;
 block StateSpace "Discrete-time State Space block"
   parameter Real A[:, size(A, 1)] "Matrix A of state space model";
   parameter Real B[size(A, 1), :] "Matrix B of state space model";

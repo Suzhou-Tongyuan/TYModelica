@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave;
+within Modelica.Magnetic.FundamentalWave;
 package BasicMachines "Basic machine components and models"
   extends Modelica.Icons.Package;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational;
+within Modelica.Mechanics.Rotational;
 package UsersGuide "User's Guide of Rotational Library"
   extends Modelica.Icons.Information;
 

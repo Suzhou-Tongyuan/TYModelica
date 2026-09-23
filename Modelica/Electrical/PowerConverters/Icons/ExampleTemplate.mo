@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Icons;
+within Modelica.Electrical.PowerConverters.Icons;
 partial model ExampleTemplate "Example template"
 
   annotation (Icon(graphics={Ellipse(

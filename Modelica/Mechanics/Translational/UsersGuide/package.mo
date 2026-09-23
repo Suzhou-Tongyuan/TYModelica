@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational;
+within Modelica.Mechanics.Translational;
 package UsersGuide "User's Guide of Translational Library"
   extends Modelica.Icons.Information;
 

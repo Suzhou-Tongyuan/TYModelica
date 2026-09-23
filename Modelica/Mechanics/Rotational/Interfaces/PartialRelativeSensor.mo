@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Interfaces;
+within Modelica.Mechanics.Rotational.Interfaces;
 partial model PartialRelativeSensor
   "Partial model to measure a single relative variable between two flanges"
   extends Modelica.Icons.RoundSensor;

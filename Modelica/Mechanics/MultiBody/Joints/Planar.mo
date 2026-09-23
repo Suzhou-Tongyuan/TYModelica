@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 model Planar "Planar joint (3 degrees-of-freedom, 6 potential states)"
 
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;

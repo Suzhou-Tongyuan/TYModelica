@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Rotational3DEffects;
+within Modelica.Mechanics.MultiBody.Examples.Rotational3DEffects;
 model BevelGear1D
   "Demonstrates the usage of a BevelGear1D model and how to calculate the power of such an element"
   import Modelica.Mechanics.MultiBody.Frames;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples.Utilities;
+within Modelica.Mechanics.Translational.Examples.Utilities;
 model SpringDamper "Input/output block of a spring/damper model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.TranslationalSpringConstant c=1e4

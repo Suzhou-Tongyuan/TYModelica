@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial.LoopStructures;
+within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial.LoopStructures;
 class PlanarLoops "Planar loops"
   extends Modelica.Icons.Information;
 

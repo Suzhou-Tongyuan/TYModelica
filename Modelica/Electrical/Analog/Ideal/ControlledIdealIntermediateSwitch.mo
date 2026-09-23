@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model ControlledIdealIntermediateSwitch
   "Controlled ideal intermediate switch"
   parameter SI.Voltage level=0.5 "Switch level";

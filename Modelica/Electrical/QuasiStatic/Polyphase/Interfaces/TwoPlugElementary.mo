@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
+within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
 partial model TwoPlugElementary "Two plugs with pin-adapter and reference connection, without declaration of voltage and current"
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);
   SI.AngularVelocity omega "Angular velocity of reference frame";

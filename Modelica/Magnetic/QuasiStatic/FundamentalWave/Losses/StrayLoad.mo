@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Losses;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Losses;
 model StrayLoad "Model of stray load losses dependent on current and speed"
   extends Modelica.Electrical.QuasiStatic.Polyphase.Interfaces.OnePort;
   extends Modelica.Electrical.Machines.Interfaces.FlangeSupport;

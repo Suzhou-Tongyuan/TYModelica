@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Blocks;
+within Modelica.Electrical.QuasiStatic.Polyphase.Blocks;
 block ToSpacePhasor "Conversion: m phase -> space phasor"
   extends Modelica.Blocks.Icons.Block;
   // import Modelica.ComplexMath.j;

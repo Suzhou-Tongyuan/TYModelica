@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCAC.PolyphaseTwoLevel;
+within Modelica.Electrical.PowerConverters.Examples.DCAC.PolyphaseTwoLevel;
 model PolyphaseTwoLevel_R "Polyphase DC to AC converter with R load"
   extends Modelica.Icons.Example;
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);

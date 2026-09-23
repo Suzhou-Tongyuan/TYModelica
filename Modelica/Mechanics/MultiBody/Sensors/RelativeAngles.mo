@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model RelativeAngles "Measure relative angles between two frame connectors"
   extends Internal.PartialRelativeSensor 
     annotation(IconMap(primitivesVisible=false));

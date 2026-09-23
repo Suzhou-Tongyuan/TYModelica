@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Icons;
+within Modelica.Magnetic.FluxTubes.Icons;
 partial model Reluctance "Icon for reluctance / permeance components"
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(points={{-70,0},{-100,0}}, color={255,128,0}),

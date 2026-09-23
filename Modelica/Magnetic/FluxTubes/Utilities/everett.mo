@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Utilities;
+within Modelica.Magnetic.FluxTubes.Utilities;
 function everett "Everett function, see [YUY89]"
   extends Modelica.Icons.Function;
   import Modelica.Constants.pi;

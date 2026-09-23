@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model RelativeAngularVelocity
   "Measure relative angular velocity between two frame connectors"
   extends Internal.PartialRelativeSensor;

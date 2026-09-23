@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
+within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
 record BaseData "Record for permanent magnetic material data"
   extends Modelica.Icons.Record;
 

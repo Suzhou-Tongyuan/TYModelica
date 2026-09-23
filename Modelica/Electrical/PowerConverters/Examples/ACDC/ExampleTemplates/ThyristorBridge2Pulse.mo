@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.ExampleTemplates;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.ExampleTemplates;
 partial model ThyristorBridge2Pulse
   "Template of two pulse Graetz thyristor bridge"
   extends Icons.ExampleTemplate;

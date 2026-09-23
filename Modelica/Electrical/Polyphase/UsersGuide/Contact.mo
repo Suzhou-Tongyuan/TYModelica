@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.UsersGuide;
+within Modelica.Electrical.Polyphase.UsersGuide;
 class Contact "Contact"
   extends Modelica.Icons.Contact;
   annotation (preferredView="info",

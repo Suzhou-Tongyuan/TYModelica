@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces;
+within Modelica.Electrical.Machines.Interfaces;
 partial model PartialBasicDCMachine "Partial model for DC machine"
   parameter SI.Temperature TaOperational(start=293.15)
     "Operational armature temperature" annotation (Dialog(group=

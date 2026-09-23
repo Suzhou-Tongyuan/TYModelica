@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model PreLoad "Preload of a spool using ElastoGap models"
 
   extends Modelica.Icons.Example;

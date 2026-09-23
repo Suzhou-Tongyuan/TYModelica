@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler;
+within Modelica.Clocked.RealSignals.Sampler;
 package Utilities "Utility components that are usually not directly used"
    extends Modelica.Icons.UtilitiesPackage;
 

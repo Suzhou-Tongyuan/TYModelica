@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
+within Modelica.Mechanics.MultiBody.Sensors.Internal;
 model BasicTransformRelativeVector
   "Transform relative vector into another frame"
   import Modelica.Mechanics.MultiBody.Frames;

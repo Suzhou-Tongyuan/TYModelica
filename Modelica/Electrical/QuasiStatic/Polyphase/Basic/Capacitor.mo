@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model Capacitor "Polyphase linear capacitor"
   extends Interfaces.TwoPlug;
   parameter SI.Capacitance C[m](start=fill(1, m))

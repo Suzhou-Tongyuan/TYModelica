@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
 model Engine "Internal combustion engine."
   Modelica.Blocks.Interfaces.RealInput Theta(unit="deg")
     "Throttle angle (deg)" 

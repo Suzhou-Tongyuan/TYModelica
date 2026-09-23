@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog;
+within Modelica.Electrical.Analog;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 

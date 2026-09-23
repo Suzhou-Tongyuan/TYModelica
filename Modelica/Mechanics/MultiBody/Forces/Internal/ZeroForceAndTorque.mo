@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Forces.Internal;
+within Modelica.Mechanics.MultiBody.Forces.Internal;
 model ZeroForceAndTorque "Set force and torque to zero"
    extends Modelica.Blocks.Icons.Block;
   Interfaces.Frame_a frame_a 

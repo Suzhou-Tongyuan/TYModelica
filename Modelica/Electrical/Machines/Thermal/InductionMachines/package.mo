@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal;
+within Modelica.Electrical.Machines.Thermal;
 package InductionMachines "Thermal parts of induction machines"
   extends Modelica.Icons.VariantsPackage;
 

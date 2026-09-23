@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.TimeBasedSources;
+within Modelica.Clocked.BooleanSignals.TimeBasedSources;
 block Pulse "Generate pulse signal of type Boolean"
   extends BooleanSignals.Interfaces.PartialClockedSO;
   parameter Real width(

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model WhyArrows "Use of arrows in Mechanics.Translational"
 
   extends Modelica.Icons.Example;

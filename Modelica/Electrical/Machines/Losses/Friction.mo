@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses;
+within Modelica.Electrical.Machines.Losses;
 model Friction "Model of angular velocity dependent friction losses"
   extends Machines.Interfaces.FlangeSupport;
   parameter FrictionParameters frictionParameters

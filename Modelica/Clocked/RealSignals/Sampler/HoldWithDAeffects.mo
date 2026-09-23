@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler;
+within Modelica.Clocked.RealSignals.Sampler;
 block HoldWithDAeffects
   "Hold with (simulated) Digital-Analog converter effects and computational delay"
   extends Clocked.RealSignals.Interfaces.PartialSISOHold;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.ParameterRecords.TransientData;
+within Modelica.Electrical.Batteries.ParameterRecords.TransientData;
 record ExampleData "Example parameters of a transient battery cell"
   extends Modelica.Electrical.Batteries.ParameterRecords.TransientData.CellData(
     CellType="Example data",

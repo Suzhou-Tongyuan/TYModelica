@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model HeatLosses "Demonstrate the modeling of heat losses"
   extends Modelica.Icons.Example;
   Components.Mass mass1(

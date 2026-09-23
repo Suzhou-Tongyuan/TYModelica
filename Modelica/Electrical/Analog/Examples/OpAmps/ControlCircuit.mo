@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps;
+within Modelica.Electrical.Analog.Examples.OpAmps;
 model ControlCircuit "Control circuit"
   extends Modelica.Icons.Example;
   parameter SI.Time T1=0.01 "Small time constant";

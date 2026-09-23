@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Parts;
+within Modelica.Mechanics.MultiBody.Parts;
 model BodyShape
   "Rigid body with mass, inertia tensor, different shapes for animation, and two frame connectors (12 potential states)"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid.Examples;
+within Modelica.Fluid.Examples;
 package Tanks "Library demonstrating the usage of the tank model"
   extends Modelica.Icons.ExamplesPackage;
 

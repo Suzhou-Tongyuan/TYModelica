@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
 model VoltageSensor "Voltage sensor"
   extends Modelica.Electrical.QuasiStatic.Polyphase.Interfaces.RelativeSensorElementary;
 

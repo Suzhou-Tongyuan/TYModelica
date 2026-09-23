@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples;
+within Modelica.Clocked.Examples;
 package SimpleControlledDrive "Examples based on a simple controlled drive with different ways to define the sampling"
 extends Modelica.Icons.ExamplesPackage;
 

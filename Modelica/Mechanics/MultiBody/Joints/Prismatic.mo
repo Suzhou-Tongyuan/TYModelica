@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 model Prismatic
   "Prismatic joint (1 translational degree-of-freedom, 2 potential states, optional axis flange)"
 

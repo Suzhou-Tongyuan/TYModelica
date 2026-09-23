@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model Sensors "Sensors for translational systems"
   extends Modelica.Icons.Example;
 

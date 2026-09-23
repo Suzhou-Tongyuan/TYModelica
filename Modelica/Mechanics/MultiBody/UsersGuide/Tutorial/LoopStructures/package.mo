@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial;
+within Modelica.Mechanics.MultiBody.UsersGuide.Tutorial;
 package LoopStructures "Loop structures"
   extends Modelica.Icons.Information;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material;
+within Modelica.Magnetic.FluxTubes.Material;
 package HardMagnetic "Characteristics of common permanent magnetic materials (temperature dependence considered)"
   extends Modelica.Icons.MaterialPropertiesPackage;
 

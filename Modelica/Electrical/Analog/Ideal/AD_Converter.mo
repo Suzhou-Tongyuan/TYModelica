@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model AD_Converter "Simple n-bit analog to digital converter"
   import L = Modelica.Electrical.Digital.Interfaces.Logic;
   Modelica.Electrical.Analog.Interfaces.PositivePin p

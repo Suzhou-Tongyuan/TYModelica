@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMEE_DOL
   "Test example: ElectricalExcitedSynchronousMachine starting direct on line"
   extends Modelica.Icons.Example;

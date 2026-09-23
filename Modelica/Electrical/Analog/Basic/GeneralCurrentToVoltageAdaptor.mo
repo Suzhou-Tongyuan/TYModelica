@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model GeneralCurrentToVoltageAdaptor
   "Signal adaptor for an Electrical OnePort with voltage and derivative of voltage as outputs and current and derivative of current as inputs (especially useful for FMUs)"
   extends Modelica.Blocks.Interfaces.Adaptors.FlowToPotentialAdaptor(

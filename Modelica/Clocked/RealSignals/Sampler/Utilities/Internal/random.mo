@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
+within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
 function random "Pseudo random number generator"
   extends Modelica.Icons.Function;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.DCAC.Control;
+within Modelica.Electrical.PowerConverters.DCAC.Control;
 block PWM "PulseWidthModulation"
   extends Modelica.Blocks.Icons.Block;
   constant Integer m=3 "Number of phases";

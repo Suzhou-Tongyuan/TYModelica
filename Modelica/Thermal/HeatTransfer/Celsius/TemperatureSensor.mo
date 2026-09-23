@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Celsius;
+within Modelica.Thermal.HeatTransfer.Celsius;
 model TemperatureSensor "Absolute temperature sensor in degCelsius"
 
   Modelica.Blocks.Interfaces.RealOutput T(unit="degC")

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model Conductor "Polyphase linear conductor"
   extends Interfaces.TwoPlug;
   parameter SI.Conductance G_ref[m](start=fill(1, m))

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HysteresisTableData;
+within Modelica.Magnetic.FluxTubes.Material.HysteresisTableData;
 record Vacoflux48 "Vacoflux48"
   extends FluxTubes.Material.HysteresisTableData.BaseData(
     tabris=[-1500,-2.22424; -1000,-2.22424; -798.541,-2.22424; -641.021,-2.19521;

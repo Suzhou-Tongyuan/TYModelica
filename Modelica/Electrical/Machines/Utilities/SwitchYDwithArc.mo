@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 model SwitchYDwithArc "Y-D-switch with arc"
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   parameter SI.Resistance Ron=1e-5 "Closed switch resistance";

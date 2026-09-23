@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCAC.ExampleTemplates;
+within Modelica.Electrical.PowerConverters.Examples.DCAC.ExampleTemplates;
 partial model SinglePhaseTwoLevel
   "Single-phase two level inverter including control"
   extends Icons.ExampleTemplate;

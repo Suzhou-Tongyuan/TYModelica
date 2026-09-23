@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.ExampleTemplates;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.ExampleTemplates;
 partial model Thyristor1Pulse "Template of single pulse rectifier"
   extends Icons.ExampleTemplate;
   import Modelica.Constants.pi;

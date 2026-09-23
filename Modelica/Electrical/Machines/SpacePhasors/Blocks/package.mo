@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors;
+within Modelica.Electrical.Machines.SpacePhasors;
 package Blocks "Blocks for space phasor transformation"
   extends Modelica.Icons.Package;
 

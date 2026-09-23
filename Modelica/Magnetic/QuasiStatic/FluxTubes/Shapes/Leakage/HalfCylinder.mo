@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes.Leakage;
 model HalfCylinder "Leakage flux through the edges of a half cylinder"
 
   extends BaseClasses.Leakage;

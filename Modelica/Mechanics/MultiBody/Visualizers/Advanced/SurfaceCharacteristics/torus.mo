@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Advanced.SurfaceCharacteristics;
+within Modelica.Mechanics.MultiBody.Visualizers.Advanced.SurfaceCharacteristics;
 function torus "Function defining the surface characteristic of a torus"
   extends Modelica.Mechanics.MultiBody.Interfaces.partialSurfaceCharacteristic(
     final multiColoredSurface=false);

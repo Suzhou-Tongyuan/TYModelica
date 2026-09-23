@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.DCMachines;
+within Modelica.Electrical.Machines.BasicMachines.DCMachines;
 model DC_PermanentMagnet "Permanent magnet DC machine"
   extends Machines.Interfaces.PartialBasicDCMachine(
     final ViNominal=VaNominal - Machines.Thermal.convertResistance(

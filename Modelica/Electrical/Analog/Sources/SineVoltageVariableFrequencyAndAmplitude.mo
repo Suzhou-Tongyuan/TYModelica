@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model SineVoltageVariableFrequencyAndAmplitude
   "Sine voltage source with variable frequency and amplitude"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;

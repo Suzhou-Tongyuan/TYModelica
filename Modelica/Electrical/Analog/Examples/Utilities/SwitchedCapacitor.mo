@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.Utilities;
+within Modelica.Electrical.Analog.Examples.Utilities;
 model SwitchedCapacitor "Switched capacitor which can represent a positive or negative resistance"
 
   parameter SI.Time clock(start=1) "Clock";

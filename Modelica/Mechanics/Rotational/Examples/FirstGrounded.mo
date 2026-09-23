@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model FirstGrounded
   "First example: simple drive train with grounded elements"
   extends Modelica.Icons.Example;

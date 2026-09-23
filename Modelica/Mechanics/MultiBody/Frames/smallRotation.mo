@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function smallRotation
   "Return rotation angles valid for a small rotation and optionally residues that should be zero"
 

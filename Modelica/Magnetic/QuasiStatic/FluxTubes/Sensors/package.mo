@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes;
+within Modelica.Magnetic.QuasiStatic.FluxTubes;
 package Sensors "Sensors to measure variables in magnetic networks"
   extends Modelica.Icons.SensorsPackage;
   annotation (Documentation(info="<html>

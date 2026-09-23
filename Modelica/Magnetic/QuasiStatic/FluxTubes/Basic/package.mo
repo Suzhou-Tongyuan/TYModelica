@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes;
+within Modelica.Magnetic.QuasiStatic.FluxTubes;
 package Basic "Basic elements of magnetic network models"
   extends Modelica.Icons.Package;
   annotation (Documentation(info="<html>

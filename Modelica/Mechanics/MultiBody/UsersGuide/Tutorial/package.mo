@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.UsersGuide;
+within Modelica.Mechanics.MultiBody.UsersGuide;
 package Tutorial "Tutorial"
   extends Modelica.Icons.Information;
 

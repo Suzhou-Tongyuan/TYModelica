@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function resolve1 "Transform vector from frame 2 to frame 1"
   extends Modelica.Icons.Function;
   input Orientation R "Orientation object to rotate frame 1 into frame 2";

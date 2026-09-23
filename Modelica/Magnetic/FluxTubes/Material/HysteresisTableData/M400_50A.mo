@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HysteresisTableData;
+within Modelica.Magnetic.FluxTubes.Material.HysteresisTableData;
 record M400_50A "M400-50A"
   extends FluxTubes.Material.HysteresisTableData.BaseData(
     tabris=[-50000,-2.40794008749097; -37500,-2.39224008749097; -25000,-2.24695058192848;

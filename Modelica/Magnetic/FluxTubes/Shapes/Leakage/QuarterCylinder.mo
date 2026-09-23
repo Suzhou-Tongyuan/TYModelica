@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.Leakage;
+within Modelica.Magnetic.FluxTubes.Shapes.Leakage;
 model QuarterCylinder
   "Leakage flux from one edge to the opposite plane through a quarter cylinder"
 

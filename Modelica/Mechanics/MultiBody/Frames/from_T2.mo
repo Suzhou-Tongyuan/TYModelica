@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function from_T2
   "Return orientation object R from transformation matrix T and its derivative der(T)"
   extends Modelica.Icons.Function;

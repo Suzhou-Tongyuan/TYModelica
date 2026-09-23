@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.Utilities;
+within Modelica.Electrical.Batteries.Utilities;
 block PulseSeries "Series of pulses"
   import Modelica.Math.BooleanVectors.oneTrue;
   parameter Real amplitude1= 1 "Amplitude of 1st pulse series";

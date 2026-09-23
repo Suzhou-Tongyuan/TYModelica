@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Interfaces;
+within Modelica.Mechanics.Translational.Interfaces;
 model InternalSupport
   "Adapter model to utilize conditional support connector"
   input SI.Force f

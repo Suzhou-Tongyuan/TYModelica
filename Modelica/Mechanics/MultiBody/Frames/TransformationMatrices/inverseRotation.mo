@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function inverseRotation "Return inverse orientation object"
   extends Modelica.Icons.Function;
   input TransformationMatrices.Orientation T

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.BasicMachines.Components;
+within Modelica.Electrical.QuasiStatic.Machines.BasicMachines.Components;
 model IdealCore "Ideal transformer with 3 windings"
   extends PartialCore;
 equation

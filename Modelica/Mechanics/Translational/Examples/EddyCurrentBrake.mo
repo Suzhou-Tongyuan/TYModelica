@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model EddyCurrentBrake "Demonstrate the usage of the translational eddy current brake"
   extends Modelica.Icons.Example;
   Modelica.Mechanics.Translational.Sources.EddyCurrentForce 

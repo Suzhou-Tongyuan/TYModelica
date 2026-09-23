@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Components;
 model PolyphaseElectroMagneticConverter
   "Polyphase electromagnetic converter"
   import Modelica.Constants.pi;

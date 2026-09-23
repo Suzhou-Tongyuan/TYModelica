@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.TimeBasedSources;
+within Modelica.Clocked.BooleanSignals.TimeBasedSources;
 block Step "Generate step signal of type Boolean"
   extends BooleanSignals.Interfaces.PartialClockedSO;
   parameter SI.Time startTime=0 "Time instant of step start";

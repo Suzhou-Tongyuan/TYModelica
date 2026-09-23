@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Exp "Output the exponential (base e) of the input"
   extends Interfaces.ComplexSISO;
 equation

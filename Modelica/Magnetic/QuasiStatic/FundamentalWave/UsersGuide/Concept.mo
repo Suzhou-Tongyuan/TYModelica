@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.UsersGuide;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.UsersGuide;
 class Concept "Fundamental wave concept"
   extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>

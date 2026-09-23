@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Basic;
+within Modelica.Magnetic.FluxTubes.Basic;
 model Short "Short cut branch"
   extends Interfaces.TwoPortElementary;
 

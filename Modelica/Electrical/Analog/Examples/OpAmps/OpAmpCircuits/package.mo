@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps;
+within Modelica.Electrical.Analog.Examples.OpAmps;
 package OpAmpCircuits "Different circuits with operational amplifiers"
   extends Modelica.Icons.VariantsPackage;
 

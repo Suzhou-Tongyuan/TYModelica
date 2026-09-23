@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 model Rectangle "Visualizing a planar rectangular surface"
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialVisualizer;
 

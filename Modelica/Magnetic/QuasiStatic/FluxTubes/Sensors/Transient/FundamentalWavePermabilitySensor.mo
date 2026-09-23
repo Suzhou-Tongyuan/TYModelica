@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors.Transient;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors.Transient;
 model FundamentalWavePermabilitySensor
 "Sensor of fundamental wave permeability"
   extends Modelica.Icons.RoundSensor;

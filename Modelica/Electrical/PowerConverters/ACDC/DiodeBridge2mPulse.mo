@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC;
+within Modelica.Electrical.PowerConverters.ACDC;
 model DiodeBridge2mPulse "2*m pulse diode rectifier bridge"
   extends Icons.Converter;
   import Modelica.Constants.pi;

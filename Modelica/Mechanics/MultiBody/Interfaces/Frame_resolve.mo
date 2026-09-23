@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 connector Frame_resolve
   "Coordinate system fixed to the component used to express in which coordinate system a vector is resolved (non-filled rectangular icon)"
   extends Frame;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
+within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
 partial model AbsoluteSensor "Partial potential sensor"
   extends Modelica.Icons.RoundSensor;
   parameter Integer m(min=1) = 3 "Number of phases" annotation(Evaluate=true);

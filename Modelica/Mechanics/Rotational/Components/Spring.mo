@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model Spring "Linear 1D rotational spring"
   extends Modelica.Mechanics.Rotational.Interfaces.PartialCompliant;
   parameter SI.RotationalSpringConstant c(final min=0, start=1.0e5)

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
+within Modelica.Clocked.RealSignals.Sampler.Utilities.Internal;
 block UniformNoiseXorshift64star
   "Add band-limited uniform noise based on a xorshift64* number generator"
   extends Clocked.RealSignals.Interfaces.PartialNoise;

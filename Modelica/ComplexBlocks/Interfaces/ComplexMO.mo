@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Interfaces;
+within Modelica.ComplexBlocks.Interfaces;
 partial block ComplexMO "Multiple Output continuous control block"
   extends Modelica.ComplexBlocks.Icons.ComplexBlock;
   parameter Integer nout(min=1) = 1 "Number of outputs";

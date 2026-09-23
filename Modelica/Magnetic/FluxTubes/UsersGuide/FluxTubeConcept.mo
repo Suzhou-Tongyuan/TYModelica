@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.UsersGuide;
+within Modelica.Magnetic.FluxTubes.UsersGuide;
 class FluxTubeConcept "Flux tube concept"
   extends Modelica.Icons.Information;
 

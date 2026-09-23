@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces;
+within Modelica.Electrical.Machines.Interfaces;
 record PowerBalanceTransformer "Power balance of transformers"
   extends Modelica.Icons.Record;
   SI.Power power1 "Primary power";

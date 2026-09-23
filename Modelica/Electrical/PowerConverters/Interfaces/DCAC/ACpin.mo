@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Interfaces.DCAC;
+within Modelica.Electrical.PowerConverters.Interfaces.DCAC;
 partial model ACpin "Single AC pin"
 
   Modelica.Electrical.Analog.Interfaces.PositivePin ac "AC output" 

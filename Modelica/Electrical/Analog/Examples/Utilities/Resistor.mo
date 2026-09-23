@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.Utilities;
+within Modelica.Electrical.Analog.Examples.Utilities;
 model Resistor "Input/output block of a resistance model"
   extends Modelica.Blocks.Icons.Block;
   parameter SI.Resistance R=1 "Resistance";

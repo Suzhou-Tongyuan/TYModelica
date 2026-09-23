@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces;
 partial model TwoPin "Two pins"
   import Modelica.Constants.eps;
   extends Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces.TwoPinElementary;

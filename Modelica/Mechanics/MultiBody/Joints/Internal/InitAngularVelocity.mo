@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints.Internal;
+within Modelica.Mechanics.MultiBody.Joints.Internal;
 model InitAngularVelocity
  "Internal model to initialize w_rel_b for Joints.FreeMotionScalarInit"
   extends Modelica.Blocks.Icons.Block;

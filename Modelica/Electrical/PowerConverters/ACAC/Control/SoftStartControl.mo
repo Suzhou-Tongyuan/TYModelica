@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACAC.Control;
+within Modelica.Electrical.PowerConverters.ACAC.Control;
 block SoftStartControl
   extends Modelica.Blocks.Icons.Block;
   import ModeOfOperation =

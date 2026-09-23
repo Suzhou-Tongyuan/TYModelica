@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Sensors;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Sensors;
 model VoltageSensor "Voltage sensor"
   extends Modelica.Electrical.QuasiStatic.SinglePhase.Interfaces.RelativeSensorElementary;
   Modelica.ComplexBlocks.Interfaces.ComplexOutput v(re(unit = "V"), im(unit = "V")) "Complex voltage" annotation (Placement(

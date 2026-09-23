@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational;
+within Modelica.Mechanics.Translational;
 package Sensors "Sensors for 1-dim. translational mechanical quantities"
 
   extends Modelica.Icons.SensorsPackage;

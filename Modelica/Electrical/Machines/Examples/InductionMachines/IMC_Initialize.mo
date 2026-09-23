@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.InductionMachines;
+within Modelica.Electrical.Machines.Examples.InductionMachines;
 model IMC_Initialize
   "Test example: Steady-State Initialization of InductionMachineSquirrelCage"
   extends Modelica.Icons.Example;

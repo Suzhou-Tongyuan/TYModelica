@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples;
+within Modelica.Mechanics.MultiBody.Examples;
 package Elementary "Elementary examples to demonstrate various features of the MultiBody library"
   extends Modelica.Icons.ExamplesPackage;
   annotation (Documentation(info="<html>

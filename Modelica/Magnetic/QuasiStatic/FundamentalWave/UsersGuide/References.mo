@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.UsersGuide;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.UsersGuide;
 class References "References"
   extends Modelica.Icons.References;
   annotation (Documentation(info="<html>

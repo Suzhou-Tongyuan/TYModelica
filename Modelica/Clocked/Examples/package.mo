@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked;
+within Modelica.Clocked;
 package Examples "Library of examples to demonstrate the usage of package Modelica.Clocked"
   extends Modelica.Icons.ExamplesPackage;
   import Modelica.Units.SI;

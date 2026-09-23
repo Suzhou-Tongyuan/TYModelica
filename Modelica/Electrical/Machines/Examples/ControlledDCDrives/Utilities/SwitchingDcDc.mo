@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
+within Modelica.Electrical.Machines.Examples.ControlledDCDrives.Utilities;
 model SwitchingDcDc "Switching DC-DC inverter"
   parameter SI.Frequency fS "Switching frequency";
   parameter SI.Voltage VMax "Maximum Voltage";

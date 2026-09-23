@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.BatteryStacksWithSensors;
+within Modelica.Electrical.Batteries.BatteryStacksWithSensors;
 model Stack "Stack with sensors"
   extends Modelica.Electrical.Batteries.BaseClasses.BaseStackWithSensors(
     redeclare Modelica.Electrical.Batteries.BaseClasses.BaseStackData stackData,

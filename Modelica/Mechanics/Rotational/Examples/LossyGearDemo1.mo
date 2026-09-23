@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model LossyGearDemo1
   "Example to show that gear efficiency may lead to stuck motion"
   extends Modelica.Icons.Example;

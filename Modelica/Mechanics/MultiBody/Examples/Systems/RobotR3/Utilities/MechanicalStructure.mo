@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
 model MechanicalStructure
   "Model of the mechanical part of the r3 robot (without animation)"
   import Modelica.Units.Conversions.to_unit1;

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples.Utilities;
+within Modelica.Mechanics.Translational.Examples.Utilities;
 model SpringDamperNoRelativeStates
   "Linear 1D translational spring and damper in parallel (s and v are not used as states)"
   parameter SI.TranslationalSpringConstant c(final min=0, start=1.0e5) "Spring constant";

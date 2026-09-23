@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers;
+within Modelica.Mechanics.MultiBody.Visualizers;
 package Advanced "Visualizers that require basic knowledge about Modelica in order to use them"
 
   extends Modelica.Icons.Package;

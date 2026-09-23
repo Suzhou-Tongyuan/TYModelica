@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 package Internal "Internal definitions that may be removed or changed (do not use)"
   extends Modelica.Icons.InternalPackage;
 

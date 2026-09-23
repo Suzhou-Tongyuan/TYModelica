@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model SquirrelCage "Squirrel Cage"
   parameter SI.Inductance Lrsigma
     "Rotor stray inductance per phase translated to stator";

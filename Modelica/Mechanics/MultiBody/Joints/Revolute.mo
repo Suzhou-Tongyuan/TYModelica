@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 model Revolute
   "Revolute joint (1 rotational degree-of-freedom, 2 potential states, optional axis flange)"
 

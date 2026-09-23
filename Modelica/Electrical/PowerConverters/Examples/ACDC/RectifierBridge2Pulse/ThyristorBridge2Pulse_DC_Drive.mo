@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2Pulse;
+within Modelica.Electrical.PowerConverters.Examples.ACDC.RectifierBridge2Pulse;
 model ThyristorBridge2Pulse_DC_Drive
   "Two pulse Graetz thyristor bridge feeding a DC drive"
   extends Modelica.Icons.Example;

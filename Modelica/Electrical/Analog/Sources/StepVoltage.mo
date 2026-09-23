@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model StepVoltage "Step voltage source"
   parameter SI.Voltage V(start=1) "Height of step";
   extends Interfaces.VoltageSource(redeclare Modelica.Blocks.Sources.Step 

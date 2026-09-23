@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model VariableInductor
   "Ideal linear electrical inductor with variable inductance"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;

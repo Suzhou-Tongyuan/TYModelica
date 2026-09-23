@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints;
+within Modelica.Mechanics.MultiBody.Joints;
 model GearConstraint "Ideal 3-dim. gearbox (arbitrary shaft directions)"
   import Modelica.Mechanics.MultiBody.Frames;
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;

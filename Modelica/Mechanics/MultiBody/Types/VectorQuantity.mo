@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 type VectorQuantity = enumeration(
     Force "Force quantity",
     Torque "Torque quantity",

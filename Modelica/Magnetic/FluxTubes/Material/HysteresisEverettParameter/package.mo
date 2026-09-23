@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material;
+within Modelica.Magnetic.FluxTubes.Material;
 package HysteresisEverettParameter "Parameter sets for an analytical description of the Everett function"
   extends Modelica.Icons.MaterialPropertiesPackage;
 

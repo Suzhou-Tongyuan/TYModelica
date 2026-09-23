@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Examples;
+within Modelica.Electrical.QuasiStatic.Polyphase.Examples;
 model BalancingDelta "Balancing an unsymmetrical delta-connected load"
   extends Modelica.Icons.Example;
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);

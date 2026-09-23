@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid;
+within Modelica.Fluid;
 package Interfaces
   "Interfaces for steady state and unsteady, mixed-phase, multi-substance, incompressible and compressible flow"
 

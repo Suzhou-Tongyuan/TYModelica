@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.DCDC.Control;
+within Modelica.Electrical.PowerConverters.DCDC.Control;
 block Voltage2DutyCycle "Linearly transforms voltage to duty cycle"
   parameter Boolean reciprocal = false
     "Enables reciprocal formula between voltage and duty cycle";

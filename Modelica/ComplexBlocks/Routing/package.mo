@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks;
+within Modelica.ComplexBlocks;
 package Routing "Library of blocks to combine and extract signals"
   extends Modelica.Icons.Package;
 

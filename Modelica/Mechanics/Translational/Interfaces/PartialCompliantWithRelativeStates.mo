@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Interfaces;
+within Modelica.Mechanics.Translational.Interfaces;
 partial model PartialCompliantWithRelativeStates
   "Base model for the compliant connection of two translational 1-dim. shaft flanges where the relative position and relative velocities are used as states"
 

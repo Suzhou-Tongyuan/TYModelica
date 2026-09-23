@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Types;
+within Modelica.Magnetic.FundamentalWave.Types;
 record SalientReluctance = Salient (redeclare SI.Reluctance d,
       redeclare SI.Reluctance q) "Salient reluctance" 
   annotation (Documentation(info="<html>

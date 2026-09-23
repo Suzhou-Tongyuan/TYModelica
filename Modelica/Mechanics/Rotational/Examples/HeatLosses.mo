@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model HeatLosses "Demonstrate the modeling of heat losses"
   extends Modelica.Icons.Example;
   Blocks.Sources.Sine sine(f=5, amplitude=20) 

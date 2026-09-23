@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Blocks;
+within Modelica.Electrical.Machines.SpacePhasors.Blocks;
 block LessThreshold "Sets angle to zero when length is below threshold"
   extends Modelica.Blocks.Interfaces.MISO(final nin=2);
   parameter Real threshold(final min=0) "Threshold";

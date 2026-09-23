@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries.BatteryStacks;
+within Modelica.Electrical.Batteries.BatteryStacks;
 model SuperCap "Simple model of a supercapacitor"
   extends Modelica.Electrical.Analog.Interfaces.TwoPin;
   SI.Current i = p.i "Current into the supercap";

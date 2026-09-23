@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.ClockSignals.Interfaces;
+within Modelica.Clocked.ClockSignals.Interfaces;
 partial block PartialClock
   "Icon, connector, and solver method of a block that generates a clock"
   parameter Boolean useSolver = false

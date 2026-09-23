@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Interfaces;
+within Modelica.Electrical.Polyphase.Interfaces;
 connector Plug "Polyphase electrical plug with m pins"
   parameter Integer m(final min=1) = 3 "Number of phases" annotation(Evaluate=true);
   Modelica.Electrical.Analog.Interfaces.Pin pin[m] "Pins of the plug";

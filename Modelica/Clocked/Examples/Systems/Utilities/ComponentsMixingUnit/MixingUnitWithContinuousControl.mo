@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsMixingUnit;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsMixingUnit;
 model MixingUnitWithContinuousControl "Simple example of a mixing unit where a (continuous) nonlinear inverse plant model is used as feedforward controller"
   extends Modelica.Icons.Example;
 

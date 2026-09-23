@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.BasicMachines.Transformers;
+within Modelica.Electrical.QuasiStatic.Machines.BasicMachines.Transformers;
 package Yd "Transformers: primary Y / secondary d"
   extends Modelica.Icons.VariantsPackage;
   annotation (Documentation(info="<html>

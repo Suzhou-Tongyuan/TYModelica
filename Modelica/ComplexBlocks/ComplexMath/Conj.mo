@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Conj "Output is equal to the conjugate complex input signal"
 
   extends Modelica.ComplexBlocks.Interfaces.ComplexSISO(final

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints.Assemblies;
+within Modelica.Mechanics.MultiBody.Joints.Assemblies;
 model JointSSP
   "Spherical - spherical - prismatic joint aggregation with mass (no constraints, no potential states)"
 

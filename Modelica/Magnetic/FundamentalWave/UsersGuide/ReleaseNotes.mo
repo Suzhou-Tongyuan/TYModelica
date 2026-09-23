@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.UsersGuide;
+within Modelica.Magnetic.FundamentalWave.UsersGuide;
 class ReleaseNotes "Release Notes"
   extends Modelica.Icons.ReleaseNotes;
   annotation (Documentation(info="<html>

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints.Constraints;
+within Modelica.Mechanics.MultiBody.Joints.Constraints;
 model Revolute
   "Revolute cut-joint and translational directions may be constrained or released"
   extends Modelica.Mechanics.MultiBody.Interfaces.PartialTwoFrames;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model SignalCurrent
   "Generic current source using the input signal as source current"
   extends Modelica.Electrical.Analog.Icons.CurrentSource;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase;
+within Modelica.Electrical.Polyphase;
 package Ideal "Polyphase components with idealized behaviour"
   extends Modelica.Icons.Package;
 

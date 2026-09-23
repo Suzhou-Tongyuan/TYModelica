@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational;
+within Modelica.Mechanics.Translational;
 package Sources "Sources to drive 1D translational mechanical components"
   extends Modelica.Icons.SourcesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Parts;
+within Modelica.Mechanics.MultiBody.Parts;
 model PointMass
   "Rigid body where body rotation and inertia tensor is neglected (6 potential states)"
 

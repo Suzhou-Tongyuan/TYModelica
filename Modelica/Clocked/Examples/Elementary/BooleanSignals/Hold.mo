@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.BooleanSignals;
+within Modelica.Clocked.Examples.Elementary.BooleanSignals;
 model Hold "Example of a Hold block for Boolean signals"
    extends Modelica.Icons.Example;
 

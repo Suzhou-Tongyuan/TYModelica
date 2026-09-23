@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model RelativePosition
   "Measure relative position vector between the origins of two frame connectors"
   extends Internal.PartialRelativeSensor;

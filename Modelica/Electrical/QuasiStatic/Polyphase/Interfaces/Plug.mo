@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
+within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
 connector Plug "Quasi-static polyphase plug"
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   QuasiStatic.SinglePhase.Interfaces.Pin pin[m] "Pins of plug";

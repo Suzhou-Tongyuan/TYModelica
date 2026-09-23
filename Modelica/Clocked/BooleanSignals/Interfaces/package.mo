@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals;
+within Modelica.Clocked.BooleanSignals;
 package Interfaces "Library of partial blocks for components with clocked Boolean signals"
   extends Modelica.Icons.InterfacesPackage;
 

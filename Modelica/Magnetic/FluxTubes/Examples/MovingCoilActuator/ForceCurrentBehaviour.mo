@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.MovingCoilActuator;
+within Modelica.Magnetic.FluxTubes.Examples.MovingCoilActuator;
 model ForceCurrentBehaviour
   "Comparison of the force-current characteristics of both converter models with armature blocked at mid-position"
 

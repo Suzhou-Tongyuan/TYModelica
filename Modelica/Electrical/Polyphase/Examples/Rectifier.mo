@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Examples;
+within Modelica.Electrical.Polyphase.Examples;
 model Rectifier "Test example with polyphase components"
   extends Modelica.Icons.Example;
   import Modelica.Electrical.Polyphase.Functions.factorY2DC;

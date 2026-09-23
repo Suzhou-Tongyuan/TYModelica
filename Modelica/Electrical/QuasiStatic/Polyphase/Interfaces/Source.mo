@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
+within Modelica.Electrical.QuasiStatic.Polyphase.Interfaces;
 partial model Source "Partial voltage / current source"
   extends OnePort;
   constant SI.Angle pi=Modelica.Constants.pi;

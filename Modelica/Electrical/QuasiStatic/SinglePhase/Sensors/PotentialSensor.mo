@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Sensors;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Sensors;
 model PotentialSensor "Potential sensor"
   extends Interfaces.AbsoluteSensor;
   Modelica.ComplexBlocks.Interfaces.ComplexOutput v "Complex potential" 

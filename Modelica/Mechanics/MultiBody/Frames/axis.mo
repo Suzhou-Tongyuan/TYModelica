@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 function axis "Return unit vector for x-, y-, or z-axis"
   extends Modelica.Icons.Function;
   input Integer axis(min=1, max=3) "Axis vector to be returned";

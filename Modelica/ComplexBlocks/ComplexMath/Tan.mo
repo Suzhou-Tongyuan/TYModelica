@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Tan "Output the tangent of the input"
   extends Interfaces.ComplexSISO;
 equation

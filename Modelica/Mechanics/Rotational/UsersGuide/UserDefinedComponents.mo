@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.UsersGuide;
+within Modelica.Mechanics.Rotational.UsersGuide;
 class UserDefinedComponents "User Defined Components"
   extends Modelica.Icons.Information;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples.Leakage;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples.Leakage;
 model GeneralLeakage "Magnetic circuit with generic leakage mode"
   extends Modelica.Icons.Example;
   Basic.ConstantReluctance constantReluctance(R_m=1E-5) 

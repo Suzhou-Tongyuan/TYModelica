@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.QuasiStaticDCMachines;
+within Modelica.Electrical.Machines.BasicMachines.QuasiStaticDCMachines;
 model DC_PermanentMagnet "Quasi-static permanent magnet DC machine"
   extends Machines.BasicMachines.DCMachines.DC_PermanentMagnet(final
       quasiStatic=true);

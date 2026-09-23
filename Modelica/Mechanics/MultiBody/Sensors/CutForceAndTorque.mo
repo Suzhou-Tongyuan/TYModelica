@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model CutForceAndTorque "Measure cut force and cut torque vector"
 
   import Modelica.Mechanics.MultiBody.Types;

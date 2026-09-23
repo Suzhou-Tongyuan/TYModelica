@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 partial model PartialForce
   "Base model for force elements (provide frame_b.f and frame_b.t in subclasses)"
   extends PartialTwoFrames;

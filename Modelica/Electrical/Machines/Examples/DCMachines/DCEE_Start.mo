@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.DCMachines;
+within Modelica.Electrical.Machines.Examples.DCMachines;
 model DCEE_Start
   "Test example: DC with electrical excitation starting with voltage ramp"
   extends Modelica.Icons.Example;

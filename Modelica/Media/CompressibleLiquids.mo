@@ -1,4 +1,4 @@
-﻿within Modelica.Media;
+within Modelica.Media;
 package CompressibleLiquids "Compressible liquid models"
   extends Modelica.Icons.VariantsPackage;
   package Common "Base classes for compressible liquids"

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Interfaces;
+within Modelica.Electrical.Analog.Interfaces;
 connector NegativePin "Negative pin of an electrical component"
   SI.ElectricPotential v "Potential at the pin" annotation (
       unassignedMessage="An electrical potential cannot be uniquely calculated.

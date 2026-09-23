@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCDC.ChopperStepUp;
+within Modelica.Electrical.PowerConverters.Examples.DCDC.ChopperStepUp;
 model ChopperStepUp_R "Step up chopper with resistive load"
   extends ExampleTemplates.ChopperStepUp(signalPWM(useConstantDutyCycle=false));
   extends Modelica.Icons.Example;

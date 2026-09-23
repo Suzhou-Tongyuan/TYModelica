@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid;
+within Modelica.Fluid;
 package Sources "Define fixed or prescribed boundary conditions"
   extends Modelica.Icons.SourcesPackage;
   model FixedBoundary "Boundary source component"

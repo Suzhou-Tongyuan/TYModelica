@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.UsersGuide;
+within Modelica.Magnetic.FundamentalWave.UsersGuide;
 class Polyphase "Polyphase windings"
   extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>

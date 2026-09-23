@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sources;
+within Modelica.Mechanics.Translational.Sources;
 model Speed "Forced movement of a flange according to a reference speed"
   extends 
     Modelica.Mechanics.Translational.Interfaces.PartialElementaryOneFlangeAndSupport2(

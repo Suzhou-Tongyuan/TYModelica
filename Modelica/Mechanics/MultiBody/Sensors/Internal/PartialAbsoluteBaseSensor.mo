@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
+within Modelica.Mechanics.MultiBody.Sensors.Internal;
 model PartialAbsoluteBaseSensor
   "Base class for absolute sensor models defined by equations (frame_resolve must be connected exactly once)"
   extends Modelica.Icons.RoundSensor;

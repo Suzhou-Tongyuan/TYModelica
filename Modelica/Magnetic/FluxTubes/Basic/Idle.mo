@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Basic;
+within Modelica.Magnetic.FluxTubes.Basic;
 model Idle "Idle running branch"
   extends Interfaces.TwoPort;
 equation

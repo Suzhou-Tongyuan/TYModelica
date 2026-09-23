@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Add "Output the sum of the two inputs"
   extends Interfaces.ComplexSI2SO;
   parameter Complex k1=Complex(1, 0) "Gain of input 1";

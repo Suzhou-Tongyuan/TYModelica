@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.SpacePhasors.Blocks;
+within Modelica.Electrical.Machines.SpacePhasors.Blocks;
 block Rotator "Rotates space phasor"
   extends Modelica.Blocks.Interfaces.MIMOs(final n=2);
 protected

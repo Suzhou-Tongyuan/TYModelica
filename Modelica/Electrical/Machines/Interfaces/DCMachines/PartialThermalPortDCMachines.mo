@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.DCMachines;
+within Modelica.Electrical.Machines.Interfaces.DCMachines;
 connector PartialThermalPortDCMachines
   "Partial thermal port of DC machines"
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortArmature

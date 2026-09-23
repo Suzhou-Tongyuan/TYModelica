@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 block ToDQ
   "Transform instantaneous stator inputs to rotor fixed space phasor"
   extends Modelica.Blocks.Interfaces.MIMO(final nin=m, final nout=2);

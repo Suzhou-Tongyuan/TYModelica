@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model Vehicle "One-dimensional vehicle with driving resistances"
   extends Modelica.Icons.Example;
   import Modelica.Constants.g_n;

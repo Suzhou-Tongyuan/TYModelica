@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Ideal;
+within Modelica.Electrical.Polyphase.Ideal;
 model IdealOpeningSwitch "Polyphase ideal opener"
   extends Interfaces.TwoPlug;
   parameter SI.Resistance Ron[m](final min=zeros(m), start=

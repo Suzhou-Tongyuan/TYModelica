@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model EddyCurrentBrake "Demonstrate the usage of the rotational eddy current brake"
   extends Modelica.Icons.Example;
   Modelica.Mechanics.Rotational.Sources.EddyCurrentTorque eddyCurrentTorque(

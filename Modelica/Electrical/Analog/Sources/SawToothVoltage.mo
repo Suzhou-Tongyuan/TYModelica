@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model SawToothVoltage "Saw tooth voltage source"
   parameter SI.Voltage V(start=1) "Amplitude of saw tooth";
   parameter SI.Time period(start=1) "Time for one period";

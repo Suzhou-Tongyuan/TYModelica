@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model CauerLowPassSC "Cauer low-pass filter with operational amplifiers and switched capacitors"
   extends Modelica.Icons.Example;
 

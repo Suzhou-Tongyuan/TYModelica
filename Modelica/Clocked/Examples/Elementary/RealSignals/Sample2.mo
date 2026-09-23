@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model Sample2
   "Example of a Sample block with discontinuous Real input signals"
  extends Modelica.Icons.Example;

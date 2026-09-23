@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMEE_LoadDump
   "Test example: ElectricalExcitedSynchronousMachine with voltage controller"
   extends Modelica.Icons.Example;

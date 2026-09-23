@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sensors;
 model VoltageQuasiRMSSensor
   "Continuous quasi voltage RMS sensor for polyphase system"
   extends Modelica.Electrical.QuasiStatic.Polyphase.Interfaces.RelativeSensorElementary;

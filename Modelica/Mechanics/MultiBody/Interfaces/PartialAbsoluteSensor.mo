@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Interfaces;
+within Modelica.Mechanics.MultiBody.Interfaces;
 partial model PartialAbsoluteSensor
   "Base model to measure an absolute frame variable"
   extends Modelica.Icons.RoundSensor;

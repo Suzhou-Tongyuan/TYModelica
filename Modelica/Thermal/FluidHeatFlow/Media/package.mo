@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow;
+within Modelica.Thermal.FluidHeatFlow;
 package Media "Medium properties"
   extends Modelica.Icons.MaterialPropertiesPackage;
   annotation (Documentation(info="<html>

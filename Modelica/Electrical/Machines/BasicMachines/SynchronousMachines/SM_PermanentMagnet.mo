@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.SynchronousMachines;
+within Modelica.Electrical.Machines.BasicMachines.SynchronousMachines;
 model SM_PermanentMagnet "Permanent magnet synchronous machine"
   extends Machines.Interfaces.PartialBasicInductionMachine(
     Lssigma(start=0.1/(2*pi*fsNominal)),

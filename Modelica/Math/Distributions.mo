@@ -1,4 +1,4 @@
-﻿within Modelica.Math;
+within Modelica.Math;
 package Distributions "Library of distribution functions"
    extends Modelica.Icons.Package;
 

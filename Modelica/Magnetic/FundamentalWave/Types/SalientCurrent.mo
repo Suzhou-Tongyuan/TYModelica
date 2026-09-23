@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Types;
+within Modelica.Magnetic.FundamentalWave.Types;
 record SalientCurrent = Salient (redeclare SI.Current d,
       redeclare SI.Current q) "Salient current" annotation (
     Documentation(info="<html>

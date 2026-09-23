@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic;
+within Modelica.Magnetic.QuasiStatic;
 package FundamentalWave "Quasi-static fundamental wave electric machines"
   extends Modelica.Icons.Package;
   annotation (preferredView="info", Documentation(info="<html>

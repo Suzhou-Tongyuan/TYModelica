@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.SpacePhasors;
+within Modelica.Electrical.QuasiStatic.Machines.SpacePhasors;
 package Blocks
   extends Modelica.Icons.Package;
 

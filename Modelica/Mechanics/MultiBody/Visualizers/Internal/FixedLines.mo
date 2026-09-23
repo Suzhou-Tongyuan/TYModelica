@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Visualizers.Internal;
+within Modelica.Mechanics.MultiBody.Visualizers.Internal;
 model FixedLines
   "Visualizing a set of lines as cylinders (e.g., used to display characters)"
 

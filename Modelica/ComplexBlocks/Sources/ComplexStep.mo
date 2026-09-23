@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Sources;
+within Modelica.ComplexBlocks.Sources;
 block ComplexStep "Generate step signal of type Complex"
   parameter Complex height=Complex(1) "Height of step";
   extends ComplexBlocks.Interfaces.ComplexSignalSource;

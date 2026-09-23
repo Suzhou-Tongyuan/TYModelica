@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal;
+within Modelica.Electrical.Machines.Thermal;
 type LinearTemperatureCoefficient20 =
     SI.LinearTemperatureCoefficient
   "Linear temperature coefficient with choices" annotation (choices(

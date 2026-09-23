@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.IntegerSignals.Interfaces;
+within Modelica.Clocked.IntegerSignals.Interfaces;
 partial block PartialSISOHold
   "Basic block used for zero order hold of Integer signals"
   parameter Integer y_start = 0

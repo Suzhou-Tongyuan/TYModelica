@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked;
+within Modelica.Clocked;
 package BooleanSignals "Library of clocked blocks for Boolean signals"
   extends Modelica.Icons.Package;
   import Modelica.Units.SI;

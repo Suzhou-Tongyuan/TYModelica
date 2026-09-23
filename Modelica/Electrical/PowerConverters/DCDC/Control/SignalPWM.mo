@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.DCDC.Control;
+within Modelica.Electrical.PowerConverters.DCDC.Control;
 model SignalPWM
   "Generates a pulse width modulated (PWM) boolean fire signal"
   extends Icons.Control;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Functions;
+within Modelica.Electrical.Polyphase.Functions;
 function quasiRMS "Calculate continuous quasi RMS value of input"
   extends Modelica.Icons.Function;
   input Real x[:];

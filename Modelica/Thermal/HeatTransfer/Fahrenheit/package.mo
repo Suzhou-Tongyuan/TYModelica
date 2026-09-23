@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer;
+within Modelica.Thermal.HeatTransfer;
 package Fahrenheit "Components with Fahrenheit input and/or output"
   extends Modelica.Icons.VariantsPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model TranslationalEMF "Electromotoric force (electric/mechanic transformer)"
   parameter Boolean useSupport=false
     "= true, if support flange enabled, otherwise implicitly grounded" 

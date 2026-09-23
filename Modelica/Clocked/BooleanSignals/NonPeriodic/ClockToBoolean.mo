@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.BooleanSignals.NonPeriodic;
+within Modelica.Clocked.BooleanSignals.NonPeriodic;
 block ClockToBoolean
   "Block to translate clock signals to continuous Boolean events (each time the input clock ticks a rising Boolean output edge is produced)."
   extends ClockSignals.Interfaces.ClockedBlockIcon;

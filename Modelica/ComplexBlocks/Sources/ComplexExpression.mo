@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Sources;
+within Modelica.ComplexBlocks.Sources;
 block ComplexExpression
   "Set output signal to a time varying Complex expression"
 

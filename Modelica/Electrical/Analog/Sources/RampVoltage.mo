@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model RampVoltage "Ramp voltage source"
   parameter SI.Voltage V(start=1) "Height of ramp";
   parameter SI.Time duration(min=Modelica.Constants.small, start=2)

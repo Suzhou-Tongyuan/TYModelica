@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.Utilities;
+within Modelica.Electrical.Analog.Examples.Utilities;
 model NonlinearResistor "Chua's resistor"
   extends Interfaces.OnePort;
 

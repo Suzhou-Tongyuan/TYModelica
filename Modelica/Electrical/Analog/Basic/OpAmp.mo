@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model OpAmp "Simple nonideal model of an OpAmp with limitation"
   parameter Real Slope(start=10000)
     "Slope of the out.v/vin characteristic at vin=0";

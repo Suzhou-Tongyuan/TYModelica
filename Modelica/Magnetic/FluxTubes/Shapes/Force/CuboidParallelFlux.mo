@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.Force;
+within Modelica.Magnetic.FluxTubes.Shapes.Force;
 model CuboidParallelFlux
   "Cuboid with flux in direction of motion, e.g., air gap with rectangular cross-section; constant permeability"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Joints.Internal;
+within Modelica.Mechanics.MultiBody.Joints.Internal;
 model InitAngle
  "Internal model to initialize the angels for Joints.FreeMotionScalarInit"
   extends Modelica.Blocks.Icons.Block;

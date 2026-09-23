@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.ComplexMath;
+within Modelica.ComplexBlocks.ComplexMath;
 block Product "Output product of the two inputs"
   extends Interfaces.ComplexSI2SO;
 equation

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 model RollingWheelSetPulling "Rolling wheel set that is pulled by a force"
    extends Modelica.Icons.Example;
 

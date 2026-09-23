@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.BasicMachines.Transformers.Dd;
+within Modelica.Electrical.QuasiStatic.Machines.BasicMachines.Transformers.Dd;
 model Dd08 "Transformer Dd8"
 
   extends QuasiStatic.Machines.Interfaces.PartialBasicTransformer(final

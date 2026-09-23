@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Sampler;
+within Modelica.Clocked.RealSignals.Sampler;
 block SampleWithADeffects
   "Sample with (simulated) Analog-Digital converter effects including noise"
   extends Clocked.RealSignals.Interfaces.PartialSISOSampler;

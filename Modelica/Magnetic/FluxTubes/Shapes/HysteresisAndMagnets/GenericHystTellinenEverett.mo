@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
+within Modelica.Magnetic.FluxTubes.Shapes.HysteresisAndMagnets;
 model GenericHystTellinenEverett
   "Generic flux tube with ferromagnetic hysteresis based on the Tellinen model and the Everett function [Ya89])"
 

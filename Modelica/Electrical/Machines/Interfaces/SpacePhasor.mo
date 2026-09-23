@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces;
+within Modelica.Electrical.Machines.Interfaces;
 connector SpacePhasor "Connector for Space Phasors"
   SI.Voltage v_[2] "1=real, 2=imaginary part";
   flow SI.Current i_[2] "1=real, 2=imaginary part";

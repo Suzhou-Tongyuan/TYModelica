@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes;
+within Modelica.Magnetic.QuasiStatic.FluxTubes;
 package Examples "Illustration of component usage with simple models of various devices"
   extends Modelica.Icons.ExamplesPackage;
 

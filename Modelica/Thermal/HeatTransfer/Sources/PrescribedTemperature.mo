@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Sources;
+within Modelica.Thermal.HeatTransfer.Sources;
 model PrescribedTemperature
   "Variable temperature boundary condition in Kelvin"
 

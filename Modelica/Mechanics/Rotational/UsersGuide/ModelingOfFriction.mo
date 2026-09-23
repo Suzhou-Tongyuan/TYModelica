@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.UsersGuide;
+within Modelica.Mechanics.Rotational.UsersGuide;
 class ModelingOfFriction "Modeling of Friction"
   extends Modelica.Icons.Information;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Blocks;
+within Modelica.Blocks;
 package Icons "Icons for Blocks"
     extends Modelica.Icons.IconsPackage;
     partial block Block "Basic graphical layout of input/output block"

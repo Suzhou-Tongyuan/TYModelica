@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.UsersGuide;
+within Modelica.Clocked.UsersGuide;
 class Clocks "Clocks"
   extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>

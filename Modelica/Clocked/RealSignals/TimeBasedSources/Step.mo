@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.TimeBasedSources;
+within Modelica.Clocked.RealSignals.TimeBasedSources;
 block Step "Generate step signal of type Real"
   extends Interfaces.PartialClockedSO;
   parameter Real height = 1 "Height of step";

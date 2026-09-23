@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries;
+within Modelica.Electrical.Batteries;
 package BatteryStacksWithSensors "Battery cells and stacks with sensors"
   extends Modelica.Icons.Package;
 

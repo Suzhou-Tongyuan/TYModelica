@@ -1,4 +1,4 @@
-﻿within Modelica.ComplexBlocks.Interfaces;
+within Modelica.ComplexBlocks.Interfaces;
 connector ComplexOutput = output Complex "'output Complex' as connector" 
   annotation (
   IconMap(primitivesVisible=false),

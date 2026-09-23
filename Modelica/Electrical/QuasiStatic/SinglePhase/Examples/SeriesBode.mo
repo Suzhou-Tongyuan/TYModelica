@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.SinglePhase.Examples;
+within Modelica.Electrical.QuasiStatic.SinglePhase.Examples;
 model SeriesBode "Series circuit with Bode analysis"
   extends Modelica.Icons.Example;
   output Real abs_y = bode.abs_y "Magnitude of voltage ratio";

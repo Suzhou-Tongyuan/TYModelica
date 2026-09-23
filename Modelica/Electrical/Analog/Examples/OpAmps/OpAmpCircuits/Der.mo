@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
+within Modelica.Electrical.Analog.Examples.OpAmps.OpAmpCircuits;
 model Der "Differentiating operational amplifier circuit"
   extends PartialOpAmp;
   import Modelica.Constants.pi;

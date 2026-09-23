@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.SynchronousMachines;
+within Modelica.Electrical.Machines.Examples.SynchronousMachines;
 model SMEE_Rectifier
   "Test example: ElectricalExcitedSynchronousMachine with rectifier"
   extends Modelica.Icons.Example;

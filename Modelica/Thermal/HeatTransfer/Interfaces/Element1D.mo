@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Interfaces;
+within Modelica.Thermal.HeatTransfer.Interfaces;
 partial model Element1D
   "Partial heat transfer element with two HeatPort connectors that does not store energy"
 

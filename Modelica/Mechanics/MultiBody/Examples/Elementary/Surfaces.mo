@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 model Surfaces
   "Demonstrate the visualization of a sine surface, as well as a torus and a wheel constructed from a surface"
   extends Modelica.Icons.Example;

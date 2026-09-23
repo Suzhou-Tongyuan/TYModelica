@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Components;
+within Modelica.Electrical.Machines.BasicMachines.Components;
 model AirGapS "Airgap in stator-fixed coordinate system"
   parameter SI.Inductance Lm "Main field inductance";
   extends PartialAirGap;

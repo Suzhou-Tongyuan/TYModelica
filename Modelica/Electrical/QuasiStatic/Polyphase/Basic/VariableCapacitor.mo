@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model VariableCapacitor "Polyphase variable capacitor"
   extends Interfaces.TwoPlug;
   Modelica.Blocks.Interfaces.RealInput C[m](each unit="F")

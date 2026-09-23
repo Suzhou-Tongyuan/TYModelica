@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Interfaces;
+within Modelica.Mechanics.Translational.Interfaces;
 connector Flange_b
   "One-dimensional translational flange (right, flange axis directed OUT OF cut plane)"
   extends Flange;

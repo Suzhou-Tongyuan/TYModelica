@@ -1,4 +1,4 @@
-﻿within Modelica;
+within Modelica;
 package Clocked "Clock triggered blocks for describing synchronous behavior suited for implementation of control systems"
 extends Modelica.Icons.Package;
 

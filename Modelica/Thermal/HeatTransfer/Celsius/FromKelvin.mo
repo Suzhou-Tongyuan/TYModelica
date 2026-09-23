@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Celsius;
+within Modelica.Thermal.HeatTransfer.Celsius;
 model FromKelvin "Conversion from Kelvin to degree Celsius"
   extends HeatTransfer.Icons.Conversion;
   Modelica.Blocks.Interfaces.RealInput Kelvin(unit="K") 

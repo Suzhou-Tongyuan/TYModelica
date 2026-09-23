@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model VariableImpedance "Polyphase variable impedance"
   extends Interfaces.TwoPlug;
   parameter SI.Temperature T_ref[m]=fill(293.15, m)

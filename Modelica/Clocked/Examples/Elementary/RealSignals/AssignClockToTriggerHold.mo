@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model AssignClockToTriggerHold
   "Example of an AssignClockToTriggerHold block for Real signals"
    extends Modelica.Icons.Example;

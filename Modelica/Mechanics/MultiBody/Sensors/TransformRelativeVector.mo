@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model TransformRelativeVector "Transform relative vector in to another frame"
   extends Internal.PartialRelativeSensor;
 

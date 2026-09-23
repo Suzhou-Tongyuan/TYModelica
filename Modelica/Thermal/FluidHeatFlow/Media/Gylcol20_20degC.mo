@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Media;
+within Modelica.Thermal.FluidHeatFlow.Media;
 record Gylcol20_20degC "Medium: properties of glycol:water 20:80 at 20 degC and 1 bar"
 extends FluidHeatFlow.Media.Medium(
     rho=1028,

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Examples.Components;
+within Modelica.Magnetic.FundamentalWave.Examples.Components;
 model PolyphaseInductance "Polyphase inductance"
   extends Modelica.Icons.Example;
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);

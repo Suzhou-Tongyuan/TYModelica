@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors.Internal;
+within Modelica.Mechanics.MultiBody.Sensors.Internal;
 partial model PartialCutForceSensor
   "Base class to measure cut force and/or torque between two frames, defined by components"
 

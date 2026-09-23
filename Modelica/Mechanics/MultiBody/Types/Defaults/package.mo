@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Types;
+within Modelica.Mechanics.MultiBody.Types;
 package Defaults "Default settings of the MultiBody library via constants"
   extends Modelica.Icons.Package;
 

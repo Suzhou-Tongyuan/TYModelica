@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model Resistor "Ideal linear electrical resistor"
   parameter SI.Resistance R(start=1)
     "Resistance at temperature T_ref";

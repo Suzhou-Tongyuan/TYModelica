@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.Components;
 model QuasiStaticAnalogWinding
   "Quasi-static single-phase winding neglecting induced voltage"
 

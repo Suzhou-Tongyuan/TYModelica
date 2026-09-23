@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Sources;
+within Modelica.Electrical.Analog.Sources;
 model StepCurrent "Step current source"
   parameter SI.Current I(start=1) "Height of step";
   extends Interfaces.CurrentSource(redeclare Modelica.Blocks.Sources.Step 

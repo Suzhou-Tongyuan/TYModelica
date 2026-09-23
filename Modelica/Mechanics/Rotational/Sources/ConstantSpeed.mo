@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Sources;
+within Modelica.Mechanics.Rotational.Sources;
 model ConstantSpeed "Constant speed, not dependent on torque"
   extends Modelica.Mechanics.Rotational.Interfaces.PartialTorque;
   SI.AngularVelocity w

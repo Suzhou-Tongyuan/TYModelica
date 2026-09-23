@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames;
+within Modelica.Mechanics.MultiBody.Frames;
 record Orientation
   "Orientation object defining rotation from a frame 1 into a frame 2"
 

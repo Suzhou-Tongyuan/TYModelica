@@ -1,4 +1,4 @@
-﻿within Modelica;
+within Modelica;
 package ComplexMath
   "Library of complex mathematical functions (e.g., sin, cos) and of functions operating on complex vectors and matrices"
   extends Modelica.Icons.Package;

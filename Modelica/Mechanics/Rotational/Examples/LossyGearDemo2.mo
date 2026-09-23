@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Examples;
+within Modelica.Mechanics.Rotational.Examples;
 model LossyGearDemo2
   "Example to show combination of LossyGear and BearingFriction"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Thermal.SynchronousMachines;
+within Modelica.Electrical.Machines.Thermal.SynchronousMachines;
 model ThermalAmbientSMPM
   "Thermal ambient for synchronous machine with permanent magnets"
   parameter Boolean useDamperCage(start=true)

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Semiconductors;
+within Modelica.Electrical.Analog.Semiconductors;
 model SimpleTriac "Simple triac, based on Semiconductors.Thyristor model"
   parameter SI.Voltage VDRM(final min=0) = 100
     "Forward breakthrough voltage";

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
+within Modelica.Clocked.Examples.Systems.Utilities.ComponentsThrottleControl;
 block InductionToPowerDelay
   "Accounts for the induction-to-power stroke lag."
   extends Modelica.Blocks.Icons.Block;

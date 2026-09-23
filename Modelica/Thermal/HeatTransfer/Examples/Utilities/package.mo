@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Examples;
+within Modelica.Thermal.HeatTransfer.Examples;
 package Utilities "Utility classes used by the Example models"
   extends Modelica.Icons.UtilitiesPackage;
   annotation (Documentation(info="<html>

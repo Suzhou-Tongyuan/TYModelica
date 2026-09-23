@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Icons;
+within Modelica.Thermal.HeatTransfer.Icons;
 model FixedTemperature "Icon of fixed temperature source"
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={

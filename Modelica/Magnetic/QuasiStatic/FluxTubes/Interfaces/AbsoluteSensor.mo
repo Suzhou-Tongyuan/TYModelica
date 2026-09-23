@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Interfaces;
 partial model AbsoluteSensor "Partial potential sensor"
   extends Modelica.Icons.RoundSensor;
   SI.AngularVelocity omega;

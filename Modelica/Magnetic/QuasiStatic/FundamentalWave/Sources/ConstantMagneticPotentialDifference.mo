@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sources;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Sources;
 model ConstantMagneticPotentialDifference
   "Source with constant magnetic potential difference"
   extends Interfaces.TwoPortElementary;

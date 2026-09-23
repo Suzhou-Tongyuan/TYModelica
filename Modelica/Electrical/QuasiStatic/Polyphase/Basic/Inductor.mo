@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
+within Modelica.Electrical.QuasiStatic.Polyphase.Basic;
 model Inductor "Polyphase linear inductor"
   extends Interfaces.TwoPlug;
   parameter SI.Inductance L[m](start=fill(1, m))

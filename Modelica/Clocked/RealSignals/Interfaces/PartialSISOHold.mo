@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Interfaces;
+within Modelica.Clocked.RealSignals.Interfaces;
 partial block PartialSISOHold
   "Basic block used for zero order hold of Real signals"
 

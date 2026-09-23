@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Batteries;
+within Modelica.Electrical.Batteries;
 package Examples "Collection of battery examples"
   extends Modelica.Icons.ExamplesPackage;
 

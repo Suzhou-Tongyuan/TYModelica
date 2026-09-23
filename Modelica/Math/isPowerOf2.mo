@@ -1,4 +1,4 @@
-﻿within Modelica.Math;
+within Modelica.Math;
 function isPowerOf2 "Determine if the integer input is a power of 2"
   extends Modelica.Icons.Function;
   input Integer i(min=1) "Integer scalar";

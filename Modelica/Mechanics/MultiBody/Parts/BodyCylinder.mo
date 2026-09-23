@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Parts;
+within Modelica.Mechanics.MultiBody.Parts;
 model BodyCylinder
   "Rigid body with cylinder shape. Mass and animation properties are computed from cylinder data and density (12 potential states)"
 

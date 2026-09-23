@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.Examples.DCAC.SinglePhaseTwoLevel;
+within Modelica.Electrical.PowerConverters.Examples.DCAC.SinglePhaseTwoLevel;
 model SinglePhaseTwoLevel_R
   "Single-phase DC to AC converter with resistive load"
   extends ExampleTemplates.SinglePhaseTwoLevel(sine(

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer;
+within Modelica.Thermal.HeatTransfer;
 package Components "Lumped thermal components"
   extends Modelica.Icons.Package;
 

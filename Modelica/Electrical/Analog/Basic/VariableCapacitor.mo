@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Basic;
+within Modelica.Electrical.Analog.Basic;
 model VariableCapacitor
   "Ideal linear electrical capacitor with variable capacitance"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;

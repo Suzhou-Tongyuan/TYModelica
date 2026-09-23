@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters;
+within Modelica.Electrical.PowerConverters;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
   annotation (DocumentationClass=true, Documentation(info="<html>

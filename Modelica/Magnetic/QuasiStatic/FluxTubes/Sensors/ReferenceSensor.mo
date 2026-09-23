@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Sensors;
 model ReferenceSensor "Sensor of reference angle gamma"
   extends FluxTubes.Interfaces.AbsoluteSensor;
   Modelica.Blocks.Interfaces.RealOutput y(unit="rad") "Reference angle" annotation (

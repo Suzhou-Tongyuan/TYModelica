@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Examples.BasicMachines.InductionMachines.ComparisonPolyphase;
+within Modelica.Magnetic.FundamentalWave.Examples.BasicMachines.InductionMachines.ComparisonPolyphase;
 model IMC_DOL_Polyphase
   "Direct on line start of polyphase induction machine with squirrel cage"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.PowerConverters.ACDC;
+within Modelica.Electrical.PowerConverters.ACDC;
 model ThyristorCenterTapmPulse
   "m pulse thyristor rectifier with center tap"
   extends Icons.Converter;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 model ChuaCircuit "Chua's circuit, ns, V, A"
   extends Modelica.Icons.Example;
 

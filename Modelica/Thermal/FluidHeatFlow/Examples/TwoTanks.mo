@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Examples;
+within Modelica.Thermal.FluidHeatFlow.Examples;
 model TwoTanks "Two connected open tanks"
   extends Modelica.Icons.Example;
   output SI.VolumeFlowRate V_flow=pipe.V_flow "Volume flow rate tank 1 -> tank 2";

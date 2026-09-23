@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Interfaces;
+within Modelica.Mechanics.Rotational.Interfaces;
 model InternalSupport
   "Adapter model to utilize conditional support connector"
   input SI.Torque tau

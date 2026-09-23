@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.UsersGuide.Hysteresis;
+within Modelica.Magnetic.FluxTubes.UsersGuide.Hysteresis;
 class DynamicHysteresis "Dynamic Hysteresis (Eddy Currents)"
   extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>

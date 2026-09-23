@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.InductionMachines;
+within Modelica.Electrical.Machines.Examples.InductionMachines;
 model IMC_Transformer
   "Test example: InductionMachineSquirrelCage transformer starting"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Basic;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Basic;
 model ElectroMagneticConverter "Electromagnetic energy conversion"
 
   constant Complex j=Complex(0, 1);

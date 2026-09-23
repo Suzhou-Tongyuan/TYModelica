@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 model DQToThreePhase "Transforms dq to three-phase"
   parameter Integer m=3 "Number of phases" annotation(Evaluate=true);
   parameter Integer p "Number of pole pairs";

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Rotational3DEffects;
+within Modelica.Mechanics.MultiBody.Examples.Rotational3DEffects;
 model GearConstraint "Demonstrate usage of GearConstraint model"
   extends Modelica.Icons.Example;
   Joints.GearConstraint gearConstraint(

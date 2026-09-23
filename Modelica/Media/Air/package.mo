@@ -1,4 +1,4 @@
-﻿within Modelica.Media;
+within Modelica.Media;
 package Air "Medium models for air"
     extends Modelica.Icons.VariantsPackage;
 

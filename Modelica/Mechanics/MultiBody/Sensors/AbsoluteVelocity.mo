@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 model AbsoluteVelocity
   "Measure absolute velocity vector of origin of frame connector"
   extends Internal.PartialAbsoluteSensor;

@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.BooleanSignals;
+within Modelica.Clocked.Examples.Elementary.BooleanSignals;
 model Sample1 "Example of a Sample block for Boolean signals"
  extends Modelica.Icons.Example;
   Modelica.Clocked.BooleanSignals.Sampler.AssignClock  assignClock 

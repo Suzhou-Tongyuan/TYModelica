@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Sources;
+within Modelica.Thermal.FluidHeatFlow.Sources;
 model AbsolutePressure "Defines absolute pressure level"
   extends FluidHeatFlow.BaseClasses.SinglePortLeft(
     final Exchange=false,

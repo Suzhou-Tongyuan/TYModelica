@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.Components;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.Components;
 model EddyCurrentLosses
   "Comparison of equivalent circuits of eddy current loss models"
   extends Modelica.Icons.Example;

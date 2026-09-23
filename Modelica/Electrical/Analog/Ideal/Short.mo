@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Ideal;
+within Modelica.Electrical.Analog.Ideal;
 model Short "Short cut branch"
   extends Interfaces.OnePort;
 equation

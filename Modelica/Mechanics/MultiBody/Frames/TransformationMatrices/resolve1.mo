@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function resolve1 "Transform vector from frame 2 to frame 1"
   extends Modelica.Icons.Function;
   input TransformationMatrices.Orientation T

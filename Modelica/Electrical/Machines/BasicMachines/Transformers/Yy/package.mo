@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.BasicMachines.Transformers;
+within Modelica.Electrical.Machines.BasicMachines.Transformers;
 package Yy "Transformers: primary Y / secondary y"
   extends Modelica.Icons.VariantsPackage;
 

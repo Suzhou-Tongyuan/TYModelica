@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function relativeRotation "Return relative orientation object"
   extends Modelica.Icons.Function;
   input TransformationMatrices.Orientation T1

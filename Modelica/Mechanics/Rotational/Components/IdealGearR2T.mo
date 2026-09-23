@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Components;
+within Modelica.Mechanics.Rotational.Components;
 model IdealGearR2T
   "Gearbox transforming rotational into translational motion"
   extends Rotational.Interfaces.PartialElementaryRotationalToTranslational;

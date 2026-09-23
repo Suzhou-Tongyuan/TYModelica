@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.RealSignals.Interfaces;
+within Modelica.Clocked.RealSignals.Interfaces;
 partial block SamplerIcon
   "Basic graphical layout of block used for sampling of Real signals"
 

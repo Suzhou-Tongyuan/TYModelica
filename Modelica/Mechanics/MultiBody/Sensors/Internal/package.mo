@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Sensors;
+within Modelica.Mechanics.MultiBody.Sensors;
 package Internal "Internal package, should not be used by user"
   extends Modelica.Icons.InternalPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Components;
+within Modelica.Magnetic.FundamentalWave.Components;
 model Idle "Idle running branch"
   extends Magnetic.FundamentalWave.Interfaces.TwoPort;
 equation

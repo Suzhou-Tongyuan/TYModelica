@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.RealSignals;
+within Modelica.Clocked.Examples.Elementary.RealSignals;
 model UpSample2
   "Example of an UpSample block for Real signals combined with FIR filter blocks"
    extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Polyphase.Sources;
+within Modelica.Electrical.QuasiStatic.Polyphase.Sources;
 model CurrentSource "Constant polyphase AC current"
   extends Interfaces.Source;
   import Modelica.ComplexMath.j;

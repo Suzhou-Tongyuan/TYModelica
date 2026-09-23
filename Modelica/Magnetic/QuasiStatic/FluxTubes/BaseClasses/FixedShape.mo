@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.BaseClasses;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.BaseClasses;
 partial model FixedShape "Base class for flux tubes with fixed shape during simulation"
 
   extends Interfaces.TwoPort;

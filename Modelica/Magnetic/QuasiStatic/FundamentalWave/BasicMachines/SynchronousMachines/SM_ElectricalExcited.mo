@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.SynchronousMachines;
+within Modelica.Magnetic.QuasiStatic.FundamentalWave.BasicMachines.SynchronousMachines;
 model SM_ElectricalExcited
   "Electrical excited synchronous machine with optional damper cage"
   extends BaseClasses.Machine(

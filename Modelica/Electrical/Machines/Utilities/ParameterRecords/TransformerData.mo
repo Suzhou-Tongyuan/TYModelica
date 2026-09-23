@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities.ParameterRecords;
+within Modelica.Electrical.Machines.Utilities.ParameterRecords;
 record TransformerData "Common parameters for transformers"
   extends Modelica.Icons.Record;
   parameter Real n_phase=1

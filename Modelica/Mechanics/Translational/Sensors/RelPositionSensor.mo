@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sensors;
+within Modelica.Mechanics.Translational.Sensors;
 model RelPositionSensor "Ideal sensor to measure the relative position"
   extends Translational.Interfaces.PartialRelativeSensor;
   Modelica.Blocks.Interfaces.RealOutput s_rel(unit="m")

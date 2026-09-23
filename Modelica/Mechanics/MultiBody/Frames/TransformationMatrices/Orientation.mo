@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 type Orientation
   "Orientation type defining rotation from a frame 1 into a frame 2 with a transformation matrix"
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Examples;
+within Modelica.Mechanics.Translational.Examples;
 model GenerationOfFMUs
   "Example to demonstrate variants to generate FMUs (Functional Mock-up Units)"
   extends Modelica.Icons.Example;

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples;
+within Modelica.Electrical.Analog.Examples;
 package OpAmps "Examples with operational amplifiers"
   extends Modelica.Icons.ExamplesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.FluidHeatFlow.Sources;
+within Modelica.Thermal.FluidHeatFlow.Sources;
 model Ambient "Ambient with constant properties"
 
   extends FluidHeatFlow.BaseClasses.SinglePortLeft(

@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics;
+within Modelica.Mechanics;
 package MultiBody "Library to model 3-dimensional mechanical systems"
   extends Modelica.Icons.Package;
 

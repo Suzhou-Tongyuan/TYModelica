@@ -1,4 +1,4 @@
-﻿within Modelica.Clocked.Examples.Elementary.ClockSignals;
+within Modelica.Clocked.Examples.Elementary.ClockSignals;
 model RotationalSample
   "Simple example of a rotational clock with variable trigger interval and switching rotation-direction."
   extends Modelica.Icons.Example;

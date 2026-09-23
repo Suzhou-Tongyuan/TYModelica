@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid.Examples;
+within Modelica.Fluid.Examples;
 package HeatExchanger "Demo of a heat exchanger model"
   extends Modelica.Icons.ExamplesPackage;
 

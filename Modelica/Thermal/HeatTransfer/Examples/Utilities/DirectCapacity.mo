@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Examples.Utilities;
+within Modelica.Thermal.HeatTransfer.Examples.Utilities;
 model DirectCapacity
   "Input/output block of a direct heatCapacity model"
   extends Modelica.Blocks.Icons.Block;

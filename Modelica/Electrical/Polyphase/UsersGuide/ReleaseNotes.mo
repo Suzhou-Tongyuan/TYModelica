@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.UsersGuide;
+within Modelica.Electrical.Polyphase.UsersGuide;
 class ReleaseNotes "Release Notes"
   extends Modelica.Icons.ReleaseNotes;
   annotation (preferredView="info",

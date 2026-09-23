@@ -1,4 +1,4 @@
-﻿within Modelica.Media.Air;
+within Modelica.Media.Air;
 package ReferenceMoistAir
   "ReferenceMoistAir: Detailed moist air model (143.15 ... 2000 K)"
 

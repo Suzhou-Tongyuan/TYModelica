@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Shapes;
 package Leakage "Leakage flux tubes with position-independent permeance and hence no force generation; mu_r=1"
   extends Modelica.Icons.VariantsPackage;
   annotation (Documentation(info="<html>

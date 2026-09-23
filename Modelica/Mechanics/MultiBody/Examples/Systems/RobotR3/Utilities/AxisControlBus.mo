@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Utilities;
 expandable connector AxisControlBus "Data bus for one robot axis"
   extends Modelica.Icons.SignalSubBus;
 

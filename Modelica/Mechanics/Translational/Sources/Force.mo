@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Sources;
+within Modelica.Mechanics.Translational.Sources;
 model Force
   "External force acting on a drive train element as input signal"
   extends Modelica.Mechanics.Translational.Interfaces.PartialElementaryOneFlangeAndSupport2;

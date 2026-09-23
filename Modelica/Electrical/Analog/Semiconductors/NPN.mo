@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Semiconductors;
+within Modelica.Electrical.Analog.Semiconductors;
 model NPN "Simple NPN BJT according to Ebers-Moll with heating port"
         parameter Real Bf=50 "Forward beta";
         parameter Real Br=0.1 "Reverse beta";

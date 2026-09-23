@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
+within Modelica.Mechanics.MultiBody.Examples.Loops.Utilities;
 model Cylinder_analytic_CAD
   "One cylinder with analytic handling of kinematic loop and CAD visualization"
   extends CylinderBase;

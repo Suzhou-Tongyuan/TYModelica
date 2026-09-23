@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.Interfaces;
+within Modelica.Magnetic.FundamentalWave.Interfaces;
 connector MagneticPort "Magnetic port of fundamental wave machines"
   SI.ComplexMagneticPotential V_m
     "Complex magnetic potential at the port";

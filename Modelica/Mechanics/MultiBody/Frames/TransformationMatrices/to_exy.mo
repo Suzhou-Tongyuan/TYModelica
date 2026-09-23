@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function to_exy
   "Map rotation object into e_x and e_y vectors of frame 2, resolved in frame 1"
 

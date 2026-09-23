@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Interfaces;
+within Modelica.Thermal.HeatTransfer.Interfaces;
 partial model PartialElementaryConditionalHeatPort
   "Partial model to include a conditional HeatPort in order to dissipate losses, used for textual modeling, i.e., for elementary models"
   parameter Boolean useHeatPort = false "= true, if heatPort is enabled" 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Utilities;
+within Modelica.Electrical.Machines.Utilities;
 record DcBrakeSettings "Setting for DC current braking"
   parameter SI.Current INominal=100 "Nominal RMS current per phase";
   parameter String layout="Y3" "Braking connection layout" 

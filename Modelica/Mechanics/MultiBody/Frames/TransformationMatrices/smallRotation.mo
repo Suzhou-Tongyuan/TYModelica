@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
+within Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 function smallRotation
   "Return rotation angles valid for a small rotation and optionally residues that should be zero"
 

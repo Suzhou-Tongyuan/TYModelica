@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.MultiBody.Examples.Elementary;
+within Modelica.Mechanics.MultiBody.Examples.Elementary;
 model UserDefinedGravityField
   "Demonstrate the modeling of a user-defined gravity field"
    extends Modelica.Icons.Example;

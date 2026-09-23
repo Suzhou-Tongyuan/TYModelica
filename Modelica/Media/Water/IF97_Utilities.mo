@@ -1,4 +1,4 @@
-﻿within Modelica.Media.Water;
+within Modelica.Media.Water;
 package IF97_Utilities
   "Low level and utility computation for high accuracy water properties according to the IAPWS/IF97 standard"
 

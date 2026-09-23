@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Examples.Utilities;
+within Modelica.Electrical.Analog.Examples.Utilities;
 model RealSwitch "Ideal switch with resistance"
 
   Ideal.ControlledIdealTwoWaySwitch S(level=2.5) annotation (Placement(

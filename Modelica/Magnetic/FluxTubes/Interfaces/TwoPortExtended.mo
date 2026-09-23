@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Interfaces;
+within Modelica.Magnetic.FluxTubes.Interfaces;
 partial model TwoPortExtended "Extended TwoPort interface model with alias variables for magnetic voltage and flux"
 
   extends TwoPortElementary;

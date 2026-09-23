@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Rankine;
+within Modelica.Thermal.HeatTransfer.Rankine;
 model TemperatureSensor "Absolute temperature sensor in degRankine"
 
   Modelica.Blocks.Interfaces.RealOutput T annotation (Placement(

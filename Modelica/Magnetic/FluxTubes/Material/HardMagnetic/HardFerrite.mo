@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
+within Modelica.Magnetic.FluxTubes.Material.HardMagnetic;
 record HardFerrite "Hard ferrite sintered, exemplary values"
   extends FluxTubes.Material.HardMagnetic.BaseData(
     H_cBRef=170000,

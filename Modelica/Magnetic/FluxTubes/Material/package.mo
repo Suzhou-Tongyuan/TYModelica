@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes;
+within Modelica.Magnetic.FluxTubes;
 package Material "Magnetisation characteristics of common soft magnetic and hard magnetic materials"
   extends Modelica.Icons.MaterialPropertiesPackage;
 

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Interfaces.InductionMachines;
+within Modelica.Electrical.Machines.Interfaces.InductionMachines;
 connector ThermalPortIMC
   "Thermal port of induction machine with squirrel cage"
   extends 

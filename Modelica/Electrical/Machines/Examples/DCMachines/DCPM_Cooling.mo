@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Examples.DCMachines;
+within Modelica.Electrical.Machines.Examples.DCMachines;
 model DCPM_Cooling "Test example: Cooling of a DCPM motor"
   extends Modelica.Icons.Example;
   parameter SI.Voltage Va=100 "Actual armature voltage";

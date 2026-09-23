@@ -1,4 +1,4 @@
-﻿within Modelica.Thermal.HeatTransfer.Examples;
+within Modelica.Thermal.HeatTransfer.Examples;
 model ControlledTemperature "Control temperature of a resistor"
   extends Modelica.Icons.Example;
   parameter SI.Temperature TAmb(displayUnit="degC") = 293.15

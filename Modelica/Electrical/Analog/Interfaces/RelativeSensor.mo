@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Analog.Interfaces;
+within Modelica.Electrical.Analog.Interfaces;
 partial model RelativeSensor
   "Base class to measure a relative variable between two pins"
   extends Modelica.Icons.RoundSensor;

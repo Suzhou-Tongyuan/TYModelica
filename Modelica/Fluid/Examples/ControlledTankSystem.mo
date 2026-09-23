@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid.Examples;
+within Modelica.Fluid.Examples;
 package ControlledTankSystem
   "Tank system with controller, start/stop/shut operation and diagram animation"
   extends Modelica.Icons.ExamplesPackage;

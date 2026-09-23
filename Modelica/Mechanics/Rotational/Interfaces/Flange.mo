@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Rotational.Interfaces;
+within Modelica.Mechanics.Rotational.Interfaces;
 connector Flange "One-dimensional rotational flange"
 
   SI.Angle phi "Absolute rotation angle of flange";

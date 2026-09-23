@@ -1,4 +1,4 @@
-﻿within Modelica.Mechanics.Translational.Interfaces;
+within Modelica.Mechanics.Translational.Interfaces;
 connector Support "Support/housing flange of a one-dimensional translational component"
   extends Flange;
 

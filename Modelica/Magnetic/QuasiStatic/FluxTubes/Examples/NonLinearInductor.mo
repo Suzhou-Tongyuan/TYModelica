@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples;
 model NonLinearInductor "Non linear inductor with ferromagnetic core"
   extends Modelica.Icons.Example;
   output SI.Current deviation = feedback.y "Deviation of transient and quasi-static current";

@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.BasicMachines.SynchronousMachines;
+within Modelica.Magnetic.FundamentalWave.BasicMachines.SynchronousMachines;
 model SM_PermanentMagnet
   "Permanent magnet synchronous machine with optional damper cage"
   extends Magnetic.FundamentalWave.BaseClasses.Machine(

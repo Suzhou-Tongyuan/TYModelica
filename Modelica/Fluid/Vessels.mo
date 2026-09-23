@@ -1,4 +1,4 @@
-﻿within Modelica.Fluid;
+within Modelica.Fluid;
 package Vessels "Devices for storing fluid"
     extends Modelica.Icons.VariantsPackage;
 

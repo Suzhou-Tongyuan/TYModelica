@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines;
+within Modelica.Electrical.Machines;
 package Thermal "Library with models for connecting thermal models"
   extends Modelica.Icons.Package;
 

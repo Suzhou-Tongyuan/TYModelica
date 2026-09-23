@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.QuasiStatic.Machines.BasicMachines;
+within Modelica.Electrical.QuasiStatic.Machines.BasicMachines;
 package Components "Machine components like AirGaps"
   extends Modelica.Icons.Package;
   annotation (Documentation(info="<html>

@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Polyphase.Interfaces;
+within Modelica.Electrical.Polyphase.Interfaces;
 partial model OnePort
   "Component with two electrical plugs and currents from plug_p to plug_n"
 

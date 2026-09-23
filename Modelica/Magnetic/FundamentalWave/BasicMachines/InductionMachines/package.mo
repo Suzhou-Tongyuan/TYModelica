@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FundamentalWave.BasicMachines;
+within Modelica.Magnetic.FundamentalWave.BasicMachines;
 package InductionMachines "Induction machines"
   extends Modelica.Icons.VariantsPackage;
 

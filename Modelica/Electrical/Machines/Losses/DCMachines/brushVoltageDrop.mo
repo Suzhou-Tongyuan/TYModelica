@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses.DCMachines;
+within Modelica.Electrical.Machines.Losses.DCMachines;
 function brushVoltageDrop "Voltage drop of carbon brushes"
   extends Modelica.Icons.Function;
   input Machines.Losses.BrushParameters brushParameters "Brush loss parameters";

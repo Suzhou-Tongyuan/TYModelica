@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes.Examples.Hysteresis;
+within Modelica.Magnetic.FluxTubes.Examples.Hysteresis;
 model InductorWithHysteresis
   extends Modelica.Icons.Example;
   Basic.Ground mag_ground 

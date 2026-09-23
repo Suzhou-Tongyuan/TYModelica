@@ -1,4 +1,4 @@
-﻿within Modelica.Electrical.Machines.Losses.DCMachines;
+within Modelica.Electrical.Machines.Losses.DCMachines;
 model Brush "Model considering voltage drop of carbon brushes"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;
   parameter Machines.Losses.BrushParameters brushParameters

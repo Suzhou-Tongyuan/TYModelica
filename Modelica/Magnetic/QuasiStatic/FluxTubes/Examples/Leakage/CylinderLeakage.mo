@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples.Leakage;
+within Modelica.Magnetic.QuasiStatic.FluxTubes.Examples.Leakage;
 model CylinderLeakage "Testing cylinder leakage models"
   extends Modelica.Icons.Example;
   import Modelica.Constants.pi;

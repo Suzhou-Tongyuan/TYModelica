@@ -1,4 +1,4 @@
-﻿within Modelica.Magnetic.FluxTubes;
+within Modelica.Magnetic.FluxTubes;
 package Sources "Sources of different complexity of magnetomotive force and magnetic flux"
   extends Modelica.Icons.SourcesPackage;
 
